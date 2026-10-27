@@ -4,7 +4,7 @@ product_version: "V3.18.6"
 pdf_pages: 299
 source_pdf: "b3e7cc31b1a88752_Alibaba Cloud Apsara Stack V3.18.6 Apsara Stack Resilience ASR for Backup and Recovery User Guide 20"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%B7%B7%E5%90%88%E4%BA%91%E5%A4%87%E4%BB%BDASRBR/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Stack%20Resilience%20ASR%C2%A0for%C2%A0Backup%C2%A0and%C2%A0Recovery%20User%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Apsara Stack Resilience ASR for Backup and Recovery User Guide 20260701
@@ -574,6 +574,8 @@ including Synchronization Progress, Vault Usage, and Storage Pool Proportion.
 4. In the dialog box that appears, click **OK**.
 
 **(Optional) Lock a backup vault**
+
+**Note**
 
 You can only lock storage and database (excluding PolarDB-X 1.0) backup vaults whose storage medium is Object Storage Service (OSS), CDS-OSS, or PanguStor.
 
@@ -1270,7 +1272,11 @@ This topic describes how to create a backup plan for Elastic Compute Service (EC
 
 **Prerequisites**
 
-For versions earlier than V3.18, organization administrators, organization backup operators, organization backup administrators, and organization backup and restoration operators can create backup plans. For V3.18.6 and later versions, users with custom roles that have the ASR-BR product permissions and management permissions on the specified organization and its subordinate organizations can create backup plans. However, operations administrators cannot create backup plans. A backup vault is created. For more information, see Create a backup vault. ECS Cloud Assistant is installed on the ECS instance for which you want to create a file backup plan, and ECS Cloud Assistant runs as expected. ASR-BR allows you to back up ECS snapshots. If the selected backup time conflicts with the automatic snapshot policy provided by the ECS instance, an alert is displayed in the backup time field.
+For versions earlier than V3.18, organization administrators, organization backup operators, organization backup administrators, and organization backup and restoration operators can create backup plans. For V3.18.6 and later versions, users with custom roles that have the ASR-BR product permissions and management permissions on the specified organization and its subordinate organizations can create backup plans. However, operations administrators cannot create backup plans. A backup vault is created. For more information, see Create a backup vault. ECS Cloud Assistant is installed on the ECS instance for which you want to create a file backup plan, and ECS Cloud Assistant runs as expected.
+
+**Note**
+
+ASR-BR allows you to back up ECS snapshots. If the selected backup time conflicts with the automatic snapshot policy provided by the ECS instance, an alert is displayed in the backup time field.
 
 **Procedure**
 
@@ -1738,7 +1744,11 @@ The **Log Backup** tab is only available on the backup plan details page of Apsa
 3. On the **Backup Plans** page, specify search conditions to search for a backup plan.
 4. Find the backup plan that you want to view and click its name.
 5. Click the **Log Backup** tab to view the log files that are backed up in the current region or
-across regions. Data is unavailable on the **Log Backup** tab when you turn off **Enable Log Backup** in the Backup Policy step of the Create Backup Plan page.
+across regions.
+
+**Note**
+
+Data is unavailable on the **Log Backup** tab when you turn off **Enable Log Backup** in the Backup Policy step of the Create Backup Plan page.
 
 ### 10.9 View a backup event
 
@@ -2521,7 +2531,11 @@ You can delete any recovery plan you no longer need.
 
 **Prerequisites**
 
-The recovery plan contains no recovery resources. Do not delete a plan that has recovery resources. You can delete added resource instances on the plan details page.
+The recovery plan contains no recovery resources.
+
+**Note**
+
+Do not delete a plan that has recovery resources. You can delete added resource instances on the plan details page.
 
 **Procedure**
 
@@ -2597,6 +2611,9 @@ A restore policy defines the execution cycle for restoration. After you associat
 | Execution Time | Select a specific point in time, for example, 00:00:00. |
 
 5. Click **OK**.
+
+**Note**
+
 After you create a restore policy, you can associate it with a recovery plan. For more information, see Associate, remove, or change a restore policy.
 
 #### 12.3.2 View restore policies
@@ -3066,6 +3083,8 @@ VMware VMs
 | Incremental Backup Execution Cycle | Select the frequency (the number of days) at which incremental backup is performed. Enter a positive integer. |
 | Incremental Backup Time | Select a time to perform the first incremental backup. The subsequent incremental backups are performed at the specified intervals. |
 
+**Note**
+
 If you want to configure an incremental backup policy, make sure that CBT is enabled on the VM. For information about how to enable CBT, see Changed Block Tracking (CBT) on virtual machines (1020128).
 7. Review the backup configurations and click **Submit**.
 After the backup plan is created, backups are performed based on the specified backup policy. If you want to immediately start the backup plan, manually start the backup plan. For more information, see Start a backup plan. VMware VMs
@@ -3092,7 +3111,11 @@ This topic describes how to create, modify, and delete storage pool groups and s
 
 **Create a storage pool group and storage pool**
 
-For more information, see Create a storage pool. Storage pools that are created in Apsara Stack earlier than V3.18.1 are merged into storage pool groups based on their endpoints. The names of the storage pool groups are in the following format: AUTO_MERGE_STORAGE_POOL_GROUP_id.
+For more information, see Create a storage pool.
+
+**Note**
+
+Storage pools that are created in Apsara Stack earlier than V3.18.1 are merged into storage pool groups based on their endpoints. The names of the storage pool groups are in the following format: AUTO_MERGE_STORAGE_POOL_GROUP_id.
 
 **Modify a storage pool**
 
@@ -3737,7 +3760,11 @@ operations can be called.
 3. Use an Express Connect circuit to connect the Apsara Stack system and the VBR, and
 deploy a firewall to protect the Apsara Stack system.
 4. ASR-BR is deployed in the Apsara Stack system. OpsDNS is used to resolve the OSS
-endpoint, and the backup data is written to OSS in the public cloud through the Express Connect circuit. For more information, see the "Operations on Alibaba Cloud public cloud" section of the Hybrid cloud network connections with Express Connect circuits topic.
+endpoint, and the backup data is written to OSS in the public cloud through the Express Connect circuit.
+
+**Note**
+
+For more information, see the "Operations on Alibaba Cloud public cloud" section of the Hybrid cloud network connections with Express Connect circuits topic.
 
 #### 17.4.2 Hybrid cloud network connections with Express Connect circuits
 
@@ -3766,7 +3793,11 @@ Apsara Stack. For more information, see Configure and manage BGP.
 4. Create a Cloud Enterprise Network (CEN) instance and configure PrivateZone for the
 instance. For more information, see Configure PrivateZone.
 5. Log on to the Alibaba Cloud DNS console and add the private zone that you configured in
-the previous step. For more information, seeCreate a private zone and add a DNS record to the private zone.. The value in the **Records** column is the number of DNS records of the corresponding private zone. Click the name of the private zone that you want to manage. The Resolution Settings page appears, on which you can create a DNS record for the private zone. ackup
+the previous step. For more information, seeCreate a private zone and add a DNS record to the private zone..
+
+**Note**
+
+The value in the **Records** column is the number of DNS records of the corresponding private zone. Click the name of the private zone that you want to manage. The Resolution Settings page appears, on which you can create a DNS record for the private zone. ackup
 6. In the Alibaba Cloud DNS console, associate the private zone for which you configured a
 VPC. For more information, see Associate or disassociate a VPC.
 7. Call API operations over the internal network
@@ -3780,6 +3811,8 @@ Static routing Run the following command on ISW:
 ```
 ip route-static [$IP] [$IP_Prefix] [$GW_IP] preference 10 ------ Route the traffic from the CIDR blocks of the public cloud service and private zone to the public clo ud endpoint.
 ```
+
+**Note**
 
 [$IP]: the CIDR blocks of the public cloud service and private zone. [$IP_Prefix]: the subnet mask of the destination CIDR blocks. [$GW_IP]: the IP address of the public cloud endpoint. BGP routing If ISW communicates with Alibaba Cloud public cloud by using BGP, you must configure the routing of the hybrid cloud management platform address segment on the private cloud side and the routing of the cloud service and private zone address segment on the public cloud side.
 2. Configure Apsara Stack DNS.
@@ -4258,6 +4291,8 @@ ECS file backup consumes ECS resources and may affect your business. We recommen
 | 64 KB | 27 MBps | 200% to 240% | 32% to 60% |
 | 256 KB | 92 MBps | 160% to 240% | 16% to 40% |
 | >= 512 KB | 120 MBps | 160%/240% | 16% to 28% |
+
+**Note**
 
 An ECS instance has multiple CPU cores. Therefore, the CPU usage can exceed 100%. For example, if the ECS instance has two CPU cores, the maximum CPU usage can reach 200%. Configure a backup policy ackup Number of CPU cores used by the client a. Log on to the Apsara Uni-Manager Management Console. b. In the top navigation bar, choose **Products > Monitoring and O&M > Cloud**
 **Monitor CMS**.
@@ -5072,7 +5107,11 @@ iii. In the left-side navigation pane, choose **System Management > Storage Pool
 **Groups**.
 iv. Find the storage pool that you want to manage at the destination end, and click **Cross-**
 **region/Cross-cloud Replication Authorization** in the **Actions** column.
-v. Enter the cloud name, cloud region, location, and the UID of the proxy user at the destination end, and then click**OK**. For the destination end of cross-region replication, the UID of the proxy user is not required. For the destination end of cross-cloud replication, the UID of the proxy user is required.
+v. Enter the cloud name, cloud region, location, and the UID of the proxy user at the destination end, and then click**OK**.
+
+**Note**
+
+For the destination end of cross-region replication, the UID of the proxy user is not required. For the destination end of cross-cloud replication, the UID of the proxy user is required.
 
 **Initialization at the source end (backup vault)**
 
@@ -5151,6 +5190,8 @@ A Windows Elastic Compute Service (ECS) instance is available in the region wher
 
 **Procedure**
 
+**Note**
+
 You need to perform the following environment preparation steps only once when you mount file systems on a Windows ECS instance. You do not need to perform them each time you mount an SMB file system on the Windows ECS instance.
 1. Prepare the environment.
 i. Log on to the Apsara Uni-manager Management Console. ii. Connect to the ECS instance by using Virtual Network Console (VNC) Viewer or a remote connection method. iii. Enable the Workstation service. a. Choose **All Programs > Accessories > Run** or press Win+R. Then, enter services.msc to open the Services window. b. Make sure that the Workstation service is in the **Started** state and the startup type is
@@ -5190,7 +5231,11 @@ iii. In the left-side navigation pane, click **Backup Plans**. iv. On the **Back
 **Next**.
 vi. In the **Select Instance** step, select an ECS instance and click **Next**. vii. In the **Install Client** step, select the installation path and click **Install**. viii. After the backup client is installed, you can check whether the backup client is successfully installed and started based on the directory where the backup client is installed and the services started in the ECS instance. Click **Next**.
 5. Grant the backup client the permissions to back up SMB files.
-i. Connect to the ECS instance. ii. Press Win+R. In the Run dialog box, enter services.msc and click **OK**. iii. Find Alibaba Cloud Hybrid Backup Service in the service list. Right-click the service and select **Properties**. iv. In the dialog box that appears, click the **Log On** tab. v. Select **This account**, click Browse, and then enter the account and password. Click OK. The account must have the following permissions. Full access to the NAS file system Administrative rights Permissions to log on as a service For more information, see How do I select a component and account when I install a cloud backup client . vi. Restart the Alibaba Cloud Hybrid Backup Service.
+i. Connect to the ECS instance. ii. Press Win+R. In the Run dialog box, enter services.msc and click **OK**. iii. Find Alibaba Cloud Hybrid Backup Service in the service list. Right-click the service and select **Properties**. iv. In the dialog box that appears, click the **Log On** tab. v. Select **This account**, click Browse, and then enter the account and password. Click OK. The account must have the following permissions. Full access to the NAS file system Administrative rights Permissions to log on as a service
+
+**Note**
+
+For more information, see How do I select a component and account when I install a cloud backup client . vi. Restart the Alibaba Cloud Hybrid Backup Service.
 6. Proceed to Step 4 to create an SMB NAS backup plan.
 i. In the **Configure Instance** step, set Source Path to \\file-systemid.region.nas.aliyuncs.com\myshare. ii. Click **Next** and configure the backup policy. For more information, see Create a backup plan. Configure data according to the configuration wizard until the backup plan is created.
 7. On the **Backup History** tab, you can view the backup results.

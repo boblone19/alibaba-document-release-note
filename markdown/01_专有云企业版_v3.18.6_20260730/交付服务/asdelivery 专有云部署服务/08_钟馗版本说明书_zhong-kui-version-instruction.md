@@ -5,12 +5,17 @@ doc_version: "20260729"
 pdf_pages: 6
 source_pdf: "08_钟馗版本说明书_zhong-kui-version-instruction.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/asdelivery/zh/zhong-kui-version-instruction.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 专有云部署服务 钟馗版本说明书
 
-## 钟馗Release Note
+## 目录
+
+- 1 钟馗Release Note
+- 2 版本号规范说明
+
+## 1 钟馗Release Note
 
 本文为您介绍钟馗各个版本的发布日期及更新内容。
 
@@ -18,7 +23,7 @@ converter: line-classifier (PyMuPDF)
 |---|---|---|---|
 | 1 | v1.0.0 | 2025/01/16 | 首发行版本，首次发布于铜雀平台。 |
 
-## 版本号规范说明
+## 2 版本号规范说明
 
 本文为您介绍钟馗版本号的具体含义。
 

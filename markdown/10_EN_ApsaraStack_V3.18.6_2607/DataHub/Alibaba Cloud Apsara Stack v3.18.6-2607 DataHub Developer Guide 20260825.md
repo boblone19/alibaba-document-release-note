@@ -5,7 +5,7 @@ doc_version: "20260825"
 pdf_pages: 128
 source_pdf: "6fe921b0497f09a6_Alibaba Cloud Apsara Stack v3.18.6-2607 DataHub Developer Guide 20260825.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/DataHub/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20DataHub%20Developer%20Guide%2020260825.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 DataHub Developer Guide 20260825
@@ -110,7 +110,13 @@ converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
 
 ### 1.1 ListUserSubscriptions
 
-You can call the ListUserSubscriptions operation to query information about user subscriptions. The ListUserSubscriptions operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+You can call the ListUserSubscriptions operation to query information about user subscriptions.
+
+**Request headers**
+
+The ListUserSubscriptions operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+
+**Request parameters**
 
 | Paramet er name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -142,14 +148,28 @@ You can call the ListUserSubscriptions operation to query information about user
 | PageNumber | String | 10 | The page number of the returned page. |
 | Success | Boolean | true | The status code returned. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=ListUserSubscriptions &RegionId=cn-wuhan &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=ListUserSubscriptions &RegionId=cn-wuhan
  "TotalCount":"100",
  "RequestId":"20240205113332e90fc50b77cc9bf5",
  "PageSize":"1",
  "PageCount":"10",
  "PageNumber":"10",
  "List":[
+```
+
+`{`
+
+```json
    "Comment":"test",
    "Type":"test",
    "SubscriptionId":"219304s124",
@@ -160,7 +180,13 @@ http(s)://[Endpoint]/?Action=ListUserSubscriptions &RegionId=cn-wuhan
    "TopicName":"test"
 ```
 
-`],`
+`}` `],`
+
+```json
+ "Success":true
+```
+
+`}`
 
 ```xml
 <TotalCount>100</TotalCount> <RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <PageSize>1</PageSize> <PageCount>10</PageCount> <PageNumber>10</PageNumber> <List>
@@ -172,8 +198,10 @@ http(s)://[Endpoint]/?Action=ListUserSubscriptions &RegionId=cn-wuhan
  <Creator>admin</Creator>
  <Application>test</Application>
  <TopicName>test</TopicName>
-</List>
+</List> <Success>true</Success>
 ```
+
+**Error codes**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -187,7 +215,13 @@ http(s)://[Endpoint]/?Action=ListUserSubscriptions &RegionId=cn-wuhan
 
 ### 1.2 GetTopicSchema
 
-Call the GetTopicSchema operation to retrieve the topic schema. The GetTopicSchema operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" topic.
+Call the GetTopicSchema operation to retrieve the topic schema.
+
+**Request headers**
+
+The GetTopicSchema operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" topic.
+
+**Request parameters**
 
 | Paramet er name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -209,13 +243,28 @@ Call the GetTopicSchema operation to retrieve the topic schema. The GetTopicSche
 | RecordSchema | String | {} | The schema structure. |
 | Success | Boolean | true | The returned status code. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=GetTopicSchema &RegionId=cn-wuhan &ProjectName=test &TopicName=test &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=GetTopicSchema &RegionId=cn-wuhan &ProjectName=test &TopicName=test
  "VersionId":"1",
  "RequestId":"",
  "CreateTime":"",
  "Creator":"",
  "RecordSchema":"{}",
+ "Success":true
+```
+
+`}` `XML` format
+
+```xml
 <VersionId>1</VersionId> <RequestId /> <CreateTime /> <Creator /> <RecordSchema>{}</RecordSchema>
 ```
 
@@ -231,7 +280,13 @@ http(s)://[Endpoint]/?Action=GetTopicSchema &RegionId=cn-wuhan &ProjectName=test
 
 ### 1.3 CreateConnector
 
-You can call the CreateConnector operation to create a connector. The CreateConnector operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+You can call the CreateConnector operation to create a connector.
+
+**Request headers**
+
+The CreateConnector operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+
+**Request parameters**
 
 | Paramet er name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -255,12 +310,26 @@ You can call the CreateConnector operation to create a connector. The CreateConn
 | TopicName | String | test01 | The topic name. |
 | ConnectorId | String | 5c806a2f-84a0- 47c3-8dda- d8fa2852de3u | The sync task ID. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=CreateConnector &RegionId=cn-wuhna &ProjectName=test &TopicName=test01 &Type=SINK_ODPS &StartTime=12355234 &Config={} &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=CreateConnector &RegionId=cn-wuhna &ProjectName=test &TopicName=test01 &Type=SINK_ODPS &StartTime=12355234 &Config={}
  "ProjectName":"test",
  "Success":true,
  "TopicName":"test01",
  "ConnectorId":"5c806a2f-84a0-47c3-8dda-d8fa2852de3u"
+```
+
+`}` `XML` format
+
+```xml
 <ProjectName>test</ProjectName> <TopicName>test01</TopicName> <ConnectorId>5c806a2f-84a0-47c3-8dda-d8fa2852de3u</ConnectorId>
 ```
 
@@ -278,7 +347,13 @@ http(s)://[Endpoint]/?Action=CreateConnector &RegionId=cn-wuhna &ProjectName=tes
 
 ### 1.4 ListTopicAction
 
-Call the ListTopicAction operation to retrieve topic operations. The ListTopicAction operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" topic.
+Call the ListTopicAction operation to retrieve topic operations.
+
+**Request headers**
+
+The ListTopicAction operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" topic.
+
+**Request parameters**
 
 | Paramet er name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -299,10 +374,24 @@ Call the ListTopicAction operation to retrieve topic operations. The ListTopicAc
 | RequestId | String | 2024850120103 | The ID of the request. |
 | Success | Boolean | true | The status code returned. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=ListTopicAction &RegionId=cn-wuhan &ProjectName=test &TopicName=test &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=ListTopicAction &RegionId=cn-wuhan &ProjectName=test &TopicName=test
  "RequestId":"2024850120103",
  "List":[
+```
+
+`{`
+
+```json
    "UserName":"admin",
    "ActionType":"delete",
    "ResourceName":"bigdata",
@@ -310,7 +399,11 @@ http(s)://[Endpoint]/?Action=ListTopicAction &RegionId=cn-wuhan &ProjectName=tes
    "ExtraInfo":"test"
 ```
 
-`],`
+`}` `],`
+
+```json
+ "Success":true
+```
 
 ```xml
 <RequestId>2024850120103</RequestId> <List>
@@ -319,8 +412,10 @@ http(s)://[Endpoint]/?Action=ListTopicAction &RegionId=cn-wuhan &ProjectName=tes
  <ResourceName>bigdata</ResourceName>
  <CreateTime>2174018322141</CreateTime>
  <ExtraInfo>test</ExtraInfo>
-</List>
+</List> <Success>true</Success>
 ```
+
+**Error codes**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -334,7 +429,13 @@ http(s)://[Endpoint]/?Action=ListTopicAction &RegionId=cn-wuhan &ProjectName=tes
 
 ### 1.5 DeleteTopic
 
-Calls the DeleteTopic operation to delete a topic. The DeleteTopic operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
+Calls the DeleteTopic operation to delete a topic.
+
+**Request headers**
+
+The DeleteTopic operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
+
+**Request parameters**
 
 | Paramet er name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -349,11 +450,28 @@ Calls the DeleteTopic operation to delete a topic. The DeleteTopic operation doe
 | RequestId | String | 202485010243012 | The ID of the request. |
 | Success | Boolean | true | The returned status code. |
 
-```json
-http(s)://[Endpoint]/?Action=DeleteTopic &ProjectName=test &TopicName=test
- "RequestId":"202485010243012",
-<RequestId>202485010243012</RequestId>
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=DeleteTopic &ProjectName=test &TopicName=test &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "RequestId":"202485010243012",
+ "Success":true
+```
+
+`}` `XML` format
+
+```xml
+<RequestId>202485010243012</RequestId> <Success>true</Success>
+```
+
+**Error codes**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -368,6 +486,8 @@ http(s)://[Endpoint]/?Action=DeleteTopic &ProjectName=test &TopicName=test
 ### 1.6 UpdateConnectorState
 
 Call the UpdateConnectorState operation to update the connector status. The UpdateConnectorState operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+
+**Request parameters**
 
 | Paramet er name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -384,14 +504,27 @@ Call the UpdateConnectorState operation to update the connector status. The Upda
 | RequestId | String | 202345012824310 3u | The ID of the request. |
 | Success | Boolean | true | The returned status code. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=UpdateConnectorState &ProjectName=test &TopicName=test &ConnectorId=5c806a2f-84a0-47c3-8dda-d8fa2852de92 &State=STOPPED
+http(s)://[Endpoint]/?Action=UpdateConnectorState &ProjectName=test &TopicName=test &ConnectorId=5c806a2f-84a0-47c3-8dda-d8fa2852de92 &State=STOPPED &Common request parameters
 ```
+
+Sample success responses `JSON` format
 
 ```json
  "RequestId":"2023450128243103u",
-<RequestId>2023450128243103u</RequestId>
 ```
+
+`}` `XML` format
+
+```xml
+<RequestId>2023450128243103u</RequestId> <Success>true</Success>
+```
+
+**Error codes**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -405,7 +538,13 @@ http(s)://[Endpoint]/?Action=UpdateConnectorState &ProjectName=test &TopicName=t
 
 ### 1.7 GetShardDetail
 
-You can call the GetShardDetail operation to retrieve shard information. The GetShardDetail operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
+You can call the GetShardDetail operation to retrieve shard information.
+
+**Request headers**
+
+The GetShardDetail operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
+
+**Request parameters**
 
 | Paramet er name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -434,13 +573,24 @@ You can call the GetShardDetail operation to retrieve shard information. The Get
 | RequestId | String | 2024so03hs | The ID of the request. |
 | Success | Boolean | true | The returned status code. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=GetShardDetail &RegionId=cn-wuhan &ProjectName=test &TopicName=test &ShardIds=1
+http(s)://[Endpoint]/?Action=GetShardDetail &RegionId=cn-wuhan &ProjectName=test &TopicName=test &ShardIds=1 &Common request parameters
 ```
+
+Sample success responses
 
 ```json
  "RequestId":"2024so03hs",
  "List":[
+```
+
+`{`
+
+```json
    "ShardId":"1",
    "OldestDataTime":2024850282120,
    "OldestDataSequence":3,
@@ -449,7 +599,13 @@ http(s)://[Endpoint]/?Action=GetShardDetail &RegionId=cn-wuhan &ProjectName=test
    "RecordCount":1
 ```
 
-`],`
+`}` `],`
+
+```json
+ "Success":true
+```
+
+`}` `XML` format
 
 ```xml
 <RequestId>2024so03hs</RequestId> <List>
@@ -459,8 +615,10 @@ http(s)://[Endpoint]/?Action=GetShardDetail &RegionId=cn-wuhan &ProjectName=test
  <LatestDataTime>2024850282120</LatestDataTime>
  <LatestDataSequence>123</LatestDataSequence>
  <RecordCount>1</RecordCount>
-</List>
+</List> <Success>true</Success>
 ```
+
+**Error codes**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -490,10 +648,25 @@ Calls the SplitShard operation to split a shard. The SplitShard operation does n
 | RequestId | String | 20240205113332c 90fc50b77cc9bf6 | The ID of the request. |
 | Success | Boolean | true | The status of the request. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=SplitShard &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=SplitShard
  "RequestId":"20240205113332c90fc50b77cc9bf6",
-<RequestId>20240205113332c90fc50b77cc9bf6</RequestId>
+ "Success":true
+```
+
+`}` `XML` format
+
+```xml
+<RequestId>20240205113332c90fc50b77cc9bf6</RequestId> <Success>true</Success>
 ```
 
 | HttpCo de | Error code | Error message | Description |
@@ -513,6 +686,8 @@ Calls the GetAlarmRule operation to retrieve an alarm rule.
 **Request header**
 
 The GetAlarmRule operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" topic.
+
+**Request parameters**
 
 | Paramet er name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -540,9 +715,15 @@ The GetAlarmRule operation does not have operation-specific request headers and 
 | Config | String | {} | The policy configuration information. |
 | Rule | String | {} | The authorization rule. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=GetAlarmRule &RegionId=cn-wuhan &ProjectName=test_pro &TopicName=test_topic &AlarmId=0473
+http(s)://[Endpoint]/?Action=GetAlarmRule &RegionId=cn-wuhan &ProjectName=test_pro &TopicName=test_topic &AlarmId=0473 &Common request parameters
 ```
+
+Sample success responses `JSON` format
 
 ```json
  "Uid":"1230449303",
@@ -556,8 +737,15 @@ http(s)://[Endpoint]/?Action=GetAlarmRule &RegionId=cn-wuhan &ProjectName=test_p
  "Rule":"{}",
  "Success":true,
  "TopicName":"test_topic"
-<Uid>1230449303</Uid> <RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <ProjectName>test_pro</ProjectName> <Config>{}</Config> <AlarmType>USER_SUB_READ_DELAY</AlarmType> <CreateTime>1709871393001</CreateTime> <UpdateTime>1709871393001</UpdateTime> <RegionId>cn-hang</RegionId> <Rule>{}</Rule> <TopicName>test_topic</TopicName>
 ```
+
+`}` `XML` format
+
+```xml
+<Uid>1230449303</Uid> <RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <ProjectName>test_pro</ProjectName> <Config>{}</Config> <AlarmType>USER_SUB_READ_DELAY</AlarmType> <CreateTime>1709871393001</CreateTime> <UpdateTime>1709871393001</UpdateTime> <RegionId>cn-hang</RegionId> <Rule>{}</Rule> <Success>true</Success> <TopicName>test_topic</TopicName>
+```
+
+**Error codes**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -573,6 +761,8 @@ http(s)://[Endpoint]/?Action=GetAlarmRule &RegionId=cn-wuhan &ProjectName=test_p
 
 You can call the CreateKafkaGroup operation to create a group. The CreateKafkaGroup operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
 
+**Request parameters**
+
 | Paramet er | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | String | Query | Yes | cn-wuhan | The region ID. |
@@ -587,9 +777,24 @@ You can call the CreateKafkaGroup operation to create a group. The CreateKafkaGr
 | RequestId | String | 20240205113332e 90fc50b77cc9bf5 | The ID of the request. |
 | Success | Boolean | true | The status. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=CreateKafkaGroup &RegionId=cn-wuhan &ProjectName=test_rpo &GroupName=test_group &Comment=test_comment &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=CreateKafkaGroup &RegionId=cn-wuhan &ProjectName=test_rpo &GroupName=test_group &Comment=test_comment
  "RequestId":"20240205113332e90fc50b77cc9bf5",
+ "Success":true
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>20240205113332e90fc50b77cc9bf5</RequestId>
 ```
 
@@ -605,7 +810,13 @@ http(s)://[Endpoint]/?Action=CreateKafkaGroup &RegionId=cn-wuhan &ProjectName=te
 
 ### 1.11 CreateTopic
 
-You can call the CreateTopic operation to create a topic. The CreateTopic operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+You can call the CreateTopic operation to create a topic.
+
+**Request headers**
+
+The CreateTopic operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+
+**Request parameters**
 
 | Paramet er name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -635,17 +846,30 @@ You can call the CreateTopic operation to create a topic. The CreateTopic operat
 | Success | Boolean | true | The status code returned. |
 | TopicName | String | test topic _ | The topic name. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=CreateTopic &RegionId=cn-wu &ProjectName=test_pro &TopicName=test_topic &RecordType=BLOB &Comment=test-comment &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=CreateTopic &RegionId=cn-wu &ProjectName=test_pro &TopicName=test_topic &RecordType=BLOB &Comment=test-comment
  "RequestId":"20240205113332e90fc50b77cc9bf5",
  "ProjectName":"test_pro",
  "Success":true,
  "TopicName":"test_topic"
 ```
 
+`}`
+
 ```xml
 <RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <ProjectName>test_pro</ProjectName> <TopicName>test_topic</TopicName>
 ```
+
+**Error codes**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -659,7 +883,13 @@ http(s)://[Endpoint]/?Action=CreateTopic &RegionId=cn-wu &ProjectName=test_pro &
 
 ### 1.12 MergeShard
 
-You can call the MergeShard operation to merge shards. The MergeShard operation does not have operation-specific request headers and uses only common request headers. For more information, see Common parameters.
+You can call the MergeShard operation to merge shards.
+
+**Request headers**
+
+The MergeShard operation does not have operation-specific request headers and uses only common request headers. For more information, see Common parameters.
+
+**Request parameters**
 
 | Paramet er name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -676,11 +906,28 @@ You can call the MergeShard operation to merge shards. The MergeShard operation 
 | RequestId | String | 20240205113332e 90fc50b77cc9bf5 | The ID of the request. |
 | Success | Boolean | true | The status code returned. |
 
-```json
-http(s)://[Endpoint]/?Action=MergeShard &RegionId=cn-wuhan &ProjectName=test_pro &TopicName=test_topic &ShardId=1 &NextShardId=2
- "RequestId":"20240205113332e90fc50b77cc9bf5",
-<RequestId>20240205113332e90fc50b77cc9bf5</RequestId>
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=MergeShard &RegionId=cn-wuhan &ProjectName=test_pro &TopicName=test_topic &ShardId=1 &NextShardId=2 &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "RequestId":"20240205113332e90fc50b77cc9bf5",
+ "Success":true
+```
+
+`}` `XML` format
+
+```xml
+<RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <Success>true</Success>
+```
+
+**Error codes**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -700,7 +947,13 @@ http(s)://[Endpoint]/?Action=MergeShard &RegionId=cn-wuhan &ProjectName=test_pro
 
 ### 1.13 ExtendShard
 
-You can call the ExtendShard operation to extend a shard. The ExtendShard operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the Common parameters topic.
+You can call the ExtendShard operation to extend a shard.
+
+**Request headers**
+
+The ExtendShard operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the Common parameters topic.
+
+**Request parameters**
 
 | Paramet er name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -716,14 +969,28 @@ You can call the ExtendShard operation to extend a shard. The ExtendShard operat
 | RequestId | String | 20240205113332e 90fc50b77cc9bf5 | The request ID. |
 | Success | Boolean | true | The returned status code. |
 
+**Examples**
+
+Sample requests
+
 ```
 http(s)://[Endpoint]/?Action=ExtendShard &RegionId=cn-wuhan &ProjectName=test_pro &TopicName=test_topic &ShardCount=10
 ```
 
+`{`
+
 ```json
  "RequestId":"20240205113332e90fc50b77cc9bf5",
-<RequestId>20240205113332e90fc50b77cc9bf5</RequestId>
+ "Success":true
 ```
+
+`}` `XML` format
+
+```xml
+<RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <Success>true</Success>
+```
+
+**Error codes**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -737,7 +1004,13 @@ http(s)://[Endpoint]/?Action=ExtendShard &RegionId=cn-wuhan &ProjectName=test_pr
 
 ### 1.14 GetConsumerPlan
 
-You can call the GetConsumerPlan operation to retrieve a collaborative consumption plan. The GetConsumerPlan operation does not have operation-specific request headers and uses only common request headers. For more information, see the documentation of common request parameters.
+You can call the GetConsumerPlan operation to retrieve a collaborative consumption plan.
+
+**Request headers**
+
+The GetConsumerPlan operation does not have operation-specific request headers and uses only common request headers. For more information, see the documentation of common request parameters.
+
+**Request parameters**
 
 | Paramet er | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -768,9 +1041,15 @@ You can call the GetConsumerPlan operation to retrieve a collaborative consumpti
 | Success | Boolean | true | The returned status code. |
 | ConsumerCoun t | Integer | 33 | The total number of consumers. |
 
+**Examples**
+
+Sample requests
+
 ```
 http(s)://[Endpoint]/?Action=GetConsumerPlan &RegionId=cn-wuhan &ProjectName=test_pro &TopicName=test_topic &SubscriptionId=1214SAFAGG
 ```
+
+`{`
 
 ```json
  "OverShards":"1",
@@ -788,13 +1067,21 @@ http(s)://[Endpoint]/?Action=GetConsumerPlan &RegionId=cn-wuhan &ProjectName=tes
 
 ```json
  "TransferShards":"2",
+ "Success":true
+```
+
+`}` `XML` format
+
+```xml
 <OverShards>1</OverShards> <RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <ConsumerCount>33</ConsumerCount> <WaitingShards>3</WaitingShards> <ShardAssignments>
  <ConsumerId>3</ConsumerId>
  <IpAddress>10.xx.xxx</IpAddress>
  <JoinTime>1709871393001</JoinTime>
  <ShardIds>1</ShardIds>
-</ShardAssignments> <TransferShards>2</TransferShards>
+</ShardAssignments> <TransferShards>2</TransferShards> <Success>true</Success>
 ```
+
+**Error codes**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -808,7 +1095,13 @@ http(s)://[Endpoint]/?Action=GetConsumerPlan &RegionId=cn-wuhan &ProjectName=tes
 
 ### 1.15 AddTopicSchema
 
-You can call the AddTopicSchema operation to add a topic schema. The AddTopicSchema operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+You can call the AddTopicSchema operation to add a topic schema.
+
+**Request headers**
+
+The AddTopicSchema operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+
+**Request parameters**
 
 | Paramet er name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -826,16 +1119,28 @@ You can call the AddTopicSchema operation to add a topic schema. The AddTopicSch
 | Success | Boolean | true | The status code returned. |
 | RecordSchema | String | [{a,f1}] | The table structure. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=AddTopicSchema &RegionId=cn-wuhan &ProjectName=test &TopicName=test
+http(s)://[Endpoint]/?Action=AddTopicSchema &RegionId=cn-wuhan &ProjectName=test &TopicName=test &Common request parameters
 ```
 
 ```json
  "VersionId":"0",
  "RequestId":"2038431830411",
  "RecordSchema":"[{a,f1}]",
-<VersionId>0</VersionId> <RequestId>2038431830411</RequestId> <RecordSchema>[{a,f1}]</RecordSchema>
+ "Success":true
 ```
+
+`}` `XML` format
+
+```xml
+<VersionId>0</VersionId> <RequestId>2038431830411</RequestId> <RecordSchema>[{a,f1}]</RecordSchema> <Success>true</Success>
+```
+
+**Error codes**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -849,7 +1154,13 @@ http(s)://[Endpoint]/?Action=AddTopicSchema &RegionId=cn-wuhan &ProjectName=test
 
 ### 1.16 ListKafkaGroup
 
-Call the ListKafkaGroup operation to retrieve a list of Kafka groups. The ListKafkaGroup operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+Call the ListKafkaGroup operation to retrieve a list of Kafka groups.
+
+**Request headers**
+
+The ListKafkaGroup operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+
+**Request parameters**
 
 | Parameter name | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -878,14 +1189,24 @@ Call the ListKafkaGroup operation to retrieve a list of Kafka groups. The ListKa
 | PageCount | Integer | 11 | The page number of the returned page. |
 | PageNumber | Integer | 22 | The page number. |
 
+```
+http(s)://[Endpoint]/?Action=ListKafkaGroup &RegionId=cn-wuan &ProjectName=test &PageSize=1 &PageNumber=1 &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=ListKafkaGroup &RegionId=cn-wuan &ProjectName=test &PageSize=1 &PageNumber=1
  "TotalCount":1,
  "RequestId":"202450182021",
  "PageSize":1,
  "PageCount":11,
  "PageNumber":22,
  "List":[
+```
+
+`{`
+
+```json
    "GroupName":"test",
    "Comment":"test",
    "CreateTime":14957492821,
@@ -894,7 +1215,13 @@ http(s)://[Endpoint]/?Action=ListKafkaGroup &RegionId=cn-wuan &ProjectName=test 
    "LastModifyTime":14957492821
 ```
 
-`],`
+`}` `],`
+
+```json
+ "Success":true
+```
+
+`}` `XML` format
 
 ```xml
 <TotalCount>1</TotalCount> <RequestId>202450182021</RequestId> <PageSize>1</PageSize> <PageCount>11</PageCount> <PageNumber>22</PageNumber> <List>
@@ -904,7 +1231,7 @@ http(s)://[Endpoint]/?Action=ListKafkaGroup &RegionId=cn-wuan &ProjectName=test 
  <TopicList></TopicList>
  <Creator>23551</Creator>
  <LastModifyTime>14957492821</LastModifyTime>
-</List>
+</List> <Success>true</Success>
 ```
 
 | HttpCode | Error code | Error message | Description |
@@ -917,11 +1244,17 @@ http(s)://[Endpoint]/?Action=ListKafkaGroup &RegionId=cn-wuan &ProjectName=test 
 | 502 | ApiProxyServiceErr or | ApiProxyServiceError | %s |
 | 502 | InternalServerError | InternalServerError | %s |
 
-2019-11-20
+datahub 2019-11-20
 
 ### 1.17 ResetSubscriptionOffset
 
-Call the ResetSubscriptionOffset operation to reset the subscription offset. The ResetSubscriptionOffset operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+Call the ResetSubscriptionOffset operation to reset the subscription offset.
+
+**Request headers**
+
+The ResetSubscriptionOffset operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+
+**Request parameters**
 
 | Paramet er name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -937,11 +1270,28 @@ Call the ResetSubscriptionOffset operation to reset the subscription offset. The
 | RequestId | String | 20240205113332e 90fc50b77cc9bf5 | The ID of the request. |
 | Success | Boolean | true | The returned status code. |
 
-```json
-http(s)://[Endpoint]/?Action=ResetSubscriptionOffset &ProjectName=test_pro &TopicName=test_topic &SubscriptionId=1688026989418N073J &StartTime=1709871393001
- "RequestId":"20240205113332e90fc50b77cc9bf5",
-<RequestId>20240205113332e90fc50b77cc9bf5</RequestId>
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=ResetSubscriptionOffset &ProjectName=test_pro &TopicName=test_topic &SubscriptionId=1688026989418N073J &StartTime=1709871393001 &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "RequestId":"20240205113332e90fc50b77cc9bf5",
+ "Success":true
+```
+
+`}` `XML` format
+
+```xml
+<RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <Success>true</Success>
+```
+
+**Error codes**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -961,7 +1311,13 @@ http(s)://[Endpoint]/?Action=ResetSubscriptionOffset &ProjectName=test_pro &Topi
 
 ### 1.18 ListSubscriptions
 
-You can call the ListSubscriptions operation to query the list of subscription IDs. The ListSubscriptions operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+You can call the ListSubscriptions operation to query the list of subscription IDs.
+
+**Request headers**
+
+The ListSubscriptions operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+
+**Request parameters**
 
 | Paramet er | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -993,8 +1349,17 @@ You can call the ListSubscriptions operation to query the list of subscription I
 | PageSize | String | 10 | The number of entries per page. |
 | Success | Boolean | true | The status code returned. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=ListSubscriptions &PageNumber=1 &PageSize=10 &RegionId=cn-wuhan &ProjectName=test_pro &TopicName=test_topic &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=ListSubscriptions &PageNumber=1 &PageSize=10 &RegionId=cn-wuhan &ProjectName=test_pro &TopicName=test_topic
  "TotalCount":"100",
  "RequestId":"20240205113332e90fc50b77cc9bf5",
  "PageCount":"10",
@@ -1019,8 +1384,10 @@ http(s)://[Endpoint]/?Action=ListSubscriptions &PageNumber=1 &PageSize=10 &Regio
  <State>1</State>
  <Creator>admin</Creator>
  <Application>test</Application>
-</List>
+</List> <Success>true</Success>
 ```
+
+**Error codes**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -1034,7 +1401,13 @@ http(s)://[Endpoint]/?Action=ListSubscriptions &PageNumber=1 &PageSize=10 &Regio
 
 ### 1.19 ReloadConnector
 
-Call the ReloadConnector operation to restart a connector. The ReloadConnector operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+Call the ReloadConnector operation to restart a connector.
+
+**Request headers**
+
+The ReloadConnector operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+
+**Request parameters**
 
 | Paramet er name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1056,12 +1429,28 @@ Call the ReloadConnector operation to restart a connector. The ReloadConnector o
 | RequestId | String | 20240205113332e 90fc50b77cc9bf5 | The request ID. |
 | Success | String | true | The returned status code. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=ReloadConnector &ProjectName=test_pro &TopicName=test_topic &ConnectorId=21414215FFGG &ShardId=1 &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=ReloadConnector &ProjectName=test_pro &TopicName=test_topic &ConnectorId=21414215FFGG &ShardId=1
  "RequestId":"20240205113332e90fc50b77cc9bf5",
  "Success":"true"
-<RequestId>20240205113332e90fc50b77cc9bf5</RequestId>
 ```
+
+`}` `XML` format
+
+```xml
+<RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <Success>true</Success>
+```
+
+**Error codes**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -1081,7 +1470,13 @@ http(s)://[Endpoint]/?Action=ReloadConnector &ProjectName=test_pro &TopicName=te
 
 ### 1.20 DeleteSubscription
 
-You can call the DeleteSubscription operation to delete a subscription. The DeleteSubscription operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
+You can call the DeleteSubscription operation to delete a subscription.
+
+**Request headers**
+
+The DeleteSubscription operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
+
+**Request parameters**
 
 | Paramet er name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1097,11 +1492,24 @@ You can call the DeleteSubscription operation to delete a subscription. The Dele
 | RequestId | String | 20240205113332e 90fc50b77cc9bf5 | The ID of the request. |
 | Success | Boolean | true | The returned status code. |
 
-```json
-http(s)://[Endpoint]/?Action=DeleteSubscription &RegionId=cn-wuan &ProjectName=project_test &TopicName=test_topic &SubscriptionId=12323535ID
- "RequestId":"20240205113332e90fc50b77cc9bf5",
-<RequestId>20240205113332e90fc50b77cc9bf5</RequestId>
 ```
+http(s)://[Endpoint]/?Action=DeleteSubscription &RegionId=cn-wuan &ProjectName=project_test &TopicName=test_topic &SubscriptionId=12323535ID &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "RequestId":"20240205113332e90fc50b77cc9bf5",
+ "Success":true
+```
+
+`}` `XML` format
+
+```xml
+<RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <Success>true</Success>
+```
+
+**Error codes**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -1115,7 +1523,13 @@ http(s)://[Endpoint]/?Action=DeleteSubscription &RegionId=cn-wuan &ProjectName=p
 
 ### 1.21 ListTopics
 
-You can call the ListTopics operation to query a list of topics. The ListTopics operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+You can call the ListTopics operation to query a list of topics.
+
+**Request headers**
+
+The ListTopics operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+
+**Request parameters**
 
 | Paramet er | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1148,8 +1562,17 @@ You can call the ListTopics operation to query a list of topics. The ListTopics 
 | PageSize | String | 1 | The number of entries per page. |
 | Success | Boolean | true | The status code returned. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=ListTopics &PageNumber=1 &RegionId=cn-uw &ProjectName=test_pro &PageSize=1 &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=ListTopics &PageNumber=1 &RegionId=cn-uw &ProjectName=test_pro &PageSize=1
  "TotalCount":"12",
  "RequestId":"20240205113332e90fc50b77cc9bf5",
  "PageCount":"12",
@@ -1169,6 +1592,12 @@ http(s)://[Endpoint]/?Action=ListTopics &PageNumber=1 &RegionId=cn-uw &ProjectNa
 
 `},`
 
+```json
+ "Success":true
+```
+
+`}` `XML` format
+
 ```xml
 <TotalCount>12</TotalCount> <RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <PageCount>12</PageCount> <PageSize>1</PageSize> <PageNumber>1</PageNumber> <List>
  <Comment>test_comment</Comment>
@@ -1180,8 +1609,10 @@ http(s)://[Endpoint]/?Action=ListTopics &PageNumber=1 &RegionId=cn-uw &ProjectNa
  <Creator>admin</Creator>
  <TopicName>test_topic</TopicName>
  <ShardCount>1</ShardCount>
-</List>
+</List> <Success>true</Success>
 ```
+
+**Error codes**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -1196,7 +1627,13 @@ http(s)://[Endpoint]/?Action=ListTopics &PageNumber=1 &RegionId=cn-uw &ProjectNa
 
 ### 1.22 GetSubscriptionOffset
 
-You can call the GetSubscriptionOffset operation to retrieve subscription offsets. The GetSubscriptionOffset operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" topic.
+You can call the GetSubscriptionOffset operation to retrieve subscription offsets.
+
+**Request headers**
+
+The GetSubscriptionOffset operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" topic.
+
+**Request parameters**
 
 | Paramet er | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1216,9 +1653,15 @@ You can call the GetSubscriptionOffset operation to retrieve subscription offset
 | RequestId | String | 20240205113332e 90fc50b77cc9bf5 | The ID of the request. |
 | Success | Boolean | true | The status code returned. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=GetSubscriptionOffset &RegionId=cn-wuhan &ProjectName=test_pro &TopicName=test_topic &SubscriptionId=1688026989418N073J
+http(s)://[Endpoint]/?Action=GetSubscriptionOffset &RegionId=cn-wuhan &ProjectName=test_pro &TopicName=test_topic &SubscriptionId=1688026989418N073J &Common request parameters
 ```
+
+Sample success responses `JSON` format
 
 ```json
  "RequestId":"20240205113332e90fc50b77cc9bf5",
@@ -1230,13 +1673,21 @@ http(s)://[Endpoint]/?Action=GetSubscriptionOffset &RegionId=cn-wuhan &ProjectNa
 
 `},`
 
+```json
+ "Success":true
+```
+
+`}` `XML` format
+
 ```xml
 <RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <List>
  <ShardId>1</ShardId>
  <Sequence>1253</Sequence>
  <Timestamp>1709871393001</Timestamp>
-</List>
+</List> <Success>true</Success>
 ```
+
+**Error codes**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -1250,7 +1701,13 @@ http(s)://[Endpoint]/?Action=GetSubscriptionOffset &RegionId=cn-wuhan &ProjectNa
 
 ### 1.23 GetConnectorShardStatus
 
-Call the GetConnectorShardStatus operation to retrieve the connector shard status. The GetConnectorShardStatus operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
+Call the GetConnectorShardStatus operation to retrieve the connector shard status.
+
+**Request headers**
+
+The GetConnectorShardStatus operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
+
+**Request parameters**
 
 | Paramet er name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1274,8 +1731,15 @@ Call the GetConnectorShardStatus operation to retrieve the connector shard statu
 | DelayTime | Long | 1709871393001 | The latency. |
 | Success | Boolean | true | The returned status code. |
 
+**Examples**
+
+```
+http(s)://[Endpoint]/?Action=GetConnectorShardStatus &RegionId=cn-wuhan &ProjectName=test_pro &TopicName=test_topic &ConnectorId=5c806a2f-84a0-47c3-8dda-d8fa2852de9c &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=GetConnectorShardStatus &RegionId=cn-wuhan &ProjectName=test_pro &TopicName=test_topic &ConnectorId=5c806a2f-84a0-47c3-8dda-d8fa2852de9c
  "RequestId":"20240205113332e90fc50b77cc9bf5",
  "List":{
   "ShardId":"0",
@@ -1290,6 +1754,12 @@ http(s)://[Endpoint]/?Action=GetConnectorShardStatus &RegionId=cn-wuhan &Project
 
 ```json
  "DelayTime":1709871393001,
+ "Success":true
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <List>
  <ShardId>0</ShardId>
  <LastErrorMessage  />
@@ -1297,8 +1767,10 @@ http(s)://[Endpoint]/?Action=GetConnectorShardStatus &RegionId=cn-wuhan &Project
  <CurrentTimestamp>1709871393001</CurrentTimestamp>
  <State>RUNNING</State>
  <CurrentSequence>0</CurrentSequence>
-</List> <DelayTime>1709871393001</DelayTime>
+</List> <DelayTime>1709871393001</DelayTime> <Success>true</Success>
 ```
+
+**Error codes**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -1316,7 +1788,13 @@ http(s)://[Endpoint]/?Action=GetConnectorShardStatus &RegionId=cn-wuhan &Project
 
 ### 1.24 GetTopicDataTrendByDay
 
-You can call the GetTopicDataTrendByDay operation to retrieve the read and write traffic of a topic. The GetTopicDataTrendByDay operation does not have operation-specific request headers and uses only common request headers. For more information, see Common parameters.
+You can call the GetTopicDataTrendByDay operation to retrieve the read and write traffic of a topic.
+
+**Request headers**
+
+The GetTopicDataTrendByDay operation does not have operation-specific request headers and uses only common request headers. For more information, see Common parameters.
+
+**Request parameters**
 
 | Paramet er name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1334,8 +1812,15 @@ You can call the GetTopicDataTrendByDay operation to retrieve the read and write
 | RequestId | String | 20240205113332e 90fc50b77cc9bf5 | The ID of the request. |
 | Success | Boolean | true | The returned status code. |
 
+**Examples**
+
+```
+http(s)://[Endpoint]/?Action=GetTopicDataTrendByDay &RegionId=cn-wujan &ProjectName=test_pro &TopicName=test_topic &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=GetTopicDataTrendByDay &RegionId=cn-wujan &ProjectName=test_pro &TopicName=test_topic
  "RequestId":"20240205113332e90fc50b77cc9bf5",
  "List":{
   "Size":1024.0,
@@ -1344,12 +1829,20 @@ http(s)://[Endpoint]/?Action=GetTopicDataTrendByDay &RegionId=cn-wujan &ProjectN
 
 `},`
 
+```json
+ "Success":true
+```
+
+`}` `XML` format
+
 ```xml
 <RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <List>
  <Size>1024</Size>
  <Day>2021-11-20</Day>
-</List>
+</List> <Success>true</Success>
 ```
+
+**Error codes**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -1364,6 +1857,8 @@ http(s)://[Endpoint]/?Action=GetTopicDataTrendByDay &RegionId=cn-wujan &ProjectN
 ### 1.25 GetSchemaByOdps
 
 Call the GetSchemaByOdps operation to obtain the structure of an ODPS table. The GetSchemaByOdps operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
+
+**Request parameters**
 
 | Paramet er name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1385,8 +1880,17 @@ Call the GetSchemaByOdps operation to obtain the structure of an ODPS table. The
 | RequestId | String | 20240205113332e 90fc50b77cc9bf5 | The ID of the request. |
 | Success | Boolean | true | The returned status code. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=GetSchemaByOdps &RegionId=cn-wuhan &Project=test_database &Table=table_name &AccessId=accessId &AccessKey=accessKey &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=GetSchemaByOdps &RegionId=cn-wuhan &Project=test_database &Table=table_name &AccessId=accessId &AccessKey=accessKey
  "RequestId":"20240205113332e90fc50b77cc9bf5",
  "List":{
   "Comment":"test_comment",
@@ -1397,14 +1901,22 @@ http(s)://[Endpoint]/?Action=GetSchemaByOdps &RegionId=cn-wuhan &Project=test_da
 
 `},`
 
+```json
+ "Success":true
+```
+
+`}` `XML` format
+
 ```xml
 <RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <List>
  <Comment>test_comment</Comment>
  <Type>int</Type>
  <AllowNull>true</AllowNull>
  <Name>atest</Name>
-</List>
+</List> <Success>true</Success>
 ```
+
+**Error codes**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -1418,7 +1930,13 @@ http(s)://[Endpoint]/?Action=GetSchemaByOdps &RegionId=cn-wuhan &Project=test_da
 
 ### 1.26 UpdateTopicsForKafkaGroup
 
-You can call the UpdateTopicsForKafkaGroup operation to update the topic list of a Kafka group. The UpdateTopicsForKafkaGroup operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common parameters topic.
+You can call the UpdateTopicsForKafkaGroup operation to update the topic list of a Kafka group.
+
+**Request headers**
+
+The UpdateTopicsForKafkaGroup operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common parameters topic.
+
+**Request parameters**
 
 | Paramet er name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1435,14 +1953,26 @@ You can call the UpdateTopicsForKafkaGroup operation to update the topic list of
 | RequestId | String | 20240205113332e 90fc50b77cc9bf5 | The ID of the request. |
 | Success | Boolean | true | The status code returned. |
 
+**Examples**
+
+Sample requests
+
 ```
 http(s)://[Endpoint]/?Action=UpdateTopicsForKafkaGroup &RegionId=20240205113332e90fc50b77cc9bf5 &ProjectName=test_pro &GroupName=test_gro &UpdateKafkaGroupMode=ADD &KafkaGroupTopicList=test_topic
 ```
 
 ```json
  "RequestId":"20240205113332e90fc50b77cc9bf5",
-<RequestId>20240205113332e90fc50b77cc9bf5</RequestId>
+ "Success":true
 ```
+
+`}` `XML` format
+
+```xml
+<RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <Success>true</Success>
+```
+
+**Error codes**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -1456,7 +1986,13 @@ http(s)://[Endpoint]/?Action=UpdateTopicsForKafkaGroup &RegionId=20240205113332e
 
 ### 1.27 ListShards
 
-You can call the ListShards operation to retrieve a list of shards. The ListShards operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the Common parameters topic.
+You can call the ListShards operation to retrieve a list of shards.
+
+**Request headers**
+
+The ListShards operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the Common parameters topic.
+
+**Request parameters**
 
 | Paramet er | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1476,17 +2012,37 @@ You can call the ListShards operation to retrieve a list of shards. The ListShar
 | RequestId | String | 20240205113332e 90fc50b77cc9bf5 | The request ID. |
 | Success | Boolean | true | The status code returned. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=ListShards &RegionId=cn-wuhan &ProjectName=project_test &TopicName=topic_test &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=ListShards &RegionId=cn-wuhan &ProjectName=project_test &TopicName=topic_test
  "RequestId":"20240205113332e90fc50b77cc9bf5",
  "List":[
+```
+
+`{`
+
+```json
    "ShardId":"1",
    "RightShardId":"1",
    "State":"active",
    "LeftShardId":"2"
 ```
 
-`],`
+`}` `],`
+
+```json
+ "Success":true
+```
+
+`}` `XML` format
 
 ```xml
 <RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <List>
@@ -1494,8 +2050,10 @@ http(s)://[Endpoint]/?Action=ListShards &RegionId=cn-wuhan &ProjectName=project_
  <RightShardId>1</RightShardId>
  <State>active</State>
  <LeftShardId>2</LeftShardId>
-</List>
+</List> <Success>true</Success>
 ```
+
+**Error codes**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -1510,7 +2068,13 @@ http(s)://[Endpoint]/?Action=ListShards &RegionId=cn-wuhan &ProjectName=project_
 
 ### 1.28 GetTopicMetric
 
-Call the GetTopicMetric operation to retrieve topic metric information. The GetTopicMetric operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+Call the GetTopicMetric operation to retrieve topic metric information.
+
+**Request headers**
+
+The GetTopicMetric operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+
+**Request parameters**
 
 | Paramet er | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1531,8 +2095,17 @@ Call the GetTopicMetric operation to retrieve topic metric information. The GetT
 | RequestId | String | 20240205113332e 90fc50b77cc9bf5 | The request ID. |
 | Success | Boolean | true | The status code returned. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=GetTopicMetric &RegionId=cn-han &ProjectName=test_pro &StartTime=1709871393001 &EndTime=1709871393002 &Type=BLOB &TopicName=test_pro &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=GetTopicMetric &RegionId=cn-han &ProjectName=test_pro &StartTime=1709871393001 &EndTime=1709871393002 &Type=BLOB &TopicName=test_pro
  "RequestId":"20240205113332e90fc50b77cc9bf5",
  "List":{
   "Read":"",
@@ -1542,13 +2115,21 @@ http(s)://[Endpoint]/?Action=GetTopicMetric &RegionId=cn-han &ProjectName=test_p
 
 `},`
 
+```json
+ "Success":true
+```
+
+`}` `XML` format
+
 ```xml
 <RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <List>
  <Read  />
  <Write  />
  <Ts  />
-</List>
+</List> <Success>true</Success>
 ```
+
+**Error codes**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -1562,7 +2143,11 @@ http(s)://[Endpoint]/?Action=GetTopicMetric &RegionId=cn-han &ProjectName=test_p
 
 ### 1.29 ListRegions
 
-Call the ListRegions operation to obtain a list of regions. The ListRegions operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+Call the ListRegions operation to obtain a list of regions.
+
+**Request headers**
+
+The ListRegions operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
 
 **Response parameters**
 
@@ -1590,6 +2175,12 @@ Call the ListRegions operation to obtain a list of regions. The ListRegions oper
 
 `},`
 
+```json
+ "Success":true
+```
+
+`}` `XML` format
+
 ```xml
 <RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <List>
  <-Domain>
@@ -1598,8 +2189,10 @@ Call the ListRegions operation to obtain a list of regions. The ListRegions oper
   <Public  />
  </-Domain>
  <RegionId>cn-wu</RegionId>
-</List>
+</List> <Success>true</Success>
 ```
+
+**Error codes**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -1628,11 +2221,27 @@ You can call the ResetConnectorOffset operation to reset the connector offset. T
 |---|---|---|---|
 | RequestId | String | 20240205113332e 90fc50b77cc9bf5 | The request ID. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=ResetConnectorOffset &ProjectName=test_pro &TopicName=test_topic &ConnectorId=DSFHJFP132484 &StartTime=1709871393001 &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=ResetConnectorOffset &ProjectName=test_pro &TopicName=test_topic &ConnectorId=DSFHJFP132484 &StartTime=1709871393001
  "RequestId":"20240205113332e90fc50b77cc9bf5"
+```
+
+`}` `XML` format
+
+```xml
 <RequestId>20240205113332e90fc50b77cc9bf5</RequestId>
 ```
+
+**Error codes**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -1646,7 +2255,13 @@ http(s)://[Endpoint]/?Action=ResetConnectorOffset &ProjectName=test_pro &TopicNa
 
 ### 1.31 AppendField
 
-You can call the AppendField operation to add fields. The AppendField operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+You can call the AppendField operation to add fields.
+
+**Request headers**
+
+The AppendField operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+
+**Request parameters**
 
 | Paramet er | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1670,21 +2285,30 @@ You can call the AppendField operation to add fields. The AppendField operation 
 |---|---|---|---|
 | TopicName | String | test topic _ | The topic name. |
 
+**Examples**
+
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=AppendField &RegionId=cn-wuhan &ProjectName=test_pro &TopicName=test_topic &Fields=f1
+http(s)://[Endpoint]/?Action=AppendField &RegionId=cn-wuhan &ProjectName=test_pro &TopicName=test_topic &Fields=f1 &Common request parameters
 ```
 
-Sample success response
+Sample success response `JSON` format `{`
 
 ```json
  "RequestId":"20240205113332e90fc50b77cc9bf5",
  "ProjectName":"test_pro",
  "Success":true,
  "TopicName":"test_topic"
-<RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <ProjectName>test_pro</ProjectName> <TopicName>test_topic</TopicName>
 ```
+
+`}` `XML` format
+
+```xml
+<RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <ProjectName>test_pro</ProjectName> <Success>true</Success> <TopicName>test_topic</TopicName>
+```
+
+**Error codes**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -1698,7 +2322,13 @@ Sample success response
 
 ### 1.32 GetConnector
 
-Call the GetConnector operation to retrieve connector information. The GetConnector operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+Call the GetConnector operation to retrieve connector information.
+
+**Request headers**
+
+The GetConnector operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+
+**Request parameters**
 
 | Paramet er | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1727,8 +2357,17 @@ Call the GetConnector operation to retrieve connector information. The GetConnec
 | Creator | String | admin | The creator. |
 | Success | Boolean | true | The status code returned. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=GetConnector &RegionId=cn-wuhan &ProjectName=test_pro &TopicName=test_topic &ConnectorId=FJA1324R41 &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=GetConnector &RegionId=cn-wuhan &ProjectName=test_pro &TopicName=test_topic &ConnectorId=FJA1324R41
  "DoneTime":"2024-03-08 12:00:00",
  "Type":"SINK_ODPS",
  "RequestId":"20240205113332e90fc50b77cc9bf5",
@@ -1743,9 +2382,13 @@ http(s)://[Endpoint]/?Action=GetConnector &RegionId=cn-wuhan &ProjectName=test_p
  "ConnectorId":"UFNSNL37981"
 ```
 
+`}` `XML` format
+
 ```xml
-<DoneTime>2024-03-08 12:00:00</DoneTime> <Type>SINK_ODPS</Type> <RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <State>RUNNING</State> <Config>{}</Config> <ImportFields>f1</ImportFields> <CreateTime>20240205113332e90fc50b77cc9bf5</CreateTime> <ConnectorRecordSchema>{f1,f2}</ConnectorRecordSchema> <Creator>admin</Creator> <TopicRecordSchema>{f1,f2}</TopicRecordSchema> <ConnectorId>UFNSNL37981</ConnectorId>
+<DoneTime>2024-03-08 12:00:00</DoneTime> <Type>SINK_ODPS</Type> <RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <State>RUNNING</State> <Config>{}</Config> <ImportFields>f1</ImportFields> <CreateTime>20240205113332e90fc50b77cc9bf5</CreateTime> <ConnectorRecordSchema>{f1,f2}</ConnectorRecordSchema> <Creator>admin</Creator> <TopicRecordSchema>{f1,f2}</TopicRecordSchema> <Success>true</Success> <ConnectorId>UFNSNL37981</ConnectorId>
 ```
+
+**Error codes**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -1759,7 +2402,13 @@ http(s)://[Endpoint]/?Action=GetConnector &RegionId=cn-wuhan &ProjectName=test_p
 
 ### 1.33 AddProjectVpcWhiteList
 
-You can call the AddProjectVpcWhiteList operation to add a project whitelist. The AddProjectVpcWhiteList operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the Common parameters topic.
+You can call the AddProjectVpcWhiteList operation to add a project whitelist.
+
+**Request headers**
+
+The AddProjectVpcWhiteList operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the Common parameters topic.
+
+**Request parameters**
 
 | Paramet er | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1780,11 +2429,28 @@ You can call the AddProjectVpcWhiteList operation to add a project whitelist. Th
 | RequestId | String | 20240205113332e 90fc50b77cc9bf5 | The request ID. |
 | Success | Boolean | true | The status code returned. |
 
-```json
-http(s)://[Endpoint]/?Action=AddProjectVpcWhiteList &RegionId=cn_wuhan &ProjectName=test_pro &VpcIds=123455
- "RequestId":"20240205113332e90fc50b77cc9bf5",
-<RequestId>20240205113332e90fc50b77cc9bf5</RequestId>
+**Examples**
+
+Sample requests
+
 ```
+http(s)://[Endpoint]/?Action=AddProjectVpcWhiteList &RegionId=cn_wuhan &ProjectName=test_pro &VpcIds=123455 &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "RequestId":"20240205113332e90fc50b77cc9bf5",
+ "Success":true
+```
+
+`}` `XML` format
+
+```xml
+<RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <Success>true</Success>
+```
+
+**Error codes**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -1804,7 +2470,13 @@ http(s)://[Endpoint]/?Action=AddProjectVpcWhiteList &RegionId=cn_wuhan &ProjectN
 
 ### 1.34 GetTopic
 
-Call the GetTopic operation to retrieve topic information. This operation uses common request headers without special request headers. For more information, see the common request parameters document.
+Call the GetTopic operation to retrieve topic information.
+
+**Request headers**
+
+This operation uses common request headers without special request headers. For more information, see the common request parameters document.
+
+**Request parameters**
 
 | Paramet er | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1836,9 +2508,15 @@ Call the GetTopic operation to retrieve topic information. This operation uses c
 | RecordSchema | String | {f1} | The schema field. |
 | EnableSchema Registry | Boolean | true | Indicates whether multiple versions are enabled. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=GetTopic &RegionId=cn_wuhan &ProjectName=test_pro &TopicName=test_topic
+http(s)://[Endpoint]/?Action=GetTopic &RegionId=cn_wuhan &ProjectName=test_pro &TopicName=test_topic &Common request parameters
 ```
+
+Sample success responses `JSON` format
 
 ```json
  "Comment":"comment",
@@ -1856,8 +2534,15 @@ http(s)://[Endpoint]/?Action=GetTopic &RegionId=cn_wuhan &ProjectName=test_pro &
  "RecordType":"BLOB",
  "UpdateTime":"1709871393001",
  "RecordSchema":"{f1}"
-<Comment>comment</Comment> <EnableSchemaRegistry>true</EnableSchemaRegistry> <RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <ProjectName>test_pro</ProjectName> <CreateTime>1709871393001</CreateTime> <ExpandMode>false</ExpandMode> <Lifecycle>3</Lifecycle> <Creator>admin</Creator> <TopicName>test_topic</TopicName> <ShardCount>10</ShardCount> <Storage>1024</Storage> <RecordType>BLOB</RecordType> <UpdateTime>1709871393001</UpdateTime> <RecordSchema>{f1}</RecordSchema>
 ```
+
+`}` `XML` format
+
+```xml
+<Comment>comment</Comment> <EnableSchemaRegistry>true</EnableSchemaRegistry> <RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <ProjectName>test_pro</ProjectName> <CreateTime>1709871393001</CreateTime> <ExpandMode>false</ExpandMode> <Lifecycle>3</Lifecycle> <Creator>admin</Creator> <Success>true</Success> <TopicName>test_topic</TopicName> <ShardCount>10</ShardCount> <Storage>1024</Storage> <RecordType>BLOB</RecordType> <UpdateTime>1709871393001</UpdateTime> <RecordSchema>{f1}</RecordSchema>
+```
+
+**Error codes**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -1877,7 +2562,13 @@ http(s)://[Endpoint]/?Action=GetTopic &RegionId=cn_wuhan &ProjectName=test_pro &
 
 ### 1.35 ListTopicSchema
 
-Call the ListTopicSchema operation to retrieve a list of topic schemas. The ListTopicSchema operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+Call the ListTopicSchema operation to retrieve a list of topic schemas.
+
+**Request headers**
+
+The ListTopicSchema operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+
+**Request parameters**
 
 | Paramet er | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1906,8 +2597,17 @@ Call the ListTopicSchema operation to retrieve a list of topic schemas. The List
 | TotalCount | String | 10 | The total number of entries in the list. |
 | PageCount | String | 10 | The total number of returned pages. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=ListTopicSchema &PageNumber=1 &RegionId=cn-wuahn &ProjectName=test_pro &PageSize=10 &TopicName=test_topic &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=ListTopicSchema &PageNumber=1 &RegionId=cn-wuahn &ProjectName=test_pro &PageSize=10 &TopicName=test_topic
  "TotalCount":"10",
  "RequestId":"20240205113332e90fc50b77cc9bf5",
  "PageSize":"10",
@@ -1922,14 +2622,22 @@ http(s)://[Endpoint]/?Action=ListTopicSchema &PageNumber=1 &RegionId=cn-wuahn &P
 
 `},`
 
+```json
+ "Success":true
+```
+
+`}` `XML` format
+
 ```xml
 <TotalCount>10</TotalCount> <RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <PageSize>10</PageSize> <PageCount>10</PageCount> <PageNumber>1</PageNumber> <List>
  <VersionId  />
  <CreateTime  />
  <Creator  />
  <RecordSchema  />
-</List>
+</List> <Success>true</Success>
 ```
+
+**Error codes**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -1950,6 +2658,8 @@ Calls the DeleteConnector operation to delete a connector.
 
 The DeleteConnector operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
 
+**Request parameters**
+
 | Paramet er | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | String | Query | No | cn wuhan _ | The region ID. |
@@ -1968,12 +2678,28 @@ The DeleteConnector operation does not have operation-specific request headers a
 | RequestId | String | 20240205113332e 90fc50b77cc9bf5 | The ID of the request. |
 | Success | String | true | The request status. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DeleteConnector &ProjectName=test_pro &TopicName=test_topic &ConnectorId=2039401Fk &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=DeleteConnector &ProjectName=test_pro &TopicName=test_topic &ConnectorId=2039401Fk
  "RequestId":"20240205113332e90fc50b77cc9bf5",
  "Success":"true"
-<RequestId>20240205113332e90fc50b77cc9bf5</RequestId>
 ```
+
+`}` `XML` format
+
+```xml
+<RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <Success>true</Success>
+```
+
+**Error codes**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -1993,7 +2719,13 @@ http(s)://[Endpoint]/?Action=DeleteConnector &ProjectName=test_pro &TopicName=te
 
 ### 1.37 ListConnectors
 
-Call the ListConnectors operation to view connector list information. The ListConnectors operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+Call the ListConnectors operation to view connector list information.
+
+**Request headers**
+
+The ListConnectors operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+
+**Request parameters**
 
 | Paramet er | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2025,9 +2757,15 @@ Call the ListConnectors operation to view connector list information. The ListCo
 | PageSize | String | 1 | The page number of the returned page. |
 | Success | Boolean | true | The status code returned. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=ListConnectors &PageNumber=1 &PageSize=1 &RegionId=cn-wu &ProjectName=test_project &TopicName=test_topic
+http(s)://[Endpoint]/?Action=ListConnectors &PageNumber=1 &PageSize=1 &RegionId=cn-wu &ProjectName=test_project &TopicName=test_topic &Common request parameters
 ```
+
+Sample success responses `JSON` format
 
 ```json
  "TotalCount":"",
@@ -2046,6 +2784,12 @@ http(s)://[Endpoint]/?Action=ListConnectors &PageNumber=1 &PageSize=1 &RegionId=
 
 `},`
 
+```json
+ "Success":true
+```
+
+`}` `XML` format
+
 ```xml
 <TotalCount /> <RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <PageCount>1</PageCount> <PageSize>1</PageSize> <PageNumber>1</PageNumber> <List>
  <Type>SINK_ODPS</Type>
@@ -2054,8 +2798,10 @@ http(s)://[Endpoint]/?Action=ListConnectors &PageNumber=1 &PageSize=1 &RegionId=
  <CreateTime>1709871393001</CreateTime>
  <Creator>admin</Creator>
  <ConnectorId>29FFSJ12410</ConnectorId>
-</List>
+</List> <Success>true</Success>
 ```
+
+**Error codes**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -2069,7 +2815,13 @@ http(s)://[Endpoint]/?Action=ListConnectors &PageNumber=1 &PageSize=1 &RegionId=
 
 ### 1.38 CreateSubscription
 
-You can call the CreateSubscription operation to create a subscription. The CreateSubscription operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+You can call the CreateSubscription operation to create a subscription.
+
+**Request headers**
+
+The CreateSubscription operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+
+**Request parameters**
 
 | Paramet er | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2089,15 +2841,31 @@ You can call the CreateSubscription operation to create a subscription. The Crea
 | Success | String | true | The returned status code. |
 | TopicName | String | test topic _ | The topic name. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=CreateSubscription &RegionId=cn-wu &ProjectName=test_pro &TopicName=test_topic &Application=test &Comment=test_sub &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=CreateSubscription &RegionId=cn-wu &ProjectName=test_pro &TopicName=test_topic &Application=test &Comment=test_sub
  "SubscriptionId":"2390FFDMDAB",
  "RequestId":"20240205113332e90fc50b77cc9bf5",
  "ProjectName":"test_pro",
  "Success":"true",
  "TopicName":"test_topic"
-<SubscriptionId>2390FFDMDAB</SubscriptionId> <RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <ProjectName>test_pro</ProjectName> <TopicName>test_topic</TopicName>
 ```
+
+`}` `XML` format
+
+```xml
+<SubscriptionId>2390FFDMDAB</SubscriptionId> <RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <ProjectName>test_pro</ProjectName> <Success>true</Success> <TopicName>test_topic</TopicName>
+```
+
+**Error codes**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -2113,6 +2881,8 @@ http(s)://[Endpoint]/?Action=CreateSubscription &RegionId=cn-wu &ProjectName=tes
 
 You can call the DeleteKafkaGroup operation to delete a Kafka group. The DeleteKafkaGroup operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the Common parameters topic.
 
+**Request parameters**
+
 | Paramet er | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | String | Query | Yes | cn-wuhan | The region ID. |
@@ -2126,10 +2896,25 @@ You can call the DeleteKafkaGroup operation to delete a Kafka group. The DeleteK
 | RequestId | String | 20240205113332e 90fc50b77cc9bf5 | The request ID. |
 | Success | Boolean | true | The status code returned. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DeleteKafkaGroup &RegionId=cn-wuhan &ProjectName=project_name &GroupName=group_name &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=DeleteKafkaGroup &RegionId=cn-wuhan &ProjectName=project_name &GroupName=group_name
  "RequestId":"20240205113332e90fc50b77cc9bf5",
-<RequestId>20240205113332e90fc50b77cc9bf5</RequestId>
+ "Success":true
+```
+
+`}` `XML` format
+
+```xml
+<RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <Success>true</Success>
 ```
 
 | HttpCo de | Error code | Error message | Description |
@@ -2144,7 +2929,13 @@ http(s)://[Endpoint]/?Action=DeleteKafkaGroup &RegionId=cn-wuhan &ProjectName=pr
 
 ### 1.40 GetKafkaGroup
 
-Call the GetKafkaGroup operation to retrieve Kafka group information. The GetKafkaGroup operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+Call the GetKafkaGroup operation to retrieve Kafka group information.
+
+**Request headers**
+
+The GetKafkaGroup operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+
+**Request parameters**
 
 | Paramet er | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2172,8 +2963,17 @@ Call the GetKafkaGroup operation to retrieve Kafka group information. The GetKaf
 | CreateTime | Long | 1709871393001 | The time when the group was created. |
 | LastModifyTim e | Long | 1709871393001 | The last modification time. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=GetKafkaGroup &RegionId=cn_hangzhou &ProjectName=test_pro &GroupName=test_pro &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=GetKafkaGroup &RegionId=cn_hangzhou &ProjectName=test_pro &GroupName=test_pro
  "GroupName":"test_gro",
  "Comment":"test_comment",
  "RequestId":"20240205113332e90fc50b77cc9bf5",
@@ -2182,11 +2982,16 @@ http(s)://[Endpoint]/?Action=GetKafkaGroup &RegionId=cn_hangzhou &ProjectName=te
  "TopicList":"",
  "Creator":"admin",
  "LastModifyTime":1709871393001,
+ "Success":true
 ```
 
+`}` `XML` format
+
 ```xml
-<GroupName>test_gro</GroupName> <Comment>test_comment</Comment> <RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <ProjectName>test_pro</ProjectName> <CreateTime>1709871393001</CreateTime> <TopicList /> <Creator>admin</Creator> <LastModifyTime>1709871393001</LastModifyTime>
+<GroupName>test_gro</GroupName> <Comment>test_comment</Comment> <RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <ProjectName>test_pro</ProjectName> <CreateTime>1709871393001</CreateTime> <TopicList /> <Creator>admin</Creator> <LastModifyTime>1709871393001</LastModifyTime> <Success>true</Success>
 ```
+
+**Error codes**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -2200,7 +3005,13 @@ http(s)://[Endpoint]/?Action=GetKafkaGroup &RegionId=cn_hangzhou &ProjectName=te
 
 ### 1.41 SampleShard
 
-Call the SampleShard operation to sample a shard. The SampleShard operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+Call the SampleShard operation to sample a shard.
+
+**Request headers**
+
+The SampleShard operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+
+**Request parameters**
 
 | Paramet er | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2226,12 +3037,26 @@ Call the SampleShard operation to sample a shard. The SampleShard operation does
 | RecordSchema | String | {f1,f2} | The record schema. |
 | Success | String | ture | The returned status code. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=SampleShard &ProjectName=test_pro &TopicName=topic_name &ShardId=0 &StartTime=1709871393001 &RecordCount=100 &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=SampleShard &ProjectName=test_pro &TopicName=topic_name &ShardId=0 &StartTime=1709871393001 &RecordCount=100
  "RecordList":"{}",
  "RequestId":"20240205113332e90fc50b77cc9bf5",
  "RecordSchema":"{f1,f2}",
  "Success":"ture"
+```
+
+`}` `XML` format
+
+```xml
 <RecordList>{}</RecordList> <RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <RecordSchema>{f1,f2}</RecordSchema> <Success>ture</Success>
 ```
 
@@ -2247,7 +3072,13 @@ http(s)://[Endpoint]/?Action=SampleShard &ProjectName=test_pro &TopicName=topic_
 
 ### 1.42 GetUserStorage
 
-You can call the GetUserStorage operation to retrieve the storage capacity of a project. The GetUserStorage operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters section of the Common parameters topic.
+You can call the GetUserStorage operation to retrieve the storage capacity of a project.
+
+**Request headers**
+
+The GetUserStorage operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters section of the Common parameters topic.
+
+**Request parameters**
 
 | Paramet er name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2270,8 +3101,17 @@ You can call the GetUserStorage operation to retrieve the storage capacity of a 
 | Success | Boolean | true | The status of the response. |
 | Storage | Long | 1024 | The storage information. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=GetProject &RegionId=cn_hangzhou &ProjectName=test_pro &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=GetProject &RegionId=cn_hangzhou &ProjectName=test_pro
  "Comment":"test_pro",
  "Storage":1024,
  "RequestId":"20240205113332e90fc50b77cc9bf5",
@@ -2279,7 +3119,13 @@ http(s)://[Endpoint]/?Action=GetProject &RegionId=cn_hangzhou &ProjectName=test_
  "CreateTime":"1709871393001",
  "UpdateTime":"1709871393001",
  "Creator":"admin",
-<Comment>test_pro</Comment> <Storage>1024</Storage> <RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <ProjectName>test_pro</ProjectName> <CreateTime>1709871393001</CreateTime> <UpdateTime>1709871393001</UpdateTime> <Creator>admin</Creator>
+ "Success":true
+```
+
+`}` `XML` format
+
+```xml
+<Comment>test_pro</Comment> <Storage>1024</Storage> <RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <ProjectName>test_pro</ProjectName> <CreateTime>1709871393001</CreateTime> <UpdateTime>1709871393001</UpdateTime> <Creator>admin</Creator> <Success>true</Success>
 ```
 
 | HttpCo de | Error code | Error message | Description |
@@ -2294,7 +3140,13 @@ http(s)://[Endpoint]/?Action=GetProject &RegionId=cn_hangzhou &ProjectName=test_
 
 ### 1.43 GetProject
 
-Call the GetProject operation to retrieve project information. The GetProject operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
+Call the GetProject operation to retrieve project information.
+
+**Request headers**
+
+The GetProject operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
+
+**Request parameters**
 
 | Paramet er name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2320,8 +3172,17 @@ Call the GetProject operation to retrieve project information. The GetProject op
 | Success | Boolean | true | The returned status code. |
 | Storage | Long | 1024 | The storage information. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=GetProject &RegionId=cn-wihan &ProjectName=test_ro &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=GetProject &RegionId=cn-wihan &ProjectName=test_ro
  "Comment":"test_comment",
  "Storage":1024,
  "RequestId":"20240205113332e90fc50b77cc9bf5",
@@ -2329,8 +3190,16 @@ http(s)://[Endpoint]/?Action=GetProject &RegionId=cn-wihan &ProjectName=test_ro
  "CreateTime":"1709871393001",
  "UpdateTime":"1709871393001",
  "Creator":"admin",
-<Comment>test_comment</Comment> <Storage>1024</Storage> <RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <ProjectName>test_pro</ProjectName> <CreateTime>1709871393001</CreateTime> <UpdateTime>1709871393001</UpdateTime> <Creator>admin</Creator>
+ "Success":true
 ```
+
+`}` `XML` format
+
+```xml
+<Comment>test_comment</Comment> <Storage>1024</Storage> <RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <ProjectName>test_pro</ProjectName> <CreateTime>1709871393001</CreateTime> <UpdateTime>1709871393001</UpdateTime> <Creator>admin</Creator> <Success>true</Success>
+```
+
+**Error codes**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -2344,7 +3213,13 @@ http(s)://[Endpoint]/?Action=GetProject &RegionId=cn-wihan &ProjectName=test_ro
 
 ### 1.44 ListTopicsByKafkaGroup
 
-You can call the ListTopicsByKafkaGroup operation to query the list of topics in a Kafka group. The ListTopicsByKafkaGroup operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
+You can call the ListTopicsByKafkaGroup operation to query the list of topics in a Kafka group.
+
+**Request headers**
+
+The ListTopicsByKafkaGroup operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
+
+**Request parameters**
 
 | Paramet er name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2372,19 +3247,33 @@ You can call the ListTopicsByKafkaGroup operation to query the list of topics in
 | PageCount | Integer | 10 | The total number of pages. |
 | PageNumber | Integer | 10 | The page number. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=ListTopicsByKafkaGroup &RegionId=cn-hangzhou &ProjectName=test_project &GroupName=test_group &PageSize=1 &PageNumber= &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=ListTopicsByKafkaGroup &RegionId=cn-hangzhou &ProjectName=test_project &GroupName=test_group &PageSize=1 &PageNumber=
  "TotalCount":100,
  "RequestId":"B9CC4E36-8E16-5628-BC69-C9DC167648CF",
  "PageSize":1,
  "PageCount":"",
  "PageNumber":10,
  "List":"",
+ "Success":true
 ```
 
+`}` `XML` format
+
 ```xml
-<TotalCount>100</TotalCount> <RequestId>B9CC4E36-8E16-5628-BC69-C9DC167648CF</RequestId> <PageSize>1</PageSize> <PageCount /> <PageNumber>10</PageNumber> <List />
+<TotalCount>100</TotalCount> <RequestId>B9CC4E36-8E16-5628-BC69-C9DC167648CF</RequestId> <PageSize>1</PageSize> <PageCount /> <PageNumber>10</PageNumber> <List /> <Success>true</Success>
 ```
+
+**Error codes**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -2398,7 +3287,13 @@ http(s)://[Endpoint]/?Action=ListTopicsByKafkaGroup &RegionId=cn-hangzhou &Proje
 
 ### 1.45 UpdateConnectorField
 
-You can call the UpdateConnectorField operation to update synchronization fields. The UpdateConnectorField operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common parameters topic.
+You can call the UpdateConnectorField operation to update synchronization fields.
+
+**Request headers**
+
+The UpdateConnectorField operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common parameters topic.
+
+**Request parameters**
 
 | Paramet er | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2426,9 +3321,15 @@ You can call the UpdateConnectorField operation to update synchronization fields
 | PageCount | Integer | 10 | The total number of pages. |
 | PageNumber | Integer | 10 | The page number. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=CheckServiceLinkedRoleForDeleting &RegionId=cn-wuhan &ProjectName=test_pro &GroupName=test_group &PageSize=1 &PageNumber=10
+http(s)://[Endpoint]/?Action=CheckServiceLinkedRoleForDeleting &RegionId=cn-wuhan &ProjectName=test_pro &GroupName=test_group &PageSize=1 &PageNumber=10 &Common request parameters
 ```
+
+Sample success responses `JSON` format
 
 ```json
  "TotalCount":100,
@@ -2437,8 +3338,16 @@ http(s)://[Endpoint]/?Action=CheckServiceLinkedRoleForDeleting &RegionId=cn-wuha
  "PageCount":10,
  "PageNumber":10,
  "List":"",
-<TotalCount>100</TotalCount> <RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <PageSize>1</PageSize> <PageCount>10</PageCount> <PageNumber>10</PageNumber> <List />
+ "Success":true
 ```
+
+`}` `XML` format
+
+```xml
+<TotalCount>100</TotalCount> <RequestId>20240205113332e90fc50b77cc9bf5</RequestId> <PageSize>1</PageSize> <PageCount>10</PageCount> <PageNumber>10</PageNumber> <List /> <Success>true</Success>
+```
+
+**Error codes**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -2452,7 +3361,11 @@ http(s)://[Endpoint]/?Action=CheckServiceLinkedRoleForDeleting &RegionId=cn-wuha
 
 ### 1.46 ListProjects
 
-Call the ListProjects operation to retrieve a list of projects. The ListProjects operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" topic.
+Call the ListProjects operation to retrieve a list of projects.
+
+**Request headers**
+
+The ListProjects operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" topic.
 
 **Request syntax**
 
@@ -2483,8 +3396,13 @@ Call the ListProjects operation to retrieve a list of projects. The ListProjects
 | PageSize | String | 10 | The number of entries per page. |
 | Success | Boolean | true | The status code returned. |
 
+```
+http(s)://[Endpoint]/?Action=ListProjects &PageNumber= &RegionId= &PageSize= &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=ListProjects &PageNumber= &RegionId= &PageSize=
  "TotalCount":"100",
  "RequestId":"2018050817492199d6650a00000039",
  "PageCount":"10",
@@ -2500,6 +3418,12 @@ http(s)://[Endpoint]/?Action=ListProjects &PageNumber= &RegionId= &PageSize=
 
 `},`
 
+```json
+ "Success":true
+```
+
+`}` `XML` format
+
 ```xml
 <TotalCount>100</TotalCount> <RequestId>2018050817492199d6650a00000039</RequestId> <PageCount>10</PageCount> <PageSize>10</PageSize> <PageNumber>0</PageNumber> <List>
  <Comment>Description</Comment>
@@ -2507,12 +3431,16 @@ http(s)://[Endpoint]/?Action=ListProjects &PageNumber= &RegionId= &PageSize=
  <CreateTime>1704692006131</CreateTime>
  <UpdateTime>1704692006131</UpdateTime>
  <Creator>admin</Creator>
-</List>
+</List> <Success>true</Success>
 ```
 
 ### 1.47 DeleteProject
 
-Call the DeleteProject operation to delete a project. The DeleteProject operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the Common parameters topic.
+Call the DeleteProject operation to delete a project.
+
+**Request headers**
+
+The DeleteProject operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the Common parameters topic.
 
 | Paramet er | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2526,15 +3454,34 @@ Call the DeleteProject operation to delete a project. The DeleteProject operatio
 | RequestId | String | 201805081749219 9d6650a00000039 | The request ID. |
 | Success | Boolean | true | The status code returned. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DeleteProject &RegionId=cn-hangzhou &ProjectName=test_project &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=DeleteProject &RegionId=cn-hangzhou &ProjectName=test_project
  "RequestId":"2018050817492199d6650a00000039",
-<RequestId>2018050817492199d6650a00000039</RequestId>
+ "Success":true
+```
+
+`}` `XML` format
+
+```xml
+<RequestId>2018050817492199d6650a00000039</RequestId> <Success>true</Success>
 ```
 
 ### 1.48 CreateProject
 
-You can call the CreateProject operation to create a project. The CreateProject operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the Common parameters topic.
+You can call the CreateProject operation to create a project.
+
+**Request headers**
+
+The CreateProject operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the Common parameters topic.
 
 | Paramet er name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2550,16 +3497,37 @@ You can call the CreateProject operation to create a project. The CreateProject 
 | Success | Boolean | true | The returned status code. |
 | ProjectName | String | test project _ | The project name. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=CreateProject &RegionId=cn-wuhan &ProjectName=test_project &Comment=test_comment &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=CreateProject &RegionId=cn-wuhan &ProjectName=test_project &Comment=test_comment
  "RequestId":"2018050817492199d6650a00000039",
  "ProjectName":"test_project",
-<RequestId>2018050817492199d6650a00000039</RequestId> <ProjectName>test_project</ProjectName>
+ "Success":true
+```
+
+`}` `XML` format
+
+```xml
+<RequestId>2018050817492199d6650a00000039</RequestId> <ProjectName>test_project</ProjectName> <Success>true</Success>
 ```
 
 ### 1.49 CheckServiceLinkedRoleForDeleting
 
-Calls the CheckServiceLinkedRoleForDeleting operation to check the service-linked role. The CheckServiceLinkedRoleForDeleting operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+Calls the CheckServiceLinkedRoleForDeleting operation to check the service-linked role.
+
+**Request headers**
+
+The CheckServiceLinkedRoleForDeleting operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+
+**Request parameters**
 
 | Paramet er | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2579,13 +3547,23 @@ Calls the CheckServiceLinkedRoleForDeleting operation to check the service-linke
 | RequestId | String | 201805081749219 9d6650a00000039 | The ID of the request. |
 | Deletable | Boolean | true | Indicates whether the role can be deleted. Valid values: true: The role can be deleted. false: The role cannot be deleted. |
 
-```json
+```
 http(s)://[Endpoint]/?Action=CreateProject
+```
+
+Sample success responses `JSON` format `{`
+
+```json
  "RequestId":"2018050817492199d6650a00000039",
  "Deletable":true,
  "RoleUsages":{
   "Region":"cn-wuhan",
   "Resources":"test_datahub"
+```
+
+`}` `}` `XML` format
+
+```xml
 <RequestId>2018050817492199d6650a00000039</RequestId> <Deletable>true</Deletable> <RoleUsages>
  <Region>cn-wuhan</Region>
  <Resources>test_datahub</Resources>
@@ -2594,7 +3572,13 @@ http(s)://[Endpoint]/?Action=CreateProject
 
 ### 1.50 DeleteProjectVpcWhiteList
 
-You can call the DeleteProjectVpcWhiteList operation to delete a project whitelist. The DeleteProjectVpcWhiteList operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
+You can call the DeleteProjectVpcWhiteList operation to delete a project whitelist.
+
+**Request headers**
+
+The DeleteProjectVpcWhiteList operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
+
+**Request parameters**
 
 | Paramet er name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2609,15 +3593,36 @@ You can call the DeleteProjectVpcWhiteList operation to delete a project whiteli
 | RequestId | String | 201805081749219 9d6650a00000039 | The ID of the request. |
 | Success | Boolean | true | The returned status code. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=DeleteProjectVpcWhiteList &RegionId=cn-hangzhou &ProjectName=test &VpcIds=235112 &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=DeleteProjectVpcWhiteList &RegionId=cn-hangzhou &ProjectName=test &VpcIds=235112
  "RequestId":"2018050817492199d6650a00000039",
-<RequestId>2018050817492199d6650a00000039</RequestId>
+ "Success":true
+```
+
+`}` `XML` format
+
+```xml
+<RequestId>2018050817492199d6650a00000039</RequestId> <Success>true</Success>
 ```
 
 ### 1.51 DeleteTopicSchema
 
-You can call the DeleteTopicSchema operation to delete a topic schema. The DeleteTopicSchema operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+You can call the DeleteTopicSchema operation to delete a topic schema.
+
+**Request headers**
+
+The DeleteTopicSchema operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+
+**Request parameters**
 
 | Paramet er | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2636,20 +3641,34 @@ You can call the DeleteTopicSchema operation to delete a topic schema. The Delet
 | Success | Boolean | true | Indicates whether the request was successful. |
 | RequestId | String | 201805081749219 9d6650a00000039 | The ID of the request. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=DeleteTopicSchema &ProjectName=project_test &TopicName=test_topic &VersionId=1
+http(s)://[Endpoint]/?Action=DeleteTopicSchema &ProjectName=project_test &TopicName=test_topic &VersionId=1 &Common request parameters
 ```
 
-Sample success response
+Sample success response `JSON` format `{`
 
 ```json
  "RequestId":"2018050817492199d6650a00000039",
-<RequestId>2018050817492199d6650a00000039</RequestId>
+ "Success":true
+```
+
+`}` `XML` format
+
+```xml
+<RequestId>2018050817492199d6650a00000039</RequestId> <Success>true</Success>
 ```
 
 ### 1.52 GetAssumeRole
 
-You can call the GetAssumeRole operation to retrieve a role. The GetAssumeRole operation does not have operation-specific request headers and uses only common request headers. For more information, see the documentation of common request parameters.
+You can call the GetAssumeRole operation to retrieve a role.
+
+**Request headers**
+
+The GetAssumeRole operation does not have operation-specific request headers and uses only common request headers. For more information, see the documentation of common request parameters.
 
 | Paramet er | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2664,17 +3683,34 @@ You can call the GetAssumeRole operation to retrieve a role. The GetAssumeRole o
 | HasAssumeRol e | String | admin | The role hash. |
 | Success | Boolean | true | The status code returned. |
 
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=GetAssumeRole &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=GetAssumeRole
  "RequestId":"2018050817492199d6650a00000039",
  "HasAssumeRole":"admin",
  "RoleId":"1293021",
-<RequestId>2018050817492199d6650a00000039</RequestId> <HasAssumeRole>admin</HasAssumeRole> <RoleId>1293021</RoleId>
+ "Success":true
+```
+
+`}` `XML` format
+
+```xml
+<RequestId>2018050817492199d6650a00000039</RequestId> <HasAssumeRole>admin</HasAssumeRole> <RoleId>1293021</RoleId> <Success>true</Success>
 ```
 
 ### 1.53 GetProjectVpcWhiteList
 
 Calls the GetProjectVpcWhiteList operation to retrieve the project whitelist. The GetProjectVpcWhiteList operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
+
+**Request parameters**
 
 | Paramet er | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2694,9 +3730,15 @@ Calls the GetProjectVpcWhiteList operation to retrieve the project whitelist. Th
 | Creator | String | admin | The user who creates the whitelist. |
 | Success | Boolean | true | The status code returned. |
 
+**Examples**
+
+Sample requests
+
 ```
-http(s)://[Endpoint]/?Action=GetProjectVpcWhiteList &RegionId=cn-wuhan &ProjectName=test_project
+http(s)://[Endpoint]/?Action=GetProjectVpcWhiteList &RegionId=cn-wuhan &ProjectName=test_project &Common request parameters
 ```
+
+Sample success responses
 
 ```json
  "Comment":"comment",
@@ -2706,12 +3748,24 @@ http(s)://[Endpoint]/?Action=GetProjectVpcWhiteList &RegionId=cn-wuhan &ProjectN
  "UpdateTime":"154110236",
  "Creator":"admin",
  "VpcWhiteList":"12378",
-<Comment>comment</Comment> <RequestId>2018050817492199d6650a00000039</RequestId> <ProjectName>test_project</ProjectName> <CreateTime>154110235</CreateTime> <UpdateTime>154110236</UpdateTime> <Creator>admin</Creator> <VpcWhiteList>12378</VpcWhiteList>
+ "Success":true
+```
+
+`}` `XML` format
+
+```xml
+<Comment>comment</Comment> <RequestId>2018050817492199d6650a00000039</RequestId> <ProjectName>test_project</ProjectName> <CreateTime>154110235</CreateTime> <UpdateTime>154110236</UpdateTime> <Creator>admin</Creator> <VpcWhiteList>12378</VpcWhiteList> <Success>true</Success>
 ```
 
 ### 1.54 InitializeDataImportProcess
 
-You can call the InitializeDataImportProcess operation to initialize a process. The InitializeDataImportProcess operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the Common parameters topic.
+You can call the InitializeDataImportProcess operation to initialize a process.
+
+**Request headers**
+
+The InitializeDataImportProcess operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the Common parameters topic.
+
+**Request parameters**
 
 | Paramet er | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2725,11 +3779,22 @@ You can call the InitializeDataImportProcess operation to initialize a process. 
 | Success | Boolean | true | The status code returned. |
 | TaskId | String | 12 | The ID of the task. |
 
+```
+http(s)://[Endpoint]/?Action=InitializeDataImportProcess &RegionId=cn-wuhan &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
 ```json
-http(s)://[Endpoint]/?Action=InitializeDataImportProcess &RegionId=cn-wuhan
  "TaskId":"12",
  "RequestId":"2018050817492199d6650a00000039",
-<TaskId>12</TaskId> <RequestId>2018050817492199d6650a00000039</RequestId>
+ "Success":true
+```
+
+`}` `XML` format
+
+```xml
+<TaskId>12</TaskId> <RequestId>2018050817492199d6650a00000039</RequestId> <Success>true</Success>
 ```
 
 ## 2 SDK reference
@@ -2863,13 +3928,15 @@ List<RecordEntry> recordEntries = new ArrayList<RecordEntry>(); // Write into Da
 that the MalformedRecord, NoSuchProject, and NoSuchTopic errors occur.}
 ```
 
+`}`
+
 > **Note:** A request body size cannot exceed 4 MB. For more information, see Data ingestion methods.
 
 ##### 2.3.3.4 Consume data
 
 You can use this SDK to obtain the cursor that points to the first record to be consumed. The cursor type can be **OLDEST**, **LATEST**, or **SYSTEM_TIME**. OLDEST: the cursor that points to the earliest record in DataHub. LATEST: the cursor that points to the latest record in DataHub. SYSTEM_TIME: the cursor that points to the first record ingested after the specified time. The sample code is shown as follows:
 
-```java
+```
 GetCursorResult cursorRs = client.getCursor(projectName, topicName, shardId, GetCursorRequest.CursorType.OLDEST); // If you want to obtain the cursor that points to the earliest record ingested during t he last 24 hours, set CursorType to SYSTEM_TIME and set SYSTEM_TIME to System.currentTimeMillis() - 24 * 3600 * 1000 /* ms */. int limit = 100; String cursor = cursorRs.getCursor(); while (true) {
     try {
         GetBlobRecordsResult recordRs = client.getBlobRecords(projectName, topicName,
@@ -2881,6 +3948,11 @@ shardId, cursor, limit);
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
+```
+
+`}` `}`
+
+```java
         // The cursor that points to the next record to be consumed is obtained.
         cursor = recordRs.getNextCursor();
     } catch (InvalidCursorException ex) {
@@ -2894,6 +3966,8 @@ GetCursorRequest.CursorType.OLDEST);
         System.out.printf(ex.getMessage());
         ex.printStackTrace();
 ```
+
+`}` `}`
 
 #### 2.3.4 Ingest blob data
 
@@ -2924,13 +3998,15 @@ List<BlobRecordEntry> recordEntries = new ArrayList<BlobRecordEntry>(); // Write
 NoSuchTopic errors occur.
 ```
 
+`}`
+
 > **Note:** A request body size cannot exceed 4 MB.
 
 ##### 2.3.4.4 Consume data
 
 The sample code is shown as follows:
 
-```java
+```
 GetCursorResult cursorRs = client.getCursor(projectName, topicName, shardId, GetCursorRequest.CursorType.OLDEST); // If you want to obtain the cursor that points to the earliest record ingested during t he last 24 hours, set CursorType to SYSTEM_TIME and set SYSTEM_TIME to System.currentTimeMillis() - 24 * 3600 * 1000 /* ms */. int size = 100; String endCursor = cursorRes.GetCursor(); while (true) {
     try {
         GetBlobRecordsResult recordRs = client.getBlobRecords(projectName, topicName,
@@ -2942,6 +4018,11 @@ shardId, cursor, limit);
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
+```
+
+`}` `}`
+
+```java
         // The cursor that points to the next record to be consumed is obtained.
         cursor = recordRs.getNextCursor();
     } catch (InvalidCursorException ex) {
@@ -2956,6 +4037,8 @@ GetCursorRequest.CursorType.OLDEST);
         e.printStackTrace();
 ```
 
+`}` `}`
+
 > **Note:** Before being consumed, blob records that have been base64 encoded during ingestion must be decoded.
 
 #### 2.3.5 Data ingestion methods
@@ -2967,6 +4050,11 @@ By using this method, you can write data into a specific shard and ensure that d
 ```
 // Create a client. Account account = new AliyunAccount("your access id", "your access key"); DatahubConfiguration conf = new DatahubConfiguration(account, "datahub endpoint"); DatahubClient client = new DatahubClient(conf); // Specify records to be ingested by DataHub. RecordSchema schema = client.getTopic("projectName", "topicName").getRecordSchema(); List<RecordEntry> recordEntries = new ArrayList<~>(); RecordEntry entry = new RecordEntry(schema); for (int i=0; i<entry.getFieldCount(); i++) {
     entry.setBigint(i, 1);
+```
+
+`}`
+
+```
 // Write into DataHub starting from any active shard returned by listShardResult. In thi s example, start from the first active shard. String shardId = listShardResult.getShards().get(0).getShardId(); entry.setShardId(shardId); recordEntries.add(entry); // Write data into DataHub. PutRecordsResult result = client.putRecords("projectName", "topicName", recordEntries);
 ```
 
@@ -2977,6 +4065,11 @@ Specify a 128-bit hash value produced by MD5 message-digest algorithm. Use the h
 ```
 // Create a client. Account account = new AliyunAccount("your access id", "your access key"); DatahubConfiguration conf = new DatahubConfiguration(account, "datahub endpoint"); DatahubClient client = new DatahubClient(conf); // Specify records to be ingested by DataHub. RecordSchema schema = client.getTopic("projectName", "topicName").getRecordSchema(); List<RecordEntry> recordEntries = new ArrayList<~>(); RecordEntry entry = new RecordEntry(schema); for (int i=0; i<entry.getFieldCount(); i++) {
     entry.setBigint(i, 1);
+```
+
+`}`
+
+```
 entry.setHashKey("7FFFFFFFFFFFFFFD7FFFFFFFFFFFFFFD"); recordEntries.add(entry); // Write the data into DataHub. PutRecordsResult result = client.putRecords("projectName", "topicName", recordEntries);
 ```
 
@@ -2987,6 +4080,11 @@ Specify a partition key as a string. DataHub creates an MD5 hash from the string
 ```
 // Create a client. Account account = new AliyunAccount("your access id", "your access key"); DatahubConfiguration conf = new DatahubConfiguration(account, "datahub endpoint"); DatahubClient client = new DatahubClient(conf); // Specify records to be ingested by DataHub. RecordSchema schema = client.getTopic("projectName", "topicName").getRecordSchema(); List<RecordEntry> recordEntries = new ArrayList<~>(); RecordEntry entry = new RecordEntry(schema); for (int i=0; i<entry.getFieldCount(); i++) {
     entry.setBigint(i, 1);
+```
+
+`}`
+
+```
 entry.setPartitionKey("TestPartitionKey"); recordEntries.add(entry); // Write the data into DataHub. PutRecordsResult result = client.putRecords("projectName", "topicName", recordEntries);
 ```
 
@@ -3041,6 +4139,8 @@ ConnectorType.SINK_ODPS, shard);
     System.out.println(getDataConnectorShardStatusResult.getLastErrorMessage());
 ```
 
+`}`
+
 ##### 2.3.6.2 Create a DataConnector for AnalyticDB or ApsaraDB RDS for MySQL
 
 **ApsaraDB RDS for MySQL**
@@ -3085,6 +4185,8 @@ ConnectorType.SINK_ADS, shard);
     System.out.println(getDataConnectorShardStatusResult.getCurSequence());
     System.out.println(getDataConnectorShardStatusResult.getLastErrorMessage());
 ```
+
+`}`
 
 > **Note:** You cannot create DataConnectors for services that reside in virtual private clouds (VPCs) by using the SDK. You must create this type of DataConnectors in the DataHub console.
 
@@ -3301,7 +4403,7 @@ DataHub can scale flexibly to increase or decrease the number of shards in a clu
 
 ### 3.2 Obtain shard details
 
-You can call the ListShard operation to obtain details about all shards. The sample response is shown as follows:
+You can call the ListShard operation to obtain details about all shards. The sample response is shown as follows: `{`
 
 ```json
     "ShardId": "string",
@@ -3313,6 +4415,8 @@ You can call the ListShard operation to obtain details about all shards. The sam
     "LeftShardId": "string",
     "RightShardId": "string"
 ```
+
+`}`
 
 ### 3.3 Split a shard
 
@@ -3371,6 +4475,8 @@ This section describes how to insert columns to a topic schema. The sample code 
 ```
 // Specify a DataHub account. Account account = new AliyunAccount("your access id", "your access key"); DatahubConfiguration conf = new DatahubConfiguration(account, "datahub endpoint"); DatahubClient client = new DatahubClient(conf); // Insert a bigint column to the topic schema. client.appendField(new AppendFieldRequest(projectName, topicName, new Field("test", Fiel dType.BIGINT))); // If you have created a DataConnector for MaxCompute, call the following operation. client.appendDataConnectorField(new AppendDataConnectorFieldRequest(projectName, topicNa me, ConnectorType.SINK_ODPS, "test"));
 ```
+
+`}`
 
 > **Note:** DataHub supports inserting columns only. Modifying or deleting columns is not supported.
 > The operation can only be performed on a DataConnector for MaxCompute: **Insert a** **column in MaxCompute > Insert a corresponding column in DataHub >** **Modify the corresponding DataConnector configuration**.

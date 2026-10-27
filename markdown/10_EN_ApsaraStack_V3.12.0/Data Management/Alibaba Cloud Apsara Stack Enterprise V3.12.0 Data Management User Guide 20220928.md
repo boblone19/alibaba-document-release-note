@@ -5,7 +5,7 @@ doc_version: "20220928"
 pdf_pages: 39
 source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.12.0 Data Management User Guide 20220928.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/V3.12/%E6%95%B0%E6%8D%AE%E5%BA%93/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.12.0%20Data%20Management%20User%20Guide%2020220928.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.12.0 Data Management User Guide 20220928
@@ -65,7 +65,7 @@ Data Management (DMS) is an integrated database solution that provides data, sch
 
 ## 2 Log on to an ApsaraDB for RDS instance by using DMS
 
-RDS instance by using DMS This topic describes how to log on to an ApsaraDB for RDS instance by using DMS. The ApsaraDB for RDS console allows you to log on to ApsaraDB for RDS instances by using DMS. You can use DMS to manage database data and schemas.
+RDS instance by using DMS This topic describes how to log on to an ApsaraDB for RDS instance by using DMS. Context The ApsaraDB for RDS console allows you to log on to ApsaraDB for RDS instances by using DMS. You can use DMS to manage database data and schemas. Procedure
 1. Log on to the ApsaraDB for RDS console. For more information, see the Log on to the ApsaraDB for
 RDS console topic in ApsaraDB for RDS User Guide.
 2. In the left-side navigation pane, click Instances. On the Instances page, find the target instance.
@@ -86,7 +86,7 @@ Not e If you want the browser to remember the password, select Remember your pas
 
 ### 3.1 Use the command window
 
-This topic describes how to use the command window in DMS. A MySQL database is used in this example.
+This topic describes how to use the command window in DMS. Context A MySQL database is used in this example. Procedure
 1. Log on to an RDS instance through DMS.
 2. In the top navigation bar, choose SQL Operat ions > Command Window.
 An empty command window appears, as shown in Command window. Command window
@@ -110,7 +110,7 @@ To switch to another database, select the new database from the Database drop-do
 
 #### 3.2.1 Open an empty SQL window
 
-This topic describes how to use SQL windows. A MySQL database is used in this example. A maximum of 20 SQL windows (including the homepage) can be opened in DMS. We recommend that you open no more than five SQL windows at a time.
+This topic describes how to use SQL windows. Context A MySQL database is used in this example. A maximum of 20 SQL windows (including the homepage) can be opened in DMS. We recommend that you open no more than five SQL windows at a time.
 1. Log on to an RDS instance through DMS.
 2. In the top navigation bar, choose SQL Operat ions > SQL Window to open the SQL Window tab.
 Empty SQL window shows the empty SQL window you opened. Empty SQL window describes the numbered items in the SQL window. Numbered items in the SQL window
@@ -173,7 +173,7 @@ optimize SQL performance. After you click Plan, DMS displays the execution plan 
 
 #### 3.2.2 Restore a saved SQL window
 
-This topic describes how to restore a saved SQL window. A MySQL database is used in this example. A maximum of 20 SQL windows (including the homepage) can be opened or stored in DMS. We recommend that you open no more than five SQL windows at a time.
+This topic describes how to restore a saved SQL window. Context A MySQL database is used in this example. A maximum of 20 SQL windows (including the homepage) can be opened or stored in DMS. We recommend that you open no more than five SQL windows at a time. Procedure
 1. Log on to an RDS instance through DMS.
 2. In the top navigation bar, choose SQL Operat ions > SQL Window.
 3. Save the current SQL work environment.
@@ -183,7 +183,7 @@ i. Choose SQL Operat ions > Saved SQL Windows. DMS displays all saved SQL window
 
 #### 3.2.3 Manage common SQL statements
 
-This topic describes how to manage common SQL statements in DMS. A MySQL database is used in this example.
+This topic describes how to manage common SQL statements in DMS. Context A MySQL database is used in this example. Procedure
 1. Log on to an RDS instance through DMS.
 2. In the top navigation bar, choose SQL Operat ions > SQL Window to open the SQL Window tab.
 3. Perform the following operations:
@@ -191,7 +191,7 @@ Add a common SQL statement. Choose My SQL Script s > Add SQL to add a common SQL
 
 #### 3.2.4 Use the SQL template
 
-This topic describes how to use the SQL template in DMS.
+This topic describes how to use the SQL template in DMS. Procedure
 1. Log on to an RDS instance through DMS.
 2. In the top navigation bar, choose SQL Operat ions > SQL Window. A SQL window appears.
 The SQL template is displayed in the rightmost part of the SQL window.
@@ -204,14 +204,14 @@ Table directory tree)
 
 #### 3.3.1 Open a table-based SQL window
 
-This topic describes how to open a table-based SQL window in DMS. A MySQL database is used as an example.
+This topic describes how to open a table-based SQL window in DMS. Context A MySQL database is used as an example.
 1. Log on to an RDS instance through DMS.
 2. In the left-side directory tree, right-click a table and choose SQL Operat ion Dat a from the
 shortcut menu to open an SQL window. DMS automatically runs the SQL statement that queries top 50 records of the table.
 
 #### 3.3.2 Edit table data
 
-This topic describes how to edit table data. An ApsaraDB RDS for MySQL database is used in this example. This feature applies to tables with a small volume of data. For tables containing a large volume of data, you must find the target data before you can edit the data. It may take time to find the data to be edited.
+This topic describes how to edit table data. Context An ApsaraDB RDS for MySQL database is used in this example. This feature applies to tables with a small volume of data. For tables containing a large volume of data, you must find the target data before you can edit the data. It may take time to find the data to be edited. Procedure
 1. Log on to an RDS instance through DMS.
 2. In the left-side navigation pane, right-click a table and select Open T able.
 A tab appears on the right, displaying the data of the selected table, as shown in Table tab. Table tab 1: Right-click a table and select Open T able. 2: Modify the values of the columns in the table. 3: Click Submit Change to submit the modified data.
@@ -226,7 +226,7 @@ This topic describes how to add, modify, delete, and manage objects such as inde
 
 #### 4.2.1 Create a table
 
-This topic describes how to create a table in DMS.
+This topic describes how to create a table in DMS. Procedure
 1. Log on to an RDS instance through DMS.
 2. You can create a table in one of the following ways:
 In the top navigation bar, choose Creat e > T able. In the left-side navigation pane, click T able, right-click a table, and then select Creat e T able.
@@ -256,7 +256,7 @@ Click OK after you confirm the SQL statements. DMS then saves the modified table
 
 #### 4.2.3 Delete a table
 
-This topic describes how to delete a table in DMS.
+This topic describes how to delete a table in DMS. Procedure
 1. Log on to an RDS instance through DMS.
 2. In the left-side T able directory tree, right-click the table you want to delete and choose Delet e
 T able from the shortcut menu.
@@ -277,7 +277,7 @@ A new table is created, as shown in Schema of the destination table. Schema of t
 
 #### 4.2.5 Generate SQL statement templates
 
-This topic describes how to generate SQL templates in DMS.
+This topic describes how to generate SQL templates in DMS. Procedure
 1. Log on to an RDS instance through DMS.
 2. In the left-side T able directory tree, right-click the table you want to copy and choose Creat e
 SQL T emplat e from the shortcut menu.
@@ -296,7 +296,7 @@ of the table.
 
 #### 4.2.7 Clear data
 
-This topic describes how to clear table data in DMS.
+This topic describes how to clear table data in DMS. Procedure
 1. Log on to an RDS instance through DMS.
 2. In the left-side T able directory tree, right-click the table that you want to clear data from and
 choose Clear T able from the shortcut menu. Not ice Clearing table data is a high-risk operation and may affect your data usage. DMS prompts you to confirm whether to clear table data.
@@ -305,7 +305,7 @@ choose Clear T able from the shortcut menu. Not ice Clearing table data is a hig
 
 #### 4.2.8 Perform operations on multiple tables
 
-This topic describes how to perform operations on multiple tables in DMS.
+This topic describes how to perform operations on multiple tables in DMS. Procedure
 1. Log on to an RDS instance through DMS.
 2. Delete multiple tables at a time.
 i. In the left-side navigation pane, click T able, right-click a table name, and then choose Bat ch Operat ions > Drop Bat ch T ables. The dialog box for you to select multiple tables to delete appears. ii. Select the tables to be deleted. iii. Click OK. DMS prompts you to confirm whether you want to perform the batch operation. iv. Click Drop. DMS deletes the selected tables at a time.
@@ -314,7 +314,7 @@ You can clear data, delete or maintain tables, and modify table name prefixes in
 
 #### 4.2.9 Maintain a table
 
-This topic describes how to maintain and optimize a table in DMS.
+This topic describes how to maintain and optimize a table in DMS. Procedure
 1. Log on to an RDS instance through DMS.
 2. In the left-side T able directory tree, right-click the table you want to maintain and choose
 Maint ain T able > Opt imize T able.
@@ -323,7 +323,7 @@ Click Yes if you want to optimize the table. Then DMS starts optimization. Optim
 
 ### 4.3 Manage indexes
 
-This topic describes how to add, modify, or delete indexes in DMS.
+This topic describes how to add, modify, or delete indexes in DMS. Procedure
 1. Log on to an RDS instance through DMS.
 2. In the left-side T able directory tree, expand the table you want to modify and choose Index >
 Add Index. The Add Index page appears.
@@ -337,7 +337,7 @@ You can modify or delete the new index as needed. In the left-side Table directo
 
 ### 4.4 Manage foreign keys
 
-This topic describes how to add foreign keys in DMS.
+This topic describes how to add foreign keys in DMS. Procedure
 1. Log on to an RDS instance through DMS.
 2. In the left-side T able directory tree, right-click the table to be modified and choose Edit T able
 St ruct ure from the shortcut menu.
@@ -347,7 +347,7 @@ St ruct ure from the shortcut menu.
 
 ### 4.5 Create a partition
 
-This topic describes how to create partitions in DMS.
+This topic describes how to create partitions in DMS. Procedure
 1. Log on to an RDS instance through DMS.
 2. In the left-side navigation page, click T able, right-click a table name, and then choose Creat e
 T able from the shortcut menu.
@@ -360,7 +360,7 @@ partitioning logic.
 
 ### 4.6 Create a stored procedure
 
-This topic describes how to create and manage stored procedures in DMS. A MySQL database is used as an example. Stored procedures, functions, triggers, and events are considered programmable objects in DMS.
+This topic describes how to create and manage stored procedures in DMS. Context A MySQL database is used as an example. Stored procedures, functions, triggers, and events are considered programmable objects in DMS. Procedure
 1. Log on to an RDS instance through DMS.
 2. Click the left-side Programmable Object directory tree, and choose St ored Procedure >
 Creat e (St ored Procedure). The Create Stored Procedure tab is displayed.
@@ -385,7 +385,7 @@ You can perform other operations related to the stored procedure through the fol
 
 ### 4.7 Create a function
 
-This topic describes how to create a function in DMS. Functions, stored procedures, triggers, and events are considered programmable objects in DMS.
+This topic describes how to create a function in DMS. Context Functions, stored procedures, triggers, and events are considered programmable objects in DMS. Procedure
 1. Log on to an RDS instance through DMS.
 2. In the left-side Programmable Object directory tree, choose Funct ion > Creat e (Funct ion).
 The Creat e Funct ion page is displayed.
@@ -421,7 +421,7 @@ The menu options include: View Data Create View Edit View Delete View Refresh Vi
 
 ### 4.9 Create a trigger
 
-This topic describes how to create and manage a trigger in DMS. Triggers, functions, stored procedures, and events are considered programmable objects in DMS.
+This topic describes how to create and manage a trigger in DMS. Context Triggers, functions, stored procedures, and events are considered programmable objects in DMS. Procedure
 1. Log on to an RDS instance through DMS.
 2. Click the Programmable Object directory tree on the left side, and choose T rigger > Creat e
 (T rigger). The Creat e: T rigger tab is displayed. 1: Trigger table. 2: Trigger settings. Enter a name for the trigger. Select dmstest from the drop-down list as the trigger table. Select AFTER from the drop-down list as the trigger time. Select INSERT from the drop-down list as the trigger event. 3: Set a trigger statement. Set the operations to be performed when the trigger event occurs. When data is inserted into the dmstest table, the trigger in this example inserts data into the copy_test table and records the insertion time in copy_test.time.
@@ -438,7 +438,7 @@ related operations through the following menu options: Create (Trigger) Edit (Tr
 
 ### 4.10 Create an event
 
-This topic describes how to create and manage events in DMS. Prerequisites After you log on to a database, make sure that event support has been enabled for the database. Execute the SELECT @@event_scheduler; statement to check whether the database supports events. If ON is returned, event support is enabled. If OFF is returned, event support is disabled. You need to enable event support by modifying the configuration file or executing the SET GLOBAL event_scheduler = ON; statement. Events, triggers, functions, and stored procedures are considered programmable objects in DMS.
+This topic describes how to create and manage events in DMS. Prerequisites After you log on to a database, make sure that event support has been enabled for the database. Execute the SELECT @@event_scheduler; statement to check whether the database supports events. If ON is returned, event support is enabled. If OFF is returned, event support is disabled. You need to enable event support by modifying the configuration file or executing the SET GLOBAL event_scheduler = ON; statement. Context Events, triggers, functions, and stored procedures are considered programmable objects in DMS. Procedure
 1. Log on to an RDS instance through DMS.
 2. Click the Programmable Object directory tree on the left side, and choose Event > Creat e
 (Event ). The Create Event page is displayed. 1: In the event setup area, set the event name, cycle, start time, end time, status, and comment, and choose whether to enable cyclic execution. 2: In the event execution Statement area, set the operations to be performed when a scheduled event is triggered.
@@ -455,7 +455,7 @@ The menu options include: Create (Event) Edit (Event) Delete (Event)
 
 ### 5.1 Import data
 
-This topic describes how to use DMS to import data. A MySQL database is used in this example.
+This topic describes how to use DMS to import data. Context A MySQL database is used in this example. Procedure
 1. Log on to an RDS instance through DMS.
 2. In the top navigation bar, choose Dat a Operat ion > Import .
 The Import tab appears, as shown in Import tab. Import tab The Import tab contains the import toolbar and import history. If you have imported data, you can view previous data import tasks in Hist ory.
@@ -468,7 +468,7 @@ If the imported data has any error, DMS terminates the import process and return
 
 #### 5.2.1 Export a database
 
-This topic describes how to use DMS to export a database. A MySQL database is used in this example.
+This topic describes how to use DMS to export a database. Context A MySQL database is used in this example. Procedure
 1. Log on to an RDS instance through DMS.
 2. In the top navigation bar, choose Dat a Operat ion > Export . The Export tab appears.
 3. On the Export tab, choose New > Export Dat abase.
@@ -480,7 +480,7 @@ DMS refreshes the export progress every two seconds. You can close the Export ta
 
 #### 5.2.2 Export an SQL result set
 
-This topic describes how to use DMS to export an SQL result set. A MySQL database is used in this example.
+This topic describes how to use DMS to export an SQL result set. A MySQL database is used in this example. Procedure
 1. Log on to an RDS instance through DMS.
 2. In the top navigation bar, choose Dat a Operat ion > Export . The Export tab appears.
 3. On the Export tab, choose New > Export SQL result set s.
@@ -495,7 +495,7 @@ After the export task is complete, DMS automatically downloads the exported file
 
 #### 6.1.1 View sessions in the lock wait state
 
-When a session of an ApsaraDB RDS for MySQL instance is waiting for a row exclusive lock held by another session, an InnoDB lock wait will occur. This topic describes how to use DMS to view sessions in the lock wait state. A MySQL database is used in this example.
+When a session of an ApsaraDB RDS for MySQL instance is waiting for a row exclusive lock held by another session, an InnoDB lock wait will occur. This topic describes how to use DMS to view sessions in the lock wait state. Context A MySQL database is used in this example. Procedure
 1. Log on to an RDS instance through DMS.
 2. In the top navigation bar, choose Perf ormance > InnoDB Lock Wait s.
 If transactions of the current instance are waiting for locks, the Lock and Lock-Wait icons are displayed.
@@ -506,7 +506,7 @@ to reload the data.
 
 #### 6.1.2 Terminate a session in the lock wait state
 
-This topic describes how to use DMS to terminate a session in the lock wait state. A MySQL database is used in this example.
+This topic describes how to use DMS to terminate a session in the lock wait state. Context A MySQL database is used in this example. Procedure
 1. Log on to an RDS instance through DMS.
 2. In the top navigation bar, choose Perf ormance > InnoDB Lock Wait s.
 If transactions of the current instance are waiting for locks, the Lock and Lock-Wait icons are displayed.
@@ -521,7 +521,7 @@ InnoDB Lock Waits tab shows the page when no transactions are waiting for locks.
 
 ### 7.1 View statistics on table data volumes
 
-volumes This topic describes how to view statistics on table data volumes in DMS. A MySQL database is used in this example.
+volumes This topic describes how to view statistics on table data volumes in DMS. Context A MySQL database is used in this example. Procedure
 1. Log on to an RDS instance through DMS.
 2. In the top navigation bar, choose T ools > T able Dat a Amount .
 The T able Dat a Amount tab appears, as shown in Collection of statistics on table data volumes. Collection of statistics on table data volumes
@@ -530,7 +530,7 @@ database name, table name, storage engine, number of rows, row size (in bytes), 
 
 ### 7.2 View ER diagrams
 
-This topic describes how to view ER diagrams in DMS. This topic uses a MySQL database as an example.
+This topic describes how to view ER diagrams in DMS. Context This topic uses a MySQL database as an example. Procedure
 1. Log on to an RDS instance through DMS.
 2. In the top navigation bar, choose T ools > ER Diagram.
 The ER Diagram tab appears, as shown in ER Diagram tab. ER Diagram tab The ER Diagram tab displays the relationship between tables in the current database and provides methods for representing table names, column names, indexes, and relationships.

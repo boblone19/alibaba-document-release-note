@@ -5,16 +5,216 @@ doc_version: "20260729"
 pdf_pages: 532
 source_pdf: "12_Flink企业版 开发指南_development-guide.pdf"
 source_url: "https://apsara-doc.oss-cn-hangzhou.aliyuncs.com/apsara-pdf/enterprise/v_3_18_6_20260730/sc/zh/development-guide.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # 实时计算（流计算） Flink企业版 开发指南
 
-实时计算（流计算）
+## 目录
 
-## 准备工作
+- 1 准备工作
+  - 1.1 获取API信息及其EndPoint
+  - 1.2 获取AccessKey
+  - 1.3 获取公共Header参数
+  - 1.4 获取STS AccessKey
+- 2 通过POP网关调用专有云API
+  - 2.1 调用前置
+  - 2.2 Java版
+  - 2.3 Go版
+  - 2.4 Python版
+- 3 AppManager API
+    - 3.1.1 ValidateSqlScript
+    - 3.1.2 UpdateDeploymentDesiredState
+    - 3.1.3 UpdateDeployment
+    - 3.1.4 ListSessionClusters
+    - 3.1.5 ListSavepoints
+    - 3.1.6 ListNetworkPolicyIpAddress
+    - 3.1.7 ListNamespaces
+    - 3.1.8 ListDeploymentTargets
+    - 3.1.9 ListDeployments
+    - 3.1.10 ListArtifacts
+    - 3.1.11 GetGlobalDeploymentDefaults
+    - 3.1.12 GetDeploymentDefaults
+    - 3.1.13 GetDeployment
+    - 3.1.14 GetArtifactMetadata
+    - 3.1.15 ExecuteSqlScript
+    - 3.1.16 DeployDeploymentDraft
+    - 3.1.17 DeleteNetworkPolicyIpAddress
+    - 3.1.18 DeleteDeployment
+    - 3.1.19 DeleteArtifact
+    - 3.1.20 CreateSavepoint
+    - 3.1.21 CreateDeployment
+    - 3.1.22 AddNetworkPolicyIpAddress
+    - 3.1.23 ListTables
+    - 3.1.24 ListCatalogs
+    - 3.1.25 GetDatabase
+    - 3.1.26 ListFunctions
+    - 3.1.27 DatabaseExists
+    - 3.1.28 CreateConnector
+    - 3.1.29 CreateMember
+    - 3.1.30 CreateSecretValue
+    - 3.1.31 CreateFormat
+    - 3.1.32 CreateUdfArtifact
+    - 3.1.33 DeleteConnector
+    - 3.1.34 DeleteDeploymentDraft
+    - 3.1.35 DeleteFormat
+    - 3.1.36 DeleteMember
+    - 3.1.37 DeleteSecretValue
+    - 3.1.38 DeleteUdfArtifact
+    - 3.1.39 ExecuteSqlscriptsStatements
+    - 3.1.40 ForcefullyCreateLock
+    - 3.1.41 FunctionExists
+    - 3.1.42 GenerateResourcePlan
+    - 3.1.43 GetCatalog
+    - 3.1.44 GetDefaultDatabase
+    - 3.1.45 GetDeploymentDraftById
+    - 3.1.46 GetDeploymentDraftByName
+    - 3.1.47 GetDeploymentDraftResourcePlan
+    - 3.1.48 GetDeploymentDraftResourcePlanWithBestEffort
+    - 3.1.49 GetFunction
+    - 3.1.50 GetResourcePlan
+    - 3.1.51 GetTable
+    - 3.1.52 GetUdfArtifact
+    - 3.1.53 ListConnectors
+    - 3.1.54 ListDatabases
+    - 3.1.55 ListFlinkVersions
+    - 3.1.56 ListFormats
+    - 3.1.57 ListSecretValues
+    - 3.1.58 ParseConnector
+    - 3.1.59 ParseFormat
+    - 3.1.60 SearchFoldersByKeyword
+    - 3.1.61 SetDeploymentResourceMode
+    - 3.1.62 TableExists
+    - 3.1.63 UpdateConnector
+    - 3.1.64 UpdateFormat
+    - 3.1.65 UpdateMember
+    - 3.1.66 UpdateUdfArtifact
+    - 3.1.67 CreateNamespace
+    - 3.1.68 DescribeNamespaces
+    - 3.1.69 GetCluster
+    - 3.1.70 UpdateNamespace
+    - 3.1.71 DeleteNamespace
+    - 3.1.72 UpdateFolder
+    - 3.1.73 DeleteFolder
+    - 3.1.74 UploadArtifactByOSSUrl
+    - 3.1.75 ListJobs
+    - 3.1.76 ReplaceDeployment
+  - 3.2 API示例
+    - 3.2.2 pom.xml
+- 4 Flink SQL参考
+  - 4.2 关键字
+  - 4.3 创建数据视图
+  - 4.4 基本概念
+    - 4.4.1 Watermark
+    - 4.4.2 计算列
+    - 4.4.3 时间属性
+  - 4.5 DDL语句
+    - 4.5.1 创建数据源表
+      - 4.5.1.1 日志服务SLS源表
+      - 4.5.1.2 消息队列Kafka源表
+      - 4.5.1.3 数据总线DataHub源表
+      - 4.5.1.4 全量MaxCompute源表
+      - 4.5.1.5 增量MaxCompute源表
+      - 4.5.1.6 消息队列RocketMQ版源表
+      - 4.5.1.7 交互式分析Hologres源表
+      - 4.5.1.8 全量Elasticsearch源表
+      - 4.5.1.9 Postgres的CDC源表（公测中）
+      - 4.5.1.10 MySQL的CDC源表（公测中）
+      - 4.5.1.11 Upsert Kafka源表
+      - 4.5.1.12 全量数据湖Iceberg源表
+      - 4.5.1.13 Datagen源表
+      - 4.5.1.14 流式数据湖仓Paimon源表
+    - 4.5.2 创建数据结果表
+      - 4.5.2.1 日志服务SLS结果表
+      - 4.5.2.2 消息队列Kafka结果表
+      - 4.5.2.3 数据总线DataHub结果表
+      - 4.5.2.4 表格存储Tablestore结果表
+      - 4.5.2.5 MaxCompute结果表
+      - 4.5.2.6 消息队列RocketMQ版结果表
+      - 4.5.2.7 云数据库HBase版结果表
+      - 4.5.2.8 云数据库Redis版结果表
+      - 4.5.2.9 交互式分析Hologres结果表
+      - 4.5.2.10 云数据库MongoDB版结果表
+      - 4.5.2.11 Elasticsearch结果表
+      - 4.5.2.12 Phoenix5结果表
+      - 4.5.2.13 云数据库RDS MySQL结果表
+      - 4.5.2.14 云原生数据仓库AnalyticDB MySQL版3.0结果表
+      - 4.5.2.15 Lindorm结果表
+      - 4.5.2.16 ClickHouse结果表
+      - 4.5.2.17 print结果表
+      - 4.5.2.18 Upsert Kafka结果表
+      - 4.5.2.19 数据湖Iceberg结果表
+      - 4.5.2.20 Blackhole结果表
+      - 4.5.2.21 InfluxDB结果表
+      - 4.5.2.22 流式数据湖仓Paimon结果表
+    - 4.5.3 创建数据维表
+      - 4.5.3.1 云数据库HBase版维表
+      - 4.5.3.2 表格存储Tablestore维表
+      - 4.5.3.3 MaxCompute维表
+      - 4.5.3.4 云数据库Redis版维表
+      - 4.5.3.5 Elasticsearch维表
+      - 4.5.3.6 交互式分析Hologres维表
+      - 4.5.3.7 云数据库RDS MySQL维表
+      - 4.5.3.8 云原生数据仓库AnalyticDB MySQL版3.0维表
+      - 4.5.3.9 Lindorm维表
+      - 4.5.3.10 FileSystem维表
+      - 4.5.3.11 流式数据湖仓Paimon维表
+  - 4.6 DML语句
+    - 4.6.1 INSERT INTO语句
+  - 4.7 QUERY语句
+  - 4.8 窗口函数
+    - 4.8.2 滚动窗口
+    - 4.8.3 滑动窗口
+    - 4.8.4 会话窗口
+    - 4.8.5 OVER窗口
+  - 4.9 内置函数
+    - 4.9.2 标量函数
+      - 4.9.2.1 BITAND
+      - 4.9.2.2 BITNOT
+      - 4.9.2.3 BITOR
+      - 4.9.2.4 BITXOR
+      - 4.9.2.5 CONV
+      - 4.9.2.6 DATEDIFF
+      - 4.9.2.7 DATE_ADD
+      - 4.9.2.8 DATE_FORMAT
+      - 4.9.2.9 DATE_FORMAT_TZ
+      - 4.9.2.10 DATE_SUB
+      - 4.9.2.11 FROM_UNIXTIME
+      - 4.9.2.12 ISNAN
+      - 4.9.2.13 JSON_VALUE
+      - 4.9.2.14 KEYVALUE
+      - 4.9.2.15 MURMUR_HASH
+      - 4.9.2.16 MURMUR_HASH_64
+      - 4.9.2.17 PARSE_URL
+      - 4.9.2.18 REGEXP
+      - 4.9.2.19 REGEXP_REPLACE
+      - 4.9.2.20 SPLIT_INDEX
+      - 4.9.2.21 TO_DATE
+      - 4.9.2.22 TO_TIMESTAMP_TZ
+      - 4.9.2.23 UNIX_TIMESTAMP
+    - 4.9.3 表值函数
+      - 4.9.3.1 GENERATE_SERIES
+      - 4.9.3.2 JSON_TUPLE
+      - 4.9.3.3 MULTI_KEYVALUE
+      - 4.9.3.4 STRING_SPLIT
+    - 4.9.4 聚合函数
+      - 4.9.4.1 APPROX_COUNT_DISTINCT
+      - 4.9.4.2 FIRST_VALUE
+      - 4.9.4.3 LAST_VALUE
+  - 4.10 自定义函数（Datastream）
+    - 4.10.2 自定义标量函数（UDF）
+    - 4.10.3 自定义聚合函数（UDAF）
+    - 4.10.4 自定义表值函数（UDTF）
+  - 4.11 自定义函数（Python）
+    - 4.11.2 自定义标量函数（UDF）
+    - 4.11.3 自定义聚合函数（UDAF）
+    - 4.11.4 自定义表值函数（UDTF）
+  - 4.12 机器学习函数
+    - 4.12.1 CLUSTER_SERVING
 
-### 获取API信息及其EndPoint
+## 1 准备工作
+
+### 1.1 获取API信息及其EndPoint
 
 首先，您需要了解产品开放API接口的相关信息，包括产品名称（code）、开放API接口名称、API版本。
 
@@ -32,17 +232,15 @@ Apsara Uni-manager运营控制台API目录中的API信息仅供调用参考，�
 6. 在下方API列表中可浏览当前版本的所有API接口。
 7. 选中对应接口，在参数名下获取云产品的POP Endpoint信息。
 
-### 获取AccessKey
+### 1.2 获取AccessKey
 
 AccessKey支持RAM和STS两种授权模式，在发起调用时选择使用其中一种AccessKey即可。本文将为您介绍如何获取通过RAM授权的AccessKey。
 
 **背景信息**
 
-AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。 其中AccessKey ID用于标示用户，AccessKey Secret是用户用于加密签名的字符串。 AccessKey的两种授权模式如下： 实时计算（流计算） 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。获取方式请参见获取STS AccessKey。 Apsara Uni-manager运营控制台提供了个人AccessKey和组织AccessKey（只有运营管理员和一级组织管理员可以获取组织AccessKey），推荐使用个人账号AccessKey调用Apsara Uni-manager运营控制台及云产品相关接口。如果使用个人账号AccessKey，需要在Header中添加以下限制性参数，否则可能提示权限不足： 个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限AccessKey，
+AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证某个请求发送者的身份的功能。 其中AccessKey ID用于标示用户，AccessKey Secret是用户用于加密签名的字符串。 AccessKey的两种授权模式如下： 通过RAM授权给第三方请求者的AccessKey ID和AccessKey Secret。 通过STS授权给第三方请求者的AccessKey ID、AccessKey Secret和Security Token。获取方式请参见获取STS AccessKey。 Apsara Uni-manager运营控制台提供了个人AccessKey和组织AccessKey（只有运营管理员和一级组织管理员可以获取组织AccessKey），推荐使用个人账号AccessKey调用Apsara Uni-manager运营控制台及云产品相关接口。如果使用个人账号AccessKey，需要在Header中添加以下限制性参数，否则可能提示权限不足：
 
-**警告**
-
-组织AccessKey相对权限较大，需要管理员确认操作的安全性。
+> **警告：** 个人账号AccessKey是由Apsara Uni-manager运营控制台权限体系管控的受限AccessKey， 组织AccessKey相对权限较大，需要管理员确认操作的安全性。
 
 | 参数名称 | 描述 |
 |---|---|
@@ -57,24 +255,20 @@ AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证�
 1. 登录Apsara Uni-manager运营控制台。
 2. 在系统界面右上角，单击当前登录用户头像，单击**个人信息**。
 3. 在**阿里云****AccessKey**区域，您可以查看个人账户的AccessKey信息。
-Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请
 
-**说明**
-
-您妥善保管。
+> **说明：** Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。
 
 **获取组织AccessKey**
 
 获取组织AccessKey的方法如下：
 1. 管理员登录Apsara Uni-manager运营控制台。
 2. 在顶部菜单栏，单击**企业**。
-3. 在左侧导航栏中，选择**资源管理** > **组织管理**。
+3. 在左侧导航栏中，选择**资源管理** **>** **组织管理**。
 4. 在组织结构中，单击目标一级组织名称。
 5. 单击**管理****Accesskey**。
 6. 在弹出的对话框中，查看组织AccessKey信息。
-实时计算（流计算）
 
-### 获取公共Header参数
+### 1.3 获取公共Header参数
 
 调用API时需要提供多个Header参数。本文为您介绍如何获取这些参数。并对调用后的一些返回值做出解释。
 
@@ -123,15 +317,13 @@ Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 | 名称 | 描述 |
 |---|---|
 
-实时计算（流计算）
-
 | ResourceGroupName | 资源集名称。 |
 |---|---|
 | ResourceGroup | 资源集ID。 |
 | DepartmentName | 组织名称。 |
 | Department | 组织ID。 |
 
-### 获取STS AccessKey
+### 1.4 获取STS AccessKey
 
 本文为您介绍如何利用STS方式，调用专有云的产品API。
 
@@ -144,11 +336,11 @@ Accesskey ID和AccessKey Secret是您访问云资源时的密钥，具有该账�
 1. 获取用户角色的 `RAM Role` 。
 i. 登录Apsara Uni-manager运营控制台。 ii. 单击页面右上角的用户头像，选择**个人信息**。 iii. 单击**查看当前角色策略**。
 
-| 框中查看 RAM Role 。 |  |  |
+| 框中查看 RAM Role 。 |   |   |
 |---|---|---|
 | RAM Role | 获得 | stsAK |
 
-实时计算（流计算）
+在**当前选择角色策略**对话框中查看 `RAM Role` 。
 
 ```
 public static void main(String[] args) {
@@ -175,7 +367,12 @@ public static void main(String[] args) {
         String stsAK = credentials.getString("AccessKeyId");
         String stsSK = credentials.getString("AccessKeySecret");
         String stsToken = credentials.getString("SecurityToken");
-} public static String AssumeRole(ASClient asClient, String roleArn) {
+```
+
+`}`
+
+```
+public static String AssumeRole(ASClient asClient, String roleArn) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
         reqParams.put("action", "AssumeRole");
@@ -197,11 +394,10 @@ public static void main(String[] args) {
         reqParams.put("roleSessionName", "StsUser");
         reqParams.put("roleArn", roleArn);
         return asClient.doRequest(endpoint, headers, reqParams);
-}
 ```
 
+`}`
 3. 通过STS可以调用云产品的接口，下列代码以ECS为示例。
-实时计算（流计算）
 
 ```
 public static void main(String[] args) {
@@ -213,7 +409,12 @@ public static void main(String[] args) {
 
 ```
         String ecsRes = DescribeZones(asClient,<stsAK>,<stsSK>,<stsToken>);
-} public static String DescribeZones(ASClient asClient, String stsAK, String stsSK, String stsToken) {
+```
+
+`}`
+
+```
+public static String DescribeZones(ASClient asClient, String stsAK, String stsSK, String stsToken) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
         reqParams.put("action", "DescribeZones");
@@ -225,14 +426,13 @@ public static void main(String[] args) {
         reqParams.put("AccessKeySecret", <stsSK>);
         reqParams.put("SecurityToken", <stsToken>);
         return asClient.doRequest(endpoint, headers, reqParams, HttpMethod.GET);
-    }
 ```
 
-实时计算（流计算）
+`}` 调用专有云API
 
-## 通过POP网关调用专有云API
+## 2 通过POP网关调用专有云API
 
-### 调用前置
+### 2.1 调用前置
 
 阿里云专有云与公共云一样，可通过POP网关的方式进行API调用。本文为您介绍调用前需要进行的准备工作。
 
@@ -258,7 +458,7 @@ public static void main(String[] args) {
 1. 登录Apsara Uni-manager运维控制台。
 2. 顶部菜单栏选择**平台运维** > **飞天基础运维平台** > **运维工具**。
 3. 在左侧导航栏，选择**运维工具** > **服务注册变量大盘**。
-实时计算（流计算）
+调用专有云API
 4. 在服务注册变量大盘页面，单击**高级筛选**。
 5. 在Service Registration文本框中输入 `apigateway` ，单击**搜索**。
 6. 在 `apigateway` 服务的**Service Registration**列中，单击
@@ -268,9 +468,9 @@ apigateway.openapi.endpoint值，即 `Endpoint` 。
 
 **获取公共参数**
 
-通过POP网关调用专有云API过程中所使用的参数，如组织ID、资源集ID、RegionID和实例ID，获取方式请参
+通过POP网关调用专有云API过程中所使用的参数，如组织ID、资源集ID、RegionID和实例ID，获取方式请参见获取公共Header参数。
 
-### Java版
+### 2.2 Java版
 
 通过POP Java SDK访问产品域名，需要了解该产品调用方式(RPC或ROA)。
 
@@ -279,9 +479,7 @@ apigateway.openapi.endpoint值，即 `Endpoint` 。
 目前专有云推荐使用CommonRequest进行调用，可以在Apsara Uni-manager运营控制台**产品** > **应用服务** >
 **开发者门户**，选择**API****集成** > **SDK****示例**查看推荐SDK版本以及示例代码。
 
-**重要**
-
-不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
+> **重要：** 不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
 
 **CommonRequest调用示例**
 
@@ -305,7 +503,7 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         // HttpClientConfig clientConfig = HttpClientConfig.getDefault();
 ```
 
-实时计算（流计算）
+调用专有云API
 
 ```
         // clientConfig.setIgnoreSSLCerts(true);
@@ -388,13 +586,13 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         request.putHeadParameter("x-acs-resourcegroupid", "<your-resourcegroupid>");
 ```
 
-`//` 必填, 组织`ID`
+`//` 必填`,` 组织`ID`
 
 ```
         request.putHeadParameter("x-acs-organizationid", "<your-organizationid>");
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
         // request.putHeadParameter("x-acs-instanceid", "<your-instanceid>");
@@ -412,12 +610,9 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
-ROA调用，示例接口信息：产品（CR）接口（GetNamespaceList）版本（2016-06-07）。 实时计算（流计算） 调用示例如下：
+`}` `}` `}` ROA调用，示例接口信息：产品（CR）接口（GetNamespaceList）版本（2016-06-07）。 调用专有云API 调用示例如下：
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; public class GetNamespaceList {
@@ -508,25 +703,25 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         request.putHeadParameter("x-acs-regionid", "<your-regionid>");
 ```
 
-`//` 非必填,资源集`ID`
+`//` 非必填`,`资源集`ID`
 
 ```
         request.putHeadParameter("x-acs-resourcegroupid", "<your-resourcegroupid>");
 ```
 
-`//` 必填,组织`ID`
+`//` 必填`,`组织`ID`
 
 ```
         request.putHeadParameter("x-acs-organizationid", "<your-organizationid>");
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
         // request.putHeadParameter("x-acs-instanceid", "<your-instanceid>");
 ```
 
-实时计算（流计算） `//` 当使用`STS AK`调用`ROA`接口时需要在`Header`加上`x-acs-security-token`字段
+调用专有云API `//` 当使用`STS AK`调用`ROA`接口时需要在`Header`加上`x-acs-security-token`字段
 
 ```
         // request.putHeadParameter("x-acs-security-token", "<your-securitytoken>");
@@ -544,10 +739,9 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **重要**
 
@@ -563,7 +757,7 @@ HttpClientConfig clientConfig = HttpClientConfig.getDefault();
 clientConfig.setIgnoreSSLCerts(true)
 ```
 
-### Go版
+### 2.3 Go版
 
 本文为您介绍POP Go SDK调用的方式。
 
@@ -572,9 +766,7 @@ clientConfig.setIgnoreSSLCerts(true)
 目前专有云推荐使用CommonRequest进行调用，可以在Apsara Uni-manager运营控制台**产品** > **应用服务** >
 **开发者门户**，选择**API****集成** > **SDK****示例**查看推荐SDK版本以及示例代码。
 
-**重要**
-
-不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
+> **重要：** 不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
 
 **背景信息**
 
@@ -582,7 +774,7 @@ clientConfig.setIgnoreSSLCerts(true)
 
 **CommonRequest调用示例**
 
-RPC方式调用示例接口信息：产品（apigateway）、接口（DescribeApiGroups）、版本（2016-07-14）。 示例代码如下： 实时计算（流计算）
+RPC方式调用示例接口信息：产品（apigateway）、接口（DescribeApiGroups）、版本（2016-07-14）。 示例代码如下： 调用专有云API
 
 ```java
 package main import (
@@ -591,7 +783,7 @@ package main import (
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -635,19 +827,22 @@ ey Secret>")
     request.Headers["x-acs-organizationid"] = "<your-OrganizationID>"
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
     // request.Headers["x-acs-instanceid"] = "<your-InstanceID>"
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
-    fmt.Print(response.GetHttpContentString())
-}
 ```
 
-ROA调用示例接口信息：产品（CR）接口（GetNamespaceList）版本（2016-06-07）。 调用示例如下： 实时计算（流计算）
+`}`
+
+```
+    fmt.Print(response.GetHttpContentString())
+```
+
+`}` ROA调用示例接口信息：产品（CR）接口（GetNamespaceList）版本（2016-06-07）。 调用示例如下： 调用专有云API
 
 ```java
 package main import (
@@ -657,7 +852,7 @@ package main import (
  "os"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -702,37 +897,41 @@ AccessSecret>")
     request.Headers["x-acs-organizationid"] = "<your-OrganizationID>"
 ```
 
-`//` 非必填，修改&删除操作需要
+`//` 非必填，修改`&`删除操作需要
 
 ```
  // request.Headers["x-acs-instanceid"] = "<your-InstanceID>"
  response, err := client.ProcessCommonRequest(request)
  if err != nil {
   panic(err)
- }
- fmt.Print(response.GetHttpContentString())
-}
 ```
+
+`}`
+
+```
+ fmt.Print(response.GetHttpContentString())
+```
+
+`}`
 
 **设置代理**
 
-当您在调用实例时，或许会需要设置代理，您可以通过以下两种方式设置代理。 通过环境变量设置。 环境变量HTTP_PROXY、HTTPS_PROXY或者NO_PROXY。 设置代码如下： 实时计算（流计算）
+当您在调用实例时，或许会需要设置代理，您可以通过以下两种方式设置代理。 通过环境变量设置。 环境变量HTTP_PROXY、HTTPS_PROXY或者NO_PROXY。 设置代码如下： 调用专有云API
 
 ```java
 import (
     "os"
 ```
 
-)
+`)`
 
 ```
 func main(){
  os.Setenv("HTTP_PROXY", "http://x.x.x.x:xxxx") // 设置 HTTP_PROXY 环境变量
  os.Setenv("HTTPS_PROXY", "https://x.x.x.x:xxxx") // 设置 HTTPS_PROXY 环境变量
-}
 ```
 
-通过客户端设置。 设置代码如下： `//` 客户端设置代理优先级比环境变量高
+`}` 通过客户端设置。 设置代码如下： `//` 客户端设置代理优先级比环境变量高
 
 ```
 client.SetHttpProxy("http://x.x.x.x:xxxx") // 设置http代理 client.GetHttpProxy() // 获取http代理 client.SetHttpsProxy("https://x.x.x.x:xxxx") // 设置https代理 client.GetHttpsProxy() // 获取https代理 client.SetNoProxy("127.0.0.1,localhost") // 设置代理白名单 client.GetNoProxy() // 获取代理白名单
@@ -764,18 +963,16 @@ request.SetHTTPSInsecure(true) // 设置请求 HTTPSInsecure 为 true isInsecure
 client.SetHTTPSInsecure(true) // 设置客户端 HTTPSInsecure 为 true isInsecure := client.GetHTTPSInsecure() // 获取客户端 HTTPSInsecure
 ```
 
-### Python版
+### 2.4 Python版
 
-本文为您介绍POP Python SDK调用云产品API的方式。 实时计算（流计算）
+本文为您介绍POP Python SDK调用云产品API的方式。 调用专有云API
 
 **前提条件**
 
 目前专有云推荐使用CommonRequest进行调用，可以在Apsara Uni-manager运营控制台**产品** > **应用服务** >
 **开发者门户**，选择**API****集成** > **SDK****示例**查看推荐SDK版本以及示例代码。
 
-**重要**
-
-不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
+> **重要：** 不建议直接从SDK中心下载SDK到专有云场景下使用，公有云的SDK不一定支持专有云的API，可能存在兼容性问题，请谨慎使用！
 
 **背景信息**
 
@@ -783,13 +980,13 @@ client.SetHTTPSInsecure(true) // 设置客户端 HTTPSInsecure 为 true isInsecu
 
 **CommonRequest调用示例**
 
-调用示例接口信息：产品（ECS）、接口（DescribeInstances）、版本（2014-05-26）。 示例代码如下： 实时计算（流计算）
+调用示例接口信息：产品（ECS）、接口（DescribeInstances）、版本（2014-05-26）。 示例代码如下： 调用专有云API
 
 ```java
 from aliyunsdkcore.client import AcsClient import os from aliyunsdkcore.request import CommonRequest
 ```
 
-# 创建`AcsClient`实例
+`#` 创建`AcsClient`实例
 
 ```
 client = AcsClient(
@@ -798,13 +995,7 @@ client = AcsClient(
     "<your-RegionID>",
 ```
 
-`timeout=1000, #` 设置超时时间 `verify=False, #` 忽略证书或者`verify='<`证书位置`>'`
-
-```
-);
-```
-
-# 和`https`一起使用
+`timeout=1000, #` 设置超时时间 `verify=False, #` 忽略证书或者`verify='<`证书位置`>'` ); `#` 和`https`一起使用
 
 ```python
 # client.set_verify(False)
@@ -813,13 +1004,13 @@ client = AcsClient(
 def describe_api_groups():
 ```
 
-# 创建`request`，并设置参数
+`#` 创建`request`，并设置参数
 
 ```
     request = CommonRequest()
 ```
 
-# 当使用`sts ak`调用`rpc`接口时需要在参数中加上`SecurityToken`字段
+`#` 当使用`sts ak`调用`rpc`接口时需要在参数中加上`SecurityToken`字段
 
 ```bash
     # params = {"PageSize":"10","PageNumber":"1","SecurityToken":"<your-SecurityToken>"};
@@ -828,35 +1019,39 @@ def describe_api_groups():
     headers = {
 ```
 
-# 必填值，调用来源说明
+`#` 必填值，调用来源说明
 
 ```
         "x-acs-caller-sdk-source":"ApiTestDemo",
 ```
 
-# 非必填，企业版`V3.15.0`之前历史版本需要
+`#` 非必填，企业版`V3.15.0`之前历史版本需要
 
 ```
         "x-acs-regionid":"<your-RegionID>",
 ```
 
-# 非必填，资源集`ID`
+`#` 非必填，资源集`ID`
 
 ```
         "x-acs-resourcegroupid":"<your-ResourceGroupID>",
 ```
 
-# 必填，组织`ID`
+`#` 必填，组织`ID`
 
 ```
         "x-acs-organizationid":"<your-OrganizationID>"
 ```
 
-# 非必填，修改&删除操作需要
+`#` 非必填，修改`&`删除操作需要
 
 ```bash
         # "x-acs-instanceid":"<your-InstanceID>"
-    }
+```
+
+`}`
+
+```
     request.set_headers(headers)
     request.set_version("2016-07-14")
     request.set_action_name("DescribeApiGroups")
@@ -865,7 +1060,7 @@ def describe_api_groups():
     request.set_method("POST")
 ```
 
-# 发起`API`请求并显示返回值
+`#` 发起`API`请求并显示返回值
 
 ```python
     response = client.do_action_with_exception(request)
@@ -875,18 +1070,17 @@ if __name__ == '__main__':
     describe_api_groups()
 ```
 
-实时计算（流计算）
+调用专有云API
 
 **设置代理**
 
-调用API时您或许需要通过环境变量设置HTTP_PROXY、HTTPS_PROXY。 示例代码如下：
-# https的代理
+调用API时您或许需要通过环境变量设置HTTP_PROXY、HTTPS_PROXY。 示例代码如下： `# https`的代理
 
 ```
 os.environ["HTTPS_PROXY"] = "http://x.x.x.x:xxxx"
 ```
 
-# http的代理
+`# http`的代理
 
 ```
 os.environ["HTTP_PROXY"] = "https://x.x.x.x:xxxx"
@@ -905,13 +1099,13 @@ from aliyunsdkecs.request.v20140526.DescribeInstancesRequest import DescribeInst
     region_id='<region_id>',  # 地域ID
 ```
 
-)
+`)`
 
 ```
 request = DescribeInstancesRequest() request.set_protocol_type('https') # 使用https client.do_action_with_exception(request)
 ```
 
-**忽略证书**
+> **忽略证书**
 
 **重要**
 
@@ -922,7 +1116,7 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
     region_id='<region_id>',  # 地域ID
 ```
 
-`verify=False #` 忽略对 `SSL` 证书的验证 )
+`verify=False #` 忽略对 `SSL` 证书的验证 `)`
 
 **指定CA证书文件**
 
@@ -932,13 +1126,15 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
     verify='./cacert.pem'  # 证书路径
 ```
 
-) 实时计算（流计算） API
+`)`
 
-## AppManager API
+## 3 AppManager API
 
-### 定义
+### 3.1 定义
 
-#### ValidateSqlScript
+#### 3.1.1 ValidateSqlScript
+
+调用ValidateSqlScript，验证SQL脚本的正确性并返回验证结果。
 
 **请求头**
 
@@ -967,37 +1163,39 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/sqlscripts:v
 | data | String | { "validationResult": "VALIDATION RESUL _ T VALID DDL STATE _ _ _ MENT" } | 详细信息。 |
 | success | Boolean | true | 请求是否成功。 |
 
-**示例**
+请求示例
 
-实时计算（流计算） API 请求示例
-
-```json
-POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/sqlscripts:validate HTTP /1.1 { "RegionId":"cn-wulan-env188-d01", "namespace":"flinkteam", "workspace":"default" }
+```
+POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/sqlscripts:validate HTTP /1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"RegionId":"cn-wulan-env188-d01", "namespace":"flinkteam", "workspace":"default"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{\"validationResult\":\"VALIDATION_RESULT_VALID_DDL_STATEMENT\"}",
  "requestId":"CBC799F0-AS7S-1D30-8A4F-882ED4DD****",
  "success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <data>{&quot;validationResult&quot;:&quot;VALIDATION_RESULT_VALID_DDL_STATEMENT&quot;}</data
 ```
 
->
+`>`
 
 ```xml
 <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-#### UpdateDeploymentDesiredState
+#### 3.1.2 UpdateDeploymentDesiredState
 
 调用UpdateDeploymentDesiredState，更新实时计算中的部署目标状态。
 
@@ -1020,7 +1218,7 @@ PUT /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deplo
 | deploymen tId | String | Path | 是 | d0b3abf0-4bfe-46b1- a324-5b7def580c00 | 作业ID。 |
 | paramsJso n | String | Body | 否 | {"state": "CANCELLED"} | 执行参数，sql脚本。 |
 
-| F | link企业版开 API | 发指南·Ap | pManager |  |  | 实时计算（流计算） |  |
+| F | link企业版开 API | 发指南·Ap | pManager |   |   | 实时计算（流计算） |   |
 |---|---|---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -1032,54 +1230,50 @@ PUT /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deplo
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | requestId | String | CBC799F0-AS7S- 1D30-8A4F- 882ED4DD**** | 请求ID。 |
-|  |  | { "metadata": { "createdAt": "2026- 04-28T01:59:31Z", "workspace": "9cuwr9g7y1hl19", "modifiedAt": "2026-04- 28T02:16:43.68631 7Z", "resourceVersion": 134, "name": "sqlJob", "namespace": "flinkteam", "annotations": { "creator": "23540697665705** **", "resource- plan.has.migrated": "true", "storage.disaster.rp o": "1800", "deployment.source -type": "EDITOR", "deployment.has.de ployed": "false", "deployment.parent. id": "", "modifier": "23540697665705** **", "creatorName": "flinkadmin", "plan.uri": "deployment/7325a c07-e466-4c1b- b598- 311c6f2c103b/resou rcePlan.json", "priority": "5", "priority.class.name ": "flink-p5", "migration.display.e nabled": "false", "deployment.exec- plan.uri.valid": "true", "com.dataartisans.a ppmanager.controll |  |
-
-实时计算（流计算） API
+|   |   | { "metadata": { "createdAt": "2026- 04-28T01:59:31Z", "workspace": "9cuwr9g7y1hl19", "modifiedAt": "2026-04- 28T02:16:43.68631 7Z", "resourceVersion": 134, "name": "sqlJob", "namespace": "flinkteam", "annotations": { "creator": "23540697665705** **", "resource- plan.has.migrated": "true", "storage.disaster.rp o": "1800", "deployment.source -type": "EDITOR", "deployment.has.de ployed": "false", "deployment.parent. id": "", "modifier": "23540697665705** **", "creatorName": "flinkadmin", "plan.uri": "deployment/7325a c07-e466-4c1b- b598- 311c6f2c103b/resou rcePlan.json", "priority": "5", "priority.class.name ": "flink-p5", "migration.display.e nabled": "false", "deployment.exec- plan.uri.valid": "true", "com.dataartisans.a ppmanager.controll |   |
 
 | 参数名称 | 类型 | er.deployment.spec. v示e例rsion": "14", | 说明 |
 |---|---|---|---|
-|  |  | "default.resource- setting.has.migrate d": "true", "deployment.refere nced.deployment.dr aft.history.version": "3", "deployment.exec- plan.uri": "oss://flink- fullymanaged- 9cuwr9g7y1hl19/flin k- jobs/namespaces/fli nkteam/jobs/b3e1db 6b-3cfe-41ac-a156- 48d8820f6d65/exec Plan.json", "deployment.refere nced.deployment.dr aft.id": "cee26b6e- d03b-4a03-a628- a6fe665c****", "taker": " \| vvp-0", "modifierName": "flinkadmin", "deployment.refere nced.deployment.dr aft.history.id": |  |
+|   |   | "default.resource- setting.has.migrate d": "true", "deployment.refere nced.deployment.dr aft.history.version": "3", "deployment.exec- plan.uri": "oss://flink- fullymanaged- 9cuwr9g7y1hl19/flin k- jobs/namespaces/fli nkteam/jobs/b3e1db 6b-3cfe-41ac-a156- 48d8820f6d65/exec Plan.json", "deployment.refere nced.deployment.dr aft.id": "cee26b6e- d03b-4a03-a628- a6fe665c****", "taker": " \| vvp-0", "modifierName": "flinkadmin", "deployment.refere nced.deployment.dr aft.history.id": |   |
 | data | String | "5bfca9e9-a50d- 483b-bad5- 1e1d5315****" }, "id": "7325ac07- e466-4c1b-b598- 311c6f2c****", "labels": {} }, "apiVersion": "v1", "kind": "Deployment", "spec": { "template": { "metadata": { "annotations": { "flink.resource.type" : "fine-grained", "job.resource.total. memory.byte": "3724541952", "job.resource.total.c pu": "0.7", "native.kubernetes. mode": "true", "flink.queryable- state.enabled": "false", "flink.security.ssl.en abled": "false" } }, "spec": { "artifact": { "flinkImageTag": "1.17.0-vvr-8.0.7- manifest-251107", "kind": "SQLSCRIPT", "sqlScript": "CREATE TEMPORARY TABLE `datahub table` _ (strname VARCHAR) with ( | 详细信息。 |
-
-实时计算（流计算） API
 
 | 参数名称 | 类型 | 'connector' = '示da例tagen' | 说明 |
 |---|---|---|---|
-|  |  | ); CREATE TEMPORARY TABLE `kafka table` _ (strname VARCHAR, lens BIGINT) with ( 'connector' = 'print' ); INSERT INTO kafka table _ SELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR LENGTH _ (strname) AS BIGINT) AS lens FROM datahub table;", _ "imageUserDefined" : false, "flinkImageRegistry" : "cn-wulan-env**- d01- reg.docker.intra.env **.shuguang.com:80 /ververica-paas", "versionName": "vvr-8.0.7-flink- 1.17", "flinkImageReposito ry": "vvr", "flinkVersion": "1.17" }, "parallelism": 1, "batchMode": false, "resources": { "jobmanager": { "memory": "2Gi", "cpu": 0.5 }, "taskmanager": { "memory": "3Gi", "cpu": 1.0 } }, "logging": { "log4jLoggers": { "": "INFO" }, "logReservePolicy": { "expirationDays": 7, "openHistory": true }, "loggingProfile": "default" }, "flinkConfiguration": {} } }, "restoreStrategy": { "kind": "FROM SAVEPOINT", _ "allowNonRestoredS tate": false, "savepointId": "425dfb74-2bbb- 4879-8273- 0b087a97****" }, "state": "CANCELLED", "upgradeStrategy": { "kind": "NONE" }, "maxSavepointCreat |  |
-
-实时计算（流计算） API
+|   |   | ); CREATE TEMPORARY TABLE `kafka table` _ (strname VARCHAR, lens BIGINT) with ( 'connector' = 'print' ); INSERT INTO kafka table _ SELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR LENGTH _ (strname) AS BIGINT) AS lens FROM datahub table;", _ "imageUserDefined" : false, "flinkImageRegistry" : "cn-wulan-env**- d01- reg.docker.intra.env **.shuguang.com:80 /ververica-paas", "versionName": "vvr-8.0.7-flink- 1.17", "flinkImageReposito ry": "vvr", "flinkVersion": "1.17" }, "parallelism": 1, "batchMode": false, "resources": { "jobmanager": { "memory": "2Gi", "cpu": 0.5 }, "taskmanager": { "memory": "3Gi", "cpu": 1.0 } }, "logging": { "log4jLoggers": { "": "INFO" }, "logReservePolicy": { "expirationDays": 7, "openHistory": true }, "loggingProfile": "default" }, "flinkConfiguration": {} } }, "restoreStrategy": { "kind": "FROM SAVEPOINT", _ "allowNonRestoredS tate": false, "savepointId": "425dfb74-2bbb- 4879-8273- 0b087a97****" }, "state": "CANCELLED", "upgradeStrategy": { "kind": "NONE" }, "maxSavepointCreat |   |
 
 | 参数名称 | 类型 | ionAttempts": 4, "示m例axJobCreationAtt | 说明 |
 |---|---|---|---|
-|  |  | empts": 1, "deploymentTargetI d": "a89ff052-38c6- 4fd3-9b91- e9c53f8e****" }, "status": { "startTime": 1777342472501, "state": "RUNNING", "endTime": 0 } } |  |
+|   |   | empts": 1, "deploymentTargetI d": "a89ff052-38c6- 4fd3-9b91- e9c53f8e****" }, "status": { "startTime": 1777342472501, "state": "RUNNING", "endTime": 0 } } |   |
 | success | Boolean | true | 请求是否成功。 |
 
 **示例**
 
 请求示例
 
-```json
-PUT /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deploymentId]/state H TTP/1.1 { "RegionId":"cn-wulan-env***-d01", "namespace":"flinkteam", "deploymentId":"d0b3abf0-4bfe-46b1-a324-5b7def580c00", "workspace":"default" }
+```
+PUT /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deploymentId]/state H TTP/1.1
 ```
 
-正常返回示例 `JSON` 格式实时计算（流计算） API
+`{`
 
 ```json
-{
+"RegionId":"cn-wulan-env***-d01", "namespace":"flinkteam", "deploymentId":"d0b3abf0-4bfe-46b1-a324-5b7def580c00", "workspace":"default"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{\"metadata\":{\"createdAt\":\"2026-04-
 28T01:59:31Z\",\"workspace\":\"9cuwr9g7y1hl19\",\"modifiedAt\":\"2026-04- 28T02:16:43.686317Z\",\"resourceVersion\":134,\"name\":\"sqlJob\",\"namespace\":\"flinkteam\", annotations\":{\"creator\":\"23540697665705****\",\"resourceplan.has.migrated\":\"true\",\"storage.disaster.rpo\":\"1800\",\"deployment.source-type\":\" EDITOR\",\"deployment.has.deployed\":\"false\",\"deployment.parent.id\":\"\",\"modifier\":\"23 0697665705****\",\"creatorName\":\"flinkadmin\",\"plan.uri\":\"deployment/7325ac07-e466-4c1b -b598-311c6f2c103b/resourcePlan.json\",\"priority\":\"5\",\"priority.class.name\":\"flink-p5 \",\"migration.display.enabled\":\"false\",\"deployment.execplan.uri.valid\":\"true\",\"com.dataartisans.appmanager.controller.deployment.spec.version\":\ 4\",\"default.resourcesetting.has.migrated\":\"true\",\"deployment.referenced.deployment.draft.history.version\":\"3 ,\"deployment.exec-plan.uri\":\"oss://flink-fullymanaged-9cuwr9g7y1hl19/flink-jobs/namespace s/flinkteam/jobs/b3e1db6b-3cfe-41ac-a156- 48d8820f6d65/execPlan.json\",\"deployment.referenced.deployment.draft.id\":\"cee26b6e-d03b-4 a03-a628-a6fe665c****\",\"taker\":\" | vvp- 0\",\"modifierName\":\"flinkadmin\",\"deployment.referenced.deployment.draft.history.id\":\"5b a9e9-a50d-483b-bad5-1e1d5315****\"},\"id\":\"7325ac07-e466-4c1b-b598- 311c6f2c****\",\"labels\":{}},\"apiVersion\":\"v1\",\"kind\":\"Deployment\",\"spec\":{\"temp late\":{\"metadata\":{\"annotations\":{\"flink.resource.type\":\"finegrained\",\"job.resource.total.memory.byte\":\"3724541952\",\"job.resource.total.cpu\":\"0.7\" "native.kubernetes.mode\":\"true\",\"flink.queryablestate.enabled\":\"false\",\"flink.security.ssl.enabled\":\"false\"}},\"spec\":{\"artifact\": {\"flinkImageTag\":\"1.17.0-vvr-8.0.7-manifest- 251107\",\"kind\":\"SQLSCRIPT\",\"sqlScript\":\"CREATE TEMPORARY TABLE `datahub_table` (strn ame VARCHAR)\with (\ 'connector' = 'datagen'\);\\CREATE TEMPORARY TABLE `kafka_table` (st rname VARCHAR, lens BIGINT)\with (\ 'connector' = 'print'\);\\INSERT INTO kafka_table\SEL ECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR_LENGTH (strname) AS BIGINT) AS lens\FR OM\ datahub_table;\",\"imageUserDefined\":false,\"flinkImageRegistry\":\"cn-wulan-env**-d01 -reg.docker.intra.env**.shuguang.com:80/ververica-paas\",\"versionName\":\"vvr-8.0.7-flink-1 .17\",\"flinkImageRepository\":\"vvr\",\"flinkVersion\":\"1.17\"},\"parallelism\":1,\"batchMod ":false,\"resources\":{\"jobmanager\":{\"memory\":\"2Gi\",\"cpu\":0.5},\"taskmanager\":{\"me mory\":\"3Gi\",\"cpu\":1.0}},\"logging\":{\"log4jLoggers\": {\"\":\"INFO\"},\"logReservePolicy\": {\"expirationDays\":7,\"openHistory\":true},\"loggingProfile\":\"default\"},\"flinkConfigurati \":{}}},\"restoreStrategy\": {\"kind\":\"FROM_SAVEPOINT\",\"allowNonRestoredState\":false,\"savepointId\":\"425dfb74-2bbb -4879-8273-0b087a97****\"},\"state\":\"CANCELLED\",\"upgradeStrategy\": {\"kind\":\"NONE\"},\"maxSavepointCreationAttempts\":4,\"maxJobCreationAttempts\":1,\"deployme TargetId\":\"a89ff052-38c6-4fd3-9b91-e9c53f8e****\"},\"status\": {\"startTime\":1777342472501,\"state\":\"RUNNING\",\"endTime\":0}}",
  "requestId":"CBC799F0-AS7S-1D30-8A4F-882ED4DD****",
  "success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <data>{&quot;metadata&quot;:{&quot;createdAt&quot;:&quot;2026-04- 28T01:59:31Z&quot;,&quot;workspace&quot;:&quot;9cuwr9g7y1hl19&quot;,&quot;modifiedAt&quot;:&qu ;2026-04- 28T02:16:43.686317Z&quot;,&quot;resourceVersion&quot;:134,&quot;name&quot;:&quot;sqlJob&quot;, uot;namespace&quot;:&quot;flinkteam&quot;,&quot;annotations&quot;: {&quot;creator&quot;:&quot;23540697665705****&quot;,&quot;resourceplan.has.migrated&quot;:&quot;true&quot;,&quot;storage.disaster.rpo&quot;:&quot;1800&quot;,&qu ;deployment.source-
 ```
-
-实时计算（流计算） API
 
 ```xml
 type&quot;:&quot;EDITOR&quot;,&quot;deployment.has.deployed&quot;:&quot;false&quot;,&quot;depl ment.parent.id&quot;:&quot;&quot;,&quot;modifier&quot;:&quot;23540697665705****&quot;,&quot;cr torName&quot;:&quot;flinkadmin&quot;,&quot;plan.uri&quot;:&quot;deployment/7325ac07-e466-4c1 b-b598- 311c6f2c103b/resourcePlan.json&quot;,&quot;priority&quot;:&quot;5&quot;,&quot;priority.class.n e&quot;:&quot;flinkp5&quot;,&quot;migration.display.enabled&quot;:&quot;false&quot;,&quot;deployment.exec-plan. uri.valid&quot;:&quot;true&quot;,&quot;com.dataartisans.appmanager.controller.deployment.spec. rsion&quot;:&quot;14&quot;,&quot;default.resourcesetting.has.migrated&quot;:&quot;true&quot;,&quot;deployment.referenced.deployment.draft.histo .version&quot;:&quot;3&quot;,&quot;deployment.exec-plan.uri&quot;:&quot;oss://flink-fullyman aged-9cuwr9g7y1hl19/flink-jobs/namespaces/flinkteam/jobs/b3e1db6b-3cfe-41ac-a156-48d8820f6d6 5/execPlan.json&quot;,&quot;deployment.referenced.deployment.draft.id&quot;:&quot;cee26b6e-d 03b-4a03-a628-a6fe665c****&quot;,&quot;taker&quot;:&quot; | vvp- 0&quot;,&quot;modifierName&quot;:&quot;flinkadmin&quot;,&quot;deployment.referenced.deployment raft.history.id&quot;:&quot;5bfca9e9-a50d-483b-bad5- 1e1d5315****&quot;},&quot;id&quot;:&quot;7325ac07-e466-4c1b-b598- 311c6f2c****&quot;,&quot;labels&quot;: {}},&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;Deployment&quot;,&quot;spec&q t;:{&quot;template&quot;:{&quot;metadata&quot;:{&quot;annotations&quot;: {&quot;flink.resource.type&quot;:&quot;finegrained&quot;,&quot;job.resource.total.memory.byte&quot;:&quot;3724541952&quot;,&quot;job.reso ce.total.cpu&quot;:&quot;0.7&quot;,&quot;native.kubernetes.mode&quot;:&quot;true&quot;,&quot;f nk.queryablestate.enabled&quot;:&quot;false&quot;,&quot;flink.security.ssl.enabled&quot;:&quot;false&quot; ,&quot;spec&quot;:{&quot;artifact&quot;:{&quot;flinkImageTag&quot;:&quot;1.17.0-vvr-8.0.7manifest- 251107&quot;,&quot;kind&quot;:&quot;SQLSCRIPT&quot;,&quot;sqlScript&quot;:&quot;CREATE TEMPO RARY TABLE `datahub_table` (strname VARCHAR)with ( &#x27;connector&#x27; = &#x27;datagen&
@@ -1087,9 +1281,9 @@ type&quot;:&quot;EDITOR&quot;,&quot;deployment.has.deployed&quot;:&quot;false&qu
 nnector&#x27; = &#x27;print&#x27;);INSERT INTO kafka_tableSELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR_LENGTH (strname) AS BIGINT) AS lensFROM datahub_table;&quot;,&quot;imageUserDefined&quot;:false,&quot;flinkImageRegistry&quot;:&quot;c wulan-env**-d01-reg.docker.intra.env**.shuguang.com:80/ververicapaas&quot;,&quot;versionName&quot;:&quot;vvr-8.0.7-flink- 1.17&quot;,&quot;flinkImageRepository&quot;:&quot;vvr&quot;,&quot;flinkVersion&quot;:&quot;1.1 quot;},&quot;parallelism&quot;:1,&quot;batchMode&quot;:false,&quot;resources&quot;:{&quot;jo bmanager&quot;: {&quot;memory&quot;:&quot;2Gi&quot;,&quot;cpu&quot;:0.5},&quot;taskmanager&quot;:{&quot;memo ry&quot;:&quot;3Gi&quot;,&quot;cpu&quot;:1.0}},&quot;logging&quot;: {&quot;log4jLoggers&quot;:{&quot;&quot;:&quot;INFO&quot;},&quot;logReservePolicy&quot;:{&quo t;expirationDays&quot;:7,&quot;openHistory&quot;:true},&quot;loggingProfile&quot;:&quot;defaul quot;},&quot;flinkConfiguration&quot;:{}}},&quot;restoreStrategy&quot;: {&quot;kind&quot;:&quot;FROM_SAVEPOINT&quot;,&quot;allowNonRestoredState&quot;:false,&quot;sav ointId&quot;:&quot;425dfb74-2bbb-4879-8273- 0b087a97****&quot;},&quot;state&quot;:&quot;CANCELLED&quot;,&quot;upgradeStrategy&quot;:{&qu ot;kind&quot;:&quot;NONE&quot;},&quot;maxSavepointCreationAttempts&quot;:4,&quot;maxJobCreatio ttempts&quot;:1,&quot;deploymentTargetId&quot;:&quot;a89ff052-38c6-4fd3-9b91-e9c53f8e****&qu ot;},&quot;status&quot;: {&quot;startTime&quot;:1777342472501,&quot;state&quot;:&quot;RUNNING&quot;,&quot;endTime&quot; }}</data> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-#### UpdateDeployment
+#### 3.1.3 UpdateDeployment
 
-实时计算（流计算） API
+调用UpdateDeployment，更新已部署作业。
 
 **请求头**
 
@@ -1108,20 +1302,16 @@ PUT /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deplo
 | RegionId | String | Host | 是 | cn-wulan-env***-d01 | Region ID。 |
 | namespac e | String | Path | 是 | flinkteam | 作业所在的项目空间名称。 |
 | deploymen tId | String | Path | 是 | d0b3abf0-4bfe-46b1- a324-5b7def580c00 | 作业ID。 |
-|  |  |  |  | { "metadata": { "id": "7325ac07-e466-4c1b- b598-311c6f2c103b", "name": "sqlJob", "namespace": "flinkteam", "workspace": "9cuwr9g7y1hl19", "createdAt": "2026-04- 28T01:59:31Z", "modifiedAt": "2026-04- 28T02:07:18Z", "labels": {}, "annotations": { "creator": "235406976657057054", "resource- plan.has.migrated": "true", "storage.disaster.rpo": "1800", "deployment.has.deploye d": "false", "deployment.source- type": "EDITOR", "deployment.parent.id": "", "modifier": "235406976657057054", "creatorName": "flinkadmin", "plan.uri": "deployment/7325ac07- e466-4c1b-b598- 311c6f2c103b/resourcePl an.json", "priority": "5", "priority.class.name": "flink-p5", "migration.display.enable d": "false", "com.dataartisans.appma nager.controller.deploym ent.spec.version": "5", "default.resource- setting.has.migrated": |  |
-
-实时计算（流计算） API
+|   |   |   |   | { "metadata": { "id": "7325ac07-e466-4c1b- b598-311c6f2c103b", "name": "sqlJob", "namespace": "flinkteam", "workspace": "9cuwr9g7y1hl19", "createdAt": "2026-04- 28T01:59:31Z", "modifiedAt": "2026-04- 28T02:07:18Z", "labels": {}, "annotations": { "creator": "235406976657057054", "resource- plan.has.migrated": "true", "storage.disaster.rpo": "1800", "deployment.has.deploye d": "false", "deployment.source- type": "EDITOR", "deployment.parent.id": "", "modifier": "235406976657057054", "creatorName": "flinkadmin", "plan.uri": "deployment/7325ac07- e466-4c1b-b598- 311c6f2c103b/resourcePl an.json", "priority": "5", "priority.class.name": "flink-p5", "migration.display.enable d": "false", "com.dataartisans.appma nager.controller.deploym ent.spec.version": "5", "default.resource- setting.has.migrated": |   |
 
 | 参数名称 | 类型 | 位置 | 是否必选 | "true", "示de例ployment.referenced.d | 说明 |
 |---|---|---|---|---|---|
-|  |  |  |  | eployment.draft.history.v ersion": "3", "deployment.referenced.d eployment.draft.id": "cee26b6e-d03b-4a03- a628-a6fe665c525e", "modifierName": "flinkadmin", "taker": " \| vvp-0", "deployment.referenced.d eployment.draft.history.id ": "5bfca9e9-a50d-483b- bad5-1e1d5315acaf", "one-time.retry": "false", "stop-with- savepoint.enabled": false }, "resourceVersion": 9 }, "spec": { "state": "SUSPENDED", "upgradeStrategy": { "kind": "NONE" }, "restoreStrategy": { "kind": "LATEST STATE" _ }, "deploymentTargetId": |  |
+|   |   |   |   | eployment.draft.history.v ersion": "3", "deployment.referenced.d eployment.draft.id": "cee26b6e-d03b-4a03- a628-a6fe665c525e", "modifierName": "flinkadmin", "taker": " \| vvp-0", "deployment.referenced.d eployment.draft.history.id ": "5bfca9e9-a50d-483b- bad5-1e1d5315acaf", "one-time.retry": "false", "stop-with- savepoint.enabled": false }, "resourceVersion": 9 }, "spec": { "state": "SUSPENDED", "upgradeStrategy": { "kind": "NONE" }, "restoreStrategy": { "kind": "LATEST STATE" _ }, "deploymentTargetId": |   |
 | paramsJso n | String | Body | 否 | "a89ff052-38c6-4fd3- 9b91-e9c53f8ee019", "maxSavepointCreationAt tempts": 4, "maxJobCreationAttempts ": 1, "template": { "metadata": { "annotations": { "flink.resource.type": "fine-grained", "job.resource.total.memor y.byte": "0", "job.resource.total.cpu": "0.0", "native.kubernetes.mode" : "true", "flink.queryable- state.enabled": "false", "flink.security.ssl.enabled ": "false" } }, "spec": { "artifact": { "kind": "SQLSCRIPT", "versionName": "vvr- 8.0.7-flink-1.17", "imageUserDefined": false, "sqlScript": "CREATE TEMPORARY TABLE `datahub table` _ (strname VARCHAR) with ( 'connector' = 'datagen' ); CREATE TEMPORARY TABLE `kafka table` _ (strname VARCHAR, lens BIGINT) with ( 'connector' = 'print' ); INSERT INTO kafka table _ SELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR LENGTH (strname) _ AS BIGINT) AS lens | 执行参数，sql脚本。 |
-
-实时计算（流计算） API
 
 | 参数名称 | 类型 | 位置 | 是否必选 | FROM d示a例tahub table;", _ | 说明 |
 |---|---|---|---|---|---|
-|  |  |  |  | "flinkVersion": "1.17", "flinkImageTag": "1.17.0- vvr-8.0.7-manifest- 251107", "flinkImageRegistry": "cn- wulan-env**-d01- reg.docker.intra.env**.sh uguang.com:80/ververica- paas", "flinkImageRepository": "vvr" }, "parallelism": 1, "resources": { "jobmanager": { "memory": "2Gi", "cpu": 0.5 }, "taskmanager": { "memory": "3Gi", "cpu": 1.0 } }, "flinkConfiguration": {}, "logging": { "log4jLoggers": { "": "INFO" }, "logReservePolicy": { "expirationDays": 7, "openHistory": true }, "loggingProfile": "default" }, "batchMode": false } } }, "status": { "state": "SUSPENDED", "startTime": 1777341571990, "endTime": 0 } } |  |
+|   |   |   |   | "flinkVersion": "1.17", "flinkImageTag": "1.17.0- vvr-8.0.7-manifest- 251107", "flinkImageRegistry": "cn- wulan-env**-d01- reg.docker.intra.env**.sh uguang.com:80/ververica- paas", "flinkImageRepository": "vvr" }, "parallelism": 1, "resources": { "jobmanager": { "memory": "2Gi", "cpu": 0.5 }, "taskmanager": { "memory": "3Gi", "cpu": 1.0 } }, "flinkConfiguration": {}, "logging": { "log4jLoggers": { "": "INFO" }, "logReservePolicy": { "expirationDays": 7, "openHistory": true }, "loggingProfile": "default" }, "batchMode": false } } }, "status": { "state": "SUSPENDED", "startTime": 1777341571990, "endTime": 0 } } |   |
 | workspace | String | Path | 是 | default | 作业所在的工作空间ID。您可以通过以下任意一种方式获取： 通过ListNamespaces获取。 在Flink全托管开发控制台工作空间详情中获取。 |
 
 **返回数据**
@@ -1129,53 +1319,49 @@ PUT /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deplo
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | requestId | String | CBC799F0-AS7S- 1D30-8A4F- 882ED4DD**** | 请求ID。 |
-|  |  | { "metadata": { "createdAt": "2026- 04-24T03:47:01Z", "workspace": "9cuwr9g7y1hl19", "modifiedAt": "2026-04- 24T03:56:19.55614 7Z", "resourceVersion": 134, "name": "sqlJob", "namespace": "flinkteam", "annotations": { |  |
-
-实时计算（流计算） API
+|   |   | { "metadata": { "createdAt": "2026- 04-24T03:47:01Z", "workspace": "9cuwr9g7y1hl19", "modifiedAt": "2026-04- 24T03:56:19.55614 7Z", "resourceVersion": 134, "name": "sqlJob", "namespace": "flinkteam", "annotations": { |   |
 
 | 参数名称 | 类型 | "storage.disaster.rp o示":例 "1800", | 说明 |
 |---|---|---|---|
-|  |  | "deployment.source -type": "EDITOR", "modifier": "235406976657057 054", "creatorName": "flinkadmin", "one- time.retry": "false", "priority.class.name ": "flink-p5", "deployment.exec- plan.uri.valid": "true", "default.resource- setting.has.migrate d": "true", "deployment.exec- plan.uri": "oss://flink- fullymanaged- 9cuwr9g7y1hl19/flin k- jobs/namespaces/fli nkteam/jobs/f736bb d6-c9cf-48ab-973a- 9653bb0f8c0a/exec Plan.json", "deployment.refere nced.deployment.dr aft.id": "cee26b6e- d03b-4a03-a628- a6fe665c525e", "resources.from.job. has.migrated": "true", "taker": " \| vvp-0", "creator": "235406976657057 054", "resource- plan.has.migrated": "true", "restore- from.savepoint-id": "5cea0d88-303d- 44e5-a96e- 47f7217723d7", "stop-with- savepoint.enabled": "false", "deployment.has.de ployed": "false", "deployment.parent. id": "", "plan.uri": "deployment/a3d88 b2a-e076-4491- 86f2- 5a81ea4c7300/reso urcePlan.json", "priority": "5", "migration.display.e nabled": "false", "com.dataartisans.a ppmanager.controll er.deployment.spec. version": "11", "deployment.refere nced.deployment.dr aft.history.version": "1", "modifierName": |  |
-
-实时计算（流计算） API
+|   |   | "deployment.source -type": "EDITOR", "modifier": "235406976657057 054", "creatorName": "flinkadmin", "one- time.retry": "false", "priority.class.name ": "flink-p5", "deployment.exec- plan.uri.valid": "true", "default.resource- setting.has.migrate d": "true", "deployment.exec- plan.uri": "oss://flink- fullymanaged- 9cuwr9g7y1hl19/flin k- jobs/namespaces/fli nkteam/jobs/f736bb d6-c9cf-48ab-973a- 9653bb0f8c0a/exec Plan.json", "deployment.refere nced.deployment.dr aft.id": "cee26b6e- d03b-4a03-a628- a6fe665c525e", "resources.from.job. has.migrated": "true", "taker": " \| vvp-0", "creator": "235406976657057 054", "resource- plan.has.migrated": "true", "restore- from.savepoint-id": "5cea0d88-303d- 44e5-a96e- 47f7217723d7", "stop-with- savepoint.enabled": "false", "deployment.has.de ployed": "false", "deployment.parent. id": "", "plan.uri": "deployment/a3d88 b2a-e076-4491- 86f2- 5a81ea4c7300/reso urcePlan.json", "priority": "5", "migration.display.e nabled": "false", "com.dataartisans.a ppmanager.controll er.deployment.spec. version": "11", "deployment.refere nced.deployment.dr aft.history.version": "1", "modifierName": |   |
 
 | 参数名称 | 类型 | "flinkadmin", "示de例ployment.refere | 说明 |
 |---|---|---|---|
 | data | Integer | nced.deployment.dr aft.history.id": "561a6a3d-7858- 4056-acfb- ad0cdec09e55" }, "id": "a3d88b2a- e076-4491-86f2- 5a81ea4c7300", "labels": {} }, "apiVersion": "v1", "kind": "Deployment", "spec": { "template": { "metadata": { "annotations": { "flink.resource.type" : "fine-grained", "job.resource.total. memory.byte": "0", "job.resource.total.c pu": "0.0", "native.kubernetes. mode": "true", "flink.queryable- state.enabled": "false", "flink.security.ssl.en abled": "false" } }, "spec": { "artifact": { "flinkImageTag": "1.17.0-vvr-8.0.7- manifest-251107", "kind": "SQLSCRIPT", "sqlScript": "CREATE TEMPORARY TABLE `datahub table` _ (strname VARCHAR) with ( 'connector' = 'datagen' ); CREATE TEMPORARY TABLE `kafka table` _ (strname VARCHAR, lens BIGINT) with ( 'connector' = 'print' ); INSERT INTO kafka table _ SELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR LENGTH _ (strname) AS BIGINT) AS lens FROM datahub table;", _ "imageUserDefined" : false, "flinkImageRegistry" : "cn-wulan-env35- d01- reg.docker.intra.env 35.shuguang.com:8 | 详细信息。 |
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 0/ververica-paas", "示ve例rsionName": | 说明 |
 |---|---|---|---|
-|  |  | "vvr-8.0.7-flink- 1.17", "flinkImageReposito ry": "vvr", "flinkVersion": "1.17" }, "parallelism": 1, "batchMode": false, "resources": { "jobmanager": { "memory": "2Gi", "cpu": 0.5 }, "taskmanager": { "memory": "3Gi", "cpu": 1.0 } }, "logging": { "log4jLoggers": { "": "INFO" }, "logReservePolicy": { "expirationDays": 7, "openHistory": true }, "loggingProfile": "default" }, "flinkConfiguration": {} } }, "restoreStrategy": { "kind": "FROM SAVEPOINT", _ "allowNonRestoredS tate": false, "savepointId": "5cea0d88-303d- 44e5-a96e- 47f7217723d7" }, "state": "SUSPENDED", "upgradeStrategy": { "kind": "NONE" }, "maxSavepointCreat ionAttempts": 4, "maxJobCreationAtt empts": 1, "deploymentTargetI d": "a89ff052-38c6- 4fd3-9b91- e9c53f8ee019" }, "status": { "startTime": 1777002791356, "state": "SUSPENDED", "endTime": 0 } } |  |
+|   |   | "vvr-8.0.7-flink- 1.17", "flinkImageReposito ry": "vvr", "flinkVersion": "1.17" }, "parallelism": 1, "batchMode": false, "resources": { "jobmanager": { "memory": "2Gi", "cpu": 0.5 }, "taskmanager": { "memory": "3Gi", "cpu": 1.0 } }, "logging": { "log4jLoggers": { "": "INFO" }, "logReservePolicy": { "expirationDays": 7, "openHistory": true }, "loggingProfile": "default" }, "flinkConfiguration": {} } }, "restoreStrategy": { "kind": "FROM SAVEPOINT", _ "allowNonRestoredS tate": false, "savepointId": "5cea0d88-303d- 44e5-a96e- 47f7217723d7" }, "state": "SUSPENDED", "upgradeStrategy": { "kind": "NONE" }, "maxSavepointCreat ionAttempts": 4, "maxJobCreationAtt empts": 1, "deploymentTargetI d": "a89ff052-38c6- 4fd3-9b91- e9c53f8ee019" }, "status": { "startTime": 1777002791356, "state": "SUSPENDED", "endTime": 0 } } |   |
 | success | Boolean | true | 请求是否成功。 |
 
 **示例**
 
-请求示例实时计算（流计算） API
+请求示例
 
-```json
-PUT /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deploymentId]/patch H TTP/1.1 { "RegionId":"cn-wulan-env***-d01", "namespace":"flinkteam", "deploymentId":"d0b3abf0-4bfe-46b1-a324-5b7def580c00", "workspace":"default" }
+```
+PUT /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deploymentId]/patch H TTP/1.1
 ```
 
-正常返回示例 `JSON` 格式实时计算（流计算） API
+`{`
 
 ```json
-{
+"RegionId":"cn-wulan-env***-d01", "namespace":"flinkteam", "deploymentId":"d0b3abf0-4bfe-46b1-a324-5b7def580c00", "workspace":"default"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{\"metadata\":{\"createdAt\":\"2026-04-
 24T03:47:01Z\",\"workspace\":\"9cuwr9g7y1hl19\",\"modifiedAt\":\"2026-04- 24T03:56:19.556147Z\",\"resourceVersion\":134,\"name\":\"sqlJob\",\"namespace\":\"flinkteam\", annotations\":{\"storage.disaster.rpo\":\"1800\",\"deployment.sourcetype\":\"EDITOR\",\"modifier\":\"235406976657057054\",\"creatorName\":\"flinkadmin\",\"one-t ime.retry\":\"false\",\"priority.class.name\":\"flink-p5\",\"deployment.exec-plan.uri.valid\ ":\"true\",\"default.resource-setting.has.migrated\":\"true\",\"deployment.execplan.uri\":\"oss://flink-fullymanaged-9cuwr9g7y1hl19/flinkjobs/namespaces/flinkteam/jobs/f736bbd6-c9cf-48ab-973a- 9653bb0f8c0a/execPlan.json\",\"deployment.referenced.deployment.draft.id\":\"cee26b6e-d03b-4 a03-a628-a6fe665c525e\",\"resources.from.job.has.migrated\":\"true\",\"taker\":\" | vvp- 0\",\"creator\":\"235406976657057054\",\"resource-plan.has.migrated\":\"true\",\"restore-fro m.savepoint-id\":\"5cea0d88-303d-44e5-a96e-47f7217723d7\",\"stop-withsavepoint.enabled\":\"false\",\"deployment.has.deployed\":\"false\",\"deployment.parent.id\":\ ",\"plan.uri\":\"deployment/a3d88b2a-e076-4491-86f2- 5a81ea4c7300/resourcePlan.json\",\"priority\":\"5\",\"migration.display.enabled\":\"false\",\" m.dataartisans.appmanager.controller.deployment.spec.version\":\"11\",\"deployment.referenced. ployment.draft.history.version\":\"1\",\"modifierName\":\"flinkadmin\",\"deployment.referenced eployment.draft.history.id\":\"561a6a3d-7858-4056-acfb-ad0cdec09e55\"},\"id\":\"a3d88b2a-e07 6-4491-86f2-5a81ea4c7300\",\"labels\": {}},\"apiVersion\":\"v1\",\"kind\":\"Deployment\",\"spec\":{\"template\":{\"metadata\":{\"an notations\":{\"flink.resource.type\":\"finegrained\",\"job.resource.total.memory.byte\":\"0\",\"job.resource.total.cpu\":\"0.0\",\"native ubernetes.mode\":\"true\",\"flink.queryablestate.enabled\":\"false\",\"flink.security.ssl.enabled\":\"false\"}},\"spec\":{\"artifact\": {\"flinkImageTag\":\"1.17.0-vvr-8.0.7-manifest- 251107\",\"kind\":\"SQLSCRIPT\",\"sqlScript\":\"CREATE TEMPORARY TABLE `datahub_table` (strn ame VARCHAR)\with (\ 'connector' = 'datagen'\);\\CREATE TEMPORARY TABLE `kafka_table` (st rname VARCHAR, lens BIGINT)\with (\ 'connector' = 'print'\);\\INSERT INTO kafka_table\SEL ECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR_LENGTH (strname) AS BIGINT) AS lens\FR OM\ datahub_table;\",\"imageUserDefined\":false,\"flinkImageRegistry\":\"cn-wulan-env35-d01 -reg.docker.intra.env35.shuguang.com:80/ververica-paas\",\"versionName\":\"vvr-8.0.7-flink-1 .17\",\"flinkImageRepository\":\"vvr\",\"flinkVersion\":\"1.17\"},\"parallelism\":1,\"batchMod ":false,\"resources\":{\"jobmanager\":{\"memory\":\"2Gi\",\"cpu\":0.5},\"taskmanager\":{\"me mory\":\"3Gi\",\"cpu\":1.0}},\"logging\":{\"log4jLoggers\": {\"\":\"INFO\"},\"logReservePolicy\": {\"expirationDays\":7,\"openHistory\":true},\"loggingProfile\":\"default\"},\"flinkConfigurati \":{}}},\"restoreStrategy\": {\"kind\":\"FROM_SAVEPOINT\",\"allowNonRestoredState\":false,\"savepointId\":\"5cea0d88-303d -44e5-a96e-47f7217723d7\"},\"state\":\"SUSPENDED\",\"upgradeStrategy\": {\"kind\":\"NONE\"},\"maxSavepointCreationAttempts\":4,\"maxJobCreationAttempts\":1,\"deployme TargetId\":\"a89ff052-38c6-4fd3-9b91-e9c53f8ee019\"},\"status\": {\"startTime\":1777002791356,\"state\":\"SUSPENDED\",\"endTime\":0}}",
  "requestId":"CBC799F0-AS7S-1D30-8A4F-882ED4DD****",
  "success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <data>{&quot;metadata&quot;:{&quot;createdAt&quot;:&quot;2026-04- 24T03:47:01Z&quot;,&quot;workspace&quot;:&quot;9cuwr9g7y1hl19&quot;,&quot;modifiedAt&quot;:&qu ;2026-04- 24T03:56:19.556147Z&quot;,&quot;resourceVersion&quot;:134,&quot;name&quot;:&quot;sqlJob&quot;, uot;namespace&quot;:&quot;flinkteam&quot;,&quot;annotations&quot;: {&quot;storage.disaster.rpo&quot;:&quot;1800&quot;,&quot;deployment.source-type&quot;:&quot;
 ```
-
-实时计算（流计算） API
 
 ```xml
 EDITOR&quot;,&quot;modifier&quot;:&quot;235406976657057054&quot;,&quot;creatorName&quot;:&quot linkadmin&quot;,&quot;onetime.retry&quot;:&quot;false&quot;,&quot;priority.class.name&quot;:&quot;flink-p5&quot;,&quo t;deployment.exec-plan.uri.valid&quot;:&quot;true&quot;,&quot;default.resource-setting.has.m igrated&quot;:&quot;true&quot;,&quot;deployment.exec-plan.uri&quot;:&quot;oss://flink-fullym anaged-9cuwr9g7y1hl19/flink-jobs/namespaces/flinkteam/jobs/f736bbd6-c9cf-48ab-973a- 9653bb0f8c0a/execPlan.json&quot;,&quot;deployment.referenced.deployment.draft.id&quot;:&quot;c 26b6e-d03b-4a03-a628a6fe665c525e&quot;,&quot;resources.from.job.has.migrated&quot;:&quot;true&quot;,&quot;taker&qu ;:&quot; | vvp-0&quot;,&quot;creator&quot;:&quot;235406976657057054&quot;,&quot;resource-pla n.has.migrated&quot;:&quot;true&quot;,&quot;restore-from.savepoint-id&quot;:&quot;5cea0d88-3 03d-44e5-a96e-47f7217723d7&quot;,&quot;stop-withsavepoint.enabled&quot;:&quot;false&quot;,&quot;deployment.has.deployed&quot;:&quot;false&quot &quot;deployment.parent.id&quot;:&quot;&quot;,&quot;plan.uri&quot;:&quot;deployment/a3d88b2ae076-4491-86f2- 5a81ea4c7300/resourcePlan.json&quot;,&quot;priority&quot;:&quot;5&quot;,&quot;migration.displa enabled&quot;:&quot;false&quot;,&quot;com.dataartisans.appmanager.controller.deployment.spec.v sion&quot;:&quot;11&quot;,&quot;deployment.referenced.deployment.draft.history.version&quot;:& ot;1&quot;,&quot;modifierName&quot;:&quot;flinkadmin&quot;,&quot;deployment.referenced.deploym t.draft.history.id&quot;:&quot;561a6a3d-7858-4056-acfbad0cdec09e55&quot;},&quot;id&quot;:&quot;a3d88b2a-e076-4491-86f2- 5a81ea4c7300&quot;,&quot;labels&quot;: {}},&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;Deployment&quot;,&quot;spec&q t;:{&quot;template&quot;:{&quot;metadata&quot;:{&quot;annotations&quot;: {&quot;flink.resource.type&quot;:&quot;finegrained&quot;,&quot;job.resource.total.memory.byte&quot;:&quot;0&quot;,&quot;job.resource.tota cpu&quot;:&quot;0.0&quot;,&quot;native.kubernetes.mode&quot;:&quot;true&quot;,&quot;flink.quer blestate.enabled&quot;:&quot;false&quot;,&quot;flink.security.ssl.enabled&quot;:&quot;false&quot; ,&quot;spec&quot;:{&quot;artifact&quot;:{&quot;flinkImageTag&quot;:&quot;1.17.0-vvr-8.0.7manifest- 251107&quot;,&quot;kind&quot;:&quot;SQLSCRIPT&quot;,&quot;sqlScript&quot;:&quot;CREATE TEMPO RARY TABLE `datahub_table` (strname VARCHAR)with ( &#x27;connector&#x27; = &#x27;datagen&
@@ -1183,9 +1369,7 @@ EDITOR&quot;,&quot;modifier&quot;:&quot;235406976657057054&quot;,&quot;creatorNa
 nnector&#x27; = &#x27;print&#x27;);INSERT INTO kafka_tableSELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR_LENGTH (strname) AS BIGINT) AS lensFROM datahub_table;&quot;,&quot;imageUserDefined&quot;:false,&quot;flinkImageRegistry&quot;:&quot;c wulan-env35-d01-reg.docker.intra.env35.shuguang.com:80/ververicapaas&quot;,&quot;versionName&quot;:&quot;vvr-8.0.7-flink- 1.17&quot;,&quot;flinkImageRepository&quot;:&quot;vvr&quot;,&quot;flinkVersion&quot;:&quot;1.1 quot;},&quot;parallelism&quot;:1,&quot;batchMode&quot;:false,&quot;resources&quot;:{&quot;jo bmanager&quot;: {&quot;memory&quot;:&quot;2Gi&quot;,&quot;cpu&quot;:0.5},&quot;taskmanager&quot;:{&quot;memo ry&quot;:&quot;3Gi&quot;,&quot;cpu&quot;:1.0}},&quot;logging&quot;: {&quot;log4jLoggers&quot;:{&quot;&quot;:&quot;INFO&quot;},&quot;logReservePolicy&quot;:{&quo t;expirationDays&quot;:7,&quot;openHistory&quot;:true},&quot;loggingProfile&quot;:&quot;defaul quot;},&quot;flinkConfiguration&quot;:{}}},&quot;restoreStrategy&quot;: {&quot;kind&quot;:&quot;FROM_SAVEPOINT&quot;,&quot;allowNonRestoredState&quot;:false,&quot;sav ointId&quot;:&quot;5cea0d88-303d-44e5-a96e- 47f7217723d7&quot;},&quot;state&quot;:&quot;SUSPENDED&quot;,&quot;upgradeStrategy&quot;:{&qu ot;kind&quot;:&quot;NONE&quot;},&quot;maxSavepointCreationAttempts&quot;:4,&quot;maxJobCreatio ttempts&quot;:1,&quot;deploymentTargetId&quot;:&quot;a89ff052-38c6-4fd3-9b91-e9c53f8ee019&qu ot;},&quot;status&quot;: {&quot;startTime&quot;:1777002791356,&quot;state&quot;:&quot;SUSPENDED&quot;,&quot;endTime&quo :0}}</data> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-实时计算（流计算） API
-
-#### ListSessionClusters
+#### 3.1.4 ListSessionClusters
 
 调用ListSessionClusters，列出指定工作区和命名空间下的所有会话集群。
 
@@ -1223,24 +1407,24 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/sessionclusters HT
 GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/sessionclusters HTTP/1.1 &RegionId=cn-wulan-env***-d01 &workspace=default &namespace=flinkteam
 ```
 
-&公共请求参数实时计算（流计算） API 正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{\"metadata\":{},\"apiVersion\":\"v1\",\"kind\":\"SessionClusterList\",\"items\":[]
 }",
  "requestId":"CBC799F0-AS7S-1D30-8A4F-882ED4DD****",
  "success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <data>{&quot;metadata&quot;: {},&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;SessionClusterList&quot;,&quot tems&quot;:[]}</data> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-#### ListSavepoints
+#### 3.1.5 ListSavepoints
+
+调用ListSavepoints，获取作业快照列表。
 
 **请求头**
 
@@ -1264,17 +1448,13 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/savepoints HTTP/1.
 
 **返回数据**
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | data | String | { "metadata": {}, "apiVersion": "v1", "kind": "SavepointList", "items": [{ "metadata": { "createdAt": "2026- 04-24T03:55:16Z", "jobId": "f736bbd6- c9cf-48ab-973a- 9653bb0f8c0a", "workspace": "9cuwr9g7y1hl19", "nativeFormat": false, "modifiedAt": "2026-04- 24T03:55:19Z", "deploymentId": "a3d88b2a-e076- 4491-86f2- 5a81ea4c7300", "origin": "USER REQUEST", _ "resourceVersion": 2, "namespace": "flinkteam", "annotations": { "com.dataartisans.a ppmanager.controll er.deployment.spec. version": "9", "taker": " \| vvp-0" }, "comment": "", "id": "5cea0d88-303d- 44e5-a96e- 47f7217723d7" }, "apiVersion": "v1", "kind": "Savepoint", "spec": { "flinkSavepointId": "fc2e33c1-8132- 516f-2923- 7371060fb449", "savepointLocation": "oss://flink- fullymanaged- 9cuwr9g7y1hl19/flin k- savepoints/namespa ces/flinkteam/deplo yments/a3d88b2a- e076-4491-86f2- 5a81ea4c7300/5cea 0d88-303d-44e5- a96e- 47f7217723d7/save point-f736bb- f467305080c0" }, "status": { "state": "COMPLETED" } }, { "metadata": { "createdAt": "2026- 04-24T03:52:08Z", "jobId": "e5c412be- c160-460a-9d7b- 0b7111c77e15", "workspace": "9 9 7 1hl19" | 详细信息。 |
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | "9cuwr9g7y1hl19", "示na例tiveFormat": false, "modifiedAt": | 说明 |
 |---|---|---|---|
-|  |  | "2026-04- 24T03:52:13Z", "deploymentId": "a3d88b2a-e076- 4491-86f2- 5a81ea4c7300", "origin": "USER REQUEST", _ "resourceVersion": 2, "namespace": "flinkteam", "annotations": { "com.dataartisans.a ppmanager.controll er.deployment.spec. version": "6", "taker": " \| vvp-0" }, "comment": "", "id": "58778df9-5082- 4da3-9890- d531fcc1200d" }, "apiVersion": "v1", "kind": "Savepoint", "spec": { "flinkSavepointId": "3ac331a3-6ef9- d8f7-e3e8- e3d5b2649180", "savepointLocation": "oss://flink- fullymanaged- 9cuwr9g7y1hl19/flin k- savepoints/namespa ces/flinkteam/deplo yments/a3d88b2a- e076-4491-86f2- 5a81ea4c7300/5877 8df9-5082-4da3- 9890- d531fcc1200d/save point-e5c412- 8a27e8210de8" }, "status": { "state": "COMPLETED" } }] } |  |
+|   |   | "2026-04- 24T03:52:13Z", "deploymentId": "a3d88b2a-e076- 4491-86f2- 5a81ea4c7300", "origin": "USER REQUEST", _ "resourceVersion": 2, "namespace": "flinkteam", "annotations": { "com.dataartisans.a ppmanager.controll er.deployment.spec. version": "6", "taker": " \| vvp-0" }, "comment": "", "id": "58778df9-5082- 4da3-9890- d531fcc1200d" }, "apiVersion": "v1", "kind": "Savepoint", "spec": { "flinkSavepointId": "3ac331a3-6ef9- d8f7-e3e8- e3d5b2649180", "savepointLocation": "oss://flink- fullymanaged- 9cuwr9g7y1hl19/flin k- savepoints/namespa ces/flinkteam/deplo yments/a3d88b2a- e076-4491-86f2- 5a81ea4c7300/5877 8df9-5082-4da3- 9890- d531fcc1200d/save point-e5c412- 8a27e8210de8" }, "status": { "state": "COMPLETED" } }] } |   |
 | requestId | String | CBC799F0-AS7S- 1D30-8A4F- 882ED4DD**** | 请求ID。 |
 | success | Boolean | true | 请求是否成功。 |
 
@@ -1286,24 +1466,22 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/savepoints HTTP/1.
 GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/savepoints HTTP/1.1 &RegionId=cn-wulan-env***-d01 &namespace=flinkteam &deploymentId=d0b3abf0-4bfe-46b1-a324-5b7def580c00 &workspace=default
 ```
 
-&公共请求参数实时计算（流计算） API 正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{\"metadata\":{},\"apiVersion\":\"v1\",\"kind\":\"SavepointList\",\"items\":[{\"met
 adata\":{\"createdAt\":\"2026-04-24T03:55:16Z\",\"jobId\":\"f736bbd6-c9cf-48ab-973a-9653bb0f 8c0a\",\"workspace\":\"9cuwr9g7y1hl19\",\"nativeFormat\":false,\"modifiedAt\":\"2026-04-24T0 3:55:19Z\",\"deploymentId\":\"a3d88b2a-e076-4491-86f2- 5a81ea4c7300\",\"origin\":\"USER_REQUEST\",\"resourceVersion\":2,\"namespace\":\"flinkteam\",\ nnotations\": {\"com.dataartisans.appmanager.controller.deployment.spec.version\":\"9\",\"taker\":\" | vvp-0\"},\"comment\":\"\",\"id\":\"5cea0d88-303d-44e5-a96e- 47f7217723d7\"},\"apiVersion\":\"v1\",\"kind\":\"Savepoint\",\"spec\": {\"flinkSavepointId\":\"fc2e33c1-8132-516f-2923- 7371060fb449\",\"savepointLocation\":\"oss://flink-fullymanaged-9cuwr9g7y1hl19/flink-savepoi nts/namespaces/flinkteam/deployments/a3d88b2a-e076-4491-86f2-5a81ea4c7300/5cea0d88-303d- 44e5-a96e-47f7217723d7/savepoint-f736bb-f467305080c0\"},\"status\": {\"state\":\"COMPLETED\"}},{\"metadata\":{\"createdAt\":\"2026-04- 24T03:52:08Z\",\"jobId\":\"e5c412be-c160-460a-9d7b- 0b7111c77e15\",\"workspace\":\"9cuwr9g7y1hl19\",\"nativeFormat\":false,\"modifiedAt\":\"2026- 04-24T03:52:13Z\",\"deploymentId\":\"a3d88b2a-e076-4491-86f2- 5a81ea4c7300\",\"origin\":\"USER_REQUEST\",\"resourceVersion\":2,\"namespace\":\"flinkteam\",\ nnotations\": {\"com.dataartisans.appmanager.controller.deployment.spec.version\":\"6\",\"taker\":\" | vvp-0\"},\"comment\":\"\",\"id\":\"58778df9-5082-4da3-9890d531fcc1200d\"},\"apiVersion\":\"v1\",\"kind\":\"Savepoint\",\"spec\": {\"flinkSavepointId\":\"3ac331a3-6ef9-d8f7-e3e8e3d5b2649180\",\"savepointLocation\":\"oss://flink-fullymanaged-9cuwr9g7y1hl19/flink-savepoi nts/namespaces/flinkteam/deployments/a3d88b2a-e076-4491-86f2-5a81ea4c7300/58778df9-5082- 4da3-9890-d531fcc1200d/savepoint-e5c412-8a27e8210de8\"},\"status\": {\"state\":\"COMPLETED\"}}]}",
  "requestId":"CBC799F0-AS7S-1D30-8A4F-882ED4DD****",
  "success":true
-}
 ```
 
-`XML` 格式实时计算（流计算） API
+`}` `XML` 格式
 
 ```xml
 <data>{&quot;metadata&quot;: {},&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;SavepointList&quot;,&quot;item quot;:[{&quot;metadata&quot;:{&quot;createdAt&quot;:&quot;2026-04- 24T03:55:16Z&quot;,&quot;jobId&quot;:&quot;f736bbd6-c9cf-48ab-973a- 9653bb0f8c0a&quot;,&quot;workspace&quot;:&quot;9cuwr9g7y1hl19&quot;,&quot;nativeFormat&quot;:f se,&quot;modifiedAt&quot;:&quot;2026-04- 24T03:55:19Z&quot;,&quot;deploymentId&quot;:&quot;a3d88b2a-e076-4491-86f2-5a81ea4c7300&quot; ,&quot;origin&quot;:&quot;USER_REQUEST&quot;,&quot;resourceVersion&quot;:2,&quot;namespace&quo :&quot;flinkteam&quot;,&quot;annotations&quot;: {&quot;com.dataartisans.appmanager.controller.deployment.spec.version&quot;:&quot;9&quot;,&quo taker&quot;:&quot; | vvp- 0&quot;},&quot;comment&quot;:&quot;&quot;,&quot;id&quot;:&quot;5cea0d88-303d-44e5-a96e-47f72 17723d7&quot;},&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;Savepoint&quot;,&q t;spec&quot;:{&quot;flinkSavepointId&quot;:&quot;fc2e33c1-8132-516f-2923-7371060fb449&quot;, &quot;savepointLocation&quot;:&quot;oss://flink-fullymanaged-9cuwr9g7y1hl19/flink-savepoints /namespaces/flinkteam/deployments/a3d88b2a-e076-4491-86f2-5a81ea4c7300/5cea0d88-303d-44e5a96e-47f7217723d7/savepoint-f736bb-f467305080c0&quot;},&quot;status&quot;:{&quot;state&quot; :&quot;COMPLETED&quot;}},{&quot;metadata&quot;:{&quot;createdAt&quot;:&quot;2026-04-24T03:52 :08Z&quot;,&quot;jobId&quot;:&quot;e5c412be-c160-460a-9d7b- 0b7111c77e15&quot;,&quot;workspace&quot;:&quot;9cuwr9g7y1hl19&quot;,&quot;nativeFormat&quot;:f se,&quot;modifiedAt&quot;:&quot;2026-04- 24T03:52:13Z&quot;,&quot;deploymentId&quot;:&quot;a3d88b2a-e076-4491-86f2-5a81ea4c7300&quot; ,&quot;origin&quot;:&quot;USER_REQUEST&quot;,&quot;resourceVersion&quot;:2,&quot;namespace&quo :&quot;flinkteam&quot;,&quot;annotations&quot;: {&quot;com.dataartisans.appmanager.controller.deployment.spec.version&quot;:&quot;6&quot;,&quo taker&quot;:&quot; | vvp- 0&quot;},&quot;comment&quot;:&quot;&quot;,&quot;id&quot;:&quot;58778df9-5082-4da3-9890-d531f cc1200d&quot;},&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;Savepoint&quot;,&q t;spec&quot;:{&quot;flinkSavepointId&quot;:&quot;3ac331a3-6ef9-d8f7-e3e8-e3d5b2649180&quot;, &quot;savepointLocation&quot;:&quot;oss://flink-fullymanaged-9cuwr9g7y1hl19/flink-savepoints /namespaces/flinkteam/deployments/a3d88b2a-e076-4491-86f2-5a81ea4c7300/58778df9-5082-4da3- 9890-d531fcc1200d/savepoint-e5c412-8a27e8210de8&quot;},&quot;status&quot;:{&quot;state&quot; :&quot;COMPLETED&quot;}}]}</data> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-#### ListNetworkPolicyIpAddress
+#### 3.1.6 ListNetworkPolicyIpAddress
 
 调用ListNetworkPolicyIpAddress，查询指定网络策略下的所有IP地址列表。
 
@@ -1323,7 +1501,7 @@ GET /flink/namespace/listIp HTTP/1.1
 |---|---|---|---|---|---|
 | RegionId | String | Host | 是 | cn-wulan-env***-d01 | Region ID。 |
 
-| 实时计算（流计 | 算） |  |  | Flink企 | 业版开发指南·AppManager |
+| 实时计算（流计 | 算） |   |   | Flink企 | 业版开发指南·AppManager |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -1348,25 +1526,26 @@ GET /flink/namespace/listIp HTTP/1.1
 GET /flink/namespace/listIp HTTP/1.1 &RegionId=cn-wulan-env***-d01 &name=blinkteam
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":[
-  {
-   "IpAddress":"192.168.XX.XX"
-  }
 ```
 
-`],`
+`{`
+
+```json
+   "IpAddress":"192.168.XX.XX"
+```
+
+`}` `],`
 
 ```json
  "success":true,
  "requestId":"CBC799F0-AS7S-1D30-8A4F-882ED4DD****"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <data>
@@ -1374,9 +1553,9 @@ GET /flink/namespace/listIp HTTP/1.1 &RegionId=cn-wulan-env***-d01 &name=blinkte
 </data> <success>true</success> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId>
 ```
 
-实时计算（流计算） API
+#### 3.1.7 ListNamespaces
 
-#### ListNamespaces
+调用ListNamespaces，列出指定地域下的所有命名空间。
 
 **请求头**
 
@@ -1402,32 +1581,30 @@ GET /pop/namespaces/v1/namespaces HTTP/1.1
 | data | String | { "@type": "type.googleapis.co m/vvp.namespaces. v1.ListNamespacesR esponse", "namespaces": [{ "roleBindings": [{ "role": "owner", "members": ["user:23540697665 705****"] }, { "role": "owner", "members": ["user:16640766570 0****"] }], "cluster": "", "isHa": false, "workspace": "9cuwr9g7y1hl19", "cpuBrand": "Intel", "previewSessionClus terName": "", "createTime": "2026-04- 24T03:33:43.68062 6Z", "lifecyclePhase": "LIFECYCLE PHASE _ _ ACTIVE", "name": "namespaces/flinkte am", "labels": {} }] } | 详细信息。 |
 | success | Boolean | true | 请求是否成功。 |
 
-**示例**
-
-实时计算（流计算） API 请求示例
+请求示例
 
 ```
 GET /pop/namespaces/v1/namespaces HTTP/1.1 &RegionId=cn-wulan-env***-d01
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"
 {\"@type\":\"type.googleapis.com/vvp.namespaces.v1.ListNamespacesResponse\",\"namespaces\":[ {\"roleBindings\":[{\"role\":\"owner\",\"members\":[\"user:23540697665705****\"]},{\"role\": \"owner\",\"members\": [\"user:166407665700****\"]}],\"cluster\":\"\",\"isHa\":false,\"workspace\":\"9cuwr9g7y1hl19\" "cpuBrand\":\"Intel\",\"previewSessionClusterName\":\"\",\"createTime\":\"2026-04-24T03:33:4 3.680626Z\",\"lifecyclePhase\":\"LIFECYCLE_PHASE_ACTIVE\",\"name\":\"namespaces/flinkteam\",\" bels\":{}}]}",
  "requestId":"CBC799F0-AS7S-1D30-8A4F-882ED4DD****",
  "success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <data> {&quot;@type&quot;:&quot;type.googleapis.com/vvp.namespaces.v1.ListNamespacesResponse&quot;,&q t;namespaces&quot;:[{&quot;roleBindings&quot;: [{&quot;role&quot;:&quot;owner&quot;,&quot;members&quot;: [&quot;user:23540697665705****&quot;]}, {&quot;role&quot;:&quot;owner&quot;,&quot;members&quot;: [&quot;user:166407665700****&quot;]}],&quot;cluster&quot;:&quot;&quot;,&quot;isHa&quot;:false, uot;workspace&quot;:&quot;9cuwr9g7y1hl19&quot;,&quot;cpuBrand&quot;:&quot;Intel&quot;,&quot;pr iewSessionClusterName&quot;:&quot;&quot;,&quot;createTime&quot;:&quot;2026-04-24T03:33:43.68 0626Z&quot;,&quot;lifecyclePhase&quot;:&quot;LIFECYCLE_PHASE_ACTIVE&quot;,&quot;name&quot;:&qu ;namespaces/flinkteam&quot;,&quot;labels&quot;:{}}]}</data> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-#### ListDeploymentTargets
+#### 3.1.8 ListDeploymentTargets
+
+调用ListDeploymentTargets，获取部署目标列表。
 
 **请求头**
 
@@ -1444,8 +1621,6 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-targets
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | RegionId | String | Host | 是 | cn-wulan-env***-d01 | Region ID。 |
@@ -1457,8 +1632,6 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-targets
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | requestId | String | CBC799F0-AS7S- 1D30-8A4F- 882ED4DD**** | 请求ID。 |
-
-实时计算（流计算） API
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -1473,24 +1646,24 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-targets
 GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-targets HTTP/1.1 &RegionId=cn-wulan-env***-d01 &namespace=flinkteam &workspace=default
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式实时计算（流计算） API
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{\"metadata\":{},\"apiVersion\":\"v1\",\"kind\":\"DeploymentTargetList\",\"items\":
 [{\"metadata\":{\"createdAt\":\"2026-04- 24T03:33:44Z\",\"workspace\":\"9cuwr9g7y1hl19\",\"modifiedAt\":\"2026-04- 24T03:33:44Z\",\"resourceVersion\":1,\"name\":\"dtflinkteam\",\"namespace\":\"flinkteam\",\"annotations\": {\"creator\":\"1494974510125846\",\"modifier\":\"1494974510125846\",\"creatorName\":\"null\",\ odifierName\":\"null\"},\"id\":\"a89ff052-38c6-4fd3-9b91-e9c53f8ee019\",\"labels\":{}},\"api Version\":\"v1\",\"kind\":\"DeploymentTarget\",\"ha\":false,\"spec\":{\"kubernetes\":{\"name space\":\"flinkteam\"},\"kind\":\"kubernetes\",\"state\":\"ONLINE\"}}]}",
  "requestId":"CBC799F0-AS7S-1D30-8A4F-882ED4DD****",
  "success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <data>{&quot;metadata&quot;: {},&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;DeploymentTargetList&quot;,&qu ;items&quot;:[{&quot;metadata&quot;:{&quot;createdAt&quot;:&quot;2026-04- 24T03:33:44Z&quot;,&quot;workspace&quot;:&quot;9cuwr9g7y1hl19&quot;,&quot;modifiedAt&quot;:&qu ;2026-04-24T03:33:44Z&quot;,&quot;resourceVersion&quot;:1,&quot;name&quot;:&quot;dt-flinktea m&quot;,&quot;namespace&quot;:&quot;flinkteam&quot;,&quot;annotations&quot;:{&quot;creator&q uot;:&quot;1494974510125846&quot;,&quot;modifier&quot;:&quot;1494974510125846&quot;,&quot;crea rName&quot;:&quot;null&quot;,&quot;modifierName&quot;:&quot;null&quot;},&quot;id&quot;:&quot;a ff052-38c6-4fd3-9b91-e9c53f8ee019&quot;,&quot;labels&quot;: {}},&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;DeploymentTarget&quot;,&quot; &quot;:false,&quot;spec&quot;:{&quot;kubernetes&quot;: {&quot;namespace&quot;:&quot;flinkteam&quot;},&quot;kind&quot;:&quot;kubernetes&quot;,&quot;st e&quot;:&quot;ONLINE&quot;}}]}</data> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-#### ListDeployments
+#### 3.1.9 ListDeployments
+
+调用ListDeployments，获取已部署作业列表。
 
 **请求头**
 
@@ -1509,10 +1682,8 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments HTTP/1
 | RegionId | String | Host | 是 | cn-wulan-env***-d01 | Region ID。 |
 | namespac e | String | Path | 是 | flinkteam | 作业所在的项目空间名称。 |
 
-|  |  |  |  | Flink企 | 业版开发指南·AppManager |
+|   |   |   |   | Flink企 | 业版开发指南·AppManager |
 |---|---|---|---|---|---|
-
-API
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -1529,8 +1700,6 @@ API
 | status | String | Query | 否 | 1 | 状态。 |
 | state | String | Query | 否 | false | 剧本的运行状态： true： 发布流程。 false： 禁用流程。 |
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | batchMode | Boole an | Query | 否 | false | 表示禁用批量处理模式，适用于逐个处理任务或数据的情况。 |
@@ -1540,42 +1709,34 @@ API
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | success | Boolean | true | 请求是否成功。 |
-|  |  | { "metadata": { "totalSize": 1, "totalPage": 1 }, "apiVersion": "v1", "kind": "DeploymentList", "items": [{ "metadata": { "createdAt": "2026- 04-30T03:54:19Z", "workspace": "9cuwr9g7y1hl19", "modifiedAt": "2026-04- 30T05:38:17Z", "resourceVersion": 4, "name": "sqlJob", "namespace": "flinkteam", "annotations": { "creator": "235406976657057 054", "resource- plan.has.migrated": "true", "storage.disaster.rp o": "1800", "deployment.has.de ployed": "false", "deployment.source -type": "EDITOR", "deployment.parent. id": "", "modifier": "235406976657057 054", "creatorName": "flinkadmin", "plan.uri": "deployment/91510 cd2-9d21-463a- abf4- 9c608d23e92e/reso urcePlan.json", "priority": "5", "priority.class.name ": "flink-p5", "migration.display.e nabled": "false", "com.dataartisans.a ppmanager.controll er.deployment.spec. version": "2", "default.resource- |  |
-
-实时计算（流计算） API
+|   |   | { "metadata": { "totalSize": 1, "totalPage": 1 }, "apiVersion": "v1", "kind": "DeploymentList", "items": [{ "metadata": { "createdAt": "2026- 04-30T03:54:19Z", "workspace": "9cuwr9g7y1hl19", "modifiedAt": "2026-04- 30T05:38:17Z", "resourceVersion": 4, "name": "sqlJob", "namespace": "flinkteam", "annotations": { "creator": "235406976657057 054", "resource- plan.has.migrated": "true", "storage.disaster.rp o": "1800", "deployment.has.de ployed": "false", "deployment.source -type": "EDITOR", "deployment.parent. id": "", "modifier": "235406976657057 054", "creatorName": "flinkadmin", "plan.uri": "deployment/91510 cd2-9d21-463a- abf4- 9c608d23e92e/reso urcePlan.json", "priority": "5", "priority.class.name ": "flink-p5", "migration.display.e nabled": "false", "com.dataartisans.a ppmanager.controll er.deployment.spec. version": "2", "default.resource- |   |
 
 | 参数名称 | 类型 | setting.has.migrate d示":例 "true", | 说明 |
 |---|---|---|---|
-|  |  | "deployment.refere nced.deployment.dr aft.history.version": "7", "deployment.refere nced.deployment.dr aft.id": "cee26b6e- d03b-4a03-a628- a6fe665c525e", "modifierName": "flinkadmin", "taker": " \| vvp-0", "deployment.refere nced.deployment.dr aft.history.id": "c7819685-3abe- 4115-a26b- d40e73c58856" }, "id": "91510cd2- 9d21-463a-abf4- 9c608d23e92e", "labels": {} }, "apiVersion": "v1", "kind": "Deployment", "spec": { "template": { "metadata": { "annotations": { "flink.resource.type" : "fine-grained", "native.kubernetes. mode": "true", "flink.queryable- state.enabled": |  |
+|   |   | "deployment.refere nced.deployment.dr aft.history.version": "7", "deployment.refere nced.deployment.dr aft.id": "cee26b6e- d03b-4a03-a628- a6fe665c525e", "modifierName": "flinkadmin", "taker": " \| vvp-0", "deployment.refere nced.deployment.dr aft.history.id": "c7819685-3abe- 4115-a26b- d40e73c58856" }, "id": "91510cd2- 9d21-463a-abf4- 9c608d23e92e", "labels": {} }, "apiVersion": "v1", "kind": "Deployment", "spec": { "template": { "metadata": { "annotations": { "flink.resource.type" : "fine-grained", "native.kubernetes. mode": "true", "flink.queryable- state.enabled": |   |
 | data | String | "false", "flink.security.ssl.en abled": "false" } }, "spec": { "artifact": { "flinkImageTag": "1.17.0-vvr-8.0.7- manifest-251107", "kind": "SQLSCRIPT", "sqlScript": "CREATE TEMPORARY TABLE `datahub table` _ (strname VARCHAR) with ( 'connector' = 'datagen' ); CREATE TEMPORARY TABLE `kafka table` _ (strname VARCHAR, lens BIGINT) with ( 'connector' = 'print' ); INSERT INTO kafka table _ SELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR LENGTH _ (strname) AS BIGINT) AS lens | 详细信息。 |
-
-实时计算（流计算） API
 
 | 参数名称 | 类型 | FROM d示a例tahub table;", _ | 说明 |
 |---|---|---|---|
-|  |  | "imageUserDefined" : false, "flinkImageRegistry" : "cn-wulan-env**- d01- reg.docker.intra.env **.shuguang.com:80 /ververica-paas", "versionName": "vvr-8.0.7-flink- 1.17", "flinkImageReposito ry": "vvr", "flinkVersion": "1.17" }, "parallelism": 1, "batchMode": false, "resources": { "jobmanager": { "memory": "2Gi", "cpu": 0.5 }, "taskmanager": { "memory": "3Gi", "cpu": 1.0 } }, "logging": { "log4jLoggers": { "": "INFO" }, "logReservePolicy": { "expirationDays": 7, "openHistory": true }, "loggingProfile": "default" }, "flinkConfiguration": {} } }, "restoreStrategy": { "kind": "LATEST STATE", _ "allowNonRestoredS tate": false }, "state": "CANCELLED", "upgradeStrategy": { "kind": "NONE" }, "maxSavepointCreat ionAttempts": 4, "maxJobCreationAtt empts": 1, "deploymentTargetI d": "a89ff052-38c6- 4fd3-9b91- e9c53f8ee019" }, "status": { "startTime": 0, "state": "CANCELLED", "endTime": 0 } }] } |  |
+|   |   | "imageUserDefined" : false, "flinkImageRegistry" : "cn-wulan-env**- d01- reg.docker.intra.env **.shuguang.com:80 /ververica-paas", "versionName": "vvr-8.0.7-flink- 1.17", "flinkImageReposito ry": "vvr", "flinkVersion": "1.17" }, "parallelism": 1, "batchMode": false, "resources": { "jobmanager": { "memory": "2Gi", "cpu": 0.5 }, "taskmanager": { "memory": "3Gi", "cpu": 1.0 } }, "logging": { "log4jLoggers": { "": "INFO" }, "logReservePolicy": { "expirationDays": 7, "openHistory": true }, "loggingProfile": "default" }, "flinkConfiguration": {} } }, "restoreStrategy": { "kind": "LATEST STATE", _ "allowNonRestoredS tate": false }, "state": "CANCELLED", "upgradeStrategy": { "kind": "NONE" }, "maxSavepointCreat ionAttempts": 4, "maxJobCreationAtt empts": 1, "deploymentTargetI d": "a89ff052-38c6- 4fd3-9b91- e9c53f8ee019" }, "status": { "startTime": 0, "state": "CANCELLED", "endTime": 0 } }] } |   |
 | requestId | String | CBC799F0-AS7S- 1D30-8A4F- 882ED4DD**** | 请求ID。 |
 
-**示例**
-
-请求示例实时计算（流计算） API
+请求示例
 
 ```
 GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments HTTP/1.1 &RegionId=cn-wulan-env***-d01 &namespace=flinkteam &workspace=default
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{\"metadata\":
 {\"totalSize\":1,\"totalPage\":1},\"apiVersion\":\"v1\",\"kind\":\"DeploymentList\",\"items\": [{\"metadata\":{\"createdAt\":\"2026-04- 30T03:54:19Z\",\"workspace\":\"9cuwr9g7y1hl19\",\"modifiedAt\":\"2026-04- 30T05:38:17Z\",\"resourceVersion\":4,\"name\":\"sqlJob\",\"namespace\":\"flinkteam\",\"annotat ns\":{\"creator\":\"235406976657057054\",\"resourceplan.has.migrated\":\"true\",\"storage.disaster.rpo\":\"1800\",\"deployment.has.deployed\":\"f se\",\"deployment.sourcetype\":\"EDITOR\",\"deployment.parent.id\":\"\",\"modifier\":\"235406976657057054\",\"creatorN e\":\"flinkadmin\",\"plan.uri\":\"deployment/91510cd2-9d21-463a-abf4- 9c608d23e92e/resourcePlan.json\",\"priority\":\"5\",\"priority.class.name\":\"flink-p5\",\"m igration.display.enabled\":\"false\",\"com.dataartisans.appmanager.controller.deployment.spec. rsion\":\"2\",\"default.resourcesetting.has.migrated\":\"true\",\"deployment.referenced.deployment.draft.history.version\":\"7 ,\"deployment.referenced.deployment.draft.id\":\"cee26b6e-d03b-4a03-a628-a6fe665c525e\",\"mo difierName\":\"flinkadmin\",\"taker\":\" | vvp- 0\",\"deployment.referenced.deployment.draft.history.id\":\"c7819685-3abe-4115-a26b-d40e73c5 8856\"},\"id\":\"91510cd2-9d21-463a-abf4-9c608d23e92e\",\"labels\": {}},\"apiVersion\":\"v1\",\"kind\":\"Deployment\",\"spec\":{\"template\":{\"metadata\":{\"an notations\":{\"flink.resource.type\":\"finegrained\",\"native.kubernetes.mode\":\"true\",\"flink.queryablestate.enabled\":\"false\",\"flink.security.ssl.enabled\":\"false\"}},\"spec\":{\"artifact\": {\"flinkImageTag\":\"1.17.0-vvr-8.0.7-manifest- 251107\",\"kind\":\"SQLSCRIPT\",\"sqlScript\":\"CREATE TEMPORARY TABLE `datahub_table` (strn ame VARCHAR)\with (\ 'connector' = 'datagen'\);\\CREATE TEMPORARY TABLE `kafka_table` (st rname VARCHAR, lens BIGINT)\with (\ 'connector' = 'print'\);\\INSERT INTO kafka_table\SEL ECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR_LENGTH (strname) AS BIGINT) AS lens\FR OM\ datahub_table;\",\"imageUserDefined\":false,\"flinkImageRegistry\":\"cn-wulan-env**-d01 -reg.docker.intra.env**.shuguang.com:80/ververica-paas\",\"versionName\":\"vvr-8.0.7-flink-1 .17\",\"flinkImageRepository\":\"vvr\",\"flinkVersion\":\"1.17\"},\"parallelism\":1,\"batchMod ":false,\"resources\":{\"jobmanager\":{\"memory\":\"2Gi\",\"cpu\":0.5},\"taskmanager\":{\"me mory\":\"3Gi\",\"cpu\":1.0}},\"logging\":{\"log4jLoggers\": {\"\":\"INFO\"},\"logReservePolicy\": {\"expirationDays\":7,\"openHistory\":true},\"loggingProfile\":\"default\"},\"flinkConfigurati \":{}}},\"restoreStrategy\": {\"kind\":\"LATEST_STATE\",\"allowNonRestoredState\":false},\"state\":\"CANCELLED\",\"upgradeS ategy\": {\"kind\":\"NONE\"},\"maxSavepointCreationAttempts\":4,\"maxJobCreationAttempts\":1,\"deployme TargetId\":\"a89ff052-38c6-4fd3-9b91-e9c53f8ee019\"},\"status\": {\"startTime\":0,\"state\":\"CANCELLED\",\"endTime\":0}}]}",
  "success":true,
  "requestId":"CBC799F0-AS7S-1D30-8A4F-882ED4DD****"
-}
 ```
 
-实时计算（流计算） API `XML` 格式实时计算（流计算） API
+`}` `XML` 格式
 
 ```xml
 <data>{&quot;metadata&quot;: {&quot;totalSize&quot;:1,&quot;totalPage&quot;:1},&quot;apiVersion&quot;:&quot;v1&quot;,&quot; nd&quot;:&quot;DeploymentList&quot;,&quot;items&quot;:[{&quot;metadata&quot;:{&quot;createdA t&quot;:&quot;2026-04- 30T03:54:19Z&quot;,&quot;workspace&quot;:&quot;9cuwr9g7y1hl19&quot;,&quot;modifiedAt&quot;:&qu ;2026-04- 30T05:38:17Z&quot;,&quot;resourceVersion&quot;:4,&quot;name&quot;:&quot;sqlJob&quot;,&quot;nam pace&quot;:&quot;flinkteam&quot;,&quot;annotations&quot;: {&quot;creator&quot;:&quot;235406976657057054&quot;,&quot;resourceplan.has.migrated&quot;:&quot;true&quot;,&quot;storage.disaster.rpo&quot;:&quot;1800&quot;,&qu ;deployment.has.deployed&quot;:&quot;false&quot;,&quot;deployment.source-type&quot;:&quot;ED ITOR&quot;,&quot;deployment.parent.id&quot;:&quot;&quot;,&quot;modifier&quot;:&quot;2354069766 057054&quot;,&quot;creatorName&quot;:&quot;flinkadmin&quot;,&quot;plan.uri&quot;:&quot;deploym t/91510cd2-9d21-463a-abf4- 9c608d23e92e/resourcePlan.json&quot;,&quot;priority&quot;:&quot;5&quot;,&quot;priority.class.n e&quot;:&quot;flinkp5&quot;,&quot;migration.display.enabled&quot;:&quot;false&quot;,&quot;com.dataartisans.appman er.controller.deployment.spec.version&quot;:&quot;2&quot;,&quot;default.resource-setting.has .migrated&quot;:&quot;true&quot;,&quot;deployment.referenced.deployment.draft.history.version& ot;:&quot;7&quot;,&quot;deployment.referenced.deployment.draft.id&quot;:&quot;cee26b6e-d03b- 4a03-a628a6fe665c525e&quot;,&quot;modifierName&quot;:&quot;flinkadmin&quot;,&quot;taker&quot;:&quot;
@@ -1585,9 +1746,9 @@ abe-4115-a26b-d40e73c58856&quot;},&quot;id&quot;:&quot;91510cd2-9d21-463a-abf4- 
 datahub_table;&quot;,&quot;imageUserDefined&quot;:false,&quot;flinkImageRegistry&quot;:&quot;c wulan-env**-d01-reg.docker.intra.env**.shuguang.com:80/ververicapaas&quot;,&quot;versionName&quot;:&quot;vvr-8.0.7-flink- 1.17&quot;,&quot;flinkImageRepository&quot;:&quot;vvr&quot;,&quot;flinkVersion&quot;:&quot;1.1 quot;},&quot;parallelism&quot;:1,&quot;batchMode&quot;:false,&quot;resources&quot;:{&quot;jo bmanager&quot;: {&quot;memory&quot;:&quot;2Gi&quot;,&quot;cpu&quot;:0.5},&quot;taskmanager&quot;:{&quot;memo ry&quot;:&quot;3Gi&quot;,&quot;cpu&quot;:1.0}},&quot;logging&quot;: {&quot;log4jLoggers&quot;:{&quot;&quot;:&quot;INFO&quot;},&quot;logReservePolicy&quot;:{&quo t;expirationDays&quot;:7,&quot;openHistory&quot;:true},&quot;loggingProfile&quot;:&quot;defaul quot;},&quot;flinkConfiguration&quot;:{}}},&quot;restoreStrategy&quot;: {&quot;kind&quot;:&quot;LATEST_STATE&quot;,&quot;allowNonRestoredState&quot;:false},&quot;stat quot;:&quot;CANCELLED&quot;,&quot;upgradeStrategy&quot;: {&quot;kind&quot;:&quot;NONE&quot;},&quot;maxSavepointCreationAttempts&quot;:4,&quot;maxJobCre ionAttempts&quot;:1,&quot;deploymentTargetId&quot;:&quot;a89ff052-38c6-4fd3-9b91-e9c53f8ee01 9&quot;},&quot;status&quot;: {&quot;startTime&quot;:0,&quot;state&quot;:&quot;CANCELLED&quot;,&quot;endTime&quot;:0}}]}</ data> <success>true</success> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId>
 ```
 
-实时计算（流计算） API
+#### 3.1.10 ListArtifacts
 
-#### ListArtifacts
+调用ListArtifacts，列出指定命名空间和工作区下的所有工件。
 
 **请求头**
 
@@ -1613,8 +1774,6 @@ GET /pop/workspaces/[workspace]/artifacts/v1/namespaces/[namespace]/artifacts:li
 |---|---|---|---|
 | requestId | String | CBC799F0-AS7S- 1D30-8A4F- 882ED4DD**** | 请求ID。 |
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | data | String | { "@type": "type.googleapis.co m/vvp.artifacts.v1.Li stArtifactsResponse ", "artifacts": [{ "filename": "TopSpeedWindowin g.jar", "size": "0", "createTime": "2026-04- 29T09:20:14Z", "uploader": "235406976657057 054", "namespace": "namespaces/flinkte am", "uri": "oss://flink- fullymanaged- 9cuwr9g7y1hl19/arti facts/namespaces/fli nkteam/TopSpeedWi ndowing.jar", "content": "" }] } | 详细信息。 |
@@ -1628,24 +1787,22 @@ GET /pop/workspaces/[workspace]/artifacts/v1/namespaces/[namespace]/artifacts:li
 GET /pop/workspaces/[workspace]/artifacts/v1/namespaces/[namespace]/artifacts:list HTTP/1.1 &RegionId=cn-wulan-env188-d01 &namespace=flinkteam &workspace=default
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"
 {\"@type\":\"type.googleapis.com/vvp.artifacts.v1.ListArtifactsResponse\",\"artifacts\":[{\" filename\":\"TopSpeedWindowing.jar\",\"size\":\"0\",\"createTime\":\"2026-04-29T09:20:14Z\", \"uploader\":\"235406976657057054\",\"namespace\":\"namespaces/flinkteam\",\"uri\":\"oss://fli -fullymanaged- 9cuwr9g7y1hl19/artifacts/namespaces/flinkteam/TopSpeedWindowing.jar\",\"content\":\"\"}]}",
  "requestId":"CBC799F0-AS7S-1D30-8A4F-882ED4DD****",
  "success":true
-}
 ```
 
-`XML` 格式实时计算（流计算） API
+`}` `XML` 格式
 
 ```xml
 <data> {&quot;@type&quot;:&quot;type.googleapis.com/vvp.artifacts.v1.ListArtifactsResponse&quot;,&quo artifacts&quot;: [{&quot;filename&quot;:&quot;TopSpeedWindowing.jar&quot;,&quot;size&quot;:&quot;0&quot;,&quot; eateTime&quot;:&quot;2026-04- 29T09:20:14Z&quot;,&quot;uploader&quot;:&quot;235406976657057054&quot;,&quot;namespace&quot;:& ot;namespaces/flinkteam&quot;,&quot;uri&quot;:&quot;oss://flink-fullymanaged-9cuwr9g7y1hl19/ artifacts/namespaces/flinkteam/TopSpeedWindowing.jar&quot;,&quot;content&quot;:&quot;&quot;}]} </data> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-#### GetGlobalDeploymentDefaults
+#### 3.1.11 GetGlobalDeploymentDefaults
 
 调用GetGlobalDeploymentDefaults，获取实时计算服务中的全局部署默认配置。
 
@@ -1674,8 +1831,6 @@ GET /pop/workspaces/[workspace]/api/v1/global-deployment-defaults HTTP/1.1
 |---|---|---|---|
 | requestId | String | CBC799F0-AS7S- 1D30-8A4F- 882ED4DD**** | 请求ID。 |
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | data | String | { "apiVersion": "v1", "kind": "GlobalDeployment Defaults", "spec": { "template": { "metadata": { "annotations": { "native.kubernetes. mode": "true", "flink.queryable- state.enabled": "false", "flink.security.ssl.en abled": "false" } }, "spec": { "artifact": { "kind": "JAR", "imageUserDefined" : false }, "parallelism": 1, "resources": { "jobmanager": { "memory": "4Gi", "cpu": 1.0 }, "taskmanager": { "memory": "4Gi", "cpu": 1.0 } }, "logging": { "log4jLoggers": { "": "INFO" }, "logReservePolicy": { "expirationDays": 7, "openHistory": true }, "loggingProfile": "default" }, "flinkConfiguration": {} } }, "restoreStrategy": { "kind": "LATEST STATE", _ "allowNonRestoredS tate": false }, "state": "CANCELLED", "upgradeStrategy": { "kind": "STATELESS" }, "maxSavepointCreat ionAttempts": 4, "maxJobCreationAtt empts": 1 } } | 详细信息。 |
@@ -1689,24 +1844,22 @@ GET /pop/workspaces/[workspace]/api/v1/global-deployment-defaults HTTP/1.1
 GET /pop/workspaces/[workspace]/api/v1/global-deployment-defaults HTTP/1.1 &RegionId=cn-wulan-env188-d01 &workspace=default
 ```
 
-&公共请求参数实时计算（流计算） API 正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{\"apiVersion\":\"v1\",\"kind\":\"GlobalDeploymentDefaults\",\"spec\":{\"template\"
 :{\"metadata\":{\"annotations\":{\"native.kubernetes.mode\":\"true\",\"flink.queryable-state .enabled\":\"false\",\"flink.security.ssl.enabled\":\"false\"}},\"spec\":{\"artifact\":{\"ki nd\":\"JAR\",\"imageUserDefined\":false},\"parallelism\":1,\"resources\":{\"jobmanager\":{\" memory\":\"4Gi\",\"cpu\":1.0},\"taskmanager\":{\"memory\":\"4Gi\",\"cpu\":1.0}},\"logging\": {\"log4jLoggers\":{\"\":\"INFO\"},\"logReservePolicy\": {\"expirationDays\":7,\"openHistory\":true},\"loggingProfile\":\"default\"},\"flinkConfigurati \":{}}},\"restoreStrategy\": {\"kind\":\"LATEST_STATE\",\"allowNonRestoredState\":false},\"state\":\"CANCELLED\",\"upgradeS ategy\": {\"kind\":\"STATELESS\"},\"maxSavepointCreationAttempts\":4,\"maxJobCreationAttempts\":1}}",
  "requestId":"CBC799F0-AS7S-1D30-8A4F-882ED4DD****",
  "success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <data> {&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;GlobalDeploymentDefaults&quot;,& ot;spec&quot;:{&quot;template&quot;:{&quot;metadata&quot;:{&quot;annotations&quot;: {&quot;native.kubernetes.mode&quot;:&quot;true&quot;,&quot;flink.queryable-state.enabled&quo t;:&quot;false&quot;,&quot;flink.security.ssl.enabled&quot;:&quot;false&quot;}},&quot;spec&quo :{&quot;artifact&quot;: {&quot;kind&quot;:&quot;JAR&quot;,&quot;imageUserDefined&quot;:false},&quot;parallelism&quot;: &quot;resources&quot;:{&quot;jobmanager&quot;: {&quot;memory&quot;:&quot;4Gi&quot;,&quot;cpu&quot;:1.0},&quot;taskmanager&quot;:{&quot;memo ry&quot;:&quot;4Gi&quot;,&quot;cpu&quot;:1.0}},&quot;logging&quot;: {&quot;log4jLoggers&quot;:{&quot;&quot;:&quot;INFO&quot;},&quot;logReservePolicy&quot;:{&quo t;expirationDays&quot;:7,&quot;openHistory&quot;:true},&quot;loggingProfile&quot;:&quot;defaul quot;},&quot;flinkConfiguration&quot;:{}}},&quot;restoreStrategy&quot;: {&quot;kind&quot;:&quot;LATEST_STATE&quot;,&quot;allowNonRestoredState&quot;:false},&quot;stat quot;:&quot;CANCELLED&quot;,&quot;upgradeStrategy&quot;: {&quot;kind&quot;:&quot;STATELESS&quot;},&quot;maxSavepointCreationAttempts&quot;:4,&quot;maxJ CreationAttempts&quot;:1}}</data> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-#### GetDeploymentDefaults
+#### 3.1.12 GetDeploymentDefaults
 
 调用GetDeploymentDefaults，查询实时计算中指定命名空间和工作区的部署默认配置。
 
@@ -1722,8 +1875,6 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-default
 
 **请求参数**
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | RegionId | String | Host | 是 | cn-wulan-env***-d01 | Region ID。 |
@@ -1735,8 +1886,6 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-default
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | requestId | String | CBC799F0-AS7S- 1D30-8A4F- 882ED4DD**** | 请求ID。 |
-
-实时计算（流计算） API
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -1751,24 +1900,24 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-default
 GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-defaults HTTP/1.1 &RegionId=cn-wulan-env***-d01 &namespace=flinkteam &workspace=default
 ```
 
-&公共请求参数正常返回示例实时计算（流计算） API `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{\"metadata\":{\"createdAt\":\"2026-04-
 24T03:46:53Z\",\"workspace\":\"9cuwr9g7y1hl19\",\"modifiedAt\":\"2026-04- 24T03:46:53Z\",\"resourceVersion\":1,\"name\":\"stream\",\"namespace\":\"flinkteam\",\"annotat ns\": {\"deployment.defaults.type\":\"stream\",\"creator\":\"system\",\"modifier\":\"system\"},\"id\ \"690e3396-700a-4b77-9fcf-d14a592f****\",\"labels\": {}},\"apiVersion\":\"v1\",\"kind\":\"DeploymentDefaults\",\"spec\":{\"template\":{\"spec\":{ \"resources\":{},\"flinkConfiguration\": {\"execution.checkpointing.interval\":\"180s\",\"table.exec.state.ttl\":\"36 h\",\"restart-s trategy.fixed-delay.delay\":\"10 s\",\"restart-strategy.fixeddelay.attempts\":\"2147483647\",\"execution.checkpointing.min-pause\":\"180s\",\"restart-str ategy\":\"fixed-delay\"}}}}}",
  "requestId":"CBC799F0-AS7S-1D30-8A4F-882ED4DD****",
  "success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <data>{&quot;metadata&quot;:{&quot;createdAt&quot;:&quot;2026-04- 24T03:46:53Z&quot;,&quot;workspace&quot;:&quot;9cuwr9g7y1hl19&quot;,&quot;modifiedAt&quot;:&qu ;2026-04- 24T03:46:53Z&quot;,&quot;resourceVersion&quot;:1,&quot;name&quot;:&quot;stream&quot;,&quot;nam pace&quot;:&quot;flinkteam&quot;,&quot;annotations&quot;: {&quot;deployment.defaults.type&quot;:&quot;stream&quot;,&quot;creator&quot;:&quot;system&quot &quot;modifier&quot;:&quot;system&quot;},&quot;id&quot;:&quot;690e3396-700a-4b77-9fcf-d14a59 2f****&quot;,&quot;labels&quot;: {}},&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;DeploymentDefaults&quot;,&quo spec&quot;:{&quot;template&quot;:{&quot;spec&quot;:{&quot;resources&quot;:{},&quot;flinkConf iguration&quot;: {&quot;execution.checkpointing.interval&quot;:&quot;180s&quot;,&quot;table.exec.state.ttl&quot &quot;36 h&quot;,&quot;restart-strategy.fixed-delay.delay&quot;:&quot;10 s&quot;,&quot;restart-strategy.fixeddelay.attempts&quot;:&quot;2147483647&quot;,&quot;execution.checkpointing.min-pause&quot;:&q uot;180s&quot;,&quot;restart-strategy&quot;:&quot;fixed-delay&quot;}}}}}</data> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-#### GetDeployment
+#### 3.1.13 GetDeployment
+
+调用GetDeployment，获取已部署作业。
 
 **请求头**
 
@@ -1782,8 +1931,6 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deplo
 
 **请求参数**
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | RegionId | String | Host | 是 | cn-wulan-env***-d01 | Region ID。 |
@@ -1795,26 +1942,20 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deplo
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-|  |  | { "metadata": { "createdAt": "2026- 04-24T03:47:01Z", "workspace": "9cuwr9g7y1hl19", "modifiedAt": "2026-04- 24T03:58:26Z", "resourceVersion": 174, "name": "sqlJob", "namespace": "flinkteam", "annotations": { "creator": "235406976657057 054", "resource- plan.has.migrated": "true", "storage.disaster.rp o": "1800", "deployment.source -type": "EDITOR", "deployment.has.de ployed": "false", "deployment.parent. id": "", "modifier": "235406976657057 054", "creatorName": "flinkadmin", "plan.uri": "deployment/a3d88 b2a-e076-4491- 86f2- 5a81ea4c7300/reso urcePlan.json", "priority": "5", "priority.class.name ": "flink-p5", "migration.display.e |  |
-
-实时计算（流计算） API
+|   |   | { "metadata": { "createdAt": "2026- 04-24T03:47:01Z", "workspace": "9cuwr9g7y1hl19", "modifiedAt": "2026-04- 24T03:58:26Z", "resourceVersion": 174, "name": "sqlJob", "namespace": "flinkteam", "annotations": { "creator": "235406976657057 054", "resource- plan.has.migrated": "true", "storage.disaster.rp o": "1800", "deployment.source -type": "EDITOR", "deployment.has.de ployed": "false", "deployment.parent. id": "", "modifier": "235406976657057 054", "creatorName": "flinkadmin", "plan.uri": "deployment/a3d88 b2a-e076-4491- 86f2- 5a81ea4c7300/reso urcePlan.json", "priority": "5", "priority.class.name ": "flink-p5", "migration.display.e |   |
 
 | 参数名称 | 类型 | nabled": "false", "示de例ployment.exec- | 说明 |
 |---|---|---|---|
-|  |  | plan.uri.valid": "true", "com.dataartisans.a ppmanager.controll er.deployment.spec. version": "13", "default.resource- setting.has.migrate d": "true", "deployment.refere nced.deployment.dr aft.history.version": "1", "deployment.exec- plan.uri": "oss://flink- fullymanaged- 9cuwr9g7y1hl19/flin k- jobs/namespaces/fli nkteam/jobs/c944e9 78-5cb9-4879-8312- c0872ee50182/exec |  |
+|   |   | plan.uri.valid": "true", "com.dataartisans.a ppmanager.controll er.deployment.spec. version": "13", "default.resource- setting.has.migrate d": "true", "deployment.refere nced.deployment.dr aft.history.version": "1", "deployment.exec- plan.uri": "oss://flink- fullymanaged- 9cuwr9g7y1hl19/flin k- jobs/namespaces/fli nkteam/jobs/c944e9 78-5cb9-4879-8312- c0872ee50182/exec |   |
 | data | String | Plan.json", "deployment.refere nced.deployment.dr aft.id": "cee26b6e- d03b-4a03-a628- a6fe665c525e", "resources.from.job. has.migrated": "true", "taker": " \| vvp-0", "modifierName": "flinkadmin", "deployment.refere nced.deployment.dr aft.history.id": "561a6a3d-7858- 4056-acfb- ad0cdec09e55" }, "id": "a3d88b2a- e076-4491-86f2- 5a81ea4c7300", "labels": {} }, "apiVersion": "v1", "kind": "Deployment", "spec": { "template": { "metadata": { "annotations": { "flink.resource.type" : "fine-grained", "job.resource.total. memory.byte": "0", "job.resource.total.c pu": "0.0", "native.kubernetes. mode": "true", "flink.queryable- state.enabled": "false", "flink.security.ssl.en abled": "false" } }, "spec": { "artifact": { "flinkImageTag": "1.17.0-vvr-8.0.7- | 详细信息。 |
-
-实时计算（流计算） API
 
 | 参数名称 | 类型 | manifest-251107", "示ki例nd": | 说明 |
 |---|---|---|---|
-|  |  | "SQLSCRIPT", "sqlScript": "CREATE TEMPORARY TABLE `datahub table` _ (strname VARCHAR) with ( 'connector' = 'datagen' ); CREATE TEMPORARY TABLE `kafka table` _ (strname VARCHAR, lens BIGINT) with ( 'connector' = 'print' ); INSERT INTO kafka table _ SELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR LENGTH _ (strname) AS BIGINT) AS lens FROM datahub table;", _ "imageUserDefined" : false, "flinkImageRegistry" : "cn-wulan-env35- d01- reg.docker.intra.env 35.shuguang.com:8 0/ververica-paas", "versionName": "vvr-8.0.7-flink- 1.17", "flinkImageReposito ry": "vvr", "flinkVersion": "1.17" }, "parallelism": 1, "batchMode": false, "resources": { "jobmanager": { "memory": "2Gi", "cpu": 0.5 }, "taskmanager": { "memory": "3Gi", "cpu": 1.0 } }, "logging": { "log4jLoggers": { "": "INFO" }, "logReservePolicy": { "expirationDays": 7, "openHistory": true }, "loggingProfile": "default" }, "flinkConfiguration": {} } }, "restoreStrategy": { "kind": "FROM SAVEPOINT", _ "allowNonRestoredS tate": false, "savepointId": |  |
-
-实时计算（流计算） API
+|   |   | "SQLSCRIPT", "sqlScript": "CREATE TEMPORARY TABLE `datahub table` _ (strname VARCHAR) with ( 'connector' = 'datagen' ); CREATE TEMPORARY TABLE `kafka table` _ (strname VARCHAR, lens BIGINT) with ( 'connector' = 'print' ); INSERT INTO kafka table _ SELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR LENGTH _ (strname) AS BIGINT) AS lens FROM datahub table;", _ "imageUserDefined" : false, "flinkImageRegistry" : "cn-wulan-env35- d01- reg.docker.intra.env 35.shuguang.com:8 0/ververica-paas", "versionName": "vvr-8.0.7-flink- 1.17", "flinkImageReposito ry": "vvr", "flinkVersion": "1.17" }, "parallelism": 1, "batchMode": false, "resources": { "jobmanager": { "memory": "2Gi", "cpu": 0.5 }, "taskmanager": { "memory": "3Gi", "cpu": 1.0 } }, "logging": { "log4jLoggers": { "": "INFO" }, "logReservePolicy": { "expirationDays": 7, "openHistory": true }, "loggingProfile": "default" }, "flinkConfiguration": {} } }, "restoreStrategy": { "kind": "FROM SAVEPOINT", _ "allowNonRestoredS tate": false, "savepointId": |   |
 
 | 参数名称 | 类型 | "5cea0d88-303d- 4示4例e5-a96e- | 说明 |
 |---|---|---|---|
-|  |  | 47f7217723d7" }, "state": "CANCELLED", "upgradeStrategy": { "kind": "NONE" }, "maxSavepointCreat ionAttempts": 4, "maxJobCreationAtt empts": 1, "deploymentTargetI d": "a89ff052-38c6- 4fd3-9b91- e9c53f8ee019" }, "status": { "startTime": 1777002980004, "state": "CANCELLED", "endTime": 0 } } |  |
+|   |   | 47f7217723d7" }, "state": "CANCELLED", "upgradeStrategy": { "kind": "NONE" }, "maxSavepointCreat ionAttempts": 4, "maxJobCreationAtt empts": 1, "deploymentTargetI d": "a89ff052-38c6- 4fd3-9b91- e9c53f8ee019" }, "status": { "startTime": 1777002980004, "state": "CANCELLED", "endTime": 0 } } |   |
 | requestId | String | CBC799F0-AS7S- 1D30-8A4F- 882ED4DD**** | 请求ID。 |
 | success | Boolean | true | 请求是否成功。 |
 
@@ -1826,24 +1967,20 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deplo
 GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deploymentId] HTT P/1.1 &RegionId=cn-wulan-env***-d01 &namespace=flinkteam &deploymentId=d0b3abf0-4bfe-46b1-a324-5b7def580c00 &workspace=default
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式实时计算（流计算） API
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{\"metadata\":{\"createdAt\":\"2026-04-
 24T03:47:01Z\",\"workspace\":\"9cuwr9g7y1hl19\",\"modifiedAt\":\"2026-04- 24T03:58:26Z\",\"resourceVersion\":174,\"name\":\"sqlJob\",\"namespace\":\"flinkteam\",\"annot ions\":{\"creator\":\"235406976657057054\",\"resourceplan.has.migrated\":\"true\",\"storage.disaster.rpo\":\"1800\",\"deployment.source-type\":\" EDITOR\",\"deployment.has.deployed\":\"false\",\"deployment.parent.id\":\"\",\"modifier\":\"23 06976657057054\",\"creatorName\":\"flinkadmin\",\"plan.uri\":\"deployment/a3d88b2a-e076-4491 -86f2-5a81ea4c7300/resourcePlan.json\",\"priority\":\"5\",\"priority.class.name\":\"flink-p5 \",\"migration.display.enabled\":\"false\",\"deployment.execplan.uri.valid\":\"true\",\"com.dataartisans.appmanager.controller.deployment.spec.version\":\ 3\",\"default.resourcesetting.has.migrated\":\"true\",\"deployment.referenced.deployment.draft.history.version\":\"1 ,\"deployment.exec-plan.uri\":\"oss://flink-fullymanaged-9cuwr9g7y1hl19/flink-jobs/namespace s/flinkteam/jobs/c944e978-5cb9-4879-8312c0872ee50182/execPlan.json\",\"deployment.referenced.deployment.draft.id\":\"cee26b6e-d03b-4 a03-a628-a6fe665c525e\",\"resources.from.job.has.migrated\":\"true\",\"taker\":\" | vvp- 0\",\"modifierName\":\"flinkadmin\",\"deployment.referenced.deployment.draft.history.id\":\"56 6a3d-7858-4056-acfb-ad0cdec09e55\"},\"id\":\"a3d88b2a-e076-4491-86f2- 5a81ea4c7300\",\"labels\":{}},\"apiVersion\":\"v1\",\"kind\":\"Deployment\",\"spec\":{\"temp late\":{\"metadata\":{\"annotations\":{\"flink.resource.type\":\"finegrained\",\"job.resource.total.memory.byte\":\"0\",\"job.resource.total.cpu\":\"0.0\",\"native ubernetes.mode\":\"true\",\"flink.queryablestate.enabled\":\"false\",\"flink.security.ssl.enabled\":\"false\"}},\"spec\":{\"artifact\": {\"flinkImageTag\":\"1.17.0-vvr-8.0.7-manifest- 251107\",\"kind\":\"SQLSCRIPT\",\"sqlScript\":\"CREATE TEMPORARY TABLE `datahub_table` (strn ame VARCHAR)\with (\ 'connector' = 'datagen'\);\\CREATE TEMPORARY TABLE `kafka_table` (st rname VARCHAR, lens BIGINT)\with (\ 'connector' = 'print'\);\\INSERT INTO kafka_table\SEL ECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR_LENGTH (strname) AS BIGINT) AS lens\FR OM\ datahub_table;\",\"imageUserDefined\":false,\"flinkImageRegistry\":\"cn-wulan-env35-d01 -reg.docker.intra.env35.shuguang.com:80/ververica-paas\",\"versionName\":\"vvr-8.0.7-flink-1 .17\",\"flinkImageRepository\":\"vvr\",\"flinkVersion\":\"1.17\"},\"parallelism\":1,\"batchMod ":false,\"resources\":{\"jobmanager\":{\"memory\":\"2Gi\",\"cpu\":0.5},\"taskmanager\":{\"me mory\":\"3Gi\",\"cpu\":1.0}},\"logging\":{\"log4jLoggers\": {\"\":\"INFO\"},\"logReservePolicy\": {\"expirationDays\":7,\"openHistory\":true},\"loggingProfile\":\"default\"},\"flinkConfigurati \":{}}},\"restoreStrategy\": {\"kind\":\"FROM_SAVEPOINT\",\"allowNonRestoredState\":false,\"savepointId\":\"5cea0d88-303d -44e5-a96e-47f7217723d7\"},\"state\":\"CANCELLED\",\"upgradeStrategy\": {\"kind\":\"NONE\"},\"maxSavepointCreationAttempts\":4,\"maxJobCreationAttempts\":1,\"deployme TargetId\":\"a89ff052-38c6-4fd3-9b91-e9c53f8ee019\"},\"status\": {\"startTime\":1777002980004,\"state\":\"CANCELLED\",\"endTime\":0}}",
  "requestId":"CBC799F0-AS7S-1D30-8A4F-882ED4DD****",
  "success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <data>{&quot;metadata&quot;:{&quot;createdAt&quot;:&quot;2026-04- 24T03:47:01Z&quot;,&quot;workspace&quot;:&quot;9cuwr9g7y1hl19&quot;,&quot;modifiedAt&quot;:&qu ;2026-04- 24T03:58:26Z&quot;,&quot;resourceVersion&quot;:174,&quot;name&quot;:&quot;sqlJob&quot;,&quot;n espace&quot;:&quot;flinkteam&quot;,&quot;annotations&quot;: {&quot;creator&quot;:&quot;235406976657057054&quot;,&quot;resourceplan.has.migrated&quot;:&quot;true&quot;,&quot;storage.disaster.rpo&quot;:&quot;1800&quot;,&qu ;deployment.source-
 ```
-
-实时计算（流计算） API
 
 ```xml
 type&quot;:&quot;EDITOR&quot;,&quot;deployment.has.deployed&quot;:&quot;false&quot;,&quot;depl ment.parent.id&quot;:&quot;&quot;,&quot;modifier&quot;:&quot;235406976657057054&quot;,&quot;cr torName&quot;:&quot;flinkadmin&quot;,&quot;plan.uri&quot;:&quot;deployment/a3d88b2a-e076-449 1-86f2- 5a81ea4c7300/resourcePlan.json&quot;,&quot;priority&quot;:&quot;5&quot;,&quot;priority.class.n e&quot;:&quot;flinkp5&quot;,&quot;migration.display.enabled&quot;:&quot;false&quot;,&quot;deployment.exec-plan. uri.valid&quot;:&quot;true&quot;,&quot;com.dataartisans.appmanager.controller.deployment.spec. rsion&quot;:&quot;13&quot;,&quot;default.resourcesetting.has.migrated&quot;:&quot;true&quot;,&quot;deployment.referenced.deployment.draft.histo .version&quot;:&quot;1&quot;,&quot;deployment.exec-plan.uri&quot;:&quot;oss://flink-fullyman aged-9cuwr9g7y1hl19/flink-jobs/namespaces/flinkteam/jobs/c944e978-5cb9-4879-8312-c0872ee5018 2/execPlan.json&quot;,&quot;deployment.referenced.deployment.draft.id&quot;:&quot;cee26b6e-d 03b-4a03-a628a6fe665c525e&quot;,&quot;resources.from.job.has.migrated&quot;:&quot;true&quot;,&quot;taker&qu ;:&quot; | vvp- 0&quot;,&quot;modifierName&quot;:&quot;flinkadmin&quot;,&quot;deployment.referenced.deployment raft.history.id&quot;:&quot;561a6a3d-7858-4056-acfbad0cdec09e55&quot;},&quot;id&quot;:&quot;a3d88b2a-e076-4491-86f2- 5a81ea4c7300&quot;,&quot;labels&quot;: {}},&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;Deployment&quot;,&quot;spec&q t;:{&quot;template&quot;:{&quot;metadata&quot;:{&quot;annotations&quot;: {&quot;flink.resource.type&quot;:&quot;finegrained&quot;,&quot;job.resource.total.memory.byte&quot;:&quot;0&quot;,&quot;job.resource.tota cpu&quot;:&quot;0.0&quot;,&quot;native.kubernetes.mode&quot;:&quot;true&quot;,&quot;flink.quer blestate.enabled&quot;:&quot;false&quot;,&quot;flink.security.ssl.enabled&quot;:&quot;false&quot; ,&quot;spec&quot;:{&quot;artifact&quot;:{&quot;flinkImageTag&quot;:&quot;1.17.0-vvr-8.0.7manifest- 251107&quot;,&quot;kind&quot;:&quot;SQLSCRIPT&quot;,&quot;sqlScript&quot;:&quot;CREATE TEMPO RARY TABLE `datahub_table` (strname VARCHAR)with ( &#x27;connector&#x27; = &#x27;datagen&
@@ -1851,9 +1988,9 @@ type&quot;:&quot;EDITOR&quot;,&quot;deployment.has.deployed&quot;:&quot;false&qu
 nnector&#x27; = &#x27;print&#x27;);INSERT INTO kafka_tableSELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR_LENGTH (strname) AS BIGINT) AS lensFROM datahub_table;&quot;,&quot;imageUserDefined&quot;:false,&quot;flinkImageRegistry&quot;:&quot;c wulan-env35-d01-reg.docker.intra.env35.shuguang.com:80/ververicapaas&quot;,&quot;versionName&quot;:&quot;vvr-8.0.7-flink- 1.17&quot;,&quot;flinkImageRepository&quot;:&quot;vvr&quot;,&quot;flinkVersion&quot;:&quot;1.1 quot;},&quot;parallelism&quot;:1,&quot;batchMode&quot;:false,&quot;resources&quot;:{&quot;jo bmanager&quot;: {&quot;memory&quot;:&quot;2Gi&quot;,&quot;cpu&quot;:0.5},&quot;taskmanager&quot;:{&quot;memo ry&quot;:&quot;3Gi&quot;,&quot;cpu&quot;:1.0}},&quot;logging&quot;: {&quot;log4jLoggers&quot;:{&quot;&quot;:&quot;INFO&quot;},&quot;logReservePolicy&quot;:{&quo t;expirationDays&quot;:7,&quot;openHistory&quot;:true},&quot;loggingProfile&quot;:&quot;defaul quot;},&quot;flinkConfiguration&quot;:{}}},&quot;restoreStrategy&quot;: {&quot;kind&quot;:&quot;FROM_SAVEPOINT&quot;,&quot;allowNonRestoredState&quot;:false,&quot;sav ointId&quot;:&quot;5cea0d88-303d-44e5-a96e- 47f7217723d7&quot;},&quot;state&quot;:&quot;CANCELLED&quot;,&quot;upgradeStrategy&quot;:{&qu ot;kind&quot;:&quot;NONE&quot;},&quot;maxSavepointCreationAttempts&quot;:4,&quot;maxJobCreatio ttempts&quot;:1,&quot;deploymentTargetId&quot;:&quot;a89ff052-38c6-4fd3-9b91-e9c53f8ee019&qu ot;},&quot;status&quot;: {&quot;startTime&quot;:1777002980004,&quot;state&quot;:&quot;CANCELLED&quot;,&quot;endTime&quo :0}}</data> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-实时计算（流计算） API
+#### 3.1.14 GetArtifactMetadata
 
-#### GetArtifactMetadata
+调用GetArtifactMetadata，获取实时计算中指定文件的元数据信息。
 
 **请求头**
 
@@ -1880,8 +2017,6 @@ GET /pop/workspaces/[workspace]/artifacts/v1/namespaces/[namespace]/artifacts:ge
 |---|---|---|---|
 | requestId | String | CBC799F0-AS7S- 1D30-8A4F- 882ED4DD**** | 请求ID。 |
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | data | String | { "artifact": { "filename": "TopSpeedWindowin g.jar", "size": "0", "createTime": "2026-04- 29T09:20:14Z", "uploader": "235406976657057 054", "namespace": "namespaces/flinkte am", "uri": "oss://flink- fullymanaged- 9cuwr9g7y1hl19/arti facts/namespaces/fli nkteam/TopSpeedWi ndowing.jar", "content": "" }, "@type": "type.googleapis.co m/vvp.artifacts.v1.G etArtifactMetadataR esponse" } | 详细信息。 |
@@ -1895,24 +2030,24 @@ GET /pop/workspaces/[workspace]/artifacts/v1/namespaces/[namespace]/artifacts:ge
 GET /pop/workspaces/[workspace]/artifacts/v1/namespaces/[namespace]/artifacts:getMetadata HT TP/1.1 &RegionId=cn-wulan-env***-d01 &namespace=flinkteam &filename=test.csv &workspace=default
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{\"artifact\":
 {\"filename\":\"TopSpeedWindowing.jar\",\"size\":\"0\",\"createTime\":\"2026-04-29T09:20:14Z \",\"uploader\":\"235406976657057054\",\"namespace\":\"namespaces/flinkteam\",\"uri\":\"oss:// ink-fullymanaged- 9cuwr9g7y1hl19/artifacts/namespaces/flinkteam/TopSpeedWindowing.jar\",\"content\":\"\"},\"@typ ":\"type.googleapis.com/vvp.artifacts.v1.GetArtifactMetadataResponse\"}",
  "requestId":"CBC799F0-AS7S-1D30-8A4F-882ED4DD****",
  "success":true
-}
 ```
 
-`XML` 格式实时计算（流计算） API
+`}` `XML` 格式
 
 ```xml
 <data>{&quot;artifact&quot;: {&quot;filename&quot;:&quot;TopSpeedWindowing.jar&quot;,&quot;size&quot;:&quot;0&quot;,&quot;c ateTime&quot;:&quot;2026-04- 29T09:20:14Z&quot;,&quot;uploader&quot;:&quot;235406976657057054&quot;,&quot;namespace&quot;:& ot;namespaces/flinkteam&quot;,&quot;uri&quot;:&quot;oss://flink-fullymanaged-9cuwr9g7y1hl19/ artifacts/namespaces/flinkteam/TopSpeedWindowing.jar&quot;,&quot;content&quot;:&quot;&quot;},& ot;@type&quot;:&quot;type.googleapis.com/vvp.artifacts.v1.GetArtifactMetadataResponse&quot;} </data> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-#### ExecuteSqlScript
+#### 3.1.15 ExecuteSqlScript
+
+调用ExecuteSqlScript，执行SQL脚本以管理实时计算任务。
 
 **请求头**
 
@@ -1921,8 +2056,10 @@ GET /pop/workspaces/[workspace]/artifacts/v1/namespaces/[namespace]/artifacts:ge
 **请求语法**
 
 ```
-POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/sqlscripts:execute HTTP/ 1.1
+POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/sqlscripts:execute HTTP/
 ```
+
+### 1.1 获取API信息及其EndPoint
 
 **请求参数**
 
@@ -1939,8 +2076,6 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/sqlscripts:e
 |---|---|---|---|
 | requestId | String | CBC799F0-AS7S- 1D30-8A4F- 882ED4DD**** | 请求ID。 |
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | data | String | { "@type": "type.googleapis.co m/vvp.sql.v1beta1.E xecuteStatementsR esponse", "responses": [{ "result": "RESULT SUCCESS", _ "errorMessages": [] }] } | 详细信息。 |
@@ -1950,28 +2085,34 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/sqlscripts:e
 
 请求示例
 
-```json
-POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/sqlscripts:execute HTTP/ 1.1 { "RegionId":"cn-wulan-env***-d01", "namespace":"flinkteam", "workspace":"default" }
+```
+POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/sqlscripts:execute HTTP/
 ```
 
-正常返回示例 `JSON` 格式
+### 1.1 获取API信息及其EndPoint
+
+`{`
 
 ```json
-{
+"RegionId":"cn-wulan-env***-d01", "namespace":"flinkteam", "workspace":"default"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"
 {\"@type\":\"type.googleapis.com/vvp.sql.v1beta1.ExecuteStatementsResponse\",\"responses\":[ {\"result\":\"RESULT_SUCCESS\",\"errorMessages\":[]}]}",
  "requestId":"CBC799F0-AS7S-1D30-8A4F-882ED4DD****",
  "success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <data> {&quot;@type&quot;:&quot;type.googleapis.com/vvp.sql.v1beta1.ExecuteStatementsResponse&quot;,& ot;responses&quot;: [{&quot;result&quot;:&quot;RESULT_SUCCESS&quot;,&quot;errorMessages&quot;:[]}]}</data> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-#### DeployDeploymentDraft
+#### 3.1.16 DeployDeploymentDraft
 
 调用DeployDeploymentDraft，部署实时计算任务到指定的工作区和命名空间。
 
@@ -1980,8 +2121,6 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/sqlscripts:e
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
-
-实时计算（流计算） API
 
 ```
 POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-drafts/deploy HTTP /1.1
@@ -1994,28 +2133,22 @@ POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-drafts
 | RegionId | String | Host | 是 | cn-wulan-env188-d01 | Region ID。 |
 | workspace | String | Path | 是 | default | 作业所在的工作空间ID。您可以通过以下任意一种方式获取： 通过ListNamespaces获取。 在Flink全托管开发控制台工作空间详情中获取。 |
 | namespac e | String | Path | 是 | flinkteam | 作业所在的项目空间名称。 |
-|  |  |  |  | { "metadata": { "createdAt": "2026-04- 24T03:46:53Z", "workspace": "9cuwr9g7y1hl19", "resourceVersion": 32, "name": "sqlJob", "namespace": "flinkteam", "annotations": { "migration.display.enable d": "false", "creator": "235406976657057054", "modifier": "235406976657057054", "creatorName": "flinkadmin", "modifierName": "flinkadmin", "priority": "5", "deployment.draft.referen ced.deployment.id": "7325ac07-e466-4c1b- b598-311c6f2c103b" }, "labels": {}, "lock": { "metadata": { "createdAt": "2026-04- 24T03:46:53Z", "workspace": "9cuwr9g7y1hl19", "modifiedAt": "2026-04- 24T03:46:53Z", "namespace": "flinkteam", "annotations": { "creator": "235406976657057054", "modifier": "235406976657057054" }, "id": "313fde08-4b44- 38b5-99c4- 7f3038449796" }, |  |
-
-实时计算（流计算） API
+|   |   |   |   | { "metadata": { "createdAt": "2026-04- 24T03:46:53Z", "workspace": "9cuwr9g7y1hl19", "resourceVersion": 32, "name": "sqlJob", "namespace": "flinkteam", "annotations": { "migration.display.enable d": "false", "creator": "235406976657057054", "modifier": "235406976657057054", "creatorName": "flinkadmin", "modifierName": "flinkadmin", "priority": "5", "deployment.draft.referen ced.deployment.id": "7325ac07-e466-4c1b- b598-311c6f2c103b" }, "labels": {}, "lock": { "metadata": { "createdAt": "2026-04- 24T03:46:53Z", "workspace": "9cuwr9g7y1hl19", "modifiedAt": "2026-04- 24T03:46:53Z", "namespace": "flinkteam", "annotations": { "creator": "235406976657057054", "modifier": "235406976657057054" }, "id": "313fde08-4b44- 38b5-99c4- 7f3038449796" }, |   |
 
 | 参数名称 | 类型 | 位置 | 是否必选 | "apiVersion": "v1", "kind": "示Lo例ck", "spec": { | 说明 |
 |---|---|---|---|---|---|
 | paramsJso n | String | Body | 否 | "holderName": "flinkadmin", "holderId": "235406976657057054" } }, "id": "cee26b6e- d03b-4a03-a628- a6fe665c525e", "parentId": "cd1562be- 02ed-32cf-945b- 9769afe4c55e", "description": "cd1562be- 02ed-32cf-945b- 9769afe4c55e" }, "spec": { "state": "CANCELLED", "upgradeStrategy": { "kind": "STATELESS" }, "restoreStrategy": { "kind": "LATEST STATE" _ }, "deploymentTargetId": "a89ff052-38c6-4fd3- 9b91-e9c53f8ee019", "maxSavepointCreationAt tempts": 4, "maxJobCreationAttempts ": 1, "template": { "metadata": { | 执行参数，sql脚本。 |
-|  |  |  |  | "annotations": { "flink.resource.type": "fine-grained", "native.kubernetes.mode" : "true", "flink.queryable- state.enabled": "false", "flink.security.ssl.enabled ": "false" } }, "spec": { "artifact": { "kind": "SQLSCRIPT", "versionName": "vvr- 8.0.7-flink-1.17", "imageUserDefined": false, "sqlScript": "CREATE TEMPORARY TABLE `datahub table` _ (strname VARCHAR) with ( 'connector' = 'datagen' ); CREATE TEMPORARY TABLE `kafka table` _ (strname VARCHAR, lens BIGINT) with ( 'connector' = 'print' ); INSERT INTO kafka table _ SELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR LENGTH (strname) _ AS BIGINT) AS lens FROM datahub table;" }, _ "parallelism": 1, "resources": { "jobmanager": { "memory": "2Gi", "cpu": 0.5 }, "taskmanager": { "memory": "3Gi", "cpu": 1.0 } }, "flinkConfiguration": {}, |  |
-
-实时计算（流计算） API
+|   |   |   |   | "annotations": { "flink.resource.type": "fine-grained", "native.kubernetes.mode" : "true", "flink.queryable- state.enabled": "false", "flink.security.ssl.enabled ": "false" } }, "spec": { "artifact": { "kind": "SQLSCRIPT", "versionName": "vvr- 8.0.7-flink-1.17", "imageUserDefined": false, "sqlScript": "CREATE TEMPORARY TABLE `datahub table` _ (strname VARCHAR) with ( 'connector' = 'datagen' ); CREATE TEMPORARY TABLE `kafka table` _ (strname VARCHAR, lens BIGINT) with ( 'connector' = 'print' ); INSERT INTO kafka table _ SELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR LENGTH (strname) _ AS BIGINT) AS lens FROM datahub table;" }, _ "parallelism": 1, "resources": { "jobmanager": { "memory": "2Gi", "cpu": 0.5 }, "taskmanager": { "memory": "3Gi", "cpu": 1.0 } }, "flinkConfiguration": {}, |   |
 
 | 参数名称 | 类型 | 位置 | 是否必选 | "logging": { "示lo例g4jLoggers": { "": | 说明 |
 |---|---|---|---|---|---|
-|  |  |  |  | "INFO" }, "logReservePolicy": { "expirationDays": 7, "openHistory": true }, "loggingProfile": "default" }, "batchMode": false } } } } |  |
+|   |   |   |   | "INFO" }, "logReservePolicy": { "expirationDays": 7, "openHistory": true }, "loggingProfile": "default" }, "batchMode": false } } } } |   |
 
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | success | Boolean | true | 请求是否成功。 |
-
-实时计算（流计算） API
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -2024,36 +2157,40 @@ POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-drafts
 
 **示例**
 
-请求示例实时计算（流计算） API
+请求示例
 
-```json
-POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-drafts/deploy HTTP /1.1 { "RegionId":"cn-wulan-env***-d01", "workspace":"default", "namespace":"flinkteam" }
+```
+POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-drafts/deploy HTTP /1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"RegionId":"cn-wulan-env***-d01", "workspace":"default", "namespace":"flinkteam"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{\"metadata\":{\"createdAt\":\"2026-04-24T03:52:07.764001Z\",\"jobId\":\"e5c412be-c
 160-460a-9d7b- 0b7111c77e15\",\"workspace\":\"9cuwr9g7y1hl19\",\"nativeFormat\":false,\"modifiedAt\":\"2026- 04-24T03:52:07.764001Z\",\"deploymentId\":\"a3d88b2a-e076-4491-86f2- 5a81ea4c7300\",\"origin\":\"USER_REQUEST\",\"resourceVersion\":1,\"namespace\":\"flinkteam\",\ nnotations\": {\"com.dataartisans.appmanager.controller.deployment.spec.version\":\"6\",\"taker\":\" | vvp-0\"},\"id\":\"58778df9-5082-4da3-9890d531fcc1200d\"},\"apiVersion\":\"v1\",\"kind\":\"Savepoint\",\"spec\": {\"savepointLocation\":\"oss://flink-fullymanaged-9cuwr9g7y1hl19/flinksavepoints/namespaces/flinkteam/deployments/a3d88b2a-e076-4491-86f2-5a81ea4c7300/58778df9- 5082-4da3-9890-d531fcc1200d\"},\"status\":{\"state\":\"STARTED\"}}",
  "success":true,
  "requestId":"CBC799F0-AS7S-1D30-8A4F-882ED4DD****"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <data>{&quot;metadata&quot;:{&quot;createdAt&quot;:&quot;2026-04- 24T03:52:07.764001Z&quot;,&quot;jobId&quot;:&quot;e5c412be-c160-460a-9d7b-0b7111c77e15&quot; ,&quot;workspace&quot;:&quot;9cuwr9g7y1hl19&quot;,&quot;nativeFormat&quot;:false,&quot;modifie t&quot;:&quot;2026-04-24T03:52:07.764001Z&quot;,&quot;deploymentId&quot;:&quot;a3d88b2a-e076 -4491-86f2- 5a81ea4c7300&quot;,&quot;origin&quot;:&quot;USER_REQUEST&quot;,&quot;resourceVersion&quot;:1,& ot;namespace&quot;:&quot;flinkteam&quot;,&quot;annotations&quot;: {&quot;com.dataartisans.appmanager.controller.deployment.spec.version&quot;:&quot;6&quot;,&quo taker&quot;:&quot; | vvp-0&quot;},&quot;id&quot;:&quot;58778df9-5082-4da3-9890-d531fcc1200d& quot;},&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;Savepoint&quot;,&quot;spec uot;:{&quot;savepointLocation&quot;:&quot;oss://flink-fullymanaged-9cuwr9g7y1hl19/flink-save points/namespaces/flinkteam/deployments/a3d88b2a-e076-4491-86f2-5a81ea4c7300/58778df9-5082-4 da3-9890-d531fcc1200d&quot;},&quot;status&quot;:{&quot;state&quot;:&quot;STARTED&quot;}} </data> <success>true</success> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId>
 ```
 
-#### DeleteNetworkPolicyIpAddress
+#### 3.1.17 DeleteNetworkPolicyIpAddress
 
 调用DeleteNetworkPolicyIpAddress，删除指定网络策略中的IP地址。
 
 **请求头**
 
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 实时计算（流计算） API
+该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
 
@@ -2086,23 +2223,21 @@ DELETE /flink/namespace/deleteIp HTTP/1.1
 DELETE /flink/namespace/deleteIp HTTP/1.1 &RegionId=cn-wulan-env188-d01 &name=blinkteam &ipAddress= xxx.xxx.xx.xxx
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{}",
  "success":true,
  "requestId":"CBC799F0-AS7S-1D30-8A4F-882ED4DD****"
-}
 ```
 
-`XML` 格式实时计算（流计算） API
+`}` `XML` 格式
 
 ```xml
 <data>{}</data> <success>true</success> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId>
 ```
 
-#### DeleteDeployment
+#### 3.1.18 DeleteDeployment
 
 调用DeleteDeployment，删除指定的部署资源，释放相关工作负载及关联组件。
 
@@ -2134,28 +2269,28 @@ DELETE /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[de
 
 **示例**
 
-请求示例实时计算（流计算） API
+请求示例
 
 ```
 DELETE /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deploymentId] HTTP/1.1 &RegionId=cn-wulan-env***-d01 &namespace=flinkteam &deploymentId=d0b3abf0-4bfe-46b1-a324-5b7def580c00 &workspace=default
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "requestId":"CBC799F0-AS7S-1D30-8A4F-882ED4DD****",
  "success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-#### DeleteArtifact
+#### 3.1.19 DeleteArtifact
+
+调用DeleteArtifact，删除实时计算中的指定工件文件。
 
 **请求头**
 
@@ -2176,8 +2311,6 @@ DELETE /pop/workspaces/[workspace]/artifacts/v1/namespaces/[namespace]/artifacts
 | filename | String | Query | 是 | test.csv | 文件名称。 |
 | workspace | String | Path | 是 | default | 作业所在的工作空间 ID。您可以通过以下任意一种方式获取： 通过 ListNamespaces 获取。 在 Flink 全托管开发控制台工作空间详情中获取。 |
 
-实时计算（流计算） API
-
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -2193,22 +2326,20 @@ DELETE /pop/workspaces/[workspace]/artifacts/v1/namespaces/[namespace]/artifacts
 DELETE /pop/workspaces/[workspace]/artifacts/v1/namespaces/[namespace]/artifacts:delete HTTP /1.1 &RegionId=cn-wulan-env188-d01 &namespace=flinkteam &filename=test.csv &workspace=default
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "requestId":"CBC799F0-AS7S-1D30-8A4F-882ED4DD****",
  "success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-#### CreateSavepoint
+#### 3.1.20 CreateSavepoint
 
 调用CreateSavepoint，创建保存点，用于事务处理中标记一个可回滚的状态位置。
 
@@ -2226,8 +2357,6 @@ POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/savepoints HTTP/1
 
 **请求参数**
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | namespac e | String | Path | 是 | flinkteam | 作业所在的项目空间名称。 |
@@ -2239,8 +2368,6 @@ POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/savepoints HTTP/1
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | data | String | { "metadata": { "createdAt": "2026- 04- 24T03:52:07.76400 1Z", "jobId": "e5c412be-c160- 460a-9d7b- 0b7111c77e15", "workspace": "9cuwr9g7y1hl19", "nativeFormat": false, "modifiedAt": "2026-04- 24T03:52:07.76400 1Z", "deploymentId": "a3d88b2a-e076- 4491-86f2- 5a81ea4c7300", "origin": "USER REQUEST", _ "resourceVersion": 1, "namespace": "flinkteam", "annotations": { "com.dataartisans.a ppmanager.controll er.deployment.spec. version": "6", "taker": " \| vvp-0" }, "id": "58778df9- 5082-4da3-9890- d531fcc1200d" }, "apiVersion": "v1", "kind": "Savepoint", "spec": { "savepointLocation": "oss://flink- fullymanaged- 9cuwr9g7y1hl19/flin k- savepoints/namespa ces/flinkteam/deplo yments/a3d88b2a- e076-4491-86f2- 5a81ea4c7300/5877 8df9-5082-4da3- 9890- d531fcc1200d" }, "status": { "state": "STARTED" } } | 详细信息。 |
@@ -2249,38 +2376,42 @@ POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/savepoints HTTP/1
 
 **示例**
 
-请求示例实时计算（流计算） API
+请求示例
 
-```json
-POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/savepoints HTTP/1.1 { "namespace":"flinkteam", "workspace":"default" }
+```
+POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/savepoints HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"namespace":"flinkteam", "workspace":"default"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{\"metadata\":{\"createdAt\":\"2026-04-24T03:52:07.764001Z\",\"jobId\":\"e5c412be-c
 160-460a-9d7b- 0b7111c77e15\",\"workspace\":\"9cuwr9g7y1hl19\",\"nativeFormat\":false,\"modifiedAt\":\"2026- 04-24T03:52:07.764001Z\",\"deploymentId\":\"a3d88b2a-e076-4491-86f2- 5a81ea4c7300\",\"origin\":\"USER_REQUEST\",\"resourceVersion\":1,\"namespace\":\"flinkteam\",\ nnotations\": {\"com.dataartisans.appmanager.controller.deployment.spec.version\":\"6\",\"taker\":\" | vvp-0\"},\"id\":\"58778df9-5082-4da3-9890d531fcc1200d\"},\"apiVersion\":\"v1\",\"kind\":\"Savepoint\",\"spec\": {\"savepointLocation\":\"oss://flink-fullymanaged-9cuwr9g7y1hl19/flinksavepoints/namespaces/flinkteam/deployments/a3d88b2a-e076-4491-86f2-5a81ea4c7300/58778df9- 5082-4da3-9890-d531fcc1200d\"},\"status\":{\"state\":\"STARTED\"}}",
  "requestId":"CBC799F0-AS7S-1D30-8A4F-882ED4DD****",
  "success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <data>{&quot;metadata&quot;:{&quot;createdAt&quot;:&quot;2026-04- 24T03:52:07.764001Z&quot;,&quot;jobId&quot;:&quot;e5c412be-c160-460a-9d7b-0b7111c77e15&quot; ,&quot;workspace&quot;:&quot;9cuwr9g7y1hl19&quot;,&quot;nativeFormat&quot;:false,&quot;modifie t&quot;:&quot;2026-04-24T03:52:07.764001Z&quot;,&quot;deploymentId&quot;:&quot;a3d88b2a-e076 -4491-86f2- 5a81ea4c7300&quot;,&quot;origin&quot;:&quot;USER_REQUEST&quot;,&quot;resourceVersion&quot;:1,& ot;namespace&quot;:&quot;flinkteam&quot;,&quot;annotations&quot;: {&quot;com.dataartisans.appmanager.controller.deployment.spec.version&quot;:&quot;6&quot;,&quo taker&quot;:&quot; | vvp-0&quot;},&quot;id&quot;:&quot;58778df9-5082-4da3-9890-d531fcc1200d& quot;},&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;Savepoint&quot;,&quot;spec uot;:{&quot;savepointLocation&quot;:&quot;oss://flink-fullymanaged-9cuwr9g7y1hl19/flink-save points/namespaces/flinkteam/deployments/a3d88b2a-e076-4491-86f2-5a81ea4c7300/58778df9-5082-4 da3-9890-d531fcc1200d&quot;},&quot;status&quot;:{&quot;state&quot;:&quot;STARTED&quot;}} </data> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-#### CreateDeployment
+#### 3.1.21 CreateDeployment
+
+调用CreateDeployment，创建已部署作业。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
-
-实时计算（流计算） API
 
 ```
 POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments HTTP/1.1
@@ -2301,47 +2432,47 @@ POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments HTTP/
 |---|---|---|---|
 | success | Boolean | true | 请求是否成功。 |
 | requestId | String | CBC799F0-AS7S- 1D30-8A4F- 882ED4DD**** | 请求ID。 |
-|  |  | { "metadata": { "createdAt": "2026- 04- 24T03:46:53.34248 4Z", "workspace": "9cuwr9g7y1hl19", "modifiedAt": "2026-04- 24T03:46:53.34248 4Z", "resourceVersion": 1, "name": "sqlJob", "namespace": "flinkteam", "annotations": { "migration.display.e |  |
+|   |   | { "metadata": { "createdAt": "2026- 04- 24T03:46:53.34248 4Z", "workspace": "9cuwr9g7y1hl19", "modifiedAt": "2026-04- 24T03:46:53.34248 4Z", "resourceVersion": 1, "name": "sqlJob", "namespace": "flinkteam", "annotations": { "migration.display.e |   |
 
-实时计算（流计算） API
-
-|  |  | g p y |  |
+|   |   | g p y |   |
 |---|---|---|---|
 | 参数名称 | 类型 | nabled": "false", 示例 "creator": | 说明 |
 | data | String | "235406976657057 054", "modifier": "235406976657057 054", "creatorName": "flinkadmin", "modifierName": "flinkadmin", "priority": "5" }, "description": "cd1562be-02ed- 32cf-945b- 9769afe4c55e", "lock": { "metadata": { "createdAt": "2026- 04-24T03:46:53Z", "workspace": "9cuwr9g7y1hl19", "modifiedAt": "2026-04- 24T03:46:53Z", "namespace": "flinkteam", "annotations": { "creator": "235406976657057 054", "modifier": "235406976657057 054" }, "id": "313fde08-4b44- 38b5-99c4- 7f3038449796" }, "apiVersion": "v1", "kind": "Lock", "spec": { "holderName": "flinkadmin", "holderId": "235406976657057 054" } }, "id": "cee26b6e-d03b- 4a03-a628- a6fe665c525e", "parentId": "cd1562be-02ed- 32cf-945b- 9769afe4c55e", "labels": {} }, "apiVersion": "v1", "kind": "DeploymentDraft", "spec": { "template": { "metadata": { "annotations": { "native.kubernetes. mode": "true", "flink.queryable- state.enabled": "false", "flink.security.ssl.en abled": "false" } }, "spec": { "artifact": { "kind": "SQLSCRIPT", "sqlScript": "INSERT INTO mySink SELECT | 详细信息。 |
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | SELECT S示U例BSTRING(a,0,10) AS a, | 说明 |
 |---|---|---|---|
-|  |  | CAST(CHAR LENGT _ H(a) AS BIGINT) as cnt FROM mySource;", "imageUserDefined" : false, "versionName": "vvr-8.0.7-flink- 1.17" }, "parallelism": 1, "batchMode": false, "resources": { "jobmanager": { "memory": "4Gi", "cpu": 1.0 }, "taskmanager": { "memory": "4Gi", "cpu": 1.0 } }, "logging": { "log4jLoggers": { "": "INFO" }, "logReservePolicy": { "expirationDays": 7, "openHistory": true }, "loggingProfile": "default" }, "flinkConfiguration": {} } }, "restoreStrategy": { "kind": "LATEST STATE", _ "allowNonRestoredS tate": false }, "state": "CANCELLED", "upgradeStrategy": { "kind": "STATELESS" }, "maxSavepointCreat ionAttempts": 4, "maxJobCreationAtt empts": 1, "deploymentTargetI d": "a89ff052-38c6- 4fd3-9b91- e9c53f8ee019" } } |  |
+|   |   | CAST(CHAR LENGT _ H(a) AS BIGINT) as cnt FROM mySource;", "imageUserDefined" : false, "versionName": "vvr-8.0.7-flink- 1.17" }, "parallelism": 1, "batchMode": false, "resources": { "jobmanager": { "memory": "4Gi", "cpu": 1.0 }, "taskmanager": { "memory": "4Gi", "cpu": 1.0 } }, "logging": { "log4jLoggers": { "": "INFO" }, "logReservePolicy": { "expirationDays": 7, "openHistory": true }, "loggingProfile": "default" }, "flinkConfiguration": {} } }, "restoreStrategy": { "kind": "LATEST STATE", _ "allowNonRestoredS tate": false }, "state": "CANCELLED", "upgradeStrategy": { "kind": "STATELESS" }, "maxSavepointCreat ionAttempts": 4, "maxJobCreationAtt empts": 1, "deploymentTargetI d": "a89ff052-38c6- 4fd3-9b91- e9c53f8ee019" } } |   |
 
 **示例**
 
 请求示例
 
-```json
-POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments HTTP/1.1 { "RegionId":"cn-wulan-env***-d01", "namespace":"flinkteam", "workspace":"default" }
+```
+POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式实时计算（流计算） API
+`{`
 
 ```json
-{
+"RegionId":"cn-wulan-env***-d01", "namespace":"flinkteam", "workspace":"default"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{\"metadata\":{\"createdAt\":\"2026-04-
 24T03:46:53.342484Z\",\"workspace\":\"9cuwr9g7y1hl19\",\"modifiedAt\":\"2026-04-24T03:46:53. 342484Z\",\"resourceVersion\":1,\"name\":\"sqlJob\",\"namespace\":\"flinkteam\",\"annotations\ {\"migration.display.enabled\":\"false\",\"creator\":\"235406976657057054\",\"modifier\":\"235 6976657057054\",\"creatorName\":\"flinkadmin\",\"modifierName\":\"flinkadmin\",\"priority\":\" "},\"description\":\"cd1562be-02ed-32cf-945b-9769afe4c55e\",\"lock\":{\"metadata\":{\"create dAt\":\"2026-04-24T03:46:53Z\",\"workspace\":\"9cuwr9g7y1hl19\",\"modifiedAt\":\"2026-04-24T 03:46:53Z\",\"namespace\":\"flinkteam\",\"annotations\": {\"creator\":\"235406976657057054\",\"modifier\":\"235406976657057054\"},\"id\":\"313fde08-4 b44-38b5-99c4-7f3038449796\"},\"apiVersion\":\"v1\",\"kind\":\"Lock\",\"spec\":{\"holderName \":\"flinkadmin\",\"holderId\":\"235406976657057054\"}},\"id\":\"cee26b6e-d03b-4a03-a628-a6f e665c525e\",\"parentId\":\"cd1562be-02ed-32cf-945b-9769afe4c55e\",\"labels\":{}},\"apiVersio n\":\"v1\",\"kind\":\"DeploymentDraft\",\"spec\":{\"template\":{\"metadata\":{\"annotations\ ":{\"native.kubernetes.mode\":\"true\",\"flink.queryablestate.enabled\":\"false\",\"flink.security.ssl.enabled\":\"false\"}},\"spec\":{\"artifact\": {\"kind\":\"SQLSCRIPT\",\"sqlScript\":\"INSERT INTO mySink SELECT SUBSTRING(a,0,10) AS a, CA ST(CHAR_LENGTH(a) AS BIGINT) as cnt FROM mySource;\",\"imageUserDefined\":false,\"versionName\":\"vvr-8.0.7-flink- 1.17\"},\"parallelism\":1,\"batchMode\":false,\"resources\":{\"jobmanager\":{\"memory\":\"4G i\",\"cpu\":1.0},\"taskmanager\":{\"memory\":\"4Gi\",\"cpu\":1.0}},\"logging\":{\"log4jLogge rs\":{\"\":\"INFO\"},\"logReservePolicy\": {\"expirationDays\":7,\"openHistory\":true},\"loggingProfile\":\"default\"},\"flinkConfigurati \":{}}},\"restoreStrategy\": {\"kind\":\"LATEST_STATE\",\"allowNonRestoredState\":false},\"state\":\"CANCELLED\",\"upgradeS ategy\": {\"kind\":\"STATELESS\"},\"maxSavepointCreationAttempts\":4,\"maxJobCreationAttempts\":1,\"dep ymentTargetId\":\"a89ff052-38c6-4fd3-9b91-e9c53f8ee019\"}}",
  "success":true,
  "requestId":"CBC799F0-AS7S-1D30-8A4F-882ED4DD****"
-}
 ```
 
-`XML` 格式实时计算（流计算） API
+`}` `XML` 格式
 
 ```xml
-<data>{&quot;metadata&quot;:{&quot;createdAt&quot;:&quot;2026-04- 24T03:46:53.342484Z&quot;,&quot;workspace&quot;:&quot;9cuwr9g7y1hl19&quot;,&quot;modifiedAt&qu ;:&quot;2026-04- 24T03:46:53.342484Z&quot;,&quot;resourceVersion&quot;:1,&quot;name&quot;:&quot;sqlJob&quot;,&q t;namespace&quot;:&quot;flinkteam&quot;,&quot;annotations&quot;: {&quot;migration.display.enabled&quot;:&quot;false&quot;,&quot;creator&quot;:&quot;23540697665 57054&quot;,&quot;modifier&quot;:&quot;235406976657057054&quot;,&quot;creatorName&quot;:&quot; inkadmin&quot;,&quot;modifierName&quot;:&quot;flinkadmin&quot;,&quot;priority&quot;:&quot;5&qu ;},&quot;description&quot;:&quot;cd1562be-02ed-32cf-945b- 9769afe4c55e&quot;,&quot;lock&quot;:{&quot;metadata&quot;:{&quot;createdAt&quot;:&quot;2026- 04- 24T03:46:53Z&quot;,&quot;workspace&quot;:&quot;9cuwr9g7y1hl19&quot;,&quot;modifiedAt&quot;:&qu ;2026-04- 24T03:46:53Z&quot;,&quot;namespace&quot;:&quot;flinkteam&quot;,&quot;annotations&quot;:{&quo t;creator&quot;:&quot;235406976657057054&quot;,&quot;modifier&quot;:&quot;235406976657057054&q t;},&quot;id&quot;:&quot;313fde08-4b44-38b5-99c4- 7f3038449796&quot;},&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;Lock&quot;,&q t;spec&quot;: {&quot;holderName&quot;:&quot;flinkadmin&quot;,&quot;holderId&quot;:&quot;235406976657057054&q t;}},&quot;id&quot;:&quot;cee26b6e-d03b-4a03-a628a6fe665c525e&quot;,&quot;parentId&quot;:&quot;cd1562be-02ed-32cf-945b- 9769afe4c55e&quot;,&quot;labels&quot;: {}},&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;DeploymentDraft&quot;,&quot;s c&quot;:{&quot;template&quot;:{&quot;metadata&quot;:{&quot;annotations&quot;: {&quot;native.kubernetes.mode&quot;:&quot;true&quot;,&quot;flink.queryable-state.enabled&quo t;:&quot;false&quot;,&quot;flink.security.ssl.enabled&quot;:&quot;false&quot;}},&quot;spec&quo :{&quot;artifact&quot;: {&quot;kind&quot;:&quot;SQLSCRIPT&quot;,&quot;sqlScript&quot;:&quot;INSERT INTO mySink SELEC T SUBSTRING(a,0,10) AS a, CAST(CHAR_LENGTH(a) AS BIGINT) as cnt FROM mySource;&quot;,&quot;imageUserDefined&quot;:false,&quot;versionName&quot;:&quot;vvr-8.0.7-f link- 1.17&quot;},&quot;parallelism&quot;:1,&quot;batchMode&quot;:false,&quot;resources&quot;:{&qu ot;jobmanager&quot;: {&quot;memory&quot;:&quot;4Gi&quot;,&quot;cpu&quot;:1.0},&quot;taskmanager&quot;:{&quot;memo ry&quot;:&quot;4Gi&quot;,&quot;cpu&quot;:1.0}},&quot;logging&quot;: {&quot;log4jLoggers&quot;:{&quot;&quot;:&quot;INFO&quot;},&quot;logReservePolicy&quot;:{&quo t;expirationDays&quot;:7,&quot;openHistory&quot;:true},&quot;loggingProfile&quot;:&quot;defaul quot;},&quot;flinkConfiguration&quot;:{}}},&quot;restoreStrategy&quot;: {&quot;kind&quot;:&quot;LATEST_STATE&quot;,&quot;allowNonRestoredState&quot;:false},&quot;stat quot;:&quot;CANCELLED&quot;,&quot;upgradeStrategy&quot;: {&quot;kind&quot;:&quot;STATELESS&quot;},&quot;maxSavepointCreationAttempts&quot;:4,&quot;maxJ CreationAttempts&quot;:1,&quot;deploymentTargetId&quot;:&quot;a89ff052-38c6-4fd3-9b91-e9c53f 8ee019&quot;}}</data> <success>true</success> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId>
+<data>{&quot;metadata&quot;:{&quot;createdAt&quot;:&quot;2026-04- 24T03:46:53.342484Z&quot;,&quot;workspace&quot;:&quot;9cuwr9g7y1hl19&quot;,&quot;modifiedAt&qu ;:&quot;2026-04- 24T03:46:53.342484Z&quot;,&quot;resourceVersion&quot;:1,&quot;name&quot;:&quot;sqlJob&quot;,&q t;namespace&quot;:&quot;flinkteam&quot;,&quot;annotations&quot;: {&quot;migration.display.enabled&quot;:&quot;false&quot;,&quot;creator&quot;:&quot;23540697665 57054&quot;,&quot;modifier&quot;:&quot;235406976657057054&quot;,&quot;creatorName&quot;:&quot; inkadmin&quot;,&quot;modifierName&quot;:&quot;flinkadmin&quot;,&quot;priority&quot;:&quot;5&qu ;},&quot;description&quot;:&quot;cd1562be-02ed-32cf-945b- 9769afe4c55e&quot;,&quot;lock&quot;:{&quot;metadata&quot;:{&quot;createdAt&quot;:&quot;2026- 24T03:46:53Z&quot;,&quot;workspace&quot;:&quot;9cuwr9g7y1hl19&quot;,&quot;modifiedAt&quot;:&qu ;2026-04- 24T03:46:53Z&quot;,&quot;namespace&quot;:&quot;flinkteam&quot;,&quot;annotations&quot;:{&quo t;creator&quot;:&quot;235406976657057054&quot;,&quot;modifier&quot;:&quot;235406976657057054&q t;},&quot;id&quot;:&quot;313fde08-4b44-38b5-99c4- 7f3038449796&quot;},&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;Lock&quot;,&q t;spec&quot;: {&quot;holderName&quot;:&quot;flinkadmin&quot;,&quot;holderId&quot;:&quot;235406976657057054&q t;}},&quot;id&quot;:&quot;cee26b6e-d03b-4a03-a628a6fe665c525e&quot;,&quot;parentId&quot;:&quot;cd1562be-02ed-32cf-945b- 9769afe4c55e&quot;,&quot;labels&quot;: {}},&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;DeploymentDraft&quot;,&quot;s c&quot;:{&quot;template&quot;:{&quot;metadata&quot;:{&quot;annotations&quot;: {&quot;native.kubernetes.mode&quot;:&quot;true&quot;,&quot;flink.queryable-state.enabled&quo t;:&quot;false&quot;,&quot;flink.security.ssl.enabled&quot;:&quot;false&quot;}},&quot;spec&quo :{&quot;artifact&quot;: {&quot;kind&quot;:&quot;SQLSCRIPT&quot;,&quot;sqlScript&quot;:&quot;INSERT INTO mySink SELEC T SUBSTRING(a,0,10) AS a, CAST(CHAR_LENGTH(a) AS BIGINT) as cnt FROM mySource;&quot;,&quot;imageUserDefined&quot;:false,&quot;versionName&quot;:&quot;vvr-8.0.7-f link- 1.17&quot;},&quot;parallelism&quot;:1,&quot;batchMode&quot;:false,&quot;resources&quot;:{&qu ot;jobmanager&quot;: {&quot;memory&quot;:&quot;4Gi&quot;,&quot;cpu&quot;:1.0},&quot;taskmanager&quot;:{&quot;memo ry&quot;:&quot;4Gi&quot;,&quot;cpu&quot;:1.0}},&quot;logging&quot;: {&quot;log4jLoggers&quot;:{&quot;&quot;:&quot;INFO&quot;},&quot;logReservePolicy&quot;:{&quo t;expirationDays&quot;:7,&quot;openHistory&quot;:true},&quot;loggingProfile&quot;:&quot;defaul quot;},&quot;flinkConfiguration&quot;:{}}},&quot;restoreStrategy&quot;: {&quot;kind&quot;:&quot;LATEST_STATE&quot;,&quot;allowNonRestoredState&quot;:false},&quot;stat quot;:&quot;CANCELLED&quot;,&quot;upgradeStrategy&quot;: {&quot;kind&quot;:&quot;STATELESS&quot;},&quot;maxSavepointCreationAttempts&quot;:4,&quot;maxJ CreationAttempts&quot;:1,&quot;deploymentTargetId&quot;:&quot;a89ff052-38c6-4fd3-9b91-e9c53f 8ee019&quot;}}</data> <success>true</success> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId>
 ```
 
-#### AddNetworkPolicyIpAddress
+#### 3.1.22 AddNetworkPolicyIpAddress
 
 调用AddNetworkPolicyIpAddress，向指定网络策略添加IP地址以增强安全访问控制。
 
@@ -2350,8 +2481,6 @@ POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments HTTP/
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
-
-实时计算（流计算） API
 
 ```
 POST /flink/namespace/addIp HTTP/1.1
@@ -2378,27 +2507,33 @@ POST /flink/namespace/addIp HTTP/1.1
 
 请求示例
 
-```json
-POST /flink/namespace/addIp HTTP/1.1 { "RegionId":"cn-wulan-env188-d01", "name":"blinkteam", "ipAddress":"xxx.xxx.xx.xxx" }
+```
+POST /flink/namespace/addIp HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"RegionId":"cn-wulan-env188-d01", "name":"blinkteam", "ipAddress":"xxx.xxx.xx.xxx"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":" {}",
  "success":true,
  "requestId":"CBC799F0-AS7S-1D30-8A4F-882ED4DD****"
-}
 ```
 
-`XML` 格式实时计算（流计算） API
+`}` `XML` 格式
 
 ```xml
 <data> {}</data> <success>true</success> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId>
 ```
 
-#### ListTables
+#### 3.1.23 ListTables
+
+调用ListTables，查看catalog表。
 
 **请求头**
 
@@ -2426,8 +2561,6 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 |---|---|---|---|
 | requestId | String | 202107221428- KKE3K857WS | 请求ID。 |
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | data | String | {"tables": [{"name":"blackhole ","schema": {"column": [{"name":"id","type" :"VARCHAR(214748 3647)","expression": ""}],"watermarkSpe c":[]},"properties": {"connector":"black hole"},"comment":" "}, {"name":"blackhole sink","schema": _ {"column": [{"name":"name","t ype":"VARCHAR(214 7483647)","expressi on":""}, {"name":"score","ty pe":"BIGINT","expre ssion":""}],"waterm arkSpec": []},"properties": {"connector":"black hole"},"comment":" blackhole sink table"}]} | 详细信息。 |
@@ -2440,69 +2573,94 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/[cat]:listTables HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式实时计算（流计算） API
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "requestId": "202107221428-KKE3K857WS",
   "success": true,
   "data": {
     "tables": [
-      {
+```
+
+`{`
+
+```json
         "name": "blackhole",
         "schema": {
           "column": [
-            {
+```
+
+`{`
+
+```json
               "name": "id",
               "type": "VARCHAR(2147483647)",
               "expression": ""
-            }
 ```
 
-`],`
+`}` `],`
 
 ```json
-        },
+          "watermarkSpec": []
+```
+
+`},`
+
+```json
         "properties": {
           "connector": "blackhole"
-        },
+```
+
+`},`
+
+```json
         "comment": ""
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "name": "blackhole_sink",
         "schema": {
           "column": [
-            {
+```
+
+`{`
+
+```json
               "name": "name",
               "type": "VARCHAR(2147483647)",
               "expression": ""
-            },
-            {
+```
+
+`},` `{`
+
+```json
               "name": "score",
               "type": "BIGINT",
               "expression": ""
-            }
 ```
 
-`],`
+`}` `],`
 
 ```json
-        },
+          "watermarkSpec": []
+```
+
+`},`
+
+```json
         "properties": {
           "connector": "blackhole"
-        },
+```
+
+`},`
+
+```json
         "comment": "blackhole sink table"
-      }
 ```
 
-]
-
-```
-  }
-}
-```
-
-`XML` 格式实时计算（流计算） API
+`}` `]` `}` `}` `XML` 格式
 
 ```xml
 <requestId>202107221428-KKE3K857WS</requestId> <success>true</success> <data>
@@ -2514,6 +2672,7 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
     <type>VARCHAR(2147483647)</type>
     <expression  />
    </column>
+   <watermarkSpec  />
   </schema>
   <properties>
    <connector>blackhole</connector>
@@ -2533,6 +2692,7 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
     <type>BIGINT</type>
     <expression  />
    </column>
+   <watermarkSpec  />
   </schema>
   <properties>
    <connector>blackhole</connector>
@@ -2542,7 +2702,7 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 </data>
 ```
 
-#### ListCatalogs
+#### 3.1.24 ListCatalogs
 
 调用ListCatalogs，获取指定工作空间指定namespace下的catalog列表。
 
@@ -2557,8 +2717,6 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs 
 ```
 
 **请求参数**
-
-实时计算（流计算） API
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -2582,10 +2740,9 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs 
 GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs HTTP/1.1 &RegionId= &namespace= &workspace=
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式实时计算（流计算） API
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "requestId": "31F99ADC-B72E-4BA1-AD32-B938D5A57532",
   "success": true,
   "httpCode": 200,
@@ -2594,23 +2751,18 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs 
   "data": {
     "@type": "type.googleapis.com/vvp.sql.catalog.v1beta2.ListCatalogsResponse",
     "catalogs": [
-      {
+```
+
+`{`
+
+```json
         "name": "namespaces/flinkteam/catalogs/vvp",
         "properties": {
           "defaultDatabase": "default",
           "type": "vvp"
-        }
-      }
 ```
 
-]
-
-```
-  }
-}
-```
-
-`XML` 格式
+`}` `}` `]` `}` `}` `XML` 格式
 
 ```xml
 <requestId>31F99ADC-B72E-4BA1-AD32-B938D5A57532</requestId> <success>true</success> <httpCode>200</httpCode> <message /> <reason /> <data>
@@ -2625,7 +2777,9 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs 
 </data>
 ```
 
-#### GetDatabase
+#### 3.1.25 GetDatabase
+
+调用GetDatabase，查询catalog下指定名称的数据库详细信息。
 
 **请求头**
 
@@ -2638,8 +2792,6 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 ```
 
 **请求参数**
-
-实时计算（流计算） API
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -2665,10 +2817,9 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/[cat]:getDatabase HTTP/1.1 &RegionId= &namespace= &workspace= &cat= &database=
 ```
 
-&公共请求参数实时计算（流计算） API 正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "requestId": "C345CF08-769F-4C28-A60F-6C8A30FEAFA6",
   "success": true,
   "httpCode": 200,
@@ -2680,14 +2831,16 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
       "name": "default",
       "properties": {},
       "comment": "The default database"
-    },
-    "success": true,
-    "message": ""
-  }
-}
 ```
 
-`XML` 格式
+`},`
+
+```json
+    "success": true,
+    "message": ""
+```
+
+`}` `}` `XML` 格式
 
 ```xml
 <requestId>C345CF08-769F-4C28-A60F-6C8A30FEAFA6</requestId> <success>true</success> <httpCode>200</httpCode> <message /> <reason /> <data>
@@ -2702,7 +2855,9 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 </data>
 ```
 
-#### ListFunctions
+#### 3.1.26 ListFunctions
+
+调用ListFunctions，获取自定义函数（udf）列表。
 
 **请求头**
 
@@ -2715,8 +2870,6 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 ```
 
 **请求参数**
-
-实时计算（流计算） API
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -2734,20 +2887,15 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 | requestId | String | 0ADBBDD0-E2E9- 4611-98C6- 6767A3AB87D2 | 请求ID。 |
 | success | Boolean | true | 请求是否成功。 |
 
-实时计算（流计算） API
-
-**示例**
-
 请求示例
 
 ```
 GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/[cat]:listFunction HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "requestId": "0ADBBDD0-E2E9-4611-98C6-6767A3AB87D2",
   "success": true,
   "httpCode": 200,
@@ -2756,30 +2904,29 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
   "data": {
     "@type": "type.googleapis.com/vvp.sql.catalog.v1beta2.ListFunctionsResponse",
     "functions": [
-      {
+```
+
+`{`
+
+```json
         "name": "TimestampProbe",
         "className": "com.alibaba.blink.udtf.TimestampProbe",
         "functionLanguage": "FUNCTION_LANGUAGE_JAVA",
         "functionType": "FUNCTION_TYPE_FLINK",
         "description": "This is a user-defined function"
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "name": "TransformUdtf",
         "className": "com.alibaba.blink.udtf.TransformUdtf",
         "functionLanguage": "FUNCTION_LANGUAGE_JAVA",
         "functionType": "FUNCTION_TYPE_FLINK",
         "description": "This is a user-defined function"
-      }
 ```
 
-]
-
-```
-  }
-}
-```
-
-`XML` 格式实时计算（流计算） API
+`}` `]` `}` `}` `XML` 格式
 
 ```xml
 <requestId>0ADBBDD0-E2E9-4611-98C6-6767A3AB87D2</requestId> <success>true</success> <httpCode>200</httpCode> <message /> <reason /> <data>
@@ -2801,7 +2948,7 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 </data>
 ```
 
-#### DatabaseExists
+#### 3.1.27 DatabaseExists
 
 调用DatabaseExists，确认catalog下的指定database是否存在。
 
@@ -2822,8 +2969,6 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 | RegionId | String | Host | 是 | cn-wulan-env188-d01 | Region ID。 |
 | namespac e | String | Path | 是 | ververica | 作业所在的项目空间名称。 |
 | workspace | String | Path | 是 | default | 作业所在的工作空间ID。您可以通过以下任意一种方式获取： 通过ListNamespaces获取。 在Flink全托管开发控制台工作空间详情中获取。 |
-
-实时计算（流计算） API
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -2846,10 +2991,9 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/[cat]:databaseExis HTTP/1.1 &RegionId= &namespace= &workspace= &cat= &database=
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "requestId": "41CAB2BF-B428-4240-A746-1F6CE6DE36B3",
   "success": true,
   "httpCode": 200,
@@ -2858,11 +3002,9 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
   "data": {
     "@type": "type.googleapis.com/vvp.sql.catalog.v1beta2.DatabaseExistsResponse",
     "exists": true
-  }
-}
 ```
 
-`XML` 格式实时计算（流计算） API
+`}` `}` `XML` 格式
 
 ```xml
 <requestId>41CAB2BF-B428-4240-A746-1F6CE6DE36B3</requestId> <success>true</success> <httpCode>200</httpCode> <message /> <reason /> <data>
@@ -2871,7 +3013,9 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 </data>
 ```
 
-#### CreateConnector
+#### 3.1.28 CreateConnector
+
+调用CreateConnector，创建connector。
 
 **请求头**
 
@@ -2891,8 +3035,6 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors H
 | workspace | String | Path | 是 | default | 作业所在的工作空间ID。您可以通过以下任意一种方式获取： 通过ListNamespaces获取。 在Flink全托管开发控制台工作空间详情中获取。 |
 | namespac e | String | Path | 是 | flinkteam | 作业所在的项目空间名。 |
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | paramsJso n | String | Body | 否 | { "type": "hologres-fix", "name": "namespaces/flinkteam/c onnectors/hologres-fix", "packaged": false, "source": true, "sink": true, "lookup": true, "dependencies": [ "hdfs:///tmp/myconnector s/ververica-connector- hologres-1.15-vvr-6.0- fix.jar" ], "supportedFormats": [ "json", "csv" ], "properties": [ { "key": "connector", "required": true, "defaultValue": "hologres-fix", "description": "", "definesFormat": false }, { "key": "dbname", "required": true, "defaultValue": "", "description": "", "definesFormat": false }, { "key": "endpoint", "required": true, "defaultValue": "", "description": "", "definesFormat": false }, { "key": "tablename", "required": true, "defaultValue": "", "description": "", "definesFormat": false } ] } | 新connector参数信息，包括 connector类型、名称、支持的连接参数、能否作为 sourc、sink、支持的 format、依赖的jar等。 |
@@ -2903,8 +3045,6 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors H
 |---|---|---|---|
 | success | Boolean | true | 请求是否成功。 |
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | data | String | { "connector": { "lookup": true, "supportedFormats" : [ "json", "csv" ], "environments": [], "sink": true, "name": "namespaces/flinkte am/connectors/holo gres-fix", "source": true, "type": "hologres-fix", "properties": [ { "defaultValue": "hologres-fix", "description": "", "definesFormat": false, "key": "connector", "required": true }, { "defaultValue": "", "description": "", "definesFormat": false, "key": "dbname", "required": true }, { "defaultValue": "", "description": "", "definesFormat": false, "key": "endpoint", "required": true }, { "defaultValue": "", "description": "", "definesFormat": false, "key": "tablename", "required": true } ], "packaged": false, "dependencies": [ "hdfs:///tmp/myconn ectors/ververica- connector-hologres- 1.15-vvr-6.0-fix.jar" ] }, "@type": "type.googleapis.co m/vvp.sql.v1beta1.C reateConnectorResp onse" } | 新connector详细信息。 |
@@ -2914,14 +3054,19 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors H
 
 请求示例
 
-```json
-POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors HTTP/1.1 { "RegionId":"", "workspace":"", "namespace":"" }
+```
+POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors HTTP/1.1
 ```
 
-实时计算（流计算） API 正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"RegionId":"", "workspace":"", "namespace":""
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
   "data": {
     "connector": {
       "lookup": true,
@@ -2939,37 +3084,49 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors H
       "source": true,
       "type": "hologres-fix",
       "properties": [
-        {
+```
+
+`{`
+
+```json
           "defaultValue": "hologres-fix",
           "description": "",
           "definesFormat": false,
           "key": "connector",
           "required": true
-        },
-        {
+```
+
+`},` `{`
+
+```json
           "defaultValue": "",
           "description": "",
           "definesFormat": false,
           "key": "dbname",
           "required": true
-        },
-        {
+```
+
+`},` `{`
+
+```json
           "defaultValue": "",
           "description": "",
           "definesFormat": false,
           "key": "endpoint",
           "required": true
-        },
-        {
+```
+
+`},` `{`
+
+```json
           "defaultValue": "",
           "description": "",
           "definesFormat": false,
           "key": "tablename",
           "required": true
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
       "packaged": false,
@@ -2977,18 +3134,20 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors H
         "hdfs:///tmp/myconnectors/ververica-connector-hologres-1.15-vvr-6.0-fix.jar"
 ```
 
-]
+`]` `},`
 
-```json
-    },
+```
     "@type": "type.googleapis.com/vvp.sql.v1beta1.CreateConnectorResponse"
-  },
-  "success": true,
-  "requestId": "86E24541-89EE-46F9-84CE-0EC888B9414A"
-}
 ```
 
-实时计算（流计算） API `XML` 格式
+`},`
+
+```json
+  "success": true,
+  "requestId": "86E24541-89EE-46F9-84CE-0EC888B9414A"
+```
+
+`}` `XML` 格式
 
 ```xml
 <data>
@@ -3037,11 +3196,13 @@ fix.jar</dependencies>
 </data> <success>true</success> <requestId>86E24541-89EE-46F9-84CE-0EC888B9414A</requestId>
 ```
 
-#### CreateMember
+#### 3.1.29 CreateMember
+
+调用CreateMember，为用户分配指定ns下的业务权限。
 
 **请求头**
 
-该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。 实时计算（流计算） API
+该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
 
@@ -3070,27 +3231,34 @@ POST /pop/workspaces/[workspace]/members/v1/namespaces/[namespace] HTTP/1.1
 
 请求示例
 
-```json
-POST /pop/workspaces/[workspace]/members/v1/namespaces/[namespace] HTTP/1.1 { "workspace":"", "namespace":"", "RegionId":"" }
+```
+POST /pop/workspaces/[workspace]/members/v1/namespaces/[namespace] HTTP/1.1
 ```
 
-实时计算（流计算） API 正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"workspace":"", "namespace":"", "RegionId":""
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
   "data": {
     "@type": "type.googleapis.com/vvp.members.v1.CreateMemberResponse",
     "member": {
       "role": "viewer",
       "member": "user:242425410145292209"
-    }
-  },
-  "success": true,
-  "requestId": "E3D311D5-77CB-452F-B9EA-C215C8201363"
-}
 ```
 
-`XML` 格式
+`}` `},`
+
+```json
+  "success": true,
+  "requestId": "E3D311D5-77CB-452F-B9EA-C215C8201363"
+```
+
+`}` `XML` 格式
 
 ```xml
 <data>
@@ -3102,7 +3270,9 @@ POST /pop/workspaces/[workspace]/members/v1/namespaces/[namespace] HTTP/1.1 { "w
 </data> <success>true</success> <requestId>E3D311D5-77CB-452F-B9EA-C215C8201363</requestId>
 ```
 
-#### CreateSecretValue
+#### 3.1.30 CreateSecretValue
+
+调用CreateSecretValue，新增变量。
 
 **请求头**
 
@@ -3121,8 +3291,6 @@ POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/secret-values HTT
 | RegionId | String | Host | 是 | cn-qingdao-env17e-d01 | Region ID。 |
 | workspace | String | Path | 是 | default | 作业所在的工作空间ID。您可以通过以下任意一种方式获取： 通过ListNamespaces获取。 在Flink全托管开发控制台工作空间详情中获取。 |
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | namespac e | String | Path | 是 | flinkteam | 作业所在的项目空间名称。 |
@@ -3138,16 +3306,21 @@ POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/secret-values HTT
 
 **示例**
 
-请求示例实时计算（流计算） API
+请求示例
 
-```json
-POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/secret-values HTTP/1.1 { "RegionId":"", "workspace":"", "namespace":"" }
+```
+POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/secret-values HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"RegionId":"", "workspace":"", "namespace":""
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
   "data": {
     "metadata": {
       "createdAt": "2024-03-11T03:32:51.578264Z",
@@ -3160,23 +3333,33 @@ POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/secret-values HTT
         "modifier": "229852610122763813",
         "creatorName": "flinkadmin",
         "modifierName": "flinkadmin"
-      },
+```
+
+`},`
+
+```json
       "id": "6a17fb60-78df-46f5-a6e2-671ce61f8e6c",
       "labels": {}
-    },
+```
+
+`},`
+
+```json
     "apiVersion": "v1",
     "kind": "SecretValue",
     "spec": {
       "kind": "Plain",
       "value": "secretValue"
-    }
-  },
-  "success": true,
-  "requestId": "19E71203-97A1-4355-8C25-D566CA823F95"
-}
 ```
 
-`XML` 格式实时计算（流计算） API
+`}` `},`
+
+```json
+  "success": true,
+  "requestId": "19E71203-97A1-4355-8C25-D566CA823F95"
+```
+
+`}` `XML` 格式
 
 ```xml
 <data>
@@ -3204,7 +3387,9 @@ POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/secret-values HTT
 </data> <success>true</success> <requestId>19E71203-97A1-4355-8C25-D566CA823F95</requestId>
 ```
 
-#### CreateFormat
+#### 3.1.31 CreateFormat
+
+调用CreateFormat，新增format。
 
 **请求头**
 
@@ -3224,7 +3409,7 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats HTTP
 | workspace | String | Path | 是 | default | 作业所在的工作空间ID。您可以通过以下任意一种方式获取： 通过ListNamespaces获取。 在Flink全托管开发控制台工作空间详情中获取。 |
 | namespac e | String | Path | 是 | flinkteam | 作业所在的项目空间名称。 |
 
-| link企业版开 API | 发指南·Ap | pManager |  |  | 实时计算（流计算） |
+| link企业版开 API | 发指南·Ap | pManager |   |   | 实时计算（流计算） |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -3241,16 +3426,21 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats HTTP
 
 **示例**
 
-请求示例实时计算（流计算） API
+请求示例
 
-```json
-POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats HTTP/1.1 { "RegionId":"", "workspace":"", "namespace":"" }
+```
+POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"RegionId":"", "workspace":"", "namespace":""
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
   "data": {
     "@type": "type.googleapis.com/vvp.sql.v1beta1.CreateFormatResponse",
     "format": {
@@ -3259,16 +3449,19 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats HTTP
       "source": true,
       "type": "customized-csv",
       "properties": [
-        {
+```
+
+`{`
+
+```json
           "defaultValue": ",",
           "description": "",
           "definesFormat": false,
           "key": "format.column-delimiter",
           "required": false
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
       "packaged": false,
@@ -3276,17 +3469,14 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats HTTP
         "hdfs:///tmp/myformats/customized-csv-demo-1.0-SNAPSHOT.jar"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-    }
-  },
   "success": true,
   "requestId": "0ED81455-6971-4EBA-BBD4-3F686175080D"
-}
 ```
 
-`XML` 格式实时计算（流计算） API
+`}` `XML` 格式
 
 ```xml
 <data>
@@ -3309,7 +3499,9 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats HTTP
 </data> <success>true</success> <requestId>0ED81455-6971-4EBA-BBD4-3F686175080D</requestId>
 ```
 
-#### CreateUdfArtifact
+#### 3.1.32 CreateUdfArtifact
+
+调用CreateUdfArtifact，创建udf。
 
 **请求头**
 
@@ -3329,8 +3521,6 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts
 | paramsJso n | String | Body | 否 | { "name": "metric- transform-227", "jarUrl": "hdfs:///tmp/udf/metric- transform-2.2.7- shaded.jar" } | udf参数，指定待创建的udf 使用的jar包所在的存储路径及udf名称（注意：指定路径的udf jar必须真实存在）。 |
 | workspace | String | Path | 是 | default | 作业所在的工作空间ID。您可以通过以下任意一种方式获取： 通过ListNamespaces获取。 在Flink全托管开发控制台工作空间详情中获取。 |
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | namespac e | String | Path | 是 | flinkteam | 作业所在的项目空间名称。 |
@@ -3341,8 +3531,6 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts
 |---|---|---|---|
 | data | String | { "@type": "type.googleapis.co m/vvp.sql.v1beta1.C reateUdfArtifactRes ponse", "collidingClasses": [], "udfArtifact": { "dependencyJarUris" : [], "udfClasses": [ { "functionNames": [], "udfArtifactName": "namespaces/flinkte am/udfartifacts/metr ic-transform-227", "className": "com.alibaba.blink.u dtf.TimestampProbe ", "classType": "UDF TYPE SCALAR _ _ " }, { "functionNames": [], "udfArtifactName": "namespaces/flinkte am/udfartifacts/metr ic-transform-227", "className": "com.alibaba.blink.u dtf.TransformUdtf", "classType": "UDF TYPE TABLE" _ _ } ], "artifactType": "ARTIFACT TYPE JA _ _ VA", "createTime": "2024-03- 11T02:54:24.82276 6Z", "uploader": "229852610122763 813", "jarUpdateTime": "2024-03- 11T02:54:24.82276 6Z", "name": "namespaces/flinkte am/udfartifacts/metr ic-transform-227", "namespace": "flinkteam", "jarUrl": "hdfs:///tmp/udf/met ric-transform-2.2.7- shaded.jar", "updateTime": "2024-03- 11T02:54:24.82276 6Z" } } | 详细信息。 |
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | requestId | String | 8F0CFB56-7CE8- 45AA-A788- 41B7D2504E5F | 请求ID。 |
@@ -3352,35 +3540,46 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts
 
 请求示例
 
-```json
-POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts HTTP/1.1 { "RegionId":"", "workspace":"", "namespace":"" }
+```
+POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"RegionId":"", "workspace":"", "namespace":""
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
   "data": {
     "@type": "type.googleapis.com/vvp.sql.v1beta1.CreateUdfArtifactResponse",
     "collidingClasses": [],
     "udfArtifact": {
       "dependencyJarUris": [],
       "udfClasses": [
-        {
+```
+
+`{`
+
+```json
           "functionNames": [],
           "udfArtifactName": "namespaces/flinkteam/udfartifacts/metric-transform-227",
           "className": "com.alibaba.blink.udtf.TimestampProbe",
           "classType": "UDF_TYPE_SCALAR"
-        },
-        {
+```
+
+`},` `{`
+
+```json
           "functionNames": [],
           "udfArtifactName": "namespaces/flinkteam/udfartifacts/metric-transform-227",
           "className": "com.alibaba.blink.udtf.TransformUdtf",
           "classType": "UDF_TYPE_TABLE"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
       "artifactType": "ARTIFACT_TYPE_JAVA",
@@ -3391,14 +3590,16 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts
       "namespace": "flinkteam",
       "jarUrl": "hdfs:///tmp/udf/metric-transform-2.2.7-shaded.jar",
       "updateTime": "2024-03-11T02:54:24.822766Z"
-    }
-  },
-  "requestId": "8F0CFB56-7CE8-45AA-A788-41B7D2504E5F",
-  "success": true
-}
 ```
 
-实时计算（流计算） API `XML` 格式
+`}` `},`
+
+```json
+  "requestId": "8F0CFB56-7CE8-45AA-A788-41B7D2504E5F",
+  "success": true
+```
+
+`}` `XML` 格式
 
 ```xml
 <data>
@@ -3430,7 +3631,9 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts
 </data> <requestId>8F0CFB56-7CE8-45AA-A788-41B7D2504E5F</requestId> <success>true</success>
 ```
 
-#### DeleteConnector
+#### 3.1.33 DeleteConnector
+
+调用DeleteConnector，删除自定义connector。
 
 **请求头**
 
@@ -3447,8 +3650,6 @@ DELETE /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | RegionId | String | Host | 是 | cn-wulan-env***-d01 | Region ID。 |
-
-实时计算（流计算） API
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -3471,24 +3672,22 @@ DELETE /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors
 DELETE /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors/[name] HTTP /1.1 &RegionId= &workspace= &name= &namespace=
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "success": true,
   "requestId": "7113AD53-5192-46E5-B592-81175BAF7F54"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <success>true</success> <requestId>7113AD53-5192-46E5-B592-81175BAF7F54</requestId>
 ```
 
-实时计算（流计算） API
+#### 3.1.34 DeleteDeploymentDraft
 
-#### DeleteDeploymentDraft
+调用DeleteDeploymentDraft，删除draft。
 
 **请求头**
 
@@ -3514,20 +3713,16 @@ DELETE /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-draf
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | success | Boolean | true | 请求是否成功。 |
-|  |  | { "metadata": { "createdAt": "2024- 03-13T01:46:23Z", "modifiedAt": "2024-03- 13T01:56:47Z", "resourceVersion": 26, "name": "mytable", "namespace": "flinkteam", "annotations": { "creator": "229852610122763 813", "modifier": "229852610122763 813", "creatorName": "flinkadmin", |  |
-
-实时计算（流计算） API
+|   |   | { "metadata": { "createdAt": "2024- 03-13T01:46:23Z", "modifiedAt": "2024-03- 13T01:56:47Z", "resourceVersion": 26, "name": "mytable", "namespace": "flinkteam", "annotations": { "creator": "229852610122763 813", "modifier": "229852610122763 813", "creatorName": "flinkadmin", |   |
 
 | 参数名称 | 类型 | "comment": "", "示m例odifierName": | 说明 |
 |---|---|---|---|
-|  |  | "flinkadmin", "priority": "5" }, |  |
+|   |   | "flinkadmin", "priority": "5" }, |   |
 | data | String | "id": "afb75048- 590a-4ac3-84d4- 96f873b14659", "parentId": "99d3a304-a14b- 32da-945c- 765bb687aa61", "labels": {} }, "apiVersion": "v1", "kind": "DeploymentDraft", "spec": { "template": { "metadata": { "annotations": { "flink.queryable- state.enabled": "false" } }, "spec": { "artifact": { "kind": "SQLSCRIPT", "sqlScript": "-- ******************** ******************** ******************** ********-- -- Author: Write your name here -- Created Time: 2024-03-13 09:46:19 -- Description: Write your description here -- ******************** ******************** ******************** ********-- INSERT INTO `vvp`.`default`.print Sink SELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR LENGTH _ (strname) AS BIGINT) AS lens FROM `vvp`.`default`.data genSource; ", "imageUserDefined" : false, "versionName": "vvr-6.0.0-flink- 1.15" }, "parallelism": 1, "batchMode": false, "resources": { "jobmanager": { "memory": "4Gi", "cpu": 2.0 }, "taskmanager": { "memory": "4Gi", "cpu": 2.0 } }, "logging": { | draft详细信息。 |
-
-实时计算（流计算） API
 
 | 参数名称 | 类型 | "log4jLoggers": { "": "示IN例FO" }, | 说明 |
 |---|---|---|---|
-|  |  | "logReservePolicy": { "expirationDays": 7, "openHistory": true }, "loggingProfile": "default" }, "flinkConfiguration": { "execution.checkpoi nting.interval": "180s", "execution.checkpoi nting.min-pause": "180s" } } }, "restoreStrategy": { "kind": "LATEST STATE", _ "allowNonRestoredS tate": false }, "state": "CANCELLED", "upgradeStrategy": { "kind": "STATELESS" }, "maxSavepointCreat ionAttempts": 4, "maxJobCreationAtt empts": 1, "deploymentTargetI d": "f2ed6708-a7e1- 4e86-a99e- 327fac9265c2" } } |  |
+|   |   | "logReservePolicy": { "expirationDays": 7, "openHistory": true }, "loggingProfile": "default" }, "flinkConfiguration": { "execution.checkpoi nting.interval": "180s", "execution.checkpoi nting.min-pause": "180s" } } }, "restoreStrategy": { "kind": "LATEST STATE", _ "allowNonRestoredS tate": false }, "state": "CANCELLED", "upgradeStrategy": { "kind": "STATELESS" }, "maxSavepointCreat ionAttempts": 4, "maxJobCreationAtt empts": 1, "deploymentTargetI d": "f2ed6708-a7e1- 4e86-a99e- 327fac9265c2" } } |   |
 | requestId | String | 374ECDF6-D148- 4A78-9548- F550EA53255A | 请求ID。 |
 
 **示例**
@@ -3538,10 +3733,9 @@ DELETE /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-draf
 DELETE /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-drafts/[deployme ntDraftId] HTTP/1.1 &RegionId= &workspace= &namespace= &deploymentDraftId=
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "data": {
     "metadata": {
       "createdAt": "2024-03-13T01:46:23Z",
@@ -3553,8 +3747,6 @@ DELETE /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-draf
 "creator":"229852610122763813",
 ```
 
-实时计算（流计算） API
-
 ```json
         creator: 229852610122763813,
         "modifier": "229852610122763813",
@@ -3562,11 +3754,19 @@ DELETE /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-draf
         "comment": "",
         "modifierName": "flinkadmin",
         "priority": "5"
-      },
+```
+
+`},`
+
+```json
       "id": "afb75048-590a-4ac3-84d4-96f873b14659",
       "parentId": "99d3a304-a14b-32da-945c-765bb687aa61",
       "labels": {}
-    },
+```
+
+`},`
+
+```json
     "apiVersion": "v1",
     "kind": "DeploymentDraft",
     "spec": {
@@ -3574,8 +3774,11 @@ DELETE /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-draf
         "metadata": {
           "annotations": {
             "flink.queryable-state.enabled": "false"
-          }
-        },
+```
+
+`}` `},`
+
+```json
         "spec": {
           "artifact": {
             "kind": "SQLSCRIPT",
@@ -3584,60 +3787,89 @@ DELETE /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-draf
 te your name here-- Created Time: 2024-03-13 09:46:19-- Description: Write your descrip tion here--********************************************************************--INSERT INTO `vvp`.`default`.printSinkSELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR_LENGTH (strname) AS BIGINT) AS lensFROM `vvp`.`default`.datagenSource;",
             "imageUserDefined": false,
             "versionName": "vvr-6.0.0-flink-1.15"
-          },
+```
+
+`},`
+
+```json
           "parallelism": 1,
           "batchMode": false,
           "resources": {
             "jobmanager": {
               "memory": "4Gi",
               "cpu": 2.0
-            },
+```
+
+`},`
+
+```json
             "taskmanager": {
               "memory": "4Gi",
               "cpu": 2.0
-            }
-          },
+```
+
+`}` `},`
+
+```json
           "logging": {
             "log4jLoggers": {
               "": "INFO"
-            },
+```
+
+`},`
+
+```json
             "logReservePolicy": {
               "expirationDays": 7,
               "openHistory": true
-            },
+```
+
+`},`
+
+```json
             "loggingProfile": "default"
-          },
+```
+
+`},`
+
+```json
           "flinkConfiguration": {
             "execution.checkpointing.interval": "180s",
             "execution.checkpointing.min-pause": "180s"
-}
 ```
 
-实时计算（流计算） API
+`}` `}` `}` `},`
 
 ```json
-          }
-        }
-      },
       "restoreStrategy": {
         "kind": "LATEST_STATE",
         "allowNonRestoredState": false
-      },
+```
+
+`},`
+
+```json
       "state": "CANCELLED",
       "upgradeStrategy": {
         "kind": "STATELESS"
-      },
+```
+
+`},`
+
+```json
       "maxSavepointCreationAttempts": 4,
       "maxJobCreationAttempts": 1,
       "deploymentTargetId": "f2ed6708-a7e1-4e86-a99e-327fac9265c2"
-    }
-  },
-  "success": true,
-  "requestId": "374ECDF6-D148-4A78-9548-F550EA53255A"
-}
 ```
 
-`XML` 格式
+`}` `},`
+
+```json
+  "success": true,
+  "requestId": "374ECDF6-D148-4A78-9548-F550EA53255A"
+```
+
+`}` `XML` 格式
 
 ```xml
 <data>
@@ -3674,8 +3906,6 @@ te your name here-- Created Time: 2024-03-13 09:46:19-- Description: Write your 
      <sqlScript>--********************************************************************--
 -- Author: Write your name here -- Created Time: 2024-03-13 09:46:19 -- Description: Write your description here
 ```
-
-实时计算（流计算） API
 
 ```xml
 --********************************************************************-- INSERT INTO `vvp`.`default`.printSink SELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR_LENGTH (strname) AS BIGINT) AS lens FROM
@@ -3727,9 +3957,9 @@ te your name here-- Created Time: 2024-03-13 09:46:19-- Description: Write your 
 </data> <success>true</success> <requestId>374ECDF6-D148-4A78-9548-F550EA53255A</requestId>
 ```
 
-实时计算（流计算） API
+#### 3.1.35 DeleteFormat
 
-#### DeleteFormat
+调用DeleteFormat，删除format。
 
 **请求头**
 
@@ -3764,7 +3994,7 @@ DELETE /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats/[n
 DELETE /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats/[name] HTTP/1. &RegionId= &workspace= &name= &namespace=
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式实时计算（流计算） API
+`&`公共请求参数正常返回示例 `JSON` 格式
 
 ```json
 {"requestId":"EC30D915-1E89-4B66-B1AA-C5D161DAB50D"}
@@ -3776,7 +4006,9 @@ DELETE /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats/[n
 <requestId>EC30D915-1E89-4B66-B1AA-C5D161DAB50D</requestId>
 ```
 
-#### DeleteMember
+#### 3.1.36 DeleteMember
+
+调用DeleteMember，删除指定用户的业务授权。
 
 **请求头**
 
@@ -3806,9 +4038,7 @@ DELETE /pop/workspaces/[workspace]/members/v1/namespaces/[namespace]/members/[me
 | success | Boolean | true | 请求是否成功。 |
 | requestId | String | 8AA170D4-F4D1- 4E90-A02D- 0CC211BE8171 | 请求ID。 |
 
-**示例**
-
-请求示例实时计算（流计算） API
+请求示例
 
 ```
 DELETE /pop/workspaces/[workspace]/members/v1/namespaces/[namespace]/members/[member] HTTP/1
@@ -3820,22 +4050,22 @@ DELETE /pop/workspaces/[workspace]/members/v1/namespaces/[namespace]/members/[me
 &workspace= &namespace= &member= &RegionId=
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "success": true,
   "requestId": "8AA170D4-F4D1-4E90-A02D-0CC211BE8171"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <success>true</success> <requestId>8AA170D4-F4D1-4E90-A02D-0CC211BE8171</requestId>
 ```
 
-#### DeleteSecretValue
+#### 3.1.37 DeleteSecretValue
+
+调用DeleteSecretValue，删除变量。
 
 **请求头**
 
@@ -3858,8 +4088,6 @@ DELETE /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/secret-values/[
 | workspace | String | Path | 是 | default | 作业所在的工作空间ID。您可以通过以下任意一种方式获取： 通过ListNamespaces获取。 在Flink全托管开发控制台工作空间详情中获取。 |
 | name | String | Path | 否 | secretKey | 变量名称。 |
 
-实时计算（流计算） API
-
 **返回数据**
 
 | 参数名称 | 类型 | 示例 | 说明 |
@@ -3881,22 +4109,22 @@ DELETE /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/secret-values/[
 &RegionId= &namespace= &workspace=
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "success": true,
   "requestId": "1CCA8A71-98C6-491B-9A2D-ADDFC0939294"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <success>true</success> <requestId>1CCA8A71-98C6-491B-9A2D-ADDFC0939294</requestId>
 ```
 
-#### DeleteUdfArtifact
+#### 3.1.38 DeleteUdfArtifact
+
+调用DeleteUdfArtifact，删除udf。
 
 **请求头**
 
@@ -3905,7 +4133,7 @@ DELETE /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/secret-values/[
 **请求语法**
 
 ```
-/pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts/[udfArtifactName] HTTP/1.1
+DELETE /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts/[udfArtifactName] HTTP/1.1
 ```
 
 **请求参数**
@@ -3914,7 +4142,7 @@ DELETE /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/secret-values/[
 |---|---|---|---|---|---|
 | RegionId | String | Host | 是 | cn-wulan-env188-d01 | Region ID。 |
 
-|  | 实时计算（流计 | 算） |  |  | Flink企 | 业版开发指南·AppManager AP | I |
+|   | 实时计算（流计 | 算） |   |   | Flink企 | 业版开发指南·AppManager AP | I |
 |---|---|---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -3936,23 +4164,25 @@ DELETE /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/secret-values/[
 请求示例
 
 ```
-/pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts/[udfArtifactName] HTTP/1.1 &RegionId= &workspace= &namespace= &udfArtifactName=
+DELETE /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts/[udfArtifactName] HTTP/1.1 &RegionId= &workspace= &namespace= &udfArtifactName=
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式实时计算（流计算） API
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "data": {
     "referencedClasses": [],
     "@type": "type.googleapis.com/vvp.sql.v1beta1.DeleteUdfArtifactResponse"
-  },
-  "requestId": "07E49735-A389-4853-AFBA-28F9EB0EFDC4",
-  "success": true
-}
 ```
 
-`XML` 格式
+`},`
+
+```json
+  "requestId": "07E49735-A389-4853-AFBA-28F9EB0EFDC4",
+  "success": true
+```
+
+`}` `XML` 格式
 
 ```xml
 <data>
@@ -3961,7 +4191,7 @@ DELETE /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/secret-values/[
 </data> <requestId>07E49735-A389-4853-AFBA-28F9EB0EFDC4</requestId> <success>true</success>
 ```
 
-#### ExecuteSqlscriptsStatements
+#### 3.1.39 ExecuteSqlscriptsStatements
 
 调用ExecuteSqlscriptsStatements，进行Function管理。
 
@@ -3986,8 +4216,6 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/sqlscripts:e
 
 **返回数据**
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | data | String | { "@type": "type.googleapis.co m/vvp.sql.v1beta1.L istUdfArtifactsRespo nse", "udfArtifacts": [ { "name": "namespaces/flinkte am/udfartifacts/metr ic-transform-227", "jarUrl": "hdfs:///tmp/udf/met ric-transform-2.2.7- shaded.jar", "udfClasses": [ { "className": "com.alibaba.blink.u dtf.TimestampProbe ", "classType": "UDF TYPE SCALAR _ _ ", "udfArtifactName": "namespaces/flinkte am/udfartifacts/metr ic-transform-227", "functionNames": [ "TimestampProbe" ] } ], "artifactType": "ARTIFACT TYPE JA _ _ VA", "dependencyJarUris" : [], "uploader": "229852610122763 813", "namespace": "namespaces/flinkte am", "createTime": "2024-03- 11T02:54:25Z", "updateTime": "2024-03- 11T02:54:25Z", "jarUpdateTime": "2024-03- 11T02:54:25Z" } ] } | function详细信息。 |
@@ -3998,24 +4226,37 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/sqlscripts:e
 
 请求示例
 
-```json
-POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/sqlscripts:execute-multi HTTP/1.1 { "RegionId":"", "workspace":"", "namespace":"" }
+```
+POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/sqlscripts:execute-multi HTTP/1.1
 ```
 
-实时计算（流计算） API 正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"RegionId":"", "workspace":"", "namespace":""
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
   "requestId": "151E1A19-091A-4317-ADF9-FDD81C735414",
   "success": true,
   "data": {
     "@type": "type.googleapis.com/vvp.sql.v1beta1.ListUdfArtifactsResponse",
     "udfArtifacts": [
-      {
+```
+
+`{`
+
+```json
         "name": "namespaces/flinkteam/udfartifacts/metric-transform-227",
         "jarUrl": "hdfs:///tmp/udf/metric-transform-2.2.7-shaded.jar",
         "udfClasses": [
-          {
+```
+
+`{`
+
+```json
             "className": "com.alibaba.blink.udtf.TimestampProbe",
             "classType": "UDF_TYPE_SCALAR",
             "udfArtifactName": "namespaces/flinkteam/udfartifacts/metric-transform-227",
@@ -4023,13 +4264,7 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/sqlscripts:e
               "TimestampProbe"
 ```
 
-]
-
-```
-          }
-```
-
-`],`
+`]` `}` `],`
 
 ```json
         "artifactType": "ARTIFACT_TYPE_JAVA",
@@ -4039,17 +4274,9 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/sqlscripts:e
         "createTime": "2024-03-11T02:54:25Z",
         "updateTime": "2024-03-11T02:54:25Z",
         "jarUpdateTime": "2024-03-11T02:54:25Z"
-      }
 ```
 
-]
-
-```
-  }
-}
-```
-
-`XML` 格式实时计算（流计算） API
+`}` `]` `}` `}` `XML` 格式
 
 ```xml
 <requestId>151E1A19-091A-4317-ADF9-FDD81C735414</requestId> <success>true</success> <data>
@@ -4074,7 +4301,7 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/sqlscripts:e
 </data>
 ```
 
-#### ForcefullyCreateLock
+#### 3.1.40 ForcefullyCreateLock
 
 调用ForcefullyCreateLock，给指定资源加锁（通常是draft）。
 
@@ -4096,8 +4323,6 @@ POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/locks HTTP/1.1
 | namespac e | String | Path | 是 | default | 作业所在的工作空间ID。您可以通过以下任意一种方式获取： 通过ListNamespaces获取。 在Flink全托管开发控制台工作空间详情中获取。 |
 | workspace | String | Path | 是 | flinkteam | 作业所在的项目空间名称。 |
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | resourceTy pe | String | Query | 否 | DeploymentDraft | 欲锁定的资源类型，锁定 draft时传： DeploymentDraft。 |
@@ -4115,34 +4340,45 @@ POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/locks HTTP/1.1
 
 请求示例
 
-```json
-POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/locks HTTP/1.1 { "RegionId":"", "namespace":"", "workspace":"" }
+```
+POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/locks HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式实时计算（流计算） API
+`{`
 
 ```json
-{
+"RegionId":"", "namespace":"", "workspace":""
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
   "data": {
     "metadata": {
       "createdAt": "2024-03-12T10:16:35.164034Z",
       "modifiedAt": "2024-03-12T10:16:35.164034Z",
       "namespace": "flinkteam",
       "id": "ec62ce3c-fe33-383e-8b31-2fe9d89af2af"
-    },
+```
+
+`},`
+
+```json
     "apiVersion": "v1",
     "kind": "Lock",
     "spec": {
       "holderName": "flinkadmin",
       "holderId": "229852610122763813"
-    }
-  },
-  "success": true,
-  "requestId": "69DEC7C2-BCE5-4E80-8CDA-FE7ADE09AAAD"
-}
 ```
 
-`XML` 格式
+`}` `},`
+
+```json
+  "success": true,
+  "requestId": "69DEC7C2-BCE5-4E80-8CDA-FE7ADE09AAAD"
+```
+
+`}` `XML` 格式
 
 ```xml
 <data>
@@ -4161,7 +4397,9 @@ POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/locks HTTP/1.1 { 
 </data> <success>true</success> <requestId>69DEC7C2-BCE5-4E80-8CDA-FE7ADE09AAAD</requestId>
 ```
 
-#### FunctionExists
+#### 3.1.41 FunctionExists
+
+调用FunctionExists，查看function是否已注册。
 
 **请求头**
 
@@ -4174,8 +4412,6 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 ```
 
 **请求参数**
-
-实时计算（流计算） API
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -4202,10 +4438,9 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/[cat]:functionExis HTTP/1.1 &RegionId= &namespace= &workspace= &cat= &database= &function=
 ```
 
-&公共请求参数实时计算（流计算） API 正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "requestId": "D96DD415-AD97-4EBA-832E-99FADB6A4F87",
   "success": true,
   "httpCode": 200,
@@ -4214,11 +4449,9 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
   "data": {
     "@type": "type.googleapis.com/vvp.sql.catalog.v1beta2.FunctionExistsResponse",
     "exists": true
-  }
-}
 ```
 
-`XML` 格式
+`}` `}` `XML` 格式
 
 ```xml
 <requestId>D96DD415-AD97-4EBA-832E-99FADB6A4F87</requestId> <success>true</success> <httpCode>200</httpCode> <message /> <reason /> <data>
@@ -4227,7 +4460,9 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 </data>
 ```
 
-#### GenerateResourcePlan
+#### 3.1.42 GenerateResourcePlan
+
+调用GenerateResourcePlan，生成作业资源配置计划。
 
 **请求头**
 
@@ -4245,8 +4480,6 @@ POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[depl
 |---|---|---|---|---|---|
 | RegionId | String | Host | 是 | cn-wulan-env188-d01 | Region ID。 |
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | workspace | String | Path | 是 | default | 作业所在的工作空间ID。您可以通过以下任意一种方式获取： 通过ListNamespaces获取。 在Flink全托管开发控制台工作空间详情中获取。 |
@@ -4259,8 +4492,6 @@ POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[depl
 |---|---|---|---|
 | success | Boolean | true | 请求是否成功。 |
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | data | String | { "success": true, "plan": " {\"ssgProfiles\": [{\"name\":\"default \",\"cpu\":0.2,\"heap\ ":\"768 mb\",\"offHeap\":\"3 2 mb\",\"managed\": {},\"extended\": {}}],\"nodes\": [{\"id\":1,\"type\":\"S treamExecTableSou rceScan\",\"desc\":\" Source: datahub table[4]\",\ _ "profile\": {\"group\":\"default\ ",\"parallelism\":1,\" maxParallelism\":32 768,\"minParallelism \":1}}, {\"id\":2,\"type\":\"St reamExecCalc\",\"de sc\":\"Calc[5]\",\"pro file\": {\"group\":\"default\ ",\"parallelism\":1,\" maxParallelism\":32 768,\"minParallelism \":1}}, {\"id\":3,\"type\":\"St reamExecSink\",\"de sc\":\"Sink: kafka table[6]\",\"pr _ ofile\": {\"group\":\"default\ ",\"parallelism\":1,\" maxParallelism\":32 768,\"minParallelism \":1}}],\"edges\": [{\"source\":1,\"targ et\":2,\"mode\":\"PIP ELINED\",\"strategy\ ":\"FORWARD\"}, {\"source\":2,\"targe t\":3,\"mode\":\"PIPE LINED\",\"strategy\": \"FORWARD\"}],\"ve rtices\": {\"717c7b8afebbfb7 137f6f0f99beb2a94\ ":[1,2,3]}}" } | 资源配置计划详细信息。 |
@@ -4268,27 +4499,35 @@ POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[depl
 
 **示例**
 
-请求示例实时计算（流计算） API
+请求示例
 
-```json
-POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deploymentId]/resource_ an:generate HTTP/1.1 { "RegionId":"", "workspace":"", "namespace":"", "deploymentId":"" }
+```
+POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deploymentId]/resource_ an:generate HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"RegionId":"", "workspace":"", "namespace":"", "deploymentId":""
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
   "data": {
     "success": true,
     "plan": "{\"ssgProfiles\":[{\"name\":\"default\",\"cpu\":0.2,\"heap\":\"768 mb\",\"offHe
 ap\":\"32 mb\",\"managed\":{},\"extended\":{}}],\"nodes\": [{\"id\":1,\"type\":\"StreamExecTableSourceScan\",\"desc\":\"Source: datahub_table[4]\",\"profile\": {\"group\":\"default\",\"parallelism\":1,\"maxParallelism\":32768,\"minParallelism\":1}},{\" id\":2,\"type\":\"StreamExecCalc\",\"desc\":\"Calc[5]\",\"profile\": {\"group\":\"default\",\"parallelism\":1,\"maxParallelism\":32768,\"minParallelism\":1}},{\" id\":3,\"type\":\"StreamExecSink\",\"desc\":\"Sink: kafka_table[6]\",\"profile\":{\"group\": \"default\",\"parallelism\":1,\"maxParallelism\":32768,\"minParallelism\":1}}],\"edges\":[{\ "source\":1,\"target\":2,\"mode\":\"PIPELINED\",\"strategy\":\"FORWARD\"},{\"source\":2,\"ta rget\":3,\"mode\":\"PIPELINED\",\"strategy\":\"FORWARD\"}],\"vertices\": {\"717c7b8afebbfb7137f6f0f99beb2a94\":[1,2,3]}}"
-  },
-  "success": true,
-  "requestId": "58091710-5895-4111-A4FF-BEA51550A359"
-}
 ```
 
-`XML` 格式实时计算（流计算） API
+`},`
+
+```json
+  "success": true,
+  "requestId": "58091710-5895-4111-A4FF-BEA51550A359"
+```
+
+`}` `XML` 格式
 
 ```xml
 <data>
@@ -4297,7 +4536,9 @@ ap\":\"32 mb\",\"managed\":{},\"extended\":{}}],\"nodes\": [{\"id\":1,\"type\":\
 [{&quot;name&quot;:&quot;default&quot;,&quot;cpu&quot;:0.2,&quot;heap&quot;:&quot;768 mb&quo t;,&quot;offHeap&quot;:&quot;32 mb&quot;,&quot;managed&quot;:{},&quot;extended&quot;:{}}],&q uot;nodes&quot;: [{&quot;id&quot;:1,&quot;type&quot;:&quot;StreamExecTableSourceScan&quot;,&quot;desc&quot;:&qu ;Source: datahub_table[4]&quot;,&quot;profile&quot;: {&quot;group&quot;:&quot;default&quot;,&quot;parallelism&quot;:1,&quot;maxParallelism&quot;:32 8,&quot;minParallelism&quot;:1}}, {&quot;id&quot;:2,&quot;type&quot;:&quot;StreamExecCalc&quot;,&quot;desc&quot;:&quot;Calc[5]&q t;,&quot;profile&quot;: {&quot;group&quot;:&quot;default&quot;,&quot;parallelism&quot;:1,&quot;maxParallelism&quot;:32 8,&quot;minParallelism&quot;:1}}, {&quot;id&quot;:3,&quot;type&quot;:&quot;StreamExecSink&quot;,&quot;desc&quot;:&quot;Sink: k afka_table[6]&quot;,&quot;profile&quot;: {&quot;group&quot;:&quot;default&quot;,&quot;parallelism&quot;:1,&quot;maxParallelism&quot;:32 8,&quot;minParallelism&quot;:1}}],&quot;edges&quot;: [{&quot;source&quot;:1,&quot;target&quot;:2,&quot;mode&quot;:&quot;PIPELINED&quot;,&quot;strat y&quot;:&quot;FORWARD&quot;}, {&quot;source&quot;:2,&quot;target&quot;:3,&quot;mode&quot;:&quot;PIPELINED&quot;,&quot;strate &quot;:&quot;FORWARD&quot;}],&quot;vertices&quot;: {&quot;717c7b8afebbfb7137f6f0f99beb2a94&quot;:[1,2,3]}}</plan> </data> <success>true</success> <requestId>58091710-5895-4111-A4FF-BEA51550A359</requestId>
 ```
 
-#### GetCatalog
+#### 3.1.43 GetCatalog
+
+调用GetCatalog，查看catalog信息。
 
 **请求头**
 
@@ -4315,8 +4556,6 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 |---|---|---|---|---|---|
 | RegionId | String | Host | 是 | cn-wulan-env188-d01 | Region ID。 |
 | namespac e | String | Path | 是 | ververica | 作业所在的项目空间名称。 |
-
-实时计算（流计算） API
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -4339,10 +4578,9 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/[cat]:getCatalog HTTP/1.1 &RegionId= &namespace= &workspace= &cat=
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式实时计算（流计算） API
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "requestId": "0AFF0B61-35A5-46D9-930F-3826DCA3D3F9",
   "success": true,
   "httpCode": 200,
@@ -4355,13 +4593,9 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
       "properties": {
         "defaultDatabase": "default",
         "type": "vvp"
-      }
-    }
-  }
-}
 ```
 
-`XML` 格式
+`}` `}` `}` `}` `XML` 格式
 
 ```xml
 <requestId>0AFF0B61-35A5-46D9-930F-3826DCA3D3F9</requestId> <success>true</success> <httpCode>200</httpCode> <message /> <reason /> <data>
@@ -4376,7 +4610,7 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 </data>
 ```
 
-#### GetDefaultDatabase
+#### 3.1.44 GetDefaultDatabase
 
 调用GetDefaultDatabase，获取catalog下默认的database。
 
@@ -4394,8 +4628,6 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-
-实时计算（流计算） API
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -4420,10 +4652,9 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/[cat]:getDefaultDa base HTTP/1.1 &RegionId= &namespace= &workspace= &cat=
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式实时计算（流计算） API
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "requestId": "59F6950E-FC05-495E-A286-08C111EC7A4B",
   "success": true,
   "httpCode": 200,
@@ -4432,11 +4663,9 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
   "data": {
     "@type": "type.googleapis.com/vvp.sql.catalog.v1beta2.GetDefaultDatabaseResponse",
     "database": "default"
-  }
-}
 ```
 
-`XML` 格式
+`}` `}` `XML` 格式
 
 ```xml
 <requestId>59F6950E-FC05-495E-A286-08C111EC7A4B</requestId> <success>true</success> <httpCode>200</httpCode> <message /> <reason /> <data>
@@ -4445,7 +4674,9 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 </data>
 ```
 
-#### GetDeploymentDraftById
+#### 3.1.45 GetDeploymentDraftById
+
+调用GetDeploymentDraftById，通过ID查询draft信息。
 
 **请求头**
 
@@ -4465,7 +4696,7 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deploymentdrafts/[
 | workspace | String | Path | 是 | default | 作业所在的工作空间ID。您可以通过以下任意一种方式获取： 通过ListNamespaces获取。 在Flink全托管开发控制台工作空间详情中获取。 |
 | namespac e | String | Path | 是 | flinkteam | 作业所在的项目空间名称。 |
 
-| F | link企业版开 API | 发指南·Ap | pManager |  |  | 实时计算（流计算） |  |
+| F | link企业版开 API | 发指南·Ap | pManager |   |   | 实时计算（流计算） |   |
 |---|---|---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -4477,20 +4708,16 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deploymentdrafts/[
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | success | Boolean | true | 请求是否成功。 |
-|  |  | { "metadata": { "createdAt": "2024- 03-12T06:11:40Z", "modifiedAt": "2024-03- 12T06:12:11Z", "resourceVersion": 5, "name": "sqljob", "namespace": "flinkteam", "annotations": { "creator": "229852610122763 813", "modifier": "229852610122763 813", "creatorName": "flinkadmin", "comment": "", "modifierName": "flinkadmin", "deployment.draft.r eferenced.deployme nt.id": "d0b3abf0- 4bfe-46b1-a324- 5b7def580c00", "priority": "5" }, "lock": { "metadata": { "createdAt": "2024- 03-12T06:11:40Z", "modifiedAt": "2024-03- 12T06:11:40Z", "namespace": "flinkteam", "annotations": { "creator": "229852610122763 813", "modifier": "229852610122763 813" }, "id": "ec62ce3c-fe33- 383e-8b31- 2fe9d89af2af" }, "apiVersion": "v1", "kind": "Lock", "spec": { "holderName": "flinkadmin", "holderId": "229852610122763 813" } }, "id": "c6f157ac-60b9- 4b38-8bad- |  |
-
-实时计算（流计算） API
+|   |   | { "metadata": { "createdAt": "2024- 03-12T06:11:40Z", "modifiedAt": "2024-03- 12T06:12:11Z", "resourceVersion": 5, "name": "sqljob", "namespace": "flinkteam", "annotations": { "creator": "229852610122763 813", "modifier": "229852610122763 813", "creatorName": "flinkadmin", "comment": "", "modifierName": "flinkadmin", "deployment.draft.r eferenced.deployme nt.id": "d0b3abf0- 4bfe-46b1-a324- 5b7def580c00", "priority": "5" }, "lock": { "metadata": { "createdAt": "2024- 03-12T06:11:40Z", "modifiedAt": "2024-03- 12T06:11:40Z", "namespace": "flinkteam", "annotations": { "creator": "229852610122763 813", "modifier": "229852610122763 813" }, "id": "ec62ce3c-fe33- 383e-8b31- 2fe9d89af2af" }, "apiVersion": "v1", "kind": "Lock", "spec": { "holderName": "flinkadmin", "holderId": "229852610122763 813" } }, "id": "c6f157ac-60b9- 4b38-8bad- |   |
 
 | 参数名称 | 类型 | d435387cfd59", "示pa例rentId": | 说明 |
 |---|---|---|---|
 | data | String | "99d3a304-a14b- 32da-945c- 765bb687aa61", "labels": {} }, "apiVersion": "v1", "kind": "DeploymentDraft", "spec": { "template": { "metadata": { "annotations": { "flink.queryable- state.enabled": "false" } }, "spec": { "artifact": { "kind": "SQLSCRIPT", "sqlScript": "-- ******************** ******************** ******************** ********-- -- Author: Write your name here -- Created Time: 2024-03-12 14:11:38 -- Description: Write your description here -- ******************** ******************** ******************** ********-- CREATE TEMPORARY TABLE `datahub table` _ | draft详细信息。 |
-|  |  | (strname VARCHAR) with ( \u0027connector\u0 027 \u003d \u0027datagen\u00 27 ); CREATE TEMPORARY TABLE `kafka table` _ (strname VARCHAR, lens BIGINT) with ( \u0027connector\u0 027 \u003d \u0027print\u0027 ); INSERT INTO kafka table _ SELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR LENGTH _ (strname) AS BIGINT) AS lens FROM datahub table; _ ", "imageUserDefined" : false, "versionName": |  |
-
-实时计算（流计算） API
+|   |   | (strname VARCHAR) with ( \u0027connector\u0 027 \u003d \u0027datagen\u00 27 ); CREATE TEMPORARY TABLE `kafka table` _ (strname VARCHAR, lens BIGINT) with ( \u0027connector\u0 027 \u003d \u0027print\u0027 ); INSERT INTO kafka table _ SELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR LENGTH _ (strname) AS BIGINT) AS lens FROM datahub table; _ ", "imageUserDefined" : false, "versionName": |   |
 
 | 参数名称 | 类型 | "vvr-6.0.0-flink- 1示.1例5" }, | 说明 |
 |---|---|---|---|
-|  |  | "parallelism": 1, "batchMode": false, "resources": { "jobmanager": { "memory": "4Gi", "cpu": 2.0 }, "taskmanager": { "memory": "4Gi", "cpu": 2.0 } }, "logging": { "log4jLoggers": { "": "INFO" }, "logReservePolicy": { "expirationDays": 7, "openHistory": true }, "loggingProfile": "default" }, "flinkConfiguration": { "execution.checkpoi nting.interval": "180s", "execution.checkpoi nting.min-pause": "180s" } } }, "restoreStrategy": { "kind": "LATEST STATE", _ "allowNonRestoredS tate": false }, "state": "CANCELLED", "upgradeStrategy": { "kind": "STATELESS" }, "maxSavepointCreat ionAttempts": 4, "maxJobCreationAtt empts": 1, "deploymentTargetI d": "f2ed6708-a7e1- 4e86-a99e- 327fac9265c2" } } |  |
+|   |   | "parallelism": 1, "batchMode": false, "resources": { "jobmanager": { "memory": "4Gi", "cpu": 2.0 }, "taskmanager": { "memory": "4Gi", "cpu": 2.0 } }, "logging": { "log4jLoggers": { "": "INFO" }, "logReservePolicy": { "expirationDays": 7, "openHistory": true }, "loggingProfile": "default" }, "flinkConfiguration": { "execution.checkpoi nting.interval": "180s", "execution.checkpoi nting.min-pause": "180s" } } }, "restoreStrategy": { "kind": "LATEST STATE", _ "allowNonRestoredS tate": false }, "state": "CANCELLED", "upgradeStrategy": { "kind": "STATELESS" }, "maxSavepointCreat ionAttempts": 4, "maxJobCreationAtt empts": 1, "deploymentTargetI d": "f2ed6708-a7e1- 4e86-a99e- 327fac9265c2" } } |   |
 | requestId | String | 3EB9FFF4-A3A1- 4B85-89B4- 5987D4551AD9 | 请求ID。 |
 
 **示例**
@@ -4501,10 +4728,9 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deploymentdrafts/[
 GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deploymentdrafts/[deploymentDraftId] HTTP/1.1 &RegionId= &workspace= &namespace= &deploymentDraftId=
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式实时计算（流计算） API
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "data": {
     "metadata": {
       "createdAt": "2024-03-12T06:11:40Z",
@@ -4520,7 +4746,11 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deploymentdrafts/[
         "modifierName": "flinkadmin",
         "deployment.draft.referenced.deployment.id": "d0b3abf0-4bfe-46b1-a324-5b7def580c00",
         "priority": "5"
-      },
+```
+
+`},`
+
+```json
       "lock": {
         "metadata": {
           "createdAt": "2024-03-12T06:11:40Z",
@@ -4529,20 +4759,35 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deploymentdrafts/[
           "annotations": {
             "creator": "229852610122763813",
             "modifier": "229852610122763813"
-          },
+```
+
+`},`
+
+```json
           "id": "ec62ce3c-fe33-383e-8b31-2fe9d89af2af"
-        },
+```
+
+`},`
+
+```json
         "apiVersion": "v1",
         "kind": "Lock",
         "spec": {
           "holderName": "flinkadmin",
           "holderId": "229852610122763813"
-        }
-      },
+```
+
+`}` `},`
+
+```json
       "id": "c6f157ac-60b9-4b38-8bad-d435387cfd59",
       "parentId": "99d3a304-a14b-32da-945c-765bb687aa61",
       "labels": {}
-    },
+```
+
+`},`
+
+```json
     "apiVersion": "v1",
     "kind": "DeploymentDraft",
     "spec": {
@@ -4550,8 +4795,11 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deploymentdrafts/[
         "metadata": {
           "annotations": {
             "flink.queryable-state.enabled": "false"
-          }
-        },
+```
+
+`}` `},`
+
+```json
         "spec": {
           "artifact": {
             "kind": "SQLSCRIPT",
@@ -4560,68 +4808,99 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deploymentdrafts/[
 te your name here-- Created Time: 2024-03-12 14:11:38-- Description: Write your descrip tion here--********************************************************************--CREATE TEMP ORARY TABLE `datahub_table` (strname VARCHAR)with ( \u0027connector\u0027 \u003d \u0027da tagen\u0027 );CREATETEMPORARYTABLE`kafkatable`(strnameVARCHAR,lensBIGINT)with(
 ```
 
-实时计算（流计算） API
-
 ```json
 tagen\u0027 );CREATE TEMPORARY TABLE kafka_table (strname VARCHAR, lens BIGINT)with ( \u0027connector\u0027 \u003d \u0027print\u0027 );INSERT INTO kafka_tableSELECT SUBSTRING (s trname, 0, 10) AS strname, CAST (CHAR_LENGTH (strname) AS BIGINT) AS lensFROM datahub_table ;",
             "imageUserDefined": false,
             "versionName": "vvr-6.0.0-flink-1.15"
-          },
+```
+
+`},`
+
+```json
           "parallelism": 1,
           "batchMode": false,
           "resources": {
             "jobmanager": {
               "memory": "4Gi",
               "cpu": 2.0
-            },
+```
+
+`},`
+
+```json
             "taskmanager": {
               "memory": "4Gi",
               "cpu": 2.0
-            }
-          },
+```
+
+`}` `},`
+
+```json
           "logging": {
             "log4jLoggers": {
               "": "INFO"
-            },
+```
+
+`},`
+
+```json
             "logReservePolicy": {
               "expirationDays": 7,
               "openHistory": true
-            },
+```
+
+`},`
+
+```json
             "loggingProfile": "default"
-          },
+```
+
+`},`
+
+```json
           "flinkConfiguration": {
             "execution.checkpointing.interval": "180s",
             "execution.checkpointing.min-pause": "180s"
-          }
-        }
-      },
+```
+
+`}` `}` `},`
+
+```json
       "restoreStrategy": {
         "kind": "LATEST_STATE",
         "allowNonRestoredState": false
-      },
+```
+
+`},`
+
+```json
       "state": "CANCELLED",
       "upgradeStrategy": {
         "kind": "STATELESS"
-      },
+```
+
+`},`
+
+```json
       "maxSavepointCreationAttempts": 4,
       "maxJobCreationAttempts": 1,
       "deploymentTargetId": "f2ed6708-a7e1-4e86-a99e-327fac9265c2"
-    }
-  },
-  "success": true,
-  "requestId": "3EB9FFF4-A3A1-4B85-89B4-5987D4551AD9"
-}
 ```
 
-`XML` 格式
+`}` `},`
+
+```json
+  "success": true,
+  "requestId": "3EB9FFF4-A3A1-4B85-89B4-5987D4551AD9"
+```
+
+`}` `XML` 格式
 
 ```xml
 <data>
  <metadata>
   <createdAt>2024-03-12T06:11:40Z</createdAt>
 ```
-
-实时计算（流计算） API
 
 ```xml
   <modifiedAt>2024-03-12T06:12:11Z</modifiedAt>
@@ -4675,15 +4954,18 @@ tagen\u0027 );CREATE TEMPORARY TABLE kafka_table (strname VARCHAR, lens BIGINT)w
      <sqlScript>--********************************************************************--
 -- Author: Write your name here -- Created Time: 2024-03-12 14:11:38 -- Description: Write your description here --********************************************************************-- CREATE TEMPORARY TABLE `datahub_table` (strname VARCHAR) with (
     &#x27;connector&#x27; = &#x27;datagen&#x27;
-  );
 ```
 
-实时计算（流计算） API
+);
 
-```xml
+```
 CREATE TEMPORARY TABLE `kafka_table` (strname VARCHAR, lens BIGINT) with (
     &#x27;connector&#x27; = &#x27;print&#x27;
-  );
+```
+
+);
+
+```xml
 INSERT INTO kafka_table SELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR_LENGTH (strname) AS BIGINT) AS lens FROM
   datahub_table;
      </sqlScript>
@@ -4733,9 +5015,9 @@ INSERT INTO kafka_table SELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR
 </data> <success>true</success> <requestId>3EB9FFF4-A3A1-4B85-89B4-5987D4551AD9</requestId>
 ```
 
-实时计算（流计算） API
+#### 3.1.46 GetDeploymentDraftByName
 
-#### GetDeploymentDraftByName
+调用GetDeploymentDraftByName，通过名称查询draft。
 
 **请求头**
 
@@ -4761,26 +5043,20 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deploymentdrafts/n
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | success | Boolean | true | 请求是否成功。 |
-|  |  | { "metadata": {}, "apiVersion": "v1", "kind": "DeploymentDraftLi st", "items": [ { "metadata": { "createdAt": "2024- 03-12T06:11:40Z", "modifiedAt": "2024-03- 12T06:12:11Z", "resourceVersion": 5, "name": "sqljob", "namespace": "flinkteam", "annotations": { |  |
+|   |   | { "metadata": {}, "apiVersion": "v1", "kind": "DeploymentDraftLi st", "items": [ { "metadata": { "createdAt": "2024- 03-12T06:11:40Z", "modifiedAt": "2024-03- 12T06:12:11Z", "resourceVersion": 5, "name": "sqljob", "namespace": "flinkteam", "annotations": { |   |
 
-实时计算（流计算） API
-
-|  |  | "creator": |  |
+|   |   | "creator": |   |
 |---|---|---|---|
 | 参数名称 | 类型 | "示22例9852610122763 | 说明 |
-|  |  | 813", "modifier": "229852610122763 813", "creatorName": "flinkadmin", "comment": "", "modifierName": "flinkadmin", "deployment.draft.r eferenced.deployme nt.id": "d0b3abf0- 4bfe-46b1-a324- 5b7def580c00", "priority": "5" }, "lock": { "metadata": { "createdAt": "2024- 03-12T06:11:40Z", "modifiedAt": "2024-03- 12T06:11:40Z", "namespace": "flinkteam", "annotations": { "creator": "229852610122763 813", "modifier": "229852610122763 813" }, "id": "ec62ce3c-fe33- 383e-8b31- 2fe9d89af2af" }, "apiVersion": "v1", "kind": "Lock", "spec": { "holderName": "flinkadmin", "holderId": "229852610122763 813" } }, "id": "c6f157ac-60b9- 4b38-8bad- d435387cfd59", "parentId": "99d3a304-a14b- 32da-945c- 765bb687aa61", "labels": {} }, "apiVersion": "v1", "kind": "DeploymentDraft", "spec": { "template": { "metadata": { "annotations": { "flink.queryable- state.enabled": "false" } }, "spec": { "artifact": { "kind": "SQLSCRIPT", "sqlScript": "-- ******************** ******************** ******************** ********-- -- Author: Write your name here -- Created Time: |  |
-
-实时计算（流计算） API
+|   |   | 813", "modifier": "229852610122763 813", "creatorName": "flinkadmin", "comment": "", "modifierName": "flinkadmin", "deployment.draft.r eferenced.deployme nt.id": "d0b3abf0- 4bfe-46b1-a324- 5b7def580c00", "priority": "5" }, "lock": { "metadata": { "createdAt": "2024- 03-12T06:11:40Z", "modifiedAt": "2024-03- 12T06:11:40Z", "namespace": "flinkteam", "annotations": { "creator": "229852610122763 813", "modifier": "229852610122763 813" }, "id": "ec62ce3c-fe33- 383e-8b31- 2fe9d89af2af" }, "apiVersion": "v1", "kind": "Lock", "spec": { "holderName": "flinkadmin", "holderId": "229852610122763 813" } }, "id": "c6f157ac-60b9- 4b38-8bad- d435387cfd59", "parentId": "99d3a304-a14b- 32da-945c- 765bb687aa61", "labels": {} }, "apiVersion": "v1", "kind": "DeploymentDraft", "spec": { "template": { "metadata": { "annotations": { "flink.queryable- state.enabled": "false" } }, "spec": { "artifact": { "kind": "SQLSCRIPT", "sqlScript": "-- ******************** ******************** ******************** ********-- -- Author: Write your name here -- Created Time: |   |
 
 | 参数名称 data | 类型 String | 2024-03-12 1示4例:11:38 | 说明 draft详细数据。 |
 |---|---|---|---|
-|  |  | -- Description: Write your description here -- ******************** ******************** ******************** ********-- CREATE TEMPORARY TABLE `datahub table` _ (strname VARCHAR) with ( \u0027connector\u0 027 \u003d \u0027datagen\u00 27 ); CREATE TEMPORARY TABLE `kafka table` _ (strname VARCHAR, lens BIGINT) with ( \u0027connector\u0 027 \u003d \u0027print\u0027 ); INSERT INTO kafka table _ SELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR LENGTH _ (strname) AS BIGINT) AS lens FROM datahub table; _ ", "imageUserDefined" : false, "versionName": "vvr-6.0.0-flink- 1.15" }, "parallelism": 1, "batchMode": false, "resources": { "jobmanager": { "memory": "4Gi", "cpu": 2.0 }, "taskmanager": { "memory": "4Gi", "cpu": 2.0 } }, "logging": { "log4jLoggers": { "": "INFO" }, "logReservePolicy": { "expirationDays": 7, "openHistory": true }, "loggingProfile": "default" }, "flinkConfiguration": { "execution.checkpoi nting.interval": "180s", "execution.checkpoi |  |
-
-实时计算（流计算） API
+|   |   | -- Description: Write your description here -- ******************** ******************** ******************** ********-- CREATE TEMPORARY TABLE `datahub table` _ (strname VARCHAR) with ( \u0027connector\u0 027 \u003d \u0027datagen\u00 27 ); CREATE TEMPORARY TABLE `kafka table` _ (strname VARCHAR, lens BIGINT) with ( \u0027connector\u0 027 \u003d \u0027print\u0027 ); INSERT INTO kafka table _ SELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR LENGTH _ (strname) AS BIGINT) AS lens FROM datahub table; _ ", "imageUserDefined" : false, "versionName": "vvr-6.0.0-flink- 1.15" }, "parallelism": 1, "batchMode": false, "resources": { "jobmanager": { "memory": "4Gi", "cpu": 2.0 }, "taskmanager": { "memory": "4Gi", "cpu": 2.0 } }, "logging": { "log4jLoggers": { "": "INFO" }, "logReservePolicy": { "expirationDays": 7, "openHistory": true }, "loggingProfile": "default" }, "flinkConfiguration": { "execution.checkpoi nting.interval": "180s", "execution.checkpoi |   |
 
 | 参数名称 | 类型 | nting.min-pause": "示18例0s" } } }, | 说明 |
 |---|---|---|---|
-|  |  | "restoreStrategy": { "kind": "LATEST STATE", _ "allowNonRestoredS tate": false }, "state": "CANCELLED", "upgradeStrategy": { "kind": "STATELESS" }, "maxSavepointCreat ionAttempts": 4, "maxJobCreationAtt empts": 1, "deploymentTargetI d": "f2ed6708-a7e1- 4e86-a99e- 327fac9265c2" } } ] } |  |
+|   |   | "restoreStrategy": { "kind": "LATEST STATE", _ "allowNonRestoredS tate": false }, "state": "CANCELLED", "upgradeStrategy": { "kind": "STATELESS" }, "maxSavepointCreat ionAttempts": 4, "maxJobCreationAtt empts": 1, "deploymentTargetI d": "f2ed6708-a7e1- 4e86-a99e- 327fac9265c2" } } ] } |   |
 | requestId | String | AB731F2D-2B11- 4C4B-A45F- F419ED5CECBF | 请求ID。 |
 
 **示例**
@@ -4791,16 +5067,19 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deploymentdrafts/n
 GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deploymentdrafts/name/[deploymentDraftName] HTTP/1.1 &RegionId= &workspace= &namespace= &deploymentDraftName=
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "data": {
     "metadata": {},
     "apiVersion": "v1",
     "kind": "DeploymentDraftList",
     "items": [
-      {
+```
+
+`{`
+
+```json
         "metadata": {
           "createdAt": "2024-03-12T06:11:40Z",
           "modifiedAt": "2024-03-12T06:12:11Z",
@@ -4816,12 +5095,14 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deploymentdrafts/n
             "deployment.draft.referenced.deployment.id": "d0b3abf0-4bfe-46b1-a324-
 ```
 
-实时计算（流计算） API
-
 ```json
 5b7def580c00",
             "priority": "5"
-          },
+```
+
+`},`
+
+```json
           "lock": {
             "metadata": {
               "createdAt": "2024-03-12T06:11:40Z",
@@ -4830,20 +5111,35 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deploymentdrafts/n
               "annotations": {
                 "creator": "229852610122763813",
                 "modifier": "229852610122763813"
-              },
+```
+
+`},`
+
+```json
               "id": "ec62ce3c-fe33-383e-8b31-2fe9d89af2af"
-            },
+```
+
+`},`
+
+```json
             "apiVersion": "v1",
             "kind": "Lock",
             "spec": {
               "holderName": "flinkadmin",
               "holderId": "229852610122763813"
-            }
-          },
+```
+
+`}` `},`
+
+```json
           "id": "c6f157ac-60b9-4b38-8bad-d435387cfd59",
           "parentId": "99d3a304-a14b-32da-945c-765bb687aa61",
           "labels": {}
-        },
+```
+
+`},`
+
+```json
         "apiVersion": "v1",
         "kind": "DeploymentDraft",
         "spec": {
@@ -4851,8 +5147,11 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deploymentdrafts/n
             "metadata": {
               "annotations": {
                 "flink.queryable-state.enabled": "false"
-              }
-            },
+```
+
+`}` `},`
+
+```json
             "spec": {
               "artifact": {
                 "kind": "SQLSCRIPT",
@@ -4861,65 +5160,92 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deploymentdrafts/n
 te your name here-- Created Time: 2024-03-12 14:11:38-- Description: Write your descrip tion here--********************************************************************--CREATE TEMP ORARY TABLE `datahub_table` (strname VARCHAR)with ( \u0027connector\u0027 \u003d \u0027da tagen\u0027 );CREATE TEMPORARY TABLE `kafka_table` (strname VARCHAR, lens BIGINT)with ( \u0027connector\u0027 \u003d \u0027print\u0027 );INSERT INTO kafka_tableSELECT SUBSTRING (s trname, 0, 10) AS strname, CAST (CHAR_LENGTH (strname) AS BIGINT) AS lensFROM datahub_table ;",
                 "imageUserDefined": false,
                 "versionName": "vvr-6.0.0-flink-1.15"
-              },
+```
+
+`},`
+
+```json
               "parallelism": 1,
               "batchMode": false,
               "resources": {
                 "jobmanager": {
                   "memory": "4Gi",
                   "cpu": 2.0
-                },
-                "taskmanager": {
 ```
 
-实时计算（流计算） API
+`},`
+
+```json
+                "taskmanager": {
+```
 
 ```json
                   "memory": "4Gi",
                   "cpu": 2.0
-                }
-              },
+```
+
+`}` `},`
+
+```json
               "logging": {
                 "log4jLoggers": {
                   "": "INFO"
-                },
+```
+
+`},`
+
+```json
                 "logReservePolicy": {
                   "expirationDays": 7,
                   "openHistory": true
-                },
+```
+
+`},`
+
+```json
                 "loggingProfile": "default"
-              },
+```
+
+`},`
+
+```json
               "flinkConfiguration": {
                 "execution.checkpointing.interval": "180s",
                 "execution.checkpointing.min-pause": "180s"
-              }
-            }
-          },
+```
+
+`}` `}` `},`
+
+```json
           "restoreStrategy": {
             "kind": "LATEST_STATE",
             "allowNonRestoredState": false
-          },
+```
+
+`},`
+
+```json
           "state": "CANCELLED",
           "upgradeStrategy": {
             "kind": "STATELESS"
-          },
+```
+
+`},`
+
+```json
           "maxSavepointCreationAttempts": 4,
           "maxJobCreationAttempts": 1,
           "deploymentTargetId": "f2ed6708-a7e1-4e86-a99e-327fac9265c2"
-        }
-      }
 ```
 
-]
+`}` `}` `]` `},`
 
 ```json
-  },
   "success": true,
   "requestId": "AB731F2D-2B11-4C4B-A45F-F419ED5CECBF"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <data>
@@ -4939,7 +5265,7 @@ te your name here-- Created Time: 2024-03-12 14:11:38-- Description: Write your 
     <creatorName>flinkadmin</creatorName>
 ```
 
-/ 实时计算（流计算） API
+`/`
 
 ```xml
     <comment  />
@@ -4985,14 +5311,20 @@ te your name here-- Created Time: 2024-03-12 14:11:38-- Description: Write your 
       <sqlScript>--********************************************************************--
 -- Author: Write your name here -- Created Time: 2024-03-12 14:11:38 -- Description: Write your description here --********************************************************************-- CREATE TEMPORARY TABLE `datahub_table` (strname VARCHAR) with (
     &#x27;connector&#x27; = &#x27;datagen&#x27;
-  );
-CREATE TEMPORARY TABLE `kafka_table` (strname VARCHAR, lens BIGINT) with (
-    &#x27;connector&#x27; = &#x27;print&#x27;
-  );
-INSERT INTO kafka_table SELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR_LENGTH (strname) AS BIGINT) AS lens
 ```
 
-实时计算（流计算） API
+);
+
+```
+CREATE TEMPORARY TABLE `kafka_table` (strname VARCHAR, lens BIGINT) with (
+    &#x27;connector&#x27; = &#x27;print&#x27;
+```
+
+);
+
+```
+INSERT INTO kafka_table SELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR_LENGTH (strname) AS BIGINT) AS lens
+```
 
 ```xml
 FROM
@@ -5045,13 +5377,13 @@ FROM
 </data> <success>true</success> <requestId>AB731F2D-2B11-4C4B-A45F-F419ED5CECBF</requestId>
 ```
 
-#### GetDeploymentDraftResourcePlan
+#### 3.1.47 GetDeploymentDraftResourcePlan
 
 调用GetDeploymentDraftResourcePlan，获取draft资源配置计划。
 
 **请求头**
 
-实时计算（流计算） API 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
 
@@ -5084,21 +5416,23 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deploymentdrafts/[
 GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deploymentdrafts/[deploymentDraftId]/resource_plan HTTP/1.1 &RegionId= &workspace= &namespace= &deploymentDraftId=
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式实时计算（流计算） API
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "data": {
     "success": true,
     "message": "",
     "plan": ""
-  },
-  "success": true,
-  "requestId": "49D8D2CA-51A8-43FE-820A-F44970A83159"
-}
 ```
 
-`XML` 格式
+`},`
+
+```json
+  "success": true,
+  "requestId": "49D8D2CA-51A8-43FE-820A-F44970A83159"
+```
+
+`}` `XML` 格式
 
 ```xml
 <data>
@@ -5108,9 +5442,7 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deploymentdrafts/[
 </data> <success>true</success> <requestId>49D8D2CA-51A8-43FE-820A-F44970A83159</requestId>
 ```
 
-**3.1.48.**
-
-#### GetDeploymentDraftResourcePlanWithBestEffort
+#### 3.1.48 GetDeploymentDraftResourcePlanWithBestEffort
 
 调用GetDeploymentDraftResourcePlanWithBestEffort，获取资源配置计划。
 
@@ -5132,10 +5464,8 @@ POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-drafts
 | workspace | String | Path | 是 | default | 作业所在的工作空间ID。您可以通过以下任意一种方式获取： 通过ListNamespaces获取。 在Flink全托管开发控制台工作空间详情中获取。 |
 | namespac e | String | Path | 是 | flinkteam | 作业所在的项目空间名称。 |
 
-|  |  |  |  | Flink企 | 业版开发指南·AppManager |
+|   |   |   |   | Flink企 | 业版开发指南·AppManager |
 |---|---|---|---|---|---|
-
-API
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -5148,8 +5478,6 @@ API
 |---|---|---|---|
 | success | Boolean | true | 请求是否成功。 |
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | data | String | { "success": true, "plan": " {\"ssgProfiles\": [{\"name\":\"default \",\"cpu\":0.2,\"heap\ ":\"768 mb\",\"offHeap\":\"3 2 mb\",\"managed\": {},\"extended\": {}}],\"nodes\": [{\"id\":1,\"type\":\"S treamExecTableSou rceScan\",\"desc\":\" Source: datahub table[11]\", _ \"profile\": {\"group\":\"default\ ",\"parallelism\":1,\" maxParallelism\":32 768,\"minParallelism \":1}}, {\"id\":2,\"type\":\"St reamExecCalc\",\"de sc\":\"Calc[12]\",\"pr ofile\": {\"group\":\"default\ ",\"parallelism\":1,\" maxParallelism\":32 768,\"minParallelism \":1}}, {\"id\":3,\"type\":\"St reamExecSink\",\"de sc\":\"Sink: kafka table[13]\",\"p _ rofile\": {\"group\":\"default\ ",\"parallelism\":1,\" maxParallelism\":32 768,\"minParallelism \":1}}],\"edges\": [{\"source\":1,\"targ et\":2,\"mode\":\"PIP ELINED\",\"strategy\ ":\"FORWARD\"}, {\"source\":2,\"targe t\":3,\"mode\":\"PIPE LINED\",\"strategy\": \"FORWARD\"}],\"ve rtices\": {\"717c7b8afebbfb7 137f6f0f99beb2a94\ ":[1,2,3]}}" } | 资源配置详细数据。 |
@@ -5157,27 +5485,35 @@ API
 
 **示例**
 
-请求示例实时计算（流计算） API
+请求示例
 
-```json
-POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-drafts/[deployment DraftId]/resource_plan:best-effort-merge HTTP/1.1 { "RegionId":"", "workspace":"", "namespace":"", "deploymentDraftId":"" }
+```
+POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-drafts/[deployment DraftId]/resource_plan:best-effort-merge HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"RegionId":"", "workspace":"", "namespace":"", "deploymentDraftId":""
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
   "data": {
     "success": true,
     "plan": "{\"ssgProfiles\":[{\"name\":\"default\",\"cpu\":0.2,\"heap\":\"768 mb\",\"offHe
 ap\":\"32 mb\",\"managed\":{},\"extended\":{}}],\"nodes\": [{\"id\":1,\"type\":\"StreamExecTableSourceScan\",\"desc\":\"Source: datahub_table[11]\",\"profile\": {\"group\":\"default\",\"parallelism\":1,\"maxParallelism\":32768,\"minParallelism\":1}},{\" id\":2,\"type\":\"StreamExecCalc\",\"desc\":\"Calc[12]\",\"profile\": {\"group\":\"default\",\"parallelism\":1,\"maxParallelism\":32768,\"minParallelism\":1}},{\" id\":3,\"type\":\"StreamExecSink\",\"desc\":\"Sink: kafka_table[13]\",\"profile\":{\"group\" :\"default\",\"parallelism\":1,\"maxParallelism\":32768,\"minParallelism\":1}}],\"edges\":[{ \"source\":1,\"target\":2,\"mode\":\"PIPELINED\",\"strategy\":\"FORWARD\"},{\"source\":2,\"t arget\":3,\"mode\":\"PIPELINED\",\"strategy\":\"FORWARD\"}],\"vertices\":{\"717c7b8afebbfb71 37f6f0f99beb2a94\":[1,2,3]}}"
-  },
-  "success": true,
-  "requestId": "3B46A3C8-2D6A-4DE6-8468-E6A72E7E5FE8"
-}
 ```
 
-`XML` 格式实时计算（流计算） API
+`},`
+
+```json
+  "success": true,
+  "requestId": "3B46A3C8-2D6A-4DE6-8468-E6A72E7E5FE8"
+```
+
+`}` `XML` 格式
 
 ```xml
 <data>
@@ -5186,7 +5522,9 @@ ap\":\"32 mb\",\"managed\":{},\"extended\":{}}],\"nodes\": [{\"id\":1,\"type\":\
 [{&quot;name&quot;:&quot;default&quot;,&quot;cpu&quot;:0.2,&quot;heap&quot;:&quot;768 mb&quo t;,&quot;offHeap&quot;:&quot;32 mb&quot;,&quot;managed&quot;:{},&quot;extended&quot;:{}}],&q uot;nodes&quot;: [{&quot;id&quot;:1,&quot;type&quot;:&quot;StreamExecTableSourceScan&quot;,&quot;desc&quot;:&qu ;Source: datahub_table[11]&quot;,&quot;profile&quot;: {&quot;group&quot;:&quot;default&quot;,&quot;parallelism&quot;:1,&quot;maxParallelism&quot;:32 8,&quot;minParallelism&quot;:1}}, {&quot;id&quot;:2,&quot;type&quot;:&quot;StreamExecCalc&quot;,&quot;desc&quot;:&quot;Calc[12]& ot;,&quot;profile&quot;: {&quot;group&quot;:&quot;default&quot;,&quot;parallelism&quot;:1,&quot;maxParallelism&quot;:32 8,&quot;minParallelism&quot;:1}}, {&quot;id&quot;:3,&quot;type&quot;:&quot;StreamExecSink&quot;,&quot;desc&quot;:&quot;Sink: k afka_table[13]&quot;,&quot;profile&quot;: {&quot;group&quot;:&quot;default&quot;,&quot;parallelism&quot;:1,&quot;maxParallelism&quot;:32 8,&quot;minParallelism&quot;:1}}],&quot;edges&quot;: [{&quot;source&quot;:1,&quot;target&quot;:2,&quot;mode&quot;:&quot;PIPELINED&quot;,&quot;strat y&quot;:&quot;FORWARD&quot;}, {&quot;source&quot;:2,&quot;target&quot;:3,&quot;mode&quot;:&quot;PIPELINED&quot;,&quot;strate &quot;:&quot;FORWARD&quot;}],&quot;vertices&quot;: {&quot;717c7b8afebbfb7137f6f0f99beb2a94&quot;:[1,2,3]}}</plan> </data> <success>true</success> <requestId>3B46A3C8-2D6A-4DE6-8468-E6A72E7E5FE8</requestId>
 ```
 
-#### GetFunction
+#### 3.1.49 GetFunction
+
+调用GetFunction，查看function详情。
 
 **请求头**
 
@@ -5205,8 +5543,6 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 | RegionId | String | Host | 是 | cn-wulan-env188-d01 | Region ID。 |
 | namespac e | String | Path | 是 | flinkteam | 作业所在的项目空间名称。 |
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | workspace | String | Path | 是 | default | 作业所在的工作空间ID。您可以通过以下任意一种方式获取： 通过ListNamespaces获取。 在Flink全托管开发控制台工作空间详情中获取。 |
@@ -5224,16 +5560,15 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 
 **示例**
 
-请求示例实时计算（流计算） API
+请求示例
 
 ```
 GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/[cat]:getFunction HTTP/1.1 &RegionId= &namespace= &workspace= &cat= &database= &function=
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "requestId": "DD2A9970-CED3-4AD6-B0F6-8DFDD84AC6AC",
   "success": true,
   "httpCode": 200,
@@ -5247,14 +5582,16 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
       "functionLanguage": "FUNCTION_LANGUAGE_JAVA",
       "functionType": "FUNCTION_TYPE_FLINK",
       "description": "This is a user-defined function"
-    },
-    "success": true,
-    "message": ""
-  }
-}
 ```
 
-`XML` 格式
+`},`
+
+```json
+    "success": true,
+    "message": ""
+```
+
+`}` `}` `XML` 格式
 
 ```xml
 <requestId>DD2A9970-CED3-4AD6-B0F6-8DFDD84AC6AC</requestId> <success>true</success> <httpCode>200</httpCode> <message /> <reason /> <data>
@@ -5271,9 +5608,9 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 </data>
 ```
 
-实时计算（流计算） API
+#### 3.1.50 GetResourcePlan
 
-#### GetResourcePlan
+调用GetResourcePlan，获取deployment资源配置计划。
 
 **请求头**
 
@@ -5304,27 +5641,29 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deplo
 
 **示例**
 
-请求示例实时计算（流计算） API
+请求示例
 
 ```
 GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deploymentId]/resource_ an HTTP/1.1 &RegionId= &workspace= &namespace= &deploymentId=
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "data": {
     "success": true,
     "message": "",
     "plan": ""
-  },
-  "success": true,
-  "requestId": "87589423-CE39-470D-81EA-5AB477CF4CD4"
-}
 ```
 
-`XML` 格式
+`},`
+
+```json
+  "success": true,
+  "requestId": "87589423-CE39-470D-81EA-5AB477CF4CD4"
+```
+
+`}` `XML` 格式
 
 ```xml
 <data>
@@ -5334,7 +5673,9 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deplo
 </data> <success>true</success> <requestId>87589423-CE39-470D-81EA-5AB477CF4CD4</requestId>
 ```
 
-#### GetTable
+#### 3.1.51 GetTable
+
+调用GetTable，获取表信息。
 
 **请求头**
 
@@ -5352,10 +5693,8 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 |---|---|---|---|---|---|
 | RegionId | String | Host | 是 | cn-wulan-env***-d01 | Region ID。 |
 
-|  |  |  |  | Flink企 | 业版开发指南·AppManager |
+|   |   |   |   | Flink企 | 业版开发指南·AppManager |
 |---|---|---|---|---|---|
-
-API
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -5371,8 +5710,6 @@ API
 |---|---|---|---|
 | data | String | { "@type": "type.googleapis.co m/vvp.sql.catalog.v 1beta2.GetTableRes ponse", "table": { "name": "mydatahub", "schema": { "column": [ { "name": "strname", "type": "VARCHAR(2147483 647)", "expression": "" } ], "watermarkSpec": [] }, "properties": { "accessId": "SVw******PtL", "endpoint": "https://datahub.cn- wulan-env188- d01.dh.inter.env188 .shuguang.com", "connector": "datahub", "accessKey": "RfE******VMB", "project": "datahub", "topic": "mysource" }, "comment": "" }, "success": true, "message": "" } | 详细信息。 |
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | requestId | String | FCB6D11E-8FAA- 48F7-8E25- 28218A6878F5 | 请求ID。 |
@@ -5386,10 +5723,9 @@ API
 GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/[cat]:getTable H TTP/1.1 &RegionId= &namespace= &workspace= &cat= &database= &table=
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式实时计算（流计算） API
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "requestId": "FCB6D11E-8FAA-48F7-8E25-28218A6878F5",
   "success": true,
   "httpCode": 200,
@@ -5401,17 +5737,25 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
       "name": "mydatahub",
       "schema": {
         "column": [
-          {
+```
+
+`{`
+
+```json
             "name": "strname",
             "type": "VARCHAR(2147483647)",
             "expression": ""
-          }
 ```
 
-`],`
+`}` `],`
 
 ```json
-      },
+        "watermarkSpec": []
+```
+
+`},`
+
+```json
       "properties": {
         "accessId": "SVw******PtL",
         "endpoint": "https://datahub.cn-wulan-env188-d01.dh.inter.env188.shuguang.com",
@@ -5419,16 +5763,22 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
         "accessKey": "RfE******VMB",
         "project": "datahub",
         "topic": "mysource"
-      },
-      "comment": ""
-    },
-    "success": true,
-    "message": ""
-  }
-}
 ```
 
-`XML` 格式实时计算（流计算） API
+`},`
+
+```json
+      "comment": ""
+```
+
+`},`
+
+```json
+    "success": true,
+    "message": ""
+```
+
+`}` `}` `XML` 格式
 
 ```xml
 <requestId>FCB6D11E-8FAA-48F7-8E25-28218A6878F5</requestId> <success>true</success> <httpCode>200</httpCode> <message /> <reason /> <data>
@@ -5441,6 +5791,7 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
     <type>VARCHAR(2147483647)</type>
     <expression  />
    </column>
+   <watermarkSpec  />
   </schema>
   <properties>
    <accessId>SVw******PtL</accessId>
@@ -5457,7 +5808,9 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 </data>
 ```
 
-#### GetUdfArtifact
+#### 3.1.52 GetUdfArtifact
+
+调用GetUdfArtifact，获取udf详细信息。
 
 **请求头**
 
@@ -5476,7 +5829,7 @@ GET /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts/
 | RegionId | String | Host | 是 | cn-wulan-env188-d01 | Region ID。 |
 | requireFun ctionName s | Boole an | Query | 是 | true | 是否返回funtion名称信息。 |
 
-| 实时计算（流计 | 算） |  |  | Flink企 | 业版开发指南·AppManager AP |
+| 实时计算（流计 | 算） |   |   | Flink企 | 业版开发指南·AppManager AP |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -5490,13 +5843,9 @@ GET /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts/
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | data | String | { "@type": "type.googleapis.co m/vvp.sql.v1beta1.G etUdfArtifactRespon se", "udfArtifact": { "dependencyJarUris" : [], "udfClasses": [ { "functionNames": [ "TimestampProbe" ], "udfArtifactName": "namespaces/flinkte am/udfartifacts/metr ic-transform-227- shaded", "className": "com.alibaba.blink.u dtf.TimestampProbe ", "classType": "UDF TYPE SCALAR _ _ " }, { "functionNames": [ "TransformUdtf" ], "udfArtifactName": "namespaces/flinkte am/udfartifacts/metr ic-transform-227- shaded", "className": "com.alibaba.blink.u dtf.TransformUdtf", "classType": "UDF TYPE TABLE" _ _ } ], "artifactType": "ARTIFACT TYPE JA _ _ VA", "createTime": "2024-03- 08T08:13:54Z", "uploader": "223474909869445 380", "jarUpdateTime": "2024-03- 08T08:13:57Z", "name": "namespaces/flinkte am/udfartifacts/metr ic-transform-227- shaded", "namespace": "namespaces/flinkte am", "jarUrl": "hdfs:///vvp/data/sql - artifacts/namespace s/flinkteam/udfs/met ric-transform-227- shaded/2024-03- 08T08-13- 54.732313Z/metric- transform-2.2.7- shaded.jar", "updateTime": "2024-03- 08T08:13:57Z" } } | 详细信息。 |
-
-实时计算（流计算） API
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -5511,16 +5860,19 @@ GET /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts/
 GET /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts/[udfArtifactName] HTTP/1.1 &RegionId= &requireFunctionNames= &workspace= &namespace= &udfArtifactName=
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式实时计算（流计算） API
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "data": {
     "@type": "type.googleapis.com/vvp.sql.v1beta1.GetUdfArtifactResponse",
     "udfArtifact": {
       "dependencyJarUris": [],
       "udfClasses": [
-        {
+```
+
+`{`
+
+```json
           "functionNames": [
             "TimestampProbe"
 ```
@@ -5531,13 +5883,16 @@ GET /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts/
           "udfArtifactName": "namespaces/flinkteam/udfartifacts/metric-transform-227-shaded"
 ```
 
-,
+`,`
 
 ```json
           "className": "com.alibaba.blink.udtf.TimestampProbe",
           "classType": "UDF_TYPE_SCALAR"
-        },
-        {
+```
+
+`},` `{`
+
+```json
           "functionNames": [
             "TransformUdtf"
 ```
@@ -5548,15 +5903,14 @@ GET /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts/
           "udfArtifactName": "namespaces/flinkteam/udfartifacts/metric-transform-227-shaded"
 ```
 
-,
+`,`
 
 ```json
           "className": "com.alibaba.blink.udtf.TransformUdtf",
           "classType": "UDF_TYPE_TABLE"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
       "artifactType": "ARTIFACT_TYPE_JAVA",
@@ -5568,14 +5922,16 @@ GET /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts/
       "jarUrl": "hdfs:///vvp/data/sql-artifacts/namespaces/flinkteam/udfs/metric-transform-2
 27-shaded/2024-03-08T08-13-54.732313Z/metric-transform-2.2.7-shaded.jar",
       "updateTime": "2024-03-08T08:13:57Z"
-    }
-  },
-  "requestId": "C44A1880-5138-4204-9165-DC65C4B059C2",
-  "success": true
-}
 ```
 
-`XML` 格式实时计算（流计算） API
+`}` `},`
+
+```json
+  "requestId": "C44A1880-5138-4204-9165-DC65C4B059C2",
+  "success": true
+```
+
+`}` `XML` 格式
 
 ```xml
 <data>
@@ -5609,7 +5965,9 @@ shaded/2024-03-08T08-13-54.732313Z/metric-transform-2.2.7-shaded.jar</jarUrl>
 </data> <requestId>C44A1880-5138-4204-9165-DC65C4B059C2</requestId> <success>true</success>
 ```
 
-#### ListConnectors
+#### 3.1.53 ListConnectors
+
+调用ListConnectors，获取connector列表。
 
 **请求头**
 
@@ -5627,8 +5985,6 @@ GET /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors HT
 |---|---|---|---|---|---|
 | RegionId | String | Host | 是 | cn-wulan-env***-d01 | Region ID。 |
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | workspace | String | Path | 是 | default | 作业所在的工作空间ID。您可以通过以下任意一种方式获取： 通过ListNamespaces获取。 在Flink全托管开发控制台工作空间详情中获取。 |
@@ -5640,8 +5996,6 @@ GET /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors HT
 |---|---|---|---|
 | success | Boolean | true | 请求是否成功。 |
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | data | String | { "connectors": [ { "lookup": false, "supportedFormats" : [], "environments": [ "PUBLIC CLOUD", _ "PRIVATE CLOUD", _ "ALIBABA GROUP", _ "VVC CLOUD" ], _ "sink": false, "name": "namespaces/flinkte am/connectors/data gen", "source": true, "type": "datagen", "properties": [ { "defaultValue": "", "description": "Must be set to \u0027datagen\u00 27 to configure this connector.", "definesFormat": false, "key": "connector", "required": true }, { "defaultValue": "", "description": "Rows per second to control the emit rate, default 10000L.", "definesFormat": false, "key": "rows- per-second", "required": false }, { "defaultValue": "", "description": "Total number of rows to emit. By default, the source is unbounded.", "definesFormat": false, "key": "number-of-rows", "required": false } ], "packaged": true, "dependencies": [] } ], "@type": "type.googleapis.co m/vvp.sql.v1beta1.L istConnectorsRespo nse" } | 详细数据。 |
@@ -5649,19 +6003,22 @@ GET /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors HT
 
 **示例**
 
-请求示例实时计算（流计算） API
+请求示例
 
 ```
 GET /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors HTTP/1.1 &RegionId= &workspace= &namespace=
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式实时计算（流计算） API
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "data": {
     "connectors": [
-      {
+```
+
+`{`
+
+```json
         "lookup": false,
         "supportedFormats": [],
         "environments": [
@@ -5679,50 +6036,61 @@ GET /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors HT
         "source": true,
         "type": "datagen",
         "properties": [
-          {
+```
+
+`{`
+
+```json
             "defaultValue": "",
             "description": "Must be set to \u0027datagen\u0027 to configure this
 connector.",
             "definesFormat": false,
             "key": "connector",
             "required": true
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Rows per second to control the emit rate, default 10000L.",
             "definesFormat": false,
             "key": "rows-per-second",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Total number of rows to emit. By default, the source is unbounde
 d.",
             "definesFormat": false,
             "key": "number-of-rows",
             "required": false
-          }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "packaged": true,
         "dependencies": []
-      }
 ```
 
-`],`
+`}` `],`
+
+```
+    "@type": "type.googleapis.com/vvp.sql.v1beta1.ListConnectorsResponse"
+```
+
+`},`
 
 ```json
-    "@type": "type.googleapis.com/vvp.sql.v1beta1.ListConnectorsResponse"
-  },
   "success": true,
   "requestId": "A62F262E-3055-490B-B17B-0C6BF83C4BE6"
-}
 ```
 
-`XML` 格式实时计算（流计算） API
+`}` `XML` 格式
 
 ```xml
 <data>
@@ -5742,7 +6110,7 @@ d.",
    <description>Must be set to &#x27;datagen&#x27; to configure this connector.</description
 ```
 
->
+`>`
 
 ```xml
    <definesFormat>false</definesFormat>
@@ -5771,7 +6139,9 @@ ion>
 </data> <success>true</success> <requestId>A62F262E-3055-490B-B17B-0C6BF83C4BE6</requestId>
 ```
 
-#### ListDatabases
+#### 3.1.54 ListDatabases
+
+调用ListDatabases，查看catalog下的database。
 
 **请求头**
 
@@ -5782,8 +6152,6 @@ ion>
 ```
 GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/[cat]:listDatabase HTTP/1.1
 ```
-
-实时计算（流计算） API
 
 **请求参数**
 
@@ -5810,10 +6178,9 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/[cat]:listDatabase HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式实时计算（流计算） API
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "requestId": "76F325D7-3EC4-4E34-81A8-18B92D7EE606",
   "success": true,
   "httpCode": 200,
@@ -5824,14 +6191,15 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
     "databases": [{
       "name": "default",
       "properties": {
-      },
-      "comment": "The default database"
-    }]
-  }
-}
 ```
 
-`XML` 格式
+`},`
+
+```json
+      "comment": "The default database"
+```
+
+`}]` `}` `}` `XML` 格式
 
 ```xml
 <requestId>76F325D7-3EC4-4E34-81A8-18B92D7EE606</requestId> <success>true</success> <httpCode>200</httpCode> <message /> <reason /> <data>
@@ -5844,7 +6212,9 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 </data>
 ```
 
-#### ListFlinkVersions
+#### 3.1.55 ListFlinkVersions
+
+调用ListFlinkVersions，获取flink引擎版本列表。
 
 **请求头**
 
@@ -5862,8 +6232,6 @@ GET /pop/workspaces/[workspace]/api/v1/flink-version-meta.json HTTP/1.1
 |---|---|---|---|---|---|
 | RegionId | String | Host | 是 | cn-wulan-env188-d01 | Region ID。 |
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | workspace | String | Path | 是 | default | 作业所在的工作空间ID。您可以通过以下任意一种方式获取： 通过ListNamespaces获取。 在Flink全托管开发控制台工作空间详情中获取。 |
@@ -5872,20 +6240,16 @@ GET /pop/workspaces/[workspace]/api/v1/flink-version-meta.json HTTP/1.1
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
-|  |  | { "defaultFlinkVersion Name": "vvr-6.0.0- flink-1.15", "flinkVersionMetada tas": [ { "supportFindUsedCa talogs": false, "useForJarFineGrain ed": false, "versionName": "vvr-3.0.9-flink- 1.12", "flinkVersion": "1.12", "useForSqlDeploym ents": true, "labels": {}, "features": { "supportFindUsedCa talogs": false, "supportDynamicLo gLevel": false, "supportDagExpansi on": false, "useForJarFineGrain ed": false, "supportNativeSave point": false, "supportStateComp atibility": false, "supportNativeK8s": false, "supportJvmDebug": false, "supportLogArchive" : false, "useForSqlDeploym ents": true, "supportLogPaging": false }, "tarUrl": "hdfs:///vvp/data/sql - artifacts/namespace s/default/packaged- vvr-dist/vvr-3.0.9- flink-1.12/vvr-3.0.9- flink-1.12- dist.tar.gz", "supportStateComp atibility": false, "defaultFor": [], |  |
-
-实时计算（流计算） API
+|   |   | { "defaultFlinkVersion Name": "vvr-6.0.0- flink-1.15", "flinkVersionMetada tas": [ { "supportFindUsedCa talogs": false, "useForJarFineGrain ed": false, "versionName": "vvr-3.0.9-flink- 1.12", "flinkVersion": "1.12", "useForSqlDeploym ents": true, "labels": {}, "features": { "supportFindUsedCa talogs": false, "supportDynamicLo gLevel": false, "supportDagExpansi on": false, "useForJarFineGrain ed": false, "supportNativeSave point": false, "supportStateComp atibility": false, "supportNativeK8s": false, "supportJvmDebug": false, "supportLogArchive" : false, "useForSqlDeploym ents": true, "supportLogPaging": false }, "tarUrl": "hdfs:///vvp/data/sql - artifacts/namespace s/default/packaged- vvr-dist/vvr-3.0.9- flink-1.12/vvr-3.0.9- flink-1.12- dist.tar.gz", "supportStateComp atibility": false, "defaultFor": [], |   |
 
 | 参数名称 | 类型 | "imageTag": 示例 "1.12.0-vvr-3.0.9- | 说明 |
 |---|---|---|---|
 | data | String | 1109", "vvrVersion": "3.0.9", "status": "DEPRECATED" }, { "supportFindUsedCa talogs": true, "useForJarFineGrain ed": false, "versionName": "vvr-4.0.18-flink- 1.13", "flinkVersion": "1.13", "useForSqlDeploym ents": true, "labels": {}, "features": { "supportFindUsedCa talogs": true, "supportDynamicLo gLevel": true, "supportDagExpansi on": false, "useForJarFineGrain ed": false, "supportNativeSave point": false, "supportStateComp atibility": true, "supportNativeK8s": false, "supportJvmDebug": true, "supportLogArchive" : true, | 详细信息。 |
-|  |  | "useForSqlDeploym ents": true, "supportLogPaging": true }, "tarUrl": "hdfs:///vvp/data/sql - artifacts/namespace s/default/packaged- vvr-dist/vvr-4.0.18- flink-1.13/vvr- 4.0.18-flink-1.13- dist.tar.gz", "supportStateComp atibility": true, "defaultFor": [], "imageTag": "1.13.0-vvr-4.0.18- 22", "vvrVersion": "4.0.18", "status": "DEPRECATED" }, { "supportFindUsedCa talogs": true, "useForJarFineGrain ed": false, "versionName": "vvr-6.0.0-flink- 1.15", "flinkVersion": "1.15", "useForSqlDeploym ents": true, "labels": {}, "features": { "supportFindUsedCa talogs": true, "supportDynamicLo L l" |  |
-
-实时计算（流计算） API
+|   |   | "useForSqlDeploym ents": true, "supportLogPaging": true }, "tarUrl": "hdfs:///vvp/data/sql - artifacts/namespace s/default/packaged- vvr-dist/vvr-4.0.18- flink-1.13/vvr- 4.0.18-flink-1.13- dist.tar.gz", "supportStateComp atibility": true, "defaultFor": [], "imageTag": "1.13.0-vvr-4.0.18- 22", "vvrVersion": "4.0.18", "status": "DEPRECATED" }, { "supportFindUsedCa talogs": true, "useForJarFineGrain ed": false, "versionName": "vvr-6.0.0-flink- 1.15", "flinkVersion": "1.15", "useForSqlDeploym ents": true, "labels": {}, "features": { "supportFindUsedCa talogs": true, "supportDynamicLo L l" |   |
 
 | 参数名称 | 类型 | gLevel": true, "示su例pportDagExpansi on": false, | 说明 |
 |---|---|---|---|
-|  |  | "useForJarFineGrain ed": false, "supportNativeSave point": false, "supportStateComp atibility": true, "supportNativeK8s": false, "supportJvmDebug": true, "supportLogArchive" : true, "useForSqlDeploym ents": true, "supportLogPaging": true }, "tarUrl": "hdfs:///vvp/data/sql - artifacts/namespace s/default/packaged- vvr-dist/vvr-6.0.7- flink-1.15/vvr-6.0.7- flink-1.15- dist.tar.gz", "supportStateComp atibility": true, "defaultFor": [], "imageTag": "1.15.0-vvr-6.0.7- 29", "vvrVersion": "6.0.7", "status": "STABLE" } ] } |  |
+|   |   | "useForJarFineGrain ed": false, "supportNativeSave point": false, "supportStateComp atibility": true, "supportNativeK8s": false, "supportJvmDebug": true, "supportLogArchive" : true, "useForSqlDeploym ents": true, "supportLogPaging": true }, "tarUrl": "hdfs:///vvp/data/sql - artifacts/namespace s/default/packaged- vvr-dist/vvr-6.0.7- flink-1.15/vvr-6.0.7- flink-1.15- dist.tar.gz", "supportStateComp atibility": true, "defaultFor": [], "imageTag": "1.15.0-vvr-6.0.7- 29", "vvrVersion": "6.0.7", "status": "STABLE" } ] } |   |
 | requestId | String | 63269B06-8027- 4CD0-9AB5- D9791B185B82 | 请求ID。 |
 | success | Boolean | true | 请求是否成功。 |
 
@@ -5897,21 +6261,22 @@ GET /pop/workspaces/[workspace]/api/v1/flink-version-meta.json HTTP/1.1
 GET /pop/workspaces/[workspace]/api/v1/flink-version-meta.json HTTP/1.1 &RegionId= &workspace=
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "data": {
     "defaultFlinkVersionName": "vvr-6.0.0-flink-1.15",
     "flinkVersionMetadatas": [
-      {
+```
+
+`{`
+
+```json
         "supportFindUsedCatalogs": false,
         "features": {
           "supportFindUsedCatalogs": false,
           "supportDynamicLogLevel": false,
 ```
-
-实时计算（流计算） API
 
 ```json
           "supportDagExpansion": false,
@@ -5923,7 +6288,11 @@ GET /pop/workspaces/[workspace]/api/v1/flink-version-meta.json HTTP/1.1 &RegionI
           "supportLogArchive": false,
           "useForSqlDeployments": false,
           "supportLogPaging": false
-        },
+```
+
+`},`
+
+```json
         "useForJarFineGrained": false,
         "supportStateCompatibility": false,
         "defaultFor": [],
@@ -5934,8 +6303,11 @@ GET /pop/workspaces/[workspace]/api/v1/flink-version-meta.json HTTP/1.1 &RegionI
         "useForSqlDeployments": false,
         "status": "DEPRECATED",
         "labels": {}
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "supportFindUsedCatalogs": false,
         "features": {
           "supportFindUsedCatalogs": false,
@@ -5949,7 +6321,11 @@ GET /pop/workspaces/[workspace]/api/v1/flink-version-meta.json HTTP/1.1 &RegionI
           "supportLogArchive": false,
           "useForSqlDeployments": false,
           "supportLogPaging": false
-        },
+```
+
+`},`
+
+```json
         "useForJarFineGrained": false,
         "supportStateCompatibility": false,
         "defaultFor": [],
@@ -5960,8 +6336,11 @@ GET /pop/workspaces/[workspace]/api/v1/flink-version-meta.json HTTP/1.1 &RegionI
         "useForSqlDeployments": false,
         "status": "DEPRECATED",
         "labels": {}
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "supportFindUsedCatalogs": false,
         "useForJarFineGrained": false,
         "versionName": "vvr-3.0.9-flink-1.12",
@@ -5973,8 +6352,6 @@ GET /pop/workspaces/[workspace]/api/v1/flink-version-meta.json HTTP/1.1 &RegionI
           "supportDynamicLogLevel": false,
 ```
 
-实时计算（流计算） API
-
 ```json
           "supportDagExpansion": false,
           "useForJarFineGrained": false,
@@ -5985,7 +6362,11 @@ GET /pop/workspaces/[workspace]/api/v1/flink-version-meta.json HTTP/1.1 &RegionI
           "supportLogArchive": false,
           "useForSqlDeployments": true,
           "supportLogPaging": false
-        },
+```
+
+`},`
+
+```json
         "tarUrl": "hdfs:///vvp/data/sql-artifacts/namespaces/default/packaged-vvr-dist/vvr-3
 .0.9-flink-1.12/vvr-3.0.9-flink-1.12-dist.tar.gz",
         "supportStateCompatibility": false,
@@ -5993,8 +6374,11 @@ GET /pop/workspaces/[workspace]/api/v1/flink-version-meta.json HTTP/1.1 &RegionI
         "imageTag": "1.12.0-vvr-3.0.9-1109",
         "vvrVersion": "3.0.9",
         "status": "DEPRECATED"
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "supportFindUsedCatalogs": true,
         "useForJarFineGrained": false,
         "versionName": "vvr-4.0.18-flink-1.13",
@@ -6013,7 +6397,11 @@ GET /pop/workspaces/[workspace]/api/v1/flink-version-meta.json HTTP/1.1 &RegionI
           "supportLogArchive": true,
           "useForSqlDeployments": true,
           "supportLogPaging": true
-        },
+```
+
+`},`
+
+```json
         "tarUrl": "hdfs:///vvp/data/sql-artifacts/namespaces/default/packaged-vvr-dist/vvr-4
 .0.18-flink-1.13/vvr-4.0.18-flink-1.13-dist.tar.gz",
         "supportStateCompatibility": true,
@@ -6021,8 +6409,11 @@ GET /pop/workspaces/[workspace]/api/v1/flink-version-meta.json HTTP/1.1 &RegionI
         "imageTag": "1.13.0-vvr-4.0.18-22",
         "vvrVersion": "4.0.18",
         "status": "DEPRECATED"
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "supportFindUsedCatalogs": true,
         "useForJarFineGrained": false,
         "versionName": "vvr-6.0.0-flink-1.15",
@@ -6035,7 +6426,7 @@ GET /pop/workspaces/[workspace]/api/v1/flink-version-meta.json HTTP/1.1 &RegionI
           "supportDagExpansion": false,
 ```
 
-实时计算（流计算） API `pp` g p ,
+`pp` `g` `p` `,`
 
 ```json
           "useForJarFineGrained": false,
@@ -6046,7 +6437,11 @@ GET /pop/workspaces/[workspace]/api/v1/flink-version-meta.json HTTP/1.1 &RegionI
           "supportLogArchive": true,
           "useForSqlDeployments": true,
           "supportLogPaging": true
-        },
+```
+
+`},`
+
+```json
         "tarUrl": "hdfs:///vvp/data/sql-artifacts/namespaces/default/packaged-vvr-dist/vvr-6
 .0.7-flink-1.15/vvr-6.0.7-flink-1.15-dist.tar.gz",
         "supportStateCompatibility": true,
@@ -6054,19 +6449,16 @@ GET /pop/workspaces/[workspace]/api/v1/flink-version-meta.json HTTP/1.1 &RegionI
         "imageTag": "1.15.0-vvr-6.0.7-29",
         "vvrVersion": "6.0.7",
         "status": "STABLE"
-      }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-  },
   "requestId": "63269B06-8027-4CD0-9AB5-D9791B185B82",
   "success": true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <data>
@@ -6101,8 +6493,6 @@ GET /pop/workspaces/[workspace]/api/v1/flink-version-meta.json HTTP/1.1 &RegionI
   <supportFindUsedCatalogs>false</supportFindUsedCatalogs>
   <features>
 ```
-
-实时计算（流计算） API
 
 ```xml
    <supportFindUsedCatalogs>false</supportFindUsedCatalogs>
@@ -6164,8 +6554,6 @@ flink-1.12/vvr-3.0.9-flink-1.12-dist.tar.gz</tarUrl>
   <useForSqlDeployments>true</useForSqlDeployments>
 ```
 
-实时计算（流计算） API
-
 ```xml
   <labels  />
   <features>
@@ -6220,9 +6608,9 @@ flink-1.15/vvr-6.0.7-flink-1.15-dist.tar.gz</tarUrl>
 </data> <requestId>63269B06-8027-4CD0-9AB5-D9791B185B82</requestId> <success>true</success>
 ```
 
-#### ListFormats
+#### 3.1.56 ListFormats
 
-实时计算（流计算） API
+调用ListFormats，查看formats列表。
 
 **请求头**
 
@@ -6231,7 +6619,7 @@ flink-1.15/vvr-6.0.7-flink-1.15-dist.tar.gz</tarUrl>
 **请求语法**
 
 ```
-/pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts/[udfArtifactName] HTTP/1.1
+DELETE /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts/[udfArtifactName] HTTP/1.1
 ```
 
 **请求参数**
@@ -6248,8 +6636,6 @@ flink-1.15/vvr-6.0.7-flink-1.15-dist.tar.gz</tarUrl>
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | data | String | { "formats": [ { "sink": true, "name": "namespaces/flinkte am/formats/avro", "source": true, "type": "avro", "properties": [ { "defaultValue": "", "description": "Must be set to \u0027avro\u0027 to configure this format.", "definesFormat": false, "key": "format", "required": true } ], "packaged": true, "dependencies": [ "hdfs:///vvp/data/sql - artifacts/namespace s/ververica/connect ors/vvr-6.0.7-flink- 1.15/opt/formats/avr o/flink-sql-avro-1.15- vvr-6.0.7- SNAPSHOT.jar" ] } ], "@type": "type.googleapis.co m/vvp.sql.v1beta1.L istFormatsResponse " } | 详细信息。 |
@@ -6261,36 +6647,40 @@ flink-1.15/vvr-6.0.7-flink-1.15-dist.tar.gz</tarUrl>
 请求示例
 
 ```
-/pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts/[udfArtifactName] HTTP/1.1
+DELETE /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts/[udfArtifactName] HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "data": {
     "formats": [
-      {
+```
+
+`{`
+
+```json
         "sink": true,
         "name": "namespaces/flinkteam/formats/avro",
         "source": true,
         "type": "avro",
 ```
 
-实时计算（流计算） API
-
 ```json
         "properties": [
-          {
+```
+
+`{`
+
+```json
             "defaultValue": "",
             "description": "Must be set to \u0027avro\u0027 to configure this format.",
             "definesFormat": false,
             "key": "format",
             "required": true
-          }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "packaged": true,
@@ -6299,43 +6689,50 @@ flink-1.15/vvr-6.0.7-flink-1.15-dist.tar.gz</tarUrl>
 15/opt/formats/avro/flink-sql-avro-1.15-vvr-6.0.7-SNAPSHOT.jar"
 ```
 
-]
+`]` `},` `{`
 
 ```json
-      },
-      {
         "sink": true,
         "name": "namespaces/flinkteam/formats/avro-confluent",
         "source": true,
         "type": "avro-confluent",
         "properties": [
-          {
+```
+
+`{`
+
+```json
             "defaultValue": "",
             "description": "Must be set to \u0027avro-confluent\u0027 to configure this form
 at.",
             "definesFormat": false,
             "key": "format",
             "required": true
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "The URL of the Confluent Schema Registry to fetch/register schem
 as.",
             "definesFormat": false,
             "key": "schema-registry.url",
             "required": true
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "The Confluent Schema Registry subject under which to register th
 e schema used by this format during serialization. Required for sink table.",
             "definesFormat": false,
             "key": "schema-registry.subject",
             "required": false
-          }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "packaged": true,
@@ -6344,72 +6741,86 @@ e schema used by this format during serialization. Required for sink table.",
 15/opt/formats/avro-confluent/flink-sql-avro-confluent-registry-1.15-vvr-6.0.7- SNAPSHOT.jar"
 ```
 
-]
+`]` `},` `{`
 
 ```json
-      },
-      {
         "sink": true,
         "name": "namespaces/flinkteam/formats/canal-json",
         "source": true,
 ```
 
-实时计算（流计算） API
-
 ```json
         "type": "canal-json",
         "properties": [
-          {
+```
+
+`{`
+
+```json
             "defaultValue": "",
             "description": "Must be set to \u0027canal-json\u0027 to configure this
 format.",
             "definesFormat": false,
             "key": "format",
             "required": true
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Optional flag to skip fields and rows with parse errors instead
 of failing; fields are set to null in case of errors, false by default.",
             "definesFormat": false,
             "key": "ignore-parse-errors",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Optional flag to use Jackson Stream API to deserialize json obje
 ct, which brings 30% performance gain.",
             "definesFormat": false,
             "key": "fast-deserialization",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Optional flag to specify timestamp format, SQL by default. Optio
 n ISO-8601 will parse input timestamp in \"yyyy-MM-ddTHH:mm:ss.s{precision}\" format and out put timestamp in the same format. Option SQL will parse input timestamp in \"yyyy-MM-dd HH:m m:ss.s{precision}\" format and output timestamp in the same format.",
             "definesFormat": false,
             "key": "timestamp-format.standard",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Only read changelog rows which match the specific database (by c
 omparing the \"database\" meta field in the record).",
             "definesFormat": false,
             "key": "database.include",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Only read changelog rows which match the specific table (by comp
 aring the \"table\" meta field in the record).",
             "definesFormat": false,
             "key": "table.include",
             "required": false
-          }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "packaged": true,
@@ -6418,67 +6829,85 @@ aring the \"table\" meta field in the record).",
 15/opt/formats/json/flink-json-1.15-vvr-6.0.7-SNAPSHOT-sql-jar.jar"
 ```
 
-实时计算（流计算） API ]
+`]` `},` `{`
 
 ```json
-      },
-      {
         "sink": true,
         "name": "namespaces/flinkteam/formats/csv",
         "source": true,
         "type": "csv",
         "properties": [
-          {
+```
+
+`{`
+
+```json
             "defaultValue": "",
             "description": "Must be set to \u0027csv\u0027 to configure this format.",
             "definesFormat": false,
             "key": "format",
             "required": true
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Optional field delimiter character (\u0027,\u0027 by default).",
             "definesFormat": false,
             "key": "field-delimiter",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Optional flag to disabled quote character for enclosing field va
 lues (false by default). If true, quote-character can not be set.",
             "definesFormat": false,
             "key": "disable-quote-character",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Optional quote character for enclosing field values
 (\u0027\"\u0027 by default).",
             "definesFormat": false,
             "key": "quote-character",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Optional flag to ignore comment lines that start with
 \u0027#\u0027(disabled by default); if enabled, make sure to also ignore parse errors to allow empty rows.",
             "definesFormat": false,
             "key": "allow-comments",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Optional flag to skip fields and rows with parse errors instead
 of failing; fields are set to null in case of errors.",
             "definesFormat": false,
             "key": "ignore-parse-errors",
             "required": false
-          },
-          {
-            "defaultValue": "",
 ```
 
-实时计算（流计算） API
+`},` `{`
+
+```json
+            "defaultValue": "",
+```
 
 ```json
             "description": "Optional array element delimiter string for separating array and
@@ -6486,26 +6915,31 @@ row element values (\u0027;\u0027 by default).",
             "definesFormat": false,
             "key": "array-element-delimiter",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Optional escape character for escaping values (disabled by defau
 lt).",
             "definesFormat": false,
             "key": "escape-character",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Optional null literal string that is interpreted as a null value
 (disabled by default).",
             "definesFormat": false,
             "key": "null-literal",
             "required": false
-          }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "packaged": true,
@@ -6514,33 +6948,41 @@ lt).",
 15/opt/formats/csv/flink-csv-1.15-vvr-6.0.7-SNAPSHOT-sql-jar.jar"
 ```
 
-]
+`]` `},` `{`
 
 ```json
-      },
-      {
         "sink": true,
         "name": "namespaces/flinkteam/formats/debezium-avro-confluent",
         "source": true,
         "type": "debezium-avro-confluent",
         "properties": [
-          {
+```
+
+`{`
+
+```json
             "defaultValue": "",
             "description": "Must be set to \u0027debezium-avro-confluent\u0027 to configure
 this format.",
             "definesFormat": false,
             "key": "format",
             "required": true
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "The URL of the Confluent Schema Registry to fetch/register schem
 as.",
             "definesFormat": false,
             "key": "url",
             "required": true
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Basic auth credentials source for Schema Registry.",
             "definesFormat": false,
@@ -6548,83 +6990,104 @@ as.",
             "required": false
 ```
 
-实时计算（流计算） API
+`},` `{`
 
 ```json
-          },
-          {
             "defaultValue": "",
             "description": "Basic auth user info for schema registry.",
             "definesFormat": false,
             "key": "basic-auth.user-info",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Bearer auth credentials source for Schema Registry.",
             "definesFormat": false,
             "key": "bearer-auth.credentials-source",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Bearer auth token for Schema Registry.",
             "definesFormat": false,
             "key": "bearer-auth.token",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Properties map that is forwarded to the underlying Schema Regist
 ry. This is useful for options that are not officially exposed via Flink config options. However, note that Flink options have higher precedence.",
             "definesFormat": false,
             "key": "properties",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Location / File of SSL keystore.",
             "definesFormat": false,
             "key": "ssl.keystore.location",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Password for SSL keystore",
             "definesFormat": false,
             "key": "ssl.keystore.password",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Location / File of SSL truststore.",
             "definesFormat": false,
             "key": "ssl.truststore.location",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Password for SSL truststore.",
             "definesFormat": false,
             "key": "ssl.truststore.password",
 ```
 
-实时计算（流计算） API y p ,
+`y` `p` `,`
 
 ```json
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "The Confluent Schema Registry subject under which to register th
 e schema used by this format during serialization. By default, \u0027kafka\u0027 and \u0027upsert-kafka\u0027 connectors use \u0027\u003ctopic_name\u003e-value\u0027 or \u0027\u 003ctopic_name\u003e-key\u0027 as the default subject name if this format is used as the value or key format. But for other connectors (e.g. \u0027filesystem\u0027), the subject option is required when used as sink.",
             "definesFormat": false,
             "key": "subject",
             "required": false
-          }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "packaged": true,
@@ -6633,46 +7096,55 @@ e schema used by this format during serialization. By default, \u0027kafka\u0027
 15/opt/formats/avro-confluent/flink-sql-avro-confluent-registry-1.15-vvr-6.0.7- SNAPSHOT.jar"
 ```
 
-]
+`]` `},` `{`
 
 ```json
-      },
-      {
         "sink": true,
         "name": "namespaces/flinkteam/formats/debezium-json",
         "source": true,
         "type": "debezium-json",
         "properties": [
-          {
+```
+
+`{`
+
+```json
             "defaultValue": "",
             "description": "Must be set to \u0027debezium-json\u0027 to configure this forma
 t.",
             "definesFormat": false,
             "key": "format",
             "required": true
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "When setting up a Debezium Kafka Connect, users can enable a Kaf
 ka configuration \u0027value.converter.schemas.enable\u0027 to include schema in the message . This option indicates the Debezium JSON data include the schema in the message or not. Default is false.",
             "definesFormat": false,
             "key": "schema-include",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Optional flag to skip fields and rows with parse errors instead
 of failing; fields are set to null in case of errors, false by default.",
             "definesFormat": false,
             "key": "ignore-parse-errors",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
 "description":"OptionalflagtouseJacksonStreamAPItodeserializejsonobje
 ```
-
-实时计算（流计算） API
 
 ```json
             description: Optional flag to use Jackson Stream API to deserialize json obje
@@ -6680,18 +7152,20 @@ ct, which brings 30% performance gain.",
             "definesFormat": false,
             "key": "fast-deserialization",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Optional flag to specify timestamp format, SQL by default. Optio
 n ISO-8601 will parse input timestamp in \"yyyy-MM-ddTHH:mm:ss.s{precision}\" format and out put timestamp in the same format. Option SQL will parse input timestamp in \"yyyy-MM-dd HH:m m:ss.s{precision}\" format and output timestamp in the same format.",
             "definesFormat": false,
             "key": "timestamp-format.standard",
             "required": false
-          }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "packaged": true,
@@ -6700,40 +7174,51 @@ n ISO-8601 will parse input timestamp in \"yyyy-MM-ddTHH:mm:ss.s{precision}\" fo
 15/opt/formats/json/flink-json-1.15-vvr-6.0.7-SNAPSHOT-sql-jar.jar"
 ```
 
-]
+`]` `},` `{`
 
 ```json
-      },
-      {
         "sink": true,
         "name": "namespaces/flinkteam/formats/json",
         "source": true,
         "type": "json",
         "properties": [
-          {
+```
+
+`{`
+
+```json
             "defaultValue": "",
             "description": "Must be set to \u0027json\u0027 to configure this format.",
             "definesFormat": false,
             "key": "format",
             "required": true
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Optional flag to specify whether to fail if a field is missing o
 r not, false by default.",
             "definesFormat": false,
             "key": "fail-on-missing-field",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Optional flag to skip fields and rows with parse errors instead
 of failing. Fields are set to null in case of errors, false by default.",
             "definesFormat": false,
             "key": "ignore-parse-errors",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Optional flag to use Jackson Stream API to deserialize json obje
 ct, which brings 30% performance gain.",
@@ -6741,38 +7226,44 @@ ct, which brings 30% performance gain.",
 "key":"fast-deserialization"
 ```
 
-实时计算（流计算） API
-
 ```json
             key: fastdeserialization,
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Optional flag to specify timestamp format, SQL by default. Optio
 n ISO-8601 will parse input timestamp in \"yyyy-MM-ddTHH:mm:ss.s{precision}\" format and out put timestamp in the same format. Option SQL will parse input timestamp in \"yyyy-MM-dd HH:m m:ss.s{precision}\" format and output timestamp in the same format.",
             "definesFormat": false,
             "key": "timestamp-format.standard",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Optional flag to recursively flatten the JSON OBJECT field into
 columns in the top level schema. For a better understanding, the name of the flattened column will be composed of the path to get the column. For example, the field `col` in the json \"{ \\\"nested\\\": {\\\"col\\\": true} }\" is `nested.col` in the flattened schema. If the flattened field names get conflicts, currently the JsonParser will throw the exception t o stop the execution. Please use the option \"json.ignore-parse-errors\" to ignore the parse errors.",
             "definesFormat": false,
             "key": "infer-schema.flatten-nested-columns.enable",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Optional flag to infer primitive types as string type.",
             "definesFormat": false,
             "key": "infer-schema.primitive-as-string",
             "required": false
-          }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "packaged": true,
@@ -6781,57 +7272,65 @@ columns in the top level schema. For a better understanding, the name of the fla
 15/opt/formats/json/flink-json-1.15-vvr-6.0.7-SNAPSHOT-sql-jar.jar"
 ```
 
-]
+`]` `},` `{`
 
 ```json
-      },
-      {
         "sink": true,
         "name": "namespaces/flinkteam/formats/maxwell-json",
         "source": true,
         "type": "maxwell-json",
         "properties": [
-          {
+```
+
+`{`
+
+```json
             "defaultValue": "",
             "description": "Must be set to \u0027maxwell-json\u0027 to configure this format
 .",
             "definesFormat": false,
             "key": "format",
             "required": true
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Skip fields and rows with parse errors instead of failing. Field
 saresettonullincaseoferrors"
 ```
-
-实时计算（流计算） API
 
 ```json
 s are set to null in case of errors.",
             "definesFormat": false,
             "key": "ignore-parse-errors",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Specify the input and output timestamp format. Currently support
 ed values are \u0027SQL\u0027 and \u0027ISO-8601\u0027. Option \u0027SQL\u0027 will parse in put timestamp in \"yyyy-MM-dd HH:mm:ss.s{precision}\" format, e.g \u00272020-12-30 12:13:14. 123\u0027 and output timestamp in the same format. Option \u0027ISO-8601\u0027will parse input timestamp in \"yyyy-MM-ddTHH:mm:ss.s{precision}\" format, e.g \u00272020-12-30T12:13:1 4.123\u0027 and output timestamp in the same format.",
             "definesFormat": false,
             "key": "timestamp-format.standard",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Specify string literal to replace null key when \u0027maxwell-js
 on.map-null-key.mode\u0027 is LITERAL.",
             "definesFormat": false,
             "key": "map-null-key.literal",
             "required": false
-          }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "packaged": true,
@@ -6840,26 +7339,27 @@ on.map-null-key.mode\u0027 is LITERAL.",
 15/opt/formats/json/flink-json-1.15-vvr-6.0.7-SNAPSHOT-sql-jar.jar"
 ```
 
-]
+`]` `},` `{`
 
 ```json
-      },
-      {
         "sink": true,
         "name": "namespaces/flinkteam/formats/orc",
         "source": true,
         "type": "orc",
         "properties": [
-          {
+```
+
+`{`
+
+```json
             "defaultValue": "",
             "description": "Must be set to \u0027orc\u0027 to configure this format.",
             "definesFormat": false,
             "key": "format",
             "required": true
-          }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "packaged": true,
@@ -6868,39 +7368,43 @@ on.map-null-key.mode\u0027 is LITERAL.",
 15/opt/formats/orc/flink-sql-orc-1.15-vvr-6.0.7-SNAPSHOT.jar"
 ```
 
-]
+`]` `},` `{`
 
 ```json
-      },
-      {
         "sink": true,
         "name": "namespaces/flinkteam/formats/parquet",
         "source": true,
         "type": "parquet",
 ```
 
-" `ti` " [ 实时计算（流计算） API
+`"` `ti` `"` `[`
 
 ```json
         "properties": [
-          {
+```
+
+`{`
+
+```json
             "defaultValue": "",
             "description": "Must be set to \u0027parquet\u0027 to configure this format.",
             "definesFormat": false,
             "key": "format",
             "required": true
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Use UTC timezone or local timezone to the conversion between epo
 ch time and LocalDateTime. Hive 0.x/1.x/2.x use local timezone. But Hive 3.x use UTC timezone.",
             "definesFormat": false,
             "key": "utc-timezone",
             "required": false
-          }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "packaged": true,
@@ -6909,65 +7413,69 @@ ch time and LocalDateTime. Hive 0.x/1.x/2.x use local timezone. But Hive 3.x use
 15/opt/formats/parquet/flink-sql-parquet-1.15-vvr-6.0.7-SNAPSHOT.jar"
 ```
 
-]
+`]` `},` `{`
 
 ```json
-      },
-      {
         "sink": true,
         "name": "namespaces/flinkteam/formats/raw",
         "source": true,
         "type": "raw",
         "properties": [
-          {
+```
+
+`{`
+
+```json
             "defaultValue": "",
             "description": "Must be set to \u0027raw\u0027 to configure this format.",
             "definesFormat": false,
             "key": "format",
             "required": true
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Specify the charset to encode the text string. \u0027UTF-8\u0027
 will be used by default.",
             "definesFormat": false,
             "key": "charset",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Specify the endianness to encode the bytes of numeric value. Val
 id values are \u0027big-endian\u0027 and \u0027little-endian\u0027. \u0027big-endian\u0027 will be used by default.",
             "definesFormat": false,
             "key": "endianness",
             "required": false
-          }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "packaged": true,
         "dependencies": []
 ```
 
-实时计算（流计算） API
+`}` `],`
 
 ```
-      }
+    "@type": "type.googleapis.com/vvp.sql.v1beta1.ListFormatsResponse"
 ```
 
-`],`
+`},`
 
 ```json
-    "@type": "type.googleapis.com/vvp.sql.v1beta1.ListFormatsResponse"
-  },
   "success": true,
   "requestId": "6BFF2035-B5FB-4E1A-8F32-4CA636417A3D"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <data>
@@ -7019,8 +7527,6 @@ used by this format during serialization. Required for sink table.</description>
   <packaged>true</packaged>
 ```
 
-实时计算（流计算） API
-
 ```java
   packagedtrue/packaged
   <dependencies>hdfs:///vvp/data/sql-artifacts/namespaces/ververica/connectors/vvr-6.0.7-fli
@@ -7036,7 +7542,7 @@ nk-1.15/opt/formats/avro-confluent/flink-sql-avro-confluent-registry-1.15-vvr-6.
    <description>Must be set to &#x27;canal-json&#x27; to configure this format.</description
 ```
 
->
+`>`
 
 ```xml
    <definesFormat>false</definesFormat>
@@ -7080,8 +7586,6 @@ the &quot;database&quot; meta field in the record).</description>
    <description>Only read changelog rows which match the specific table (by comparing the &q
 uot;table&quot; meta field in the record).</description> <definesFormat>false</definesFormat>
 ```
-
-实时计算（流计算） API
 
 ```xml
    <definesFormat>false</definesFormat>
@@ -7142,8 +7646,6 @@ fields are set to null in case of errors.</description>
    <definesFormat>false</definesFormat>
 <key>ignore-parse-errors</key>
 ```
-
-实时计算（流计算） API
 
 ```xml
    <key>ignore-parse-errors</key>
@@ -7206,8 +7708,6 @@ nk-1.15/opt/formats/csv/flink-csv-1.15-vvr-6.0.7-SNAPSHOT-sql-jar.jar</dependenc
 <reqired>false</reqired>
 ```
 
-实时计算（流计算） API
-
 ```xml
    <required>false</required>
   </properties>
@@ -7267,13 +7767,11 @@ useful for options that are not officially exposed via Flink config options. How
    <definesFormat>false</definesFormat>
 ```
 
-k lt tt
+`k` `l``t` `t``t`
 
 ```
 d/k
 ```
-
-实时计算（流计算） API
 
 ```xml
    <key>ssl.truststore.password</key>
@@ -7327,8 +7825,6 @@ ings 30% performance gain.</description>
    <definesFormat>false</definesFormat>
    <key>fast-deserialization</key>
 ```
-
-实时计算（流计算） API
 
 ```xml
    <required>false</required>
@@ -7387,8 +7883,6 @@ ings 30% performance gain.</description>
 will parse input timestamp in &quot;yyyy-MM-ddTHH:mm:ss.s{precision}&quot; format and
 ```
 
-实时计算（流计算） API
-
 ```xml
 output timestamp in the same format. Option SQL will parse input timestamp in &quot;yyyy-MMdd HH:mm:ss.s{precision}&quot; format and output timestamp in the same format. </description>
    <definesFormat>false</definesFormat>
@@ -7440,8 +7934,6 @@ to null in case of errors.</description>
    <description>Specify the input and output timestamp format. Currently supported values ar
 e &#x27;SQL&#x27; and &#x27;ISO-8601&#x27;. Option &#x27;SQL&#x27; will parse input timestam p in &quot;yyyy-MM-dd HH:mm:ss.s{precision}&quot; format, e.g &#x27;2020-12-30 12:13:14.123&
 ```
-
-实时计算（流计算） API
 
 ```xml
 #x27; and output timestamp in the same format. Option &#x27;ISO-8601&#x27;will parse input t
@@ -7501,8 +7993,6 @@ LocalDateTime. Hive 0.x/1.x/2.x use local timezone. But Hive 3.x use UTC timezon
   <packaged>true</packaged>
 ```
 
-实时计算（流计算） API
-
 ```xml
   <dependencies>hdfs:///vvp/data/sql-artifacts/namespaces/ververica/connectors/vvr-6.0.7-fli
 nk-1.15/opt/formats/parquet/flink-sql-parquet-1.15-vvr-6.0.7-SNAPSHOT.jar</dependencies>
@@ -7542,7 +8032,9 @@ e &#x27;big-endian&#x27; and &#x27;little-endian&#x27;. &#x27;big-endian&#x27; w
 </data> <success>true</success> <requestId>6BFF2035-B5FB-4E1A-8F32-4CA636417A3D</requestId>
 ```
 
-#### ListSecretValues
+#### 3.1.57 ListSecretValues
+
+调用ListSecretValues，获取变量列表（对应页面上的变量管理）。
 
 **请求头**
 
@@ -7555,8 +8047,6 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/secret-values HTTP
 ```
 
 **请求参数**
-
-实时计算（流计算） API
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -7571,8 +8061,6 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/secret-values HTTP
 | success | Boolean | true | 请求是否成功。 |
 | requestId | String | 5CC1B23C-CCA3- 4283-B275- 0F969CDFD34F | 请求ID。 |
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | data | String | { "metadata": { "totalSize": 1, "totalPage": 1 }, "apiVersion": "v1", "kind": "SecretValueList", "items": [ { "metadata": { "createdAt": "2024- 03-11T03:07:09Z", "modifiedAt": "2024-03- 11T03:07:09Z", "resourceVersion": 1, "name": "secretkey", "namespace": "flinkteam", "annotations": { "creator": "229852610122763 813", "modifier": "229852610122763 813", "creatorName": "flinkadmin", "modifierName": "flinkadmin" }, "id": "6dd63491-f0bf- 4af3-a38e- 7001d479addc", "labels": {} }, "apiVersion": "v1", "kind": "SecretValue", "spec": { "kind": "Plain", "value": "******" } } ] } | 详细数据。 |
@@ -7585,19 +8073,26 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/secret-values HTTP
 GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/secret-values HTTP/1.1 &RegionId= &namespace= &workspace=
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式实时计算（流计算） API
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "data": {
     "metadata": {
       "totalSize": 1,
       "totalPage": 1
-    },
+```
+
+`},`
+
+```json
     "apiVersion": "v1",
     "kind": "SecretValueList",
     "items": [
-      {
+```
+
+`{`
+
+```json
         "metadata": {
           "createdAt": "2024-03-11T03:07:09Z",
           "modifiedAt": "2024-03-11T03:07:09Z",
@@ -7609,29 +8104,33 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/secret-values HTTP
             "modifier": "229852610122763813",
             "creatorName": "flinkadmin",
             "modifierName": "flinkadmin"
-          },
+```
+
+`},`
+
+```json
           "id": "6dd63491-f0bf-4af3-a38e-7001d479addc",
           "labels": {}
-        },
+```
+
+`},`
+
+```json
         "apiVersion": "v1",
         "kind": "SecretValue",
         "spec": {
           "kind": "Plain",
           "value": "******"
-        }
-      }
 ```
 
-]
+`}` `}` `]` `},`
 
 ```json
-  },
   "success": true,
   "requestId": "5CC1B23C-CCA3-4283-B275-0F969CDFD34F"
-}
 ```
 
-`XML` 格式实时计算（流计算） API
+`}` `XML` 格式
 
 ```xml
 <data>
@@ -7667,7 +8166,9 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/secret-values HTTP
 </data> <success>true</success> <requestId>5CC1B23C-CCA3-4283-B275-0F969CDFD34F</requestId>
 ```
 
-#### ParseConnector
+#### 3.1.58 ParseConnector
+
+调用ParseConnector，自定义connector解析。
 
 **请求头**
 
@@ -7685,8 +8186,6 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors:a
 |---|---|---|---|---|---|
 | RegionId | String | Host | 是 | cn-wulan-env188-d01 | Region ID。 |
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | workspace | String | Path | 是 | default | 作业所在的工作空间ID。您可以通过以下任意一种方式获取： 通过ListNamespaces获取。 在Flink全托管开发控制台工作空间详情中获取。 |
@@ -7698,83 +8197,72 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors:a
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | success | Boolean | true | 请求是否成功。 |
-|  |  | {"connectors": [{"lookup":false,"su pportedFormats": [],"environments": [],"sink":true,"name" :"namespaces/flinkt eam/connectors/hol ogres- fix","source":true,"ty pe":"hologres- fix","properties": [{"defaultValue":"10 ","description":"","d efinesFormat":false, "key":"poolsize","re quired":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"async","requ ired":false}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"cacheReloadTi meBlackList","requir ed":false}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"password","req uired":false}, {"defaultValue":"fal se","description":""," d fi F t" f l |  |
-
-实时计算（流计算） API
+|   |   | {"connectors": [{"lookup":false,"su pportedFormats": [],"environments": [],"sink":true,"name" :"namespaces/flinkt eam/connectors/hol ogres- fix","source":true,"ty pe":"hologres- fix","properties": [{"defaultValue":"10 ","description":"","d efinesFormat":false, "key":"poolsize","re quired":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"async","requ ired":false}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"cacheReloadTi meBlackList","requir ed":false}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"password","req uired":false}, {"defaultValue":"fal se","description":""," d fi F t" f l |   |
 
 | 参数名称 | 类型 | definesFormat":false ,示"k例ey":"bhclientignor ebeforeupdate","req | 说明 |
 |---|---|---|---|
-|  |  | uired":false}, {"defaultValue":"10 00","description":"", "definesFormat":fals e,"key":"jdbcretrysle epinitms","required" :false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"insertifnotexi sts","required":false }, {"defaultValue":"25 6","description":""," definesFormat":false |  |
-|  |  | ,"key":"jdbcscanfetc hsize","required":fal se}, {"defaultValue":"- 1","description":""," definesFormat":false ,"key":"starttimems" ,"required":false}, {"defaultValue":"tru e","description":""," definesFormat":false ,"key":"jdbcenabled efaultfornotnullcolu mn","required":false }, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"binlog","requ ired":false}, {"defaultValue":"10 0","description":""," definesFormat":false ,"key":"binlogbatchr eadsize","required": false}, {"defaultValue":"50 0","description":""," definesFormat":false ,"key":"clientmaxpa use","required":fals e}, {"defaultValue":"2", "description":"","defi nesFormat":false,"k ey":"errorcount","re quired":false}, {"defaultValue":"25 6","description":""," definesFormat":false ,"key":"jdbcwritebat chsize","required":fa lse}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"jdbcuselegac yputhandler","requir ed":false}, {"defaultValue":"12 8","description":""," definesFormat":false |  |
+|   |   | uired":false}, {"defaultValue":"10 00","description":"", "definesFormat":fals e,"key":"jdbcretrysle epinitms","required" :false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"insertifnotexi sts","required":false }, {"defaultValue":"25 6","description":""," definesFormat":false |   |
+|   |   | ,"key":"jdbcscanfetc hsize","required":fal se}, {"defaultValue":"- 1","description":""," definesFormat":false ,"key":"starttimems" ,"required":false}, {"defaultValue":"tru e","description":""," definesFormat":false ,"key":"jdbcenabled efaultfornotnullcolu mn","required":false }, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"binlog","requ ired":false}, {"defaultValue":"10 0","description":""," definesFormat":false ,"key":"binlogbatchr eadsize","required": false}, {"defaultValue":"50 0","description":""," definesFormat":false ,"key":"clientmaxpa use","required":fals e}, {"defaultValue":"2", "description":"","defi nesFormat":false,"k ey":"errorcount","re quired":false}, {"defaultValue":"25 6","description":""," definesFormat":false ,"key":"jdbcwritebat chsize","required":fa lse}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"jdbcuselegac yputhandler","requir ed":false}, {"defaultValue":"12 8","description":""," definesFormat":false |   |
 
-实时计算（流计算） API
-
-|  |  | definesFormat :false |  |
+|   |   | definesFormat :false |   |
 |---|---|---|---|
 | 参数名称 | 类型 | ,示"k例ey":"jdbcreadbatc hsize","required":fal | 说明 |
-|  |  | se}, {"defaultValue":"4", "description":"","defi nesFormat":false,"k ey":"bhclientthread pool","required":fals e}, {"defaultValue":"1", "description":"","defi nesFormat":false,"k ey":"jdbcreadretryc ount","required":fals e}, {"defaultValue":"10 0000","description": "","definesFormat":f alse,"key":"cacheSiz e","required":false}, {"defaultValue":"10 000","description":"" ,"definesFormat":fal se,"key":"maxinque ue","required":false }, {"defaultValue":"10 0000","description": "","definesFormat":f alse,"key":"maxRow Count","required":fa lse}, {"defaultValue":"60 0000","description": "","definesFormat":f alse,"key":"bhclient asynctimeout","requ ired":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"enable direc _ t connect","required _ ":false}, {"defaultValue":"10 0","description":""," definesFormat":false ,"key":"rpcrequeste veryfailures","requir ed":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"usebhclient mode","required":fal se}, {"defaultValue":"tru e","description":""," definesFormat":false ,"key":"enablethrottl e","required":false}, {"defaultValue":"3", "description":"","defi nesFormat":false,"k ey":"connectionsize" ,"required":false}, {"defaultValue":"0", "description":"","defi nesFormat":false,"k ey":"jdbcreadtimeou |  |
+|   |   | se}, {"defaultValue":"4", "description":"","defi nesFormat":false,"k ey":"bhclientthread pool","required":fals e}, {"defaultValue":"1", "description":"","defi nesFormat":false,"k ey":"jdbcreadretryc ount","required":fals e}, {"defaultValue":"10 0000","description": "","definesFormat":f alse,"key":"cacheSiz e","required":false}, {"defaultValue":"10 000","description":"" ,"definesFormat":fal se,"key":"maxinque ue","required":false }, {"defaultValue":"10 0000","description": "","definesFormat":f alse,"key":"maxRow Count","required":fa lse}, {"defaultValue":"60 0000","description": "","definesFormat":f alse,"key":"bhclient asynctimeout","requ ired":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"enable direc _ t connect","required _ ":false}, {"defaultValue":"10 0","description":""," definesFormat":false ,"key":"rpcrequeste veryfailures","requir ed":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"usebhclient mode","required":fal se}, {"defaultValue":"tru e","description":""," definesFormat":false ,"key":"enablethrottl e","required":false}, {"defaultValue":"3", "description":"","defi nesFormat":false,"k ey":"connectionsize" ,"required":false}, {"defaultValue":"0", "description":"","defi nesFormat":false,"k ey":"jdbcreadtimeou |   |
 
-实时计算（流计算） API
-
-|  |  | y j |  |
+|   |   | y j |   |
 |---|---|---|---|
 | 参数名称 | 类型 | tms","required":fals 示例 e}, | 说明 |
-|  |  | {"defaultValue":"10 ","description":"","d efinesFormat":false, "key":"jdbcretrycou nt","required":false} , {"defaultValue":"Ex ception","descriptio n":"","definesFormat ":false,"key":"action oninsert","required": false}, {"defaultValue":"hol ogres- fix","description":""," definesFormat":false ,"key":"connector"," required":true}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"username","req uired":false}, {"defaultValue":"10 ","description":"","d efinesFormat":false, "key":"bhclientread erqueue","required" :false}, {"defaultValue":"1", "description":"","defi nesFormat":false,"k ey":"maxconcurrenc ypershard","require d":false}, {"defaultValue":"20 48","description":"", "definesFormat":fals e,"key":"bhclientasy ncqueue","required" :false}, {"defaultValue":"\\u 0002","description": "","definesFormat":f alse,"key":"arraydeli miter","required":fal se}, {"defaultValue":"2", "description":"","defi nesFormat":false,"k ey":"bhclientwriterb atch","required":fals e}, {"defaultValue":"10 00","description":"", "definesFormat":fals e,"key":"sqlretryinte rval","required":fals e}, {"defaultValue":"90 000","description":"" ,"definesFormat":fal se,"key":"bhclientti meout","required":f alse}, {"defaultValue":"20 97152","description ":"","definesFormat" |  |
-
-实时计算（流计算） API
+|   |   | {"defaultValue":"10 ","description":"","d efinesFormat":false, "key":"jdbcretrycou nt","required":false} , {"defaultValue":"Ex ception","descriptio n":"","definesFormat ":false,"key":"action oninsert","required": false}, {"defaultValue":"hol ogres- fix","description":""," definesFormat":false ,"key":"connector"," required":true}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"username","req uired":false}, {"defaultValue":"10 ","description":"","d efinesFormat":false, "key":"bhclientread erqueue","required" :false}, {"defaultValue":"1", "description":"","defi nesFormat":false,"k ey":"maxconcurrenc ypershard","require d":false}, {"defaultValue":"20 48","description":"", "definesFormat":fals e,"key":"bhclientasy ncqueue","required" :false}, {"defaultValue":"\\u 0002","description": "","definesFormat":f alse,"key":"arraydeli miter","required":fal se}, {"defaultValue":"2", "description":"","defi nesFormat":false,"k ey":"bhclientwriterb atch","required":fals e}, {"defaultValue":"10 00","description":"", "definesFormat":fals e,"key":"sqlretryinte rval","required":fals e}, {"defaultValue":"90 000","description":"" ,"definesFormat":fal se,"key":"bhclientti meout","required":f alse}, {"defaultValue":"20 97152","description ":"","definesFormat" |   |
 
 | 参数名称 | 类型 | :false,"key":"jdbcwri t示eb例atchbytesize","re | 说明 |
 |---|---|---|---|
-|  |  | quired":false}, {"defaultValue":"10 00","description":"", "definesFormat":fals e,"key":"binlogretryi ntervalms","require d":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"fieldnametol ower","required":fal se}, {"defaultValue":"tru e","description":""," definesFormat":false ,"key":"ignoredelete ","required":false}, {"defaultValue":"60 000","description":"" ,"definesFormat":fal se,"key":"storerpcti meout","required":f alse}, {"defaultValue":"def ault","description":"" ,"definesFormat":fal se,"key":"resource _ group","required":fa lse}, {"defaultValue":"10 0","description":""," definesFormat":false ,"key":"clientpause", "required":false}, {"defaultValue":"ins ertOrIgnore","descri ption":"","definesFor mat":false,"key":"m utatetype","required ":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"disablebinlo g","required":false}, {"defaultValue":"AL L","description":"","d efinesFormat":false, "key":"cache","requi red":false}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"sink.parallelism ","required":false}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"jdbcbinlogslotn ame","required":fals e}, {"defaultValue":"10 0","description":""," definesFormat":false ,"key":"asynccapacit y","required":false}, {"defaultValue":"10 0" "description":"" " |  |
-
-实时计算（流计算） API
+|   |   | quired":false}, {"defaultValue":"10 00","description":"", "definesFormat":fals e,"key":"binlogretryi ntervalms","require d":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"fieldnametol ower","required":fal se}, {"defaultValue":"tru e","description":""," definesFormat":false ,"key":"ignoredelete ","required":false}, {"defaultValue":"60 000","description":"" ,"definesFormat":fal se,"key":"storerpcti meout","required":f alse}, {"defaultValue":"def ault","description":"" ,"definesFormat":fal se,"key":"resource _ group","required":fa lse}, {"defaultValue":"10 0","description":""," definesFormat":false ,"key":"clientpause", "required":false}, {"defaultValue":"ins ertOrIgnore","descri ption":"","definesFor mat":false,"key":"m utatetype","required ":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"disablebinlo g","required":false}, {"defaultValue":"AL L","description":"","d efinesFormat":false, "key":"cache","requi red":false}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"sink.parallelism ","required":false}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"jdbcbinlogslotn ame","required":fals e}, {"defaultValue":"10 0","description":""," definesFormat":false ,"key":"asynccapacit y","required":false}, {"defaultValue":"10 0" "description":"" " |   |
 
 | 参数名称 | 类型 | 0 , description : , d示e例finesFormat":false ,"key":"cacheScanLi | 说明 |
 |---|---|---|---|
 | data | String | mit","required":false }, {"defaultValue":"20 971520","descriptio n":"","definesFormat ":false,"key":"jdbcwr itebatchtotalbytesiz e","required":false}, {"defaultValue":"5", "description":"","defi nesFormat":false,"k ey":"rpcretries","req uired":false}, {"defaultValue":"10 24","description":"", "definesFormat":fals e,"key":"bhclientrea derbatch","required ":false}, {"defaultValue":"60 000","description":"" ,"definesFormat":fal se,"key":"jdbcmetac achettl","required":f alse}, {"defaultValue":"tru e","description":""," definesFormat":false ,"key":"splitstrategy" ,"required":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"partitionrout er","required":false} , {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"connectionpool name","required":fal se}, {"defaultValue":"60 000","description":"" ,"definesFormat":fal se,"key":"jdbcconne ctionmaxidlems","re quired":false}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"dbname","requi red":true}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"enabletypen ormalization","requi red":false}, {"defaultValue":"26 2144","description": "","definesFormat":f alse,"key":"splitdata size","required":fals e}, {"defaultValue":"60 000","description":"" ,"definesFormat":fal | 自定义connector解析详细信息。 |
 
-实时计算（流计算） API
-
-|  |  | , definesFormat :fal |  |
+|   |   | , definesFormat :fal |   |
 |---|---|---|---|
 | 参数名称 | 类型 | se,"key":"binlogrequ 示例 esttimeoutms","req | 说明 |
-|  |  | uired":false}, {"defaultValue":"32 ","description":"","d efinesFormat":false, "key":"splitlength","r equired":false}, {"defaultValue":"18 0000","description": "","definesFormat":f alse,"key":"asynctim eoutms","required":f alse}, {"defaultValue":"bin ary","description":"", "definesFormat":fals e,"key":"jdbccopyfor mat","required":fals e}, {"defaultValue":"50 00","description":"", "definesFormat":fals e,"key":"jdbcretrysle epstepms","required ":false}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"userpcmode","r equired":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"cdcmode","r equired":false}, {"defaultValue":"tru e","description":""," definesFormat":false ,"key":"enableBinar yCache","required":f alse}, {"defaultValue":"10 000","description":"" ,"definesFormat":fal se,"key":"jdbcwritefl ushinterval","requir ed":false}, {"defaultValue":"10 0","description":""," definesFormat":false ,"key":"shardrpcretri es","required":false }, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"partial- insert.enabled","req uired":false}, {"defaultValue":"60 ","description":"","d efinesFormat":false, "key":"jdbcscantime outseconds","requir ed":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"insertorupda |  |
-
-实时计算（流计算） API
+|   |   | uired":false}, {"defaultValue":"32 ","description":"","d efinesFormat":false, "key":"splitlength","r equired":false}, {"defaultValue":"18 0000","description": "","definesFormat":f alse,"key":"asynctim eoutms","required":f alse}, {"defaultValue":"bin ary","description":"", "definesFormat":fals e,"key":"jdbccopyfor mat","required":fals e}, {"defaultValue":"50 00","description":"", "definesFormat":fals e,"key":"jdbcretrysle epstepms","required ":false}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"userpcmode","r equired":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"cdcmode","r equired":false}, {"defaultValue":"tru e","description":""," definesFormat":false ,"key":"enableBinar yCache","required":f alse}, {"defaultValue":"10 000","description":"" ,"definesFormat":fal se,"key":"jdbcwritefl ushinterval","requir ed":false}, {"defaultValue":"10 0","description":""," definesFormat":false ,"key":"shardrpcretri es","required":false }, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"partial- insert.enabled","req uired":false}, {"defaultValue":"60 ","description":"","d efinesFormat":false, "key":"jdbcscantime outseconds","requir ed":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"insertorupda |   |
 
 | 参数名称 | 类型 | te","required":false} ,示例 | 说明 |
 |---|---|---|---|
-|  |  | {"defaultValue":"10 00","description":"", "definesFormat":fals e,"key":"scanbatchsi ze","required":false }, {"defaultValue":"1", "description":"","defi nesFormat":false,"k ey":"asynccallbackp ool","required":false }, {"defaultValue":":"," description":"","defi nesFormat":false,"k ey":"primarykeysep" ,"required":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"createpartta ble","required":false }, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"reportmetric s","required":false}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"starttime","req uired":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"useholohub mode","required":fal se}, {"defaultValue":"un ordered","descriptio n":"","definesFormat ":false,"key":"asyncr esultorder","require d":false}, {"defaultValue":"25 6","description":""," definesFormat":false ,"key":"jdbcreadbatc hqueuesize","requir ed":false}, {"defaultValue":"- 1","description":""," definesFormat":false ,"key":"jdbcmetaaut orefreshfactor","req uired":false}, {"defaultValue":"10 ","description":"","d efinesFormat":false, "key":"binlogmaxret rytimes","required":f alse}, {"defaultValue":"no ne","description":"", "definesFormat":fals e,"key":"sdkmode"," required":false}, {"d f ltV l " "92 |  |
-
-实时计算（流计算） API
+|   |   | {"defaultValue":"10 00","description":"", "definesFormat":fals e,"key":"scanbatchsi ze","required":false }, {"defaultValue":"1", "description":"","defi nesFormat":false,"k ey":"asynccallbackp ool","required":false }, {"defaultValue":":"," description":"","defi nesFormat":false,"k ey":"primarykeysep" ,"required":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"createpartta ble","required":false }, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"reportmetric s","required":false}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"starttime","req uired":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"useholohub mode","required":fal se}, {"defaultValue":"un ordered","descriptio n":"","definesFormat ":false,"key":"asyncr esultorder","require d":false}, {"defaultValue":"25 6","description":""," definesFormat":false ,"key":"jdbcreadbatc hqueuesize","requir ed":false}, {"defaultValue":"- 1","description":""," definesFormat":false ,"key":"jdbcmetaaut orefreshfactor","req uired":false}, {"defaultValue":"10 ","description":"","d efinesFormat":false, "key":"binlogmaxret rytimes","required":f alse}, {"defaultValue":"no ne","description":"", "definesFormat":fals e,"key":"sdkmode"," required":false}, {"d f ltV l " "92 |   |
 
 | 参数名称 | 类型 | {"defaultValue":"92 2示3例37203685477580 7","description":""," | 说明 |
 |---|---|---|---|
-|  |  | definesFormat":false ,"key":"cacheTTLMs ","required":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"upsertsource ","required":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"bhclientignor edelete","required":f alse}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"remove- u0000-in- text.enabled","requi red":false}, {"defaultValue":"ear liestOffset","descript ion":"","definesForm at":false,"key":"binl ogstartupmode","re quired":false}, {"defaultValue":"10 0","description":""," definesFormat":false ,"key":"sqlretries","r equired":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"supportcolu mnstorageformat"," required":false}, {"defaultValue":"10 ","description":"","d efinesFormat":false, "key":"channelthrea dcount","required":f alse}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"ignorenullwh enupdate","required ":false}, {"defaultValue":"str eam","description":" ","definesFormat":fa lse,"key":" tablena __ me ","required":fal __ se}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"nullvalues","re quired":false}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"endpoint","req uired":true}, {"defaultValue":"10 000" "description":"" |  |
+|   |   | definesFormat":false ,"key":"cacheTTLMs ","required":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"upsertsource ","required":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"bhclientignor edelete","required":f alse}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"remove- u0000-in- text.enabled","requi red":false}, {"defaultValue":"ear liestOffset","descript ion":"","definesForm at":false,"key":"binl ogstartupmode","re quired":false}, {"defaultValue":"10 0","description":""," definesFormat":false ,"key":"sqlretries","r equired":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"supportcolu mnstorageformat"," required":false}, {"defaultValue":"10 ","description":"","d efinesFormat":false, "key":"channelthrea dcount","required":f alse}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"ignorenullwh enupdate","required ":false}, {"defaultValue":"str eam","description":" ","definesFormat":fa lse,"key":" tablena __ me ","required":fal __ se}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"nullvalues","re quired":false}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"endpoint","req uired":true}, {"defaultValue":"10 000" "description":"" |   |
 
-实时计算（流计算） API
-
-|  |  | 000 , description : |  |
+|   |   | 000 , description : |   |
 |---|---|---|---|
 | 参数名称 | 类型 | ,示"d例efinesFormat":fal se,"key":"refreshint | 说明 |
-|  |  | erval","required":fal se}, {"defaultValue":"\\u 0002","description": "","definesFormat":f alse,"key":"field deli _ miter","required":fal se}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"enable filter _ push down","requir _ _ ed":false}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"tablename","re quired":true}, {"defaultValue":"tru e","description":""," definesFormat":false ,"key":"cacheEmpty ","required":false}, {"defaultValue":"pu blic","description":"" ,"definesFormat":fal se,"key":"schemana me","required":false }, {"defaultValue":"60 0","description":""," definesFormat":false ,"key":"jdbcscantran sactionsessiontimeo utseconds","require d":false}],"package d":false,"dependenc ies": ["hdfs:///vvp/data/sq l- artifacts/namespace s/flinkteam/custom- connectors/2024- 03-12T01-50- 56.079896Z/ververi ca-connector- hologres-1.15-vvr- 6.0- fix.jar"]}],"@type":"t ype.googleapis.com/ vvp.sql.v1beta1.Ana lyzeConnectorJarsRe sponse","duplicated SourceFactoriesCon nectors": [],"duplicatedSinkFa ctoriesConnectors": []} |  |
+|   |   | erval","required":fal se}, {"defaultValue":"\\u 0002","description": "","definesFormat":f alse,"key":"field deli _ miter","required":fal se}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"enable filter _ push down","requir _ _ ed":false}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"tablename","re quired":true}, {"defaultValue":"tru e","description":""," definesFormat":false ,"key":"cacheEmpty ","required":false}, {"defaultValue":"pu blic","description":"" ,"definesFormat":fal se,"key":"schemana me","required":false }, {"defaultValue":"60 0","description":""," definesFormat":false ,"key":"jdbcscantran sactionsessiontimeo utseconds","require d":false}],"package d":false,"dependenc ies": ["hdfs:///vvp/data/sq l- artifacts/namespace s/flinkteam/custom- connectors/2024- 03-12T01-50- 56.079896Z/ververi ca-connector- hologres-1.15-vvr- 6.0- fix.jar"]}],"@type":"t ype.googleapis.com/ vvp.sql.v1beta1.Ana lyzeConnectorJarsRe sponse","duplicated SourceFactoriesCon nectors": [],"duplicatedSinkFa ctoriesConnectors": []} |   |
 | requestId | String | 05AEEA60-8B59- 4CCD-9F35- B27EE47F4D4E | 请求ID。 |
 
-**示例**
+请求示例
 
-实时计算（流计算） API 请求示例
-
-```json
-POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors:analyze-jars HTTP/1.1 { "RegionId":"", "workspace":"", "namespace":"" }
+```
+POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors:analyze-jars HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"RegionId":"", "workspace":"", "namespace":""
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
   "data": {
     "connectors": [
-      {
+```
+
+`{`
+
+```json
         "lookup": false,
         "supportedFormats": [],
         "environments": [],
@@ -7783,219 +8271,303 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors:a
         "source": true,
         "type": "hologres-fix",
         "properties": [
-          {
+```
+
+`{`
+
+```json
             "defaultValue": "10",
             "description": "",
             "definesFormat": false,
             "key": "poolsize",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "async",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "",
             "definesFormat": false,
             "key": "cacheReloadTimeBlackList",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "",
             "definesFormat": false,
             "key": "password",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
 "dfi
 ```
 
-F `t"` fl 实时计算（流计算） API
+`F` `t"` `f``l`
 
 ```json
             "definesFormat": false,
             "key": "bhclientignorebeforeupdate",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "1000",
             "description": "",
             "definesFormat": false,
             "key": "jdbcretrysleepinitms",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "insertifnotexists",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "256",
             "description": "",
             "definesFormat": false,
             "key": "jdbcscanfetchsize",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "-1",
             "description": "",
             "definesFormat": false,
             "key": "starttimems",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "true",
             "description": "",
             "definesFormat": false,
             "key": "jdbcenabledefaultfornotnullcolumn",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "binlog",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "100",
             "description": "",
             "definesFormat": false,
             "key": "binlogbatchreadsize",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "500",
             "description": "",
             "definesFormat": false,
 ```
 
-实时计算（流计算） API
-
 ```json
             "key": "clientmaxpause",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "2",
             "description": "",
             "definesFormat": false,
             "key": "errorcount",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "256",
             "description": "",
             "definesFormat": false,
             "key": "jdbcwritebatchsize",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "jdbcuselegacyputhandler",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "128",
             "description": "",
             "definesFormat": false,
             "key": "jdbcreadbatchsize",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "4",
             "description": "",
             "definesFormat": false,
             "key": "bhclientthreadpool",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "1",
             "description": "",
             "definesFormat": false,
             "key": "jdbcreadretrycount",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "100000",
             "description": "",
             "definesFormat": false,
             "key": "cacheSize",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "10000",
             "description": "",
             "definesFormat": false,
             "key": "maxinqueue",
 ```
 
-实时计算（流计算） API
-
 ```json
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "100000",
             "description": "",
             "definesFormat": false,
             "key": "maxRowCount",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "600000",
             "description": "",
             "definesFormat": false,
             "key": "bhclientasynctimeout",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "enable_direct_connect",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "100",
             "description": "",
             "definesFormat": false,
             "key": "rpcrequesteveryfailures",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "usebhclientmode",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "true",
             "description": "",
             "definesFormat": false,
             "key": "enablethrottle",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "3",
             "description": "",
             "definesFormat": false,
             "key": "connectionsize",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "0",
             "description": "",
             "definesFormat": false,
@@ -8003,131 +8575,167 @@ F `t"` fl 实时计算（流计算） API
             "required": false
 ```
 
-实时计算（流计算） API
+`},` `{`
 
 ```json
-          },
-          {
             "defaultValue": "10",
             "description": "",
             "definesFormat": false,
             "key": "jdbcretrycount",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "Exception",
             "description": "",
             "definesFormat": false,
             "key": "actiononinsert",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "hologres-fix",
             "description": "",
             "definesFormat": false,
             "key": "connector",
             "required": true
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "",
             "definesFormat": false,
             "key": "username",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "10",
             "description": "",
             "definesFormat": false,
             "key": "bhclientreaderqueue",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "1",
             "description": "",
             "definesFormat": false,
             "key": "maxconcurrencypershard",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "2048",
             "description": "",
             "definesFormat": false,
             "key": "bhclientasyncqueue",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "\u0002",
             "description": "",
             "definesFormat": false,
             "key": "arraydelimiter",
             "required": false
-          },
 ```
 
-实时计算（流计算） API
+`},` `{`
 
 ```json
-          {
             "defaultValue": "2",
             "description": "",
             "definesFormat": false,
             "key": "bhclientwriterbatch",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "1000",
             "description": "",
             "definesFormat": false,
             "key": "sqlretryinterval",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "90000",
             "description": "",
             "definesFormat": false,
             "key": "bhclienttimeout",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "2097152",
             "description": "",
             "definesFormat": false,
             "key": "jdbcwritebatchbytesize",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "1000",
             "description": "",
             "definesFormat": false,
             "key": "binlogretryintervalms",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "fieldnametolower",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "true",
             "description": "",
             "definesFormat": false,
             "key": "ignoredelete",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "60000",
             "description": "",
             "definesFormat": false,
             "key": "storerpctimeout",
             "required": false
-          },
-          {
 ```
 
-实时计算（流计算） API
+`},` `{`
 
 ```json
             "defaultValue": "default",
@@ -8135,370 +8743,508 @@ F `t"` fl 实时计算（流计算） API
             "definesFormat": false,
             "key": "resource_group",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "100",
             "description": "",
             "definesFormat": false,
             "key": "clientpause",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "insertOrIgnore",
             "description": "",
             "definesFormat": false,
             "key": "mutatetype",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "disablebinlog",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "ALL",
             "description": "",
             "definesFormat": false,
             "key": "cache",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "",
             "definesFormat": false,
             "key": "sink.parallelism",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "",
             "definesFormat": false,
             "key": "jdbcbinlogslotname",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "100",
             "description": "",
             "definesFormat": false,
             "key": "asynccapacity",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "100",
 ```
 
-实时计算（流计算） API ,
+`,`
 
 ```json
             "description": "",
             "definesFormat": false,
             "key": "cacheScanLimit",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "20971520",
             "description": "",
             "definesFormat": false,
             "key": "jdbcwritebatchtotalbytesize",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "5",
             "description": "",
             "definesFormat": false,
             "key": "rpcretries",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "1024",
             "description": "",
             "definesFormat": false,
             "key": "bhclientreaderbatch",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "60000",
             "description": "",
             "definesFormat": false,
             "key": "jdbcmetacachettl",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "true",
             "description": "",
             "definesFormat": false,
             "key": "splitstrategy",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "partitionrouter",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "",
             "definesFormat": false,
             "key": "connectionpoolname",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "60000",
 "description":"",
 ```
-
-实时计算（流计算） API
 
 ```
             description:
 ```
 
-,
+`,`
 
 ```json
             "definesFormat": false,
             "key": "jdbcconnectionmaxidlems",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "",
             "definesFormat": false,
             "key": "dbname",
             "required": true
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "enabletypenormalization",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "262144",
             "description": "",
             "definesFormat": false,
             "key": "splitdatasize",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "60000",
             "description": "",
             "definesFormat": false,
             "key": "binlogrequesttimeoutms",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "32",
             "description": "",
             "definesFormat": false,
             "key": "splitlength",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "180000",
             "description": "",
             "definesFormat": false,
             "key": "asynctimeoutms",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "binary",
             "description": "",
             "definesFormat": false,
             "key": "jdbccopyformat",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "5000",
             "description": "",
 "definesFormat":false
 ```
 
-实时计算（流计算） API
-
 ```json
             definesFormat: false,
             "key": "jdbcretrysleepstepms",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "",
             "definesFormat": false,
             "key": "userpcmode",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "cdcmode",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "true",
             "description": "",
             "definesFormat": false,
             "key": "enableBinaryCache",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "10000",
             "description": "",
             "definesFormat": false,
             "key": "jdbcwriteflushinterval",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "100",
             "description": "",
             "definesFormat": false,
             "key": "shardrpcretries",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "partial-insert.enabled",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "60",
             "description": "",
             "definesFormat": false,
             "key": "jdbcscantimeoutseconds",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
 "key":"insertorupdate"
 ```
 
-实时计算（流计算） API
-
 ```json
             "key": "insertorupdate",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "1000",
             "description": "",
             "definesFormat": false,
             "key": "scanbatchsize",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "1",
             "description": "",
             "definesFormat": false,
             "key": "asynccallbackpool",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": ":",
             "description": "",
             "definesFormat": false,
             "key": "primarykeysep",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "createparttable",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "reportmetrics",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "",
             "definesFormat": false,
             "key": "starttime",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "useholohubmode",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "unordered",
             "description": "",
             "definesFormat": false,
             "key": "asyncresultorder",
 ```
 
-" i `d"` fl 实时计算（流计算） API
+`"` `i` `d"` `f``l`
 
 ```json
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "256",
             "description": "",
             "definesFormat": false,
             "key": "jdbcreadbatchqueuesize",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "-1",
             "description": "",
             "definesFormat": false,
             "key": "jdbcmetaautorefreshfactor",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "10",
             "description": "",
             "definesFormat": false,
             "key": "binlogmaxretrytimes",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "none",
             "description": "",
             "definesFormat": false,
             "key": "sdkmode",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "9223372036854775807",
             "description": "",
             "definesFormat": false,
             "key": "cacheTTLMs",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "upsertsource",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "bhclientignoredelete",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
@@ -8506,123 +9252,157 @@ F `t"` fl 实时计算（流计算） API
             "required": false
 ```
 
-实时计算（流计算） API
+`},` `{`
 
 ```json
-          },
-          {
             "defaultValue": "earliestOffset",
             "description": "",
             "definesFormat": false,
             "key": "binlogstartupmode",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "100",
             "description": "",
             "definesFormat": false,
             "key": "sqlretries",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "supportcolumnstorageformat",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "10",
             "description": "",
             "definesFormat": false,
             "key": "channelthreadcount",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "ignorenullwhenupdate",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "stream",
             "description": "",
             "definesFormat": false,
             "key": "__tablename__",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "",
             "definesFormat": false,
             "key": "nullvalues",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "",
             "definesFormat": false,
             "key": "endpoint",
             "required": true
-          },
 ```
 
-实时计算（流计算） API
+`},` `{`
 
 ```json
-          {
             "defaultValue": "10000",
             "description": "",
             "definesFormat": false,
             "key": "refreshinterval",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "\u0002",
             "description": "",
             "definesFormat": false,
             "key": "field_delimiter",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "enable_filter_push_down",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "",
             "definesFormat": false,
             "key": "tablename",
             "required": true
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "true",
             "description": "",
             "definesFormat": false,
             "key": "cacheEmpty",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "public",
             "description": "",
             "definesFormat": false,
             "key": "schemaname",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "600",
             "description": "",
             "definesFormat": false,
             "key": "jdbcscantransactionsessiontimeoutseconds",
             "required": false
-          }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "packaged": false,
@@ -8631,25 +9411,22 @@ F `t"` fl 实时计算（流计算） API
 01-50-56.079896Z/ververica-connector-hologres-1.15-vvr-6.0-fix.jar"
 ```
 
-]
-
-```
-      }
-```
-
-`],` 实时计算（流计算） API
+`]` `}` `],`
 
 ```json
     "@type": "type.googleapis.com/vvp.sql.v1beta1.AnalyzeConnectorJarsResponse",
     "duplicatedSourceFactoriesConnectors": [],
     "duplicatedSinkFactoriesConnectors": []
-  },
-  "success": true,
-  "requestId": "05AEEA60-8B59-4CCD-9F35-B27EE47F4D4E"
-}
 ```
 
-`XML` 格式
+`},`
+
+```json
+  "success": true,
+  "requestId": "05AEEA60-8B59-4CCD-9F35-B27EE47F4D4E"
+```
+
+`}` `XML` 格式
 
 ```xml
 <data>
@@ -8701,7 +9478,7 @@ F `t"` fl 实时计算（流计算） API
 <description
 ```
 
-`/>` 实时计算（流计算） API
+`/>`
 
 ```xml
    <description  />
@@ -8764,8 +9541,6 @@ F `t"` fl 实时计算（流计算） API
 <definesFormat>false</definesFormat>
 ```
 
-实时计算（流计算） API
-
 ```xml
    <definesFormat>false</definesFormat>
    <key>errorcount</key>
@@ -8826,7 +9601,7 @@ F `t"` fl 实时计算（流计算） API
    <definesFormat>false</definesFormat>
 ```
 
-k `/k` 实时计算（流计算） API
+`k` `/k`
 
 ```xml
    <key>maxRowCount</key>
@@ -8888,8 +9663,6 @@ k `/k` 实时计算（流计算） API
    <key>jdbcretrycount</key>
 ```
 
-实时计算（流计算） API
-
 ```xml
    <required>false</required>
   </properties>
@@ -8949,8 +9722,6 @@ k `/k` 实时计算（流计算） API
    <key>bhclientwriterbatch</key>
    <required>false</required>
 ```
-
-实时计算（流计算） API
 
 ```xml
   </properties>
@@ -9012,8 +9783,6 @@ k `/k` 实时计算（流计算） API
   </properties>
 ```
 
-实时计算（流计算） API
-
 ```xml
   <properties>
    <defaultValue>100</defaultValue>
@@ -9073,8 +9842,6 @@ k `/k` 实时计算（流计算） API
   </properties>
   <properties>
 ```
-
-实时计算（流计算） API
 
 ```xml
    <defaultValue>20971520</defaultValue>
@@ -9136,8 +9903,6 @@ k `/k` 实时计算（流计算） API
    <defaultValue  />
 ```
 
-实时计算（流计算） API
-
 ```xml
    <description  />
    <definesFormat>false</definesFormat>
@@ -9198,7 +9963,7 @@ k `/k` 实时计算（流计算） API
    <description  />
 ```
 
-实时计算（流计算） API p /
+`p` `/`
 
 ```xml
    <definesFormat>false</definesFormat>
@@ -9259,8 +10024,6 @@ k `/k` 实时计算（流计算） API
    <description  />
 <definesFormat>false</definesFormat>
 ```
-
-实时计算（流计算） API
 
 ```xml
    <definesFormat>false</definesFormat>
@@ -9323,8 +10086,6 @@ k `/k` 实时计算（流计算） API
 <key>jdbcreadbatchqueuesize</key>
 ```
 
-实时计算（流计算） API
-
 ```xml
    <key>jdbcreadbatchqueuesize</key>
    <required>false</required>
@@ -9386,8 +10147,6 @@ k `/k` 实时计算（流计算） API
 <required>false</required>
 ```
 
-实时计算（流计算） API
-
 ```xml
    <required>false</required>
   </properties>
@@ -9448,7 +10207,7 @@ k `/k` 实时计算（流计算） API
    <required>false</required>
 ```
 
-`</` `ti` > 实时计算（流计算） API
+`</` `ti` `>`
 
 ```xml
   </properties>
@@ -9504,9 +10263,9 @@ k `/k` 实时计算（流计算） API
 </data> <success>true</success> <requestId>05AEEA60-8B59-4CCD-9F35-B27EE47F4D4E</requestId>
 ```
 
-#### ParseFormat
+#### 3.1.59 ParseFormat
 
-实时计算（流计算） API
+调用ParseFormat，解析Format。
 
 **请求头**
 
@@ -9534,8 +10293,6 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats:anal
 | success | Boolean | true | 请求是否成功。 |
 | data | String | { "duplicatedSinkFact oriesFormats": [], "formats": [], "@type": "type.googleapis.co m/vvp.sql.v1beta1.A nalyzeFormatJarsRe sponse", "duplicatedFilesyste mFormatFactoriesFo rmats": [], "duplicatedSourceFa ctoriesFormats": [] } | Format解析结果详细信息。 |
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | requestId | String | C95A189B-7314- 48BF-90B0- 2F27D1C8816F | 请求ID。 |
@@ -9544,27 +10301,35 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats:anal
 
 请求示例
 
-```json
-POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats:analyze-jars HTTP/1.1 { "RegionId":"", "workspace":"", "namespace":"" }
+```
+POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats:analyze-jars HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"RegionId":"", "workspace":"", "namespace":""
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
   "data": {
     "duplicatedSinkFactoriesFormats": [],
     "formats": [],
     "@type": "type.googleapis.com/vvp.sql.v1beta1.AnalyzeFormatJarsResponse",
     "duplicatedFilesystemFormatFactoriesFormats": [],
     "duplicatedSourceFactoriesFormats": []
-  },
-  "success": true,
-  "requestId": "C95A189B-7314-48BF-90B0-2F27D1C8816F"
-}
 ```
 
-`XML` 格式
+`},`
+
+```json
+  "success": true,
+  "requestId": "C95A189B-7314-48BF-90B0-2F27D1C8816F"
+```
+
+`}` `XML` 格式
 
 ```xml
 <data>
@@ -9576,15 +10341,15 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats:anal
 </data> <success>true</success> <requestId>C95A189B-7314-48BF-90B0-2F27D1C8816F</requestId>
 ```
 
-#### SearchFoldersByKeyword
+#### 3.1.60 SearchFoldersByKeyword
+
+调用SearchFoldersByKeyword，通过关键字搜索文件夹。
 
 **请求头**
 
 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
-
-实时计算（流计算） API
 
 ```
 GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/folders HTTP/1.1
@@ -9617,27 +10382,28 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/folders HTTP/1.1
 GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/folders HTTP/1.1 &RegionId= &workspace= &namespace=
 ```
 
-&公共请求参数实时计算（流计算） API 正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "data": [
-    {
+```
+
+`{`
+
+```json
       "name": "myfolder",
       "id": "e777f423-b4de-434c-a6db-23e88e080a5e",
       "type": "Folder"
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "success": true,
   "requestId": "B29F2776-C7FF-4740-9284-1821297B0085"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <data>
@@ -9647,7 +10413,7 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/folders HTTP/1.1 &
 </data> <success>true</success> <requestId>B29F2776-C7FF-4740-9284-1821297B0085</requestId>
 ```
 
-#### SetDeploymentResourceMode
+#### 3.1.61 SetDeploymentResourceMode
 
 调用SetDeploymentResourceMode，设置作业resourceMode。
 
@@ -9668,8 +10434,6 @@ PUT /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deplo
 | RegionId | String | Host | 是 | cn-wulan-env***-d01 | Region ID。 |
 | workspace | String | Path | 是 | default | 作业所在的工作空间ID。您可以通过以下任意一种方式获取： 通过ListNamespaces获取。 在Flink全托管开发控制台工作空间详情中获取。 |
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | namespac e | String | Path | 是 | flinkteam | 作业所在的项目空间名称。 |
@@ -9681,40 +10445,39 @@ PUT /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deplo
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | success | Boolean | true | 请求是否成功。 |
-|  |  | { "metadata": { "createdAt": "2024- 03-12T06:12:17Z", "modifiedAt": "2024-03- 12T06:44:00.82332 3Z", "resourceVersion": 15, "name": "sqljob", "namespace": "flinkteam", "annotations": { "creator": "229852610122763 813", "resource- plan.has.migrated": "true", "deployment.has.de ployed": "false", "deployment.source -type": "EDITOR", "deployment.parent. id": "", "modifier": "229852610122763 813", "creatorName": "flinkadmin", "priority": "5", "priority.class.name ": "", "autopilot.mode": "monitor", "com.dataartisans.a ppmanager.controll er.deployment.spec. version": "3", "deployment.refere nced.deployment.dr aft.history.version": "1", "x-namespace- owner-master-uid": "105291012272990 9", "default.resource- setting.has.migrate |  |
-
-实时计算（流计算） API
+|   |   | { "metadata": { "createdAt": "2024- 03-12T06:12:17Z", "modifiedAt": "2024-03- 12T06:44:00.82332 3Z", "resourceVersion": 15, "name": "sqljob", "namespace": "flinkteam", "annotations": { "creator": "229852610122763 813", "resource- plan.has.migrated": "true", "deployment.has.de ployed": "false", "deployment.source -type": "EDITOR", "deployment.parent. id": "", "modifier": "229852610122763 813", "creatorName": "flinkadmin", "priority": "5", "priority.class.name ": "", "autopilot.mode": "monitor", "com.dataartisans.a ppmanager.controll er.deployment.spec. version": "3", "deployment.refere nced.deployment.dr aft.history.version": "1", "x-namespace- owner-master-uid": "105291012272990 9", "default.resource- setting.has.migrate |   |
 
 | 参数名称 | 类型 | d": "true", "示de例ployment.exec- | 说明 |
 |---|---|---|---|
-|  |  | plan.uri": "hdfs:///vvp/data/pla n/namespaces/flinkt eam/deployment/d0 b3abf0-4bfe-46b1- a324- 5b7def580c00/exec Plan.json", "deployment.refere nced.deployment.dr aft.id": "c6f157ac- 60b9-4b38-8bad- d435387cfd59", "comment": "", "modifierName": "flinkadmin", "taker": "default- cluster \| 0", "deployment.refere nced.deployment.dr aft.history.id": "1fbfefd4-9b1c- 4e94-b6ad- 268a5c6b64cd" }, "workspaceName": "default", "id": "d0b3abf0-4bfe- 46b1-a324- |  |
+|   |   | plan.uri": "hdfs:///vvp/data/pla n/namespaces/flinkt eam/deployment/d0 b3abf0-4bfe-46b1- a324- 5b7def580c00/exec Plan.json", "deployment.refere nced.deployment.dr aft.id": "c6f157ac- 60b9-4b38-8bad- d435387cfd59", "comment": "", "modifierName": "flinkadmin", "taker": "default- cluster \| 0", "deployment.refere nced.deployment.dr aft.history.id": "1fbfefd4-9b1c- 4e94-b6ad- 268a5c6b64cd" }, "workspaceName": "default", "id": "d0b3abf0-4bfe- 46b1-a324- |   |
 | data | String | 5b7def580c00", "labels": {} }, "apiVersion": "v1", "kind": "Deployment", "spec": { "template": { "metadata": { "annotations": { "flink.resource.type" : "auto", "job.resource.total. memory.byte": "8589934592", "job.resource.total.c pu": "4.0", "native.kubernetes. mode": "true", "flink.queryable- state.enabled": "false" } }, "spec": { "artifact": { "flinkImageTag": "1.15.0-vvr-6.0.7- 29", "kind": "SQLSCRIPT", "sqlScript": "-- ******************** ******************** ******************** ********-- -- Author: Write your name here -- Created Time: 2024-03-12 14:11:38 -- Description: Write your description here -- | 详细数据。 |
-
-实时计算（流计算） API
 
 | 参数名称 | 类型 | ******************** *示**例***************** | 说明 |
 |---|---|---|---|
-|  |  | ******************** ********-- CREATE TEMPORARY TABLE `datahub table` _ (strname VARCHAR) with ( \u0027connector\u0 027 \u003d \u0027datagen\u00 27 ); CREATE TEMPORARY TABLE `kafka table` _ (strname VARCHAR, lens BIGINT) with ( \u0027connector\u0 027 \u003d \u0027print\u0027 ); INSERT INTO kafka table _ SELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR LENGTH _ (strname) AS BIGINT) AS lens FROM datahub table; _ ", "imageUserDefined" : false, "flinkImageRegistry" : "cn-qingdao- env17e-d01- reg.docker.intra.env 17e.shuguang.com: 80/ververica-paas", "versionName": "vvr-6.0.0-flink- 1.15", "flinkImageReposito ry": "vvr", "flinkVersion": "1.15" }, "parallelism": 1, "batchMode": false, "resources": { "jobmanager": { "memory": "4Gi", "cpu": 2.0 }, "taskmanager": { "memory": "4Gi", "cpu": 2.0 } }, "logging": { "log4jLoggers": { "": "INFO" }, "logReservePolicy": { "expirationDays": 7, "openHistory": true }, "loggingProfile": "default" }, "flinkConfiguration": { |  |
-
-实时计算（流计算） API
+|   |   | ******************** ********-- CREATE TEMPORARY TABLE `datahub table` _ (strname VARCHAR) with ( \u0027connector\u0 027 \u003d \u0027datagen\u00 27 ); CREATE TEMPORARY TABLE `kafka table` _ (strname VARCHAR, lens BIGINT) with ( \u0027connector\u0 027 \u003d \u0027print\u0027 ); INSERT INTO kafka table _ SELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR LENGTH _ (strname) AS BIGINT) AS lens FROM datahub table; _ ", "imageUserDefined" : false, "flinkImageRegistry" : "cn-qingdao- env17e-d01- reg.docker.intra.env 17e.shuguang.com: 80/ververica-paas", "versionName": "vvr-6.0.0-flink- 1.15", "flinkImageReposito ry": "vvr", "flinkVersion": "1.15" }, "parallelism": 1, "batchMode": false, "resources": { "jobmanager": { "memory": "4Gi", "cpu": 2.0 }, "taskmanager": { "memory": "4Gi", "cpu": 2.0 } }, "logging": { "log4jLoggers": { "": "INFO" }, "logReservePolicy": { "expirationDays": 7, "openHistory": true }, "loggingProfile": "default" }, "flinkConfiguration": { |   |
 
 | 参数名称 | 类型 | "execution.checkpoi n示ti例ng.interval": | 说明 |
 |---|---|---|---|
-|  |  | "180s", "execution.checkpoi nting.min-pause": "180s" } } }, "restoreStrategy": { "kind": "LATEST STATE", _ "allowNonRestoredS tate": false }, "state": "RUNNING", "upgradeStrategy": { "kind": "NONE" }, "maxSavepointCreat ionAttempts": 4, "maxJobCreationAtt empts": 1, "deploymentTargetI d": "f2ed6708-a7e1- 4e86-a99e- 327fac9265c2" }, "status": { "startTime": 0, "state": "RUNNING", "endTime": 0 } } |  |
+|   |   | "180s", "execution.checkpoi nting.min-pause": "180s" } } }, "restoreStrategy": { "kind": "LATEST STATE", _ "allowNonRestoredS tate": false }, "state": "RUNNING", "upgradeStrategy": { "kind": "NONE" }, "maxSavepointCreat ionAttempts": 4, "maxJobCreationAtt empts": 1, "deploymentTargetI d": "f2ed6708-a7e1- 4e86-a99e- 327fac9265c2" }, "status": { "startTime": 0, "state": "RUNNING", "endTime": 0 } } |   |
 | requestId | String | BCC13432-238D- 41D7-B0A6- 582241A6B572 | 请求ID。 |
 
 **示例**
 
 请求示例
 
-```json
-PUT /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deploymentId]/set-res ource HTTP/1.1 { "RegionId":"", "workspace":"", "namespace":"", "deploymentId":"" }
+```
+PUT /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deploymentId]/set-res ource HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"RegionId":"", "workspace":"", "namespace":"", "deploymentId":""
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
   "data": {
     "metadata": {
       "createdAt": "2024-03-12T06:12:17Z",
@@ -9729,8 +10492,6 @@ PUT /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deplo
         "deployment.source-type": "EDITOR",
         "deployment.parent.id": "",
 ```
-
-实时计算（流计算） API
 
 ```json
         "modifier": "229852610122763813",
@@ -9750,11 +10511,19 @@ PUT /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deplo
         "taker": "default-cluster | 0",
         "deployment.referenced.deployment.draft.history.id": "1fbfefd4-9b1c-4e94-b6ad-268a5c
 6b64cd"
-      },
+```
+
+`},`
+
+```json
       "workspaceName": "default",
       "id": "d0b3abf0-4bfe-46b1-a324-5b7def580c00",
       "labels": {}
-    },
+```
+
+`},`
+
+```json
     "apiVersion": "v1",
     "kind": "Deployment",
     "spec": {
@@ -9766,8 +10535,11 @@ PUT /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deplo
             "job.resource.total.cpu": "4.0",
             "native.kubernetes.mode": "true",
             "flink.queryable-state.enabled": "false"
-          }
-        },
+```
+
+`}` `},`
+
+```json
         "spec": {
           "artifact": {
             "flinkImageTag": "1.15.0-vvr-6.0.7-29",
@@ -9781,11 +10553,15 @@ reg.docker.intra.env17e.shuguang.com:80/ververica-paas",
             "versionName": "vvr-6.0.0-flink-1.15",
             "flinkImageRepository": "vvr",
             "flinkVersion": "1.15"
-          },
+```
+
+`},`
+
+```json
           "parallelism": 1,
 ```
 
-实时计算（流计算） API p ,
+`p` `,`
 
 ```json
           "batchMode": false,
@@ -9793,52 +10569,87 @@ reg.docker.intra.env17e.shuguang.com:80/ververica-paas",
             "jobmanager": {
               "memory": "4Gi",
               "cpu": 2.0
-            },
+```
+
+`},`
+
+```json
             "taskmanager": {
               "memory": "4Gi",
               "cpu": 2.0
-            }
-          },
+```
+
+`}` `},`
+
+```json
           "logging": {
             "log4jLoggers": {
               "": "INFO"
-            },
+```
+
+`},`
+
+```json
             "logReservePolicy": {
               "expirationDays": 7,
               "openHistory": true
-            },
+```
+
+`},`
+
+```json
             "loggingProfile": "default"
-          },
+```
+
+`},`
+
+```json
           "flinkConfiguration": {
             "execution.checkpointing.interval": "180s",
             "execution.checkpointing.min-pause": "180s"
-          }
-        }
-      },
+```
+
+`}` `}` `},`
+
+```json
       "restoreStrategy": {
         "kind": "LATEST_STATE",
         "allowNonRestoredState": false
-      },
+```
+
+`},`
+
+```json
       "state": "RUNNING",
       "upgradeStrategy": {
         "kind": "NONE"
-      },
+```
+
+`},`
+
+```json
       "maxSavepointCreationAttempts": 4,
       "maxJobCreationAttempts": 1,
       "deploymentTargetId": "f2ed6708-a7e1-4e86-a99e-327fac9265c2"
-    },
+```
+
+`},`
+
+```json
     "status": {
       "startTime": 0,
       "state": "RUNNING",
       "endTime": 0
-    }
-  },
-  "success": true,
-  "requestId": "BCC13432-238D-41D7-B0A6-582241A6B572"
-}
 ```
 
-`XML` 格式
+`}` `},`
+
+```json
+  "success": true,
+  "requestId": "BCC13432-238D-41D7-B0A6-582241A6B572"
+```
+
+`}` `XML` 格式
 
 ```xml
 <data>
@@ -9847,8 +10658,6 @@ reg.docker.intra.env17e.shuguang.com:80/ververica-paas",
   <modifiedAt>2024-03-12T06:44:00.823323Z</modifiedAt>
   <resourceVersion>15</resourceVersion>
 ```
-
-实时计算（流计算） API
 
 ```xml
   <name>sqljob</name>
@@ -9902,15 +10711,21 @@ deployment.referenced.deployment.draft.history.id>
 -- Author: Write your name here -- Created Time: 2024-03-12 14:11:38 -- Description: Write your description here --********************************************************************--
 ```
 
-实时计算（流计算） API
-
-```xml
+```
 CREATE TEMPORARY TABLE `datahub_table` (strname VARCHAR) with (
     &#x27;connector&#x27; = &#x27;datagen&#x27;
-  );
+```
+
+);
+
+```
 CREATE TEMPORARY TABLE `kafka_table` (strname VARCHAR, lens BIGINT) with (
     &#x27;connector&#x27; = &#x27;print&#x27;
-  );
+```
+
+);
+
+```xml
 INSERT INTO kafka_table SELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR_LENGTH (strname) AS BIGINT) AS lens FROM
   datahub_table;
      </sqlScript>
@@ -9958,8 +10773,6 @@ reg.docker.intra.env17e.shuguang.com:80/ververica-paas</flinkImageRegistry>
    <kind>NONE</kind>
 ```
 
-实时计算（流计算） API
-
 ```xml
   </upgradeStrategy>
   <maxSavepointCreationAttempts>4</maxSavepointCreationAttempts>
@@ -9974,7 +10787,9 @@ reg.docker.intra.env17e.shuguang.com:80/ververica-paas</flinkImageRegistry>
 </data> <success>true</success> <requestId>BCC13432-238D-41D7-B0A6-582241A6B572</requestId>
 ```
 
-#### TableExists
+#### 3.1.62 TableExists
+
+调用TableExists，查看table是否存在。
 
 **请求头**
 
@@ -9999,8 +10814,6 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 
 **返回数据**
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | data | String | { "@type": "type.googleapis.co m/vvp.sql.catalog.v 1beta2.TableExistsR esponse", "exists": true } | 详细信息。 |
@@ -10015,10 +10828,9 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/[cat]:tableExists HTTP/1.1 &RegionId= &namespace= &workspace= &cat= &database= &table=
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "requestId": "39253EC3-B674-4B11-AD97-C221D6DB1003",
   "success": true,
   "httpCode": 200,
@@ -10027,11 +10839,9 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
   "data": {
     "@type": "type.googleapis.com/vvp.sql.catalog.v1beta2.TableExistsResponse",
     "exists": true
-  }
-}
 ```
 
-`XML` 格式
+`}` `}` `XML` 格式
 
 ```xml
 <requestId>39253EC3-B674-4B11-AD97-C221D6DB1003</requestId> <success>true</success> <httpCode>200</httpCode> <message /> <reason /> <data>
@@ -10040,9 +10850,9 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 </data>
 ```
 
-实时计算（流计算） API
+#### 3.1.63 UpdateConnector
 
-#### UpdateConnector
+调用UpdateConnector，变更自定义connector信息。
 
 **请求头**
 
@@ -10062,8 +10872,6 @@ PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors/[n
 | workspace | String | Path | 是 | default | 作业所在的工作空间ID。您可以通过以下任意一种方式获取： 通过ListNamespaces获取。 在Flink全托管开发控制台工作空间详情中获取。 |
 | name | String | Path | 是 | hologres-fix | 要变更的connector名称。 |
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | paramsJso n | String | Body | 否 | { "type": "hologres-fix", "name": "namespaces/flinkteam/c onnectors/hologres-fix", "packaged": false, "source": true, "sink": true, "lookup": false, "dependencies": [ "hdfs:///vvp/data/sql- artifacts/namespaces/flink team/custom- connectors/2024-03- 11T05-51- 25.289740Z/ververica- connector-hologres-1.15- vvr-6.0-fix.jar" ], "supportedFormats": [ "json","csv" ], "properties": [ { "key": "connector", "required": true, "defaultValue": "hologres-fix", "description": "", "definesFormat": false }, { "key": "dbname", "required": true, "defaultValue": "", "description": "", "definesFormat": false }, { "key": "endpoint", "required": true, "defaultValue": "", "description": "", "definesFormat": false }, { "key": "tablename", "required": true, "defaultValue": "", "description": "", "definesFormat": false } ] } | 变更参数，用于声明 connector的属性，例如：类型名称、必填的连接参数、可否作为source、sink、依赖的jar包等。 |
@@ -10075,25 +10883,26 @@ PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors/[n
 |---|---|---|---|
 | success | Boolean | true | 请求是否成功。 |
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | data | String | { "affectedTables": [], "connector": { "lookup": true, "supportedFormats" : [ "json", "csv" ], "environments": [], "sink": true, "name": "namespaces/flinkte am/connectors/holo gres-fix", "source": true, "type": "hologres-fix", "properties": [ { "defaultValue": "hologres-fix", "description": "", "definesFormat": false, "key": "connector", "required": true }, { "defaultValue": "", "description": "", "definesFormat": false, "key": "dbname", "required": true }, { "defaultValue": "", "description": "", "definesFormat": false, "key": "endpoint", "required": true }, { "defaultValue": "", "description": "", "definesFormat": false, "key": "tablename", "required": true } ], "packaged": false, "dependencies": [ "hdfs:///vvp/data/sql - artifacts/namespace s/flinkteam/custom- connectors/2024- 03-11T05-51- 25.289740Z/ververi ca-connector- hologres-1.15-vvr- 6.0-fix.jar" ] }, "@type": "type.googleapis.co m/vvp.sql.v1beta1.U pdateConnectorRes ponse" } | 详细数据。 |
 | requestId | String | 4FA46133-1C97- 4B48-96E3- 3B7DFFFEC707 | 请求ID。 |
 
-**示例**
+请求示例
 
-请求示例实时计算（流计算） API
-
-```json
-PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors/[name] HTTP/1. { "RegionId":"", "workspace":"", "name":"", "namespace":"" }
+```
+PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors/[name] HTTP/1.
 ```
 
-正常返回示例 `JSON` 格式实时计算（流计算） API
+`{`
 
 ```json
-{
+"RegionId":"", "workspace":"", "name":"", "namespace":""
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
   "data": {
     "affectedTables": [],
     "connector": {
@@ -10112,37 +10921,49 @@ PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors/[n
       "source": true,
       "type": "hologres-fix",
       "properties": [
-        {
+```
+
+`{`
+
+```json
           "defaultValue": "hologres-fix",
           "description": "",
           "definesFormat": false,
           "key": "connector",
           "required": true
-        },
-        {
+```
+
+`},` `{`
+
+```json
           "defaultValue": "",
           "description": "",
           "definesFormat": false,
           "key": "dbname",
           "required": true
-        },
-        {
+```
+
+`},` `{`
+
+```json
           "defaultValue": "",
           "description": "",
           "definesFormat": false,
           "key": "endpoint",
           "required": true
-        },
-        {
+```
+
+`},` `{`
+
+```json
           "defaultValue": "",
           "description": "",
           "definesFormat": false,
           "key": "tablename",
           "required": true
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
       "packaged": false,
@@ -10151,18 +10972,20 @@ PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors/[n
 -51-25.289740Z/ververica-connector-hologres-1.15-vvr-6.0-fix.jar"
 ```
 
-]
+`]` `},`
 
-```json
-    },
+```
     "@type": "type.googleapis.com/vvp.sql.v1beta1.UpdateConnectorResponse"
-  },
-  "success": true,
-  "requestId": "4FA46133-1C97-4B48-96E3-3B7DFFFEC707"
-}
 ```
 
-实时计算（流计算） API `XML` 格式
+`},`
+
+```json
+  "success": true,
+  "requestId": "4FA46133-1C97-4B48-96E3-3B7DFFFEC707"
+```
+
+`}` `XML` 格式
 
 ```xml
 <data>
@@ -10212,13 +11035,13 @@ PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors/[n
 </data> <success>true</success> <requestId>4FA46133-1C97-4B48-96E3-3B7DFFFEC707</requestId>
 ```
 
-#### UpdateFormat
+#### 3.1.64 UpdateFormat
 
 调用UpdateFormat，用于Format变更，包含是否可为source、sink、format参数、依赖的jar包等。
 
 **请求头**
 
-实时计算（流计算） API 该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
+该接口使用公共请求头，无特殊请求头。请参见公共请求参数文档。
 
 **请求语法**
 
@@ -10242,8 +11065,6 @@ PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats/[name
 |---|---|---|---|
 | success | Boolean | true | 请求是否成功。 |
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | data | String | { "affectedTables": [], "@type": "type.googleapis.co m/vvp.sql.v1beta1.U pdateFormatRespon se", "format": { "sink": false, "name": "namespaces/flinkte am/formats/customi zed-csv", "source": true, "type": "customized-csv", "properties": [ { "defaultValue": ",", "description": "", "definesFormat": false, "key": "format.column- delimiter", "required": false } ], "packaged": false, "dependencies": [ "hdfs:///tmp/myform ats/customized-csv- demo-1.0- SNAPSHOT.jar" ] } } | format变更后详细信息。 |
@@ -10253,14 +11074,19 @@ PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats/[name
 
 请求示例
 
-```json
-PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats/[name] HTTP/1.1 { "RegionId":"", "workspace":"", "name":"", "namespace":"" }
+```
+PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats/[name] HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式实时计算（流计算） API
+`{`
 
 ```json
-{
+"RegionId":"", "workspace":"", "name":"", "namespace":""
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
   "data": {
     "affectedTables": [],
     "@type": "type.googleapis.com/vvp.sql.v1beta1.UpdateFormatResponse",
@@ -10270,16 +11096,19 @@ PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats/[name
       "source": true,
       "type": "customized-csv",
       "properties": [
-        {
+```
+
+`{`
+
+```json
           "defaultValue": ",",
           "description": "",
           "definesFormat": false,
           "key": "format.column-delimiter",
           "required": false
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
       "packaged": false,
@@ -10287,17 +11116,14 @@ PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats/[name
         "hdfs:///tmp/myformats/customized-csv-demo-1.0-SNAPSHOT.jar"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-    }
-  },
   "success": true,
   "requestId": "208EF7F3-647B-4701-BCAD-6A14FC4696FC"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <data>
@@ -10321,9 +11147,9 @@ PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats/[name
 </data> <success>true</success> <requestId>208EF7F3-647B-4701-BCAD-6A14FC4696FC</requestId>
 ```
 
-#### UpdateMember
+#### 3.1.65 UpdateMember
 
-实时计算（流计算） API
+调用UpdateMember，变更指定用户的业务权限。
 
 **请求头**
 
@@ -10354,29 +11180,36 @@ PUT /pop/workspaces/[workspace]/members/v1/namespaces/[namespace] HTTP/1.1
 
 **示例**
 
-请求示例实时计算（流计算） API
+请求示例
 
-```json
-PUT /pop/workspaces/[workspace]/members/v1/namespaces/[namespace] HTTP/1.1 { "workspace":"", "namespace":"", "RegionId":"" }
+```
+PUT /pop/workspaces/[workspace]/members/v1/namespaces/[namespace] HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"workspace":"", "namespace":"", "RegionId":""
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
   "data": {
     "@type": "type.googleapis.com/vvp.members.v1.UpdateMemberResponse",
     "member": {
       "role": "owner",
       "member": "user:242425410145292209"
-    }
-  },
-  "success": true,
-  "requestId": "29F07013-6BE2-4F99-90B6-9E27BF2A26C4"
-}
 ```
 
-`XML` 格式
+`}` `},`
+
+```json
+  "success": true,
+  "requestId": "29F07013-6BE2-4F99-90B6-9E27BF2A26C4"
+```
+
+`}` `XML` 格式
 
 ```xml
 <data>
@@ -10388,7 +11221,9 @@ PUT /pop/workspaces/[workspace]/members/v1/namespaces/[namespace] HTTP/1.1 { "wo
 </data> <success>true</success> <requestId>29F07013-6BE2-4F99-90B6-9E27BF2A26C4</requestId>
 ```
 
-#### UpdateUdfArtifact
+#### 3.1.66 UpdateUdfArtifact
+
+调用UpdateUdfArtifact，修改udf jar。
 
 **请求头**
 
@@ -10406,7 +11241,7 @@ PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts/
 |---|---|---|---|---|---|
 | RegionId | String | Host | 是 | cn-wulan-env***-d01 | Region ID。 |
 
-| link企业版开 API | 发指南·Ap | pManager |  |  | 实时计算（流计算） |
+| link企业版开 API | 发指南·Ap | pManager |   |   | 实时计算（流计算） |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -10421,13 +11256,9 @@ PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts/
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | data | String | { "missingClasses": [], "@type": "type.googleapis.co m/vvp.sql.v1beta1.U pdateUdfArtifactRes ponse", "collidingClasses": [], "udfArtifact": { "dependencyJarUris" : [], "udfClasses": [ { "functionNames": [], "udfArtifactName": "namespaces/flinkte am/udfartifacts/metr ic-transform-227- shaded", "className": "com.alibaba.blink.u dtf.TimestampProbe ", "classType": "UDF TYPE SCALAR _ _ " }, { "functionNames": [], "udfArtifactName": "namespaces/flinkte am/udfartifacts/metr ic-transform-227- shaded", "className": "com.alibaba.blink.u dtf.TransformUdtf", "classType": "UDF TYPE TABLE" _ _ } ], "artifactType": "ARTIFACT TYPE JA _ _ VA", "createTime": "2024-03- 08T08:13:54Z", "uploader": "223474909869445 380", "jarUpdateTime": "2024-03- 08T09:04:22.53111 3Z", "name": "namespaces/flinkte am/udfartifacts/metr ic-transform-227- shaded", "namespace": "namespaces/flinkte am", "jarUrl": "hdfs:///vvp/data/sql - artifacts/namespace s/flinkteam/udfs/met ric-transform-227- shaded/2024-03- 08T08-13- 54.732313Z/metric- transform-2.2.7- shaded.jar", "updateTime": "2024-03- 08T09:04:22.53111 3Z" } } | 详细信息。 |
-
-实时计算（流计算） API
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -10438,14 +11269,19 @@ PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts/
 
 请求示例
 
-```json
-PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts/[udfArtifactName] HTTP/1.1 { "RegionId":"", "workspace":"", "namespace":"", "udfArtifactName":"" }
+```
+PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts/[udfArtifactName] HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式实时计算（流计算） API
+`{`
 
 ```json
-{
+"RegionId":"", "workspace":"", "namespace":"", "udfArtifactName":""
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
   "data": {
     "missingClasses": [],
     "@type": "type.googleapis.com/vvp.sql.v1beta1.UpdateUdfArtifactResponse",
@@ -10453,31 +11289,37 @@ PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts/
     "udfArtifact": {
       "dependencyJarUris": [],
       "udfClasses": [
-        {
+```
+
+`{`
+
+```json
           "functionNames": [],
           "udfArtifactName": "namespaces/flinkteam/udfartifacts/metric-transform-227-shaded"
 ```
 
-,
+`,`
 
 ```json
           "className": "com.alibaba.blink.udtf.TimestampProbe",
           "classType": "UDF_TYPE_SCALAR"
-        },
-        {
+```
+
+`},` `{`
+
+```json
           "functionNames": [],
           "udfArtifactName": "namespaces/flinkteam/udfartifacts/metric-transform-227-shaded"
 ```
 
-,
+`,`
 
 ```json
           "className": "com.alibaba.blink.udtf.TransformUdtf",
           "classType": "UDF_TYPE_TABLE"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
       "artifactType": "ARTIFACT_TYPE_JAVA",
@@ -10489,14 +11331,16 @@ PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts/
       "jarUrl": "hdfs:///vvp/data/sql-artifacts/namespaces/flinkteam/udfs/metric-transform-2
 27-shaded/2024-03-08T08-13-54.732313Z/metric-transform-2.2.7-shaded.jar",
       "updateTime": "2024-03-08T09:04:22.531113Z"
-    }
-  },
-  "requestId": "A2E6AB81-9FA6-48EE-BF0D-3829017F3C14",
-  "success": true
-}
 ```
 
-`XML` 格式实时计算（流计算） API
+`}` `},`
+
+```json
+  "requestId": "A2E6AB81-9FA6-48EE-BF0D-3829017F3C14",
+  "success": true
+```
+
+`}` `XML` 格式
 
 ```xml
 <data>
@@ -10532,7 +11376,9 @@ shaded/2024-03-08T08-13-54.732313Z/metric-transform-2.2.7-shaded.jar</jarUrl>
 </data> <requestId>A2E6AB81-9FA6-48EE-BF0D-3829017F3C14</requestId> <success>true</success>
 ```
 
-#### CreateNamespace
+#### 3.1.67 CreateNamespace
+
+调用CreateNamespace，创建Namespace。
 
 **请求头**
 
@@ -10551,7 +11397,7 @@ POST /flink/namespace/create HTTP/1.1
 | RegionId | String | Host | 是 | cn-wulan-env188-d01 | Region ID。 |
 | name | String | Path | 是 | blinkteam | Namespace名称。 |
 
-|  | 实时计算（流计 | 算） |  |  | Flink企 | 业版开发指南·AppManager AP | I |
+|   | 实时计算（流计 | 算） |   |   | Flink企 | 业版开发指南·AppManager AP | I |
 |---|---|---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -10573,30 +11419,36 @@ POST /flink/namespace/create HTTP/1.1
 
 请求示例
 
-```json
-POST /flink/namespace/create HTTP/1.1 { "RegionId":"", "name":"", "allocateCu":"", "ownerUid":"" }
+```
+POST /flink/namespace/create HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"RegionId":"", "name":"", "allocateCu":"", "ownerUid":""
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
   "eagleEyeTraceId": "0a11353617103145127224622d00c1",
   "asapiSuccess": true,
   "asapiRequestId": "E39BDDB3-7017-410E-9A79-EF50218BEDBA",
   "data": "blinkteam",
   "success": true,
   "requestId": "E39BDDB3-7017-410E-9A79-EF50218BEDBA"
-}
 ```
 
-`XML` 格式实时计算（流计算） API
+`}` `XML` 格式
 
 ```xml
 <eagleEyeTraceId>0a11353617103145127224622d00c1</eagleEyeTraceId> <asapiSuccess>true</asapiSuccess> <asapiRequestId>E39BDDB3-7017-410E-9A79-EF50218BEDBA</asapiRequestId> <data>blinkteam</data> <success>true</success> <requestId>E39BDDB3-7017-410E-9A79-EF50218BEDBA</requestId>
 ```
 
-#### DescribeNamespaces
+#### 3.1.68 DescribeNamespaces
+
+调用DescribeNamespaces，获取用户的Namespaces列表。
 
 **请求头**
 
@@ -10620,8 +11472,6 @@ GET /flink/namespace/list HTTP/1.1
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | data | Array | { "data": [ { "Uid": "229852610122763 813", "MemUsed": "40802189312", "CpuBrand": "Intel", "CreateTime": 1710122900722, "Region": "cn- qingdao-env***- d01", "GuaranteeQuota": "15", "RoleBindings": " [{\"members\": [\"user:2298526101 22763813\"],\"role\" :\"owner\"}, {\"members\": [\"user:1052910122 729909\"],\"role\":\" owner\"}]", "VvpPortal": "realtime-compute- cn-qingdao-env17e- d01.console.con.env 17e.shuguang.com", "CpuUsed": "12.0", "Queue": "k8s- flinkteam", "Members": " [{\"member\":\"user :105291012272990 9\",\"role\":\"owner\" }, {\"member\":\"user: 2298526101227638 13\",\"role\":\"owner \"}]", "Name": "flinkteam" } ], "success": true, "requestId": "A26F6DD1-A0BE- 4842-BF85- E24E60E9019D" } | 返回信息。 |
@@ -10632,7 +11482,7 @@ GET /flink/namespace/list HTTP/1.1
 | -CpuBrand | String | Intel | name绑定的cpu类型，绑定后，作业将调度到该 cpu类型的机器上（目前仅支持同架构芯片的混布） |
 | -CreateTime | Long | 1710314513015 | 创建时间 |
 
-| link企业版开发指 API | 南·AppManager |  | 实时计算（流计算） |
+| link企业版开发指 API | 南·AppManager |   | 实时计算（流计算） |
 |---|---|---|---|
 | 参数名称 | 类型 | 示例 | 说明 |
 | - GuaranteeQuot a | String | 10 | 资源配额 |
@@ -10653,12 +11503,15 @@ GET /flink/namespace/list HTTP/1.1
 GET /flink/namespace/list HTTP/1.1 &RegionId=
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式实时计算（流计算） API
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "data": [
-    {
+```
+
+`{`
+
+```json
       "MemUsed": "0.0",
       "CpuBrand": "Intel",
       "CreateTime": 1710314513015,
@@ -10672,8 +11525,11 @@ mbers\":[\"user:1052910122729909\"],\"role\":\"owner\"}]",
       "Members": "[{\"member\":\"user:1052910122729909\",\"role\":\"owner\"},
 {\"member\":\"user:229852610122763813\",\"role\":\"owner\"}]",
       "Name": "blinkteam"
-    },
-    {
+```
+
+`},` `{`
+
+```json
       "Uid": "229852610122763813",
       "MemUsed": "40802189312",
       "CpuBrand": "Intel",
@@ -10688,18 +11544,16 @@ mbers\":[\"user:1052910122729909\"],\"role\":\"owner\"}]",
       "Members": "[{\"member\":\"user:1052910122729909\",\"role\":\"owner\"},
 {\"member\":\"user:229852610122763813\",\"role\":\"owner\"}]",
       "Name": "flinkteam"
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "success": true,
   "requestId": "A26F6DD1-A0BE-4842-BF85-E24E60E9019D"
-}
 ```
 
-`XML` 格式实时计算（流计算） API
+`}` `XML` 格式
 
 ```xml
 <data>
@@ -10736,7 +11590,9 @@ d01.console.con.env***.shuguang.com</VvpPortal>
 </data> <success>true</success> <requestId>A26F6DD1-A0BE-4842-BF85-E24E60E9019D</requestId>
 ```
 
-#### GetCluster
+#### 3.1.69 GetCluster
+
+调用GetCluster，获取集群信息。
 
 **请求头**
 
@@ -10749,8 +11605,6 @@ GET /flink/cluster/get HTTP/1.1
 ```
 
 **请求参数**
-
-实时计算（流计算） API
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -10773,33 +11627,38 @@ GET /flink/cluster/get HTTP/1.1
 GET /flink/cluster/get HTTP/1.1 &RegionId=
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式实时计算（流计算） API
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "data": {
     "clusterResources": [
-      {
+```
+
+`{`
+
+```json
         "cpuBrand": "Intel",
         "cpuTotal": 189.0,
         "memTotal": 751.77,
         "memRequest": 177.0,
         "allocatedCu": "133.0",
         "cpuRequest": 55.22
-      }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "enableNetworkPolicy": true
-  },
-  "success": true,
-  "requestId": "A2A95BB4-44FE-407D-8486-80B3BD5B4779"
-}
 ```
 
-`XML` 格式
+`},`
+
+```json
+  "success": true,
+  "requestId": "A2A95BB4-44FE-407D-8486-80B3BD5B4779"
+```
+
+`}` `XML` 格式
 
 ```xml
 <data>
@@ -10815,7 +11674,9 @@ GET /flink/cluster/get HTTP/1.1 &RegionId=
 </data> <success>true</success> <requestId>A2A95BB4-44FE-407D-8486-80B3BD5B4779</requestId>
 ```
 
-#### UpdateNamespace
+#### 3.1.70 UpdateNamespace
+
+调用UpdateNamespace，变更Namespace资源。
 
 **请求头**
 
@@ -10834,7 +11695,7 @@ PUT /flink/namespace/update HTTP/1.1
 | RegionId | String | Host | 是 | cn-wulan-env230-d01 | Region ID。 |
 | name | String | Path | 是 | blinkteam | Namespace名称。 |
 
-| 实时计算（流计 | 算） |  |  | Flink企 | 业版开发指南·AppManager AP |
+| 实时计算（流计 | 算） |   |   | Flink企 | 业版开发指南·AppManager AP |
 |---|---|---|---|---|---|
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
@@ -10854,32 +11715,36 @@ PUT /flink/namespace/update HTTP/1.1
 
 请求示例
 
-```json
-PUT /flink/namespace/update HTTP/1.1 { "RegionId":"", "name":"", "allocateCu":"" }
+```
+PUT /flink/namespace/update HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"RegionId":"", "name":"", "allocateCu":""
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
   "eagleEyeTraceId": "0a112ca217103152416904683d00c8",
   "asapiSuccess": true,
   "asapiRequestId": "53F11F14-0514-4B46-9C59-270F3C94DCD3",
   "data": "blinkteam",
   "success": true,
   "requestId": "53F11F14-0514-4B46-9C59-270F3C94DCD3"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <eagleEyeTraceId>0a112ca217103152416904683d00c8</eagleEyeTraceId> <asapiSuccess>true</asapiSuccess> <asapiRequestId>53F11F14-0514-4B46-9C59-270F3C94DCD3</asapiRequestId> <data>blinkteam</data> <success>true</success> <requestId>53F11F14-0514-4B46-9C59-270F3C94DCD3</requestId>
 ```
 
-实时计算（流计算） API
+#### 3.1.71 DeleteNamespace
 
-#### DeleteNamespace
+调用DeleteNamespace，删除namespace。
 
 **请求头**
 
@@ -10915,26 +11780,26 @@ DELETE /flink/namespace/delete HTTP/1.1
 DELETE /flink/namespace/delete HTTP/1.1 &RegionId= &name=
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式实时计算（流计算） API
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
   "eagleEyeTraceId": "0a11353617103175009232076d00c1",
   "asapiSuccess": true,
   "asapiRequestId": "CCF11162-0068-4302-B226-403D46673F0F",
   "data": "blinkteam",
   "success": true,
   "requestId": "CCF11162-0068-4302-B226-403D46673F0F"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <eagleEyeTraceId>0a11353617103175009232076d00c1</eagleEyeTraceId> <asapiSuccess>true</asapiSuccess> <asapiRequestId>CCF11162-0068-4302-B226-403D46673F0F</asapiRequestId> <data>blinkteam</data> <success>true</success> <requestId>CCF11162-0068-4302-B226-403D46673F0F</requestId>
 ```
 
-#### UpdateFolder
+#### 3.1.72 UpdateFolder
+
+调用UpdateFolder，更新数据开发页面的文件夹。
 
 **请求头**
 
@@ -10956,8 +11821,6 @@ PUT /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/folders/[folderId]
 | namespac e | String | Path | 是 | flinkteam | 作业所在的项目空间名称。 |
 | folderId | String | Path | 是 | 123 | 文件夹ID。 |
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | paramsJso n | String | Body | 否 | { "name": "namespaces/flinkteam/fo rmats/customized-csv", "type": "customized-csv", "source": true, "sink": false, "properties": [ { "key": "format.column- delimiter", "required": false, "defaultValue": ",", "description": "" } ], "dependencies": [ "hdfs:///tmp/myformats/cu stomized-csv-demo-1.0- SNAPSHOT.jar" ] } | 执行参数，sql脚本。 |
@@ -10970,32 +11833,36 @@ PUT /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/folders/[folderId]
 | data | String | { "metadata": { "createdAt": "2026- 04-24T03:39:26Z", "workspace": "9cuwr9g7y1hl19", "modifiedAt": "2026-04- 24T03:39:27.04468 2Z", "namespace": "flinkteam", "name": "changsha after", _ "annotations": { "creator": "235406976657057 054", "modifier": "235406976657057 054", "creatorName": "flinkadmin", "modifierName": "flinkadmin" }, "id": "8fe51597-1450- 4b9c-94c9- 55382dc6c598", "parentId": "cd1562be-02ed- 32cf-945b- 9769afe4c55e" }, "apiVersion": "v1", "kind": "Folder", "spec": { "children": [] } } | 详细信息。 |
 | requestId | String | CBC799F0-AS7S- 1D30-8A4F- 882ED4DD**** | 请求ID。 |
 
-**示例**
+请求示例
 
-请求示例实时计算（流计算） API
-
-```json
-PUT /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/folders/[folderId] HTTP/1.1 { "Action":"UpdateFolder", "RegionId":"cn-wulan-env***-d01", "workspace":"default", "namespace":"flinkteam", "folderId":"123" }
+```
+PUT /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/folders/[folderId] HTTP/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"Action":"UpdateFolder", "RegionId":"cn-wulan-env***-d01", "workspace":"default", "namespace":"flinkteam", "folderId":"123"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{\"metadata\":{\"createdAt\":\"2026-04-
 24T03:39:26Z\",\"workspace\":\"9cuwr9g7y1hl19\",\"modifiedAt\":\"2026-04- 24T03:39:27.044682Z\",\"namespace\":\"flinkteam\",\"name\":\"changsha_after\",\"annotations\": {\"creator\":\"235406976657057054\",\"modifier\":\"235406976657057054\",\"creatorName\":\"flin dmin\",\"modifierName\":\"flinkadmin\"},\"id\":\"8fe51597-1450-4b9c-94c9-55382dc6c598\",\"pa rentId\":\"cd1562be-02ed-32cf-945b- 9769afe4c55e\"},\"apiVersion\":\"v1\",\"kind\":\"Folder\",\"spec\":{\"children\":[]}}",
  "success":true,
  "requestId":"CBC799F0-AS7S-1D30-8A4F-882ED4DD****"
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <data>{&quot;metadata&quot;:{&quot;createdAt&quot;:&quot;2026-04- 24T03:39:26Z&quot;,&quot;workspace&quot;:&quot;9cuwr9g7y1hl19&quot;,&quot;modifiedAt&quot;:&qu ;2026-04- 24T03:39:27.044682Z&quot;,&quot;namespace&quot;:&quot;flinkteam&quot;,&quot;name&quot;:&quot;c ngsha_after&quot;,&quot;annotations&quot;: {&quot;creator&quot;:&quot;235406976657057054&quot;,&quot;modifier&quot;:&quot;235406976657057 4&quot;,&quot;creatorName&quot;:&quot;flinkadmin&quot;,&quot;modifierName&quot;:&quot;flinkadm &quot;},&quot;id&quot;:&quot;8fe51597-1450-4b9c-94c9- 55382dc6c598&quot;,&quot;parentId&quot;:&quot;cd1562be-02ed-32cf-945b- 9769afe4c55e&quot;},&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;Folder&quot;, uot;spec&quot;:{&quot;children&quot;:[]}}</data> <success>true</success> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId>
 ```
 
-#### DeleteFolder
+#### 3.1.73 DeleteFolder
+
+调用DeleteFolder删除数据开发页面的文件夹。
 
 **请求头**
 
@@ -11008,8 +11875,6 @@ DELETE /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/folders/[folder
 ```
 
 **请求参数**
-
-实时计算（流计算） API
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
@@ -11033,24 +11898,22 @@ DELETE /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/folders/[folder
 DELETE /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/folders/[folderId] HTTP/1.1 &RegionId=cn-wulan-env188-d01 &workspace=default &namespace=flinkteam &folderId=123
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "requestId":"CBC799F0-AS7S-1D30-8A4F-882ED4DD****",
  "success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-实时计算（流计算） API
+#### 3.1.74 UploadArtifactByOSSUrl
 
-#### UploadArtifactByOSSUrl
+调用UpdateFolder更新数据开发页面的文件夹。
 
 **请求头**
 
@@ -11078,10 +11941,8 @@ POST /pop/workspaces/[workspace]/artifacts/v1/namespaces/[namespace]/artifacts:u
 | requestId | String | CBC799F0-AS7S- 1D30-8A4F- 882ED4DD**** | 请求ID。 |
 | data | String | { "success": true, "message": "", "plan": "" } | 详细信息。 |
 
-| link企业版开发指 | 南·AppManager |  |  |
+| link企业版开发指 | 南·AppManager |   |   |
 |---|---|---|---|
-
-API
 
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
@@ -11091,21 +11952,25 @@ API
 
 请求示例
 
-```json
-POST /pop/workspaces/[workspace]/artifacts/v1/namespaces/[namespace]/artifacts:uploadByOSSUrl HTT P/1.1 { "RegionId":"cn-wulan-env188-d01", "namespace":"flinkteam", "workspace":"default" }
+```
+POST /pop/workspaces/[workspace]/artifacts/v1/namespaces/[namespace]/artifacts:uploadByOSSUrl HTT P/1.1
 ```
 
-正常返回示例 `JSON` 格式
+`{`
 
 ```json
-{
+"RegionId":"cn-wulan-env188-d01", "namespace":"flinkteam", "workspace":"default"
+```
+
+`}` 正常返回示例 `JSON` 格式 `{`
+
+```json
  "data":"{  \"success\": true,  \"message\": \"\",  \"plan\": \"\"}",
  "requestId":"CBC799F0-AS7S-1D30-8A4F-882ED4DD****",
  "success":true
-}
 ```
 
-`XML` 格式
+`}` `XML` 格式
 
 ```xml
 <data>{
@@ -11117,7 +11982,9 @@ POST /pop/workspaces/[workspace]/artifacts/v1/namespaces/[namespace]/artifacts:u
  <success>true</success>
 ```
 
-#### ListJobs
+#### 3.1.75 ListJobs
+
+调用ListJobs，获取作业实例列表。
 
 **请求头**
 
@@ -11135,7 +12002,7 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/jobs HTTP/1.1
 |---|---|---|---|---|---|
 | RegionId | String | Host | 是 | cn-wulan-env***-d01 | Region ID。 |
 
-| 实时计算（流计 | 算） |  |  | Flink企 | 业版开发指南·AppManager AP |
+| 实时计算（流计 | 算） |   |   | Flink企 | 业版开发指南·AppManager AP |
 |---|---|---|---|---|---|
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 | deploymen tId | String | Query | 是 | d0b3abf0-4bfe-46b1- a324-5b7def580c00 | 作业ID。 |
@@ -11158,23 +12025,23 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/jobs HTTP/1.1
 GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/jobs HTTP/1.1 &RegionId=cn-wulan-env188-d01 &deploymentId=d0b3abf0-4bfe-46b1-a324-5b7def580c00 &namespace=flinkteam &workspace=default
 ```
 
-&公共请求参数正常返回示例 `JSON` 格式
+`&`公共请求参数正常返回示例 `JSON` 格式 `{`
 
 ```json
-{
  "data":"{\"success\": true,\"message\": \"\",\"plan\": \"\"}",
  "requestId":"CBC799F0-AS7S-1D30-8A4F-882ED4DD****",
  "success":true
-}
 ```
 
-`XML` 格式实时计算（流计算） API
+`}` `XML` 格式
 
 ```xml
 <data>{&quot;success&quot;: true,&quot;message&quot;: &quot;&quot;,&quot;plan&quot;: &quot;& quot;}</data> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-#### ReplaceDeployment
+#### 3.1.76 ReplaceDeployment
+
+调用ReplaceDeployment，替换实时计算中的现有部署。
 
 **请求头**
 
@@ -11198,38 +12065,42 @@ PUT /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deplo
 
 **返回数据**
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | 示例 | 说明 |
 |---|---|---|---|
 | success | Boolean | true | 请求是否成功。 |
 | requestId | String | CBC799F0-AS7S- 1D30-8A4F- 882ED4DD**** | 请求ID。 |
 | data | Integer | { "deploymentId" : "7f4143a2-2eee- 4c5c-8803- a50d388514ac", "name" : "jarjob", "executionMode" : "STREAMING", "streamingResource Setting" : { "resourceSettingMo de" : "BASIC", "basicResourceSetti ng" : { "parallelism" : 1, "jobmanagerResour ceSettingSpec" : { "cpu" : 1.0, "memory" : "4Gi" }, "taskmanagerResou rceSettingSpec" : { "cpu" : 1.0, "memory" : "4Gi" } } }, "kerberosConfig" : { "kerberosEnabled" : false }, "labels" : { }, "engineVersion" : "vvr-11.5.0-flink- 1.20", "referencedDeploym entDraftId" : "", "deploymentHasCha nged" : true, "taker" : " \| vvp-0", "priority" : 5, "resourceTuning" : { "mode" : "none", "resourceTuningId" : "", "resourceTuningNa me" : "", "scheduledPlanIsCa ncelling" : false }, "autopilot" : { "mode" : "", "recommendation" : "", "ignoreRecommend ation" : "" }, "deploymentTarget" : { "mode" : "PER JOB", "name" : _ "dt-flinkteam" }, "artifact" : { "kind" : "JAR", "jarArtifact" : { "jarUri" : "oss://flink- fullymanaged- apmd99ri0du673/art | 详细信息。 |
 
-实时计算（流计算） API
-
 | 参数名称 | 类型 | ifacts/namespaces/fl i示nk例team/TopSpeedW | 说明 |
 |---|---|---|---|
-|  |  | indowing.jar" } }, "flinkConf" : { "execution.checkpoi nting.interval" : "180s", "restart- strategy.fixed- delay.attempts" : "2147483647", "table.exec.state.ttl" : "36 h", "restart- strategy" : "fixed- delay", "execution.checkpoi nting.min-pause" : "180s", "restart- strategy.fixed- delay.delay" : "10 s" }, "logging" : { "loggingProfile" : "default", "log4jLoggers" : [ { "loggerName" : "", "loggerLevel" : "INFO" } ], "logReservePolicy" : { "openHistory" : true, "expirationDays" : 7 } }, "jobSummary" : { "starting" : 0, "running" : 0, "cancelling" : 0, "cancelled" : 0, "finished" : 0, "failed" : 0 }, "workspace" : "apmd99ri0du673", "namespace" : "flinkteam", "creator" : "206789961887523 346", |  |
-|  |  | "creatorName" : "flinkadmin", "modifier" : "206789961887523 346", "modifierName" : "flinkadmin", "createdAt" : 1777526754, "modifiedAt" : 1777526754 } |  |
+|   |   | indowing.jar" } }, "flinkConf" : { "execution.checkpoi nting.interval" : "180s", "restart- strategy.fixed- delay.attempts" : "2147483647", "table.exec.state.ttl" : "36 h", "restart- strategy" : "fixed- delay", "execution.checkpoi nting.min-pause" : "180s", "restart- strategy.fixed- delay.delay" : "10 s" }, "logging" : { "loggingProfile" : "default", "log4jLoggers" : [ { "loggerName" : "", "loggerLevel" : "INFO" } ], "logReservePolicy" : { "openHistory" : true, "expirationDays" : 7 } }, "jobSummary" : { "starting" : 0, "running" : 0, "cancelling" : 0, "cancelled" : 0, "finished" : 0, "failed" : 0 }, "workspace" : "apmd99ri0du673", "namespace" : "flinkteam", "creator" : "206789961887523 346", |   |
+|   |   | "creatorName" : "flinkadmin", "modifier" : "206789961887523 346", "modifierName" : "flinkadmin", "createdAt" : 1777526754, "modifiedAt" : 1777526754 } |   |
 
 **示例**
 
-请求示例实时计算（流计算） API
+请求示例
 
-```json
-PUT /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deploymentId] HTT P/1.1 { "RegionId":"cn-wulan-env188-d01", "namespace":"flinkteam", "deploymentId":"d0b3abf0-4bfe-46b1-a324-5b7def580c00", "workspace":"default" }
+```
+PUT /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deploymentId] HTT P/1.1
 ```
 
-正常返回示例 `XML` 格式
+`{`
+
+```json
+"RegionId":"cn-wulan-env188-d01", "namespace":"flinkteam", "deploymentId":"d0b3abf0-4bfe-46b1-a324-5b7def580c00", "workspace":"default"
+```
+
+`}` 正常返回示例 `XML` 格式
 
 ```xml
 <data /> <success>true</success> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId>
 ```
 
-### API示例
+### 3.2 API示例
 
-#### 示例
+#### 3.2.1 示例
+
+本文为您介绍API示例。
 
 **注意事项**
 
@@ -11242,20 +12113,20 @@ package sample; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.except
  /**
 ```
 
-* 正常格式：
+`*` 正常格式：
 
 ```
  * {
  * "requestId":"202008030937-4TFJR5MK2R",
 ```
 
-#为`true`时，结果中仅展示`requestId`，`false`时会抛出`reason`和`message`
+`#`为`true`时，结果中仅展示`requestId`，`false`时会抛出`reason`和`message`
 
 ```
 *"success":true
 ```
 
-实时计算（流计算） API `success``: true, #`为`true`时，结果中仅展示`requestId`，`false`时会抛出`reason`和`message`
+`success``: true, #`为`true`时，结果中仅展示`requestId`，`false`时会抛出`reason`和`message`
 
 ```
  * "message": "",
@@ -11280,7 +12151,7 @@ package sample; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.except
  /**
 ```
 
-目前支持以下4个`region`
+目前支持以下`4`个`region`
 
 ```
  ververica-share.cn-hangzhou.aliyuncs.com
@@ -11325,10 +12196,10 @@ TypeReference<ResultModel<GetDeploymentResp>>() {
 
 ```
  UpdateDeploymentDesiredStateParams updateDeploymentDesiredStateParams = new
-UpdateDeploymentDesiredStateParams(); updateDeploymentDesiredStateParams.setState(DeploymentState.CANCELLED); updateDeploymentDesiredStateRequest = new UpdateDeploymentDesiredStateRequest(); updateDeploymentDesiredStateRequest.setWorkspace(workspaceName); updateDeploymentDesiredStateRequest.setNamespace(namespace); updateDeploymentDesiredStateRequest.setDeploymentId(deploymentId); updateDeploymentDesiredStateRequest.setParamsJson(JsonUtil.toJson(updateDeploymentDesiredState rams));
+UpdateDeploymentDesiredStateParams(); updateDeploymentDesiredStateParams.setState(DeploymentState.CANCELLED);
+ UpdateDeploymentDesiredStateRequest
+updateDeploymentDesiredStateRequest = new UpdateDeploymentDesiredStateRequest(); updateDeploymentDesiredStateRequest.setWorkspace(workspaceName); updateDeploymentDesiredStateRequest.setNamespace(namespace); updateDeploymentDesiredStateRequest.setDeploymentId(deploymentId); updateDeploymentDesiredStateRequest.setParamsJson(JsonUtil.toJson(updateDeploymentDesiredState rams));
 ```
-
-实时计算（流计算） API
 
 ```java
 rams)); updateDeploymentDesiredStateRequest.setHttpContentType(FormatType.JSON); System.out.println(client.doAction(updateDeploymentDesiredStateRequest).getHttpContentString()
@@ -11344,13 +12215,13 @@ updateDeploymentDesiredStateRespResultModel = JsonUtil.toBean(client.doAction(up
  /**
 ```
 
-* 成功包含`data`字段返回数据：`{"data":{"metadata":{"createdAt":"2020-08-`
+`*` 成功包含`data`字段返回数据：`{"data":{"metadata":{"createdAt":"2020-08-`
 
 ```json
 18T07:04:40.379926Z","jobId":"d0d6720f-00ac-47cc-8d54-7d88a4d7b446","modifiedAt":"2020-08-18 T07:04:40.379926Z","deploymentId":"0cb796fc-2641-488e-bde8- 52b2199c5747","origin":"USER_REQUEST","resourceVersion":1,"namespace":"test","annotations":{ "com.dataartisans.appmanager.controller.deployment.spec.version":"4"},"id":"c4e40dc9-69c7-4b a0-8add-5f862ecb00ef"},"apiVersion":"v1","kind":"Savepoint","spec": {"savepointLocation":"oss://qiqi-zp/vvp/flinksavepoints/namespaces/test/deployments/0cb796fc-2641-488e-bde8-52b2199c5747/c4e40dc9-69c7- 4ba0-8add-5f862ecb00ef"},"status":{"state":"STARTED"}},"requestId":"188B1FFC-2729-458E-A404- D3CD5D972DA0"}
 ```
 
-* 失败无`data`字段，并且有`message`：`{"RequestId":"B545121D-ED4C-4E71-9D76-`
+`*` 失败无`data`字段，并且有`message`：`{"RequestId":"B545121D-ED4C-4E71-9D76-`
 
 ```
 CBD510A04E5B","HostId":"ververica-share.cnshanghai.aliyuncs.com","Code":"BadRequest","Message":"No active job for a deployment."}
@@ -11359,6 +12230,7 @@ CBD510A04E5B","HostId":"ververica-share.cnshanghai.aliyuncs.com","Code":"BadRequ
 `*/`
 
 ```java
+ CreateSavepointRequest
 createSavepointRequest = new CreateSavepointRequest(); createSavepointRequest.setWorkspace(workspaceName); createSavepointRequest.setNamespace(namespace);
  CreateSavepointParams createSavepointParams
 = new CreateSavepointParams(); createSavepointParams.setDeploymentId(deploymentId); createSavepointRequest.setParamsJson(JsonUtil.toJson(createSavepointParams)); createSavepointRequest.setHttpContentType(FormatType.JSON);
@@ -11373,18 +12245,18 @@ JsonUtil.toBean(client.doAction(createSavepointRequest).getHttpContentString(), 
 
 ```java
  ListSavepointsRequest listSavepointsRequest
-= new ListSavepointsRequest(); listSavepointsRequest.setWorkspace(workspaceName); listSavepointsRequest.setNamespace(namespace); listSavepointsRequest.setDeploymentId(deploymentId); ResultModel<ListSavepointsResp> savepoints = JsonUtil.toBean(client.doAction(listSavepointsRequest).getHttpContentString(), new TypeRefer
+= new ListSavepointsRequest(); listSavepointsRequest.setWorkspace(workspaceName); listSavepointsRequest.setNamespace(namespace); listSavepointsRequest.setDeploymentId(deploymentId); ResultModel<ListSavepointsResp> savepoints = JsonUtil.toBean(client.doAction(listSavepointsRequest).getHttpContentString(), new TypeRefer ence<ResultModel<ListSavepointsResp>>() {
  });
  System.out.println(JsonUtil.toJson(savepoints.getData().getSavepoints()));
 ```
 
-S t t
+`S` `t` `t`
 
 ```
-itl(J UtiltJ (
+itl(J UtiltJ
 ```
 
-it
+`(` `i``t`
 
 ```
 tDt()
@@ -11396,13 +12268,11 @@ tDt()
 it()
 ```
 
-i
+`i`
 
 ```
 ()))
 ```
-
-实时计算（流计算） API
 
 ```java
 System.out.println(JsonUtil.toJson(savepoints.getData().getSavepoints().size()));
@@ -11414,7 +12284,9 @@ System.out.println(JsonUtil.toJson(savepoints.getData().getSavepoints().size()))
  ListJobsRequest listJobsRequest = new ListJobsRequest();
  listJobsRequest.setWorkspace(workspaceName);
  listJobsRequest.setNamespace(namespace);
-listJobsRequest.setDeploymentId(deploymentId); JsonUtil.toBean(client.doAction(listJobsRequest).getHttpContentString(), new TypeReference<R
+listJobsRequest.setDeploymentId(deploymentId);
+ ResultModel<ListJobsResp> jobs =
+JsonUtil.toBean(client.doAction(listJobsRequest).getHttpContentString(), new TypeReference<R esultModel<ListJobsResp>>() {
  });
 System.out.println(JsonUtil.toJson(jobs.getData().getJobs()));
 ```
@@ -11422,6 +12294,7 @@ System.out.println(JsonUtil.toJson(jobs.getData().getJobs()));
 `//` 获取部署目标列表
 
 ```java
+ ListDeploymentTargetsRequest
 listDeploymentTargetsRequest = new ListDeploymentTargetsRequest(); listDeploymentTargetsRequest.setWorkspace(workspaceName); listDeploymentTargetsRequest.setNamespace(namespace);
  ResultModel<ListDeploymentTargetsResp> deploymentTargets =
 JsonUtil.toBean(client.doAction(listDeploymentTargetsRequest).getHttpContentString(), new TypeReference<ResultModel<ListDeploymentTargetsResp>>() {
@@ -11432,29 +12305,38 @@ System.out.println(JsonUtil.toJson(deploymentTargets.getData().getDeploymentTarg
 `//sql`语法检查，成功则`validationResult`：`VALIDATION_RESULT_VALID_INSERT_QUERY`或者
 
 ```java
-VALIDATION_RESULT_VALID_DDL_STATEMENT，其他查看errorDetails validateSqlScriptRequest = new ValidateSqlScriptRequest(); validateSqlScriptRequest.setWorkspace(workspaceName); validateSqlScriptRequest.setNamespace(namespace); validateSqlScriptParams = new ValidateSqlScriptParams();
+VALIDATION_RESULT_VALID_DDL_STATEMENT，其他查看errorDetails
+ ValidateSqlScriptRequest
+validateSqlScriptRequest = new ValidateSqlScriptRequest(); validateSqlScriptRequest.setWorkspace(workspaceName); validateSqlScriptRequest.setNamespace(namespace);
+ ValidateSqlScriptParams
+validateSqlScriptParams = new ValidateSqlScriptParams();
  validateSqlScriptParams.setStatement("CREATE TABLE
-RANDOM_TABLE(`name` STRING) with ('connector'='random','type'='random')"); validateSqlScriptRequest.setParamsJson(JsonUtil.toJson(validateSqlScriptParams)); validateSqlScriptRequest.setHttpContentType(FormatType.JSON); validateSqlScriptRespResultModel = JsonUtil.toBean(SdkUtil.getHttpContentString(client, validateSqlScriptRequest), new TypeReference<ResultModel<ValidateSqlScriptResp>>() { }); System.out.println(JsonUtil.toJson(validateSqlScriptRespResultModel));
+RANDOM_TABLE(`name` STRING) with ('connector'='random','type'='random')"); validateSqlScriptRequest.setParamsJson(JsonUtil.toJson(validateSqlScriptParams)); validateSqlScriptRequest.setHttpContentType(FormatType.JSON);
+ ResultModel<ValidateSqlScriptResp>
+validateSqlScriptRespResultModel = JsonUtil.toBean(SdkUtil.getHttpContentString(client, validateSqlScriptRequest), new TypeReference<ResultModel<ValidateSqlScriptResp>>() { }); System.out.println(JsonUtil.toJson(validateSqlScriptRespResultModel));
 ```
 
-`//` 执行`ddl`操作:如果成功data.result='RESULT_SUCCESS|RESULT_SUCCESS_WITH_ROWS',否则查看`message`
+`//` 执行`ddl`操作`:`如果成功data.result='RESULT_SUCCESS|RESULT_SUCCESS_WITH_ROWS',否则查看`message`
 
 ```
+ ExecuteSqlScriptRequest
 executeSqlScriptRequest = new ExecuteSqlScriptRequest(); executeSqlScriptRequest.setWorkspace(workspaceName); executeSqlScriptRequest.setNamespace(namespace);
  ExecuteSqlScriptParams executeSqlScriptParams
 = new ExecuteSqlScriptParams();
  executeSqlScriptParams.setStatement("create table
-abaaaa (a varchar) with ('connector' = 'random', 'type' = 'random');"); tables;"); executeSqlScriptRequest.setParamsJson(JsonUtil.toJson(executeSqlScriptParams)); executeSqlScriptRequest.setHttpContentType(FormatType.JSON); JsonUtil.toBean(client.doAction(executeSqlScriptRequest).getHttpContentString(), new TypeReference<ResultModel<ExecuteSqlScriptResp>>() {
+abaaaa (a varchar) with ('connector' = 'random', 'type' = 'random');");
+ executeSqlScriptParams.setStatement("show
+tables;"); executeSqlScriptRequest.setParamsJson(JsonUtil.toJson(executeSqlScriptParams)); executeSqlScriptRequest.setHttpContentType(FormatType.JSON);
+ ResultModel<ExecuteSqlScriptResp>
+executeSqlScriptRespResultModel = JsonUtil.toBean(client.doAction(executeSqlScriptRequest).getHttpContentString(), new TypeReference<ResultModel<ExecuteSqlScriptResp>>() {
 ```
-
-实时计算（流计算） API
 
 ```java
  });
 System.out.println(JsonUtil.toJson(executeSqlScriptRespResultModel));
 ```
 
-`//`创建`deployment(sql`作业)
+`//`创建`deployment(sql`作业`)`
 
 ```java
  GetGlobalDeploymentDefaultsRequest getGlobalDeploymentDefaultsRequest
@@ -11485,6 +12367,7 @@ Artifact.JarArtifact();
  jarArtifact.setJarUri("oss://qiqi-zp/multioss/artifacts/namespaces/test/job-1.0-SNAPSHOT2.j
 ar");
  // spec.getTemplate().getSpec().setArtifact(jarArtifact);
+ CreateDeploymentParams
 createDeploymentParams = new CreateDeploymentParams();
  Deployment.DeploymentMetadata metadata = new
 Deployment.DeploymentMetadata();
@@ -11492,6 +12375,7 @@ Deployment.DeploymentMetadata();
  spec.setDeploymentTargetId("3965ca94-2fa9-47ee-818b-ff89ddf4ba4f");
 createDeploymentParams.setMetadata(metadata);
  createDeploymentParams.setSpec(spec);
+ CreateDeploymentRequest
 createDeploymentRequest = new CreateDeploymentRequest();
  createDeploymentRequest.setWorkspace(workspaceName);
 createDeploymentRequest.setNamespace(namespace);
@@ -11499,16 +12383,20 @@ createDeploymentRequest.setNamespace(namespace);
  System.out.printf("##########params:\n%s\n", paramsStr);
 createDeploymentRequest.setParamsJson(paramsStr);
  createDeploymentRequest.setHttpContentType(FormatType.JSON);
-System.out.println(client.doAction(createDeploymentRequest).getHttpContentString()); JsonUtil.toBean(client.doAction(createDeploymentRequest).getHttpContentString(), new TypeReference<ResultModel<CreateDeploymentResp>>() {
+System.out.println(client.doAction(createDeploymentRequest).getHttpContentString());
+ ResultModel<CreateDeploymentResp>
+createDeploymentRespResultModel = JsonUtil.toBean(client.doAction(createDeploymentRequest).getHttpContentString(), new TypeReference<ResultModel<CreateDeploymentResp>>() {
  });
 System.out.println(JsonUtil.toJson(createDeploymentRespResultModel));
 ```
 
-获取列表实时计算（流计算） API `//` 获取`artifacts`列表
+获取列表 `//` 获取`artifacts`列表
 
 ```java
  ListArtifactsRequest listArtifactsRequest = new
-ListArtifactsRequest(); listArtifactsRequest.setWorkspace(workspaceName); listArtifactsRequest.setNamespace(namespace); JsonUtil.toBean(client.doAction(listArtifactsRequest).getHttpContentString(), new TypeRefere
+ListArtifactsRequest(); listArtifactsRequest.setWorkspace(workspaceName); listArtifactsRequest.setNamespace(namespace);
+ ResultModel<ListArtifactsResp> artifacts =
+JsonUtil.toBean(client.doAction(listArtifactsRequest).getHttpContentString(), new TypeRefere nce<ResultModel<ListArtifactsResp>>() {
  });
 System.out.println(JsonUtil.toJson(artifacts));
 ```
@@ -11516,6 +12404,7 @@ System.out.println(JsonUtil.toJson(artifacts));
 `//` 获取`artifact`
 
 ```java
+ GetArtifactMetadataRequest
 getArtifactMetadataRequest = new GetArtifactMetadataRequest();
  getArtifactMetadataRequest.setWorkspace(workspaceName);
 getArtifactMetadataRequest.setNamespace(namespace); getArtifactMetadataRequest.setFilename("flip-75-demo-1.0-SNAPSHOT-1.jar"); System.out.println(client.doAction(getArtifactMetadataRequest).getHttpContentString());
@@ -11531,6 +12420,7 @@ System.out.println(JsonUtil.toJson(artifact));
  DeleteArtifactRequest deleteArtifactRequest
 = new DeleteArtifactRequest(); deleteArtifactRequest.setWorkspace(workspaceName); deleteArtifactRequest.setNamespace(namespace);
  deleteArtifactRequest.setFilename("flip-75-demo-1.0-SNAPSHOT-1.jar");
+ DeleteArtifactResponse
 deleteArtifactResponse = client.getAcsResponse(deleteArtifactRequest); System.out.println(JsonUtil.toJson(deleteArtifactResponse));
 ```
 
@@ -11548,12 +12438,13 @@ System.out.println(JsonUtil.toJson(deployments));
 `//` 删除`deployment` 指定已存在的且状态为`CANCELLED`的`DeploymentId`
 
 ```java
-deleteDeploymentRequest = new DeleteDeploymentRequest(); deleteDeploymentRequest.setWorkspace(workspaceName); deleteDeploymentRequest.setNamespace(namespace); deleteDeploymentRequest.setDeploymentId(deploymentId); deleteDeploymentResponse = client.getAcsResponse(deleteDeploymentRequest); System.out.println(JsonUtil.toJson(deleteDeploymentResponse));
+ DeleteDeploymentRequest
+deleteDeploymentRequest = new DeleteDeploymentRequest(); deleteDeploymentRequest.setWorkspace(workspaceName); deleteDeploymentRequest.setNamespace(namespace); deleteDeploymentRequest.setDeploymentId(deploymentId);
+ DeleteDeploymentResponse
+deleteDeploymentResponse = client.getAcsResponse(deleteDeploymentRequest); System.out.println(JsonUtil.toJson(deleteDeploymentResponse));
 ```
 
-#### pom.xml
-
-实时计算（流计算） API
+#### 3.2.2 pom.xml
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?> <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -11607,29 +12498,27 @@ deleteDeploymentRequest = new DeleteDeploymentRequest(); deleteDeploymentRequest
 </project>
 ```
 
-实时计算（流计算）
+## 4 Flink SQL参考
 
-## Flink SQL参考
-
-### 概述
+### 4.1 概述
 
 Flink SQL是实时计算为简化实时计算模型，降低用户使用实时计算门槛而设计的一套符合标准SQL语义的实时计算SQL。Flink SQL有以下优势： 开发成本低。使用阿里云Flink SQL，可以不再编写长达数千行的Storm代码，通过一两句简单的SQL即可描述复杂且多变的业务逻辑。 维护成本低。使用阿里云Flink SQL，可以不用再维护数千行的Storm代码。 使用最原始的Storm编程模式，您必须考虑各类系统异常情况，包括系统异常、系统宕机、错误情况下数据准确性等各类细节问题。 阿里云团队将上述各类问题均在SQL语义中进行抽象和解决。实时计算具备以下特点。 数据的准确性。实时计算独特的Exactly-Once Processing语义保证，能够保证各种Failover场景的数据准确性。 性能的可优化性。实时计算集成SQL优化逻辑，将SQL翻译为最底层的执行代码的普通人员编写的Storm代码，效率更高，提高编写SQL代码的效率。 编程的可扩展性。实时计算支持UFD的扩展功能，对于SQL无法表达的、或者业务定制化逻辑，阿里实时计算通过自定义UFD进行功能扩展。 系统的可扩展性。实时计算在保证任务和系统稳定性同时，在数据突增时（如，双11）可以做到弹性扩容。
 
-### 关键字
+### 4.2 关键字
 
-本文为您介绍Flink关键字。 Flink V1.11关键字详情，请参见Reserved Keywords。 如果您需要在DDL中定义Flink关键字，请在关键字两端添加反引号（`），例如｀`value`｀。
+本文为您介绍Flink关键字。 Flink V1.11关键字详情，请参见Reserved Keywords。
 
-**说明**
+> **说明：** 如果您需要在DDL中定义Flink关键字，请在关键字两端添加反引号（`），例如｀`value`｀。
 
-### 创建数据视图
+### 4.3 创建数据视图
+
+您可以通过创建数据视图简化开发过程。
 
 **背景信息**
 
 通常，业务逻辑比较复杂，需要将多层嵌套写在DML语句中，但是这种方式定位问题比较困难。此时，您可以通过定义数据视图的方式，将多层嵌套写在数据视图中，简化开发过程。
 
-**说明**
-
-数据视图仅用于辅助计算逻辑的描述，不会产生数据的物理存储。
+> **说明：** 数据视图仅用于辅助计算逻辑的描述，不会产生数据的物理存储。
 
 **语法**
 
@@ -11641,33 +12530,32 @@ viewName：视图名称。 columnName：字段名称。 queryStatement：嵌套�
 
 **示例**
 
-实时计算（流计算）
-
 ```
 CREATE TEMPORARY VIEW tmp_view AS SELECT
 ```
 
-*
+`*`
 
 ```
 FROM
     datagen_source;
+INSERT INTO
     rds_output
 SELECT
 ```
 
-`r,` `t,` `c,` u
+`r,` `t,` `c,` `u`
 
 ```
 FROM
     tmp_view;
 ```
 
-### 基本概念
+### 4.4 基本概念
 
-#### Watermark
+#### 4.4.1 Watermark
 
-实时计算可以基于时间属性对数据进行窗口聚合。基于Event Time时间属性的窗口函数作业中，数据源表的声明 WATERMARK 定义了表的事件时间属性，其形式为WATERMARK FOR rowtime_column_name ASwatermark_strategy_expression。rowtime_column_name把一个现有的列定义为一个为表标记事件时间的属性。该列的类型必须为 TIMESTAMP(3)，且是 schema 中的顶层列，它也可以是一个计算列。 watermark_strategy_expression定义了watermark的生成策略。它允许使用包括计算列在内的任意非查询表达式来计算watermark，表达式的返回类型必须是TIMESTAMP(3)，表示了从Epoch以来的经过的时间。返回的 watermark只有当其不为空且其值大于之前发出的本地watermark时才会被发出（以保证 watermark 递增）。每条记录的watermark生成表达式计算都会由框架完成。框架会定期发出所生成的最大的watermark， 如果当前watermark仍然与前一个watermark相同、为空、或返回的 watermark 的值小于最后一个发出的 watermark，则新的 watermark不会被发出。Watermark根据pipeline.auto-watermark-interval中所配置的间隔发出。若watermark的间隔是0ms，那么每条记录都会产生一个watermark，且watermark会在不为空使用事件时间语义时，表必须包含事件时间属性和 watermark 策略。Flink提供了几种常用的watermark策略： 严格递增时间戳：WATERMARK FOR rowtime_column AS rowtime_column。 发出到目前为止已观察到的最大时间戳的watermark，时间戳大于最大时间戳的行被认为没有迟到。 递增时间戳：WATERMARK FOR rowtime_column AS rowtime_column -INTERVAL '0.001' SECOND。 发出到目前为止已观察到的最大时间戳减1的watermark，时间戳大于或等于最大时间戳的行被认为没有迟到。 有界乱序时间戳：WATERMARK FOR rowtime_column AS rowtime_column- INTERVAL 'string' timeUnit。 发出到目前为止已观察到的最大时间戳减去指定延迟的watermark，例如， WATERMARK FOR rowtime_column AS rowtime_column - INTERVAL '5'SECOND是一个5秒延迟的watermark策略。
+实时计算可以基于时间属性对数据进行窗口聚合。基于Event Time时间属性的窗口函数作业中，数据源表的声明中需要使用Watermark方法。 WATERMARK 定义了表的事件时间属性，其形式为WATERMARK FOR rowtime_column_name ASwatermark_strategy_expression。rowtime_column_name把一个现有的列定义为一个为表标记事件时间的属性。该列的类型必须为 TIMESTAMP(3)，且是 schema 中的顶层列，它也可以是一个计算列。 watermark_strategy_expression定义了watermark的生成策略。它允许使用包括计算列在内的任意非查询表达式来计算watermark，表达式的返回类型必须是TIMESTAMP(3)，表示了从Epoch以来的经过的时间。返回的 watermark只有当其不为空且其值大于之前发出的本地watermark时才会被发出（以保证 watermark 递增）。每条记录的watermark生成表达式计算都会由框架完成。框架会定期发出所生成的最大的watermark， 如果当前watermark仍然与前一个watermark相同、为空、或返回的 watermark 的值小于最后一个发出的 watermark，则新的 watermark不会被发出。Watermark根据pipeline.auto-watermark-interval中所配置的间隔发出。若watermark的间隔是0ms，那么每条记录都会产生一个watermark，且watermark会在不为空并大于上一个发出的watermark时发出。 使用事件时间语义时，表必须包含事件时间属性和 watermark 策略。Flink提供了几种常用的watermark策略： 严格递增时间戳：WATERMARK FOR rowtime_column AS rowtime_column。 发出到目前为止已观察到的最大时间戳的watermark，时间戳大于最大时间戳的行被认为没有迟到。 递增时间戳：WATERMARK FOR rowtime_column AS rowtime_column -INTERVAL '0.001' SECOND。 发出到目前为止已观察到的最大时间戳减1的watermark，时间戳大于或等于最大时间戳的行被认为没有迟到。 有界乱序时间戳：WATERMARK FOR rowtime_column AS rowtime_column- INTERVAL 'string' timeUnit。 发出到目前为止已观察到的最大时间戳减去指定延迟的watermark，例如， WATERMARK FOR rowtime_column AS rowtime_column - INTERVAL '5'SECOND是一个5秒延迟的watermark策略。
 
 ```
 CREATE TABLE Orders (
@@ -11678,9 +12566,11 @@ CREATE TABLE Orders (
 ) WITH ( . . . );
 ```
 
-实时计算（流计算） Watermark含义是所有时间戳 `t'< t` 的事件都已经发生。假如watermark t 已经生效，那么后续Event Time小于 t 的记录都会被丢弃掉（目前实时计算的处理方式是丢弃这些来的更晚的数据，后续支持用户配置让更晚的数据也能继续更新）。 针对乱序的流，watermark至关重要。即使一些事件延迟到达，也不至于过于影响窗口计算的正确性。 并行数据流中，当算子（Operator）有多个输入流时，算子的Event Time以最小流Event Time为准。
+**watermark使用总结**
 
-#### 计算列
+Watermark含义是所有时间戳 `t'< t` 的事件都已经发生。假如watermark `t` 已经生效，那么后续Event Time小于 `t` 的记录都会被丢弃掉（目前实时计算的处理方式是丢弃这些来的更晚的数据，后续支持用户配置让更晚的数据也能继续更新）。 针对乱序的流，watermark至关重要。即使一些事件延迟到达，也不至于过于影响窗口计算的正确性。 并行数据流中，当算子（Operator）有多个输入流时，算子的Event Time以最小流Event Time为准。
+
+#### 4.4.2 计算列
 
 计算列可以使用其它列的数据，计算出其所属列的数值。如果您的数据源表中没有TIMESTAMP类型的列，可以使用计算列方法从其它类型的字段进行转换。
 
@@ -11712,25 +12602,27 @@ CREATE TABLE test_stream(
 `ts AS TO_TIMESTAMP(TIME/1000), --`利用计算列，将`16`位时间戳转换为`13`位时间戳。
 
 ```
+  WATERMARK FOR ts AS WITHOFFSET(ts, 1000)
 ) WITH (
   'connector' = 'datahub',
   ...
-);
 ```
 
-实时计算（流计算）
+);
 
-| TIME |  |
+| TIME |   |
 |---|---|
-|  | ts |
+|   | ts |
 
-#### 时间属性
+如上示例中所示，源表数据中的字段 `TIME` 包含时间信息，为BIGINT类型。用计算列的功能将字段 `TIME` 转
+
+#### 4.4.3 时间属性
 
 本文为您介绍Flink SQL支持的Event Time和Processing Time数据类型。 Flink SQL支持2种时间类型Event Time和Processing Time。 Event Time：您提供的事件时间（通常是数据的最原始的创建时间），Event time必须是您提供在Schema 里的数据。 Processing Time：系统对事件进行处理的本地系统时间。 下图是不同时间属性在实时计算流程中的位置。 从上图的定义可以看出，Ingestion Time和Processing Time是系统为流式记录增加的时间属性，您并不能控制。Event Time则是流记录本身携带的时间属性。由于数据本身存在乱序以及网络抖动等其它原因，Event Time为t1（对应partition1）时刻的纪录，有可能会晚于t2（对应prtition2）时刻的被Flink处理，即t2 > t1。
 
 **Event Time**
 
-EventTime也称为rowtime。EventTime时间属性必须在源表DDL中声明，可以将源表中的某一字段声明成 EventTime。目前只支持将TIMESTAMP类型（将来会支持 LONG 类型）声明成rowtime字段。如果不是 TIMESTAMP类型，需要借助计算列，基于现有列构造出一个TIMESTAMP类型的列。 但由于数据本身会有乱序，加之网络抖动或其它原因，数据到达的顺序和被处理的顺序可能是不一致的（乱序）。因此定义一个rowtime字段，需要显示地定义一个Watermark计算方法。 窗口函数基于Event Time聚合的示例如下。 实时计算（流计算）
+EventTime也称为rowtime。EventTime时间属性必须在源表DDL中声明，可以将源表中的某一字段声明成 EventTime。目前只支持将TIMESTAMP类型（将来会支持 LONG 类型）声明成rowtime字段。如果不是 TIMESTAMP类型，需要借助计算列，基于现有列构造出一个TIMESTAMP类型的列。 但由于数据本身会有乱序，加之网络抖动或其它原因，数据到达的顺序和被处理的顺序可能是不一致的（乱序）。因此定义一个rowtime字段，需要显示地定义一个Watermark计算方法。 窗口函数基于Event Time聚合的示例如下。
 
 ```
 CREATE TABLE tt_stream(
@@ -11743,7 +12635,12 @@ CREATE TABLE tt_stream(
   'topic' = 'yourTopicName',
   'accessId' = 'yourAccessId',
   'accessKey' = 'yourAccessSecret'
-); CREATE TABLE rds_output(
+```
+
+);
+
+```
+CREATE TABLE rds_output(
   id VARCHAR,
   c TIMESTAMP,
   f TIMESTAMP,
@@ -11754,7 +12651,12 @@ CREATE TABLE tt_stream(
   'tableName' = 'yourTableName',
   'userName' = 'yourUserName',
   'password' = 'yourPassword'
-); INSERT INTO rds_output SELECT a AS id,
+```
+
+);
+
+```
+INSERT INTO rds_output SELECT a AS id,
      SESSION_START(c, INTERVAL '1' SECOND) AS c,
      CAST(SESSION_END(c, INTERVAL '1' SECOND) AS TIMESTAMP) AS f,
      COUNT(a) AS cnt
@@ -11769,7 +12671,7 @@ Processing Time是系统产生的，不在您的原始数据中，您需要在�
 filedName as PROCTIME()
 ```
 
-窗口函数基于Processing Time聚合的示例如下。 实时计算（流计算）
+窗口函数基于Processing Time聚合的示例如下。
 
 ```
 CREATE TABLE mq_stream (
@@ -11786,7 +12688,12 @@ CREATE TABLE mq_stream (
   'topic' = 'yourTopic',
   'accessId' = 'yourAccessId',
   'accessKey' = 'yourAccessSecret'
-); CREATE TABLE rds_output (
+```
+
+);
+
+```
+CREATE TABLE rds_output (
   id VARCHAR,
   c TIMESTAMP,
   f TIMESTAMP,
@@ -11797,7 +12704,12 @@ CREATE TABLE mq_stream (
   'tableName' = 'yourDatabasTableName',
   'userName' = 'yourUserName',
   'password' = 'yourPassword'
-); INSERT INTO rds_output SELECT a AS id,
+```
+
+);
+
+```
+INSERT INTO rds_output SELECT a AS id,
      SESSION_START(d, INTERVAL '1' SECOND) AS c,
      SESSION_END(d, INTERVAL '1' SECOND) AS f,
      COUNT(a) AS cnt
@@ -11814,17 +12726,17 @@ FROM mq_stream GROUP BY SESSION(d, INTERVAL '1' SECOND), a
 
 `attribute column.` 的报错。
 
-### DDL语句
+### 4.5 DDL语句
 
-#### 创建数据源表
+#### 4.5.1 创建数据源表
 
-##### 日志服务SLS源表
+##### 4.5.1.1 日志服务SLS源表
 
 本文为您介绍日志服务SLS源表的DDL定义、WITH参数、类型映射、属性字段和代码示例。
 
 **什么是日志服务**
 
-实时计算（流计算） 日志服务SLS是针对日志类数据的一站式服务。日志服务可以帮助您快捷地完成数据采集、消费、投递以及查询分析，提升运维和运营效率，建立海量日志处理能力。
+日志服务SLS是针对日志类数据的一站式服务。日志服务可以帮助您快捷地完成数据采集、消费、投递以及查询分析，提升运维和运营效率，建立海量日志处理能力。
 
 **前提条件**
 
@@ -11850,8 +12762,9 @@ create table sls_source(
   'project' = '<yourProjectName>',
   'logStore' = '<yourLogStoreName>',
   'consumerGroup' = '<yourConsumerGroupName>'
-);
 ```
+
+);
 
 **说明**
 
@@ -11870,8 +12783,6 @@ SLS暂不支持MAP类型的数据。 SLS对于不存在字段会置为Null。 DD
 | startTime | 消费日志的开始时间。 | 是 | 无。 |
 | consumerGroup | 消费组名称。 | 否 | 您可以自定义消费组名（没有固定格式）。 |
 
-实时计算（流计算）
-
 | batchGetSize | 单次读取logGroup的条数。 | 否 | 默认值为100。 说明 batchGetSize设置不能超过 1000，否则会报错。 batchGetSize设置单次读取logGroup的条数。如果单条 logItem的大小和batchGetSize都很大，则可能会导致频繁的垃圾回收 （Garbage Collection），您可以适当减小batchGetSize参数值。 |
 |---|---|---|---|
 
@@ -11885,25 +12796,21 @@ SLS暂不支持MAP类型的数据。 SLS对于不存在字段会置为Null。 DD
 
 **属性字段**
 
-|  | 字段名 |  | 字段类型 | 说明 |
+|   | 字段名 |   | 字段类型 | 说明 |
 |---|---|---|---|---|
-|  | source __ __ |  | STRING METADATA VIRTUAL | 消息源。 |
-|  | topic __ __ |  | STRING METADATA VIRTUAL | 消息主题。 |
-|  | timestamp __ __ |  | BIGINT METADATA VIRTUAL | 日志时间。 |
-|  |  | timestamp __ |  |  |
-|  | __ |  |  |  |
-|  | tag __ __ |  | MAP<VARCHAR, VARCHAR> METADATA VIRTUAL | 消息TAG。对于属性" tag : receive time ":"1616742274"，' __ __ __ _ __ __ receive time '和'1616742274'会被作为KV对，记录 _ __ 在Map中，在SQL中通过 tag [' receive time ']的方式访问。 __ __ __ _ __ |
+|   | source __ __ |   | STRING METADATA VIRTUAL | 消息源。 |
+|   | topic __ __ |   | STRING METADATA VIRTUAL | 消息主题。 |
+|   | timestamp __ __ |   | BIGINT METADATA VIRTUAL | 日志时间。 |
+|   |   | timestamp __ |   |   |
+|   | __ |   |   |   |
+|   | tag __ __ |   | MAP<VARCHAR, VARCHAR> METADATA VIRTUAL | 消息TAG。对于属性" tag : receive time ":"1616742274"，' __ __ __ _ __ __ receive time '和'1616742274'会被作为KV对，记录 _ __ 在Map中，在SQL中通过 tag [' receive time ']的方式访问。 __ __ __ _ __ |
 
-|  |  | source __ __ |
+|   |   | source __ __ |
 |---|---|---|
 
-仅在VVR 3.0.1版本及以后版本支持获取以上SLS属性字段。
-
-**说明**
+> **说明：** 仅在VVR 3.0.1版本及以后版本支持获取以上SLS属性字段。
 
 **代码示例**
-
-实时计算（流计算）
 
 ```
 create table sls_input(
@@ -11925,10 +12832,13 @@ create table sls_input(
   'starttime' = '2001-08-01 00:00:00',
   'project' = 'sls-test',
   'logstore' = 'sls-input'
-);
 ```
 
-##### 消息队列Kafka源表
+);
+
+##### 4.5.1.2 消息队列Kafka源表
+
+本文为您介绍消息队列Kafka源表的DDL定义、WITH参数和示例。
 
 **什么是Kafka源表**
 
@@ -11950,16 +12860,15 @@ create table kafka_source(
   'properties.group.id' = '<yourKafkaConsumerGroupId>',
   'format' = 'csv',
   'scan.startup.mode' = 'earliest-offset'
-);
 ```
+
+);
 
 **WITH参数**
 
 | 参数 | 说明 | 是否必选 | 数据类型 | 备注 |
 |---|---|---|---|---|
 | connector | 源表类型 | 是 | STRI NG | 固定值为 kafka 。 |
-
-实时计算（流计算）
 
 | topic | 源表对应的Topic | 是 | STRI NG | 无 |
 |---|---|---|---|---|
@@ -11980,10 +12889,10 @@ CREATE TABLE kafkaTable (
     'properties.security.protocol' = 'SASL_PLAINTEXT',
     'properties.sasl.mechanism' = 'PLAIN',
     'properties.sasl.jaas.config' = 'org.apache.kafka.common.security.plain.PlainLoginModule
-required username="USERNAME" password="PASSWORD";' );
+required username="USERNAME" password="PASSWORD";'
 ```
 
-Kafka Consumer配置项详情请参见 Consumer Configs。 实时计算（流计算）
+); Kafka Consumer配置项详情请参见 Consumer Configs。
 
 **从kafka中读取数据后插入Kafka示例**
 
@@ -12000,7 +12909,12 @@ CREATE TEMPORARY TABLE Kafka_source (
     'properties.bootstrap.servers' = '<yourKafkaBrokers>',
     'properties.group.id' = '<yourKafkaConsumerGroupId>',
     'format' = 'csv'
-); CREATE TEMPORARY TABLE Kafka_sink (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE Kafka_sink (
     id INT,
     name STRING,
     age INT
@@ -12010,14 +12924,19 @@ CREATE TEMPORARY TABLE Kafka_source (
     'properties.bootstrap.servers' = '<yourKafkaBrokers>',
     'properties.group.id' = '<yourKafkaConsumerGroupId>',
     'format' = 'csv'
-); INSERT INTO Kafka_sink SELECT id, name, age FROM Kafka_source;
+```
+
+);
+
+```
+INSERT INTO Kafka_sink SELECT id, name, age FROM Kafka_source;
 ```
 
 **常见问题**
 
 Q：Flink中的COMMIT OFFSET有什么作用？ A：Flink默认采用**commitOffsetOnCheckpointing**，用户设置的Commit Offset策略不生效。只有开启**checkpoint**后，在每次**checkpoint**成功时，才会**commit**当前分区消费的**offset**至Kafka，以便在作业失败恢复过程中，从上一次**checkpoint**的**commit**位点开始消费，保证计算的Exactly Once。如果将**checkpoint**间隔设置过大，Kafka端可能会查询不到当前消费**offset**。
 
-##### 数据总线DataHub源表
+##### 4.5.1.3 数据总线DataHub源表
 
 本文为您介绍数据总线DataHub源表的DDL定义、WITH参数、类型映射、属性字段和常见问题。
 
@@ -12035,8 +12954,6 @@ Q：Flink中的COMMIT OFFSET有什么作用？ A：Flink默认采用**commitOffs
 
 **DDL定义**
 
-实时计算（流计算）
-
 ```
 create table datahub_source(
   name VARCHAR,
@@ -12050,8 +12967,9 @@ create table datahub_source(
   'subId' = '<yourSubId>',
   'accessId' = '<yourAccessId>',
   'accessKey' = '<yourAccessKey>'
-);
 ```
+
+);
 
 **WITH参数**
 
@@ -12070,8 +12988,6 @@ create table datahub_source(
 | maxFetchSize | 单次读取条数。 | 否 | 默认值为50。 |
 | maxBufferSize | 异步读取的最大缓存数据条数。 | 否 | 默认值为50。 |
 
-实时计算（流计算）
-
 | lengthCheck | 单行字段条数检查策略。 | 否 | NONE（默认值）： 解析出的字段数大于定义字段数时，按从左到右的顺序，取定义字段数量的数据。 解析出的字段数小于定义字段数时，跳过该行数据。 SKIP：解析出的字段数和定义字段数不同时跳过该行数据。 EXCEPTION：解析出的字段数和定义字段数不同时提示异常。 PAD：按从左到右顺序填充。 解析出的字段数大于定义字段数时，按从左到右的顺序，取定义字段数量的数据。 解析出的字段数小于定义字段数时，按从左到右的顺序，在行尾用Null填充缺少的字段。 |
 |---|---|---|---|
 | columnErrorDe bug | 是否打开调试开关。 | 否 | false（默认值）：关闭调试功能。 true：打开调试开关，打印解析异常的日志。 |
@@ -12089,8 +13005,6 @@ DataHub和Flink字段类型对应关系如下，建议使用该对应关系进�
 | TINYINT | TINYINT |
 | SMALLINT | SMALLINT |
 | INTEGER | INTEGER |
-
-实时计算（流计算）
 
 | BIGINT | BIGINT |
 |---|---|
@@ -12117,8 +13031,6 @@ DataHub和Flink字段类型对应关系如下，建议使用该对应关系进�
 
 **代码示例**
 
-实时计算（流计算）
-
 ```
 CREATE TEMPORARY TABLE datahub_input (
   `time` BIGINT,
@@ -12133,7 +13045,12 @@ CREATE TEMPORARY TABLE datahub_input (
   'topic' = '<yourTopicName>',
   'accessid' = '<yourAccessId>',
   'accesskey' = '<yourAccessKey>'
-); CREATE TEMPORARY TABLE test_out (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE test_out (
   `time` BIGINT,
   `sequence`  STRING,
   `shard-id` BIGINT,
@@ -12141,7 +13058,12 @@ CREATE TEMPORARY TABLE datahub_input (
 ) WITH (
   'connector' = 'print',
   'logger' = 'true'
-); INSERT INTO test_out SELECT
+```
+
+);
+
+```
+INSERT INTO test_out SELECT
   `time`,
   `sequence` ,
   `shard-id`,
@@ -12149,7 +13071,7 @@ CREATE TEMPORARY TABLE datahub_input (
 FROM datahub_input;
 ```
 
-##### 全量MaxCompute源表
+##### 4.5.1.4 全量MaxCompute源表
 
 本文为您介绍全量MaxCompute源表DDL定义、WITH参数、类型映射和常见问题。
 
@@ -12169,30 +13091,29 @@ create table odps_source(
    'accessid' = '<yourAccessKeyId>',
    'accesskey' = '<yourAccessKeySecret>',
    'partition' = 'ds=2018****'
-);
 ```
 
-实时计算（流计算） WITH参数需要全部小写。
+);
 
-**说明**
+> **说明：** WITH参数需要全部小写。
 
 **WITH参数**
 
-| 参数 | 说明 |  |  | 是否必填 | 备注 |
+| 参数 | 说明 |   |   | 是否必填 | 备注 |
 |---|---|---|---|---|---|
-| connector | 源表类型 |  |  | 是 | 固定值为 odps 。 |
-| endPoint | MaxCompute服务地址 |  |  | 是 | 请联系阿里云运维工程师获取。 |
-| tunnelEndpoint | MaxCompute Tunnel服务的连接地址 |  |  | 否 | 请联系阿里云运维工程师获取。 |
-| project | MaxCompute项目名称 |  |  | 是 | 无 |
-| tableName | MaxCompute表名 |  |  | 是 | 无 |
-| accessId | AccessKey ID |  |  | 是 | 无 |
-| accessKey | AccessKey Secret |  |  | 是 | 无 |
-| partition | 分区名 |  |  |  | 只存在一级分区的MaxCompute表例如，如果只存在1个分区列 ds ， 则 `partition` = 'ds=20180905' 表示读 ds=20180905 分区的数据。 ，值存在多级分区的MaxCompute表例如，如果存在2个分区列 ds 和 hh ， 则 `partition`='ds=20180905,hh=*' 表示读 ds=20180905 分区的数据。 说明分区过滤时需要声明所有分区的值。例如，上述示例中，只声明 `partition` = 'ds=20180905' ，则不会读取任何分区。 |
-|  |  |  |  | 否 |  |
+| connector | 源表类型 |   |   | 是 | 固定值为 odps 。 |
+| endPoint | MaxCompute服务地址 |   |   | 是 | 请联系阿里云运维工程师获取。 |
+| tunnelEndpoint | MaxCompute Tunnel服务的连接地址 |   |   | 否 | 请联系阿里云运维工程师获取。 |
+| project | MaxCompute项目名称 |   |   | 是 | 无 |
+| tableName | MaxCompute表名 |   |   | 是 | 无 |
+| accessId | AccessKey ID |   |   | 是 | 无 |
+| accessKey | AccessKey Secret |   |   | 是 | 无 |
+| partition | 分区名 |   |   |   | 只存在一级分区的MaxCompute表例如，如果只存在1个分区列 ds ， 则 `partition` = 'ds=20180905' 表示读 ds=20180905 分区的数据。 ，值存在多级分区的MaxCompute表例如，如果存在2个分区列 ds 和 hh ， 则 `partition`='ds=20180905,hh=*' 表示读 ds=20180905 分区的数据。 说明分区过滤时需要声明所有分区的值。例如，上述示例中，只声明 `partition` = 'ds=20180905' ，则不会读取任何分区。 |
+|   |   |   |   | 否 |   |
 
-|  |  |  | `partition` = |  |
+|   |   |   | `partition` = |   |
 |---|---|---|---|---|
-|  |  | 'ds=20180905' |  |  |
+|   |   | 'ds=20180905' |   |   |
 
 **类型映射**
 
@@ -12204,8 +13125,6 @@ create table odps_source(
 | BIGINT | BIGINT |
 | FLOAT | FLOAT |
 | DOUBLE | DOUBLE |
-
-实时计算（流计算）
 
 | BOOLEAN | BOOLEAN |
 |---|---|
@@ -12231,24 +13150,32 @@ CREATE TEMPORARY TABLE odps_source (
    'accessid' = '<yourAccessId>',
    'accesskey' = '<yourAccessPassword>',
    'partition' = 'ds=20180905'
-); CREATE TEMPORARY TABLE blackhole_sink (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE blackhole_sink (
    cid varchar,
    invoke_count BIGINT
 ) with (
    'connector'='blackhole'
-); INSERT INTO blackhole_sink SELECT
+```
+
+);
+
+```
+INSERT INTO blackhole_sink SELECT
    cid,
    count(*) as invoke_count
 FROM odps_source GROUP BY cid;
 ```
 
-##### 增量MaxCompute源表
+##### 4.5.1.5 增量MaxCompute源表
 
 本文为您介绍增量MaxCompute源表DDL定义、WITH参数、类型映射和常见问题。
 
 **DDL定义**
-
-实时计算（流计算）
 
 ```
 create table odps_source(
@@ -12264,12 +13191,13 @@ create table odps_source(
     'accessid' = '<yourAccessKeyId>',
     'accesskey' = '<yourAccessKeySecret>',
     'startpartition' = 'ds=2018****'
-);
 ```
+
+);
 
 **说明**
 
-WITH参数需要全部小写。
+WITH参数需要全部小写。 增量MaxCompute源表不支持作为维表使用。 增量MaxCompute源表只支持MaxCompute分区表，不支持非分区表。
 
 **WITH参数**
 
@@ -12282,8 +13210,6 @@ WITH参数需要全部小写。
 | tableName | 表名 | 是 | 无 |
 | accessId | AccessKey ID | 是 | 无 |
 | accessKey | AccessKey Secret | 是 | 无 |
-
-实时计算（流计算）
 
 | startPartition | 指定读取的起始分区。系统加载分区列表时，会把每个分区列表的所有分区和startPartition按照字母顺序进行比较，加载满足条件的分区的数据。 此外，增量MaxCompute源表可以持续监听增量MaxCompute分区表。读完已有的分区后，任务不会退出，且持续监听并读入新分区。 说明增量MaxCompute源表中必须存在一级分区，二级分区可选。 如果指定二级分区，必须写在一级分区的后面。 如果startPartition指定的分区不存在，系统会从下一个分区开始读取数据。 | 是 | 例如，指定startPartition 是ds=20191201，表示加载增量 MaxCompute表里所有满足ds >= 20191201的分区数据。 如果一个增量MaxCompute分区表， 有一级分区ds和二级分区type两个分区列，假设表里有以下5个分区： ds=20191201,type=a ds=20191201,type=b ds=20191202,type=a ds=20191202,type=b ds=20191202,type=c 不同startPartition，满足分区的列表如下： ds=20191202 ds=20191202,type=a ds=20191202,type=b ds=20191202,type=c ds=20191201,type=c ds=20191202,type=a ds=20191202,type=b ds=20191202,type=c |
 |---|---|---|---|
@@ -12304,8 +13230,6 @@ WITH参数需要全部小写。
 | DECIMAL | DECIMAL |
 | BINARY | VARBINARY |
 | STRING | VARCHAR |
-
-实时计算（流计算）
 
 **重要**
 
@@ -12328,30 +13252,36 @@ CREATE TEMPORARY TABLE odps_source (
     'accessid' = '<yourAccessKeyId>',
     'accesskey' = '<yourAccessKeySecret>',
     'startpartition' = 'ds=2018****'
-); CREATE TEMPORARY TABLE blackhole_sink (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE blackhole_sink (
     cid VARCHAR,
     rt DOUBLE
 ) WITH (
     'connector'='blackhole'
-); INSERT INTO blackhole_sink SELECT
+```
+
+);
+
+```
+INSERT INTO blackhole_sink SELECT
     cid, rt FROM odps_source;
 ```
 
-##### 消息队列RocketMQ版源表
+##### 4.5.1.6 消息队列RocketMQ版源表
 
 本文为您介绍消息队列RocketMQ版源表DDL定义、WITH参数、类型映射和代码示例。
 
-**说明**
-
-RocketMQ Connector可以作为Stream作业和Batch作业的源表使用。
+> **说明：** RocketMQ Connector可以作为Stream作业和Batch作业的源表使用。
 
 **什么是消息队列RocketMQ版**
 
 消息队列 RocketMQ版是阿里云基于Apache RocketMQ构建的低延迟、高并发、高可用和高可靠的分布式消息中间件。消息队列RocketMQ版既可为分布式应用系统提供异步解耦和削峰填谷的能力，同时也具备互联网应用所需的海量消息堆积、高吞吐和可靠重试等特性。
 
 **DDL定义**
-
-实时计算（流计算）
 
 ```
 create table mq_source(
@@ -12368,14 +13298,11 @@ create table mq_source(
    'startMessageOffset'='1000',
    'consumerGroup'='<yourConsumerGroup>',
    'fieldDelimiter'='|'
-);
 ```
 
-MQ是非结构化存储格式的消息中间件，对于数据的Schema不提供强制定义，完全由业务层指
+);
 
-**说明**
-
-定。Flink仅支持CSV和二进制格式的MQ消息。
+> **说明：** MQ是非结构化存储格式的消息中间件，对于数据的Schema不提供强制定义，完全由业务层指定。Flink仅支持CSV和二进制格式的MQ消息。
 
 **WITH参数**
 
@@ -12394,8 +13321,6 @@ MQ是非结构化存储格式的消息中间件，对于数据的Schema不提供
 | tag | 订阅的标签 | 否 | 无 |
 | lineDelimiter | 解析Block时，行分隔符 | 否 | 默认值为 \n 。 |
 
-实时计算（流计算）
-
 | fieldDelimiter | 字段分隔符 | 否 | 默认值为 \u0001 。表示在只读模式下以 \u0001 （ \u0001 在只读模式不可见）作为分隔符，在编辑模式下以 ^A 作为分隔符。 |
 |---|---|---|---|
 | encoding | 编码格式 | 否 | 默认值为 utf-8 。 |
@@ -12403,9 +13328,9 @@ MQ是非结构化存储格式的消息中间件，对于数据的Schema不提供
 | columnErrorDebug | 是否打开调试开关。 | 否 | 默认值为FALSE。如果设置为TRUE，则打印解析异常的Log。 |
 | instanceID | 实例ID | 否 | 根据MQ实例是否有独立命名空间，执行如下操作： 是，必须配置instanceID参数。 否，不能配置instanceID参数。 |
 
-|  | \u0001 |  |
+|   | \u0001 |   |
 |---|---|---|
-| \u0001 |  |  |
+| \u0001 |   |   |
 
 **类型映射**
 
@@ -12421,9 +13346,9 @@ CSV格式假设您的1条CSV格式消息记录如下。
 1,name,male 2,name,female
 ```
 
-**说明**
+> **说明：** 1条MQ消息可以包括0条到多条数据记录，记录之间使用 \n 分隔。
 
-1条MQ消息可以包括0条到多条数据记录，记录之间使用 \n 分隔。 Flink作业中，声明MQ数据源表的DDL如下。 实时计算（流计算）
+Flink作业中，声明MQ数据源表的DDL如下。
 
 ```
 create table mq_source(
@@ -12440,10 +13365,9 @@ create table mq_source(
    'startMessageOffset'='1000',
    'consumerGroup'='<yourConsumerGroup>',
    'fieldDelimiter'='|'
-);
 ```
 
-二进制格式
+); 二进制格式
 
 ```
 create table mq_source (
@@ -12456,10 +13380,11 @@ create table mq_source (
    'accessKey'='<yourAccessSecret>',
    'topic'='<yourTopicName>',
    'consumerGroup'='<yourConsumerGroup>'
-);
 ```
 
-##### 交互式分析Hologres源表
+);
+
+##### 4.5.1.7 交互式分析Hologres源表
 
 本文为您介绍交互式分析Hologres源表DDL定义、WITH参数、代码示例和类型映射。
 
@@ -12483,17 +13408,7 @@ create table hologres_source(
   'endpoint'='<yourEndpoint>',
 ```
 
-'field_delimiter'='|' --该参数可选。
-
-```
-);
-```
-
-实时计算（流计算）
-
-**说明**
-
-Flink不支持源表中定义计算列。 Flink以批模式读取Hologres源表数据，即只扫描一次Hologres全表，扫描结束，消费结束，新到 Hologres源表的数据不会被读取。
+'field_delimiter'='|' --该参数可选。 ); Flink不支持源表中定义计算列。 Flink以批模式读取Hologres源表数据，即只扫描一次Hologres全表，扫描结束，消费结束，新到 Hologres源表的数据不会被读取。
 
 **WITH参数**
 
@@ -12509,8 +13424,6 @@ Flink不支持源表中定义计算列。 Flink以批模式读取Hologres源表�
 
 **代码示例**
 
-实时计算（流计算）
-
 ```
 CREATE TEMPORARY TABLE hologres_source (
   name varchar,
@@ -12525,16 +13438,21 @@ CREATE TEMPORARY TABLE hologres_source (
   'endpoint'='<yourEndpoint>',
 ```
 
-'field_delimiter'='|' --该参数可选。
+'field_delimiter'='|' --该参数可选。 );
 
 ```
-); CREATE TEMPORARY TABLE blackhole_sink(
+CREATE TEMPORARY TABLE blackhole_sink(
   name varchar,
   age BIGINT,
   birthday BIGINT
 ) with (
   'connector'='blackhole'
-); INSERT INTO blackhole_sink SELECT
+```
+
+);
+
+```
+INSERT INTO blackhole_sink SELECT
    name, age, birthday
 from hologres_source;
 ```
@@ -12559,13 +13477,11 @@ from hologres_source;
 | TEXT[] | ARRAY |
 | NUMERIC | DECIMAL |
 
-实时计算（流计算）
-
 | DATE | DATE |
 |---|---|
 | TIMESTAMP WITH TIMEZONE | TIMESTAMP |
 
-##### 全量Elasticsearch源表
+##### 4.5.1.8 全量Elasticsearch源表
 
 本文为您介绍全量Elasticsearch（ES）源表DDL定义、WITH参数、类型映射和代码示例。
 
@@ -12587,8 +13503,9 @@ from hologres_source;
    'accessKey' = '<yourAccessSecret>',
    'indexName' = '<yourIndexName>',
    'typeNames' = '<yourTypeName>'
-);
 ```
+
+);
 
 **WITH参数**
 
@@ -12602,8 +13519,6 @@ from hologres_source;
 | typeNames | Type名称 | 否 | 默认值为 doc 。 _ 说明 Elasticsearch 7.0以上版本不建议设置该参数。 |
 | batchSize | 每个scroll请求从 Elasticsearch集群获取的最大文档数 | 否 | 默认值为2000。 |
 | keepScrollAliveSec s | scroll上下文保留的最长时间 | 否 | 单位为秒，默认值为3600。 |
-
-实时计算（流计算）
 
 **类型映射**
 
@@ -12623,34 +13538,38 @@ CREATE TEMPORARY TABLE elasticsearch_source (
    'accessKey' = '<yourAccessSecret>',
    'indexName' = '<yourIndexName>',
    'typeNames' = '<yourTypeName>'
-); CREATE TEMPORARY TABLE blackhole_sink (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE blackhole_sink (
    name STRING,
    location STRING,
    `value` FLOAT
 ) WITH (
    'connector' ='blackhole'
-); INSERT INTO blackhole_sink SELECT name, location, `value` FROM elasticsearch_source;
 ```
 
-##### Postgres的CDC源表（公测中）
+);
 
-本文为您介绍Postgres的CDC（Change Data Capture）源表DDL定义、WITH参数、类型映射和代码示例。 Postgres的CDC源表正处于公测中，如果您对作业稳定性要求较高时，建议不要使用Postgres
+```
+INSERT INTO blackhole_sink SELECT name, location, `value` FROM elasticsearch_source;
+```
 
-**重要**
+##### 4.5.1.9 Postgres的CDC源表（公测中）
 
-的CDC源表。
+本文为您介绍Postgres的CDC（Change Data Capture）源表DDL定义、WITH参数、类型映射和代码示例。
+
+> **重要：** Postgres的CDC源表正处于公测中，如果您对作业稳定性要求较高时，建议不要使用Postgres 的CDC源表。
 
 **什么是Postgres的CDC源表**
 
-Postgres的CDC源表，即Postgres的流式源表，用于依次读取PostgreSQL数据库全量快照数据和变更数据，保证不多读一条也不少读一条数据。即使发生故障，也能采用Exactly Once方式处理。 如果您使用的是开源的PostgreSQL数据库，Postgres CDC connector支持读取的Postgres版
+Postgres的CDC源表，即Postgres的流式源表，用于依次读取PostgreSQL数据库全量快照数据和变更数据，保证不多读一条也不少读一条数据。即使发生故障，也能采用Exactly Once方式处理。
 
-**说明**
-
-本为9.6及以上版本。
+> **说明：** 如果您使用的是开源的PostgreSQL数据库，Postgres CDC connector支持读取的Postgres版本为9.6及以上版本。
 
 **DDL定义**
-
-实时计算（流计算）
 
 ```
 CREATE TABLE postgrescdc_source (
@@ -12668,8 +13587,9 @@ CREATE TABLE postgrescdc_source (
   'database-name' = '<yourDatabaseName>',
   'schema-name' = '<yourSchemaName>',
   'table-name' = '<yourTableName>'
-);
 ```
+
+);
 
 **WITH参数**
 
@@ -12684,13 +13604,11 @@ CREATE TABLE postgrescdc_source (
 | table- name | Postgres表名 | 是 | STRING | 表名支持正则表达式去读取多个表的数据。 |
 | port | Postgres数据库服务的端口号 | 否 | INTEGER | 默认值为5432。 |
 
-实时计算（流计算）
-
-| decoding .plugin.n ame | Postgres Logical Decoding插件名称 |  | 否 | STRING | 根据Postgres服务上安装的插件确定。支持的插件列表如下： decoderbufs（默认值） wal2json wal2json rds _ wal2json streaming _ wal2json rds streaming _ _ pgoutput 说明如果您使用的是阿里云RDS PostgreSQL，你需要开启逻辑解码（wal2json） 功能 |  |  |
+| decoding .plugin.n ame | Postgres Logical Decoding插件名称 |   | 否 | STRING | 根据Postgres服务上安装的插件确定。支持的插件列表如下： decoderbufs（默认值） wal2json wal2json rds _ wal2json streaming _ wal2json rds streaming _ _ pgoutput 说明如果您使用的是阿里云RDS PostgreSQL，你需要开启逻辑解码（wal2json） 功能 |   |   |
 |---|---|---|---|---|---|---|---|
-| debeziu m.* | Debezium属性参数 |  | 否 | STRING | 更细粒度控制Debezium客户端的行为。例如 'debezium.snapshot.mode' = 'never' ， 详情请参见配置属性。 说明建议每个表都设置 debezium.slot.name 参数，以避免出现 PSQLException: ERROR: replication slot "debezium" is active for PID 974 报错。 |  |  |
-|  |  |  |  |  |  | slot "debezium" is active for PID |  |
-|  |  |  |  |  |  | 974 |  |
+| debeziu m.* | Debezium属性参数 |   | 否 | STRING | 更细粒度控制Debezium客户端的行为。例如 'debezium.snapshot.mode' = 'never' ， 详情请参见配置属性。 说明建议每个表都设置 debezium.slot.name 参数，以避免出现 PSQLException: ERROR: replication slot "debezium" is active for PID 974 报错。 |   |   |
+|   |   |   |   |   |   | slot "debezium" is active for PID |   |
+|   |   |   |   |   |   | 974 |   |
 
 **类型映射**
 
@@ -12699,53 +13617,51 @@ Postgres CDC和Flink字段类型对应关系如下。
 | Postgres CDC字段类型 | Flink字段类型 |
 |---|---|
 | SMALLINT | SMALLINT |
-| INT2 |  |
-| SMALLSERIAL |  |
-| SERIAL2 |  |
+| INT2 |   |
+| SMALLSERIAL |   |
+| SERIAL2 |   |
 | INTEGER | INT |
-| SERIAL |  |
+| SERIAL |   |
 | BIGINT | BIGINT |
-| BIGSERIAL |  |
+| BIGSERIAL |   |
 | BIGINT | BIGINT |
 | REAL | FLOAT |
-| FLOAT4 |  |
+| FLOAT4 |   |
 | FLOAT8 | DOUBLE |
-| DOUBLE PRECISION |  |
+| DOUBLE PRECISION |   |
 | NUMERIC(p, s) | DECIMAL(p, s) |
 
 | 实时计算（流计算） | Flink企业版开发指南·Flink SQL参考 |
 |---|---|
-| DECIMAL(p, s) |  |
+| DECIMAL(p, s) |   |
 | BOOLEAN | BOOLEAN |
 | DATE | DATE |
 | TIME [(p)] [WITHOUT TIMEZONE] | TIME [(p)] [WITHOUT TIMEZONE] |
 | TIMESTAMP [(p)] [WITHOUT TIMEZONE] | TIMESTAMP [(p)] [WITHOUT TIMEZONE] |
 | CHAR(n) | STRING |
-| CHARACTER(n) |  |
-| VARCHAR(n) |  |
-| CHARACTER VARYING(n) |  |
-| TEXT |  |
+| CHARACTER(n) |   |
+| VARCHAR(n) |   |
+| CHARACTER VARYING(n) |   |
+| TEXT |   |
 | BYTEA | BYTES |
 
-##### MySQL的CDC源表（公测中）
+##### 4.5.1.10 MySQL的CDC源表（公测中）
 
 本文为您介绍MySQL的CDC（Change Data Capture）源表DDL定义、WITH参数、类型映射和代码示例。
 
 **重要**
 
-MySQL的CDC源表正处于公测中，如果您对作业稳定性要求较高时，建议不要使用MySQL的CDC源表。 本文仅适用于VVP 2.3.0及以上版本。 仅支持单并发消费CDC-MySQL数据。 在全量读取MYSQL CDC源表时，Checkpoint不生效，因此读取全量MYSQL CDC源表时，不建议开启自动调优。 MySQL CDC 源表目前不支持定义Watermark。如果您需要进行窗口聚合，您可以采用非窗口聚合
+MySQL的CDC源表正处于公测中，如果您对作业稳定性要求较高时，建议不要使用MySQL的CDC源表。 本文仅适用于VVP 2.3.0及以上版本。 仅支持单并发消费CDC-MySQL数据。 在全量读取MYSQL CDC源表时，Checkpoint不生效，因此读取全量MYSQL CDC源表时，不建议开启自动调优。 MySQL CDC 源表目前不支持定义Watermark。如果您需要进行窗口聚合，您可以采用非窗口聚合的方式，详情请参见不支持定义Watermark，那如何进行窗口聚合？
 
 **什么是MySQL的CDC源表**
 
-MySQL的CDC源表，即MySQL的流式源表，支持对MySQL数据库的全量和增量读取，并保证Exactly Once， 不多读一条也不少读一条数据。其工作机制是，在启动扫描全表前，先加一个全局读锁（FLUSH TABLES WITH READ LOCK），然后获取此时的Binlog位点以及表的schema，紧接着释放全局读锁。随后开始扫描全表，当全表数据读取完后，会从之前获取的Binlog位点获取增量的变更记录。在Flink作业运行期间会周期性执行 checkpoint，记录下Binlog位点，当作业发生Failover，便会从之前记录的Binlog位点继续处理，从而实现 Exactly Once语义。 MySQL的CDC源表需要一个有特定权限（包括SELECT、RELOAD、SHOW DATABASES、
+MySQL的CDC源表，即MySQL的流式源表，支持对MySQL数据库的全量和增量读取，并保证Exactly Once， 不多读一条也不少读一条数据。其工作机制是，在启动扫描全表前，先加一个全局读锁（FLUSH TABLES WITH READ LOCK），然后获取此时的Binlog位点以及表的schema，紧接着释放全局读锁。随后开始扫描全表，当全表数据读取完后，会从之前获取的Binlog位点获取增量的变更记录。在Flink作业运行期间会周期性执行 checkpoint，记录下Binlog位点，当作业发生Failover，便会从之前记录的Binlog位点继续处理，从而实现 Exactly Once语义。
 
-**说明**
-
-REPLICATION SLAVE和REPLICATION CLIENT）的MySQL用户，才能读取全量和增量数据。MySQL CDC Connector支持读取的MySQL版本为5.7和8.0。
+> **说明：** MySQL的CDC源表需要一个有特定权限（包括SELECT、RELOAD、SHOW DATABASES、 REPLICATION SLAVE和REPLICATION CLIENT）的MySQL用户，才能读取全量和增量数据。MySQL CDC Connector支持读取的MySQL版本为5.7和8.0。
 
 **注意事项**
 
-建议对MySQL用户授予RELOAD权限如果您未对MySQL用户授予RELOAD权限，则全局读锁会降级为表级读锁，而使用表级读锁需要等到全表扫描完成，才能释放锁，所以持锁时间会较长，而读锁会阻塞往表内写入数据，影响线上业务。 全局读锁（FLUSH TABLES WITH READ LOCK）的影响实时计算（流计算） 全局读锁阶段会去获取Binlog位点以及表的Schema，因此其持锁耗时与表的数量成正比，数据库持锁耗时可能达到秒级，例如上千张表大概两三秒。而读锁是会阻塞写入操作，因此仍可能对线上业务造成影响。如果您希望跳过锁阶段，且能容忍非Exactly Once语义，则可以通过增加 `'debezium.snapshot.locking.mode' =` `'none'` 属性来显式跳过锁阶段。 每个作业需显式配置不同的SERVER ID 每个同步数据库数据的客户端，都会有一个唯一ID，即SERVER ID。MySQL SERVER会根据该ID来维护网络连接以及Binlog位点。因此如果有大量不同的SERVER ID的客户端一起连接MySQL SERVER，可能导致 MySQL SERVER的CPU陡增，影响线上业务稳定性。此外，多个作业共享相同的SERVER ID，会导致Binlog 位点错乱，多读或少读数据。因此建议您通过动态Hints，在每个CDC作业都配置上不同的SERVER ID，例如 SELECT * FROM source_table /*+ OPTIONS('server-id'='123456') */ ; 。动态Hints详情请参见动态Hints。 全表扫描阶段无法执行checkpoint 在扫描全表数据时，没有可用于恢复的位点，所以无法在全表扫描阶段去执行checkpoint。为了不执行 checkpoint，MySQL的CDC源表会让执行中的checkpoint一直等待，甚至checkpoint超时（如果表超级大，扫描耗时非常长时）。超时的checkpoint会被认为是failed checkpoint，Flink默认配置下，会触发Flink 的Failover。因此建议当表超大时，为了避免因为checkpoint超时而导致作业失败，可以配置如下作业参数：
+建议对MySQL用户授予RELOAD权限如果您未对MySQL用户授予RELOAD权限，则全局读锁会降级为表级读锁，而使用表级读锁需要等到全表扫描完成，才能释放锁，所以持锁时间会较长，而读锁会阻塞往表内写入数据，影响线上业务。 全局读锁（FLUSH TABLES WITH READ LOCK）的影响全局读锁阶段会去获取Binlog位点以及表的Schema，因此其持锁耗时与表的数量成正比，数据库持锁耗时可能达到秒级，例如上千张表大概两三秒。而读锁是会阻塞写入操作，因此仍可能对线上业务造成影响。如果您希望跳过锁阶段，且能容忍非Exactly Once语义，则可以通过增加 `'debezium.snapshot.locking.mode' =` `'none'` 属性来显式跳过锁阶段。 每个作业需显式配置不同的SERVER ID 每个同步数据库数据的客户端，都会有一个唯一ID，即SERVER ID。MySQL SERVER会根据该ID来维护网络连接以及Binlog位点。因此如果有大量不同的SERVER ID的客户端一起连接MySQL SERVER，可能导致 MySQL SERVER的CPU陡增，影响线上业务稳定性。此外，多个作业共享相同的SERVER ID，会导致Binlog 位点错乱，多读或少读数据。因此建议您通过动态Hints，在每个CDC作业都配置上不同的SERVER ID，例如 SELECT * FROM source_table /*+ OPTIONS('server-id'='123456') */ ; 。动态Hints详情请参见动态Hints。 全表扫描阶段无法执行checkpoint 在扫描全表数据时，没有可用于恢复的位点，所以无法在全表扫描阶段去执行checkpoint。为了不执行 checkpoint，MySQL的CDC源表会让执行中的checkpoint一直等待，甚至checkpoint超时（如果表超级大，扫描耗时非常长时）。超时的checkpoint会被认为是failed checkpoint，Flink默认配置下，会触发Flink 的Failover。因此建议当表超大时，为了避免因为checkpoint超时而导致作业失败，可以配置如下作业参数：
 
 ```
 execution.checkpointing.interval: 10min # checkpoint间隔时间 execution.checkpointing.tolerable-failed-checkpoints: 100 #checkpoint失败容忍次数 restart-strategy: fixed-delay #重试策略 restart-strategy.fixed-delay.attempts: 2147483647 #重试次数
@@ -12769,8 +13685,9 @@ CREATE TABLE mysqlcdc_source (
   'password' = '<yourPassword>',
   'database-name' = '<yourDatabaseName>',
   'table-name' = '<yourTableName>'
-);
 ```
+
+);
 
 **WITH参数**
 
@@ -12780,8 +13697,6 @@ CREATE TABLE mysqlcdc_source (
 | hostnam e | MySQL数据库的 IP地址或者 Hostname | 是 | STRING | 无 |
 | usernam e | MySQL数据库服务的用户名 | 是 | STRING | 无 |
 | password | MySQL数据库服务的密码 | 是 | STRING | 无 |
-
-实时计算（流计算）
 
 | database -name | MySQL数据库名称 | 是 | STRING | 数据库名称支持正则表达式以读取多个数据库的数据。 |
 |---|---|---|---|---|
@@ -12801,48 +13716,48 @@ MySQL的CDC和Flink字段类型对应关系如下。
 |---|---|
 | TINYINT | TINYINT |
 | SMALLINT | SMALLINT |
-| TINYINT UNSIGNED |  |
+| TINYINT UNSIGNED |   |
 | INT | INT |
-| MEDIUMINT |  |
-| SMALLINT UNSIGNED |  |
+| MEDIUMINT |   |
+| SMALLINT UNSIGNED |   |
 | BIGINT | BIGINT |
-| INT UNSIGNED |  |
+| INT UNSIGNED |   |
 | BIGINT UNSIGNED | DECIMAL(20, 0) |
 | BIGINT | BIGINT |
 | FLOAT | FLOAT |
 
-实时计算（流计算）
-
 | DOUBLE | DOUBLE |
 |---|---|
-| DOUBLE PRECISION |  |
+| DOUBLE PRECISION |   |
 | NUMERIC(p, s) | DECIMAL(p, s) |
-| DECIMAL(p, s) |  |
+| DECIMAL(p, s) |   |
 | BOOLEAN | BOOLEAN |
-| TINYINT(1) |  |
+| TINYINT(1) |   |
 | DATE | DATE |
 | TIME [(p)] | TIME [(p)] [WITHOUT TIMEZONE] |
 | DATETIME [(p)] | TIMESTAMP [(p)] [WITHOUT TIMEZONE] |
 | TIMESTAMP [(p)] | TIMESTAMP [(p)] |
-|  | TIMESTAMP [(p)] WITH LOCAL TIME ZONE |
+|   | TIMESTAMP [(p)] WITH LOCAL TIME ZONE |
 | CHAR(n) | STRING |
-| VARCHAR(n) |  |
-| TEXT |  |
+| VARCHAR(n) |   |
+| TEXT |   |
 | BINARY | BYTES |
-| VARBINARY |  |
-| BLOB |  |
+| VARBINARY |   |
+| BLOB |   |
 
 **常见问题**
 
-如果您需要在MySQL CDC源表上进行窗口聚合，可以考虑采用非窗口聚合的方式，即将时间字段转换成窗口值，然后根据窗口值进行GROUP BY聚合。例如，统计每个店铺每分钟的订单数和销量，代码为 `SELECT`
+不支持定义Watermark，那如何进行窗口聚合？ 如果您需要在MySQL CDC源表上进行窗口聚合，可以考虑采用非窗口聚合的方式，即将时间字段转换成窗口值，然后根据窗口值进行GROUP BY聚合。例如，统计每个店铺每分钟的订单数和销量，代码为 `SELECT`
 
 ```
 shop_id, DATE_FORMAT(order_ts, 'yyyy-MM-dd HH:mm'), COUNT(*), SUM(price) FROM order_mysql_cdc GROUP BY shop_id, DATE_FORMAT(order_ts, 'yyyy-MM-dd HH:mm') 。
 ```
 
-如何跳过Snapshot阶段，只从变更数据开始读取？ 可以通过WITH参数**debezium.snapshot.mode**来控制，您可以设置为： never：在启动时，不读取数据库的快照，而是直接从变更的最开始位置读取。但需要注意MySQL的变更旧数据可能会被自动清理，因此不能保证变更数据中包含了全量的数据，读取的数据不完整。 schema_only：如果你不需要保证数据的一致性，只关心作业启动后数据库的新增变更，则可以设置为 schema_only，仅快照schema，不快照数据，从变更的最新数据开始读取。 如何读取一个分库分表的MySQL数据库？ 如果MySQL是一个分库分表的数据库，分成了user_00、user_02和user_99等多个表，且所有表的schema 一致。则可以通过table-name选项，指定一个正则表达式来匹配读取多张表，例如设置table-name 为**user_.***，监控所有**user_**前缀的表。database-name选项也支持该功能，但需要所有的表schema一致。 全表读取阶段效率慢、存在反压，应该如何解决？ 可能是下游节点处理太慢导致反压了。因此您需要先排查下游节点是否存在反压。如果存在，则需要先解决下游节点的反压问题。您可以通过以下方式处理： 增加并发度。 开启minibatch等聚合优化参数（下游聚合节点）。 实时计算（流计算）
+如何跳过Snapshot阶段，只从变更数据开始读取？ 可以通过WITH参数**debezium.snapshot.mode**来控制，您可以设置为： never：在启动时，不读取数据库的快照，而是直接从变更的最开始位置读取。但需要注意MySQL的变更旧数据可能会被自动清理，因此不能保证变更数据中包含了全量的数据，读取的数据不完整。 schema_only：如果你不需要保证数据的一致性，只关心作业启动后数据库的新增变更，则可以设置为 schema_only，仅快照schema，不快照数据，从变更的最新数据开始读取。 如何读取一个分库分表的MySQL数据库？ 如果MySQL是一个分库分表的数据库，分成了user_00、user_02和user_99等多个表，且所有表的schema 一致。则可以通过table-name选项，指定一个正则表达式来匹配读取多张表，例如设置table-name 为user_.*，监控所有**user_**前缀的表。database-name选项也支持该功能，但需要所有的表schema一致。 全表读取阶段效率慢、存在反压，应该如何解决？ 可能是下游节点处理太慢导致反压了。因此您需要先排查下游节点是否存在反压。如果存在，则需要先解决下游节点的反压问题。您可以通过以下方式处理： 增加并发度。 开启minibatch等聚合优化参数（下游聚合节点）。
 
-##### Upsert Kafka源表
+##### 4.5.1.11 Upsert Kafka源表
+
+本文为您介绍Upsert Kafka源表的DDL定义、WITH参数和示例。
 
 **什么是Upsert Kafka**
 
@@ -12872,12 +13787,11 @@ CREATE TABLE pageviews_per_region (
   'properties.bootstrap.servers' = '<yourServers>',
   'key.format' = 'avro',
   'value.format' = 'avro'
-);
 ```
 
-Upsert Kafka必须声明主键。
+);
 
-**说明**
+> **说明：** Upsert Kafka必须声明主键。
 
 **WITH参数**
 
@@ -12888,25 +13802,23 @@ Upsert Kafka必须声明主键。
 | properties.boots trap.servers | Kafka Broker地址 | 是 | String | 格式为 host:port,host:port,host:port ， 以英文逗号（,）分割。 |
 | key.format | Upsert Kafka消息中Key部分反序列化的格式 | 是 | String | 支持的格式如下： csv json avro |
 
-实时计算（流计算）
-
-| value.format |  | Upsert Kafka消息中Value部分反序列化的格式 | 是 |  | String | 支持的格式如下： csv json avro |  |  |  |  |
+| value.format |   | Upsert Kafka消息中Value部分反序列化的格式 | 是 |   | String | 支持的格式如下： csv json avro |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|
-| value.fields- include |  | 指定出现在Value 中的字段 | 是 |  | String | 取值如下： ALL：默认值，Schema中所有字段，包括主键字段。 EXCEPT KEY：Schema中所有字段，不包括主键 _ 字段。 |  |  |  |  |
-| key.fields-prefix |  | 为主键的所有字段定义一个自定义前缀，避免Key与 Value字段的名称冲突。 | 否 |  | String | 默认情况下，前缀为空。如果定义了前缀，则表的 Schema和key.fields都将使用前缀名称。 当构造Kafka Key对应格式的数据类型时，主键名中的前缀将被删除，并采用名字中非前缀部分作为最终的名字。 说明 key.fields-prefix参数生效，要求value.fields-include必须设置为EXCEPT KEY。 _ |  |  |  |  |
-| properties.* |  |  |  |  |  | 后缀名必须匹配定义在Apache Kafka文档中的参数名。Flink会自动移除properties.前缀，并将转换后的参数名及值传入Kafka客户端。例如，您可以通过设置 'properties.allow.auto.create.topics' = 'false' 来禁止自动创建Topic。 说明参数 key.deserializer 和 value.deseri alizer 是不允许通过该方式指定参数的，因为 Flink会重写这些参数的值。 |  |  |  |  |
-|  |  |  |  |  |  |  |  | 'properties.allow.auto.create.topics' |  |  |
-|  |  |  |  |  |  | = 'false' |  |  |  |  |
-|  |  | 指定Kafka参数 | 否 |  | String |  | 说明参数 key.deserializer 和 value.deseri alizer 是不允许通过该方式指定参数的，因为 Flink会重写这些参数的值。 |  |  |  |
-|  |  |  |  |  |  |  |  |  | key.deserializer |  |
-|  |  |  |  |  |  |  | alizer |  |  |  |
+| value.fields- include |   | 指定出现在Value 中的字段 | 是 |   | String | 取值如下： ALL：默认值，Schema中所有字段，包括主键字段。 EXCEPT KEY：Schema中所有字段，不包括主键 _ 字段。 |   |   |   |   |
+| key.fields-prefix |   | 为主键的所有字段定义一个自定义前缀，避免Key与 Value字段的名称冲突。 | 否 |   | String | 默认情况下，前缀为空。如果定义了前缀，则表的 Schema和key.fields都将使用前缀名称。 当构造Kafka Key对应格式的数据类型时，主键名中的前缀将被删除，并采用名字中非前缀部分作为最终的名字。 说明 key.fields-prefix参数生效，要求value.fields-include必须设置为EXCEPT KEY。 _ |   |   |   |   |
+| properties.* |   |   |   |   |   | 后缀名必须匹配定义在Apache Kafka文档中的参数名。Flink会自动移除properties.前缀，并将转换后的参数名及值传入Kafka客户端。例如，您可以通过设置 'properties.allow.auto.create.topics' = 'false' 来禁止自动创建Topic。 说明参数 key.deserializer 和 value.deseri alizer 是不允许通过该方式指定参数的，因为 Flink会重写这些参数的值。 |   |   |   |   |
+|   |   |   |   |   |   |   |   | 'properties.allow.auto.create.topics' |   |   |
+|   |   |   |   |   |   | = 'false' |   |   |   |   |
+|   |   | 指定Kafka参数 | 否 |   | String |   | 说明参数 key.deserializer 和 value.deseri alizer 是不允许通过该方式指定参数的，因为 Flink会重写这些参数的值。 |   |   |   |
+|   |   |   |   |   |   |   |   |   | key.deserializer |   |
+|   |   |   |   |   |   |   | alizer |   |   |   |
 
-| value.deseri |  |  |
+| value.deseri |   |   |
 |---|---|---|
 
 **示例**
 
-实时计算（流计算） `--`创建`upsert-kafka`类型源表。
+`--`创建`upsert-kafka`类型源表。
 
 ```
 CREATE TABLE pageviews_per_region (
@@ -12920,10 +13832,9 @@ CREATE TABLE pageviews_per_region (
   'properties.bootstrap.servers' = '<yourServers>',
   'key.format' = 'avro',
   'value.format' = 'avro'
-);
 ```
 
-`--`创建`Kafka`类型结果表。
+); `--`创建`Kafka`类型结果表。
 
 ```
 CREATE TABLE pageviews_per_region_db (
@@ -12936,10 +13847,15 @@ CREATE TABLE pageviews_per_region_db (
   'topic' = '<yourTopicName>',
   'properties.bootstrap.servers' = '<yourKafkaBrokers>',
   'format' = 'csv'
-); INSERT INTO pageviews_per_region_db SELECT user_region, pv, uv FROM pageviews_per_region;
 ```
 
-##### 全量数据湖Iceberg源表
+); `--`将`upsert-kafka`源表数据写入`Kafka`结果表。
+
+```
+INSERT INTO pageviews_per_region_db SELECT user_region, pv, uv FROM pageviews_per_region;
+```
+
+##### 4.5.1.12 全量数据湖Iceberg源表
 
 本文为您介绍全量数据湖Iceberg源表的DDL定义、WITH参数、类型映射和代码示例。
 
@@ -12947,13 +13863,9 @@ CREATE TABLE pageviews_per_region_db (
 
 Apache Iceberg是一种开放的数据湖表格格式。您可以借助Apache Iceberg快速地在HDFS或者云端OSS上构建自己的数据湖存储服务，并借助开源大数据生态的Flink、Spark、Hive、Presto等计算引擎来实现数据湖的分析。目前Apache Iceberg提供以下核心能力： 基于HDFS或者对象存储构建低成本的轻量级数据湖存储服务。 完善的ACID语义。 支持历史版本回溯。 支持高效的数据过滤。 支持Schema Evolution。 支持Partition Evolution。 您可以借助Flink高效的容错能力和流处理能力，把海量的日志行为数据实时导入到Apache Iceberg数据湖内， 再借助Flink或者其他分析引擎来实现数据价值的提取。
 
-**说明**
-
-Iceberg Connector既可以作为Flink Stream作业的结果表，也可以作为Flink批作业的源表和结果表。本文主要介绍Iceberg表作为Flink批作业的源表。
+> **说明：** Iceberg Connector既可以作为Flink Stream作业的结果表，也可以作为Flink批作业的源表和结果表。本文主要介绍Iceberg表作为Flink批作业的源表。
 
 **DDL定义**
-
-实时计算（流计算）
 
 ```
 CREATE TABLE dlf_iceberg (
@@ -12973,31 +13885,30 @@ CREATE TABLE dlf_iceberg (
   'dlf.catalog-id' = '<yourCatalogId>',
   'dlf.endpoint' = '<yourDLFEndpoint>',
   'dlf.region-id' = '<yourDLFRegionId>'
-);
 ```
+
+);
 
 **WITH参数**
 
-| 参数 | 说明 |  | 是否必选 | 备注 |  |  |
+| 参数 | 说明 |   | 是否必选 | 备注 |   |   |
 |---|---|---|---|---|---|---|
-| connector | 源表类型。 |  | 是 | 固定值为 iceberg 。 |  |  |
-| catalog-name | Catalog名称。 |  | 是 | 请填写为自定义的英文名。 |  |  |
-| catalog-type | Catalog类型。 |  | 是 | 固定值为custom。 |  |  |
-| catalog- database | 数据库名称。 |  | 是 | 对应用户在DLF上创建的数据库名称，例如 dlf db。 _ |  |  |
-| io-impl | 分布式文件系统的实现类名。 |  | 是 | 固定值为 org.apache.iceberg.aliyun.oss.OSSFil eIO 。 |  |  |
-|  |  |  |  |  | org.apache.iceberg.aliyun.oss.OSSFil |  |
-|  |  |  |  | eIO |  |  |
-| oss.endpoint | 阿里云对象存储服务OSS的 Endpoint。 |  | 否 | 请联系阿里云运维工程师获取。 |  |  |
-| access.key.id | 阿里云账号的Access Key。 |  | 是 | 请在Apsara Uni-manager运营控制台，将鼠标悬停在当前登录用户的头像上，单击个人信息进行查看。。 |  |  |
-| access.key.secr et | 阿里云账号的Access Secret。 |  | 是 | 请在Apsara Uni-manager运营控制台，将鼠标悬停在当前登录用户的头像上，单击个人信息进行查看。。 |  |  |
-| catalog-impl | Catalog的Class类名。 |  | 是 | 固定值为 org.apache.iceberg.aliyun.dlf.DlfCat alog |  |  |
-|  |  |  |  |  | org.apache.iceberg.aliyun.dlf.DlfCat |  |
-|  |  |  |  | alog |  |  |
-| warehouse | 表数据存放在OSS的路径。 |  | 是 | 无。 |  |  |
-| dlf.catalog-id | 阿里云账号的账号ID。 |  | 是 | 在系统界面右上角，单击当前登录用户的头像，选择个人信息，查看UID信息。 |  |  |
-| dlf.endpoint | DLF服务的Endpoint。 |  | 是 | 请联系阿里云运维工程师获取。 |  |  |
-
-实时计算（流计算）
+| connector | 源表类型。 |   | 是 | 固定值为 iceberg 。 |   |   |
+| catalog-name | Catalog名称。 |   | 是 | 请填写为自定义的英文名。 |   |   |
+| catalog-type | Catalog类型。 |   | 是 | 固定值为custom。 |   |   |
+| catalog- database | 数据库名称。 |   | 是 | 对应用户在DLF上创建的数据库名称，例如 dlf db。 _ |   |   |
+| io-impl | 分布式文件系统的实现类名。 |   | 是 | 固定值为 org.apache.iceberg.aliyun.oss.OSSFil eIO 。 |   |   |
+|   |   |   |   |   | org.apache.iceberg.aliyun.oss.OSSFil |   |
+|   |   |   |   | eIO |   |   |
+| oss.endpoint | 阿里云对象存储服务OSS的 Endpoint。 |   | 否 | 请联系阿里云运维工程师获取。 |   |   |
+| access.key.id | 阿里云账号的Access Key。 |   | 是 | 请在Apsara Uni-manager运营控制台，将鼠标悬停在当前登录用户的头像上，单击个人信息进行查看。。 |   |   |
+| access.key.secr et | 阿里云账号的Access Secret。 |   | 是 | 请在Apsara Uni-manager运营控制台，将鼠标悬停在当前登录用户的头像上，单击个人信息进行查看。。 |   |   |
+| catalog-impl | Catalog的Class类名。 |   | 是 | 固定值为 org.apache.iceberg.aliyun.dlf.DlfCat alog |   |   |
+|   |   |   |   |   | org.apache.iceberg.aliyun.dlf.DlfCat |   |
+|   |   |   |   | alog |   |   |
+| warehouse | 表数据存放在OSS的路径。 |   | 是 | 无。 |   |   |
+| dlf.catalog-id | 阿里云账号的账号ID。 |   | 是 | 在系统界面右上角，单击当前登录用户的头像，选择个人信息，查看UID信息。 |   |   |
+| dlf.endpoint | DLF服务的Endpoint。 |   | 是 | 请联系阿里云运维工程师获取。 |   |   |
 
 | dlf.region-id | DLF服务的地域名。 | 是 | 请联系阿里云运维工程师获取。 |
 |---|---|---|---|
@@ -13027,13 +13938,11 @@ CREATE TABLE dlf_iceberg (
 
 以下内容将为您介绍如何通过Flink作业将Iceberg源表的数据导入到另一个Iceberg结果表中，实现基本的ETL操作。
 1. 确认已成功创建了DLF数据库。
-创建数据库选择OSS路径时，请将名称设置为${warehouse}/${database_name}.db。
 
-**说明**
+> **说明：** 创建数据库选择OSS路径时，请将名称设置为${warehouse}/${database_name}.db。 例如，如果您将warehouse地址设置为oss://iceberg-test/warehouse，数据库的名称设置为dlf_db， 则dlf_db的OSS路径需要设置为oss://iceberg-test/warehouse/dlf_db.db。
 
-例如，如果您将warehouse地址设置为oss://iceberg-test/warehouse，数据库的名称设置为dlf_db， 则dlf_db的OSS路径需要设置为oss://iceberg-test/warehouse/dlf_db.db。
 2. 编写Flink Batch SQL作业生成测试数据，并导入到另一个Iceberg表中。
-i. 在左侧导航栏，单击**作业开发**。 实时计算（流计算） ii. 在页面左上角，单击**新建**，文件类型选择为批作业的SQL。 iii. 在文本编辑区域编写SQL，代码示例如下。 实时计算（流计算）
+i. 在左侧导航栏，单击**作业开发**。 ii. 在页面左上角，单击**新建**，文件类型选择为批作业的SQL。 iii. 在文本编辑区域编写SQL，代码示例如下。
 
 ```
 CREATE TEMPORARY TABLE src_iceberg (
@@ -13053,7 +13962,12 @@ CREATE TEMPORARY TABLE src_iceberg (
   'dlf.catalog-id' = '<yourCatalogId>',
   'dlf.endpoint' = '<yourDLFEndpoint>',
   'dlf.region-id' = '<yourDLFRegionId>'
-); CREATE TEMPORARY TABLE dst_iceberg (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE dst_iceberg (
   id    BIGINT,
   data  STRING
 ) WITH (
@@ -13070,17 +13984,25 @@ CREATE TEMPORARY TABLE src_iceberg (
   'dlf.catalog-id' = '<yourCatalogId>',
   'dlf.endpoint' = '<yourDLFEndpoint>',
   'dlf.region-id' = '<yourDLFRegionId>'
-); BEGIN STATEMENT SET; INSERT INTO src_iceberg VALUES (1, 'AAA'), (2, 'BBB'), (3, 'CCC'), (4, 'DDD'), (5, 'EEE'); INSERT INTO dst_iceberg SELECT * FROM src_iceberg; END;
+```
+
+);
+
+```
+BEGIN STATEMENT SET; INSERT INTO src_iceberg VALUES (1, 'AAA'), (2, 'BBB'), (3, 'CCC'), (4, 'DDD'), (5, 'EEE'); INSERT INTO dst_iceberg SELECT * FROM src_iceberg; END;
 ```
 
 3. 在作业开发页面右侧**高级配置**面版中，引擎版本配置为**vvr-4.0.8-flink-1.13vvr-4.0.11-flink-1.13**。
-实时计算（流计算）
 4. 单击**验证**。
 5. 单击**上线**。
 6. 在OSS控制台查看写入的测试数据。
 等整个批作业完成后，您就可以在OSS路径下查看dst_iceberg表中写入的数据了。
 
-##### Datagen源表
+##### 4.5.1.13 Datagen源表
+
+本文为您介绍Datagen源表的DDL定义、WITH参数和代码示例。
+
+**什么是Datagen源表**
 
 Datagen源表是系统内置的Connector，可以周期性地生成Datagen源表对应类型的随机数据。如果您在注册其他类型的Connector源表时报错，但您不确定是Flink系统问题还是源表WITH参数错误，您可以将WITH参数修改为**'connector' = 'datagen'**后，单击**运行**。如果不再报错，则证明Flink系统没有问题，您需要确认修改 WITH参数。
 
@@ -13092,16 +14014,15 @@ CREATE TABLE datagen_source (
     score BIGINT
 ) WITH (
    'connector' = 'datagen'
-);
 ```
+
+);
 
 **WITH参数**
 
 | 参数 | 说明 | 是否必填 | 备注 |
 |---|---|---|---|
 | connector | 源表类型 | 是 | 固定值为datagen。 |
-
-实时计算（流计算）
 
 | rows-per-second | 生成随机数据的速率 | 否 | 默认值为10000条/秒。 |
 |---|---|---|---|
@@ -13119,7 +14040,12 @@ CREATE TEMPORARY table datahub_source(
   name VARCHAR
 ) WITH (
   'connector' = 'datagen'
-); CREATE TEMPORARY table datahub_sink(
+```
+
+);
+
+```
+CREATE TEMPORARY table datahub_sink(
   name  VARCHAR
 ) with (
   'connector'='datahub',
@@ -13128,12 +14054,19 @@ CREATE TEMPORARY table datahub_source(
   'topic'='<yourTopic>',
   'accessId'='<yourAccessId>',
   'accessKey'='<yourAccessKey>'
-); INSERT INTO datahub_sink SELECT
+```
+
+);
+
+```
+INSERT INTO datahub_sink SELECT
   LOWER(name)
 from datahub_source;
 ```
 
-##### 流式数据湖仓Paimon源表
+##### 4.5.1.14 流式数据湖仓Paimon源表
+
+本文为您介绍流式数据湖仓Paimon源表的DDL定义、WITH参数。
 
 **什么是流式数据湖仓Paimon**
 
@@ -13141,7 +14074,7 @@ Paimon是一种流批统一的湖存储格式，支持高吞吐的写入和低�
 
 **使用限制**
 
-实时计算（流计算） 仅Flink计算引擎VVR 8.0.7及以上版本支持Paimon连接器。
+仅Flink计算引擎VVR 8.0.7及以上版本支持Paimon连接器。
 
 **DDL定义**
 
@@ -13152,8 +14085,9 @@ CREATE TABLE paimon_table (
   PRIMARY KEY (id) NOT ENFORCED
 ) WITH (
   ...
-);
 ```
+
+);
 
 **WITH参数**
 
@@ -13164,16 +14098,12 @@ CREATE TABLE paimon_table (
 | auto- create | 创建Paimon临时表时，若指定路径不存在Paimon 表文件，是否自动创建文件。 | Boolean | 否 | false | 参数取值如下： false（默认）：如果指定路径不存在Paimon表文件，则报错。 true：如果指定路径不存在，则Flink系统自动创建 Paimon表文件。 |
 | bucket | 每个分区的分桶数。 | Integer | 否 | 1 | 写入Paimon表的数据将按 bucket-key 打散至每个bucket中。 说明建议每个Bucket的数据量在5 GB以下。 |
 
-实时计算（流计算）
-
-| bucket- key | 分桶关键列。 | String | 否 |  |  | 指定将写入Paimon表的数据按哪些列的值打散至不同的Bucket中。 列名之间用英文逗号（,）分隔，例如 'bucket- key' = 'order id,cust id' 会将数据按 _ _ order id列和cust id列的值进行打散。 _ _ 说明如果该参数未填写，则按primary key 进行打散。 如果Paimon表未指定primary key，则按所有列的值进行打散。 |
+| bucket- key | 分桶关键列。 | String | 否 |   |   | 指定将写入Paimon表的数据按哪些列的值打散至不同的Bucket中。 列名之间用英文逗号（,）分隔，例如 'bucket- key' = 'order id,cust id' 会将数据按 _ _ order id列和cust id列的值进行打散。 _ _ 说明如果该参数未填写，则按primary key 进行打散。 如果Paimon表未指定primary key，则按所有列的值进行打散。 |
 |---|---|---|---|---|---|---|
-|  |  |  |  |  | 无 |  |
-| changel og- produc er | 增量数据产生机制。 | String | 否 |  | non e | Paimon可以为任意输入数据流产生完整的增量数据 （所有的update after数据都有对应的 _ update before数据），方便下游消费者。增量数据 _ 产生机制的可选值如下： none（默认值）：不额外产生增量数据。下游仍然可以流读Paimon表，但读到的增量数据是不完整的（只有update after数据，没有对应的 _ update before数据）。 _ input：将输入数据流双写至增量数据文件中，作为增量数据。 full-compaction：每次Full Compaction产生完整的增量数据。 lookup：每次commit snapshot前产生完整的增量数据。 |
-| full- compac tion.del ta- commit s | Full Compaction最大间隔。 | Integer | 否 |  | 无 | 该参数指定了每commit snapshot多少次之后，一定会进行一次Full Compaction。 |
-| merge- engine | 相同primary key数据的合并机制。 | String | 否 |  | ded uplic ate | 参数取值如下： deduplicate：仅保留最新一条。 partial-update：用最新数据中非null的列更新相同primary key的现有数据，其它列保持不变。 aggregation：通过指定聚合函数进行预聚合。 |
-
-实时计算（流计算）
+|   |   |   |   |   | 无 |   |
+| changel og- produc er | 增量数据产生机制。 | String | 否 |   | non e | Paimon可以为任意输入数据流产生完整的增量数据 （所有的update after数据都有对应的 _ update before数据），方便下游消费者。增量数据 _ 产生机制的可选值如下： none（默认值）：不额外产生增量数据。下游仍然可以流读Paimon表，但读到的增量数据是不完整的（只有update after数据，没有对应的 _ update before数据）。 _ input：将输入数据流双写至增量数据文件中，作为增量数据。 full-compaction：每次Full Compaction产生完整的增量数据。 lookup：每次commit snapshot前产生完整的增量数据。 |
+| full- compac tion.del ta- commit s | Full Compaction最大间隔。 | Integer | 否 |   | 无 | 该参数指定了每commit snapshot多少次之后，一定会进行一次Full Compaction。 |
+| merge- engine | 相同primary key数据的合并机制。 | String | 否 |   | ded uplic ate | 参数取值如下： deduplicate：仅保留最新一条。 partial-update：用最新数据中非null的列更新相同primary key的现有数据，其它列保持不变。 aggregation：通过指定聚合函数进行预聚合。 |
 
 | partial- update. ignore- delete | 在partial- update合并机制中，是否忽略 delete消息。 | Boolean | 否 | false | 参数取值如下： true：忽略delete消息。 false：碰到delete消息，Flink系统会报错。 说明并非所有场景下忽略delete消息都是正确的，您需要结合自己的实际场景配置该参数。 |
 |---|---|---|---|---|---|
@@ -13185,8 +14115,6 @@ CREATE TABLE paimon_table (
 | scan.bo unded. waterm ark | 当Paimon源表产生的数据的 watermark超过该值时，Paimon 源表将会结束产生数据。 | Long | 否 | 无 | 无。 |
 | scan.m ode | 指定Paimon源表的消费位点。 | String | 否 | defa ult | 无。 |
 | scan.sn apshot- id | 指定Paimon源表从哪个snapshot 开始消费。 | Integer | 否 | 无 | 无。 |
-
-实时计算（流计算）
 
 | scan.ti mesta mp- millis | 指定Paimon源表从哪个时间点开始消费。 | Integer | 否 | 无 | 无。 |
 |---|---|---|---|---|---|
@@ -13200,17 +14128,17 @@ CREATE TABLE paimon_table (
 
 更多配置项详情请参见Apache Paimon官方文档。
 
-#### 创建数据结果表
+#### 4.5.2 创建数据结果表
 
-##### 日志服务SLS结果表
+##### 4.5.2.1 日志服务SLS结果表
+
+本文为您介绍日志服务SLS结果表的DDL定义、WITH参数、类型映射和相关文档。
 
 **什么是日志服务**
 
 日志服务SLS是针对日志类数据的一站式服务。日志服务可以帮助您快捷地完成数据采集、消费、投递以及查询分析，提升运维和运营效率，建立海量日志处理能力。日志服务本身是流数据存储，Flink支持将其作为流式数据的输出。
 
 **DDL定义**
-
-实时计算（流计算）
 
 ```
 create table sls_sink(
@@ -13224,8 +14152,9 @@ create table sls_sink(
  'accessKey'='<yourAccessKey>',
  'project'='<yourProjectName>',
  'logstore'='<yourLogstoreName>'
-);
 ```
+
+);
 
 **WITH参数**
 
@@ -13246,15 +14175,15 @@ create table sls_sink(
 |---|---|
 | STRING | VARCHAR |
 
-##### 消息队列Kafka结果表
+##### 4.5.2.2 消息队列Kafka结果表
+
+本文为您介绍消息队列Kafka结果表的DDL定义、WITH参数和示例。
 
 **什么是消息队列Kafka**
 
 消息队列Kafka版是阿里云提供的分布式、高吞吐、可扩展的消息队列服务。消息队列Kafka版广泛用于日志收集、监控数据聚合、流式数据处理、在线和离线分析等大数据领域。
 
 **DDL定义**
-
-实时计算（流计算）
 
 ```
 create table kafka_sink(
@@ -13268,8 +14197,9 @@ create table kafka_sink(
   'topic' = '<yourTopicName>',
   'properties.bootstrap.servers' = '<yourKafkaBrokers>',
   'format' = 'csv'
-);
 ```
+
+);
 
 **WITH参数**
 
@@ -13281,7 +14211,7 @@ create table kafka_sink(
 | format | Flink Kafka Connector在反序列化来自Kafka的消息时使用的格式。 | 是 | STRI NG | 格式取值如下： csv json avro |
 | sink.partitione r | 从Flink分区到Kafka分区的映射模式。 | 否 | STRI NG | 映射模式取值如下： fixed：每个Flink分区对应至多一个Kafka 分区。 round-robin：Flink分区中的数据将被轮流分配至Kafka的各个分区。 自定义FlinkKafkaPartitioner的子类：如果 fixed和round-robin不满足您的需求，您可以自定义映射模式到FlinkKafkaPartitioner 的子类。例如 org.mycompany.MyPartitioner 。 |
 
-如果您还需要直接配置Connector使用的Kafka Producer，可以在Kafka Producer配置参数前添加 `properties` 前缀，并将该Kafka Producer配置信息追加至WITH参数。例如Kafka集群需要 SASL（Simple Authentication and Security Layer）认证。 实时计算（流计算）
+如果您还需要直接配置Connector使用的Kafka Producer，可以在Kafka Producer配置参数前添加 `properties` 前缀，并将该Kafka Producer配置信息追加至WITH参数。例如Kafka集群需要 SASL（Simple Authentication and Security Layer）认证。
 
 ```
 CREATE TABLE kafkaTable (
@@ -13291,10 +14221,10 @@ CREATE TABLE kafkaTable (
     'properties.security.protocol' = 'SASL_PLAINTEXT',
     'properties.sasl.mechanism' = 'PLAIN',
     'properties.sasl.jaas.config' = 'org.apache.kafka.common.security.plain.PlainLoginModule
-required username="USERNAME" password="PASSWORD";' );
+required username="USERNAME" password="PASSWORD";'
 ```
 
-Kafka Producer配置项详情请参见Producer Configs。
+); Kafka Producer配置项详情请参见Producer Configs。
 
 **从Kafka中读取数据后插入Kafka示例**
 
@@ -13311,7 +14241,12 @@ CREATE TEMPORARY TABLE kafka_source (
     'properties.bootstrap.servers' = '<yourKafkaBrokers>',
     'properties.group.id' = '<yourPropertiesGroupid>',
     'format' = 'csv'
-); CREATE TEMPORARY TABLE kafka_sink (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE kafka_sink (
     id INT,
     name STRING,
     age INT
@@ -13320,18 +14255,23 @@ CREATE TEMPORARY TABLE kafka_source (
     'topic' = '<yourTopicName>',
     'properties.bootstrap.servers' = '<yourKafkaBrokers>',
     'format' = 'csv'
-); INSERT INTO kafka_sink SELECT id, name, age FROM kafka_source;
 ```
 
-##### 数据总线DataHub结果表
+);
+
+```
+INSERT INTO kafka_sink SELECT id, name, age FROM kafka_source;
+```
+
+##### 4.5.2.3 数据总线DataHub结果表
+
+本文为您介绍数据总线DataHub结果表的DDL定义、WITH参数和类型映射。
 
 **什么是数据总线DataHub**
 
 阿里云流数据处理平台DataHub是流式数据（Streaming Data）的处理平台，提供对流式数据的发布 （Publish）、订阅（Subscribe）和分发功能，让您可以轻松构建基于流式数据的分析和应用。Flink支持将 DataHub作为流式数据的输出。
 
 **DDL定义**
-
-实时计算（流计算）
 
 ```
 create table datahub_sink(
@@ -13348,8 +14288,9 @@ create table datahub_sink(
   'batchCount'='500',
   'batchSize'='512000',
   'flushInterval'='5000'
-);
 ```
+
+);
 
 **WITH参数**
 
@@ -13375,8 +14316,6 @@ DataHub和Flink字段类型对应关系如下，建议使用该对应关系时�
 
 | DataHub字段类型 | Flink字段类型 |
 |---|---|
-
-实时计算（流计算）
 
 | STRING | VARCHAR |
 |---|---|
@@ -13404,7 +14343,12 @@ CREATE TEMPORARY table datahub_source(
   'accessId'='<yourAccessId>',
   'accessKey'='<yourAccessKey>',
   'startTime'='2018-06-01 00:00:00'
-); CREATE TEMPORARY table datahub_sink(
+```
+
+);
+
+```
+CREATE TEMPORARY table datahub_sink(
   name varchar
 )with(
   'connector'='datahub',
@@ -13415,14 +14359,19 @@ CREATE TEMPORARY table datahub_source(
   'accessKey'='<yourAccessKey>',
   'batchSize'='512000',
   'batchCount'='500'
-); INSERT INTO datahub_sink SELECT
+```
+
+);
+
+```
+INSERT INTO datahub_sink SELECT
   LOWER(name)
 from datahub_source;
 ```
 
-##### 表格存储Tablestore结果表
+##### 4.5.2.4 表格存储Tablestore结果表
 
-本文为您介绍表格存储Tablestore结果表的DDL定义、WITH参数和映射关系。 实时计算（流计算）
+本文为您介绍表格存储Tablestore结果表的DDL定义、WITH参数和映射关系。
 
 **什么是表格存储Tablestore**
 
@@ -13444,12 +14393,11 @@ CREATE TABLE ots_sink (
     'accessKey'='<yourAccessSecret>',
     'endPoint'='<yourEndpoint>',
     'valueColumns'='birthday'
-);
 ```
 
-Tablestore结果表必须定义有 `Primary Key` ，输出数据以Update方式追加Tablestore表。
+);
 
-**说明**
+> **说明：** Tablestore结果表必须定义有 `Primary Key` ，输出数据以Update方式追加Tablestore表。
 
 **WITH参数**
 
@@ -13468,8 +14416,6 @@ Tablestore结果表必须定义有 `Primary Key` ，输出数据以Update方式�
 | retryIntervalMs | 重试间隔时间 | 否 | 单位为毫秒，默认值为1000。 |
 | maxRetryTimes | 最大重试次数 | 否 | 默认值为10。 |
 
-实时计算（流计算）
-
 | ignoreDelete | 是否忽略DELETE操作 | 否 | 默认值为False。 |
 |---|---|---|---|
 | connectTimeout | Connector连接 Tablestore的超时时间 | 否 | 单位毫秒，默认值为30000（30秒）。 |
@@ -13484,7 +14430,7 @@ Tablestore结果表必须定义有 `Primary Key` ，输出数据以Update方式�
 | BOOLEAN | BOOLEAN |
 | DOUBLE | DOUBLE |
 
-##### MaxCompute结果表
+##### 4.5.2.5 MaxCompute结果表
 
 本文为您介绍MaxCompute结果表的DDL定义、WITH参数、类型映射和代码示例。
 
@@ -13494,11 +14440,9 @@ MaxCompute Sink可以分为以下两个阶段：
 1. 写入数据。调用MaxCompute SDK中的接口将数据写入缓冲区，在缓冲区大小超过64 MB或者每隔指定的时
 间间隔时，上传数据到MaxCompute的临时文件中。
 2. 提交会话。在任务进行Checkpoint时， MaxCompute Sink会调用Tunnel的Commit方法，提交会话，移动
-临时文件到MaxCompute表的数据目录，并修改元数据。 Commit方法不能提供原子性。因此，MaxCompute Sink提供的是At least Once方式，而
+临时文件到MaxCompute表的数据目录，并修改元数据。
 
-**说明**
-
-不是Exactly Once方式。
+> **说明：** Commit方法不能提供原子性。因此，MaxCompute Sink提供的是At least Once方式，而不是Exactly Once方式。
 
 **DDL定义**
 
@@ -13518,14 +14462,9 @@ create table odps_sink(
     'accessid' = '<yourAccessKeyId>',
     'accesskey' = '<yourAccessKeySecret>',
     'partition' = 'ds=2018****'
-);
 ```
 
-实时计算（流计算）
-
-**说明**
-
-WITH参数需要全部小写。 DDL定义中的字段名称、顺序和类型必须与MaxCompute物理表保持一致，否则可能导致 MaxCompute物理表中查询的数据为 `/n` 。
+); WITH参数需要全部小写。 DDL定义中的字段名称、顺序和类型必须与MaxCompute物理表保持一致，否则可能导致 MaxCompute物理表中查询的数据为 `/n` 。
 
 **WITH参数**
 
@@ -13540,14 +14479,12 @@ WITH参数需要全部小写。 DDL定义中的字段名称、顺序和类型必
 | accessKey | AccessKey Secret | 是 | 无 |
 | partition | 分区名 | 否 | 如果存在分区表，则必填partition。填写partition需要注意以下两点： 固定分区例如 `partition` = 'ds=20180905' 表示将数据写入分区 ds= 20180905 。 动态分区如果未明文显示分区值，则根据写入数据中分区列具体值，写入对应分区。例如 `partition`='ds' 表示根据 ds 字段值写入对应分区。 如果要创建多级动态分区，Partition中多个字段顺序必须和MaxCompute物理表保持一致，各个分区字段之间使用逗号（,）分割。 说明动态分区列需要显式写在建表语句中。 在动态分区字段为空时，如果数据源中 ds=null 或者 ds='' ，则输出结果为ds=NULL的分区。 |
 
-实时计算（流计算）
-
-| flushInterval Ms |  | Odps tunnel writer 缓冲区Flush间隔。 MaxCompute Sink 写入记录时，先放入数据到MaxCompute 的缓冲区中，等缓冲区溢出或者每隔一段时间 （flushIntervalMs） 时，再把缓冲区里的数据写到目标 MaxCompute表。 | 否 | 单位为毫秒，默认值为30000（30秒）。 |  |
+| flushInterval Ms |   | Odps tunnel writer 缓冲区Flush间隔。 MaxCompute Sink 写入记录时，先放入数据到MaxCompute 的缓冲区中，等缓冲区溢出或者每隔一段时间 （flushIntervalMs） 时，再把缓冲区里的数据写到目标 MaxCompute表。 | 否 | 单位为毫秒，默认值为30000（30秒）。 |   |
 |---|---|---|---|---|---|
-| partitionBy |  | 写入Sink节点前，系统会根据该值做Hash Shuffle，数据就会流向对应的Sink节点。 | 否 | 系统按照多个列进行Hash Shuffle，各个列名之间使用逗号 （,）分割。默认为空。 |  |
-| dynamicParti tionLimit |  | 分区数目最大值 | 否 | 默认值为100，系统会把已写入的分区和 TunnelBufferedWriter的映射关系维护到一个Map里，如果该Map大小超过了dynamicPartitionLimit设定值，则会出现 Too many dynamic partitions: 100, which exceeds the size limit: 100 报错。 |  |
-|  |  |  |  |  | Too many dynamic partitions: 100, which |
-|  |  |  |  | exceeds the size limit: 100 |  |
+| partitionBy |   | 写入Sink节点前，系统会根据该值做Hash Shuffle，数据就会流向对应的Sink节点。 | 否 | 系统按照多个列进行Hash Shuffle，各个列名之间使用逗号 （,）分割。默认为空。 |   |
+| dynamicParti tionLimit |   | 分区数目最大值 | 否 | 默认值为100，系统会把已写入的分区和 TunnelBufferedWriter的映射关系维护到一个Map里，如果该Map大小超过了dynamicPartitionLimit设定值，则会出现 Too many dynamic partitions: 100, which exceeds the size limit: 100 报错。 |   |
+|   |   |   |   |   | Too many dynamic partitions: 100, which |
+|   |   |   |   | exceeds the size limit: 100 |   |
 
 **类型映射**
 
@@ -13569,7 +14506,7 @@ WITH参数需要全部小写。 DDL定义中的字段名称、顺序和类型必
 
 **代码示例**
 
-写入固定分区实时计算（流计算）
+写入固定分区
 
 ```
 CREATE TEMPORARY TABLE datagen_source (
@@ -13578,7 +14515,12 @@ CREATE TEMPORARY TABLE datagen_source (
     content VARCHAR
 ) with (
     'connector' = 'datagen'
-); CREATE TEMPORARY TABLE odps_sink (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE odps_sink (
     id INT,
     len INT,
     content VARCHAR
@@ -13591,12 +14533,17 @@ CREATE TEMPORARY TABLE datagen_source (
     'accessid' = '<yourAccessKeyId>',
     'accesskey' = '<yourAccessKeySecret>',
     'partition' = 'ds=20180905'
-); INSERT INTO odps_sink SELECT
+```
+
+);
+
+```
+INSERT INTO odps_sink SELECT
      id, len, content
 FROM datagen_source;
 ```
 
-写入动态分区实时计算（流计算）
+写入动态分区
 
 ```
 CREATE TEMPORARY TABLE datagen_source (
@@ -13606,7 +14553,12 @@ CREATE TEMPORARY TABLE datagen_source (
     c TIMESTAMP
 ) with (
     'connector' = 'datagen'
-); CREATE TEMPORARY TABLE odps_sink (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE odps_sink (
      id  INT,
      len INT,
      content VARCHAR,
@@ -13625,17 +14577,18 @@ CREATE TEMPORARY TABLE datagen_source (
      'accesskey' = '<yourAccessKeySecret>',
 ```
 
-`'partition' ='ds' --`不写分区的值，表示根据`ds`字段的值写入不同分区。
+`'partition' ='ds' --`不写分区的值，表示根据`ds`字段的值写入不同分区。 );
 
 ```
-); INSERT INTO odps_sink SELECT
+INSERT INTO odps_sink SELECT
       id,
       len,
       content,
+      DATE_FORMAT(c, 'yyMMdd') as ds
 FROM datagen_source;
 ```
 
-##### 消息队列RocketMQ版结果表
+##### 4.5.2.6 消息队列RocketMQ版结果表
 
 本文为您介绍消息队列RocketMQ版结果表DDL定义、WITH参数和示例代码等。
 
@@ -13656,14 +14609,11 @@ create table mq_sink(
    'endpoint'='<yourEndpoint>',
    'accessId'='<yourAccessId>',
    'accessKey'='<yourAccessSecret>'
-);
 ```
 
-实时计算（流计算） MQ是非结构化存储格式的消息中间件，对于数据的Schema不提供强制定义，完全由业务层指
+);
 
-**说明**
-
-定。Flink仅支持CSV和二进制格式的MQ消息。
+> **说明：** MQ是非结构化存储格式的消息中间件，对于数据的Schema不提供强制定义，完全由业务层指定。Flink仅支持CSV和二进制格式的MQ消息。
 
 **WITH参数**
 
@@ -13684,7 +14634,7 @@ create table mq_sink(
 
 **代码示例**
 
-CSV格式实时计算（流计算）
+CSV格式
 
 ```
 create table mq_sink (
@@ -13702,17 +14652,21 @@ create table mq_sink (
     'encoding'='utf-8',
     'retryTimes'='5',
     'sleepTimeMs'='500'
-);
 ```
 
-二进制格式
+); 二进制格式
 
 ```
 CREATE TEMPORARY TABLE datagen_source (
     commodity VARCHAR
 ) WITH (
     'connector' = 'datagen'
-); CREATE TEMPORARY TABLE mq_sink (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE mq_sink (
     mess VARBINARY
 ) WITH (
     'connector'='mq',
@@ -13721,18 +14675,21 @@ CREATE TEMPORARY TABLE datagen_source (
     'accessKey'='<yourAccessSecret>',
     'topic'='<yourTopicName>',
     'producerGroup'='<yourGroupName>'
-); INSERT INTO mq_sink SELECT
+```
+
+);
+
+```
+INSERT INTO mq_sink SELECT
      CAST(SUBSTRING(commodity,0,5) AS VARBINARY) AS mess
 FROM datagen_source;
 ```
 
-##### 云数据库HBase版结果表
+##### 4.5.2.7 云数据库HBase版结果表
 
 本文为您介绍云数据库HBase版结果表DDL定义、WITH参数、转换关系、动态表和代码示例。
 
 **DDL定义**
-
-实时计算（流计算）
 
 ```
 CREATE TABLE hbase_sink(
@@ -13744,10 +14701,9 @@ CREATE TABLE hbase_sink(
   'connector'='cloudhbase',
   'table-name'='<yourTableName>',
   'zookeeper.quorum'='<yourZookeeperQuorum>'
-);
 ```
 
-HBase的列族（Column Family）必须声明为ROW类型，列族名即该ROW的字段名。例如，DDL定义中声明了family1、family2和family3三个列族。 HBase列族中的列（Cloumn）与对应ROW中嵌套的每个字段对应，列名即字段名。例如，DDL定义中列族 family2声明了q2和q3两列。 结果表中不需要将HBase表的所有列族和列都进行声明，只声明需要的即可。 除了类型为ROW的字段外，只能有一个原始类型（Atomic Type）的字段（例如STRING或BIGINT），该字段将被视作HBase的行键（Row Key），例如DDL定义中的rowkey。 必须将HBase的行键定义为结果表的主键（Primary Key），如果没有显示定义主键，默认使用行键作为主键。
+); HBase的列族（Column Family）必须声明为ROW类型，列族名即该ROW的字段名。例如，DDL定义中声明了family1、family2和family3三个列族。 HBase列族中的列（Cloumn）与对应ROW中嵌套的每个字段对应，列名即字段名。例如，DDL定义中列族 family2声明了q2和q3两列。 结果表中不需要将HBase表的所有列族和列都进行声明，只声明需要的即可。 除了类型为ROW的字段外，只能有一个原始类型（Atomic Type）的字段（例如STRING或BIGINT），该字段将被视作HBase的行键（Row Key），例如DDL定义中的rowkey。 必须将HBase的行键定义为结果表的主键（Primary Key），如果没有显示定义主键，默认使用行键作为主键。
 
 **WITH参数**
 
@@ -13763,8 +14719,6 @@ HBase的列族（Column Family）必须声明为ROW类型，列族名即该ROW�
 | retries.num ber | 连接HBase客户端的重试次数 | 否 | 默认值为31。 |
 | null-string- literal | HBase字段类型为字符串时，如果Flink字段数据为null，则将该字段赋值为null-string- literal，并写入 Hbase。 | 否 | 默认值为null。 |
 
-实时计算（流计算）
-
 | sink.buffer- flush.max- size | 写入HBase前，内存中缓存的数据量（字节） 大小。调大该值有利于提高HBase写入性能， 但会增加写入延迟和内存使用。 | 否 | 默认值为2 MB，支持字节单位B、KB、MB和GB，不区分大小写。 设置为0表示不进行缓存。 |
 |---|---|---|---|
 | sink.buffer- flush.max- rows | 写入HBase前，内存中缓存的数据条数。调大该值有利于提高HBase 写入性能，但会增加写入延迟和内存使用。 | 否 | 默认值为1000，设置为0表示不进行缓存。 |
@@ -13777,11 +14731,11 @@ HBase数据通过**org.apache.hadoop.hbase.util.Bytes**转换成Flink的数据�
 | Flink类型 | HBase转换函数 |
 |---|---|
 | CHAR | byte[] toBytes(String s) |
-| VARCHAR |  |
-| STRING |  |
+| VARCHAR |   |
+| STRING |   |
 | BOOLEAN | byte[] toBytes(boolean b) |
 | BINARY | byte[] |
-| VARBINARY |  |
+| VARBINARY |   |
 | DECIMAL | byte[] toBytes(BigDecimal v) |
 | TINYINT | new byte[] { val } |
 | SMALLINT | byte[] toBytes(short val) |
@@ -13793,12 +14747,10 @@ HBase数据通过**org.apache.hadoop.hbase.util.Bytes**转换成Flink的数据�
 | TIME | 将时间转换成自00:00:00以来的毫秒数，用int表示，并通过byte[] toBytes(int val) 转换成字节数组。 |
 | TIMESTAMP | 将时间戳转换成自1970-01-01 00:00:00以来的毫秒数，用long表示，并通过 byte[] toBytes(long val) 转换成字节数组。 |
 
-实时计算（流计算）
-
 | ARRAY | 不支持 |
 |---|---|
 | MAP | 不支持 |
-| MULTISET |  |
+| MULTISET |   |
 | ROW | 不支持 |
 
 **动态表**
@@ -13814,7 +14766,12 @@ CREATE TEMPORARY TABLE datagen_source (
     f2deal BIGINT
 ) with (
     'connector'='datagen'
-); CREATE TEMPORARY TABLE hbase_sink (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE hbase_sink (
     rowkey INT,
     f1 ROW<`hour` STRING, deal BIGINT>,
     f2 ROW<`day` STRING, deal BIGINT>
@@ -13823,7 +14780,12 @@ CREATE TEMPORARY TABLE datagen_source (
     'table-name'='<yourTableName>',
     'zookeeper.quorum'='<yourZookeeperQuorum>',
     'dynamic.table'='true'
-); INSERT INTO hbase_sink SELECT id, ROW(f1hour, f1deal), ROW(f2day, f2deal) FROM datagen_source;
+```
+
+);
+
+```
+INSERT INTO hbase_sink SELECT id, ROW(f1hour, f1deal), ROW(f2day, f2deal) FROM datagen_source;
 ```
 
 **说明**
@@ -13831,8 +14793,6 @@ CREATE TEMPORARY TABLE datagen_source (
 当**dynamic.table**参数值为true时，表明该表为支持动态列的HBase表。 每个列族对应的ROW中必须声明两个字段：第1个字段的值表示动态列，第2个字段的值表示动态列的值。 如果src表存在一条(1, "10", 100, "2020-7-26", 10000)数据，代表ID为1的商品，在10:00- 11:00点之间的成交额是100，在2020年7月26日当天的成交额是10000，则HBase中将插入行键为1的行，其中f1:10为100，f2:2020-7-26为10000。
 
 **代码示例**
-
-实时计算（流计算）
 
 ```
 CREATE TEMPORARY TABLE datagen_source (
@@ -13845,7 +14805,12 @@ CREATE TEMPORARY TABLE datagen_source (
    f3q3 STRING
 ) with (
    'connector'='datagen'
-); CREATE TEMPORARY TABLE hbase_sink (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE hbase_sink (
    rowkey INT,
    family1 ROW<q1 INT>,
    family2 ROW<q1 STRING, q2 BIGINT>,
@@ -13855,14 +14820,19 @@ CREATE TEMPORARY TABLE datagen_source (
    'connector'='cloudhbase',
    'table-name'='<yourTableName>',
    'zookeeper.quorum'='<yourZookeeperQuorum>'
-); INSERT INTO hbase_sink SELECT rowkey, ROW(f1q1), ROW(f2q1, f2q2), ROW(f3q1, f3q2, f3q3) FROM datagen_source;
 ```
 
-##### 云数据库Redis版结果表
+);
 
-本文为您介绍云数据库Redis版结果表DDL定义、WITH参数、类型映射和代码示例。 支持自建Redis服务。
+```
+INSERT INTO hbase_sink SELECT rowkey, ROW(f1q1), ROW(f2q1, f2q2), ROW(f3q1, f3q2, f3q3) FROM datagen_source;
+```
 
-**说明**
+##### 4.5.2.8 云数据库Redis版结果表
+
+本文为您介绍云数据库Redis版结果表DDL定义、WITH参数、类型映射和代码示例。
+
+> **说明：** 支持自建Redis服务。
 
 **什么是云数据库Redis版**
 
@@ -13870,7 +14840,7 @@ CREATE TEMPORARY TABLE datagen_source (
 
 **DDL定义**
 
-STRING类型 DDL为两列：第1列为key，第2列为value。Redis插入数据的命令为 `set key value` 。 实时计算（流计算）
+云数据库Redis版结果表支持5种Redis数据结构，其DDL定义如下： STRING类型 DDL为两列：第1列为key，第2列为value。Redis插入数据的命令为 `set key value` 。
 
 ```
 create table redis_sink (
@@ -13886,13 +14856,7 @@ create table redis_sink (
   'dbNum' = '<yourDbNum>',
 ```
 
-`'ignoreDelete' = 'true' --` 收到`Retraction`时，是否删除已插入的数据，默认值为`false`。
-
-```
-);
-```
-
-LIST类型 DDL为两列：第1列为key，第2列为value。Redis插入数据的命令为 `lpush key value` 。
+`'ignoreDelete' = 'true' --` 收到`Retraction`时，是否删除已插入的数据，默认值为`false`。 ); LIST类型 DDL为两列：第1列为key，第2列为value。Redis插入数据的命令为 `lpush key value` 。
 
 ```
 create table redis_sink (
@@ -13908,13 +14872,7 @@ create table redis_sink (
   'dbNum' = '<yourDbNum>',
 ```
 
-`'ignoreDelete' = 'true' --` 收到`Retraction`时，是否删除已插入的数据，默认值为`false`。
-
-```
-);
-```
-
-SET类型 DDL为两列：第1列为key，第2列为value。Redis插入数据的命令为 `sadd key value` 。
+`'ignoreDelete' = 'true' --` 收到`Retraction`时，是否删除已插入的数据，默认值为`false`。 ); SET类型 DDL为两列：第1列为key，第2列为value。Redis插入数据的命令为 `sadd key value` 。
 
 ```
 create table redis_sink (
@@ -13930,19 +14888,11 @@ create table redis_sink (
   'dbNum' = '<yourDbNum>',
 ```
 
-`'ignoreDelete' = 'true' --` 收到`Retraction`时，是否删除已插入的数据，默认值为`false`。
-
-```
-);
-```
-
-HASHMAP类型 DDL为三列：第1列为key，第2列为hash_key，第3列为hash_key对应的hash_value。Redis插入数据的命
+`'ignoreDelete' = 'true' --` 收到`Retraction`时，是否删除已插入的数据，默认值为`false`。 ); HASHMAP类型 DDL为三列：第1列为key，第2列为hash_key，第3列为hash_key对应的hash_value。Redis插入数据的命
 
 ```
 令为 hmset key hash_key hash_value 。
 ```
-
-实时计算（流计算）
 
 ```
 create table redis_sink (
@@ -13959,33 +14909,27 @@ create table redis_sink (
   'dbNum' = '<yourDbNum>',
 ```
 
-`'ignoreDelete' = 'true' --` 收到`Retraction`时，是否删除已插入的数据，默认值为`false`。
+`'ignoreDelete' = 'true' --` 收到`Retraction`时，是否删除已插入的数据，默认值为`false`。 ); SORTEDSET类型 DDL为三列：第1列为key，第2列为score，第3列为value。Redis插入数据的命令为 `zadd key score`
 
-```
-);
-```
-
-SORTEDSET类型 DDL为三列：第1列为key，第2列为score，第3列为value。Redis插入数据的命令为 `zadd key score`
-
-| value 。 |  |
+| value 。 |   |
 |---|---|
-|  | create table redis sink ( _ a STRING, b DOUBLE, --必须为DOUBLE类型。 c STRING, PRIMARY KEY (a) NOT ENFORCED -- 必填。 ) with ( 'connector' = 'redis', 'mode' = 'sortedset', 'host' = '<yourHost>', 'port' = '<yourPort>', 'password' = '<yourPassword>', 'dbNum' = '<yourDbNum>', 'ignoreDelete' = 'true' -- 收到Retraction时，是否删除已插入的数据，默认值为false。 ); |
+|   | create table redis sink ( _ a STRING, b DOUBLE, --必须为DOUBLE类型。 c STRING, PRIMARY KEY (a) NOT ENFORCED -- 必填。 ) with ( 'connector' = 'redis', 'mode' = 'sortedset', 'host' = '<yourHost>', 'port' = '<yourPort>', 'password' = '<yourPassword>', 'dbNum' = '<yourDbNum>', 'ignoreDelete' = 'true' -- 收到Retraction时，是否删除已插入的数据，默认值为false。 ); |
 
 **WITH参数**
 
 | 参数 | 说明 | 是否必填 | 取值 |
 |---|---|---|---|
 | connector | 结果表类型 | 是 | 固定值为 redis 。 |
-| mode | 对应Redis的数据结构 |  | 取值如下： string list set hashmap sortedset |
-| host | Redis Server连接地址 |  | 请联系阿里云运维工程师获取。 |
+| mode | 对应Redis的数据结构 |   | 取值如下： string list set hashmap sortedset |
+| host | Redis Server连接地址 |   | 请联系阿里云运维工程师获取。 |
 | port | Redis Server连接端口 | 否 | 请联系阿里云运维工程师获取。 |
-| password | Redis密码 |  | 默认值为空，不进行权限验证。 |
-| dbNum | 选择操作的数据库 |  | 默认值为0。 |
-| 91 |  |  | > 文档版本：2026072 |
+| password | Redis密码 |   | 默认值为空，不进行权限验证。 |
+| dbNum | 选择操作的数据库 |   | 默认值为0。 |
+| 91 |   |   | > 文档版本：2026072 |
 
-| ignoreDelete | 是否忽略Retraction 消息。 |  | 默认值为false，可取值为true或false。如果设置为false，收到Retraction时，同时删除数据对应的key及已插入的数据。 |
+| ignoreDelete | 是否忽略Retraction 消息。 |   | 默认值为false，可取值为true或false。如果设置为false，收到Retraction时，同时删除数据对应的key及已插入的数据。 |
 |---|---|---|---|
-| clusterMode | Redis集群是否为 cluster模式。 |  | 默认值为false。 |
+| clusterMode | Redis集群是否为 cluster模式。 |   | 默认值为false。 |
 
 **类型映射**
 
@@ -13994,11 +14938,7 @@ SORTEDSET类型 DDL为三列：第1列为key，第2列为score，第3列为value
 | STRING | STRING |
 | SCORE | DOUBLE |
 
-因为Redis的SCORE类型应用于SORTEDSET（有序集合），所以需要手动为每个Value设置一
-
-**说明**
-
-个DOUBLE类型的SCORE，Value才能按照该SCORE从小到大进行排序。
+> **说明：** 因为Redis的SCORE类型应用于SORTEDSET（有序集合），所以需要手动为每个Value设置一个DOUBLE类型的SCORE，Value才能按照该SCORE从小到大进行排序。
 
 **代码示例**
 
@@ -14008,7 +14948,12 @@ CREATE TEMPORARY TABLE datagen_source (
   p STRING
 ) with (
   'connector' = 'datagen'
-); CREATE TEMPORARY TABLE redis_sink (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE redis_sink (
   a STRING,
   b STRING,
   PRIMARY KEY (a) NOT ENFORCED
@@ -14018,10 +14963,15 @@ CREATE TEMPORARY TABLE datagen_source (
   'host' = '<yourHost>',
   'port' = '<yourPort>',
   'password' = '<yourPassword>'
-); INSERT INTO redis_sink SELECT v, p FROM datagen_source;
 ```
 
-##### 交互式分析Hologres结果表
+);
+
+```
+INSERT INTO redis_sink SELECT v, p FROM datagen_source;
+```
+
+##### 4.5.2.9 交互式分析Hologres结果表
 
 本文为您介绍交互式分析Hologres结果表DDL定义、WITH参数、流式语义和类型映射。
 
@@ -14030,8 +14980,6 @@ CREATE TEMPORARY TABLE datagen_source (
 交互式分析Hologres兼容PostgreSQL协议，与大数据生态紧密连接，支持高并发、低延时实时分析处理PB级数据，让您轻松使用现有BI（Business Intelligence）工具对数据进行多维分析和业务探索。
 
 **DDL定义**
-
-实时计算（流计算）
 
 ```
 create table hologres_sink(
@@ -14047,11 +14995,7 @@ create table hologres_sink(
   'endpoint'='<yourEndpoint>',
 ```
 
-'field_delimiter'='|' --该参数可选。
-
-```
-);
-```
+'field_delimiter'='|' --该参数可选。 );
 
 **WITH参数**
 
@@ -14067,8 +15011,6 @@ create table hologres_sink(
 | mutatetype | 数据写入模式，详情请参见流式语义。 | 否 | 默认值为insertorignore。 |
 | partitionrouter | 是否写入分区表。 | 否 | 默认值为false。 |
 | ignoredelete | 是否忽略撤回消息。 | 否 | 默认值为false。 说明仅在使用流式语义时生效。 |
-
-实时计算（流计算）
 
 | createparttable | 当写入分区表时，是否根据分区值自动创建不存在的分区表。 说明如果分区值中存在短划线（-），暂不支持自动创建分区表。 | 否 | false（默认值）：不会自动创建。 true：自动创建。 说明 VVR 2.1以上版本支持该参数。 请确保分区值不会出现脏数据， 否则会创建错误的分区表导致 Failover，建议慎用该参数。 |
 |---|---|---|---|
@@ -14097,12 +15039,10 @@ Connector不会自动创建分区表，因此，需要您提前手动创建需�
 这两张表都映射至宽表WIDE_TABLE。
 2. 两张结果表的属性设置：
 **mutatetype**设置为**insertorupdate**，可以根据主键更新数据。
-实时计算（流计算）
 **ignoredelete**设置为**true**，防止回撤消息产生Delete请求。
 3. 将两个Flink数据流的数据分别INSERT至对应的结果表中。
-在上述场景中，有如下限制：
 
-**说明**
+> **说明：** 在上述场景中，有如下限制：
 
 宽表必须有主键。 每个数据流的数据都必须包含完整的主键字段。 列存模式的宽表Merge场景在高RPS的情况下，CPU使用率会偏高，建议关闭表中字段的Dictionary encoding功能。
 
@@ -14126,15 +15066,13 @@ Connector不会自动创建分区表，因此，需要您提前手动创建需�
 | DATE | DATE |
 | TIMESTAMP WITH TIMEZONE | TIMESTAMP |
 
-##### 云数据库MongoDB版结果表
+##### 4.5.2.10 云数据库MongoDB版结果表
 
-仅支持将MongoDB作为结果表使用。
+本文为您介绍云数据库MongoDB版结果表DDL定义、WITH参数和代码示例。
 
-**说明**
+> **说明：** 仅支持将MongoDB作为结果表使用。
 
 **DDL定义**
-
-实时计算（流计算）
 
 ```
 CREATE TABLE mongodb_sink(
@@ -14147,8 +15085,9 @@ CREATE TABLE mongodb_sink(
    'uri' = '<yourUri>',
    'maxConnectionIdleTime' = '<yourMaxConnectionIdleTime>',
    'batchSize' = '1024'
-);
 ```
+
+);
 
 **WITH参数**
 
@@ -14169,7 +15108,12 @@ CREATE TEMPORARY TABLE datagen_source (
    p INT
 ) with (
    'connector' = 'datagen'
-); CREATE TEMPORARY TABLE mongodb_sink(
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE mongodb_sink(
    id INT,
    number INT
 ) with (
@@ -14177,18 +15121,21 @@ CREATE TEMPORARY TABLE datagen_source (
    'database' = '<yourDatabase>',
    'collection' = '<yourCollection>',
    'uri'='<yourUri>'
-); INSERT INTO mongodb_sink
+```
+
+);
+
+```
+INSERT INTO mongodb_sink
    SELECT v, p
 FROM datagen_source;
 ```
 
-##### Elasticsearch结果表
+##### 4.5.2.11 Elasticsearch结果表
 
-本文为您介绍Elasticsearch（ES）结果表DDL定义、WITH参数、类型映射和代码示例。 实时计算（流计算） 该Connector支持的功能是和阿里云Elasticsearch产品对齐的，暂不支持HTTPS加密访问形
+本文为您介绍Elasticsearch（ES）结果表DDL定义、WITH参数、类型映射和代码示例。
 
-**说明**
-
-式。
+> **说明：** 该Connector支持的功能是和阿里云Elasticsearch产品对齐的，暂不支持HTTPS加密访问形式。
 
 **DDL定义**
 
@@ -14210,8 +15157,9 @@ FROM datagen_source;
    'document-type' = '<yourEelasticsearch.types>',
    'username' ='<yourElasticsearch.accessId>',
    'password' ='<yourElasticsearch.accessKey>'
-);
 ```
+
+);
 
 **说明**
 
@@ -14219,29 +15167,27 @@ FROM datagen_source;
 
 **WITH参数**
 
-| 参数 | 说明 |  | 是否必填 |  |  | 备注 |
+| 参数 | 说明 |   | 是否必填 |   |   | 备注 |
 |---|---|---|---|---|---|---|
-| connector | 结果表类型 |  | 是 |  |  | 固定值为 elasticsearch- 6 或 elasticsearch-7 。 |
-| hosts | Server地址 |  | 是 |  |  | 请联系阿里云运维工程师获取。 |
-| index | 文档索引名称 |  | 是 |  |  | 默认为空，不进行权限验证。 |
-| document-type | Type名称 |  | elasticsearc h-6 ：必填 |  |  | 无 |
-|  |  |  |  | elasticsearc |  |  |
-|  |  |  | h-6 |  |  |  |
-|  |  |  |  |  | ：必填 |  |
-|  |  |  |  | elasticsearc |  | 无 |
-|  |  |  | h-7 |  |  |  |
-| username | 访问实例ID |  | 否 |  |  | 默认为空，不进行权限验证。 |
-| password | 访问实例密钥 |  | 否 |  |  | 如果定义了username，则必须定义非空的 password。 |
-| document-id.key- delimiter | 文档ID的分隔符 |  | 否 |  |  | 默认值为 。 _ |
+| connector | 结果表类型 |   | 是 |   |   | 固定值为 elasticsearch- 6 或 elasticsearch-7 。 |
+| hosts | Server地址 |   | 是 |   |   | 请联系阿里云运维工程师获取。 |
+| index | 文档索引名称 |   | 是 |   |   | 默认为空，不进行权限验证。 |
+| document-type | Type名称 |   | elasticsearc h-6 ：必填 |   |   | 无 |
+|   |   |   |   | elasticsearc |   |   |
+|   |   |   | h-6 |   |   |   |
+|   |   |   |   |   | ：必填 |   |
+|   |   |   |   | elasticsearc |   | 无 |
+|   |   |   | h-7 |   |   |   |
+| username | 访问实例ID |   | 否 |   |   | 默认为空，不进行权限验证。 |
+| password | 访问实例密钥 |   | 否 |   |   | 如果定义了username，则必须定义非空的 password。 |
+| document-id.key- delimiter | 文档ID的分隔符 |   | 否 |   |   | 默认值为 。 _ |
 
-|  | elasticsearch- |
+|   | elasticsearch- |
 |---|---|
-| elasticsearch-7 |  |
+| elasticsearch-7 |   |
 
-|  | 6 |
+|   | 6 |
 |---|---|
-
-实时计算（流计算）
 
 | failure-handler | Elasticsearch请求失败时的故障处理策略。 | 否 | 可选策略如下： fail（默认值）：如果请求失败，则作业失败。 ignore：忽略失败并删除请求。 retry rejected：重新添加由于队列容量满 _ 而失败的请求。 custom class name：用于使用 ActionRequestFailureHandler子类进行故障处理。 |
 |---|---|---|---|
@@ -14262,7 +15208,7 @@ Elasticsearch Sink可以根据是否定义了主键确定是其在upsert模式�
 
 Elasticsearch Sink同时支持静态索引和动态索引： 如果使用静态索引，则索引选项值应为纯字符串，例如myusers，所有记录都将被写入myusers索引。 如果使用动态索引，可以使用 `{field_name}` 引用记录中的字段值以动态生成目标索引。您还可以使用
 **{field_name|date_format_string}**将TIMESTAMP、DATE和TIME类型的字段值转换
-实时计算（流计算） 为**date_format_string**指定的格式。**date_format_string**与Java的DateTimeFormatter兼容。例如， 如果设置为**myusers-{log_ts|yyyy-MM-dd}**，则log_ts字段值为**2020-03-27 12:25:55**的记录将被写入**myusers-2020-03-27**索引。
+为**date_format_string**指定的格式。**date_format_string**与Java的DateTimeFormatter兼容。例如， 如果设置为**myusers-{log_ts|yyyy-MM-dd}**，则log_ts字段值为**2020-03-27 12:25:55**的记录将被写入**myusers-2020-03-27**索引。
 
 **类型映射**
 
@@ -14277,7 +15223,12 @@ CREATE TEMPORARY TABLE datagen_source (
   uv BIGINT
 ) with (
   'connector' = 'datagen'
-); CREATE TEMPORARY TABLE es_sink (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE es_sink (
    user_id STRING,
    user_name STRING,
    uv BIGINT,
@@ -14293,18 +15244,23 @@ CREATE TEMPORARY TABLE datagen_source (
    'document-type' = '<yourElasticsearch.types>',
    'username' ='<yourElasticsearch.accessId>',
    'password' ='<yourElasticsearch.accessKey>'
-); INSERT INTO es_sink
+```
+
+);
+
+```
+INSERT INTO es_sink
    SELECT id, name, uv
 FROM datagen_source;
 ```
 
-##### Phoenix5结果表
+##### 4.5.2.12 Phoenix5结果表
 
-**重要**
+本文为您介绍Phoenix5结果表DDL定义、WITH参数和代码示例。
+
+> **重要：** Phoenix5结果表仅支持INSERT，不支持UPDATE和DELETE。
 
 **DDL定义**
-
-实时计算（流计算）
 
 ```
 create table phoenix5_sink (
@@ -14317,8 +15273,9 @@ create table phoenix5_sink (
   'serverUrl' = '<yourserverUrl>',
   'tableName' = '<yourTableName>',
   'batchsize' = '25'
-);
 ```
+
+);
 
 **WITH参数**
 
@@ -14331,7 +15288,7 @@ create table phoenix5_sink (
 
 **代码示例**
 
-实时计算（流计算）
+包含Phoenix5结果表的Flink作业代码示例如下。
 
 ```
 CREATE TEMPORARY table datagen_source (
@@ -14341,7 +15298,12 @@ CREATE TEMPORARY table datagen_source (
   `birthday` varchar
 ) WITH (
   'connector' = 'datagen'
-); CREATE TEMPORARY table phoenix5_sink (
+```
+
+);
+
+```
+CREATE TEMPORARY table phoenix5_sink (
   `id` varchar,
   `name` varchar,
   `age` varchar,
@@ -14352,12 +15314,19 @@ CREATE TEMPORARY table datagen_source (
   'serverurl' = '<yourserverUrl>',
   'tablename' = '<yourTableName>',
   'batchsize' = '25'
-); INSERT INTO phoenix5_sink
+```
+
+);
+
+```
+INSERT INTO phoenix5_sink
   SELECT  `id` ,`name` , `age` ,`birthday`
 FROM datagen_source;
 ```
 
-##### 云数据库RDS MySQL结果表
+##### 4.5.2.13 云数据库RDS MySQL结果表
+
+本文为您介绍云数据库RDS MySQL结果表的DDL定义、WITH参数和类型映射。
 
 **语法示例**
 
@@ -14372,14 +15341,13 @@ CREATE TABLE rds_sink (
    'tableName' = '<yourTablename>',
    'url' = '<yourUrl>',
    'userName' = '<yourUsername>'
-);
 ```
 
-| 说明 Flink写入RDS或DRDS数据库结果表原理：针对Flink每行结果数据，拼接成一行SQL语句，输入至目标端数据库，然后执行。如果使用批量写，需要在URL后面加上参数 ? rewriteBatchedStatements=true ，以提高系统性能。 RDS MySQL数据库支持自增主键，因此在DDL中不声明该自增字段。例如ID是自增字段，Flink DDL不声明该自增字段，则数据库在一行数据写入过程中会自动填补相关自增字段。 如果DRDS有分区表，拆分键必须在DDL里PRIMARY KEY（）中声明，否则拆分的表无法写入。 DDL声明的字段必须至少存在一个非主键的字段，否则产生报错。 |  |  |
-|---|---|---|
-|  | ? |  |
+);
 
-实时计算（流计算）
+| 说明 Flink写入RDS或DRDS数据库结果表原理：针对Flink每行结果数据，拼接成一行SQL语句，输入至目标端数据库，然后执行。如果使用批量写，需要在URL后面加上参数 ? rewriteBatchedStatements=true ，以提高系统性能。 RDS MySQL数据库支持自增主键，因此在DDL中不声明该自增字段。例如ID是自增字段，Flink DDL不声明该自增字段，则数据库在一行数据写入过程中会自动填补相关自增字段。 如果DRDS有分区表，拆分键必须在DDL里PRIMARY KEY（）中声明，否则拆分的表无法写入。 DDL声明的字段必须至少存在一个非主键的字段，否则产生报错。 |   |   |
+|---|---|---|
+|   | ? |   |
 
 **WITH参数**
 
@@ -14415,8 +15383,6 @@ CREATE TABLE rds_sink (
 | TIMESTAMP | TIMESTAMP |
 | VARCHAR | VARCHAR |
 
-实时计算（流计算）
-
 | VARBINARY | VARBINARY |
 |---|---|
 
@@ -14428,7 +15394,12 @@ CREATE TEMPORARY TABLE datagen_source (
   `age` INT
 ) WITH (
   'connector' = 'datagen'
-); CREATE TEMPORARY TABLE rds_sink (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE rds_sink (
   `name` VARCHAR,
   `age` INT
 )WITH (
@@ -14437,7 +15408,12 @@ CREATE TEMPORARY TABLE datagen_source (
   'tableName' = '<yourTablename>',
   'url' = '<yourUrl>',
   'userName' = '<yourUsername>'
-); INSERT INTO rds_sink SELECT * FROM datagen_source;
+```
+
+);
+
+```
+INSERT INTO rds_sink SELECT * FROM datagen_source;
 ```
 
 **FAQ**
@@ -14450,7 +15426,7 @@ VALUES(value1, value2, value3, ...) ON DUPLICATE KEY UPDATE field1=value1,field2
 
 field3=value3, ...; 的方式更新记录，即对于不存在的主键字段会直接插入，存在的主键字段则更新相应的值。如果DDL中没有声明PRIMARY KEY，则会用 `insert into` 方式插入记录，追加数据。 Q：使用RDS表中的唯一索引进行GROUP BY时需要注意什么？ A： 需要在作业中的GROUP BY中声明该唯一索引。 RDS中只有一个自增主键，Flink作业中不能声明为PRIMARY KEY。
 
-##### 云原生数据仓库AnalyticDB MySQL版3.0结果表
+##### 4.5.2.14 云原生数据仓库AnalyticDB MySQL版3.0结果表
 
 本文为您介绍云原生数据仓库AnalyticDB MySQL版3.0结果表的DDL定义、WITH参数和类型映射。
 
@@ -14466,10 +15442,9 @@ CREATE TABLE adb_sink (
   'tableName' = '<yourTablename>',
   'url' = 'jdbc:mysql://<yourNetworkAddress>:<PortId>/<yourDatabaseName>',
   'userName' = '<yourUsername>'
-);
 ```
 
-实时计算（流计算）
+);
 
 **WITH参数**
 
@@ -14500,15 +15475,18 @@ CREATE TABLE adb_sink (
 
 **代码示例**
 
-实时计算（流计算）
-
 ```
 CREATE TEMPORARY TABLE datagen_source (
   `name` VARCHAR,
   `age` INT
 ) WITH (
   'connector' = 'datagen'
-); CREATE TEMPORARY TABLE adb_sink (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE adb_sink (
   `name` VARCHAR,
   `age` INT
 ) WITH (
@@ -14517,10 +15495,15 @@ CREATE TEMPORARY TABLE datagen_source (
   'tableName' = '<yourTablename>',
   'url' = '<yourUrl>',
   'userName' = '<yourUsername>'
-); INSERT INTO adb_sink SELECT * FROM datagen_source;
 ```
 
-##### Lindorm结果表
+);
+
+```
+INSERT INTO adb_sink SELECT * FROM datagen_source;
+```
+
+##### 4.5.2.15 Lindorm结果表
 
 本文为您介绍云原生多模数据库Lindorm的宽表作为结果表的DDL定义、WITH参数、类型映射和代码示例。
 
@@ -14535,10 +15518,10 @@ Lindorm是面向物联网、互联网、车联网等设计和优化的云原生�
 **DDL定义**
 
 ```
-CREATE TABLE lindorm_dynamic_output( pk1 VARCHAR, pk2 VARCHAR, pk3 VARCHAR, c1 VARCHAR, c2 VARCHAR, PRIMARY KEY (pk1,pk2,pk3) NOT ENFORCED ) WITH ( 'connector' = 'lindorm', 'seedserver' = '<yourSeedServer>', 'namespace' = '<yourNamespace>', 'username' = '<yourUsername>', 'password' = '<yourPassword>', 'tableName' = '<yourTableName>', 'columnFamily' = '<yourColumnFamily>' );
+CREATE TABLE lindorm_dynamic_output( pk1 VARCHAR, pk2 VARCHAR, pk3 VARCHAR, c1 VARCHAR, c2 VARCHAR, PRIMARY KEY (pk1,pk2,pk3) NOT ENFORCED ) WITH ( 'connector' = 'lindorm', 'seedserver' = '<yourSeedServer>', 'namespace' = '<yourNamespace>', 'username' = '<yourUsername>', 'password' = '<yourPassword>', 'tableName' = '<yourTableName>', 'columnFamily' = '<yourColumnFamily>'
 ```
 
-实时计算（流计算）
+);
 
 **WITH参数**
 
@@ -14557,8 +15540,6 @@ CREATE TABLE lindorm_dynamic_output( pk1 VARCHAR, pk2 VARCHAR, pk3 VARCHAR, c1 V
 | flushInterval Ms | 当数据量比较少时，多长时间写入一次。 | 否 | 单位为ms，默认值为2000ms。 |
 | ignoreDelete | 是否忽略Delete操作。 | 否 | 参数取值如下： true：忽略。 false（默认）：不忽略。 |
 
-实时计算（流计算）
-
 | dynamicColu mnSink | 是否开启动态表模式。关于动态表模式的介绍，请参见动态表模式一节。 | 否 | 参数取值如下： true：开启动态表模式。 false（默认）：不开启动态表模式。 说明实时计算引擎VVR 6.0.2及以上版本支持该参数。 |
 |---|---|---|---|
 
@@ -14574,10 +15555,10 @@ CREATE TABLE lindorm_dynamic_output( pk1 VARCHAR, pk2 VARCHAR, pk3 VARCHAR, c1 V
 动态表需要遵循特殊的DDL定义。其主键需要定义为前若干列，最后两列中前一列的值作为列名变量，最后一列的值作为该列对应的值，且要求最后两列的类型均为varchar。具体例子如下：
 
 ```
-CREATE TABLE lindorm_dynamic_output( pk1 VARCHAR, pk2 VARCHAR, pk3 VARCHAR, c1 VARCHAR, c2 VARCHAR, PRIMARY KEY (pk1,pk2,pk3) NOT ENFORCED ) WITH ( 'connector' = 'lindorm', 'seedserver' = '<yourSeedServer>', 'namespace' = '<yourNamespace>', 'username' = '<yourUsername>', 'password' = '<yourPassword>', 'tableName' = '<yourTableName>', 'columnFamily' = '<yourColumnFamily>' );
+CREATE TABLE lindorm_dynamic_output( pk1 VARCHAR, pk2 VARCHAR, pk3 VARCHAR, c1 VARCHAR, c2 VARCHAR, PRIMARY KEY (pk1,pk2,pk3) NOT ENFORCED ) WITH ( 'connector' = 'lindorm', 'seedserver' = '<yourSeedServer>', 'namespace' = '<yourNamespace>', 'username' = '<yourUsername>', 'password' = '<yourPassword>', 'tableName' = '<yourTableName>', 'columnFamily' = '<yourColumnFamily>'
 ```
 
-上述定义中，pk1、pk2、pk3 为主键，c1、c2 为动态表模式所必须的两列且一定为最后两列，不可存在其他的非主键的列。每次写入数据时，会将主键<pk1, pk2, pk3>对应的条目中添加/更改一列，列名为c1的值，该列的值为c2的值。每次一条数据来临时，只会添加/更改一列对应的值，其他列的值不会改变。
+); 上述定义中，pk1、pk2、pk3 为主键，c1、c2 为动态表模式所必须的两列且一定为最后两列，不可存在其他的非主键的列。每次写入数据时，会将主键<pk1, pk2, pk3>对应的条目中添加/更改一列，列名为c1的值，该列的值为c2的值。每次一条数据来临时，只会添加/更改一列对应的值，其他列的值不会改变。
 
 **类型映射**
 
@@ -14586,14 +15567,12 @@ Lindorm中数据均为二进制形式，通过Flink某个字段类型来转换�
 | Flink SQL类型 | 转换为写入的Bytes使用的方法 |
 |---|---|
 
-实时计算（流计算）
-
 | CHAR | org.apache.flink.table.data.StringData::toBytes |
 |---|---|
-| VARCHAR |  |
+| VARCHAR |   |
 | BOOLEAN | com.alibaba.lindorm.client.core.utils.Bytes::toBytes(boolean) |
 | BINARY | 直接为bytes的形式。 |
-| VARBINARY |  |
+| VARBINARY |   |
 | DECIMAL | com.alibaba.lindorm.client.core.utils.Bytes::toBytes(BigDecimal) |
 | TINYINT | 直接将数据封装成byte[]的第一个byte。 |
 | SMALLINT | com.alibaba.lindorm.client.core.utils.Bytes::toBytes(short) |
@@ -14607,8 +15586,6 @@ Lindorm中数据均为二进制形式，通过Flink某个字段类型来转换�
 
 **代码示例**
 
-实时计算（流计算）
-
 ```
 CREATE TEMPORARY TABLE example_source(
  id INT,
@@ -14619,7 +15596,12 @@ CREATE TEMPORARY TABLE example_source(
  'fields.id.kind' = 'sequence',
  'fields.id.start' = '0',
  'fields.id.end' = '9'
-); CREATE TEMPORARY TABLE lindorm_hbase_dim(
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE lindorm_hbase_dim(
  `id` INT,
  `name` VARCHAR,
  `birth` VARCHAR,
@@ -14631,7 +15613,12 @@ CREATE TEMPORARY TABLE example_source(
  'namespace'='default',
  'username'='${lindorm_username}',
  'password'='${lindorm_username}'
-); CREATE TEMPORARY TABLE lindorm_hbase_sink(
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE lindorm_hbase_sink(
  `id` INT,
  `name` VARCHAR,
  `birth` VARCHAR,
@@ -14643,10 +15630,15 @@ CREATE TEMPORARY TABLE example_source(
  'namespace'='default',
  'username'='${lindorm_username}',
  'password'='${lindorm_username}'
-); INSERT INTO lindorm_hbase_sink SELECT example_source.id as id, lindorm_hbase_dim.name as name, lindorm_hbase_dim.birth as b irth FROM example_source JOIN lindorm_hbase_dim FOR SYSTEM_TIME AS OF PROCTIME() ON example_sourc e.id = lindorm_hbase_dim.id;
 ```
 
-##### ClickHouse结果表
+);
+
+```
+INSERT INTO lindorm_hbase_sink SELECT example_source.id as id, lindorm_hbase_dim.name as name, lindorm_hbase_dim.birth as b irth FROM example_source JOIN lindorm_hbase_dim FOR SYSTEM_TIME AS OF PROCTIME() ON example_sourc e.id = lindorm_hbase_dim.id;
+```
+
+##### 4.5.2.16 ClickHouse结果表
 
 本文为您介绍ClickHouse结果表的DDL定义，以及创建结果表时使用的WITH参数、类型映射和代码示例。
 
@@ -14655,8 +15647,6 @@ CREATE TEMPORARY TABLE example_source(
 仅Flink计算引擎VVR 3.0.2及以上版本支持ClickHouse Connector。
 
 **DDL定义**
-
-实时计算（流计算）
 
 ```
 CREATE TABLE clickhouse_sink (
@@ -14675,7 +15665,7 @@ CREATE TABLE clickhouse_sink (
   'flushIntervalMs' = '1000'
 ```
 
-)
+`)`
 
 **WITH参数**
 
@@ -14701,8 +15691,6 @@ CREATE TABLE clickhouse_sink (
 | Int64 | BIGINT |
 | Float32 | FLOAT |
 
-实时计算（流计算）
-
 | Float64 | DOUBLE |
 |---|---|
 | FixedString | CHAR |
@@ -14719,15 +15707,9 @@ CREATE TABLE clickhouse_sink (
 | 不支持 | MULTISET |
 | 不支持 | ROW |
 
-ClickHouse的DateTime类型可以精确到秒，Datetime64可以精确到纳秒。因为ClickHouse
-
-**重要**
-
-官方提供的JDBC写Datetime64数据类型会出现精度丢失，只能精确到秒的问题。所以目前通过Flink只能写入秒级别的TIMESTAMP，即TIMESTAMP(0)。
+> **重要：** ClickHouse的DateTime类型可以精确到秒，Datetime64可以精确到纳秒。因为ClickHouse 官方提供的JDBC写Datetime64数据类型会出现精度丢失，只能精确到秒的问题。所以目前通过Flink只能写入秒级别的TIMESTAMP，即TIMESTAMP(0)。
 
 **代码示例**
-
-实时计算（流计算）
 
 ```
 CREATE TEMPORARY TABLE clickhouse_source (
@@ -14738,7 +15720,12 @@ CREATE TEMPORARY TABLE clickhouse_source (
 ) WITH (
   'connector' = 'datagen',
   'rows-per-second' = '50'
-); CREATE TEMPORARY TABLE clickhouse_output (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE clickhouse_output (
   id INT,
   name VARCHAR,
   age BIGINT,
@@ -14749,7 +15736,12 @@ CREATE TEMPORARY TABLE clickhouse_source (
   'userName' = '<yourUsername>',
   'password' = '<yourPassword>',
   'tableName' = '<yourTablename>',
-); INSERT INTO clickhouse_output SELECT
+```
+
+);
+
+```
+INSERT INTO clickhouse_output SELECT
   id,
   name,
   age,
@@ -14757,7 +15749,7 @@ CREATE TEMPORARY TABLE clickhouse_source (
 FROM clickhouse_source;
 ```
 
-##### print结果表
+##### 4.5.2.17 print结果表
 
 本文为您介绍print结果表的DDL定义，以及创建print结果表时使用的WITH参数。您可以通过print结果表测试流作业或者调试生产作业，验证数据结果是否符合预期。
 
@@ -14774,10 +15766,9 @@ CREATE TABLE print_table (
 ) WITH (
   'connector'='print',
   'logger'='true'
-);
 ```
 
-实时计算（流计算）
+);
 
 **WITH参数**
 
@@ -14792,7 +15783,9 @@ CREATE TABLE print_table (
 
 Q：如何在控制台查看print数据结果？ A：查看print数据结果的步骤，有以下两种方式： 在Flink开发控制台查看： a. 在目标作业**Task Manager**页签，单击**Path, ID**。 b. 在**logs**页签，查看print数据结果。 跳转到Flink UI界面查看： a. 在目标作业**作业总览**页签，单击**Flink UI**。 b. 单击**Task Managers**。 c. 单击**Path, ID**。 d. 在**logs**页签，查看print数据结果。
 
-##### Upsert Kafka结果表
+##### 4.5.2.18 Upsert Kafka结果表
+
+本文为您介绍Upsert Kafka结果表的DDL定义、WITH参数和示例。
 
 **什么是Upsert Kafka**
 
@@ -14804,7 +15797,7 @@ Upsert Kafka基于开源Flink社区的Upsert Kafka版实现，详情请参见Ups
 
 **DDL定义**
 
-以表名upsert_kafka_sink为例介绍DDL定义。 实时计算（流计算）
+以表名upsert_kafka_sink为例介绍DDL定义。
 
 ```
 CREATE TABLE upsert_kafka_sink (
@@ -14818,12 +15811,11 @@ CREATE TABLE upsert_kafka_sink (
   'properties.bootstrap.servers' = '...',
   'key.format' = 'avro',
   'value.format' = 'avro'
-);
 ```
 
-Upsert Kafka必须声明主键。
+);
 
-**说明**
+> **说明：** Upsert Kafka必须声明主键。
 
 **WITH参数**
 
@@ -14836,17 +15828,15 @@ Upsert Kafka必须声明主键。
 | value.format | Upsert Kafka消息中Value部分序列化的格式。 | 是 | STRI NG | 支持的格式如下： csv json avro |
 | value.fields- include | 指定出现在Value中的字段。 | 否 | Strin g | 取值如下： ALL（默认值）：Schema中所有字段，包括主键字段。 EXCEPT KEY：Schema中所有字段，不包 _ 括主键字段。 |
 
-实时计算（流计算）
-
-| properties.* | 指定Kafka参数。 |  |  |  |  | 后缀名必须匹配定义在Apache Kafka文档中的参数名。Flink会自动移除properties. 前缀，并将转换后的参数名及值传入Kafka客户端。例如，您可以通过设置 'properties.allow.auto.create.top ics' = 'false' 来禁止自动创建Topic。 说明已在WITH参数定义的Kafka 参数是不允许通过该方式指定参数，因为 Flink会重写该参数的值。例如 'key.deserializer' 和 'valu e.deserializer' 。 |  |  |  |
+| properties.* | 指定Kafka参数。 |   |   |   |   | 后缀名必须匹配定义在Apache Kafka文档中的参数名。Flink会自动移除properties. 前缀，并将转换后的参数名及值传入Kafka客户端。例如，您可以通过设置 'properties.allow.auto.create.top ics' = 'false' 来禁止自动创建Topic。 说明已在WITH参数定义的Kafka 参数是不允许通过该方式指定参数，因为 Flink会重写该参数的值。例如 'key.deserializer' 和 'valu e.deserializer' 。 |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | 'properties.allow.auto.create.top |  |
-|  |  |  |  |  |  | ics' = 'false' |  |  |  |
-|  |  |  | 否 | Strin g |  |  | 说明已在WITH参数定义的Kafka 参数是不允许通过该方式指定参数，因为 Flink会重写该参数的值。例如 'key.deserializer' 和 'valu e.deserializer' 。 |  |  |
-|  |  |  |  |  |  |  |  |  | 'key.deserializer' |
-|  |  |  |  |  |  |  | e.deserializer' |  |  |
+|   |   |   |   |   |   |   |   | 'properties.allow.auto.create.top |   |
+|   |   |   |   |   |   | ics' = 'false' |   |   |   |
+|   |   |   | 否 | Strin g |   |   | 说明已在WITH参数定义的Kafka 参数是不允许通过该方式指定参数，因为 Flink会重写该参数的值。例如 'key.deserializer' 和 'valu e.deserializer' 。 |   |   |
+|   |   |   |   |   |   |   |   |   | 'key.deserializer' |
+|   |   |   |   |   |   |   | e.deserializer' |   |   |
 
-| 'valu |  |  |
+| 'valu |   |   |
 |---|---|---|
 
 Kafka Producer配置参数详情请参见Kafka官网生产者配置项列表。如果您还需要直接配置Connector使用的 Kafka Producer，可以在Kafka Producer配置参数前添加 `properties` 前缀，并将该Kafka Producer配置信息追加至WITH参数。例如Kafka集群需要SASL（Simple Authentication and Security Layer）认证，代码示例如下。
@@ -14859,12 +15849,14 @@ CREATE TABLE kafkaTable (
     'properties.security.protocol' = 'SASL_PLAINTEXT',
     'properties.sasl.mechanism' = 'PLAIN',
     'properties.sasl.jaas.config' =
-'org.apache.flink.kafka.shaded.org.apache.kafka.common.security.plain.PlainLoginModule requi red username="USERNAME" password="PASSWORD";' );
+'org.apache.flink.kafka.shaded.org.apache.kafka.common.security.plain.PlainLoginModule requi red username="USERNAME" password="PASSWORD";'
 ```
+
+);
 
 **示例**
 
-实时计算（流计算） `--`创建统计`PV`和`UV`的源表。
+`--`创建统计`PV`和`UV`的源表。
 
 ```
 CREATE TABLE pageviews (
@@ -14878,7 +15870,12 @@ CREATE TABLE pageviews (
   'topic' = '<yourTopicName>',
   'properties.bootstrap.servers' = '...',
   'format' = 'json'
-); CREATE TABLE pageviews_per_region (
+```
+
+); `--`创建`Upsert Kafka`结果表。
+
+```
+CREATE TABLE pageviews_per_region (
   user_region STRING,
   pv BIGINT,
   uv BIGINT,
@@ -14889,10 +15886,9 @@ CREATE TABLE pageviews (
   'properties.bootstrap.servers' = '...',
   'key.format' = 'avro',
   'value.format' = 'avro'
-);
 ```
 
-`--`将统计的`PV`、`UV`数据写入结果表中。
+); `--`将统计的`PV`、`UV`数据写入结果表中。
 
 ```
 INSERT INTO pageviews_per_region SELECT
@@ -14902,17 +15898,15 @@ INSERT INTO pageviews_per_region SELECT
 FROM pageviews GROUP BY user_region;
 ```
 
-##### 数据湖Iceberg结果表
+##### 4.5.2.19 数据湖Iceberg结果表
 
 您可以通过Flink将数据写入Hive Metastore或者DLF Catalog下的Iceberg表。本文为您介绍如何将数据写入到数据湖Iceberg结果，包括DDL定义、WITH参数、类型映射和代码示例等。
 
 **背景信息**
 
-Apache Iceberg是一种开放的数据湖表格格式。您可以借助Apache Iceberg快速地在HDFS或者云端OSS上构建自己的数据湖存储服务，并借助开源大数据生态的Flink、Spark、Hive、Presto等计算引擎来实现数据湖的分析。目前Apache Iceberg提供以下核心能力： 基于HDFS或者对象存储构建低成本的轻量级数据湖存储服务。 完善的ACID语义。 支持历史版本回溯。 支持高效的数据过滤。 支持Schema Evolution。 支持Partition Evolution。 您可以借助Flink高效的容错能力和流处理能力，把海量的日志行为数据实时导入到Apache Iceberg数据湖内， 实时计算（流计算） 再借助Flink或者其他分析引擎来实现数据价值的提取。您可以通过以下任意一种方式来使用Iceberg Connector： 将数据写入至Hive Metastore下的Iceberg表 Apache Hive Metastore通常被作为开源大数据的统一元数据中心。如果您的元数据被维护在Apache Hive Metastore，希望通过Flink将数据写入Iceberg表内，然后将数据存储在阿里云OSS上，可以采用该方式来使用Iceberg Connector。 将数据写入至DLF Catalog下的Iceberg表是基于阿里云大数据生态产品设计和研发的统一元数据中心。借助该元数据中心您可以方便地采用开源大数据计算引擎（Spark、Hive、Presto或Flink）访问同一份数据湖内的数据。如果您希望元数据被存储在阿里云 DLF上，可以采用该方式来使用Iceberg Connector。 Iceberg Connector既可以作为Flink Stream作业的结果表，也可以作为Flink批作业的源表和
+Apache Iceberg是一种开放的数据湖表格格式。您可以借助Apache Iceberg快速地在HDFS或者云端OSS上构建自己的数据湖存储服务，并借助开源大数据生态的Flink、Spark、Hive、Presto等计算引擎来实现数据湖的分析。目前Apache Iceberg提供以下核心能力： 基于HDFS或者对象存储构建低成本的轻量级数据湖存储服务。 完善的ACID语义。 支持历史版本回溯。 支持高效的数据过滤。 支持Schema Evolution。 支持Partition Evolution。 您可以借助Flink高效的容错能力和流处理能力，把海量的日志行为数据实时导入到Apache Iceberg数据湖内， 再借助Flink或者其他分析引擎来实现数据价值的提取。您可以通过以下任意一种方式来使用Iceberg Connector： 将数据写入至Hive Metastore下的Iceberg表 Apache Hive Metastore通常被作为开源大数据的统一元数据中心。如果您的元数据被维护在Apache Hive Metastore，希望通过Flink将数据写入Iceberg表内，然后将数据存储在阿里云OSS上，可以采用该方式来使用Iceberg Connector。 将数据写入至DLF Catalog下的Iceberg表是基于阿里云大数据生态产品设计和研发的统一元数据中心。借助该元数据中心您可以方便地采用开源大数据计算引擎（Spark、Hive、Presto或Flink）访问同一份数据湖内的数据。如果您希望元数据被存储在阿里云 DLF上，可以采用该方式来使用Iceberg Connector。
 
-**说明**
-
-结果表。
+> **说明：** Iceberg Connector既可以作为Flink Stream作业的结果表，也可以作为Flink批作业的源表和结果表。
 
 **前提条件**
 
@@ -14941,8 +15935,6 @@ Iceberg Connector仅支持日志数据入湖，暂不支持CDC或者Binlog数据
 | BINARY | VARBINARY |
 | STRUCT<...> | ROW |
 
-实时计算（流计算）
-
 | LIST<E> | LIST |
 |---|---|
 | MAP<K, V> | MAP |
@@ -14957,11 +15949,9 @@ Iceberg Connector仅支持日志数据入湖，暂不支持CDC或者Binlog数据
 hdfs dfs -ls oss://table-format/
 ```
 
-oss://table-format/为示例值。在实际验证时，需要替换为您账号下的Bucket名称和OSS
+> **说明：** oss://table-format/为示例值。在实际验证时，需要替换为您账号下的Bucket名称和OSS 路径。
 
-**说明**
-
-路径。 自建的Hive Metastore。 如果您使用的是自建Hive Metastore，则需要手动配置Hadoop以便能正确地访问OSS数据。操作步骤详情如下。 a. 打开Hadoop的阿里云OSS插件开关，让Hadoop classpath可以自动加载阿里云OSS的相关依赖。不同 Hadoop版本的操作方式如下表所示。
+自建的Hive Metastore。 如果您使用的是自建Hive Metastore，则需要手动配置Hadoop以便能正确地访问OSS数据。操作步骤详情如下。 a. 打开Hadoop的阿里云OSS插件开关，让Hadoop classpath可以自动加载阿里云OSS的相关依赖。不同 Hadoop版本的操作方式如下表所示。
 
 | Hadoop版本 | 操作方式 |
 |---|---|
@@ -14969,7 +15959,7 @@ oss://table-format/为示例值。在实际验证时，需要替换为您账号�
 | hadoop 2.9.x | 在$HADOOP HOME/libexec/hadoop-config.sh中新增如下内容。 _ CLASSPATH=${CLASSPATH}:${TOOL PATH} _ |
 | hadoop 2.8.x及以下版本 | 不支持访问阿里云OSS服务。 |
 
-实时计算（流计算） b. 在$HADOOP_HOME/etc/hadoop/core-site.xml中新增如下内容，并将**fs.oss.**********、**fs.oss.*************和**fs.oss.*****************参数值替换为您的实际值。
+b. 在$HADOOP_HOME/etc/hadoop/core-site.xml中新增如下内容，并将**fs.oss.**********、**fs.oss.*************和**fs.oss.*****************参数值替换为您的实际值。
 
 ```xml
 <property>
@@ -15004,14 +15994,10 @@ c. 通过hdfs命令行来验证是否可以正确读取OSS数据。
 hdfs dfs -ls oss://table-format/
 ```
 
-oss://table-format/为示例值。在实际验证时，需要替换为您账号下的Bucket名称和
+> **说明：** oss://table-format/为示例值。在实际验证时，需要替换为您账号下的Bucket名称和 OSS路径。
 
-**说明**
-
-OSS路径。
 2. 配置网络以便Flink可以正确地访问Hive Metastore端口。
 3. 编写SQL并执行入湖作业。
-实时计算（流计算）
 
 ```
 CREATE TEMPORARY TABLE flink_source(
@@ -15019,7 +16005,12 @@ CREATE TEMPORARY TABLE flink_source(
   data STRING
 ) WITH (
   'connector' = 'datagen'
-); CREATE TEMPORARY TABLE iceberg_sink (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE iceberg_sink (
   id BIGINT,
   data STRING
 ) WITH (
@@ -15033,7 +16024,12 @@ CREATE TEMPORARY TABLE flink_source(
   'oss.endpoint' = '<aliyun-oss-endpoint>',
   'access.key.id' = '<aliyun-oss-access-key>',
   'access.key.secret' = '<aliyun-oss-access-key-secret>'
-); INSERT INTO iceberg_sink SELECT * FROM flink_source;
+```
+
+);
+
+```
+INSERT INTO iceberg_sink SELECT * FROM flink_source;
 ```
 
 WITH参数解释如下表所示。
@@ -15048,8 +16044,6 @@ WITH参数解释如下表所示。
 | uri | Hive Metastore的thrift server 的地址。 | 是 | 格式为thrift://<host>:<port>。其中： host表示Hive Metastore的IP地址。 port表示Hive Metstore的端口，默认值为 9083。 |
 | location | 结果表存放的OSS路径。 | 是 | 格式为oss://<bucket>/<object>。其中： bucket表示您创建的OSS Bucket名称。 object表示您存放数据的路径。 |
 | io-impl | 分布式文件系统的实现类名称。 | 是 | 固定值为 org.apache.iceberg.aliyun.oss.OSSFileIO。 |
-
-实时计算（流计算）
 
 | oss.endpoint | 阿里云对象存储服务OSS的 Endpoint。 | 是 | 请联系阿里云运维工程师获取。 |
 |---|---|---|---|
@@ -15078,40 +16072,37 @@ CREATE TABLE dlf_iceberg (
   'dlf.catalog-id' = '<yourCatalogId>',
   'dlf.endpoint' = '<yourDLFEndpoint>',
   'dlf.region-id' = '<yourDLFRegionId>'
-);
 ```
 
-WITH参数说明
+); WITH参数说明
 
-| 参数 | 说明 |  | 是否必选 | 备注 |  |  |
+| 参数 | 说明 |   | 是否必选 | 备注 |   |   |
 |---|---|---|---|---|---|---|
-| connector | 结果表类型。 |  | 是 | 固定值为 iceberg 。 |  |  |
-| catalog-name | Catalog名称。 |  | 是 | 请填写为自定义的英文名。 |  |  |
-| catalog-type | Catalog类型。 |  | 是 | 固定值为custom。 |  |  |
-| catalog- database | 数据库名称。 |  | 是 | 对应用户在DLF上创建的数据库名称，例如 dlf db。 _ |  |  |
-| io-impl | 分布式文件系统的实现类名。 |  | 是 | 固定值为 org.apache.iceberg.aliyun.oss.OSSFi leIO 。 |  |  |
-|  |  |  |  |  | org.apache.iceberg.aliyun.oss.OSSFi |  |
-|  |  |  |  | leIO |  |  |
-| oss.endpoint | 阿里云对象存储服务OSS的 Endpoint。 |  | 是 | 请联系阿里云运维工程师获取。 |  |  |
-| access.key.id | 阿里云账号的AccessKey ID。 |  | 是 | 请在Apsara Uni-manager运营控制台，将鼠标悬停在当前登录用户的头像上，单击个人信息进行查看。。 |  |  |
+| connector | 结果表类型。 |   | 是 | 固定值为 iceberg 。 |   |   |
+| catalog-name | Catalog名称。 |   | 是 | 请填写为自定义的英文名。 |   |   |
+| catalog-type | Catalog类型。 |   | 是 | 固定值为custom。 |   |   |
+| catalog- database | 数据库名称。 |   | 是 | 对应用户在DLF上创建的数据库名称，例如 dlf db。 _ |   |   |
+| io-impl | 分布式文件系统的实现类名。 |   | 是 | 固定值为 org.apache.iceberg.aliyun.oss.OSSFi leIO 。 |   |   |
+|   |   |   |   |   | org.apache.iceberg.aliyun.oss.OSSFi |   |
+|   |   |   |   | leIO |   |   |
+| oss.endpoint | 阿里云对象存储服务OSS的 Endpoint。 |   | 是 | 请联系阿里云运维工程师获取。 |   |   |
+| access.key.id | 阿里云账号的AccessKey ID。 |   | 是 | 请在Apsara Uni-manager运营控制台，将鼠标悬停在当前登录用户的头像上，单击个人信息进行查看。。 |   |   |
 
-实时计算（流计算）
-
-| access.key.se cret | 阿里云账号的Access Secret。 |  | 是 | 请在Apsara Uni-manager运营控制台，将鼠标悬停在当前登录用户的头像上，单击个人信息进行查看。。 |  |  |
+| access.key.se cret | 阿里云账号的Access Secret。 |   | 是 | 请在Apsara Uni-manager运营控制台，将鼠标悬停在当前登录用户的头像上，单击个人信息进行查看。。 |   |   |
 |---|---|---|---|---|---|---|
-| catalog-impl | Catalog的Class类名。 |  | 是 | 固定值为 org.apache.iceberg.aliyun.dlf.DlfCa talog |  |  |
-|  |  |  |  |  | org.apache.iceberg.aliyun.dlf.DlfCa |  |
-|  |  |  |  | talog |  |  |
-| warehouse | 表数据存放在OSS的路径。 |  | 是 | 无。 |  |  |
-| dlf.catalog-id | 阿里云账号的账号ID。 |  | 是 | 在系统界面右上角，单击当前登录用户的头像，选择个人信息，查看UID信息。 |  |  |
-| dlf.endpoint | DLF服务的Endpoint。 |  | 是 | 请联系阿里云运维工程师获取。 |  |  |
-| dlf.region-id | DLF服务的地域名。 |  | 是 | 说明请和dlf.endpoint选择的地域保持一致。 |  |  |
+| catalog-impl | Catalog的Class类名。 |   | 是 | 固定值为 org.apache.iceberg.aliyun.dlf.DlfCa talog |   |   |
+|   |   |   |   |   | org.apache.iceberg.aliyun.dlf.DlfCa |   |
+|   |   |   |   | talog |   |   |
+| warehouse | 表数据存放在OSS的路径。 |   | 是 | 无。 |   |   |
+| dlf.catalog-id | 阿里云账号的账号ID。 |   | 是 | 在系统界面右上角，单击当前登录用户的头像，选择个人信息，查看UID信息。 |   |   |
+| dlf.endpoint | DLF服务的Endpoint。 |   | 是 | 请联系阿里云运维工程师获取。 |   |   |
+| dlf.region-id | DLF服务的地域名。 |   | 是 | 说明请和dlf.endpoint选择的地域保持一致。 |   |   |
 
-代码示例 i. 创建DLF数据库。 创建数据库选择OSS路径时，请将DLF数据库OSS路径选择
+代码示例 i. 创建DLF数据库。
 
-**说明**
+> **说明：** 创建数据库选择OSS路径时，请将DLF数据库OSS路径选择为${warehouse}/${database_name}.db。例如，如果您将warehouse地址设置为oss://iceberg- test/warehouse，数据库的名称设置为dlf_db，则dlf_db的OSS路径需要选择为oss://iceberg- test/warehouse/dlf_db.db。
 
-为${warehouse}/${database_name}.db。例如，如果您将warehouse地址设置为oss://icebergtest/warehouse，数据库的名称设置为dlf_db，则dlf_db的OSS路径需要选择为oss://icebergtest/warehouse/dlf_db.db。 ii. 在**作业开发**页面，在文本编辑区域，编写SQL设计流作业。
+ii. 在**作业开发**页面，在文本编辑区域，编写SQL设计流作业。
 
 ```
 CREATE TEMPORARY TABLE datagen(
@@ -15119,7 +16110,12 @@ CREATE TEMPORARY TABLE datagen(
   data  STRING
 ) WITH (
   'connector' = 'datagen'
-); CREATE TEMPORARY TABLE dlf_iceberg (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE dlf_iceberg (
   id    BIGINT,
   data  STRING
 ) WITH (
@@ -15136,12 +16132,21 @@ CREATE TEMPORARY TABLE datagen(
   'dlf.catalog-id' = '<yourCatalogId>',
   'dlf.endpoint' = '<yourDLFEndpoint>',
   'dlf.region-id' = '<yourDLFRegionId>'
-); INSERT INTO dlf_iceberg SELECT * FROM datagen;
 ```
 
-iii. 在作业开发页面右侧**高级配置**面版中，引擎版本配置为**vvr-4.0.11-flink-1.13**。 实时计算（流计算） iv. 单击**验证**。 v. 单击**上线**。 vi. 单击**确认**。 vii. 在OSS控制台查看写入的测试数据。 等第一次Checkpoint完成之后，您将能看到写入的测试数据了。
+);
 
-##### Blackhole结果表
+```
+INSERT INTO dlf_iceberg SELECT * FROM datagen;
+```
+
+iii. 在作业开发页面右侧**高级配置**面版中，引擎版本配置为**vvr-4.0.11-flink-1.13**。 iv. 单击**验证**。 v. 单击**上线**。 vi. 单击**确认**。 vii. 在OSS控制台查看写入的测试数据。 等第一次Checkpoint完成之后，您将能看到写入的测试数据了。
+
+##### 4.5.2.20 Blackhole结果表
+
+本文为您介绍Blackhole结果表的DDL定义、WITH参数和代码示例。
+
+**什么是Blackhole结果表**
 
 Blackhole结果表是系统内置的Connector。如果您在注册其他类型的Connector结果表时报错，但您不确定是系统问题还是结果表WITH参数错误，您可以将WITH参数修改为**'connector' = 'blackhole'**后，单击**运行**。 如果不再报错，则证明系统没有问题，您需要确认修改WITH参数。
 
@@ -15153,15 +16158,14 @@ create table blackhole_sink(
   score BIGINT
 ) with (
   'connector' = 'blackhole'
-);
 ```
+
+);
 
 **WITH参数**
 
 | 参数 | 说明 | 是否必填 | 备注 |
 |---|---|---|---|
-
-实时计算（流计算）
 
 | connector | 结果表类型 | 是 | 固定值为blackhole。 |
 |---|---|---|---|
@@ -15180,16 +16184,26 @@ CREATE TEMPORARY table datahub_source(
   'accessId'='<yourAccessId>',
   'accessKey'='<yourAccessKey>',
   'startTime'='2018-06-01 00:00:00'
-); CREATE TEMPORARY table blackhole_sink(
+```
+
+);
+
+```
+CREATE TEMPORARY table blackhole_sink(
   name  VARCHAR
 ) with (
   'connector' = 'blackhole'
-); INSERT INTO blackhole_sink SELECT
+```
+
+);
+
+```
+INSERT INTO blackhole_sink SELECT
   LOWER(name)
 from datahub_source;
 ```
 
-##### InfluxDB结果表
+##### 4.5.2.21 InfluxDB结果表
 
 本文为您介绍InfluxDB结果表的DDL定义、WITH参数、类型映射和代码示例。
 
@@ -15203,7 +16217,7 @@ from datahub_source;
 
 **DDL定义**
 
-Flink支持使用InfluxDB作为结果表输出，示例代码如下。 实时计算（流计算）
+Flink支持使用InfluxDB作为结果表输出，示例代码如下。
 
 ```
 CREATE TABLE stream_test_influxdb(
@@ -15220,10 +16234,9 @@ CREATE TABLE stream_test_influxdb(
   'batchSize' ='300',
   'retentionPolicy' = 'autogen',
   'ignoreErrorData' = 'false'
-);
 ```
 
-建表默认格式： 第0列：metric（VARCHAR），必填。 第1列：timestamp（BIGINT），必填，单位为毫秒。 第2列：tag_value1（VARCHAR），必填，最少填写一个。 第3列：field_fieldValue1（DOUBLE），必填，最少填写一个。 写入多个field_fieldValue时，您需要按照如下格式填写。
+); 建表默认格式： 第0列：metric（VARCHAR），必填。 第1列：timestamp（BIGINT），必填，单位为毫秒。 第2列：tag_value1（VARCHAR），必填，最少填写一个。 第3列：field_fieldValue1（DOUBLE），必填，最少填写一个。 写入多个field_fieldValue时，您需要按照如下格式填写。
 
 ```
 field_fieldValue1 类型, field_fieldValue2 类型, ... field_fieldValueN 类型
@@ -15235,9 +16248,7 @@ field_fieldValue1 类型, field_fieldValue2 类型, ... field_fieldValueN 类型
 field_fieldValue1 DOUBLE, field_fieldValue2 INTEGER, ... field_fieldValueNINTEGER
 ```
 
-结果表中只支持**metric**、**timestamp**、**tag_***和**field_***，不能出现其他的字段。
-
-**说明**
+> **说明：** 结果表中只支持**metric**、**timestamp**、tag_*和field_*，不能出现其他的字段。
 
 **WITH参数**
 
@@ -15249,8 +16260,6 @@ field_fieldValue1 DOUBLE, field_fieldValue2 INTEGER, ... field_fieldValueNINTEGE
 | username | 数据库的用户名。 | 是 | 需要对目标数据库有写权限。用户名详情请参见管理用户账号和数据库。 |
 | password | 数据库的密码。 | 是 | 密码详情请参见管理用户账号和数据库。 |
 | batchSize | 批量提交的记录条数。 | 否 | 默认每次批量提交300条记录。 |
-
-实时计算（流计算）
 
 | retentionPoli cy | 保留策略。 | 否 | 如果您不配置该参数时，该参数会被默认填写为每个数据库的默认保留策略autogen，保留策略详情请参见管理用户账号和数据库。 |
 |---|---|---|---|
@@ -15273,8 +16282,6 @@ field_fieldValue1 DOUBLE, field_fieldValue2 INTEGER, ... field_fieldValueNINTEGE
 
 **代码示例**
 
-实时计算（流计算）
-
 ```
 CREATE TEMPORARY TABLE datahub_source(
  `metric` VARCHAR,
@@ -15290,7 +16297,12 @@ CREATE TEMPORARY TABLE datahub_source(
   'fields.filedvalue.min' = 1,
   'fields.filedvalue.max' = 100000,
   'rows-per-second' = 50
-); CREATE TEMPORARY TABLE influxdb_sink(
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE influxdb_sink(
   `metric` VARCHAR,
   `timestamp` BIGINT,
   `field_fieldValue1` DOUBLE,
@@ -15304,7 +16316,12 @@ CREATE TEMPORARY TABLE datahub_source(
   'batchSize' ='100',
   'retentionPolicy' = 'autogen',
   'ignoreErrorData' = 'false'
-); INSERT INTO influxdb_sink SELECT
+```
+
+);
+
+```
+INSERT INTO influxdb_sink SELECT
    `metric`,
    `timestamp`,
    `filedvalue`,
@@ -15312,7 +16329,9 @@ CREATE TEMPORARY TABLE datahub_source(
 FROM datahub_source;
 ```
 
-##### 流式数据湖仓Paimon结果表
+##### 4.5.2.22 流式数据湖仓Paimon结果表
+
+本文为您介绍流式数据湖仓Paimon源表的DDL定义、WITH参数。
 
 **什么是流式数据湖仓Paimon**
 
@@ -15324,8 +16343,6 @@ Paimon是一种流批统一的湖存储格式，支持高吞吐的写入和低�
 
 **DDL定义**
 
-实时计算（流计算）
-
 ```
 CREATE TABLE paimon_table (
   id BIGINT,
@@ -15333,21 +16350,20 @@ CREATE TABLE paimon_table (
   PRIMARY KEY (id) NOT ENFORCED
 ) WITH (
   ...
-);
 ```
+
+);
 
 **WITH参数**
 
-| 参数 | 说明 | 数据类型 | 是否必填 |  | 默认值 | 备注 |
+| 参数 | 说明 | 数据类型 | 是否必填 |   | 默认值 | 备注 |
 |---|---|---|---|---|---|---|
-| connect or | 表类型。 | String | 否 |  | 无 | 如果在Paimon Catalog中创建Paimon表，则无需填写。 如果在其他Catalog中创建Paimon临时表，则固定值为 paimon 。 |
-| path | 表存储路径。 | String | 否 |  | 无 | 如果在Paimon Catalog中创建Paimon表，则无需填写。 如果在其他Catalog中创建Paimon临时表，则为表在HDFS或OSS中的存储目录。 |
-| auto- create | 创建Paimon临时表时，若指定路径不存在Paimon 表文件，是否自动创建文件。 | Boolean | 否 |  | false | 参数取值如下： false（默认）：如果指定路径不存在Paimon表文件，则报错。 true：如果指定路径不存在，则Flink系统自动创建 Paimon表文件。 |
-| bucket | 每个分区的分桶数。 | Integer | 否 |  | 1 | 写入Paimon表的数据将按 bucket-key 打散至每个bucket中。 说明建议每个Bucket的数据量在5 GB以下。 |
-| bucket- key | 分桶关键列。 | String | 否 |  |  | 指定将写入Paimon表的数据按哪些列的值打散至不同的Bucket中。 列名之间用英文逗号（,）分隔，例如 'bucket- key' = 'order id,cust id' 会将数据按 _ _ order id列和cust id列的值进行打散。 _ _ 说明如果该参数未填写，则按primary key 进行打散。 如果Paimon表未指定primary key，则按所有列的值进行打散。 |
-|  |  |  |  |  | 无 |  |
-
-实时计算（流计算）
+| connect or | 表类型。 | String | 否 |   | 无 | 如果在Paimon Catalog中创建Paimon表，则无需填写。 如果在其他Catalog中创建Paimon临时表，则固定值为 paimon 。 |
+| path | 表存储路径。 | String | 否 |   | 无 | 如果在Paimon Catalog中创建Paimon表，则无需填写。 如果在其他Catalog中创建Paimon临时表，则为表在HDFS或OSS中的存储目录。 |
+| auto- create | 创建Paimon临时表时，若指定路径不存在Paimon 表文件，是否自动创建文件。 | Boolean | 否 |   | false | 参数取值如下： false（默认）：如果指定路径不存在Paimon表文件，则报错。 true：如果指定路径不存在，则Flink系统自动创建 Paimon表文件。 |
+| bucket | 每个分区的分桶数。 | Integer | 否 |   | 1 | 写入Paimon表的数据将按 bucket-key 打散至每个bucket中。 说明建议每个Bucket的数据量在5 GB以下。 |
+| bucket- key | 分桶关键列。 | String | 否 |   |   | 指定将写入Paimon表的数据按哪些列的值打散至不同的Bucket中。 列名之间用英文逗号（,）分隔，例如 'bucket- key' = 'order id,cust id' 会将数据按 _ _ order id列和cust id列的值进行打散。 _ _ 说明如果该参数未填写，则按primary key 进行打散。 如果Paimon表未指定primary key，则按所有列的值进行打散。 |
+|   |   |   |   |   | 无 |   |
 
 | changel og- produc er | 增量数据产生机制。 | String | 否 | non e | Paimon可以为任意输入数据流产生完整的增量数据 （所有的update after数据都有对应的 _ update before数据），方便下游消费者。增量数据 _ 产生机制的可选值如下： none（默认值）：不额外产生增量数据。下游仍然可以流读Paimon表，但读到的增量数据是不完整的（只有update after数据，没有对应的 _ update before数据）。 _ input：将输入数据流双写至增量数据文件中，作为增量数据。 full-compaction：每次Full Compaction产生完整的增量数据。 lookup：每次commit snapshot前产生完整的增量数据。 |
 |---|---|---|---|---|---|
@@ -15356,8 +16372,6 @@ CREATE TABLE paimon_table (
 | partial- update. ignore- delete | 在partial- update合并机制中，是否忽略 delete消息。 | Boolean | 否 | false | 参数取值如下： true：忽略delete消息。 false：碰到delete消息，Flink系统会报错。 说明并非所有场景下忽略delete消息都是正确的，您需要结合自己的实际场景配置该参数。 |
 | partitio n.defau lt-name | 分区默认名称。 | String | 否 | D __ EFA ULT PA _ RTIT ION _ _ | 如果分区列的值为null或空字符串，将会采用该默认名称作为分区名。 |
 | partitio n.expir ation- check- interval | 多久检查一次分区过期。 | String | 否 | 1h | 无。 |
-
-实时计算（流计算）
 
 | partitio n.expir ation- time | 分区的过期时长。 | String | 否 | 无 | 当一个分区的存活时长超过该值时，该分区将会过期，默认永不过期。 |
 |---|---|---|---|---|---|
@@ -15377,31 +16391,29 @@ CREATE TABLE paimon_table (
 
 **数据新鲜度与一致性保证**
 
-实时计算（流计算） Paimon结果表使用两阶段提交协议，在每次Flink作业的checkpoint期间提交写入的数据，因此数据新鲜度即为 Flink作业的checkpoint间隔。每次提交将会产生至多两个snapshot。 当两个Flink作业同时写入一张Paimon表时，如果两个作业的数据没有写入同一个分桶，则能保证serializable级别的一致性。如果两个作业的数据写入了同一个分桶，则只能保证snapshot isolation级别的一致性。也就是说，表中的数据可能混合了两个作业的结果，但不会有数据丢失。
+Paimon结果表使用两阶段提交协议，在每次Flink作业的checkpoint期间提交写入的数据，因此数据新鲜度即为 Flink作业的checkpoint间隔。每次提交将会产生至多两个snapshot。 当两个Flink作业同时写入一张Paimon表时，如果两个作业的数据没有写入同一个分桶，则能保证serializable级别的一致性。如果两个作业的数据写入了同一个分桶，则只能保证snapshot isolation级别的一致性。也就是说，表中的数据可能混合了两个作业的结果，但不会有数据丢失。
 
 **数据合并机制**
 
 当Paimon结果表收到多条具有相同primary key的数据时，为了保持primary key的唯一性，Paimon结果表会将这些数据合并成一条数据。通过指定 `merge-engine` 参数，您可以指定数据合并的具体行为。数据合并机制详情如下表所示。
 
-| 合并机制 | 详情 |  |  |  |
+| 合并机制 | 详情 |   |   |   |
 |---|---|---|---|---|
-| 去重 （Deduplicate） | 去重机制（deduplicate）是默认的数据合并机制。对于多条具有相同primary key的数据，Paimon结果表仅会保留最新一条数据，并丢弃其它具有primary key的数据。 说明如果最新一条数据是一条delete消息，所有具有该primary key的数据都将被丢弃。 |  |  |  |
-| 部分更新（Partial Update） | 通过指定部分更新机制（partial-update），您可以通过多条消息对数据进行逐步更新，并最终得到完整的数据。具体来说，具有相同primary key的新数据将会覆盖原来的数据，但值为null的列不会进行覆盖。 例如，假设Paimon结果表按顺序收到了以下三条数据： <1, 23.0, 10, NULL> <1, NULL, NULL, 'This is a book'> <1, 25.2, NULL, NULL> 第一列是primary key，则最终结果为<1, 25.2, 10, 'This is a book'>。 说明如果需要流读partial-update的结果，必须将 changelog-producer 参数设置为 lookup或full-compaction。 partial-update无法处理delete消息。您可以设置 partial-update.ignore- delete 参数以忽略delete消息。 |  |  |  |
-|  |  | partial-update.ignore- |  |  |
+| 去重 （Deduplicate） | 去重机制（deduplicate）是默认的数据合并机制。对于多条具有相同primary key的数据，Paimon结果表仅会保留最新一条数据，并丢弃其它具有primary key的数据。 说明如果最新一条数据是一条delete消息，所有具有该primary key的数据都将被丢弃。 |   |   |   |
+| 部分更新（Partial Update） | 通过指定部分更新机制（partial-update），您可以通过多条消息对数据进行逐步更新，并最终得到完整的数据。具体来说，具有相同primary key的新数据将会覆盖原来的数据，但值为null的列不会进行覆盖。 例如，假设Paimon结果表按顺序收到了以下三条数据： <1, 23.0, 10, NULL> <1, NULL, NULL, 'This is a book'> <1, 25.2, NULL, NULL> 第一列是primary key，则最终结果为<1, 25.2, 10, 'This is a book'>。 说明如果需要流读partial-update的结果，必须将 changelog-producer 参数设置为 lookup或full-compaction。 partial-update无法处理delete消息。您可以设置 partial-update.ignore- delete 参数以忽略delete消息。 |   |   |   |
+|   |   | partial-update.ignore- |   |   |
 
-|  |  | delete |
+|   |   | delete |
 |---|---|---|
 
-实时计算（流计算）
-
-|  | 预聚合 （Aggregation） | 部分场景下，可能只关心聚合后的值。预聚合机制（aggregation）将具有相同primary key的数据根据您指定的聚合函数进行聚合。对于不属于primary key的每一列，都需要通过 fields. <field-name>.aggregate-function 指定一个聚合函数，否则该列将默认使用 last non null value 聚合函数。例如，考虑以下Paimon表的定义。 _ _ _ CREATE TABLE MyTable ( product id BIGINT, _ price DOUBLE, sales BIGINT, PRIMARY KEY (product id) NOT ENFORCED _ ) WITH ( 'merge-engine' = 'aggregation', 'fields.price.aggregate-function' = 'max', 'fields.sales.aggregate-function' = 'sum' ); price列将会根据max函数进行聚合，而sales列将会根据sum函数进行聚合。给定两条输入数据 <1, 23.0, 15>和 <1, 30.2, 20>，最终结果为<1, 30.2, 35>。当前支持的聚合函数与对应的数据类型如下： sum：支持DECIMAL、TINYINT、SMALLINT、INTEGER、BIGINT、FLOAT和DOUBLE。 min和max：支持DECIMAL、TINYINT、SMALLINT、INTEGER、BIGINT、FLOAT、 DOUBLE、DATE、TIME、TIMESTAMP和TIMESTAMP LTZ。 _ last value和last non null value：支持所有数据类型。 _ _ _ _ listagg：支持STRING。 bool and和bool or：支持BOOLEAN。 _ _ 说明只有sum函数支持回撤与删除数据，其它聚合函数不支持回撤与删除。如果您需要某些列忽略回撤与删除消息，可以设置 'fields.${field name}.ignore- _ retract'='true' 。 如果需要流读aggregation的结果，必须将 changelog-producer 参数设置为 lookup或full-compaction。 |  |
+|   | 预聚合 （Aggregation） | 部分场景下，可能只关心聚合后的值。预聚合机制（aggregation）将具有相同primary key的数据根据您指定的聚合函数进行聚合。对于不属于primary key的每一列，都需要通过 fields. <field-name>.aggregate-function 指定一个聚合函数，否则该列将默认使用 last non null value 聚合函数。例如，考虑以下Paimon表的定义。 _ _ _ CREATE TABLE MyTable ( product id BIGINT, _ price DOUBLE, sales BIGINT, PRIMARY KEY (product id) NOT ENFORCED _ ) WITH ( 'merge-engine' = 'aggregation', 'fields.price.aggregate-function' = 'max', 'fields.sales.aggregate-function' = 'sum' ); price列将会根据max函数进行聚合，而sales列将会根据sum函数进行聚合。给定两条输入数据 <1, 23.0, 15>和 <1, 30.2, 20>，最终结果为<1, 30.2, 35>。当前支持的聚合函数与对应的数据类型如下： sum：支持DECIMAL、TINYINT、SMALLINT、INTEGER、BIGINT、FLOAT和DOUBLE。 min和max：支持DECIMAL、TINYINT、SMALLINT、INTEGER、BIGINT、FLOAT、 DOUBLE、DATE、TIME、TIMESTAMP和TIMESTAMP LTZ。 _ last value和last non null value：支持所有数据类型。 _ _ _ _ listagg：支持STRING。 bool and和bool or：支持BOOLEAN。 _ _ 说明只有sum函数支持回撤与删除数据，其它聚合函数不支持回撤与删除。如果您需要某些列忽略回撤与删除消息，可以设置 'fields.${field name}.ignore- _ retract'='true' 。 如果需要流读aggregation的结果，必须将 changelog-producer 参数设置为 lookup或full-compaction。 |   |
 |---|---|---|---|
-|  |  |  | retract'='true' |
+|   |   |   | retract'='true' |
 
-|  | <field-name>.aggregate-function |
+|   | <field-name>.aggregate-function |
 |---|---|
 
-| 'fields.${field name}.ignore- _ |  |  |
+| 'fields.${field name}.ignore- _ |   |   |
 |---|---|---|
 
 **增量数据产生机制**
@@ -15411,15 +16423,13 @@ CREATE TABLE paimon_table (
 | 机制 | 详情 |
 |---|---|
 
-实时计算（流计算）
-
-|  | None | 设置 changelog-producer 为none（默认值）后，此时，对于同一个primary key，下游的 Paimon源表只能看到数据的最新情况。但这些最新情况无法让下游消费者方便地了解完整的增量数据，从而进行正确的计算。因为它只能确定对应数据是否被删除了，或最新数据是什么，无法得知更改之前的数据是什么。 例如，假设下游消费者需要计算某一列的总和，如果消费者只看到了最新数据5，它无法断定该如何更新总和。因为如果之前的数据是4，它应该将总和增加1；如果之前的数据是6，它应该将总和减去1。此类消费者对update before较为敏感，建议不要将增量数据产生机制配置为None，但是 _ 其他增量数据产生机制会带来性能损耗。 说明如果您的下游是数据库之类的对update before数据不敏感的消费者，则可以将增量数据产 _ 生机制配置为None。因此，建议您根据实际需要配置增量数据产生机制。 |  |  |
+|   | None | 设置 changelog-producer 为none（默认值）后，此时，对于同一个primary key，下游的 Paimon源表只能看到数据的最新情况。但这些最新情况无法让下游消费者方便地了解完整的增量数据，从而进行正确的计算。因为它只能确定对应数据是否被删除了，或最新数据是什么，无法得知更改之前的数据是什么。 例如，假设下游消费者需要计算某一列的总和，如果消费者只看到了最新数据5，它无法断定该如何更新总和。因为如果之前的数据是4，它应该将总和增加1；如果之前的数据是6，它应该将总和减去1。此类消费者对update before较为敏感，建议不要将增量数据产生机制配置为None，但是 _ 其他增量数据产生机制会带来性能损耗。 说明如果您的下游是数据库之类的对update before数据不敏感的消费者，则可以将增量数据产 _ 生机制配置为None。因此，建议您根据实际需要配置增量数据产生机制。 |   |   |
 |---|---|---|---|---|
-|  | Input | 设置 changelog-producer 为input后，Paimon结果表会将输入数据流双写至增量数据文件中，作为增量数据。 因此，只有当输入数据流本身是完整的增量数据时（例如CDC数据），才能使用这一增量数据产生机制。 |  |  |
-|  | Lookup | 设置 changelog-producer 为lookup后，Paimon结果表会通过一种类似于维表的点查机制，在每次commit snapshot之前产生本次snapshot对应的完整增量数据。无论输入数据是否为完整的增量数据，这一增量数据产生机制均能产生完整的增量数据。 与下文的Full Compaction机制相比，Lookup机制产生增量数据的时效性更好，但总体来看耗费的资源更多。 推荐在对增量数据的新鲜度有较高要求（例如分钟级）的情况下使用。 |  |  |
-|  |  | 设置 changelog-producer 为full-compaction后，Paimon结果表会在每一次full compaction时产生完整的增量数据。无论输入数据是否为完整的增量数据，这一增量数据产生机制均能产生完整的增量数据。Full compaction的时间间隔由 full-compaction.delta- commits 参数指定。 与上文的Lookup机制相比，Full Compaction机制产生增量数据的时效性更差，但它利用了数据的full compaction过程，不产生额外计算，因此总体来看耗费的资源更少。 推荐在对增量数据的新鲜度要求不高（例如小时级）的情况下使用。 |  |  |
-|  |  |  | full-compaction.delta- |  |
-|  | Full Compaction | commits |  |  |
+|   | Input | 设置 changelog-producer 为input后，Paimon结果表会将输入数据流双写至增量数据文件中，作为增量数据。 因此，只有当输入数据流本身是完整的增量数据时（例如CDC数据），才能使用这一增量数据产生机制。 |   |   |
+|   | Lookup | 设置 changelog-producer 为lookup后，Paimon结果表会通过一种类似于维表的点查机制，在每次commit snapshot之前产生本次snapshot对应的完整增量数据。无论输入数据是否为完整的增量数据，这一增量数据产生机制均能产生完整的增量数据。 与下文的Full Compaction机制相比，Lookup机制产生增量数据的时效性更好，但总体来看耗费的资源更多。 推荐在对增量数据的新鲜度有较高要求（例如分钟级）的情况下使用。 |   |   |
+|   |   | 设置 changelog-producer 为full-compaction后，Paimon结果表会在每一次full compaction时产生完整的增量数据。无论输入数据是否为完整的增量数据，这一增量数据产生机制均能产生完整的增量数据。Full compaction的时间间隔由 full-compaction.delta- commits 参数指定。 与上文的Lookup机制相比，Full Compaction机制产生增量数据的时效性更差，但它利用了数据的full compaction过程，不产生额外计算，因此总体来看耗费的资源更少。 推荐在对增量数据的新鲜度要求不高（例如小时级）的情况下使用。 |   |   |
+|   |   |   | full-compaction.delta- |   |
+|   | Full Compaction | commits |   |   |
 
 **写入模式**
 
@@ -15429,14 +16439,12 @@ Paimon表目前支持的写入模式如下。
 |---|---|
 | Change-log | change-log写入模式是Paimon表的默认写入模式。该写入模式支持根据primary key对数据进行插入、删除与更新，您也可以在该写入模式下使用上文提到的数据合并机制与增量数据产生机制。 |
 
-实时计算（流计算）
-
 | Append-only | append-only写入模式仅支持数据的插入，且不支持primary key。该模式比change-log模式更加高效，可在对数据新鲜度要求一般的场景下（例如分钟级新鲜度）作为消息队列的替代品。 关于append-only写入模式的详细介绍，请参见Apache Paimon官方文档。在使用append-only 写入模式时，需要注意以下两点： 建议您根据实际需求设置 bucket-key 参数，否则Paimon表将根据所有列的值进行分桶， 计算效率较低。 append-only写入模式可在一定程度上保证数据的产出顺序，具体的产出顺序为： i. 如果两条数据来自不同的分区，若设置了 scan.plan-sort-partition 参数，则分区值较小的数据将首先产出。否则来自较早创建的分区的数据将首先产出。 ii. 如果两条数据来自同一分区的同一分桶，则较早写入的数据将首先产出。 iii. 如果两条数据来自同一分区的不同分桶，由于不同分桶由不同的并发进行处理，因此不保证两条数据的产出顺序。 |
 |---|---|
 
-#### 创建数据维表
+#### 4.5.3 创建数据维表
 
-##### 云数据库HBase版维表
+##### 4.5.3.1 云数据库HBase版维表
 
 本文为您介绍云数据库HBase版维表的DDL定义、WITH参数、CACHE参数和转换关系。
 
@@ -15452,10 +16460,9 @@ CREATE TABLE hbase_dim(
   'connector'='cloudhbase',
   'table-name'='<yourTableName>',
   'zookeeper.quorum'='<yourZookeeperQuorum>'
-);
 ```
 
-HBase的列族（Column Family）必须声明为ROW类型，列族名即该ROW的字段名。例如，DDL定义中声明了family1、family2和family3三个列族。 HBase列族中的列（Cloumn）与对应ROW中嵌套的每个字段对应，列名即字段名。例如，DDL定义中列族 family2声明了q2和q3两列。 除了类型为ROW的字段外，只能有一个原始类型（Atomic Type）的字段（例如STRING或BIGINT），该字段将被视作HBase的行键（Row Key），例如DDL定义中的rowkey。 必须将HBase的行键定义为结果表的主键（Primary Key），如果没有显示定义主键，默认使用行键作为主键。
+); HBase的列族（Column Family）必须声明为ROW类型，列族名即该ROW的字段名。例如，DDL定义中声明了family1、family2和family3三个列族。 HBase列族中的列（Cloumn）与对应ROW中嵌套的每个字段对应，列名即字段名。例如，DDL定义中列族 family2声明了q2和q3两列。 除了类型为ROW的字段外，只能有一个原始类型（Atomic Type）的字段（例如STRING或BIGINT），该字段将被视作HBase的行键（Row Key），例如DDL定义中的rowkey。 必须将HBase的行键定义为结果表的主键（Primary Key），如果没有显示定义主键，默认使用行键作为主键。
 
 **WITH参数**
 
@@ -15463,8 +16470,6 @@ HBase的列族（Column Family）必须声明为ROW类型，列族名即该ROW�
 |---|---|---|---|
 | connector | 维表类型 | 是 | 固定值为 cloudhbase 。 |
 | table-name | HBase表名 | 是 | 无 |
-
-实时计算（流计算）
 
 | zookeeper. quorum | HBase的zookeeper地址 | 是 | 无 |
 |---|---|---|---|
@@ -15482,18 +16487,16 @@ HBase的列族（Column Family）必须声明为ROW类型，列族名即该ROW�
 | cache | 缓存策略 | 否 | 目前云数据库HBase版维表支持以下三种缓存策略： None：无缓存。 LRU：缓存维表里的部分数据。源表的每条数据都会触发系统先在Cache中查找数据，如果没有找到，则去物理维表中查找。 需要配置相关参数：缓存大小（cacheSize）和缓存更新时间间隔（cacheTTLMs）。 ALL（默认值）：缓存维表里的所有数据。在Job运行前，系统会将维表中所有数据加载到Cache中，之后所有的维表查找数据都会通过Cache进行。如果在Cache 中无法找到数据，则KEY不存在，并在Cache过期后重新加载一遍全量Cache。 适用于远程表数据量小且MISS KEY（源表数据和维表 JOIN时，ON条件无法关联）特别多的场景。 需要配置相关参数：缓存更新时间间隔 （cacheTTLMs），更新时间黑名单 （cacheReloadTimeBlackList）。 说明因为系统会异步加载维表数据，所以在使用CACHE ALL时，需要增加维表JOIN节点的内存，增加的内存大小为远程表数据量的两倍。 |
 | cacheSize | 缓存大小 | 否 | 当缓存策略选择LRU时，可以设置缓存大小，默认为10000行。 |
 
-实时计算（流计算）
-
-| cacheTTLMs | 缓存失效时间，单位为毫秒 |  | 否 | 当缓存策略选择LRU时，可以设置缓存失效时间，默认不过期。 当缓存策略选择ALL时，缓存失效时间为缓存重新加载的间隔时间，默认不重新加载。 |  |  |
+| cacheTTLMs | 缓存失效时间，单位为毫秒 |   | 否 | 当缓存策略选择LRU时，可以设置缓存失效时间，默认不过期。 当缓存策略选择ALL时，缓存失效时间为缓存重新加载的间隔时间，默认不重新加载。 |   |   |
 |---|---|---|---|---|---|---|
-| cacheEmpty | 是否缓存空结果 |  | 否 | 默认值为true。 |  |  |
-|  | 更新时间黑名单。在缓存策略选择为ALL |  |  | 默认为空，格式为 2017-10-24 14:00 -> 2017-10- |  |  |
-|  |  |  |  |  | 2017-10-24 14:00 -> 2017-10- |  |
-|  |  | 更新时间黑名单。在缓存策略选择为ALL |  | 24 15:00, 2017-11-10 23:30 -> 2017-11-11 |  |  |
-| cacheReloadTime | 时，启用更新时间黑 |  |  |  |  |  |
-|  |  |  | 否 | 08:00 。分隔符的使用情况如下所示： 用逗号 , 来分隔多个黑名单。 用箭头 -> 来分割黑名单的起始结束时间。 |  |  |
-| BlackList | 名单，防止在此时间内做Cache更新（例如双11场景）。 |  |  |  |  |  |
-| cacheScanLimit | 缓存策略选择ALL时启用。读取全量 HBase数据，RPC（Remote Procedure Call Protocol）服务端一次返回给客户端的行数。 |  | 否 | 默认值为100条。 |  |  |
+| cacheEmpty | 是否缓存空结果 |   | 否 | 默认值为true。 |   |   |
+|   | 更新时间黑名单。在缓存策略选择为ALL |   |   | 默认为空，格式为 2017-10-24 14:00 -> 2017-10- |   |   |
+|   |   |   |   |   | 2017-10-24 14:00 -> 2017-10- |   |
+|   |   | 更新时间黑名单。在缓存策略选择为ALL |   | 24 15:00, 2017-11-10 23:30 -> 2017-11-11 |   |   |
+| cacheReloadTime | 时，启用更新时间黑 |   |   |   |   |   |
+|   |   |   | 否 | 08:00 。分隔符的使用情况如下所示： 用逗号 , 来分隔多个黑名单。 用箭头 -> 来分割黑名单的起始结束时间。 |   |   |
+| BlackList | 名单，防止在此时间内做Cache更新（例如双11场景）。 |   |   |   |   |   |
+| cacheScanLimit | 缓存策略选择ALL时启用。读取全量 HBase数据，RPC（Remote Procedure Call Protocol）服务端一次返回给客户端的行数。 |   | 否 | 默认值为100条。 |   |   |
 
 **转换关系**
 
@@ -15502,11 +16505,11 @@ HBase数据通过**org.apache.hadoop.hbase.util.Bytes**转换成Flink的数据�
 | Flink类型 | HBase转换函数 |
 |---|---|
 | CHAR | String toString(byte[] b) |
-| VARCHAR |  |
-| STRING |  |
+| VARCHAR |   |
+| STRING |   |
 | BOOLEAN | boolean toBoolean(byte[] b) |
 | BINARY | byte[] |
-| VARBINARY |  |
+| VARBINARY |   |
 | DECIMAL | BigDecimal toBigDecimal(byte[] b) |
 | TINYINT | bytes[0] |
 | SMALLINT | short toShort(byte[] bytes) |
@@ -15514,8 +16517,6 @@ HBase数据通过**org.apache.hadoop.hbase.util.Bytes**转换成Flink的数据�
 | BIGINT | long toLong(byte[] bytes) |
 | FLOAT | float toFloat(byte[] bytes) |
 | DOUBLE | double toDouble(byte[] bytes) |
-
-实时计算（流计算）
 
 | DATE | HBase字节数组通过int toInt(byte[] bytes) 转换成int，表示自1970.01.01以来的天数。 |
 |---|---|
@@ -15537,7 +16538,12 @@ CREATE TABLE datagen_source (
   `proc_time` AS PROCTIME()
 ) with (
   'connector'='datagen'
-); CREATE TABLE hbase_dim (
+```
+
+);
+
+```
+CREATE TABLE hbase_dim (
   rowkey INT,
   family1 ROW<col1 INT>,
   family2 ROW<col1 STRING, col2 BIGINT>,
@@ -15546,24 +16552,34 @@ CREATE TABLE datagen_source (
   'connector' = 'cloudhbase',
   'table-name' = '<yourTableName>',
   'zookeeper.quorum' = '<yourZookeeperQuorum>'
-); CREATE TABLE blackhole_sink(
+```
+
+);
+
+```
+CREATE TABLE blackhole_sink(
   a INT,
   f1c1 INT,
   f3c3 STRING
 ) with (
   'connector' = 'blackhole'
-); INSERT INTO blackhole_sink
+```
+
+);
+
+```
+INSERT INTO blackhole_sink
      SELECT a, family1.col1 as f1c1,  family3.col3 as f3c3 FROM datagen_source
 JOIN hbase_dim FOR SYSTEM_TIME AS OF src.`proc_time` as h ON src.a = h.rowkey;
 ```
 
-##### 表格存储Tablestore维表
+##### 4.5.3.2 表格存储Tablestore维表
 
 本文为您介绍表格存储Tablestore维表DDL定义、WITH参数和CACHE参数。
 
 **什么是表格存储Tablestore**
 
-实时计算（流计算） 表格存储Tablestore是构建在阿里云飞天分布式系统之上的分布式NoSQL数据存储服务。表格存储通过数据分片和负载均衡技术，实现数据规模与访问并发的无缝扩展，提供海量结构化数据的存储和实时访问服务。
+表格存储Tablestore是构建在阿里云飞天分布式系统之上的分布式NoSQL数据存储服务。表格存储通过数据分片和负载均衡技术，实现数据规模与访问并发的无缝扩展，提供海量结构化数据的存储和实时访问服务。
 
 **DDL定义**
 
@@ -15579,8 +16595,9 @@ CREATE TABLE ots_dim (
    'tableName'='<yourTableName>',
    'accessId'='<yourAccessId>',
    'accessKey'='<yourAccessKey>'
-);
 ```
+
+);
 
 **WITH参数**
 
@@ -15603,17 +16620,15 @@ CREATE TABLE ots_dim (
 |---|---|---|
 | cache | 缓存策略 | 表格存储维表支持以下两种缓存策略： None（默认值）：无缓存。 LRU：缓存维表里的部分数据。源表的每条数据都会触发系统先在Cache中查找数据，如果没有找到，则去物理维表中查找。 需要配置相关参数：缓存大小（cacheSize）和缓存更新时间间隔（cacheTTLMs）。 |
 
-实时计算（流计算）
-
 | cacheSize | 缓存大小 | 当选择LRU缓存策略后，可以设置缓存大小，默认值为 10000行。 |
 |---|---|---|
 | cacheTTLMs | 缓存超时时间 | 单位为毫秒，当选择LRU缓存策略后，可以设置缓存失效的超时时间。 |
 
 **常见问题**
 
-Q：维表进行JOIN时，查询不到数据，应该如何处理？
+Q：维表进行JOIN时，查询不到数据，应该如何处理？ A：检查DDL语句和物理表中的Schema类型和名称是否一致。
 
-##### MaxCompute维表
+##### 4.5.3.3 MaxCompute维表
 
 本文为您介绍MaxCompute维表的DDL定义、WITH参数、CACHE参数、类型映射和常见问题。
 
@@ -15635,12 +16650,13 @@ create table odps_dim(
     'accesskey' = '<yourAccessKeySecret>',
     'partition' = 'ds=2018****',
     'cache' = 'ALL'
-);
 ```
+
+);
 
 **说明**
 
-声明维表时，必须要指名主键，MaxCompute维表主键必须具有唯一性，否则会被去重。 在维表进行JOIN时，ON条件必须包含所有主键的等值条件。 主键字段必须按照PRIMARY KEY括号中字段的先后顺序，放在非主键字段之前。
+声明维表时，必须要指名主键，MaxCompute维表主键必须具有唯一性，否则会被去重。 在维表进行JOIN时，ON条件必须包含所有主键的等值条件。 不支持将MaxCompute维表分区列写入DDL定义中。 主键字段必须按照PRIMARY KEY括号中字段的先后顺序，放在非主键字段之前。
 
 **WITH参数**
 
@@ -15650,37 +16666,33 @@ create table odps_dim(
 | endPoint | MaxCompute服务地址 | 是 | 请联系阿里云运维工程师获取。 |
 | tunnelEndpoi nt | MaxCompute Tunnel服务的连接地址 | 是 | 请联系阿里云运维工程师获取。 |
 
-实时计算（流计算）
-
-| project | MaxCompute项目名称 | 是 | 无 |  |  |
+| project | MaxCompute项目名称 | 是 | 无 |   |   |
 |---|---|---|---|---|---|
-| tableName | 表名 | 是 | 无 |  |  |
-| accessId | AccessKey ID | 是 | 无 |  |  |
-| accessKey | AccessKey Secret | 是 | 无 |  |  |
-| partition | 分区名 | 否 | 固定分区只存在一个分区MaxCompute表例如，如果只存在1个分区列 ds ， 则 `partition` = 'ds=20180905' 表示读 ds=20180905 分区的数据。 存在多个分区的MaxCompute表例如，如果存在2个分区列 ds 和 hh ， 则 `partition`='ds=20180905,hh=*' 表示读 ds=20180905 分区的数据。 说明分区过滤时需要声明所有分区的值。 例如，上述示例中，只声明 `partition` = 'ds=20180905' ，则不会读取任何分区。 非固定分区支持 `partition` = 'max pt()' ， 即每次加 _ 载所有分区列表中字典序最大的分区。 支持 `partition` = 'max pt with done()' ，即每次加载所有分区列 _ _ _ 表中字典序最大且伴随有 .done 的分区。 |  |  |
+| tableName | 表名 | 是 | 无 |   |   |
+| accessId | AccessKey ID | 是 | 无 |   |   |
+| accessKey | AccessKey Secret | 是 | 无 |   |   |
+| partition | 分区名 | 否 | 固定分区只存在一个分区MaxCompute表例如，如果只存在1个分区列 ds ， 则 `partition` = 'ds=20180905' 表示读 ds=20180905 分区的数据。 存在多个分区的MaxCompute表例如，如果存在2个分区列 ds 和 hh ， 则 `partition`='ds=20180905,hh=*' 表示读 ds=20180905 分区的数据。 说明分区过滤时需要声明所有分区的值。 例如，上述示例中，只声明 `partition` = 'ds=20180905' ，则不会读取任何分区。 非固定分区支持 `partition` = 'max pt()' ， 即每次加 _ 载所有分区列表中字典序最大的分区。 支持 `partition` = 'max pt with done()' ，即每次加载所有分区列 _ _ _ 表中字典序最大且伴随有 .done 的分区。 |   |   |
 
-|  |  | 'ds=20180905' |
+|   |   | 'ds=20180905' |
 |---|---|---|
 
-|  |  | `partition` = |  |
+|   |   | `partition` = |   |
 |---|---|---|---|
-|  | 'max pt with done()' _ _ _ |  |  |
+|   | 'max pt with done()' _ _ _ |   |   |
 
 **CACHE参数**
 
 | 参数 | 参数说明 | 备注 |
 |---|---|---|
 
-实时计算（流计算）
-
-| cache |  | 缓存策略 | 目前MaxCompute维表仅支持 ALL 策略，必须显式声明。 ALL策略：缓存维表里的所有数据。在Job运行前，系统会将维表中所有数据加载到Cache中，之后所有的维表查询都会通过Cache进行。 如果在Cache中无法找到数据，则KEY不存在，并在Cache过期后重新加载一遍全量Cache。 适用于远程表数据量小且MISS KEY（源表数据和维表JOIN时，ON条件无法关联）特别多的场景。需要配置缓存更新时间间隔 （cacheTTLMs）和更新时间黑名单 （cacheReloadTimeBlackList）参数。 说明因为系统会异步加载维表数据，所以在使用CACHE ALL时，需要增加维表JOIN节点的内存，增加的内存大小为远程表数据量的至少4倍，具体值与MaxCompute 存储压缩算法有关。 在使用超大MaxCompute维表时，如果频繁 GC（Allocation Failure）导致作业异常，且在增加维表JOIN节点的内存仍无改善的情况下，建议改为支持 LRU cache策略的KV型维表，例如云数据库Hbase版维表。 |  |
+| cache |   | 缓存策略 | 目前MaxCompute维表仅支持 ALL 策略，必须显式声明。 ALL策略：缓存维表里的所有数据。在Job运行前，系统会将维表中所有数据加载到Cache中，之后所有的维表查询都会通过Cache进行。 如果在Cache中无法找到数据，则KEY不存在，并在Cache过期后重新加载一遍全量Cache。 适用于远程表数据量小且MISS KEY（源表数据和维表JOIN时，ON条件无法关联）特别多的场景。需要配置缓存更新时间间隔 （cacheTTLMs）和更新时间黑名单 （cacheReloadTimeBlackList）参数。 说明因为系统会异步加载维表数据，所以在使用CACHE ALL时，需要增加维表JOIN节点的内存，增加的内存大小为远程表数据量的至少4倍，具体值与MaxCompute 存储压缩算法有关。 在使用超大MaxCompute维表时，如果频繁 GC（Allocation Failure）导致作业异常，且在增加维表JOIN节点的内存仍无改善的情况下，建议改为支持 LRU cache策略的KV型维表，例如云数据库Hbase版维表。 |   |
 |---|---|---|---|---|
-| cacheSize |  | 缓存大小 | 可以设置缓存大小，MaxCompute默认缓存值为100000行。 |  |
-| cacheTTLMs |  | 缓存超时时间 | 单位为毫秒，如果cache选择为 ALL 策略，则为缓存加载的间隔时间，默认为不重新加载。 |  |
-| cacheReloa dTimeBlack List |  |  | 默认为空，格式为 2017-10-24 14:00 -> 2017-10-24 15:00, 2017-11-10 23:30 -> 2017-11-11 08:00 。分隔符的使用情况如下所示： 用逗号 , 来分隔多个黑名单。 用箭头 -> 来分割黑名单的起始结束时间。 |  |
-|  |  |  |  | 2017-10-24 14:00 -> 2017-10-24 |
-|  | a | 更新时间黑名单。在缓存策略选 | 15:00, 2017-11-10 23:30 -> 2017-11-11 08:00 |  |
-|  |  | 择为ALL时，启用更新时间黑名单，防止在此时间内做Cache更新（例如双11场景）。 |  |  |
+| cacheSize |   | 缓存大小 | 可以设置缓存大小，MaxCompute默认缓存值为100000行。 |   |
+| cacheTTLMs |   | 缓存超时时间 | 单位为毫秒，如果cache选择为 ALL 策略，则为缓存加载的间隔时间，默认为不重新加载。 |   |
+| cacheReloa dTimeBlack List |   |   | 默认为空，格式为 2017-10-24 14:00 -> 2017-10-24 15:00, 2017-11-10 23:30 -> 2017-11-11 08:00 。分隔符的使用情况如下所示： 用逗号 , 来分隔多个黑名单。 用箭头 -> 来分割黑名单的起始结束时间。 |   |
+|   |   |   |   | 2017-10-24 14:00 -> 2017-10-24 |
+|   | a | 更新时间黑名单。在缓存策略选 | 15:00, 2017-11-10 23:30 -> 2017-11-11 08:00 |   |
+|   |   | 择为ALL时，启用更新时间黑名单，防止在此时间内做Cache更新（例如双11场景）。 |   |   |
 
 **类型映射**
 
@@ -15697,14 +16709,12 @@ create table odps_dim(
 | TIMESTAMP | TIMESTAMP |
 | VARCHAR | VARCHAR |
 
-实时计算（流计算）
-
 | STRING | VARCHAR |
 |---|---|
 | DECIMAL | DECIMAL |
 | BINARY | VARBINARY |
 
-##### 云数据库Redis版维表
+##### 4.5.3.4 云数据库Redis版维表
 
 本文为您介绍云数据库Redis维表DDL定义、WITH参数、CACHE参数、类型映射和代码示例。
 
@@ -15729,8 +16739,9 @@ CREATE TABLE redis_dim (
   'port' = '<yourPort>',
   'password' = '<yourPassword>',
   'dbNum' = '<yourDbNum>'
-);
 ```
+
+);
 
 **WITH参数**
 
@@ -15743,15 +16754,13 @@ CREATE TABLE redis_dim (
 | password | Redis密码 | 否 | 默认值为空，不进行权限验证。 |
 | clusterMode | Redis集群是否为cluster 模式。 | 否 | 默认值为false。 |
 
-实时计算（流计算）
-
 | hashName | Hash模式下的Hash Key 名称。 | 否 | 默认值为空。通常，Redis维表中的数据类型为 STRING类型，即 key-value 对。如果设置hashName参数，则Redis维表中的数据类型为 HASHMAP类型，即 key-{field-value} 对，其中： key为hashName参数值。 field为您在CREATE TABLE中指明的key参数值。 value为key对应的赋值，和STRING类型 key- value 中value语义相同。 |
 |---|---|---|---|
 
-| key- |  |
+| key- |   |
 |---|---|
 
-|  | value |
+|   | value |
 |---|---|
 
 **CACHE参数**
@@ -15771,8 +16780,6 @@ CREATE TABLE redis_dim (
 
 **代码示例**
 
-实时计算（流计算）
-
 ```
 CREATE TEMPORARY TABLE datagen_source (
   id STRING,
@@ -15780,7 +16787,12 @@ CREATE TEMPORARY TABLE datagen_source (
   proctime as PROCTIME()
 ) with (
   'connector' = 'datagen'
-); CREATE TEMPORARY TABLE redis_dim (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE redis_dim (
   id STRING,
   name STRING,
   PRIMARY KEY (id) NOT ENFORCED --Redis中的Row Key字段。
@@ -15789,22 +16801,30 @@ CREATE TEMPORARY TABLE datagen_source (
   'host' = '<yourHost>',
   'port' = '<yourPort>',
   'password' = '<yourPassword>'
-); CREATE TEMPORARY blackhole_sink (
+```
+
+);
+
+```
+CREATE TEMPORARY blackhole_sink (
   id STRING,
   data STRING,
   name STRING
 ) WITH (
   'connector' = 'blackhole'
-); INSERT INTO blackhole_sink SELECT e.*, w.* FROM datagen_source AS e JOIN redis_dim FOR SYSTEM_TIME AS OF e.proctime AS w ON e.id = w.id;
 ```
 
-##### Elasticsearch维表
+);
 
-本文为您介绍Elasticsearch（ES）维表DDL定义、WITH参数、CACHE参数和代码示例。 该Connector支持的功能是和阿里云Elasticsearch产品对齐的，暂不支持HTTPS加密访问形
+```
+INSERT INTO blackhole_sink SELECT e.*, w.* FROM datagen_source AS e JOIN redis_dim FOR SYSTEM_TIME AS OF e.proctime AS w ON e.id = w.id;
+```
 
-**说明**
+##### 4.5.3.5 Elasticsearch维表
 
-式。
+本文为您介绍Elasticsearch（ES）维表DDL定义、WITH参数、CACHE参数和代码示例。
+
+> **说明：** 该Connector支持的功能是和阿里云Elasticsearch产品对齐的，暂不支持HTTPS加密访问形式。
 
 **DDL定义**
 
@@ -15824,14 +16844,9 @@ CREATE TEMPORARY TABLE datagen_source (
    'accessKey' = '<yourAccessSecret>',
    'indexName' = '<yourIndexName>',
    'typeNames' = '<yourTypeName>'
-);
 ```
 
-实时计算（流计算）
-
-**说明**
-
-维表JOIN时的key有且只能有1个，且为Elasticsearch对应索引的文档ID。 支持Elasticsearch 5.5及以上版本。
+); 维表JOIN时的key有且只能有1个，且为Elasticsearch对应索引的文档ID。 支持Elasticsearch 5.5及以上版本。
 
 **WITH参数**
 
@@ -15859,8 +16874,6 @@ Flink以JSON来解析Elasticsearch数据，详情请参见数据类型映射关�
 
 **代码示例**
 
-实时计算（流计算）
-
 ```
 CREATE TEMPORARY TABLE datagen_source (
    id STRING,
@@ -15868,7 +16881,12 @@ CREATE TEMPORARY TABLE datagen_source (
    proctime as PROCTIME()
 ) with (
    'connector' = 'datagen'
-); CREATE TEMPORARY TABLE es_dim (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE es_dim (
    id STRING,
    `value` FLOAT
 ) WITH (
@@ -15878,18 +16896,28 @@ CREATE TEMPORARY TABLE datagen_source (
    'accessKey' = '<yourAccessSecret>',
    'indexName' = '<yourIndexName>',
    'typeNames' = '<yourTypeName>'
-); CREATE TEMPORARY TABLE blackhole_sink (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE blackhole_sink (
   id STRING,
   data STRING,
   `value` FLOAT
 ) WITH (
   'connector' = 'blackhole'
-); INSERT INTO blackhole_sink SELECT e.*, w.*
+```
+
+);
+
+```
+INSERT INTO blackhole_sink SELECT e.*, w.*
   FROM datagen_source AS e
 JOIN es_dim FOR SYSTEM_TIME AS OF e.proctime AS w ON e.id = w.id;
 ```
 
-##### 交互式分析Hologres维表
+##### 4.5.3.6 交互式分析Hologres维表
 
 本文为您介绍交互式分析Hologres维表DDL定义、WITH参数、CACHE参数和代码示例。
 
@@ -15905,7 +16933,7 @@ JOIN es_dim FOR SYSTEM_TIME AS OF e.proctime AS w ON e.id = w.id;
 begin; create table test(a int primary key, b text, c text, d float8, e int8); call set_table_property('test', 'orientation', 'row'); call set_table_property('test', 'clustering_key', 'a'); commit;
 ```
 
-Hologres维表的主键必须是Flink Join On的字段，Flink Join On的字段也必须是维表完整的主键字段，两者必须完全匹配。 实时计算（流计算） Hologres Flink Connector的维表功能不支持一对多的输出。
+Hologres维表的主键必须是Flink Join On的字段，Flink Join On的字段也必须是维表完整的主键字段，两者必须完全匹配。 Hologres Flink Connector的维表功能不支持一对多的输出。
 
 **DDL定义**
 
@@ -15921,8 +16949,9 @@ CREATE TABLE hologres_dim(
   'username'='<yourUsername>',
   'password'='<yourPassword>',
   'endpoint'='<yourEndpoint>'
-);
 ```
+
+);
 
 **WITH参数**
 
@@ -15935,8 +16964,6 @@ CREATE TABLE hologres_dim(
 | username | 用户名，请填写阿里云账号的AccessKey ID。 | 是 | 无。 |
 | password | 密码，请填写阿里云账号的AccessKey Secret。 | 否 | 无。 |
 | connectionSize | 单个Flink结果表任务所创建的JDBC连接池大小。 | 否 | 默认值大小为3。如果作业性能不足，建议您增加连接池大小。连接池大小和数据吞吐成正比。 |
-
-实时计算（流计算）
 
 | connectionPoolNa me | 连接池名称。同一个 TaskManager中， 配置相同名称的连接池的表可以共享连接池。 | 否 | 取值为非 'default' 的任意字符串。如果多个表设置相同的连接池，则这些使用相同连接池的表的connectionSize参数也需要相同。 说明此参数可以按需配置，例如作业中有维表 A，B以及结果表C，D，E五张hologres 表，可以A表和B表使用pool1，C表和D 表使用pool2，E表流量较大，单独使用 pool3。 |
 |---|---|---|---|
@@ -15958,8 +16985,6 @@ CREATE TABLE hologres_dim(
 | INT[] | ARRAY |
 | BIGINT | BIGINT |
 
-实时计算（流计算）
-
 | BIGINT[] | ARRAY |
 |---|---|
 | REAL | FLOAT |
@@ -15980,8 +17005,6 @@ CREATE TABLE hologres_dim(
 
 **代码示例**
 
-实时计算（流计算）
-
 ```
 CREATE TEMPORARY TABLE datagen_source (
    a INT,
@@ -15990,22 +17013,37 @@ CREATE TEMPORARY TABLE datagen_source (
    proctime AS PROCTIME()
 ) with (
    'connector' = 'datagen'
-); CREATE TEMPORARY TABLE hologres_dim (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE hologres_dim (
    a INT,
    b VARCHAR,
    c VARCHAR
 ) with (
    'connector' = 'hologres',
    ...
-); CREATE TEMPORARY TABLE blackhole_sink (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE blackhole_sink (
    a INT,
    b STRING
 ) with (
    'connector' = 'blackhole'
-); insert into blackhole_sink select T.a,H.b FROM datagen_source AS T JOIN hologres_dim FOR SYSTEM_TIME AS OF T.proctime AS H ON T.a = H.a;
 ```
 
-##### 云数据库RDS MySQL维表
+);
+
+```
+insert into blackhole_sink select T.a,H.b FROM datagen_source AS T JOIN hologres_dim FOR SYSTEM_TIME AS OF T.proctime AS H ON T.a = H.a;
+```
+
+##### 4.5.3.7 云数据库RDS MySQL维表
 
 本文为您介绍云数据库RDS MySQL维表DDL定义、WITH参数、CACHE参数、类型映射和代码示例。
 
@@ -16022,16 +17060,15 @@ CREATE TABLE rds_dim (
   'url' = '<yourUrl>',
   'userName' = '<yourUsername>',
   'cache' = 'ALL'
-);
 ```
+
+);
 
 **WITH参数**
 
 | 参数 | 说明 | 是否必填 | 备注 |
 |---|---|---|---|
 | connector | 维表类型 | 是 | 固定值为 rds 。 |
-
-实时计算（流计算）
 
 | password | 密码 | 是 | 无 |
 |---|---|---|---|
@@ -16049,9 +17086,9 @@ CREATE TABLE rds_dim (
 | cacheS ize | 缓存大小 | 否 | 默认为空，即未配置该参数，当选择LRU或者ALL缓存策略后，必须设置缓存大小。 |
 | cacheT TLMs | 缓存超时时间，单位为毫秒 | 否 | 当选择 LRU 缓存策略后，可以设置缓存失效的超时时间。当选择 ALL 策略，则为缓存加载的间隔时间，默认值为10s。 |
 
-|  | LRU |
+|   | LRU |
 |---|---|
-| ALL |  |
+| ALL |   |
 
 **类型映射**
 
@@ -16062,8 +17099,6 @@ CREATE TABLE rds_dim (
 | SMALLINT | SMALLINT |
 | TINYINT UNSIGNED | SMALLINT |
 | INT | INT |
-
-实时计算（流计算）
 
 | SMALLINT UNSIGNED | INT |
 |---|---|
@@ -16089,7 +17124,12 @@ CREATE TEMPORARY TABLE datagen_source(
   `proctime` AS PROCTIME()
 ) with (
   'connector' = 'datagen'
-); CREATE TEMPORARY TABLE rds_dim (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE rds_dim (
   a INT,
   b VARCHAR,
   c VARCHAR
@@ -16099,17 +17139,25 @@ CREATE TEMPORARY TABLE datagen_source(
   'tableName' = '<yourTablename>',
   'url' = 'jdbc:mysql://xxx',
   'userName' = '<yourUsername>'
-); CREATE TEMPORARY TABLE blackhole_sink(
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE blackhole_sink(
   a INT,
   b STRING
 ) with (
   'connector' = 'blackhole'
-); insert into blackhole_sink select T.a,H.b FROM datagen_source AS T JOIN rds_dim FOR SYSTEM_TIME AS OF T.`proctime` AS H ON T.a = H.a;
 ```
 
-实时计算（流计算）
+);
 
-##### 云原生数据仓库AnalyticDB MySQL版3.0维表
+```
+insert into blackhole_sink select T.a,H.b FROM datagen_source AS T JOIN rds_dim FOR SYSTEM_TIME AS OF T.`proctime` AS H ON T.a = H.a;
+```
+
+##### 4.5.3.8 云原生数据仓库AnalyticDB MySQL版3.0维表
 
 本文为您介绍云原生数据仓库AnalyticDB MySQL版3.0维表的DDL定义、WITH参数、CACHE参数和类型映射。
 
@@ -16127,8 +17175,9 @@ CREATE TABLE adb30_dim (
     'userName' = '<yourUsername>',
     'cache' = 'ALL',
     'cacheSize' = '500'
-);
 ```
+
+);
 
 **WITH参数**
 
@@ -16146,8 +17195,6 @@ CREATE TABLE adb30_dim (
 
 | 参数 | 说明 | 是否必填 | 备注 |
 |---|---|---|---|
-
-实时计算（流计算）
 
 | cache | 缓存策略 | 否 | 云原生数据仓库AnalyticDB MySQL版3.0维表支持以下三种缓存策略： None（默认值）：无缓存。 LRU：缓存维表里的部分数据。源表的每条数据都会触发系统先在 Cache中查找数据，如果没有找到，则去物理维表中查找。 ALL：缓存维表里的所有数据。在Job运行前，系统会将维表中所有数据加载到Cache中，之后所有的维表查找数据都会通过Cache进行。 如果在Cache中无法找到数据，则KEY不存在，并在Cache过期后重新加载一遍全量Cache。 适用于远程表数据量小且MISS KEY（源表数据和维表JOIN时，ON条件无法关联）特别多的场景。 说明使用ALL或LRU缓存策略时，必须配置cacheSize参数。 如果使用CACHE ALL时，请注意节点内存大小，防止出现 OOM。 因为系统会异步加载维表数据，所以在使用CACHE ALL 时，需要增加维表JOIN节点的内存，增加的内存大小为远程表数据量的两倍。 |
 |---|---|---|---|
@@ -16170,8 +17217,6 @@ CREATE TABLE adb30_dim (
 
 **代码示例**
 
-实时计算（流计算）
-
 ```
 CREATE TEMPORARY TABLE datagen_source(
   a INT,
@@ -16180,7 +17225,12 @@ CREATE TEMPORARY TABLE datagen_source(
   `proctime` AS PROCTIME()
 ) with (
   'connector' = 'datagen'
-); CREATE TEMPORARY TABLE adb_dim (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE adb_dim (
   a INT,
   b VARCHAR,
   c VARCHAR
@@ -16190,15 +17240,25 @@ CREATE TEMPORARY TABLE datagen_source(
   'tableName' = '<yourTablename>',
   'url' = '<yourUrl>',
   'userName' = '<yourUsername>'
-); CREATE TEMPORARY TABLE blackhole_sink(
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE blackhole_sink(
   a INT,
   b VARCHAR
 ) with (
   'connector' = 'blackhole'
-); insert into blackhole_sink select T.a,H.b FROM datagen_source AS T JOIN adb_dim FOR SYSTEM_TIME AS OF T.proctime AS H ON T.a = H.a;
 ```
 
-##### Lindorm维表
+);
+
+```
+insert into blackhole_sink select T.a,H.b FROM datagen_source AS T JOIN adb_dim FOR SYSTEM_TIME AS OF T.proctime AS H ON T.a = H.a;
+```
+
+##### 4.5.3.9 Lindorm维表
 
 本文为您介绍云原生多模数据库Lindorm的宽表作为维表的DDL定义、WITH参数、类型映射和代码示例。
 
@@ -16216,11 +17276,11 @@ Lindorm是面向物联网、互联网、车联网等设计和优化的云原生�
 
 **DDL定义**
 
-实时计算（流计算）
+```
+CREATE TABLE white_list ( id varchar, name varchar, age int, PRIMARY KEY (id) NOT ENFORCED ) WITH ( 'connector' = 'lindorm', 'seedserver' = '<yourSeedServer>', 'namespace' = '<yourNamespace>', 'username' = '<yourUsername>', 'password' = '<yourPassword>', 'tableName' = '<yourTableName>', 'columnFamily' = '<yourColumnFamily>'
+```
 
-```
-CREATE TABLE white_list ( id varchar, name varchar, age int, PRIMARY KEY (id) NOT ENFORCED ) WITH ( 'connector' = 'lindorm', 'seedserver' = '<yourSeedServer>', 'namespace' = '<yourNamespace>', 'username' = '<yourUsername>', 'password' = '<yourPassword>', 'tableName' = '<yourTableName>', 'columnFamily' = '<yourColumnFamily>' );
-```
+);
 
 **WITH参数**
 
@@ -16235,8 +17295,6 @@ CREATE TABLE white_list ( id varchar, name varchar, age int, PRIMARY KEY (id) NO
 | columnFamily | Lindorm表的列族名。 | 是 | 如果创建Lindorm表时未指定列族名，则需要您填写为f。 |
 | retryInterval Ms | 读取失败时，再次重试读取的时间间隔。 | 否 | 单位为ms，默认值为1000ms。 |
 | maxRetryTim es | 最大尝试次数。 | 否 | 默认值为5次。 |
-
-实时计算（流计算）
 
 | partitionedJoi n | 是否额外使用JoinKey进行分区。 | 否 | 参数取值如下： true：用JoinKey进行分区，将数据分发到Join节点，提高缓存命中率。 false（默认值）：不使用JoinKey进行分区。 |
 |---|---|---|---|
@@ -16255,14 +17313,12 @@ Lindorm中数据均为二进制形式，通过Flink某个字段类型来转换�
 | Flink SQL类型 | 从Lindorm读取Bytes之后的解析 |
 |---|---|
 | CHAR | org.apache.flink.table.data.StringData::fromBytes |
-| VARCHAR |  |
+| VARCHAR |   |
 | BOOLEAN | com.alibaba.lindorm.client.core.utils.Bytes::toBigDecimal |
-
-实时计算（流计算）
 
 | BINARY | 直接返回bytes。 |
 |---|---|
-| VARBINARY |  |
+| VARBINARY |   |
 | DECIMAL | com.alibaba.lindorm.client.core.utils.Bytes::toBigDecimal |
 | TINYINT | 直接返回bytes[0]。 |
 | SMALLINT | com.alibaba.lindorm.client.core.utils.Bytes::toShort |
@@ -16276,8 +17332,6 @@ Lindorm中数据均为二进制形式，通过Flink某个字段类型来转换�
 
 **代码示例**
 
-实时计算（流计算）
-
 ```
 CREATE TEMPORARY TABLE example_source(
  id INT,
@@ -16288,7 +17342,12 @@ CREATE TEMPORARY TABLE example_source(
  'fields.id.kind' = 'sequence',
  'fields.id.start' = '0',
  'fields.id.end' = '9'
-); CREATE TEMPORARY TABLE lindorm_hbase_dim(
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE lindorm_hbase_dim(
  `id` INT,
  `name` VARCHAR,
  `birth` VARCHAR,
@@ -16300,7 +17359,12 @@ CREATE TEMPORARY TABLE example_source(
  'namespace'='default',
  'username'='${lindorm_username}',
  'password'='${lindorm_username}'
-); CREATE TEMPORARY TABLE lindorm_hbase_sink(
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE lindorm_hbase_sink(
  `id` INT,
  `name` VARCHAR,
  `birth` VARCHAR,
@@ -16312,16 +17376,19 @@ CREATE TEMPORARY TABLE example_source(
  'namespace'='default',
  'username'='${lindorm_username}',
  'password'='${lindorm_username}'
-); INSERT INTO lindorm_hbase_sink SELECT example_source.id as id, lindorm_hbase_dim.name as name, lindorm_hbase_dim.birth as b irth FROM example_source JOIN lindorm_hbase_dim FOR SYSTEM_TIME AS OF PROCTIME() ON example_sourc e.id = lindorm_hbase_dim.id;
 ```
 
-##### FileSystem维表
+);
+
+```
+INSERT INTO lindorm_hbase_sink SELECT example_source.id as id, lindorm_hbase_dim.name as name, lindorm_hbase_dim.birth as b irth FROM example_source JOIN lindorm_hbase_dim FOR SYSTEM_TIME AS OF PROCTIME() ON example_sourc e.id = lindorm_hbase_dim.id;
+```
+
+##### 4.5.3.10 FileSystem维表
 
 本文为您介绍FileSystem维表的DDL定义，以及创建维表时使用的WITH参数和代码示例。
 
 **DDL定义**
-
-实时计算（流计算）
 
 ```
 CREATE TABLE filesystem_dim (
@@ -16333,7 +17400,7 @@ CREATE TABLE filesystem_dim (
   'format' = 'CSV'
 ```
 
-)
+`)`
 
 **WITH 参数**
 
@@ -16346,7 +17413,7 @@ CREATE TABLE filesystem_dim (
 
 **代码示例**
 
-实时计算（流计算） `--`创建`event`源表。
+`--`创建`event`源表。
 
 ```
 CREATE TABLE event (
@@ -16355,10 +17422,9 @@ CREATE TABLE event (
 ) WITH (
   'connector' = 'datahub'
    ...
-);
 ```
 
-`--`创建`white_list`维表。
+); `--`创建`white_list`维表。
 
 ```
 CREATE TABLE white_list (
@@ -16368,16 +17434,17 @@ CREATE TABLE white_list (
   'connector' = 'filesystem',
   'path' = '${remote_path_uri}',
   'format' = '${format}'
-);
 ```
 
-`--`关联`event`源表和`white_list`维表。
+); `--`关联`event`源表和`white_list`维表。
 
 ```
 SELECT e.*, w.* FROM event AS e JOIN white_list FOR SYSTEM_TIME AS OF proctime() AS w ON e.id = w.id;
 ```
 
-##### 流式数据湖仓Paimon维表
+##### 4.5.3.11 流式数据湖仓Paimon维表
+
+本文为您介绍流式数据湖仓Paimon源表的DDL定义、WITH参数。
 
 **什么是流式数据湖仓Paimon**
 
@@ -16396,25 +17463,22 @@ CREATE TABLE paimon_table (
   PRIMARY KEY (id) NOT ENFORCED
 ) WITH (
   ...
-);
 ```
+
+);
 
 **WITH参数**
 
 | 参数 | 说明 | 数据类型 | 是否必填 | 默认值 | 备注 |
 |---|---|---|---|---|---|
 
-实时计算（流计算）
-
-| connect or | 表类型。 | String | 否 |  | 无 | 如果在Paimon Catalog中创建Paimon表，则无需填写。 如果在其他Catalog中创建Paimon临时表，则固定值为 paimon 。 |
+| connect or | 表类型。 | String | 否 |   | 无 | 如果在Paimon Catalog中创建Paimon表，则无需填写。 如果在其他Catalog中创建Paimon临时表，则固定值为 paimon 。 |
 |---|---|---|---|---|---|---|
-| path | 表存储路径。 | String | 否 |  | 无 | 如果在Paimon Catalog中创建Paimon表，则无需填写。 如果在其他Catalog中创建Paimon临时表，则为表在HDFS或OSS中的存储目录。 |
-| auto- create | 创建Paimon临时表时，若指定路径不存在Paimon 表文件，是否自动创建文件。 | Boolean | 否 |  | false | 参数取值如下： false（默认）：如果指定路径不存在Paimon表文件，则报错。 true：如果指定路径不存在，则Flink系统自动创建 Paimon表文件。 |
-| bucket | 每个分区的分桶数。 | Integer | 否 |  | 1 | 写入Paimon表的数据将按 bucket-key 打散至每个bucket中。 说明建议每个Bucket的数据量在5 GB以下。 |
-| bucket- key | 分桶关键列。 | String | 否 |  |  | 指定将写入Paimon表的数据按哪些列的值打散至不同的Bucket中。 列名之间用英文逗号（,）分隔，例如 'bucket- key' = 'order id,cust id' 会将数据按 _ _ order id列和cust id列的值进行打散。 _ _ 说明如果该参数未填写，则按primary key 进行打散。 如果Paimon表未指定primary key，则按所有列的值进行打散。 |
-|  |  |  |  |  | 无 |  |
-
-实时计算（流计算）
+| path | 表存储路径。 | String | 否 |   | 无 | 如果在Paimon Catalog中创建Paimon表，则无需填写。 如果在其他Catalog中创建Paimon临时表，则为表在HDFS或OSS中的存储目录。 |
+| auto- create | 创建Paimon临时表时，若指定路径不存在Paimon 表文件，是否自动创建文件。 | Boolean | 否 |   | false | 参数取值如下： false（默认）：如果指定路径不存在Paimon表文件，则报错。 true：如果指定路径不存在，则Flink系统自动创建 Paimon表文件。 |
+| bucket | 每个分区的分桶数。 | Integer | 否 |   | 1 | 写入Paimon表的数据将按 bucket-key 打散至每个bucket中。 说明建议每个Bucket的数据量在5 GB以下。 |
+| bucket- key | 分桶关键列。 | String | 否 |   |   | 指定将写入Paimon表的数据按哪些列的值打散至不同的Bucket中。 列名之间用英文逗号（,）分隔，例如 'bucket- key' = 'order id,cust id' 会将数据按 _ _ order id列和cust id列的值进行打散。 _ _ 说明如果该参数未填写，则按primary key 进行打散。 如果Paimon表未指定primary key，则按所有列的值进行打散。 |
+|   |   |   |   |   | 无 |   |
 
 | changel og- produc er | 增量数据产生机制。 | String | 否 | non e | Paimon可以为任意输入数据流产生完整的增量数据 （所有的update after数据都有对应的 _ update before数据），方便下游消费者。增量数据 _ 产生机制的可选值如下： none（默认值）：不额外产生增量数据。下游仍然可以流读Paimon表，但读到的增量数据是不完整的（只有update after数据，没有对应的 _ update before数据）。 _ input：将输入数据流双写至增量数据文件中，作为增量数据。 full-compaction：每次Full Compaction产生完整的增量数据。 lookup：每次commit snapshot前产生完整的增量数据。 |
 |---|---|---|---|---|---|
@@ -16423,8 +17487,6 @@ CREATE TABLE paimon_table (
 | merge- engine | 相同primary key数据的合并机制。 | String | 否 | ded uplic ate | 参数取值如下： deduplicate：仅保留最新一条。 partial-update：用最新数据中非null的列更新相同primary key的现有数据，其它列保持不变。 aggregation：通过指定聚合函数进行预聚合。 |
 | partial- update. ignore- delete | 在partial- update合并机制中，是否忽略 delete消息。 | Boolean | 否 | false | 参数取值如下： true：忽略delete消息。 false：碰到delete消息，Flink系统会报错。 说明并非所有场景下忽略delete消息都是正确的，您需要结合自己的实际场景配置该参数。 |
 | partitio n.defau lt-name | 分区默认名称。 | String | 否 | D __ EFA ULT PA _ RTIT ION _ _ | 如果分区列的值为null或空字符串，将会采用该默认名称作为分区名。 |
-
-实时计算（流计算）
 
 | partitio n.expir ation- check- interval | 多久检查一次分区过期。 | String | 否 | 1h | 无。 |
 |---|---|---|---|---|---|
@@ -16440,11 +17502,9 @@ CREATE TABLE paimon_table (
 
 更多配置项详情请参见Apache Paimon官方文档。
 
-### DML语句
+### 4.6 DML语句
 
-实时计算（流计算）
-
-#### INSERT INTO语句
+#### 4.6.1 INSERT INTO语句
 
 本文为您介绍如何在一个作业中写入一个Sink或多个Sink。
 
@@ -16458,10 +17518,9 @@ CREATE TABLE datagen_source (
   score BIGINT
 ) WITH (
   'connector' = 'datagen'
-);
 ```
 
-结果表
+); 结果表
 
 ```
 create table blackhole_sink(
@@ -16469,10 +17528,9 @@ create table blackhole_sink(
   score BIGINT
 ) WITH (
   'connector' = 'blackhole'
-);
 ```
 
-DML
+); DML
 
 ```
 INSERT INTO blackhole_sink SELECT UPPER(name), score FROM datagen_source;
@@ -16488,10 +17546,9 @@ CREATE TABLE datagen_source (
   score BIGINT
 ) WITH (
   'connector' = 'datagen'
-);
 ```
 
-结果表A
+); 结果表A
 
 ```
 CREATE TABLE blackhole_sinkA(
@@ -16499,10 +17556,9 @@ CREATE TABLE blackhole_sinkA(
   score BIGINT
 ) WITH (
   'connector' = 'blackhole'
-);
 ```
 
-结果表B
+); 结果表B
 
 ```
 CREATE TABLE blackhole_sinkB(
@@ -16510,10 +17566,9 @@ CREATE TABLE blackhole_sinkB(
   score BIGINT
 ) WITH (
   'connector' = 'blackhole'
-);
 ```
 
-DML 本文以写入两个Sink为例进行介绍。 实时计算（流计算） BEGIN STATEMENT SET; --写入多个`Sink`时，必填。
+); DML 本文以写入两个Sink为例进行介绍。 BEGIN STATEMENT SET; --写入多个`Sink`时，必填。
 
 ```
 INSERT INTO blackhole_sinkA
@@ -16526,36 +17581,32 @@ INSERT INTO blackhole_sinkB
   GROUP BY LOWER(name);
 ```
 
-END; --写入多个`Sink`时，必填。 写入多个Sink语句时，需要以**BEGIN STATEMENT SET;**开头，以**END;**结尾。
+END; --写入多个`Sink`时，必填。
 
-**说明**
+> **说明：** 写入多个Sink语句时，需要以**BEGIN STATEMENT SET;**开头，以**END;**结尾。
 
-### QUERY语句
+### 4.7 QUERY语句
 
-### 窗口函数
+本文为您介绍Flink提供的QUERY语句。 Flink V1.11 QUERY语句详情，请参见Query语句。
 
-#### 概述
+### 4.8 窗口函数
 
-本文为您介绍Flink SQL支持的窗口函数以及窗口函数支持的时间属性和窗口类型。
+#### 4.8.1 概述
 
-### 窗口函数
+本文为您介绍Flink SQL支持的窗口函数以及窗口函数支持的时间属性和窗口类型。 窗口函数Flink SQL支持基于无限大窗口的聚合（无需在SQL Query中，显式定义任何窗口）以及对一个特定的窗口的聚合。例如，需要统计在过去的1分钟内有多少用户点击了某个的网页，可以通过定义一个窗口来收集最近 1分钟内的数据，并对这个窗口内的数据进行计算。 Flink SQL支持的窗口聚合主要是两种：Window聚合和Over聚合。本文档主要为您介绍Window聚合。 Window聚合支持Event Time和Processing Time两种时间属性定义窗口。每种时间属性类型支持三种窗口类型：滚动窗口（TUMBLE）、滑动窗口（HOP）和会话窗口（SESSION）。 Flink SQL支持以下两种时间属性。Flink可以基于这两种时间属性对数据进行窗口聚合。 Event Time：您提供的事件时间（通常是数据的最原始的创建时间），Event Time一定是您提供在Schema 里的数据。 Processing Time：对事件进行处理的本地系统时间。
 
-窗口函数Flink SQL支持基于无限大窗口的聚合（无需在SQL Query中，显式定义任何窗口）以及对一个特定的窗口的聚合。例如，需要统计在过去的1分钟内有多少用户点击了某个的网页，可以通过定义一个窗口来收集最近 1分钟内的数据，并对这个窗口内的数据进行计算。 Flink SQL支持的窗口聚合主要是两种：Window聚合和Over聚合。本文档主要为您介绍Window聚合。 Window聚合支持Event Time和Processing Time两种时间属性定义窗口。每种时间属性类型支持三种窗口类型：滚动窗口（TUMBLE）、滑动窗口（HOP）和会话窗口（SESSION）。
-
-#### 时间属性
-
-Flink SQL支持以下两种时间属性。Flink可以基于这两种时间属性对数据进行窗口聚合。 Event Time：您提供的事件时间（通常是数据的最原始的创建时间），Event Time一定是您提供在Schema 里的数据。 Processing Time：对事件进行处理的本地系统时间。 Flink时间属性详情，请参见时间属性。
-
-**说明**
+> **说明：** Flink时间属性详情，请参见时间属性。
 
 **级联窗口**
 
-| 数值 | TUMBLE ROWTIME _ |  |
-|---|---|---|
-|  | max(rowtime) | 作 。 |
-| window end - 1 _ |  |  |
+Rowtime列在经过窗口操作后，其Event Time属性将丢失。您可以使用辅助函
 
-示例逻辑为：基于1分钟的滚动窗口聚合结果，进行1小时的滚动窗口聚合，可以满足您的多维度开窗需求。 实时计算（流计算）
+| 数值 | TUMBLE ROWTIME _ |   |
+|---|---|---|
+|   | max(rowtime) | 作 。 |
+| window end - 1 _ |   |   |
+
+数 `TUMBLE_ROWTIME` 、 `HOP_ROWTIME` 或 `SESSION_ROWTIME` ，获取窗口中的Rowtime列的最大值 `max(rowtime)` 作为时间窗口的Rowtime，其类型是具有Rowtime属性的TIMESTAMP，取值为 `window_end - 1` 。例如 `[00:00, 00:15)` 的窗口，返回值为 `00:14:59.999` 。 示例逻辑为：基于1分钟的滚动窗口聚合结果，进行1小时的滚动窗口聚合，可以满足您的多维度开窗需求。
 
 ```
 CREATE TEMPORARY TABLE user_clicks(
@@ -16567,7 +17618,12 @@ CREATE TEMPORARY TABLE user_clicks(
 ) with (
   'connector'='sls',
   ...
-); CREATE TEMPORARY TABLE tumble_output(
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE tumble_output(
   window_start TIMESTAMP,
   window_end TIMESTAMP,
   username VARCHAR,
@@ -16579,7 +17635,12 @@ CREATE TEMPORARY TABLE user_clicks(
 
 ```
   ...
-); CREATE TEMPORARY VIEW one_minute_window_output AS SELECT
+```
+
+);
+
+```
+CREATE TEMPORARY VIEW one_minute_window_output AS SELECT
   TUMBLE_ROWTIME(ts, INTERVAL '1' MINUTE) as rowtime,  --使用TUMBLE_ROWTIME作为二级Window的聚合
 ```
 
@@ -16596,13 +17657,13 @@ FROM user_clicks GROUP BY TUMBLE(ts, INTERVAL '1' MINUTE),username; BEGIN statem
 FROM one_minute_window_output GROUP BY TUMBLE(rowtime, INTERVAL '1' HOUR), username; END;
 ```
 
-#### 滚动窗口
+#### 4.8.2 滚动窗口
 
 本文为您介绍如何使用Flink滚动窗口函数。
 
 **定义**
 
-滚动窗口（TUMBLE）将每个元素分配到一个指定大小的窗口中。通常，滚动窗口有一个固定的大小，并且不会出现重叠。例如，如果指定了一个5分钟大小的滚动窗口，无限流的数据会根据时间划分为 `[0:00,` `0:05)` 、 `[0:05, 0:10)` 、 `[0:10, 0:15)` 等窗口。下图展示了一个30秒的滚动窗口。 实时计算（流计算）
+滚动窗口（TUMBLE）将每个元素分配到一个指定大小的窗口中。通常，滚动窗口有一个固定的大小，并且不会出现重叠。例如，如果指定了一个5分钟大小的滚动窗口，无限流的数据会根据时间划分为 `[0:00,` `0:05)` 、 `[0:05, 0:10)` 、 `[0:10, 0:15)` 等窗口。下图展示了一个30秒的滚动窗口。
 
 **语法**
 
@@ -16612,45 +17673,39 @@ TUMBLE函数用在GROUP BY子句中，用来定义滚动窗口。
 TUMBLE(<time-attr>, <size-interval>) <size-interval>: INTERVAL 'string' timeUnit
 ```
 
-`<time-attr>` 参数必须是时间流中的一个合法的时间属性字段，指定为Processing Time或
-
-**说明**
-
-Event Time，请参见概述，了解如何定义时间属性。
+> **说明：** `<time-attr>` 参数必须是时间流中的一个合法的时间属性字段，指定为Processing Time或 Event Time，请参见概述，了解如何定义时间属性。
 
 **标识函数**
 
 使用标识函数选出窗口的起始时间或者结束时间，窗口的时间属性用于下级Window的聚合。
 
-| 窗口标识函数 |  | 返回类型 |  | 描述 |
+| 窗口标识函数 |   | 返回类型 |   | 描述 |
 |---|---|---|---|---|
-| TUMBLE START(time- _ |  | TIMESTAMP |  | 返回窗口的起始时间（包含边界）。例如 [00:10,00:15) 窗口，返回 00:10 。 |
-|  | TUMBLE START(time- _ |  |  |  |
-| attr, size- |  |  |  |  |
-| interval) |  |  |  |  |
-| TUMBLE END(time- _ |  |  |  | 返回窗口的结束时间（包含边界）。例如 [00:00, 00:15] 窗口，返回 00:15 。 |
-|  | TUMBLE END(time- _ |  |  |  |
-| attr, size- |  |  |  |  |
-|  |  | TIMESTAMP |  | 00:15] |
-| interval) |  |  |  |  |
-| TUMBLE ROWTIME(time _ |  | TIMESTAMP(rowtime- attr) |  | 返回窗口的结束时间（不包含边界）。例如 [00:00, 00:15] 窗口，返回 00:14:59.999 。返回值是一个 rowtime attribute，即可以基于该字段进行时间属性的操作，例如，级联窗口只能用在基于Event Time的Window 上，详情请参见级联窗口。 |
-|  | TUMBLE ROWTIME(time _ | TIMESTAMP(rowtime- |  |  |
-|  |  |  | ime- |  |
-| -attr, size- |  |  |  |  |
-| interval) |  |  |  |  |
+| TUMBLE START(time- _ |   | TIMESTAMP |   | 返回窗口的起始时间（包含边界）。例如 [00:10,00:15) 窗口，返回 00:10 。 |
+|   | TUMBLE START(time- _ |   |   |   |
+| attr, size- |   |   |   |   |
+| interval) |   |   |   |   |
+| TUMBLE END(time- _ |   |   |   | 返回窗口的结束时间（包含边界）。例如 [00:00, 00:15] 窗口，返回 00:15 。 |
+|   | TUMBLE END(time- _ |   |   |   |
+| attr, size- |   |   |   |   |
+|   |   | TIMESTAMP |   | 00:15] |
+| interval) |   |   |   |   |
+| TUMBLE ROWTIME(time _ |   | TIMESTAMP(rowtime- attr) |   | 返回窗口的结束时间（不包含边界）。例如 [00:00, 00:15] 窗口，返回 00:14:59.999 。返回值是一个 rowtime attribute，即可以基于该字段进行时间属性的操作，例如，级联窗口只能用在基于Event Time的Window 上，详情请参见级联窗口。 |
+|   | TUMBLE ROWTIME(time _ | TIMESTAMP(rowtime- |   |   |
+|   |   |   | ime- |   |
+| -attr, size- |   |   |   |   |
+| interval) |   |   |   |   |
 
-| [00:00, |  |
+| [00:00, |   |
 |---|---|
 
-实时计算（流计算）
-
-| TUMBLE PROCTIME(tim _ |  | TIMESTAMP(rowtime- attr) |  | 返回窗口的结束时间（不包含边界）。例如 [00:00, 00:15] 窗口，返回 00:14:59.999 。返回值是一个 Proctime Attribute，即可以基于该字段进行时间属性的操作。例如，级联窗口只能用在基于Processing Time的 Window上，详情请参见级联窗口。 |  |  |
+| TUMBLE PROCTIME(tim _ |   | TIMESTAMP(rowtime- attr) |   | 返回窗口的结束时间（不包含边界）。例如 [00:00, 00:15] 窗口，返回 00:14:59.999 。返回值是一个 Proctime Attribute，即可以基于该字段进行时间属性的操作。例如，级联窗口只能用在基于Processing Time的 Window上，详情请参见级联窗口。 |   |   |
 |---|---|---|---|---|---|---|
-|  |  |  |  |  | [00:00, |  |
-|  | TUMBLE PROCTIME(tim _ | TIMESTAMP(rowtime- |  |  |  |  |
-|  |  |  | ime- |  |  |  |
-| e-attr, size- |  |  |  |  |  |  |
-| interval) |  |  |  |  |  |  |
+|   |   |   |   |   | [00:00, |   |
+|   | TUMBLE PROCTIME(tim _ | TIMESTAMP(rowtime- |   |   |   |   |
+|   |   |   | ime- |   |   |   |
+| e-attr, size- |   |   |   |   |   |   |
+| interval) |   |   |   |   |   |   |
 
 **使用Event Time统计每个用户每分钟在指定网站的单击数示例**
 
@@ -16677,7 +17732,12 @@ CREATE TEMPORARY TABLE user_clicks(
 ) with (
   'connector'='sls',
   ...
-); CREATE TEMPORARY TABLE tumble_output(
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE tumble_output(
   window_start TIMESTAMP,
   window_end TIMESTAMP,
   username VARCHAR,
@@ -16689,25 +17749,30 @@ CREATE TEMPORARY TABLE user_clicks(
 
 ```
   ...
-); INSERT INTO tumble_output SELECT TUMBLE_START(ts, INTERVAL '1' MINUTE) as window_start, TUMBLE_END(ts, INTERVAL '1' MINUTE) as window_end, username, COUNT(click_url) FROM user_clicks GROUP BY TUMBLE(ts, INTERVAL '1' MINUTE),username;
 ```
 
-测试结果实时计算（流计算）
+);
 
-|  | window start _ （TIMESTAMP） |  |  |  | window end _ （TIMESTAMP） |  |  | username（VARCHA R） | clicks（BIGINT） |
+```
+INSERT INTO tumble_output SELECT TUMBLE_START(ts, INTERVAL '1' MINUTE) as window_start, TUMBLE_END(ts, INTERVAL '1' MINUTE) as window_end, username, COUNT(click_url) FROM user_clicks GROUP BY TUMBLE(ts, INTERVAL '1' MINUTE),username;
+```
+
+测试结果
+
+|   | window start _ （TIMESTAMP） |   |   |   | window end _ （TIMESTAMP） |   |   | username（VARCHA R） | clicks（BIGINT） |
 |---|---|---|---|---|---|---|---|---|---|
-|  | 2017-10-10 |  |  |  |  |  |  | Jark | 3 |
-|  |  | 2017-10-10 |  |  |  |  | 2017-10-10 | J |  |
-|  | 10:00:00.0 |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | 10:01:00.0 |  |  |  |  |
-|  | 2017-10-10 |  |  |  |  |  |  | Jark | 2 |
-|  |  | 2017-10-10 |  |  |  |  | 2017-10-10 | J |  |
-|  | 10:01:00.0 |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | 10:02:00.0 |  |  |  |  |
-|  | 2017-10-10 |  |  |  |  |  |  | Timo | 1 |
-|  |  | 2017-10-10 |  |  |  |  | 2017-10-10 | T |  |
-|  | 10:02:00.0 |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | 10:03:00.0 |  |  |  |  |
+|   | 2017-10-10 |   |   |   |   |   |   | Jark | 3 |
+|   |   | 2017-10-10 |   |   |   |   | 2017-10-10 | J |   |
+|   | 10:00:00.0 |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | 10:01:00.0 |   |   |   |   |
+|   | 2017-10-10 |   |   |   |   |   |   | Jark | 2 |
+|   |   | 2017-10-10 |   |   |   |   | 2017-10-10 | J |   |
+|   | 10:01:00.0 |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | 10:02:00.0 |   |   |   |   |
+|   | 2017-10-10 |   |   |   |   |   |   | Timo | 1 |
+|   |   | 2017-10-10 |   |   |   |   | 2017-10-10 | T |   |
+|   | 10:02:00.0 |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | 10:03:00.0 |   |   |   |   |
 
 **使用Processing Time统计每个用户每分钟在指定网站的单击数示例**
 
@@ -16722,7 +17787,7 @@ CREATE TEMPORARY TABLE user_clicks(
 | Jark | http://taobao.com/xxx |
 | Timo | http://taobao.com/xxx |
 
-测试语句实时计算（流计算）
+测试语句
 
 ```
 CREATE TEMPORARY TABLE window_test (
@@ -16732,7 +17797,12 @@ CREATE TEMPORARY TABLE window_test (
 ) WITH (
   'connector'='sls',
   ...
-); CREATE TEMPORARY TABLE tumble_output(
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE tumble_output(
   window_start TIMESTAMP,
   window_end TIMESTAMP,
   username VARCHAR,
@@ -16744,23 +17814,28 @@ CREATE TEMPORARY TABLE window_test (
 
 ```
   ...
-); INSERT INTO tumble_output SELECT TUMBLE_START(ts, INTERVAL '1' MINUTE), TUMBLE_END(ts, INTERVAL '1' MINUTE), username, COUNT(click_url) FROM window_test GROUP BY TUMBLE(ts, INTERVAL '1' MINUTE), username;
+```
+
+);
+
+```
+INSERT INTO tumble_output SELECT TUMBLE_START(ts, INTERVAL '1' MINUTE), TUMBLE_END(ts, INTERVAL '1' MINUTE), username, COUNT(click_url) FROM window_test GROUP BY TUMBLE(ts, INTERVAL '1' MINUTE), username;
 ```
 
 测试结果
 
-|  | window start _ （TIMESTAMP） |  |  |  |  | window end _ （TIMESTAMP） |  |  |  | username （VARCHAR） | clicks（BIGINT） |
+|   | window start _ （TIMESTAMP） |   |   |   |   | window end _ （TIMESTAMP） |   |   |   | username （VARCHAR） | clicks（BIGINT） |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  | 2019-04-11 |  |  |  |  |  |  |  |  | Jark | 5 |
-|  |  | 2019-04-11 |  |  |  |  | 2 | 019-04-11 |  | Jark |  |
-|  | 14:43:00.00 |  |  |  |  |  |  |  |  |  |  |
-|  |  |  | 0 |  |  | 14:44:00.000 |  |  |  |  |  |
-|  | 2019-04-11 |  |  |  |  |  |  |  |  | Timo | 1 |
-|  |  | 2019-04-11 |  |  |  |  | 20 |  | 19-04-11 | Tim |  |
-|  | 14:43:00.00 |  |  |  |  |  |  |  |  |  |  |
-|  |  |  | 0 |  |  | 14:44:00.000 |  |  |  |  |  |
+|   | 2019-04-11 |   |   |   |   |   |   |   |   | Jark | 5 |
+|   |   | 2019-04-11 |   |   |   |   | 2 | 019-04-11 |   | Jark |   |
+|   | 14:43:00.00 |   |   |   |   |   |   |   |   |   |   |
+|   |   |   | 0 |   |   | 14:44:00.000 |   |   |   |   |   |
+|   | 2019-04-11 |   |   |   |   |   |   |   |   | Timo | 1 |
+|   |   | 2019-04-11 |   |   |   |   | 20 |   | 19-04-11 | Tim |   |
+|   | 14:43:00.00 |   |   |   |   |   |   |   |   |   |   |
+|   |   |   | 0 |   |   | 14:44:00.000 |   |   |   |   |   |
 
-#### 滑动窗口
+#### 4.8.3 滑动窗口
 
 本文为您介绍如何使用Flink滑动窗口函数。
 
@@ -16770,7 +17845,7 @@ CREATE TEMPORARY TABLE window_test (
 **slide < size**，则窗口会重叠，每个元素会被分配到多个窗口。
 **slide = size**，则等同于滚动窗口（TUMBLE）。
 **slide > size**，则为跳跃窗口，窗口之间不重叠且有间隙。
-通常，大部分元素符合多个窗口情景，窗口是重叠的。因此，滑动窗口在计算移动平均数（moving averages） 时很实用。例如，计算过去5分钟数据的平均值，每10秒钟更新一次，可以设置**slide**为10秒，**size**为5分钟。下图为您展示间隔为30秒，窗口大小为1分钟的滑动窗口。 实时计算（流计算）
+通常，大部分元素符合多个窗口情景，窗口是重叠的。因此，滑动窗口在计算移动平均数（moving averages） 时很实用。例如，计算过去5分钟数据的平均值，每10秒钟更新一次，可以设置**slide**为10秒，**size**为5分钟。下图为您展示间隔为30秒，窗口大小为1分钟的滑动窗口。
 
 **函数语法**
 
@@ -16788,44 +17863,42 @@ HOP(<time-attr>, <slide-interval>,<size-interval>) <slide-interval>: INTERVAL 's
 
 使用滑动窗口标识函数选出窗口的起始时间或者结束时间，窗口的时间属性用于下级Window的聚合。
 
-|  | 窗口标识函数 |  | 返回类型 |  |  | 描述 |
+|   | 窗口标识函数 |   | 返回类型 |   |   | 描述 |
 |---|---|---|---|---|---|---|
-|  | HOP START（<time- _ |  |  |  |  | 返回窗口的起始时间（包含边界）。例如 [00:10, 00:15) 窗口，返回 00:10 。 |
-|  |  | HOP START（<time- _ |  |  |  |  |
-|  | attr>, <slide- |  |  |  |  |  |
-|  |  |  | TIMESTAMP |  |  |  |
-|  |  |  | TIMEST |  |  | 00:15) |
-|  | interval>, <size- |  |  |  |  |  |
-|  | interval>） |  |  |  |  |  |
-|  | HOP END（<time- _ |  |  |  |  | 返回窗口的结束时间（包含边界）。例如 [00:00, 00:15) 窗口，返回 00:15 。 |
-|  |  | HOP END（<time- _ |  |  |  |  |
-|  | attr>, <slide- |  |  |  |  |  |
-|  |  |  | TIMESTAMP |  |  |  |
-|  |  |  | TIMEST |  |  | 00:15) |
-|  | interval>, <size- |  |  |  |  |  |
-|  | interval>） |  |  |  |  |  |
+|   | HOP START（<time- _ |   |   |   |   | 返回窗口的起始时间（包含边界）。例如 [00:10, 00:15) 窗口，返回 00:10 。 |
+|   |   | HOP START（<time- _ |   |   |   |   |
+|   | attr>, <slide- |   |   |   |   |   |
+|   |   |   | TIMESTAMP |   |   |   |
+|   |   |   | TIMEST |   |   | 00:15) |
+|   | interval>, <size- |   |   |   |   |   |
+|   | interval>） |   |   |   |   |   |
+|   | HOP END（<time- _ |   |   |   |   | 返回窗口的结束时间（包含边界）。例如 [00:00, 00:15) 窗口，返回 00:15 。 |
+|   |   | HOP END（<time- _ |   |   |   |   |
+|   | attr>, <slide- |   |   |   |   |   |
+|   |   |   | TIMESTAMP |   |   |   |
+|   |   |   | TIMEST |   |   | 00:15) |
+|   | interval>, <size- |   |   |   |   |   |
+|   | interval>） |   |   |   |   |   |
 
-| [00:10, |  |
+| [00:10, |   |
 |---|---|
 
-| [00:00, |  |
+| [00:00, |   |
 |---|---|
 
-实时计算（流计算）
-
-| HOP ROWTIME（<time- _ |  |  |  |  | 返回窗口的结束时间（不包含边界）。例如 [00:00, 00:15) 窗口，返回 00:14:59.999 。返回值是一个 rowtime attribute，即可以基于该字段做时间类型的操作，例如级联窗口，只能用在基于event time的window 上。 |  |  |
+| HOP ROWTIME（<time- _ |   |   |   |   | 返回窗口的结束时间（不包含边界）。例如 [00:00, 00:15) 窗口，返回 00:14:59.999 。返回值是一个 rowtime attribute，即可以基于该字段做时间类型的操作，例如级联窗口，只能用在基于event time的window 上。 |   |   |
 |---|---|---|---|---|---|---|---|
-|  | HOP ROWTIME（<time- _ |  |  |  | 返回窗口的结束时间（ |  |  |
-| attr>, <slide- |  | TIMESTAMP（row | time- |  | 00:15) |  |  |
-| interval>, <size- |  | attr） |  |  |  |  |  |
-| interval>） |  |  |  |  |  |  |  |
-| HOP PROCTIME（<time- _ |  |  |  |  | 返回窗口的结束时间（不包含边界）。例如 [00:00, |  |  |
-|  | HOP PROCTIME（<time- _ |  |  |  | 返回窗口的结束时间（ | [00:00, |  |
-| attr>, <slide- |  | TIMESTAMP（row | time- |  | 00:15) |  |  |
-| interval>, <size- |  | attr） |  |  |  |  |  |
-| interval>） |  |  |  |  |  |  |  |
+|   | HOP ROWTIME（<time- _ |   |   |   | 返回窗口的结束时间（ |   |   |
+| attr>, <slide- |   | TIMESTAMP（row | time- |   | 00:15) |   |   |
+| interval>, <size- |   | attr） |   |   |   |   |   |
+| interval>） |   |   |   |   |   |   |   |
+| HOP PROCTIME（<time- _ |   |   |   |   | 返回窗口的结束时间（不包含边界）。例如 [00:00, |   |   |
+|   | HOP PROCTIME（<time- _ |   |   |   | 返回窗口的结束时间（ | [00:00, |   |
+| attr>, <slide- |   | TIMESTAMP（row | time- |   | 00:15) |   |   |
+| interval>, <size- |   | attr） |   |   |   |   |   |
+| interval>） |   |   |   |   |   |   |   |
 
-| [00:00, |  |
+| [00:00, |   |
 |---|---|
 
 **示例**
@@ -16841,7 +17914,7 @@ HOP(<time-attr>, <slide-interval>,<size-interval>) <slide-interval>: INTERVAL 's
 | Jark | http://taobao.com/xxx | 2017-10-10 10:01:58.0 |
 | Timo | http://taobao.com/xxx | 2017-10-10 10:02:10.0 |
 
-测试语句实时计算（流计算）
+测试语句
 
 ```
 CREATE TEMPORARY TABLE user_clicks (
@@ -16853,7 +17926,12 @@ CREATE TEMPORARY TABLE user_clicks (
 ) with (
   'connector'='sls',
   ...
-); CREATE TEMPORARY TABLE hop_output (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE hop_output (
   window_start TIMESTAMP,
   window_end TIMESTAMP,
   username VARCHAR,
@@ -16865,7 +17943,12 @@ CREATE TEMPORARY TABLE user_clicks (
 
 ```
   ...
+```
+
 );
+
+```
+INSERT INTO
     hop_output
 SELECT
     HOP_START (ts, INTERVAL '30' SECOND, INTERVAL '1' MINUTE),
@@ -16880,61 +17963,59 @@ GROUP BY
 
 测试结果
 
-|  | window start _ （TIMESTAMP） |  |  |  | window end _ （TIMESTAMP） |  |  | username （VARCHAR） | clicks （BIGINT） |
+|   | window start _ （TIMESTAMP） |   |   |   | window end _ （TIMESTAMP） |   |   | username （VARCHAR） | clicks （BIGINT） |
 |---|---|---|---|---|---|---|---|---|---|
-|  | 2017-10-10 |  |  |  |  |  |  | Jark | 2 |
-|  |  | 2017-10-10 |  |  |  |  | 2017-10-10 | J |  |
-|  | 09:59:30.0 |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | 10:00:30.0 |  |  |  |  |
-|  | 2017-10-10 |  |  |  |  |  |  | Jark | 3 |
-|  |  | 2017-10-10 |  |  |  |  | 2017-10-10 | J |  |
-|  | 10:00:00.0 |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | 10:01:00.0 |  |  |  |  |
-|  | 2017-10-10 |  |  |  |  |  |  | Jark | 2 |
-|  |  | 2017-10-10 |  |  |  |  | 2017-10-10 | J |  |
-|  | 10:00:30.0 |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | 10:01:30.0 |  |  |  |  |
-|  | 2017-10-10 |  |  |  |  |  |  | Jark | 2 |
-|  |  | 2017-10-10 |  |  |  |  | 2017-10-10 | J |  |
-|  | 10:01:00.0 |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | 10:02:00.0 |  |  |  |  |
-|  | 2017-10-10 |  |  |  |  |  |  | Jark | 1 |
-|  |  | 2017-10-10 |  |  |  |  | 2017-10-10 | J |  |
-|  | 10:01:30.0 |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | 10:02:30.0 |  |  |  |  |
-|  | 2017-10-10 |  |  |  |  |  |  | Timo | 1 |
-|  |  | 2017-10-10 |  |  |  |  | 2017-10-10 | T |  |
-|  | 10:02:00.0 |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | 10:03:00.0 |  |  |  |  |
+|   | 2017-10-10 |   |   |   |   |   |   | Jark | 2 |
+|   |   | 2017-10-10 |   |   |   |   | 2017-10-10 | J |   |
+|   | 09:59:30.0 |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | 10:00:30.0 |   |   |   |   |
+|   | 2017-10-10 |   |   |   |   |   |   | Jark | 3 |
+|   |   | 2017-10-10 |   |   |   |   | 2017-10-10 | J |   |
+|   | 10:00:00.0 |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | 10:01:00.0 |   |   |   |   |
+|   | 2017-10-10 |   |   |   |   |   |   | Jark | 2 |
+|   |   | 2017-10-10 |   |   |   |   | 2017-10-10 | J |   |
+|   | 10:00:30.0 |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | 10:01:30.0 |   |   |   |   |
+|   | 2017-10-10 |   |   |   |   |   |   | Jark | 2 |
+|   |   | 2017-10-10 |   |   |   |   | 2017-10-10 | J |   |
+|   | 10:01:00.0 |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | 10:02:00.0 |   |   |   |   |
+|   | 2017-10-10 |   |   |   |   |   |   | Jark | 1 |
+|   |   | 2017-10-10 |   |   |   |   | 2017-10-10 | J |   |
+|   | 10:01:30.0 |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | 10:02:30.0 |   |   |   |   |
+|   | 2017-10-10 |   |   |   |   |   |   | Timo | 1 |
+|   |   | 2017-10-10 |   |   |   |   | 2017-10-10 | T |   |
+|   | 10:02:00.0 |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | 10:03:00.0 |   |   |   |   |
 
-实时计算（流计算）
-
-|  | 2017-10-10 |  |  |  |  |  |  | Timo | 1 |
+|   | 2017-10-10 |   |   |   |   |   |   | Timo | 1 |
 |---|---|---|---|---|---|---|---|---|---|
-|  |  | 2017-10-10 |  |  |  |  | 2017-10-10 | T |  |
-|  | 10:02:30.0 |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | 10:03:30.0 |  |  |  |  |
+|   |   | 2017-10-10 |   |   |   |   | 2017-10-10 | T |   |
+|   | 10:02:30.0 |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | 10:03:30.0 |   |   |   |   |
 
-HOP窗口无法读取数据进入的时间，第一个窗口的开启时间会前移。**前移时长**=**窗口时长**-**滑动步长**，示例如下表。
+HOP窗口无法读取数据进入的时间，第一个窗口的开启时间会前移。**前移时长****=****窗口时长****-****滑动步长**，示例如下表。
 
-| 窗口时长 （秒） | 滑动步长（秒） |  | Event Time |  |  |  | 第一个窗口 StartTime |  |  |  |  | 第一个窗口EndTime |  |  |  |
+| 窗口时长 （秒） | 滑动步长（秒） |   | Event Time |   |   |   | 第一个窗口 StartTime |   |   |   |   | 第一个窗口EndTime |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 120 | 30 |  | 2019-07-31 |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  | 2019-07-31 |  |  |  | 20 | 19-07-31 |  |  |  | 20 | 19-07-31 |  |
-|  |  |  | 10:00:00 |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | .0 |  | 09:58:30 |  |  | .0 |  | 10:00:30.0 |  |  |  |
-| 60 | 10 |  | 2019-07-31 |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  | 2019-07-31 |  |  |  | 20 | 19-07-31 |  |  |  | 20 | 19-07-31 |  |
-|  |  |  | 10:00:00 |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | .0 |  | 09:59:10 |  |  | .0 |  | 10:00:10.0 |  |  |  |
+| 120 | 30 |   | 2019-07-31 |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   | 2019-07-31 |   |   |   | 20 | 19-07-31 |   |   |   | 20 | 19-07-31 |   |
+|   |   |   | 10:00:00 |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | .0 |   | 09:58:30 |   |   | .0 |   | 10:00:30.0 |   |   |   |
+| 60 | 10 |   | 2019-07-31 |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   | 2019-07-31 |   |   |   | 20 | 19-07-31 |   |   |   | 20 | 19-07-31 |   |
+|   |   |   | 10:00:00 |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | .0 |   | 09:59:10 |   |   | .0 |   | 10:00:10.0 |   |   |   |
 
-#### 会话窗口
+#### 4.8.4 会话窗口
 
 本文为您介绍如何使用Flink会话窗口函数。
 
 **定义**
 
-会话窗口（SESSION）通过SESSION活动来对元素进行分组。会话窗口与滚动窗口和滑动窗口相比，没有窗口重叠，没有固定窗口大小。相反，当它在一个固定的时间周期内不再收到元素，即会话断开时，该窗口就会关闭。 会话窗口通过一个间隔时间（Gap）来配置，这个间隔定义了非活跃周期的长度。例如，一个表示鼠标单击活动的数据流可能具有长时间的空闲时间，并在两段空闲之间散布着高浓度的单击。如果数据在指定的间隔（Gap） 之后到达，则会开始一个新的窗口。 会话窗口示例如下图，每个Key由于不同的数据分布，形成了不同的Window。 实时计算（流计算）
+会话窗口（SESSION）通过SESSION活动来对元素进行分组。会话窗口与滚动窗口和滑动窗口相比，没有窗口重叠，没有固定窗口大小。相反，当它在一个固定的时间周期内不再收到元素，即会话断开时，该窗口就会关闭。 会话窗口通过一个间隔时间（Gap）来配置，这个间隔定义了非活跃周期的长度。例如，一个表示鼠标单击活动的数据流可能具有长时间的空闲时间，并在两段空闲之间散布着高浓度的单击。如果数据在指定的间隔（Gap） 之后到达，则会开始一个新的窗口。 会话窗口示例如下图，每个Key由于不同的数据分布，形成了不同的Window。
 
 **函数语法**
 
@@ -16944,37 +18025,33 @@ SESSION函数用于在GROUP BY子句中定义会话窗口。
 SESSION(<time-attr>, <gap-interval>) <gap-interval>: INTERVAL 'string' timeUnit
 ```
 
-`<time-attr>` 参数必须是数据流中的一个合法的时间属性字段，指定为Processing Time或
-
-**说明**
-
-Event Time，详情请参见概述，了解如何定义时间属性。
+> **说明：** `<time-attr>` 参数必须是数据流中的一个合法的时间属性字段，指定为Processing Time或 Event Time，详情请参见概述，了解如何定义时间属性。
 
 **标识函数**
 
 使用标识函数选出窗口的起始时间或者结束时间，窗口的时间属性用于下级Window的聚合。
 
-| 窗口标识函数 |  | 返回类型 |  | 描述 |  |
+| 窗口标识函数 |   | 返回类型 |   | 描述 |   |
 |---|---|---|---|---|---|
-| SESSION START（<time _ |  |  |  | 返回窗口的起始时间（包含边界）。例如 [00:10,00:15) 的窗口，返回 00:10 ，即为此会话窗口内第一条记录的时间。 |  |
-|  | SESSION START（<time _ |  |  |  |  |
-| -attr>, <gap- |  |  |  |  |  |
-|  |  | Ti |  |  |  |
-| interval>） |  |  |  |  |  |
-| SESSION END（<time- |  | Timestamp |  | 返回窗口的结束时间（包含边界）。例如 [00:00,00:15) 的窗口，返回 00:15 ，即为此会话窗口内最后一条记录的时间+ <gap-interval> 。 |  |
-|  | SESSION END（<time- |  |  |  |  |
-| _ attr>, <gap- | _ |  |  |  |  |
-|  |  | T |  |  |  |
-| interval>） |  |  |  |  |  |
-| SESSION ROWTIME（<ti _ |  |  |  | 返回窗口的结束时间（不包含边界）。例如 [00:00,00:15) 的窗口，返回 00:14:59.999 。返回值是一个rowtime attribute，也就是可以基于该字段进行时间类型的操作，例如级联窗口。该参数只能用于基于Event Time的Window。 |  |
-|  | SESSION ROWTIME（<ti _ |  |  | 如 | [00:00,00:15) |
-| me-attr>, <gap- |  | Tim attr | （rowtime- |  |  |
-| interval>） |  |  |  |  |  |
-| SESSION PROCTIME（<t _ |  |  |  | 返回窗口的结束时间（不包含边界）。例如 [00:00,00:15) 的窗口，返回 00:14:59.999 。返回值是一个Proctime Attribute，也就是可以基于该字段进行时间类型的操作，例如级联窗口。该参数只能用于基于Processing Time的Window。 |  |
-|  | SESSION PROCTIME（<t _ | Timestamp（rowtime- |  | 如 | [00:00,00:15) |
-| ime-attr>, <gap- |  | Time |  |  |  |
-|  |  | attr） |  |  |  |
-| interval>） |  |  |  |  |  |
+| SESSION START（<time _ |   |   |   | 返回窗口的起始时间（包含边界）。例如 [00:10,00:15) 的窗口，返回 00:10 ，即为此会话窗口内第一条记录的时间。 |   |
+|   | SESSION START（<time _ |   |   |   |   |
+| -attr>, <gap- |   |   |   |   |   |
+|   |   | Ti |   |   |   |
+| interval>） |   |   |   |   |   |
+| SESSION END（<time- |   | Timestamp |   | 返回窗口的结束时间（包含边界）。例如 [00:00,00:15) 的窗口，返回 00:15 ，即为此会话窗口内最后一条记录的时间+ <gap-interval> 。 |   |
+|   | SESSION END（<time- |   |   |   |   |
+| _ attr>, <gap- | _ |   |   |   |   |
+|   |   | T |   |   |   |
+| interval>） |   |   |   |   |   |
+| SESSION ROWTIME（<ti _ |   |   |   | 返回窗口的结束时间（不包含边界）。例如 [00:00,00:15) 的窗口，返回 00:14:59.999 。返回值是一个rowtime attribute，也就是可以基于该字段进行时间类型的操作，例如级联窗口。该参数只能用于基于Event Time的Window。 |   |
+|   | SESSION ROWTIME（<ti _ |   |   | 如 | [00:00,00:15) |
+| me-attr>, <gap- |   | Tim attr | （rowtime- |   |   |
+| interval>） |   |   |   |   |   |
+| SESSION PROCTIME（<t _ |   |   |   | 返回窗口的结束时间（不包含边界）。例如 [00:00,00:15) 的窗口，返回 00:14:59.999 。返回值是一个Proctime Attribute，也就是可以基于该字段进行时间类型的操作，例如级联窗口。该参数只能用于基于Processing Time的Window。 |   |
+|   | SESSION PROCTIME（<t _ | Timestamp（rowtime- |   | 如 | [00:00,00:15) |
+| ime-attr>, <gap- |   | Time |   |   |   |
+|   |   | attr） |   |   |   |
+| interval>） |   |   |   |   |   |
 
 **示例**
 
@@ -16989,7 +18066,7 @@ Event Time，详情请参见概述，了解如何定义时间属性。
 | Jark | http://taobao.com/xxx | 2017-10-10 10:01:58.0 |
 | Timo | http://taobao.com/xxx | 2017-10-10 10:02:10.0 |
 
-测试语句实时计算（流计算）
+测试语句
 
 ```
 CREATE TEMPORARY TABLE user_clicks(
@@ -17001,7 +18078,12 @@ CREATE TEMPORARY TABLE user_clicks(
 ) with (
   'connector'='sls',
   ...
-); CREATE TEMPORARY TABLE session_output(
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE session_output(
   window_start TIMESTAMP,
   window_end TIMESTAMP,
   username VARCHAR,
@@ -17013,33 +18095,38 @@ CREATE TEMPORARY TABLE user_clicks(
 
 ```
   ...
-); INSERT INTO session_output SELECT SESSION_START(ts, INTERVAL '30' SECOND), SESSION_END(ts, INTERVAL '30' SECOND), username, COUNT(click_url) FROM user_clicks GROUP BY SESSION(ts, INTERVAL '30' SECOND), username;
+```
+
+);
+
+```
+INSERT INTO session_output SELECT SESSION_START(ts, INTERVAL '30' SECOND), SESSION_END(ts, INTERVAL '30' SECOND), username, COUNT(click_url) FROM user_clicks GROUP BY SESSION(ts, INTERVAL '30' SECOND), username;
 ```
 
 测试结果
 
-|  | window start _ （TIMESTAMP） |  |  |  | window end _ （TIMESTAMP） |  |  | username （VARCHAR） | clicks （BIGINT） |
+|   | window start _ （TIMESTAMP） |   |   |   | window end _ （TIMESTAMP） |   |   | username （VARCHAR） | clicks （BIGINT） |
 |---|---|---|---|---|---|---|---|---|---|
-|  | 2017-10-10 |  |  |  |  |  |  | Jark | 2 |
-|  |  | 2017-10-10 |  |  |  |  | 2017-10-10 | J |  |
-|  | 10:00:00.0 |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | 10:00:40.0 |  |  |  |  |
-|  | 2017-10-10 |  |  |  |  |  |  | Jark | 2 |
-|  |  | 2017-10-10 |  |  |  |  | 2017-10-10 | J |  |
-|  | 10:00:49.0 |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | 10:01:35.0 |  |  |  |  |
-|  | 2017-10-10 |  |  |  |  |  |  | Jark | 1 |
-|  |  | 2017-10-10 |  |  |  |  | 2017-10-10 | J |  |
-|  | 10:01:58.0 |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | 10:02:28.0 |  |  |  |  |
-|  | 2017-10-10 |  |  |  |  |  |  | Timo | 1 |
-|  |  | 2017-10-10 |  |  |  |  | 2017-10-10 | T |  |
-|  | 10:02:10.0 |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | 10:02:40.0 |  |  |  |  |
+|   | 2017-10-10 |   |   |   |   |   |   | Jark | 2 |
+|   |   | 2017-10-10 |   |   |   |   | 2017-10-10 | J |   |
+|   | 10:00:00.0 |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | 10:00:40.0 |   |   |   |   |
+|   | 2017-10-10 |   |   |   |   |   |   | Jark | 2 |
+|   |   | 2017-10-10 |   |   |   |   | 2017-10-10 | J |   |
+|   | 10:00:49.0 |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | 10:01:35.0 |   |   |   |   |
+|   | 2017-10-10 |   |   |   |   |   |   | Jark | 1 |
+|   |   | 2017-10-10 |   |   |   |   | 2017-10-10 | J |   |
+|   | 10:01:58.0 |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | 10:02:28.0 |   |   |   |   |
+|   | 2017-10-10 |   |   |   |   |   |   | Timo | 1 |
+|   |   | 2017-10-10 |   |   |   |   | 2017-10-10 | T |   |
+|   | 10:02:10.0 |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | 10:02:40.0 |   |   |   |   |
 
-#### OVER窗口
+#### 4.8.5 OVER窗口
 
-OVER窗口（OVER Window）是传统数据库的标准开窗，不同于Group By Window，OVER窗口中每1个元素都对应1个窗口。OVER窗口可以按照实际元素的行或实际的元素值（时间戳值）确定窗口，因此流数据元素可能分布在多个窗口中。 在应用OVER窗口的流式数据中，每1个元素都对应1个OVER窗口。每1个元素都触发1次数据计算，每个触发计算的元素所确定的行，都是该元素所在窗口的最后1行。在实时计算的底层实现中，OVER窗口的数据进行全局统一管理（数据只存储1份），逻辑上为每1个元素维护1个OVER窗口，为每1个元素进行窗口计算，完成计算后会清除过期的数据。 实时计算（流计算）
+OVER窗口（OVER Window）是传统数据库的标准开窗，不同于Group By Window，OVER窗口中每1个元素都对应1个窗口。OVER窗口可以按照实际元素的行或实际的元素值（时间戳值）确定窗口，因此流数据元素可能分布在多个窗口中。 在应用OVER窗口的流式数据中，每1个元素都对应1个OVER窗口。每1个元素都触发1次数据计算，每个触发计算的元素所确定的行，都是该元素所在窗口的最后1行。在实时计算的底层实现中，OVER窗口的数据进行全局统一管理（数据只存储1份），逻辑上为每1个元素维护1个OVER窗口，为每1个元素进行窗口计算，完成计算后会清除过期的数据。
 
 **语法**
 
@@ -17051,7 +18138,7 @@ SELECT
 FROM Tab1;
 ```
 
-agg1(col1)：按照GROUP BY指定col1列对输入数据进行聚合计算。 AS colName：别名。
+agg1(col1)：按照GROUP BY指定col1列对输入数据进行聚合计算。 OVER (definition1)：OVER窗口定义。 AS colName：别名。
 
 **说明**
 
@@ -17070,15 +18157,15 @@ Flink SQL中对OVER窗口的定义遵循标准SQL的定义语法，传统OVER窗
 
 **Rows OVER Window语义**
 
-窗口数据 ROWS OVER Window的每个元素都确定一个窗口。ROWS OVER Window分为Unbounded（无界流）和 Bounded（有界流）两种情况。 Unbounded ROWS OVER Window数据示例如下图所示。 实时计算（流计算） 虽然上图所示窗口user1的w7、w8及user2的窗口w3、w4都是同一时刻到达，但它们仍然
+窗口数据 ROWS OVER Window的每个元素都确定一个窗口。ROWS OVER Window分为Unbounded（无界流）和 Bounded（有界流）两种情况。 Unbounded ROWS OVER Window数据示例如下图所示。
 
-**说明**
+> **说明：** 虽然上图所示窗口user1的w7、w8及user2的窗口w3、w4都是同一时刻到达，但它们仍然在不同的窗口，这一点与RANGE OVER Window不同。
 
-在不同的窗口，这一点与RANGE OVER Window不同。 Bounded ROWS OVER Window数据以3个元素（往前2个元素）的窗口为例，如下图所示。 虽然上图所示窗口user1的w5、w6及user2的窗口w1、w2都是同一时刻到达，但它们仍然
+Bounded ROWS OVER Window数据以3个元素（往前2个元素）的窗口为例，如下图所示。
 
-**说明**
+> **说明：** 虽然上图所示窗口user1的w5、w6及user2的窗口w1、w2都是同一时刻到达，但它们仍然在不同的窗口，这一点与RANGE OVER Window不同。
 
-在不同的窗口，这一点与RANGE OVER Window不同。 窗口语法实时计算（流计算）
+窗口语法
 
 ```
 SELECT
@@ -17103,39 +18190,39 @@ value_expression：分区值表达式。 timeCol：元素排序的时间字段�
 | ITEM007 | Electronic | 2017-11-11 10:07:00 | 70 |
 | ITEM008 | Clothes | 2017-11-11 10:08:00 | 20 |
 
-|  |  | 2017-11-11 |  |
+|   |   | 2017-11-11 |   |
 |---|---|---|---|
-|  | 10:01:00 |  |  |
+|   | 10:01:00 |   |   |
 
-|  |  | 2017-11-11 |  |
+|   |   | 2017-11-11 |   |
 |---|---|---|---|
-|  | 10:02:00 |  |  |
+|   | 10:02:00 |   |   |
 
-|  |  | 2017-11-11 |  |
+|   |   | 2017-11-11 |   |
 |---|---|---|---|
-|  | 10:03:00 |  |  |
+|   | 10:03:00 |   |   |
 
-|  |  | 2017-11-11 |  |
+|   |   | 2017-11-11 |   |
 |---|---|---|---|
-|  | 10:03:00 |  |  |
+|   | 10:03:00 |   |   |
 
-|  |  | 2017-11-11 |  |
+|   |   | 2017-11-11 |   |
 |---|---|---|---|
-|  | 10:05:00 |  |  |
+|   | 10:05:00 |   |   |
 
-|  |  | 2017-11-11 |  |
+|   |   | 2017-11-11 |   |
 |---|---|---|---|
-|  | 10:06:00 |  |  |
+|   | 10:06:00 |   |   |
 
-|  |  | 2017-11-11 |  |
+|   |   | 2017-11-11 |   |
 |---|---|---|---|
-|  | 10:07:00 |  |  |
+|   | 10:07:00 |   |   |
 
-|  |  | 2017-11-11 |  |
+|   |   | 2017-11-11 |   |
 |---|---|---|---|
-|  | 10:08:00 |  |  |
+|   | 10:08:00 |   |   |
 
-实时计算（流计算） 测试代码
+测试代码
 
 ```
 CREATE TEMPORARY TABLE tmall_item(
@@ -17153,7 +18240,12 @@ CREATE TEMPORARY TABLE tmall_item(
 ) WITH (
   'connector' = 'sls',
    ...
-); SELECT
+```
+
+);
+
+```
+SELECT
     itemID,
     itemType,
     onSellTime,
@@ -17178,49 +18270,49 @@ FROM tmall_item;
 | ITEM007 | Electronic | 2017-11-11 10:07:00 | 70 | 70 |
 | ITEM008 | Clothes | 2017-11-11 10:08:00 | 20 | 20 |
 
-|  |  | 2017-11-11 |
+|   |   | 2017-11-11 |
 |---|---|---|
-| ronic | 10:01:00 |  |
+| ronic | 10:01:00 |   |
 
-|  |  | 2017-11-11 |
+|   |   | 2017-11-11 |
 |---|---|---|
-| ronic | 10:02:00 |  |
+| ronic | 10:02:00 |   |
 
-|  |  | 2017-11-11 |
+|   |   | 2017-11-11 |
 |---|---|---|
-| ronic | 10:03:00 |  |
+| ronic | 10:03:00 |   |
 
-|  |  | 2017-11-11 |
+|   |   | 2017-11-11 |
 |---|---|---|
-| ronic | 10:03:00 |  |
+| ronic | 10:03:00 |   |
 
-|  |  | 2017-11-11 |
+|   |   | 2017-11-11 |
 |---|---|---|
-| ronic | 10:05:00 |  |
+| ronic | 10:05:00 |   |
 
-|  |  | 2017-11-11 |
+|   |   | 2017-11-11 |
 |---|---|---|
-| ronic | 10:06:00 |  |
+| ronic | 10:06:00 |   |
 
-|  |  | 2017-11-11 |
+|   |   | 2017-11-11 |
 |---|---|---|
-| ronic | 10:07:00 |  |
+| ronic | 10:07:00 |   |
 
-|  |  | 2017-11-11 |
+|   |   | 2017-11-11 |
 |---|---|---|
-| es | 10:08:00 |  |
+| es | 10:08:00 |   |
 
 **RANGE OVER Window语义**
 
-窗口数据实时计算（流计算） RANGE OVER Window所有具有共同元素值（元素时间戳）的元素行确定一个窗口，RANGE OVER Window分为Unbounded和Bounded的两种情况。 Unbounded RANGE OVER Window数据示例如下图所示。 上图所示窗口user1的w7、user2的窗口w3，两个元素同一时刻到达，属于相同的
+窗口数据 RANGE OVER Window所有具有共同元素值（元素时间戳）的元素行确定一个窗口，RANGE OVER Window分为Unbounded和Bounded的两种情况。 Unbounded RANGE OVER Window数据示例如下图所示。
 
-**说明**
+> **说明：** 上图所示窗口user1的w7、user2的窗口w3，两个元素同一时刻到达，属于相同的 window，这一点与ROWS OVER Window不同。
 
-window，这一点与ROWS OVER Window不同。 Bounded RANGE OVER Window数据，以3秒中数据 `(INTERVAL '2' SECOND)` 的窗口为例，如下图所示。 上图所示窗口user1的w6、user2的窗口w3，元素都是同一时刻到达，属于相同的
+Bounded RANGE OVER Window数据，以3秒中数据 `(INTERVAL '2' SECOND)` 的窗口为例，如下图所示。
 
-**说明**
+> **说明：** 上图所示窗口user1的w6、user2的窗口w3，元素都是同一时刻到达，属于相同的 window，这一点与ROWS OVER Window不同。
 
-window，这一点与ROWS OVER Window不同。 实时计算（流计算） 窗口语法
+窗口语法
 
 ```
 SELECT
@@ -17245,39 +18337,39 @@ value_expression：进行分区的字表达式。 timeCol：元素排序的时�
 | ITEM007 | Electronic | 2017-11-11 10:07:00 | 70 |
 | ITEM008 | Clothes | 2017-11-11 10:08:00 | 20 |
 
-|  |  | 2017-11-11 |  |
+|   |   | 2017-11-11 |   |
 |---|---|---|---|
-|  | 10:01:00 |  |  |
+|   | 10:01:00 |   |   |
 
-|  |  | 2017-11-11 |  |
+|   |   | 2017-11-11 |   |
 |---|---|---|---|
-|  | 10:02:00 |  |  |
+|   | 10:02:00 |   |   |
 
-|  |  | 2017-11-11 |  |
+|   |   | 2017-11-11 |   |
 |---|---|---|---|
-|  | 10:03:00 |  |  |
+|   | 10:03:00 |   |   |
 
-|  |  | 2017-11-11 |  |
+|   |   | 2017-11-11 |   |
 |---|---|---|---|
-|  | 10:03:00 |  |  |
+|   | 10:03:00 |   |   |
 
-|  |  | 2017-11-11 |  |
+|   |   | 2017-11-11 |   |
 |---|---|---|---|
-|  | 10:05:00 |  |  |
+|   | 10:05:00 |   |   |
 
-|  |  | 2017-11-11 |  |
+|   |   | 2017-11-11 |   |
 |---|---|---|---|
-|  | 10:06:00 |  |  |
+|   | 10:06:00 |   |   |
 
-|  |  | 2017-11-11 |  |
+|   |   | 2017-11-11 |   |
 |---|---|---|---|
-|  | 10:07:00 |  |  |
+|   | 10:07:00 |   |   |
 
-|  |  | 2017-11-11 |  |
+|   |   | 2017-11-11 |   |
 |---|---|---|---|
-|  | 10:08:00 |  |  |
+|   | 10:08:00 |   |   |
 
-实时计算（流计算） 测试代码
+测试代码
 
 ```
 CREATE TEMPORARY TABLE tmall_item(
@@ -17295,7 +18387,12 @@ CREATE TEMPORARY TABLE tmall_item(
 ) WITH (
   'connector' = 'sls',
    ...
-); SELECT
+```
+
+);
+
+```
+SELECT
     itemID,
     itemType,
     onSellTime,
@@ -17320,43 +18417,41 @@ FROM tmall_item;
 | ITEM007 | Electronic | 2017-11-11 10:07:00 | 70 | 70 |
 | ITEM008 | Clothes | 2017-11-11 10:08:00 | 20 | 20 |
 
-|  |  | 2017-11-11 | 20 |
+|   |   | 2017-11-11 | 20 |
 |---|---|---|---|
-| nic | 10:01:00 |  |  |
+| nic | 10:01:00 |   |   |
 
-|  |  | 2017-11-11 | 50 |
+|   |   | 2017-11-11 | 50 |
 |---|---|---|---|
-| nic | 10:02:00 |  |  |
+| nic | 10:02:00 |   |   |
 
-|  |  | 2017-11-11 | 30 |
+|   |   | 2017-11-11 | 30 |
 |---|---|---|---|
-| nic | 10:03:00 |  |  |
+| nic | 10:03:00 |   |   |
 
-|  |  | 2017-11-11 | 60 |
+|   |   | 2017-11-11 | 60 |
 |---|---|---|---|
-| nic | 10:03:00 |  |  |
+| nic | 10:03:00 |   |   |
 
-|  |  | 2017-11-11 | 40 |
+|   |   | 2017-11-11 | 40 |
 |---|---|---|---|
-| nic | 10:05:00 |  |  |
+| nic | 10:05:00 |   |   |
 
-|  |  | 2017-11-11 | 20 |
+|   |   | 2017-11-11 | 20 |
 |---|---|---|---|
-| nic | 10:06:00 |  |  |
+| nic | 10:06:00 |   |   |
 
-|  |  | 2017-11-11 | 70 |
+|   |   | 2017-11-11 | 70 |
 |---|---|---|---|
-| nic | 10:07:00 |  |  |
+| nic | 10:07:00 |   |   |
 
-|  |  | 2017-11-11 | 20 |
+|   |   | 2017-11-11 | 20 |
 |---|---|---|---|
-| s | 10:08:00 |  |  |
+| s | 10:08:00 |   |   |
 
-### 内置函数
+### 4.9 内置函数
 
-实时计算（流计算）
-
-#### 概述
+#### 4.9.1 概述
 
 本文为您介绍Flink提供的用于数据转换的内置函数。 Flink V1.11：请参见Flink V1.11内置函数。 Flink V1.12：请参见Flink V1.12内置函数。
 
@@ -17364,19 +18459,21 @@ FROM tmall_item;
 
 Flink全托管VVR 3.0.0版本在Flink V1.12的基础上增加了部分内置函数，详情请参见标量函数。 如果内置函数中不存在您所需的函数，您可以通过自定义函数实现，自定义函数详情请参见概述。
 
-#### 标量函数
+#### 4.9.2 标量函数
 
-##### BITAND
+##### 4.9.2.1 BITAND
 
-本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
+本文为您介绍如何使用BITAND函数进行按位与操作。
 
-**重要**
+> **重要：** 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
 
 **语法**
 
-输入和输出类型均为整型，且类型一致。
+```
+INT BITAND(INT number1,INT number2)
+```
 
-**说明**
+> **说明：** 输入和输出类型均为整型，且类型一致。
 
 **入参**
 
@@ -17396,26 +18493,27 @@ Flink全托管VVR 3.0.0版本在Flink V1.12的基础上增加了部分内置函�
 测试语句
 
 ```
-FROM T1;
+SELECT BITAND(a, b) as intt FROM T1;
 ```
 
 测试结果
 
-**intt(INT)**
+> **intt(INT)**
+> 2
 
-实时计算（流计算）
+##### 4.9.2.2 BITNOT
 
-##### BITNOT
+本文为您介绍如何使用BITNOT函数进行按位取反。
 
-本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
-
-**重要**
+> **重要：** 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
 
 **语法**
 
-输入和输出类型均为整型，且类型一致。
+```
+INT BITNOT(INT number)
+```
 
-**说明**
+> **说明：** 输入和输出类型均为整型，且类型一致。
 
 **入参**
 
@@ -17427,27 +18525,31 @@ FROM T1;
 
 测试数据
 
-**a(INT)**
+> **a(INT)**
+> 7
 
 测试语句
 
 ```
-FROM T1;
+SELECT BITNOT(a) as var1 FROM T1;
 ```
 
 测试结果
 
-**var1(INT)**
+> **var1(INT)**
+> -8
 
--8
+##### 4.9.2.3 BITOR
 
-##### BITOR
+本文为您介绍如何使用BITOR函数进行按位取或。
 
-本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
-
-**重要**
+> **重要：** 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
 
 **语法**
+
+```
+INT BITOR(INT number1, INT number2)
+```
 
 **入参**
 
@@ -17455,14 +18557,10 @@ FROM T1;
 |---|---|
 | number1 | INT |
 
-实时计算（流计算）
-
 | number2 | INT |
 |---|---|
 
-输入和输出类型均为整型，且类型一致。
-
-**说明**
+> **说明：** 输入和输出类型均为整型，且类型一致。
 
 **示例**
 
@@ -17475,22 +18573,25 @@ FROM T1;
 测试语句
 
 ```
-FROM T1;
+SELECT BITOR(a, b) as var1 FROM T1;
 ```
 
 测试结果
 
-**var1(INT)**
+> **var1(INT)**
+> -3
 
--3
+##### 4.9.2.4 BITXOR
 
-##### BITXOR
+本文为您介绍如何使用BITXOR函数进行按位取异或。
 
-**重要**
-
-本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
+> **重要：** 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
 
 **语法**
+
+```
+INT BITXOR(INT number1, INT number2)
+```
 
 **入参**
 
@@ -17499,9 +18600,7 @@ FROM T1;
 | number1 | INT |
 | number2 | INT |
 
-输入和输出类型均为整型，且类型一致。
-
-**说明**
+> **说明：** 输入和输出类型均为整型，且类型一致。
 
 **示例**
 
@@ -17511,17 +18610,18 @@ FROM T1;
 |---|---|
 | 2 | 3 |
 
-测试语句实时计算（流计算）
+测试语句
 
 ```
-FROM T1;
+SELECT BITXOR(a, b) as var1 FROM T1;
 ```
 
 测试结果
 
-**var1(INT)**
+> **var1(INT)**
+> 1
 
-##### CONV
+##### 4.9.2.5 CONV
 
 本文为您介绍如何使用CONV函数，对数字或字符类型的数值进行进制转换。
 
@@ -17567,7 +18667,7 @@ VARCHAR CONV(VARCHAR number, INT FROM_BASE, INT TO_BASE)
 SELECT id, conv(x, 10, 16) as var1, conv(y, 10, 2) as var2 FROM T1;
 ```
 
-实时计算（流计算） 测试结果
+测试结果
 
 | id(INT) | var1(VARCHAR) | var2(VARCHAR) |
 |---|---|---|
@@ -17576,11 +18676,11 @@ SELECT id, conv(x, 10, 16) as var1, conv(y, 10, 2) as var2 FROM T1;
 | 3 | 0 | NULL |
 | 4 | NULL | NULL |
 
-##### DATEDIFF
+##### 4.9.2.6 DATEDIFF
 
-本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
+本文为您介绍如何使用DATEDIFF函数，计算两个日期之间的天数差值。
 
-**重要**
+> **重要：** 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
 
 **语法**
 
@@ -17607,7 +18707,7 @@ VARCHAR日期格式：**yyyy-MM-dd**或**yyyy-MM-dd HH:mm:ss**。 如果入参�
 |---|---|---|
 | 2017-10-15 00:00:00 | 2017-09-15 00:00:00 | NULL |
 
-测试语句实时计算（流计算）
+测试语句
 
 ```
 SELECT DATEDIFF(datetime1, datetime2) as int1,
@@ -17626,13 +18726,17 @@ FROM T1;
 |---|---|---|---|---|---|---|
 | 30 | 31 | -31 | NULL | NULL | NULL | 31 |
 
-##### DATE_ADD
+##### 4.9.2.7 DATE_ADD
 
-本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
+本文为您介绍如何使用DATE_ADD函数，返回指定日期增加目标天数后的日期。
 
-**重要**
+> **重要：** 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
 
 **语法**
+
+```
+VARCHAR DATE_ADD(VARCHAR startdate, INT days) VARCHAR DATE_ADD(TIMESTAMP time, INT days)
+```
 
 **入参**
 
@@ -17642,9 +18746,7 @@ FROM T1;
 | time | TIMESTAMP |
 | days | INT |
 
-如果入参中任何一个为NULL或解析错误，则返回为NULL。
-
-**说明**
+> **说明：** 如果入参中任何一个为NULL或解析错误，则返回为NULL。
 
 **示例**
 
@@ -17654,11 +18756,12 @@ FROM T1;
 |---|---|
 | 2017-09-15 00:00:00 | null |
 
-测试语句实时计算（流计算）
+测试语句
 
 ```
 SELECT DATE_ADD(datetime1, 30) as var1,
  DATE_ADD(TIMESTAMP '2017-09-15 23:00:00',30) as var2,
+ DATE_ADD(nullstr,30) as var3
 FROM T1;
 ```
 
@@ -17668,11 +18771,11 @@ FROM T1;
 |---|---|---|
 | 2017-10-15 | 2017-10-15 | null |
 
-##### DATE_FORMAT
+##### 4.9.2.8 DATE_FORMAT
 
-本文为您介绍如何使用DATE_FORMAT函数，将字符串类型的日期从原格式转换至目标格式。 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
+本文为您介绍如何使用DATE_FORMAT函数，将字符串类型的日期从原格式转换至目标格式。
 
-**重要**
+> **重要：** 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
 
 **语法**
 
@@ -17689,9 +18792,7 @@ VARCHAR DATE_FORMAT(TIMESTAMP time, VARCHAR to_format) VARCHAR DATE_FORMAT(VARCH
 | from format _ | VARCHAR | 可选，原格式，默认格式为yyyy-MM-dd hh:mm:ss。 |
 | to format _ | VARCHAR | 目标格式。 |
 
-如果入参中任何一个为NULL或解析错误，则返回为NULL。
-
-**说明**
+> **说明：** 如果入参中任何一个为NULL或解析错误，则返回为NULL。
 
 **示例**
 
@@ -17713,17 +18814,17 @@ SELECT DATE_FORMAT(datetime1, 'yyMMdd') as var1,
 FROM T1;
 ```
 
-实时计算（流计算） 测试结果
+测试结果
 
 | var1(VARCH AR) | var2(VARCH AR) | var3(VARCH AR) | var4(VARCH AR) | var5(VARCH AR) | var6(VARCH AR) |
 |---|---|---|---|---|---|
 | 170915 | null | null | null | 20170915 | 170915 |
 
-##### DATE_FORMAT_TZ
+##### 4.9.2.9 DATE_FORMAT_TZ
 
-本文为您介绍如何使用DATE_FORMAT_TZ函数，将时间戳类型的数据根据指定的时区，转成指定格式的字符串。 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
+本文为您介绍如何使用DATE_FORMAT_TZ函数，将时间戳类型的数据根据指定的时区，转成指定格式的字符串。
 
-**重要**
+> **重要：** 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
 
 **语法**
 
@@ -17752,6 +18853,7 @@ VARCHAR DATE_FORMAT_TZ(TIMESTAMP timestamp, VARCHAR format, VARCHAR timezone) VA
 ```
 SELECT
    DATE_FORMAT_TZ(timestamp1, format1, timezone1) as var1,
+   DATE_FORMAT_TZ(timestamp1, timezone1) as var2
 FROM T1;
 ```
 
@@ -17761,15 +18863,17 @@ FROM T1;
 |---|---|
 | 1970-01-01 08:00:00 | 1970-01-01 08:00:00 |
 
-##### DATE_SUB
+##### 4.9.2.10 DATE_SUB
 
-本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
+本文为您介绍如何使用DATE_SUB函数，返回指定日期减去目标天数后的日期。
 
-**重要**
-
-实时计算（流计算）
+> **重要：** 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
 
 **语法**
+
+```
+VARCHAR DATE_SUB(VARCHAR startdate, INT days) VARCHAR DATE_SUB(TIMESTAMP time, INT days)
+```
 
 **入参**
 
@@ -17779,9 +18883,7 @@ FROM T1;
 | time | TIMESTAMP |
 | days | INT |
 
-如果入参中任何一个为NULL或解析错误，则返回为NULL。
-
-**说明**
+> **说明：** 如果入参中任何一个为NULL或解析错误，则返回为NULL。
 
 **示例**
 
@@ -17796,6 +18898,7 @@ FROM T1;
 ```
 SELECT DATE_SUB(date1, 30) as var1,
  DATE_SUB(TIMESTAMP '2017-10-15 23:00:00',30) as var2,
+ DATE_SUB(nullstr,30) as var3
 FROM T1;
 ```
 
@@ -17805,11 +18908,11 @@ FROM T1;
 |---|---|---|
 | 2017-09-15 | 2017-09-15 | NULL |
 
-##### FROM_UNIXTIME
+##### 4.9.2.11 FROM_UNIXTIME
 
-本文为您介绍如何使用FROM_UNIXTIME函数，返回VARCHAR类型的日期值。 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
+本文为您介绍如何使用FROM_UNIXTIME函数，返回VARCHAR类型的日期值。
 
-**重要**
+> **重要：** 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
 
 **语法**
 
@@ -17822,15 +18925,11 @@ VARCHAR FROM_UNIXTIME(BIGINT unixtime, VARCHAR format)
 | 参数 | 数据类型 | 说明 |
 |---|---|---|
 
-实时计算（流计算）
-
 | unixtime | BIGINT | 以秒为单位的时间戳。 |
 |---|---|---|
 | format | VARCHAR | 可选，日志格式，默认格式为yyyy-MM-dd HH:mm:ss。 |
 
-如果入参中任何一个为NULL或解析错误，则返回为NULL。
-
-**说明**
+> **说明：** 如果入参中任何一个为NULL或解析错误，则返回为NULL。
 
 **示例**
 
@@ -17845,6 +18944,7 @@ VARCHAR FROM_UNIXTIME(BIGINT unixtime, VARCHAR format)
 ```
 SELECT FROM_UNIXTIME(unixtime1) as var1,
  FROM_UNIXTIME(unixtime1,'MMdd-yyyy') as var2,
+ FROM_UNIXTIME(unixtime1,nullstr) as var3
 FROM T1;
 ```
 
@@ -17854,13 +18954,17 @@ FROM T1;
 |---|---|---|
 | 2017-09-15 00:00:00 | 0915-2017 | NULL |
 
-##### ISNAN
+##### 4.9.2.12 ISNAN
 
-本文为您介绍如何使用ISNAN函数，判断指定的浮点数是否为NaN（Not a number），类似于Java中本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
+本文为您介绍如何使用ISNAN函数，判断指定的浮点数是否为NaN（Not a number），类似于Java中 Double.isNaN()或Float.isNaN()函数。
 
-**重要**
+> **重要：** 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
 
 **语法**
+
+```
+BOOLEAN ISNAN(DOUBLE d) BOOLEAN ISNAN(FLOAT f)
+```
 
 **入参**
 
@@ -17877,15 +18981,13 @@ FROM T1;
 |---|---|
 | 0.1 | 0.1 |
 
-实时计算（流计算）
-
 | 0 | 0 |
 |---|---|
 
 测试语句
 
 ```
-SELECT ISNAN(CAST(d AS DOUBLE)) as d1, FROM T1;
+SELECT ISNAN(CAST(d AS DOUBLE)) as d1, ISNAN(CAST(f AS FLOAT)) as d2 FROM T1;
 ```
 
 测试结果
@@ -17895,11 +18997,11 @@ SELECT ISNAN(CAST(d AS DOUBLE)) as d1, FROM T1;
 | false | false |
 | false | false |
 
-##### JSON_VALUE
+##### 4.9.2.13 JSON_VALUE
 
-本文为您介绍如何使用JSON_VALUE函数，从JSON字符串中提取指定路径的表达式。 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
+本文为您介绍如何使用JSON_VALUE函数，从JSON字符串中提取指定路径的表达式。
 
-**重要**
+> **重要：** 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
 
 **语法**
 
@@ -17914,9 +19016,7 @@ VARCHAR JSON_VALUE(VARCHAR content, VARCHAR path)
 | content | VARCHAR | 需要解析的JSON对象。 |
 | path | VARCHAR | 指定路径表达式。自定义路径需要使用单引号（'），示例如下。 JSON VALUE(json,'$.passenger name') AS _ _ ABC 目前路径支持的符号及功能如下： $：根对象。 []：数组下标。 *：数组通配符。 .：取子元素。 |
 
-如果入参中有不合法的JSON和NULL，则返回为NULL。
-
-**说明**
+> **说明：** 如果入参中有不合法的JSON和NULL，则返回为NULL。
 
 **示例**
 
@@ -17925,8 +19025,6 @@ VARCHAR JSON_VALUE(VARCHAR content, VARCHAR path)
 | id(INT) | json(VARCHAR) | path1(VARCHAR) |
 |---|---|---|
 | 1 | [10, 20, [30, 40]] | $[2][*] |
-
-实时计算（流计算）
 
 | 2 | {"aaa":"bbb","ccc": {"ddd":"eee","fff":"ggg","hhh": ["h0","h1","h2"]},"iii":"jjj"} | $.ccc.hhh[*] |
 |---|---|---|
@@ -17944,6 +19042,7 @@ SELECT
 `id`，
 
 ```
+    JSON_VALUE(json, path1) AS `value`
 FROM
     T1;
 ```
@@ -17959,11 +19058,11 @@ FROM
 | 5 | NULL |
 | 6 | NULL |
 
-##### KEYVALUE
+##### 4.9.2.14 KEYVALUE
 
-本文为您介绍如何使用KEYVALUE函数，将目标字符串按照split1分隔符拆分成Key-Value（KV）对，然后按照本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
+本文为您介绍如何使用KEYVALUE函数，将目标字符串按照split1分隔符拆分成Key-Value（KV）对，然后按照 split2分隔符将Key-Value对分开，返回Key对应的Value。
 
-**重要**
+> **重要：** 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
 
 **语法**
 
@@ -17978,15 +19077,13 @@ VARCHAR KEYVALUE(VARCHAR str, VARCHAR split1, VARCHAR split2, VARCHAR key_name)
 | str | VARCHAR | 待拆分的目标字符串。 |
 | split1 | VARCHAR | 按照split1分隔符，将目标字符串拆分成Key-Value（KV） 对。 |
 
-实时计算（流计算）
-
 | split2 | VARCHAR | 按照split2分隔符将Key-Value对分开。 |
 |---|---|---|
 | key name _ | VARCHAR | Key的名称。 |
 
 **说明**
 
-如果split1或split2为NULL时，则返回NULL。 如果str或者key_name为NULL时，则返回NULL。 如果没有匹配的Key时，则返回NULL。
+如果split1或split2为NULL时，则返回NULL。 如果str或者key_name为NULL时，则返回NULL。 如果没有匹配的Key时，则返回NULL。 如果有多个key-value匹配，返回第一个匹配上的Key对应的Value。
 
 **示例**
 
@@ -18008,19 +19105,24 @@ SELECT KEYVALUE(str, split1, split2, key1) as `result` FROM T1;
 
 测试结果
 
-**result(VARCHAR)**
+> **result(VARCHAR)**
+> v2
+> NULL
+> NULL
+> NULL
+> NULL
 
-v2 NULL NULL NULL NULL
+##### 4.9.2.15 MURMUR_HASH
 
-##### MURMUR_HASH
+本文为您介绍如何使用MURMUR_HASH函数，按Murmur 32哈希算法计算指定参数的32位哈希值。
 
-本文为您介绍如何使用MURMUR_HASH函数，按Murmur 32哈希算法计算指定参数的32位哈希值。 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
-
-**重要**
+> **重要：** 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
 
 **语法**
 
-实时计算（流计算）
+```
+INT MURMUR_HASH(value)
+```
 
 **入参**
 
@@ -18030,43 +19132,59 @@ v2 NULL NULL NULL NULL
 
 **示例1**
 
-测试数据表 1. T1 This is a test String. NULL test 测试语句
+测试数据表 1. T1
+
+> **value**
+> This is a test String.
+> NULL
+> test
+
+测试语句
 
 ```
-FROM T1;
+SELECT MURMUR_HASH(value) as intt FROM T1;
 ```
 
 测试结果
 
-**intt(VARCHAR)**
-
-740959099 NULL 271330425
+> **intt(VARCHAR)**
+> 740959099
+> NULL
+> 271330425
 
 **示例2**
 
 测试数据表 2. T2
 
-**str**
+> **str**
+> 4.5
+> NULL
+> 4
 
-4.5 NULL 测试语句
+测试语句
 
 ```
-FROM T2;
+SELECT MURMUR_HASH(CAST(str AS FLOAT)) as intt FROM T2;
 ```
 
 测试结果
 
-**intt(VARCHAR)**
+> **intt(VARCHAR)**
+> -2130121231
+> NULL
+> 1863595885
 
--2130121231 NULL 1863595885 实时计算（流计算）
+##### 4.9.2.16 MURMUR_HASH_64
 
-##### MURMUR_HASH_64
+本文为您介绍如何使用MURMUR_HASH_64函数，按Murmur 128哈希算法计算指定参数的64位哈希值。
 
-本文为您介绍如何使用MURMUR_HASH_64函数，按Murmur 128哈希算法计算指定参数的64位哈希值。 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
-
-**重要**
+> **重要：** 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
 
 **语法**
+
+```
+BIGINT MURMUR_HASH_64(value)
+```
 
 **入参**
 
@@ -18076,37 +19194,53 @@ FROM T2;
 
 **示例1**
 
-测试数据表 1. T1 This is a test String. NULL test 测试语句
+测试数据表 1. T1
+
+> **value**
+> This is a test String.
+> NULL
+> test
+
+测试语句
 
 ```
-FROM T1;
+SELECT MURMUR_HASH_64(value) as big FROM T1;
 ```
 
 测试结果
 
-**big(VARCHAR)**
-
-2706826604463634835 NULL 5010266691562018262
+> **big(VARCHAR)**
+> 2706826604463634835
+> NULL
+> 5010266691562018262
 
 **示例2**
 
-测试数据表 2. T2 4.5 NULL 测试语句实时计算（流计算）
+测试数据表 2. T2
+
+> **value**
+> 4.5
+> NULL
+> 4
+
+测试语句
 
 ```
-FROM T2;
+SELECT MURMUR_HASH_64(CAST(value AS FLOAT)) as big FROM T2;
 ```
 
 测试结果
 
-**big(VARCHAR)**
+> **big(VARCHAR)**
+> 8033179276572534397
+> NULL
+> -6697622088025985219
 
-8033179276572534397 NULL -6697622088025985219
+##### 4.9.2.17 PARSE_URL
 
-##### PARSE_URL
+本文为您介绍如何使用PARSE_URL函数，返回目标URL中指定部分解析后的值。
 
-本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
-
-**重要**
+> **重要：** 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
 
 **语法**
 
@@ -18130,7 +19264,7 @@ VARCHAR PARSE_URL(VARCHAR urlStr, VARCHAR partToExtract [, VARCHAR key])
 |---|---|
 | http://facebook.com/path/p1.php?query=1 | NULL |
 
-测试语句实时计算（流计算）
+测试语句
 
 ```
 SELECT PARSE_URL(url1, 'QUERY', 'query') as var1,
@@ -18143,6 +19277,7 @@ SELECT PARSE_URL(url1, 'QUERY', 'query') as var1,
        PARSE_URL(url1, 'AUTHORITY') as var8,
        PARSE_URL(nullstr, 'QUERY') as var9,
        PARSE_URL(url1, 'USERINFO') as var10,
+       PARSE_URL(nullstr, 'QUERY', 'query') as var11
 FROM T1;
 ```
 
@@ -18152,13 +19287,17 @@ FROM T1;
 |---|---|---|---|---|---|---|---|---|---|---|
 | 1 | query =1 | faceb ook.c om | /path/ p1.ph p | NULL | http | /path/ p1.ph p? query =1 | faceb ook.c om | NULL | NULL | NULL |
 
-##### REGEXP
+##### 4.9.2.18 REGEXP
 
-本文为您介绍如何使用REGEXP函数，对指定的字符串执行一个正则表达式搜索，并返回一个Boolean值表示是否找到指定的匹配模式。 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
+本文为您介绍如何使用REGEXP函数，对指定的字符串执行一个正则表达式搜索，并返回一个Boolean值表示是否找到指定的匹配模式。
 
-**重要**
+> **重要：** 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
 
 **语法**
+
+```
+BOOLEAN REGEXP(VARCHAR str, VARCHAR pattern)
+```
 
 **入参**
 
@@ -18167,9 +19306,7 @@ FROM T1;
 | str | VARCHAR | 指定的字符串。 |
 | pattern | VARCHAR | 指定的匹配模式。 |
 
-如果str或pattern为空或为NULL，则返回false。
-
-**说明**
+> **说明：** 如果str或pattern为空或为NULL，则返回false。
 
 **示例**
 
@@ -18180,8 +19317,6 @@ FROM T1;
 | k1=v1;k2=v2 | k2* |
 | k1:v1\|k2:v2 | k3 |
 
-实时计算（流计算）
-
 | NULL | k3 |
 |---|---|
 | k1:v1\|k2:v2 | NULL |
@@ -18190,22 +19325,23 @@ FROM T1;
 测试语句
 
 ```
-FROM T1;
+SELECT REGEXP(str1, pattern1) AS result FROM T1;
 ```
 
 测试结果
 
-**result(BOOLEAN)**
+> **result(BOOLEAN)**
+> true
+> false
+> false
+> false
+> false
 
-true false false false false
-
-##### REGEXP_REPLACE
+##### 4.9.2.19 REGEXP_REPLACE
 
 本文为您介绍如何使用REGEXP_REPLACE函数，用目标字符串替换指定字符串，并返回新的字符串。
 
-**重要**
-
-本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
+> **重要：** 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
 
 **语法**
 
@@ -18227,7 +19363,7 @@ VARCHAR REGEXP_REPLACE(VARCHAR str, VARCHAR pattern, VARCHAR replacement)
 
 **示例**
 
-测试数据表 1. T1 实时计算（流计算）
+测试数据表 1. T1
 
 | str1(VARCHAR) | pattern1(VARCHAR) | replace1(VARCHAR) |
 |---|---|---|
@@ -18245,15 +19381,18 @@ SELECT REGEXP_REPLACE(str1, pattern1, replace1) as result FROM T1;
 
 测试结果
 
-**result(VARCHAR)**
+> **result(VARCHAR)**
+> 20140313
+> 空
+> s2s0s1s4s-s0s3s-s1s3s
+> null
+> num-num
 
-20140313 空 s2s0s1s4s-s0s3s-s1s3s null num-num
+##### 4.9.2.20 SPLIT_INDEX
 
-##### SPLIT_INDEX
+本文为您介绍如何使用SPLIT_INDEX函数，将目标字符串按照指定分隔符分割成若干段，返回指定位置的字段信息。
 
-本文为您介绍如何使用SPLIT_INDEX函数，将目标字符串按照指定分隔符分割成若干段，返回指定位置的字段信息。 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
-
-**重要**
+> **重要：** 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
 
 **语法**
 
@@ -18269,11 +19408,7 @@ VARCHAR SPLIT_INDEX(VARCHAR str, VARCHAR sep, INT index)
 | sep | VARCHAR | 分隔符。 |
 | index | INT | 字段位置，index从0开始。 说明如果获取不到字段，则返回NULL。 |
 
-实时计算（流计算） 如果入参任何一个为NULL，则返回NULL。
-
-**说明**
-
-**示例**
+> **说明：** 如果入参任何一个为NULL，则返回NULL。
 
 测试数据表 1. T1
 
@@ -18287,22 +19422,28 @@ VARCHAR SPLIT_INDEX(VARCHAR str, VARCHAR sep, INT index)
 测试语句
 
 ```
-FROM T1;
+SELECT SPLIT_INDEX(str, sep, index) as var1 FROM T1;
 ```
 
 测试结果
 
-**var1(VARCHAR)**
+> **var1(VARCHAR)**
+> Mary
+> NULL
+> NULL
+> NULL
 
-Mary NULL NULL NULL
+##### 4.9.2.21 TO_DATE
 
-##### TO_DATE
+本文为您介绍如何使用TO_DATE函数，将INT类型或者VARCHAR类型的日期转换成DATE类型。
 
-本文为您介绍如何使用TO_DATE函数，将INT类型或者VARCHAR类型的日期转换成DATE类型。 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
-
-**重要**
+> **重要：** 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
 
 **语法**
+
+```
+Date TO_DATE(INT time) Date TO_DATE(VARCHAR date) Date TO_DATE(VARCHAR date,VARCHAR format)
+```
 
 **入参**
 
@@ -18312,9 +19453,7 @@ Mary NULL NULL NULL
 | date | VARCHAR | 默认格式为yyyy-MM-dd。 |
 | format | VARCHAR | 日期格式。 |
 
-**示例**
-
-实时计算（流计算） 测试数据表 1. T1
+测试数据表 1. T1
 
 | date1(INT) | date2(VARCHAR) | date3(VARCHAR) |
 |---|---|---|
@@ -18325,6 +19464,7 @@ Mary NULL NULL NULL
 ```
 SELECT TO_DATE(date1) as var1,
  TO_DATE(date2) as var2,
+ TO_DATE(date3,'yyyyMMdd') as var3
 FROM T1;
 ```
 
@@ -18334,11 +19474,11 @@ FROM T1;
 |---|---|---|
 | 1970-04-11 | 2017-09-15 | 2017-09-15 |
 
-##### TO_TIMESTAMP_TZ
+##### 4.9.2.22 TO_TIMESTAMP_TZ
 
-本文为您介绍如何使用TO_TIMESTAMP_TZ函数，将VARCHAR类型的日期根据指定时区转换成TIMESTAMP类型。 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
+本文为您介绍如何使用TO_TIMESTAMP_TZ函数，将VARCHAR类型的日期根据指定时区转换成TIMESTAMP类型。
 
-**重要**
+> **重要：** 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
 
 **语法**
 
@@ -18371,22 +19511,22 @@ SELECT
 FROM T1;
 ```
 
-测试结果实时计算（流计算）
+测试结果
 
 | var1(BIGINT) | var2(BIGINT) |
 |---|---|
 | -28800 | -28800 |
 
-##### UNIX_TIMESTAMP
+##### 4.9.2.23 UNIX_TIMESTAMP
 
-本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
+本文为您介绍如何使用UNIX_TIMESTAMP函数，将入参转换为长整型的时间戳。
 
-**重要**
+> **重要：** 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
 
 **语法**
 
 ```
-BIGINT UNIX_TIMESTAMP(VARCHAR date, VARCHAR format)
+BIGINT UNIX_TIMESTAMP(VARCHAR date) BIGINT UNIX_TIMESTAMP(TIMESTAMP timestamp) BIGINT UNIX_TIMESTAMP(VARCHAR date, VARCHAR format)
 ```
 
 **入参**
@@ -18408,7 +19548,9 @@ BIGINT UNIX_TIMESTAMP(VARCHAR date, VARCHAR format)
 测试语句
 
 ```
-SELECT UNIX_TIMESTAMP(to_timestamp_tz(date1)) as big1, FROM T1;
+SELECT UNIX_TIMESTAMP(to_timestamp_tz(date1)) as big1,
+       UNIX_TIMESTAMP(date2) as big2
+FROM T1;
 ```
 
 测试结果
@@ -18417,15 +19559,19 @@ SELECT UNIX_TIMESTAMP(to_timestamp_tz(date1)) as big1, FROM T1;
 |---|---|
 | 1616601600 | -28800 |
 
-#### 表值函数
+#### 4.9.3 表值函数
 
-##### GENERATE_SERIES
+##### 4.9.3.1 GENERATE_SERIES
 
-本文为您介绍如何使用GENERATE_SERIES函数，按from、from+1、from+2 … to-1的规则，生成一系列填充数据。 实时计算（流计算） 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
+本文为您介绍如何使用GENERATE_SERIES函数，按from、from+1、from+2 … to-1的规则，生成一系列填充数据。
 
-**重要**
+> **重要：** 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
 
 **语法**
+
+```
+GENERATE_SERIES(INT from, INT to)
+```
 
 **入参**
 
@@ -18446,7 +19592,7 @@ SELECT UNIX_TIMESTAMP(to_timestamp_tz(date1)) as big1, FROM T1;
 测试语句
 
 ```
-SELECT s, e, v as v;
+SELECT s, e, v FROM T1, lateral table(GENERATE_SERIES(s, e)) as v;
 ```
 
 测试结果
@@ -18459,17 +19605,19 @@ SELECT s, e, v as v;
 | -2 | 1 | -1 |
 | -2 | 1 | 0 |
 
-##### JSON_TUPLE
+##### 4.9.3.2 JSON_TUPLE
 
-本文为您介绍如何使用JSON_TUPLE函数，从JSON字符串中取出各路径字符串所表示的值。 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
+本文为您介绍如何使用JSON_TUPLE函数，从JSON字符串中取出各路径字符串所表示的值。
 
-**重要**
+> **重要：** 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
 
 **语法**
 
-**入参**
+```
+JSON_TUPLE(str, path1, path2 ..., pathN)
+```
 
-实时计算（流计算）
+**入参**
 
 | 参数 | 数据类型 | 说明 |
 |---|---|---|
@@ -18488,7 +19636,7 @@ SELECT s, e, v as v;
 测试语句
 
 ```
-SELECT d, v AS T(v);
+SELECT d, v FROM T1, lateral table(JSON_TUPLE(d, 'qwe', s)) AS T(v);
 ```
 
 测试结果
@@ -18500,11 +19648,11 @@ SELECT d, v AS T(v);
 | {"qwe":"asd4","qwe2":"asd5","qwe3":"asd3"} | asd4 |
 | {"qwe":"asd4","qwe2":"asd5","qwe3":"asd3"} | asd5 |
 
-##### MULTI_KEYVALUE
+##### 4.9.3.3 MULTI_KEYVALUE
 
-本文为您介绍如何使用MULTI_KEYVALUE函数，将目标字符串中拆分为Key-Value（KV）对，匹配split1和 split2的KV对，并返回key_name1和key_name2对应的Value值。 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
+本文为您介绍如何使用MULTI_KEYVALUE函数，将目标字符串中拆分为Key-Value（KV）对，匹配split1和 split2的KV对，并返回key_name1和key_name2对应的Value值。
 
-**重要**
+> **重要：** 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
 
 **语法**
 
@@ -18518,8 +19666,6 @@ MULTI_KEYVALUE(VARCHAR str, VARCHAR split1, VARCHAR split2, VARCHAR key_name1, V
 |---|---|---|
 | str | VARCHAR | 目标字符串。 |
 | split1 | VARCHAR | KV对的分隔符。 当split1为NULL时，表示按照空格作为KV对的分割符。当 split1的长度>1时，split1仅表示分隔符的集合，每个字符都表示一个有效的分隔符。 |
-
-实时计算（流计算）
 
 | split2 | VARCHAR | KV的分隔符。 当split2为NULL时，表示按照空格作为KV的分割符。当 split2的长度>1时，split2仅表示分隔符的集合，每个字符都表示一个有效的分隔符。 |
 |---|---|---|
@@ -18561,19 +19707,21 @@ SELECT c1, c2 FROM T1, lateral table(MULTI_KEYVALUE(str, split1, split2, key1, k
 | v1 | v2 |
 | v1 | v2 |
 
-实时计算（流计算）
-
 | v1 | v2 |
 |---|---|
 | v1 | v2 |
 
-##### STRING_SPLIT
+##### 4.9.3.4 STRING_SPLIT
 
-本文为您介绍如何使用STRING_SPLIT函数，根据指定的分隔符将目标字符串拆分为子字符串，并返回子字符串列表。 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
+本文为您介绍如何使用STRING_SPLIT函数，根据指定的分隔符将目标字符串拆分为子字符串，并返回子字符串列表。
 
-**重要**
+> **重要：** 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
 
 **语法**
+
+```
+string_split(string, separator)
+```
 
 **入参**
 
@@ -18608,24 +19756,26 @@ SELECT d,v FROM T1, lateral table(string_split(d, s)) as T(v);
 | abc-bcd | abc |
 | abc-bcd | bcd |
 
-实时计算（流计算）
-
 | hhh | hhh |
 |---|---|
 
-#### 聚合函数
+#### 4.9.4 聚合函数
 
-##### APPROX_COUNT_DISTINCT
+##### 4.9.4.1 APPROX_COUNT_DISTINCT
 
-本文为您可以介绍如何使用APPROX_COUNT_DISTINCT函数，提升作业性能。 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
+本文为您可以介绍如何使用APPROX_COUNT_DISTINCT函数，提升作业性能。
 
-**重要**
+> **重要：** 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
 
 **背景信息**
 
 Count Distinct优化时，Aggregate节点的State需要保存所有Distinct Key信息。当Distinct Key数目过大时，State的读写开销太大，因此Count Distinct优化存在性能瓶颈。但在很多场景，完全精确的统计并不那么必要。如果您希望牺牲部分精确度来换取性能上的提升，您可以使用新增的内置函数**APPROX_COUNT_DISTINCT**提升作业性能。**APPROX_COUNT_DISTINCT**支持MiniBatch或Local- Global等Aggregate上的优化，但是需要注意以下几点： 输入不含有撤回消息。 Distinct Key数目需要足够大，例如UV。如果Distinct Key数目不大，**APPROX_COUNT_DISTINCT**性能相对精确计算提升不大。
 
 **语法**
+
+```
+APPROX_COUNT_DISTINCT(col [, accuracy])
+```
 
 **入参**
 
@@ -18647,7 +19797,7 @@ Count Distinct优化时，Aggregate节点的State需要保存所有Distinct Key�
 | Hi | 5 |
 | Hi | 6 |
 
-测试代码实时计算（流计算）
+测试代码
 
 ```
 SELECT
@@ -18657,6 +19807,7 @@ SELECT
 
 ```
   APPROX_COUNT_DISTINCT(b) as b,
+  APPROX_COUNT_DISTINCT(b, 0.9) as c
 FROM T1 GROUP BY a;
 ```
 
@@ -18666,13 +19817,17 @@ FROM T1 GROUP BY a;
 |---|---|---|
 | Hi | 6 | 6 |
 
-##### FIRST_VALUE
+##### 4.9.4.2 FIRST_VALUE
 
-本文为您介绍如何使用FIRST_VALUE函数，返回指定数据流的第1条非NULL数据。 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
+本文为您介绍如何使用FIRST_VALUE函数，返回指定数据流的第1条非NULL数据。
 
-**重要**
+> **重要：** 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
 
 **语法**
+
+```
+FIRST_VALUE( T value ) FIRST_VALUE( T value, BIGINT order )
+```
 
 **入参**
 
@@ -18681,9 +19836,7 @@ FROM T1 GROUP BY a;
 | value | 任意参数类型 | 指定数据流。 说明如果输入数据全为NULL，则返回NULL。 |
 | order | BIGINT | 根据order判定FIRST VALUE所在行，取order值最小的记 _ 录作为FIRST VALUE。 _ |
 
-所有输入参数需要为相同的数据类型。
-
-**重要**
+> **重要：** 所有输入参数需要为相同的数据类型。
 
 **示例**
 
@@ -18698,8 +19851,6 @@ FROM T1 GROUP BY a;
 | 5 | 5 | Hello |
 | 6 | 6 | Hello |
 
-实时计算（流计算）
-
 | 7 | 7 | NULL |
 |---|---|---|
 | 8 | 7 | Hello World |
@@ -18709,7 +19860,7 @@ FROM T1 GROUP BY a;
 测试语句
 
 ```
-OVER (PARTITION BY c ORDER BY PROCTIME() RANGE UNBOUNDED PRECEDING) AS var1 FROM T1;
+SELECT c,FIRST_VALUE(b) OVER (PARTITION BY c ORDER BY PROCTIME() RANGE UNBOUNDED PRECEDING) AS var1 FROM T1;
 ```
 
 测试结果
@@ -18727,13 +19878,17 @@ OVER (PARTITION BY c ORDER BY PROCTIME() RANGE UNBOUNDED PRECEDING) AS var1 FROM
 | Hello World | 7 |
 | Hello World | 7 |
 
-##### LAST_VALUE
+##### 4.9.4.3 LAST_VALUE
 
-本文为您介绍如何使用LAST_VALUE函数，返回指定数据流的最后1条非NULL数据。 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
+本文为您介绍如何使用LAST_VALUE函数，返回指定数据流的最后1条非NULL数据。
 
-**重要**
+> **重要：** 本文仅适用于VVP 2.4.0且VVR 3.0.0及以上版本。
 
 **语法**
+
+```
+T LAST_VALUE(T value) T LAST_VALUE(T value，BIGINT order)
+```
 
 **入参**
 
@@ -18742,11 +19897,7 @@ OVER (PARTITION BY c ORDER BY PROCTIME() RANGE UNBOUNDED PRECEDING) AS var1 FROM
 | value | 任意参数类型 | 指定数据流。 |
 | order | BIGINT | 根据order判定LAST VALUE所在的行，取order值最大的 _ 记录作为LAST VALUE。 _ |
 
-实时计算（流计算） 所有输入参数需要为相同的数据类型。
-
-**重要**
-
-**示例**
+> **重要：** 所有输入参数需要为相同的数据类型。
 
 测试数据表 1. T1
 
@@ -18766,7 +19917,7 @@ OVER (PARTITION BY c ORDER BY PROCTIME() RANGE UNBOUNDED PRECEDING) AS var1 FROM
 测试语句
 
 ```
-OVER (PARTITION BY c ORDER BY PROCTIME() RANGE UNBOUNDED PRECEDING) AS var1 FROM T1;
+SELECT c,LAST_VALUE(b) OVER (PARTITION BY c ORDER BY PROCTIME() RANGE UNBOUNDED PRECEDING) AS var1 FROM T1;
 ```
 
 测试结果
@@ -18784,11 +19935,9 @@ OVER (PARTITION BY c ORDER BY PROCTIME() RANGE UNBOUNDED PRECEDING) AS var1 FROM
 | Hello World | 8 |
 | Hello World | 20 |
 
-### 自定义函数（Datastream）
+### 4.10 自定义函数（Datastream）
 
-实时计算（流计算）
-
-#### 概述
+#### 4.10.1 概述
 
 本文为您介绍Flink自定义函数开发时的注意事项、自定义函数的分类、定义和参数传递方法。
 
@@ -18833,8 +19982,6 @@ pipeline.global-job-parameters: 'json1:"{k1:""value1""}",json2:"k2"'
 |---|---|
 | json1 | {k1:""value1""} |
 
-实时计算（流计算）
-
 | json2 | k2 |
 |---|---|
 
@@ -18853,13 +20000,15 @@ context.getJobParameter("json1", null); // 获得字符串{k1:""value1""} contex
 
 **说明**
 
-您的自定义函数JAR文件会被上传到您选择的OSS Bucket中的sql-artifacts目录下。此外，Flink开发控制台会解析自定义函数JAR文件中是否使用了Flink UDF、UDAF和UDTF接口的类，并自动提取类名，填充到Function Name字段中。 对于Java类型的UDF，其依赖可以打包到自定义函数JAR包中，也可以通过依赖文件项进行上传。 在自定义函数文件或者其依赖文件比较大时，推荐通过外部URL的方式进行上传。需要注意的是，如果外部URL是OSS Bucket地址，其依赖文件必须位于sqlartifacts/namespaces/{namespace}目录下。 v. 单击**确认**。 在SQL编辑器页面左侧**UDFs**列表，您可以看到所有注册成功的UDF。 作业级自定义函数因全局自定义函数（Catalog Function）在注册时，默认使用最新的Flink版本解析。如果您在作业中使用全局自定义函数，同时在高级配置选中了非最新的Flink版本，则有可能出现不兼容的问题。此时，您可以根据作实时计算（流计算） 业需要使用的引擎版本来实现UDF代码，并通过作业级自定义函数的方式解决此问题。作业级自定义函数的使用流程如下： i. 上传自定义函数JAR包。 在左侧导航栏**资源上传**中，上传自定义函数JAR包。 ii. 在作业中指定作业级自定义函数。 在作业**附加依赖文件**中，指定自定义函数JAR包。 iii. 注册自定义函数。 通过 `CREATE TEMPORARY FUNCTION` 语法注册作业级自定义函数。
+您的自定义函数JAR文件会被上传到您选择的OSS Bucket中的sql-artifacts目录下。此外，Flink开发控制台会解析自定义函数JAR文件中是否使用了Flink UDF、UDAF和UDTF接口的类，并自动提取类名，填充到Function Name字段中。 对于Java类型的UDF，其依赖可以打包到自定义函数JAR包中，也可以通过依赖文件项进行上传。 在自定义函数文件或者其依赖文件比较大时，推荐通过外部URL的方式进行上传。需要注意的是，如果外部URL是OSS Bucket地址，其依赖文件必须位于sqlartifacts/namespaces/{namespace}目录下。 v. 单击**确认**。 在SQL编辑器页面左侧**UDFs**列表，您可以看到所有注册成功的UDF。 作业级自定义函数因全局自定义函数（Catalog Function）在注册时，默认使用最新的Flink版本解析。如果您在作业中使用全局自定义函数，同时在高级配置选中了非最新的Flink版本，则有可能出现不兼容的问题。此时，您可以根据作业需要使用的引擎版本来实现UDF代码，并通过作业级自定义函数的方式解决此问题。作业级自定义函数的使用流程如下： i. 上传自定义函数JAR包。 在左侧导航栏**资源上传**中，上传自定义函数JAR包。 ii. 在作业中指定作业级自定义函数。 在作业**附加依赖文件**中，指定自定义函数JAR包。 iii. 注册自定义函数。 通过 `CREATE TEMPORARY FUNCTION` 语法注册作业级自定义函数。
 
 ```
 CREATE TEMPORARY FUNCTION MyScalarFunc AS 'com.test.MyScalarFunc';
 ```
 
-#### 自定义标量函数（UDF）
+#### 4.10.2 自定义标量函数（UDF）
+
+本文为您介绍如何为Flink自定义标量函数（UDF）开发、注册和使用流程。
 
 **定义**
 
@@ -18867,11 +20016,8 @@ CREATE TEMPORARY FUNCTION MyScalarFunc AS 'com.test.MyScalarFunc';
 
 **UDF开发**
 
-Flink为您提供了UDX示例，便于您快速开发业务。Flink UDX示例中包含UDF、UDAF和UDTF
+> **说明：** Flink为您提供了UDX示例，便于您快速开发业务。Flink UDX示例中包含UDF、UDAF和UDTF 的实现，示例中已为您配置对应版本的开发环境，您无需进行环境搭建。
 
-**说明**
-
-的实现，示例中已为您配置对应版本的开发环境，您无需进行环境搭建。
 1. 下载并解压ASI_UDX_Demo示例到本地。
 解压完成后，会生成**ASI_UDX-main**文件夹。其中：
 **pom.xml**：项目级别的配置文件，主要描述了项目的Maven坐标、依赖关系，开发者需要遵循的规则、缺
@@ -18886,12 +20032,11 @@ Flink为您提供了UDX示例，便于您快速开发业务。Flink UDX示例中
 package ASI_UDF; import org.apache.flink.table.functions.ScalarFunction; public class ASI_UDF extends ScalarFunction {
     public String eval(String s, Integer begin, Integer end) {
         return s.substring(begin, end);
-    }
-}
 ```
 
+`}` `}`
 4. 双击打开\ASI_UDX-main\后，配置**pom.xml**。
-该示例中，**pom.xml**文件已配置了Flink 1.11版依赖的主要JAR包信息。如果您的业务： Flink 1.11版依赖的主要JAR包如下。 实时计算（流计算）
+该示例中，**pom.xml**文件已配置了Flink 1.11版依赖的主要JAR包信息。如果您的业务： 不依赖其他JAR包：不用配置**pom.xml**文件，继续下一步。 依赖其他JAR包：在**pom.xml**文件中添加您所需依赖的JAR包信息。 Flink 1.11版依赖的主要JAR包如下。
 
 ```xml
 <dependencies>
@@ -18937,7 +20082,7 @@ UDF注册过程，请参见管理自定义函数（UDF）。
 
 在注册UDF完成后，您就可以使用UDF，详细的操作步骤如下。
 1. Flink SQL作业开发。详情请参见作业开发。
-获取ASI_UDF_Source表中a字段中每行字符串中第2~4位的字符，代码示例如下。 实时计算（流计算）
+获取ASI_UDF_Source表中a字段中每行字符串中第2~4位的字符，代码示例如下。
 
 ```
 CREATE TEMPORARY TABLE ASI_UDF_Source (
@@ -18946,17 +20091,29 @@ CREATE TEMPORARY TABLE ASI_UDF_Source (
   c INT
 ) WITH (
   'connector' = 'datagen'
-); CREATE TEMPORARY TABLE ASI_UDF_Sink (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE ASI_UDF_Sink (
   a VARCHAR
 ) WITH (
   'connector' = 'blackhole'
-); INSERT INTO ASI_UDF_Sink SELECT ASI_UDF('a',2,4) FROM ASI_UDF_Source;
+```
+
+);
+
+```
+INSERT INTO ASI_UDF_Sink SELECT ASI_UDF('a',2,4) FROM ASI_UDF_Source;
 ```
 
 2. 在**作业列表**中，单击目标作业名称**操作**列的**启动**。
 启动成功后，ASI_UDF_Sink表每行会被插入ASI_UDF_Source表中a字段每行字符串的第2~4位字符。
 
-#### 自定义聚合函数（UDAF）
+#### 4.10.3 自定义聚合函数（UDAF）
+
+本文为您介绍如何为Flink自定义聚合函数（UDAF）开发、注册和使用流程。
 
 **定义**
 
@@ -18975,33 +20132,43 @@ Flink为您提供了UDF示例，便于您快速开发业务。Flink UDF示例中
 Java代码。
 2. 在Intellij IDEA中，单击**file > open**，打开刚才解压缩完成的**ASI_UDX-main**。
 3. 双击打开\ASI_UDX-main\src\main\java\ASI_UDAF后，根据您的业务，配置**ASI_UDAF.java**。
-该示例中，**ASI_UDAF.java**已配置了当前数据和历史数求和的代码。例如，第1个数据是1，第2个数据是2， 第3个数据是3，则第一个结果是1，第2个结果是3，第3个结果是6。 实时计算（流计算）
+该示例中，**ASI_UDAF.java**已配置了当前数据和历史数求和的代码。例如，第1个数据是1，第2个数据是2， 第3个数据是3，则第一个结果是1，第2个结果是3，第3个结果是6。
 
 ```java
 package ASI_UDAF; import org.apache.flink.table.functions.AggregateFunction; public class ASI_UDAF{
     public static class AcSum {
         public long sum;
-    }
+```
+
+`}`
+
+```java
     public static class WeightedSum extends AggregateFunction<Long, AcSum> {
         @Override
         public Long getValue(AcSum acSum) {
             return acSum.sum;
-        }
+```
+
+`}`
+
+```java
         @Override
         public AcSum createAccumulator() {
             AcSum acCount = new AcSum();
             acCount.sum = 0;
             return acCount;
-        }
-        public void accumulate(AcSum acc, long acSum) {
-            acc.sum += acSum;
-        }
-    }
-}
 ```
 
+`}`
+
+```
+        public void accumulate(AcSum acc, long acSum) {
+            acc.sum += acSum;
+```
+
+`}` `}` `}`
 4. 双击打开\ASI_UDX-main\后，配置**pom.xml**。
-该示例中，**pom.xml**文件已配置了Flink 1.11版依赖的主要JAR包信息。如果您的业务： Flink 1.11版依赖的主要JAR包如下。 实时计算（流计算）
+该示例中，**pom.xml**文件已配置了Flink 1.11版依赖的主要JAR包信息。如果您的业务： 不依赖其他JAR包：不用配置**pom.xml**文件，继续下一步。 依赖其他JAR包：在**pom.xml**文件中添加您所需依赖的JAR包信息。 Flink 1.11版依赖的主要JAR包如下。
 
 ```xml
 <dependencies>
@@ -19054,18 +20221,29 @@ CREATE TEMPORARY TABLE ASI_UDAF_Source (
   a   BIGINT
 ) WITH (
   'connector' = 'datagen'
-); CREATE TEMPORARY TABLE ASI_UDAF_Sink (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE ASI_UDAF_Sink (
   sum  BIGINT
 ) WITH (
   'connector' = 'blackhole'
-); INSERT INTO ASI_UDAF_Sink SELECT `ASI_UDAF$WeightedSum`(a) FROM ASI_UDAF_Source;
 ```
 
-实时计算（流计算）
+);
+
+```
+INSERT INTO ASI_UDAF_Sink SELECT `ASI_UDAF$WeightedSum`(a) FROM ASI_UDAF_Source;
+```
+
 2. 在**作业列表**中，单击目标作业名称**操作**列的**启动**。
 启动成功后，ASI_UDAF_Sink表每行会被插入ASI_UDAF_Source表中a字段当前数据和历史数据之和。
 
-#### 自定义表值函数（UDTF）
+#### 4.10.4 自定义表值函数（UDTF）
+
+本文为您介绍如何为Flink自定义表值函数（UDTF）开发、注册和使用流程。
 
 **定义**
 
@@ -19094,12 +20272,11 @@ package ASI_UDTF; import org.apache.flink.api.java.tuple.Tuple2; import org.apac
         String place = split[1];
         Tuple2<String,String> tuple2 = Tuple2.of(name,place);
         collect(tuple2);
-    }
-}
 ```
 
+`}` `}`
 4. 双击打开\ASI_UDX-main\后，配置**pom.xml**。
-该示例中，**pom.xml**文件已配置了Flink 1.11版依赖的主要JAR包信息。如果您的业务： Flink 1.11版依赖的主要JAR包如下。 实时计算（流计算）
+该示例中，**pom.xml**文件已配置了Flink 1.11版依赖的主要JAR包信息。如果您的业务： 不依赖其他JAR包：不用配置**pom.xml**文件，继续下一步。 依赖其他JAR包：在**pom.xml**文件中添加您所需依赖的JAR包信息。 Flink 1.11版依赖的主要JAR包如下。
 
 ```xml
 <dependencies>
@@ -19145,27 +20322,37 @@ UDTF注册过程，请参见管理自定义函数（UDF）。
 
 在注册UDTF完成后，您就可以使用UDTF，详细的操作步骤如下。
 1. Flink SQL作业开发。详情请参见作业开发。
-ASI_UDTF_Source表中message字段每行字符串按照竖线（|）分割成多列，代码示例如下。 实时计算（流计算）
+ASI_UDTF_Source表中message字段每行字符串按照竖线（|）分割成多列，代码示例如下。
 
 ```
 CREATE TEMPORARY TABLE ASI_UDTF_Source (
   `message`  VARCHAR
 ) WITH (
   'connector'='datagen'
-); CREATE TEMPORARY TABLE ASI_UDTF_Sink (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE ASI_UDTF_Sink (
   name  VARCHAR,
   place  VARCHAR
 ) WITH (
   'connector' = 'blackhole'
-); INSERT INTO ASI_UDTF_Sink SELECT name,place FROM ASI_UDTF_Source,lateral table(ASI_UDTF(`message`)) as T(name,place);
+```
+
+);
+
+```
+INSERT INTO ASI_UDTF_Sink SELECT name,place FROM ASI_UDTF_Source,lateral table(ASI_UDTF(`message`)) as T(name,place);
 ```
 
 2. 在**作业列表**中，单击目标作业名称**操作**列的**启动**。
 启动成功后，ASI_UDTF_Sink表会被插入ASI_UDTF_Source表中message字段按照竖线（|）分割成多列的字符。
 
-### 自定义函数（Python）
+### 4.11 自定义函数（Python）
 
-#### 概述
+#### 4.11.1 概述
 
 Flink支持在SQL作业中使用Python自定义函数，本文为您介绍Flink自定义函数UDX的分类、定义和依赖，以及如何进行调试和调优。
 
@@ -19185,7 +20372,7 @@ Flink集群已预装了Pandas、NumPy和PyArrow等常用的Python包，您可以
 
 **调试**
 
-您可以在Python自定义函数的代码实现中，通过Logging的方式，输出日志信息，方便问题定位，示例如下。 实时计算（流计算）
+您可以在Python自定义函数的代码实现中，通过Logging的方式，输出日志信息，方便问题定位，示例如下。
 
 ```python
 @udf(result_type=DataTypes.BIGINT()) def add(i, j):
@@ -19205,13 +20392,9 @@ Flink集群已预装了Pandas、NumPy和PyArrow等常用的Python包，您可以
 | python.fn-execution.bundle.time | 用来控制数据的最大缓存时间。当缓存的数据条数到达python.fn- execution.bundle.size定义的阈值或缓存时间到达python.fn- execution.bundle.time定义的阈值时，会触发缓存数据的计算。 默认值为1000，单位是毫秒。 |
 | python.fn- execution.arrow.batch.size | 使用Pandas UDF时，一个arrow batch可容纳的数据最大条数，默认值为 10000。 说明 python.fn-execution.arrow.batch.size参数值不能大于 python.fn-execution.bundle.size参数值。 |
 
-以上3个参数并不是配置的越大越好，当这些参数取值配置过大时，可能会导致Checkpoint
+> **说明：** 以上3个参数并不是配置的越大越好，当这些参数取值配置过大时，可能会导致Checkpoint 时，需要处理过多的数据，从而导致Checkpoint时间过长，甚至会导致Checkpoint失败。以上参数的更多详情，请参见Configuration。
 
-**说明**
-
-时，需要处理过多的数据，从而导致Checkpoint时间过长，甚至会导致Checkpoint失败。以上参数的更多详情，请参见Configuration。
-
-#### 自定义标量函数（UDF）
+#### 4.11.2 自定义标量函数（UDF）
 
 本文为您介绍Python自定义标量函数（UDF）的使用限制、开发、注册和使用流程。
 
@@ -19221,15 +20404,12 @@ Flink集群已预装了Pandas、NumPy和PyArrow等常用的Python包，您可以
 
 **使用限制**
 
-由于Flink产品受部署环境和网络环境等因素的影响，所以开发Python自定义函数时，需要注意以下限制： 仅支持开源Flink V1.12及以上版本。 Flink集群上已预装了Python 3.7.9，因此需要您在Python 3.7.9版本开发代码。 Flink运行环境使用的是JDK 1.8，如果Python作业中依赖第三方JAR包，请确保JAR包兼容JDK 1.8。 实时计算（流计算） 仅支持开源Scala V2.11版本，如果Python作业中依赖第三方JAR包，请确保使用Scala V2.11对应的JAR包依赖。
+由于Flink产品受部署环境和网络环境等因素的影响，所以开发Python自定义函数时，需要注意以下限制： 仅支持开源Flink V1.12及以上版本。 Flink集群上已预装了Python 3.7.9，因此需要您在Python 3.7.9版本开发代码。 Flink运行环境使用的是JDK 1.8，如果Python作业中依赖第三方JAR包，请确保JAR包兼容JDK 1.8。 仅支持开源Scala V2.11版本，如果Python作业中依赖第三方JAR包，请确保使用Scala V2.11对应的JAR包依赖。
 
 **UDF开发**
 
-Flink为您提供了Python UDX示例，便于您快速开发UDX。Flink Python UDX示例中包含了
+> **说明：** Flink为您提供了Python UDX示例，便于您快速开发UDX。Flink Python UDX示例中包含了 Python UDF、Python UDAF和Python UDTF的实现。本文以Windows操作系统为例，为您介绍如何进行 UDF开发。
 
-**说明**
-
-Python UDF、Python UDAF和Python UDTF的实现。本文以Windows操作系统为例，为您介绍如何进行 UDF开发。
 1. 下载并解压python_demo-master示例到本地。
 2. 在PyCharm中，单击**file > open**，打开刚才解压缩完成的**python_demo-master**。
 3. 双击打开\python_demo-master\udx\udfs.py后，根据您的业务，修改**udfs.py**。
@@ -19265,17 +20445,27 @@ CREATE TEMPORARY TABLE ASI_UDF_Source (
   c INT
 ) WITH (
   'connector' = 'datagen'
-); CREATE TEMPORARY TABLE ASI_UDF_Sink (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE ASI_UDF_Sink (
   a VARCHAR
 ) WITH (
   'connector' = 'blackhole'
-); INSERT INTO ASI_UDF_Sink SELECT ASI_UDF(a,2,4) FROM ASI_UDF_Source;
+```
+
+);
+
+```
+INSERT INTO ASI_UDF_Sink SELECT ASI_UDF(a,2,4) FROM ASI_UDF_Source;
 ```
 
 2. 在**作业列表**中，单击目标作业名称**操作**列的**启动**。
-启动成功后，ASI_UDF_Sink表每行会被插入ASI_UDF_Source表中a字段每行字符串的第2~4位字符。 实时计算（流计算）
+启动成功后，ASI_UDF_Sink表每行会被插入ASI_UDF_Source表中a字段每行字符串的第2~4位字符。
 
-#### 自定义聚合函数（UDAF）
+#### 4.11.3 自定义聚合函数（UDAF）
 
 本文为您介绍Python自定义聚合函数（UDAF）的使用限制、开发、注册和使用流程。
 
@@ -19289,15 +20479,12 @@ CREATE TEMPORARY TABLE ASI_UDF_Source (
 
 **UDAF开发**
 
-Flink为您提供了Python UDX示例，便于您快速开发UDX。Flink Python UDX示例中包含了
+> **说明：** Flink为您提供了Python UDX示例，便于您快速开发UDX。Flink Python UDX示例中包含了 Python UDF、Python UDAF和Python UDTF的实现。本文以Windows操作系统为例，为您介绍如何进行 UDAF开发。
 
-**说明**
-
-Python UDF、Python UDAF和Python UDTF的实现。本文以Windows操作系统为例，为您介绍如何进行 UDAF开发。
 1. 下载并解压python_demo-master示例到本地。
 2. 在PyCharm中，单击**file > open**，打开刚才解压缩完成的**python_demo-master**。
 3. 双击打开\python_demo-master\udx\udafs.py后，根据您的业务，配置**udafs.py**。
-该示例中，**weighted_avg**定义了当前数据和历史数据求含权重的均值的代码。 实时计算（流计算）
+该示例中，**weighted_avg**定义了当前数据和历史数据求含权重的均值的代码。
 
 ```python
 from pyflink.common import Row from pyflink.table import AggregateFunction, DataTypes from pyflink.table.udf import udaf class WeightedAvg(AggregateFunction):
@@ -19338,7 +20525,7 @@ UDAF注册过程，请参见注册自定义函数。
 
 在完成注册UDAF后，您就可以使用UDAF，详细的操作步骤如下。
 1. Flink SQL作业开发。详情请参见作业开发。
-获取ASI_UDAF_Source表中a字段以b字段为权重的a字段当前数据和历史数据的均值，代码示例如下。 实时计算（流计算）
+获取ASI_UDAF_Source表中a字段以b字段为权重的a字段当前数据和历史数据的均值，代码示例如下。
 
 ```
 CREATE TEMPORARY TABLE ASI_UDAF_Source (
@@ -19346,17 +20533,27 @@ CREATE TEMPORARY TABLE ASI_UDAF_Source (
   b   BIGINT
 ) WITH (
   'connector' = 'datagen'
-); CREATE TEMPORARY TABLE ASI_UDAF_Sink (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE ASI_UDAF_Sink (
   avg_value  DOUBLE
 ) WITH (
   'connector' = 'blackhole'
-); INSERT INTO ASI_UDAF_Sink SELECT weighted_avg(a, b) FROM ASI_UDAF_Source;
+```
+
+);
+
+```
+INSERT INTO ASI_UDAF_Sink SELECT weighted_avg(a, b) FROM ASI_UDAF_Source;
 ```
 
 2. 在**作业列表**中，单击目标作业名称**操作**列的**启动**。
 启动成功后，ASI_UDAF_Sink表每行会被插入ASI_UDAF_Source表中以b字段为权重的a字段当前数据和历史数据的均值。
 
-#### 自定义表值函数（UDTF）
+#### 4.11.4 自定义表值函数（UDTF）
 
 本文为您介绍Python自定义表值函数（UDTF）的使用限制、开发、注册和使用流程。
 
@@ -19370,15 +20567,12 @@ CREATE TEMPORARY TABLE ASI_UDAF_Source (
 
 **UDTF开发**
 
-Flink为您提供了Python UDX示例，便于您快速开发UDX。Flink Python UDX示例中包含了
+> **说明：** Flink为您提供了Python UDX示例，便于您快速开发UDX。Flink Python UDX示例中包含了 Python UDF、Python UDAF和Python UDTF的实现。本文以Windows操作系统为例，为您介绍如何进行 UDTF开发。
 
-**说明**
-
-Python UDF、Python UDAF和Python UDTF的实现。本文以Windows操作系统为例，为您介绍如何进行 UDTF开发。
 1. 下载并解压python_demo-master示例到本地。
 2. 在PyCharm中，单击**file > open**，打开刚才解压缩完成的**python_demo-master**。
 3. 双击打开\python_demo-master\udx\udtfs.py后，根据您的业务，修改**udtfs.py**文件内容。
-该示例中，**split**定义了将一行字符串按照竖线（|）分割成多列字符串的代码。 实时计算（流计算）
+该示例中，**split**定义了将一行字符串按照竖线（|）分割成多列字符串的代码。
 
 ```python
 from pyflink.table import DataTypes from pyflink.table.udf import udtf @udtf(result_types=[DataTypes.STRING(), DataTypes.STRING()]) def split(s: str):
@@ -19409,32 +20603,47 @@ CREATE TEMPORARY TABLE ASI_UDTF_Source (
   `message`  VARCHAR
 ) WITH (
   'connector'='datagen'
-); CREATE TEMPORARY TABLE ASI_UDTF_Sink (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE ASI_UDTF_Sink (
   name  VARCHAR,
   place  VARCHAR
 ) WITH (
   'connector' = 'blackhole'
-); INSERT INTO ASI_UDTF_Sink SELECT name,place FROM ASI_UDTF_Source,lateral table(split(concat_ws('|', `message`, 'aa'))) as T(name,place );
 ```
 
+);
+
+```
+INSERT INTO ASI_UDTF_Sink SELECT name,place FROM ASI_UDTF_Source,lateral table(split(concat_ws('|', `message`, 'aa'))) as T(name,place
+```
+
+);
 2. 在**作业列表**中，单击目标作业名称**操作**列的**启动**。
 启动成功后，ASI_UDTF_Sink表会被插入两列数据，这两列数据是ASI_UDTF_Source表中message和aa字段按照竖线（|）连接后，再按照竖线（|）分割成多列的字符。
 
-### 机器学习函数
+### 4.12 机器学习函数
 
-#### CLUSTER_SERVING
+#### 4.12.1 CLUSTER_SERVING
 
-本文以输入格式为input_shape=(?,128)的Tensorflow SavedMode模型为例，为您介绍如何使用机器学习函
+本文以输入格式为input_shape=(?,128)的Tensorflow SavedMode模型为例，为您介绍如何使用机器学习函数CLUSTER_SERVING进行在线推理。
 
 **使用限制**
 
-本文仅适用于VVP 2.4.2及以上版本。 实时计算（流计算）
+本文仅适用于VVP 2.4.2及以上版本。
 
 **背景信息**
 
 Analytics Zoo是英特尔®开源的统一大数据分析和AI平台，支持分布式TensorFlow及PyTorch的训练和推理， 通过英特尔® OpenVINO工具套件和DL Boost指令集等，提升深度学习工作负载的性能。Analytics Zoo Cluster Serving是Analytics Zoo的分布式推理解决方案，可以部署在Apache Flink集群上进行分布式运算。 通过使用Cluster Serving，您无需编写任何机器学习相关代码，即可实现端到端的分布式机器学习推理流程。 Analytics Zoo详情请参见Analytics Zoo。 Cluster Serving将其部分功能集成在Flink的内置函数中，支持TensorFlow、PyTorch和OpenVINO的推理模型。您可以直接在Flink开发控制台中调用CLUSTER_SERVING函数，进行分布式机器学习推理。使用 CLUSTER_SERVING函数时，您只需要提供模型文件和数据文件，即可完成机器学习端到端的应用。
 
 **语法**
+
+```
+CLUSTER_SERVING(uri, `data`)
+```
 
 **入参**
 
@@ -19451,21 +20660,32 @@ Analytics Zoo是英特尔®开源的统一大数据分析和AI平台，支持分
 |---|---|
 | my-data | 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 |
 
-测试步骤 i. 登录OSS控制台，上传测试数据input.csv文件至oss://***/input.csv目录。 ii. 在Flink开发控制台，创建源表和结果表、加载模型并将CLUSTER_SERVING函数在线推理的数据插入结果表。 实时计算（流计算）
+测试步骤 i. 登录OSS控制台，上传测试数据input.csv文件至oss://***/input.csv目录。 ii. 在Flink开发控制台，创建源表和结果表、加载模型并将CLUSTER_SERVING函数在线推理的数据插入结果表。
 
 ```
+CREATE TEMPORARY TABLE ClusterServingInput(
    uri STRING,
   `data` STRING
 ) WITH (
    'connector' = 'filesystem',
    'path' = 'oss://alink-vvp/artifacts/namespaces/test-module-default/input.csv',
    'format' = 'csv'
+```
+
 );
+
+```
+CREATE TEMPORARY TABLE ClusterServingOutput (
    uri1 STRING,
    data1 STRING
  ) WITH (
    'connector' = 'print'
-); LOAD MODULE `cluster-serving`; INSERT INTO ClusterServingOutput SELECT cluster_serving(uri, `data`) FROM ClusterServing Input;
+```
+
+);
+
+```
+LOAD MODULE `cluster-serving`; INSERT INTO ClusterServingOutput SELECT cluster_serving(uri, `data`) FROM ClusterServing Input;
 ```
 
 iii. 在作业**高级配置**的**更多****Flink****配置**和Preview Session集群**其他配置**均增加以下配置，并单击**保存**。

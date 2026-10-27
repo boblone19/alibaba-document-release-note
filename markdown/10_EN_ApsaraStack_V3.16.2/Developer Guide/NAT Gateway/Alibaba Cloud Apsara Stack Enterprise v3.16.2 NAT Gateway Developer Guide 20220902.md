@@ -5,7 +5,7 @@ doc_version: "20220902"
 pdf_pages: 72
 source_pdf: "fdda94a6108d69b4_Alibaba Cloud Apsara Stack Enterprise v3.16.2 NAT Gateway Developer Guide 20220902.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20NAT%20Gateway%20Developer%20Guide%2020220902.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 NAT Gateway Developer Guide
@@ -102,13 +102,13 @@ This topic describes how to view the desired product development documentation w
 
 ### 1.2 Call an API operation
 
-Apsara Stack allows you to call API operations by using the Portable OpenAPI Proxy (POP) gateway or the Apsara Stack API (ASAPI) gateway. To ensure that Apsara Stack You can still use the ASAPI gateway to call API operations. For more information, see Call API operations by using the ASAPI gateway, Obtain the endpoint of ASAPI, an Procedure
+Apsara Stack allows you to call API operations by using the Portable OpenAPI Proxy (POP) gateway or the Apsara Stack API (ASAPI) gateway. To ensure that Apsara Stack Not e You can still use the ASAPI gateway to call API operations. For more information, see Call API operations by using the ASAPI gateway, Obtain the endpoint of ASAPI, an Procedure
 1. Obtain AccessKey credentials.
-Obtain the AccessKey credentials that are required when you call an API operation. For more information, see Obtain an AccessKey pairor Obtain an STS AccessKey 3tuple. We recommend that you use the AccessKey pair of a personal account assigned by RAM or STS credentials to call the API operations of the Apsara Unimanager Management Console and cloud services.
+Obtain the AccessKey credentials that are required when you call an API operation. For more information, see Obtain an AccessKey pairor Obtain an STS AccessKey 3tuple. Not e We recommend that you use the AccessKey pair of a personal account assigned by RAM or STS credentials to call the API operations of the Apsara Unimanager Management Console and cloud services.
 2. Obtain the region ID.
 For more information, see Obtain the values of common header parameters.
 3. Obtain the organization ID and resource set ID.
-You must call an API operation to obtain an organization ID. For more information about how to obtain organization IDs, see the GetOrganizationList section in Aps ara Uni-manager Management Console Developer Guide. You must call an API operation to obtain a resource set ID. For more information about how to obtain resource set IDs, see the ListResourceGroup section in Apsara Uni-manager Management Console Developer Guide. When you call an API operation, set the `<x-acs-organizationid>` parameter to the organization ID that you obtained, and set the
+You must call an API operation to obtain an organization ID. For more information about how to obtain organization IDs, see the GetOrganizationList section in Aps ara Uni-manager Management Console Developer Guide. You must call an API operation to obtain a resource set ID. For more information about how to obtain resource set IDs, see the ListResourceGroup section in Apsara Uni-manager Management Console Developer Guide. Not e When you call an API operation, set the `<x-acs-organizationid>` parameter to the organization ID that you obtained, and set the
 
 ```xml
  <x-acs-resourcegroupid>
@@ -127,10 +127,10 @@ Obtain the developer guide of the cloud service that you want to use. You can le
 You can log on to the API Tool console from the Apsara Uni-manager Management Console. Prerequisites Before you log on to the Apsara Uni-manager Management Console, the endpoint of the console is obtained from the deployment personnel. A browser is available. We recommend that you use Google Chrome. Procedure
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press Enter.
 2. Enter your username and password.
-Obtain the username and password that are used to log on to the Apsara Uni-manager Management Console from the operations administrator. When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, which include ! @ # $ %
+Obtain the username and password that are used to log on to the Apsara Uni-manager Management Console from the operations administrator. Not e When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, which include ! @ # $ %
 3. Click Log On.
 4. If your account has multi-factor authentication (MFA) enabled, perform corresponding operations in the following scenarios:
-You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click Log On. c. Enter a six-digit MFA verification code and click Aut hent icat e. You have enabled MFA and bound an MFA device. Enter a six-digit MFA verification code and click Aut hent icat e. For more information, see the Bind a virtual MFA device to enable MFA topic in Apsara Uni-manager Management Console User Guide.
+You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click Log On. c. Enter a six-digit MFA verification code and click Aut hent icat e. You have enabled MFA and bound an MFA device. Enter a six-digit MFA verification code and click Aut hent icat e. Not e For more information, see the Bind a virtual MFA device to enable MFA topic in Apsara Uni-manager Management Console User Guide.
 5. In the top navigation bar, choose Product s > Ot hers > API T ool.
 
 ### 2.2 Obtain API information
@@ -160,7 +160,7 @@ Obtain the AccessKey pair of a personal account To obtain the AccessKey pair of 
 1. Log on to the Apsara Uni-manager Management Console.
 2. Click the profile picture in the upper-right corner of the page and click User Inf ormat ion.
 3. In the AccessKey Pair section, view the AccessKey pair of the personal account.
-An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential. Obtain the AccessKey pair of an organization To obtain the AccessKey pair of an organization, perform the following steps:
+Not e An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential. Obtain the AccessKey pair of an organization To obtain the AccessKey pair of an organization, perform the following steps:
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click Ent erprise.
 3. In the left-side navigation pane, choose Resources > Organizat ions.
@@ -176,7 +176,7 @@ i. Log on to the Apsara Uni-manager Management Console. ii. Click the profile pi
 2. Obtain the STS AccessKey 3-tuple.
 In the following code, replace the parameters with your actual information. Delete the angle brackets (<>) before you submit the code. The following section describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <yourRoleSessionName>: Replace the parameter with the name of the current session. <yourRoleArn>: Replace the parameter with your RAM role. <sts.aliyuns.com>: Replace the parameter with the STS endpoint.
 
-```java
+```
 public static void main(String[] args) {
     // Create a DefaultAcsClient instance and initialize it.
     // Specify the region ID, AccessKey ID, and AccessKey secret.
@@ -194,6 +194,11 @@ public static void main(String[] args) {
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
+```
+
+`}`
+
+```java
 private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // Replace "sts.aliyuns.com" with the endpoint of STS. The format of an STS endpoint is sts-vpc.${global:region}.${global:internet-domain}.
@@ -216,11 +221,17 @@ private static String callAssumeRole(IAcsClient client) {
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
+```
+
+`}`
+
+```
     return null;
 ```
 
+`}`
 3. Use the STS AccessKey 3-tuple to call an API operation of a cloud service. The following sample code provides an example on how to call the
-`DescribeNatGateways` operation of NAT Gateway. In the following code, replace the parameters with your actual information. Delete the angle brackets (<>) before you submit the code. The following section describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourStsAccesskeyID>: Replace the parameter with your STS AccessKey ID. <yourStsAccessKeySecret>: Replace the parameter with your STS AccessKey secret. <yourStsToken>. Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourOrganizationID>: Replace the parameter with the organization ID.
+`DescribeNatGateways` operation of NAT Gateway. Not e In the following code, replace the parameters with your actual information. Delete the angle brackets (<>) before you submit the code. The following section describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourStsAccesskeyID>: Replace the parameter with your STS AccessKey ID. <yourStsAccessKeySecret>: Replace the parameter with your STS AccessKey secret. <yourStsToken>. Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourOrganizationID>: Replace the parameter with the organization ID.
 
 ```java
 public static void main(String[] args) {
@@ -258,6 +269,8 @@ evious step.
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
 ```
+
+`}` `}`
 
 ### 2.5 Obtain the values of common header parameters
 
@@ -298,7 +311,7 @@ i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 2. In the left-side navigation pane, click Report s.
 3. On the All Report s page, search for `Registration Vars of Services` and click the report name.
 4. On the Regist rat ion Vars of Services page, click the
-icon next to Service and search for `VPC` . NAT Gateway uses the Virtual Private Cloud (VPC) API.
+icon next to Service and search for `VPC` . Not e NAT Gateway uses the Virtual Private Cloud (VPC) API.
 5. Find `vpc-yaochi` . Right-click the value in the Service Regist rat ion column and select Show More.
 On the Det ails page, view the value of vpc-int ernal.openapi.endpoint . The value indicates the `endpoint` of NAT Gateway.
 
@@ -310,7 +323,7 @@ When you call Apsara Stack API operations by using the Portable OpenAPI Proxy (P
  aliyun-java-sdk-vpc  and  aliyun-java-sdk-core .
 ```
 
-VPC SDK encapsulates the API released on April 28, 2016. The SDK identifies callers based on their AccessKey pairs and provides features such as automatic signing to allow you to create and manage resources by calling API operations. Alibaba Cloud SDK includes code and examples. You can create cloud applications by using an SDK in the programming language that you require. We recommend that you use the SDK core library that is provided on the Alibaba Cloud official website. The SDK core library is ideal for all cloud services and is compatible with Apsara Stack. Instructions Alibaba Cloud SDK supports Java, Python, and Go. You can select an SDK from Alibaba Cloud SDK based on your business requirements. We recommend that you use an SDK for Java, Python, or Go. If you use SDKs in other programming languages, the SDKs may be incompatible with your system. SDK for Java
+VPC SDK encapsulates the API released on April 28, 2016. The SDK identifies callers based on their AccessKey pairs and provides features such as automatic signing to allow you to create and manage resources by calling API operations. Alibaba Cloud SDK includes code and examples. You can create cloud applications by using an SDK in the programming language that you require. We recommend that you use the SDK core library that is provided on the Alibaba Cloud official website. The SDK core library is ideal for all cloud services and is compatible with Apsara Stack. Instructions Alibaba Cloud SDK supports Java, Python, and Go. You can select an SDK from Alibaba Cloud SDK based on your business requirements. Not e We recommend that you use an SDK for Java, Python, or Go. If you use SDKs in other programming languages, the SDKs may be incompatible with your system. SDK for Java
 
 ## 3 Call examples for SDK for Java
 
@@ -337,7 +350,7 @@ Use VPC SDK for Java To use VPC SDK for Java, perform the following steps:
 1. Create and initialize a DefaultAcsClient instance.
 2. Create an API request and set the required parameters.
 3. Initiate the API request and process the response or exception.
-In the following code, replace the parameters with your actual information. Delete the angle brackets (<>) in the final code. The following section describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <Product>: Replace the parameter with the name of the current service. <Endpoint>: Replace the parameter with the endpoint of the current service. <readTimeout>: Replace the parameter with a read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Replace the parameter with a connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Replace the parameter with the maximum number of requests that are supported by each host. <maxRequests>: Replace the parameter with the maximum number of requests. <http://192.168.XX.XX:33XX>: Replace the parameter with the IP address and port of the proxy. SDK for Java
+Not e In the following code, replace the parameters with your actual information. Delete the angle brackets (<>) in the final code. The following section describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <Product>: Replace the parameter with the name of the current service. <Endpoint>: Replace the parameter with the endpoint of the current service. <readTimeout>: Replace the parameter with a read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Replace the parameter with a connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Replace the parameter with the maximum number of requests that are supported by each host. <maxRequests>: Replace the parameter with the maximum number of requests. <http://192.168.XX.XX:33XX>: Replace the parameter with the IP address and port of the proxy. SDK for Java
 
 ```java
 import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.vpc.model.v20160428.*; import com.google.gson.Gson; public class Main {
@@ -393,6 +406,8 @@ import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.ProtocolType
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
+`}` `}` `}`
+
 ### 3.2 Use SDK
 
 #### 3.2.1 Install VPC SDK for Java
@@ -418,7 +433,7 @@ SDK for Java
 
 #### 3.2.2 Configure authentication credentials
 
-When you use Alibaba Cloud SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. SDK for Java supports authentication through an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must specify the AccessKey pair when you initialize the client. Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
+When you use Alibaba Cloud SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. SDK for Java supports authentication through an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must specify the AccessKey pair when you initialize the client. Not e Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
 
 ```
 DefaultProfile profile = DefaultProfile.getProfile(
@@ -427,11 +442,11 @@ DefaultProfile profile = DefaultProfile.getProfile(
     "<yourAccessKeySecret>"); // Replace it with your AccessKey secret.
 ```
 
-Replace the preceding variables with your actual information. Remove the brackets (<>) when you specify the parameters.
+Not e Replace the preceding variables with your actual information. Remove the brackets (<>) when you specify the parameters.
 
 #### 3.2.3 Configure connection requests
 
-This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements. You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code. The following list describes the variables: <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER. <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER. <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy.
+This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements. Not e You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code. The following list describes the variables: <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER. <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER. <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy.
 
 ```
 // Obtain the HttpClientConfig object. HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Specify whether to ignore certificates. clientConfig.setIgnoreSSLCerts(true); // (Optional) Specify the read timeout period. Unit: milliseconds. clientConfig.setReadTimeoutMillis(<readTimeout>); // (Optional) Specify the connection timeout period. Unit: milliseconds. clientConfig.setConnectionTimeoutMillis(<connectionTimeout>); // (Optional) Specify the maximum number of requests that are supported by each server. The supported data type is INTEGER. clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>); // (Optional) Specify the maximum number of requests. The supported data type is INTEGER. clientConfig.setMaxRequests(<maxRequests>); // (Optional) Specify the protocol type. clientConfig.setProtocolType(ProtocolType.HTTP); /** (Optional) Specify whether to configure the proxy based on your business requirements. The following code is available: clientConfig.setHttpProxy("<http://192.168.XX.XX:33XX>");
@@ -477,6 +492,8 @@ DescribeNatGatewaysResponse response; try {
     e.printStackTrace();
 ```
 
+`}`
+
 | All returned fields are deserialized in the response. You can call | response.getXXX() | to obtain the values of the response fields. |
 |---|---|---|
 | instanceStatus := response.getStatus() |   |   |
@@ -516,9 +533,11 @@ try {
     System.out.println("ErrorMessage=" + e.getErrMsg());
 ```
 
+`}`
+
 #### 3.2.6 Use CommonRequest to call API operations
 
-If you want to call the API operations of a cloud service that does not provide SDKs, or you cannot use an SDK to call API operations whose requests and responses meet your business requirements, you can use CommonRequest to call API operations. You can use CommonRequest to call all API operations. Characteristics of CommonRequest calling The CommonRequest calling method has the following characteristics: Light weight: You only need the core package to initiate the call, without downloading or installing the SDK of each product. Easy and convenient: You can call the latest API without updating the SDK. Fast iteration Use CommonRequest to call an API operation If you want to send a CommonRequest request, you must obtain the values of the following parameters. You can obtain the values of these parameters from the API references. Domain: the endpoint of the service. Version: the version of the API in the YYYY-MM-DD format. You can obtain the API version from the sections about common parameters in the API references. Action: the name of the API operation that you want to call. You need to obtain the value of the Action parameter and specify an API operation in `request.setSysAction("<Action>")` . SDK for Java For example, if you want to call the DescribeNatGateways operation, you must use `request.setSysAction("DescribeNatGateways")` to specify the API operation when you initiate a CommonRequest request. Example: Call an RPC API operation The following sample code provides an example on how to call the `DescribeNatGateways` operation of NAT Gateway. The API operations of NAT Gateway use the RPC style. In the following code, replace the parameters with your actual information. Delete the angle brackets (<>) before you submit the code. The following section describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <yourSecurityToken>: Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourOrganizationID>: Replace the parameter with the organization ID. <yourInstanceID>: Replace the parameter with the instance ID. <http://192.168.XX.XX:33XX>: Replace the parameter with the IP address and port of the proxy.
+If you want to call the API operations of a cloud service that does not provide SDKs, or you cannot use an SDK to call API operations whose requests and responses meet your business requirements, you can use CommonRequest to call API operations. You can use CommonRequest to call all API operations. Characteristics of CommonRequest calling The CommonRequest calling method has the following characteristics: Light weight: You only need the core package to initiate the call, without downloading or installing the SDK of each product. Easy and convenient: You can call the latest API without updating the SDK. Fast iteration Use CommonRequest to call an API operation If you want to send a CommonRequest request, you must obtain the values of the following parameters. You can obtain the values of these parameters from the API references. Domain: the endpoint of the service. Version: the version of the API in the YYYY-MM-DD format. You can obtain the API version from the sections about common parameters in the API references. Action: the name of the API operation that you want to call. You need to obtain the value of the Action parameter and specify an API operation in `request.setSysAction("<Action>")` . SDK for Java For example, if you want to call the DescribeNatGateways operation, you must use `request.setSysAction("DescribeNatGateways")` to specify the API operation when you initiate a CommonRequest request. Example: Call an RPC API operation The following sample code provides an example on how to call the `DescribeNatGateways` operation of NAT Gateway. The API operations of NAT Gateway use the RPC style. Not e In the following code, replace the parameters with your actual information. Delete the angle brackets (<>) before you submit the code. The following section describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <yourSecurityToken>: Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourOrganizationID>: Replace the parameter with the organization ID. <yourInstanceID>: Replace the parameter with the instance ID. <http://192.168.XX.XX:33XX>: Replace the parameter with the IP address and port of the proxy.
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.ProtocolType; public class Sample {
@@ -578,7 +597,7 @@ want to delete, modify, or query an instance.
             e.printStackTrace();
 ```
 
-SDK for Python
+`}` `}` SDK for Python
 
 ## 4 Call examples for SDK for Python
 
@@ -615,7 +634,7 @@ Use VPC SDK for Python To use VPC SDK for Python, perform the following steps:
 1. Create a client instance. When you create a client instance, you must obtain a region ID, AccessKey ID, and AccessKey secret.
 2. Create an API request and specify the required parameters.
 3. Initiate the API request and process the response or exception.
-In the following code, replace the parameters with your actual information. Delete the angle brackets (<>) before you submit the code. The following section describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <vpc.aliyuns.com>: Replace the parameter with the endpoint of the service.
+Not e In the following code, replace the parameters with your actual information. Delete the angle brackets (<>) before you submit the code. The following section describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <vpc.aliyuns.com>: Replace the parameter with the endpoint of the service.
 
 ```python
 #!/usr/bin/env python
@@ -692,7 +711,7 @@ except ServerException as e:
 
 #### 4.2.4 Set HTTPS requests
 
-Apsara Stack SDK for Python allows you to initiate API requests over HTTP and HTTPS. You can specify the HTTP or HTTPS protocol for a specific request, or set a global default protocol. The default HTTP or HTTPS protocol of a service takes precedence over the global default protocol. Add OpenSSL support The HTTPS protocol support of Apsara Stack SDK for Python is based on the OpenSSL support in Python. To use Apsara Stack SDK for Python to send HTTPS requests, you must add OpenSSL support in Python. OpenSSL supports TLS 1.2 and later.
+Apsara Stack SDK for Python allows you to initiate API requests over HTTP and HTTPS. You can specify the HTTP or HTTPS protocol for a specific request, or set a global default protocol. Not e The default HTTP or HTTPS protocol of a service takes precedence over the global default protocol. Add OpenSSL support The HTTPS protocol support of Apsara Stack SDK for Python is based on the OpenSSL support in Python. To use Apsara Stack SDK for Python to send HTTPS requests, you must add OpenSSL support in Python. OpenSSL supports TLS 1.2 and later.
 
 | Run the | python -c "import ssl" | co |
 |---|---|---|
@@ -802,7 +821,7 @@ Use SDK for Go To use SDK for Go, perform the following steps:
 1. Initialize a client instance.
 2. Create an API request and specify the required parameters.
 3. Initiate the API request and process the response or exception.
-In the following code, replace the parameters with actual values. Delete the angle brackets (<>) before you submit the code. The following section describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <Endpoint>: Replace the parameter with the endpoint.
+Not e In the following code, replace the parameters with actual values. Delete the angle brackets (<>) before you submit the code. The following section describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <Endpoint>: Replace the parameter with the endpoint.
 
 ```java
 package main import (
@@ -823,6 +842,11 @@ func main() {
     if err != nil {
         // Handle exceptions.
         panic(err)
+```
+
+`}`
+
+```
     // Create a request and set the required parameters.
     request := vpc.CreateDescribeNatGatewaysRequest()
     // Specify the endpoint of the service.
@@ -834,9 +858,15 @@ func main() {
     if err != nil {
         // Handle exceptions.
         panic(err)
+```
+
+`}`
+
+```
     fmt.Println(response)
 ```
 
+`}`
 4. Optional. Switch to HTTP or HTTPS.
 
 ```
@@ -866,7 +896,7 @@ When you use Alibaba Cloud SDK to access Apsara Stack services, you must provide
         "<yourAccessKeySecret>")        // Replace the parameter with your AccessKey secret.
 ```
 
-In the preceding sample code, replace the parameters with the actual information. Delete the angle brackets (<>) before you submit the code.
+Not e In the preceding sample code, replace the parameters with the actual information. Delete the angle brackets (<>) before you submit the code.
 
 #### 5.2.3 Initiate a request
 
@@ -878,7 +908,7 @@ import github.com/aliyun/alibaba-cloud-sdk-go/services/vpc
 ```
 
 2. Create a VPC client. The client includes all APIs of the VPC.
-In the following code, replace the parameters with your actual information. Delete the angle brackets (<>) before you submit the code.
+Not e In the following code, replace the parameters with your actual information. Delete the angle brackets (<>) before you submit the code.
 
 ```
 vpcClient,err := <vpc>.NewClientWithAccessKey( //Replace the parameter with the name of the service.
@@ -911,7 +941,7 @@ response,err := vpcClient.DescribeNatGateways(request) if err != nil {
    err.Error()
 ```
 
-ClientError When you send a request, if an error occurs in the SDK and cannot be automatically handled, the SDK returns a `ClientError` . The following code shows how to determine and obtain information in a `ClientError` : SDK for Go Not ice When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
+`}` ClientError When you send a request, if an error occurs in the SDK and cannot be automatically handled, the SDK returns a `ClientError` . The following code shows how to determine and obtain information in a `ClientError` : SDK for Go Not ice When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
 
 ```java
 package main import (
@@ -934,7 +964,7 @@ response, err := vpcClient.DescribeNatGateways(request) if clientError, ok := er
     clientError.OriginError()
 ```
 
-ServerError When the server returns an error message, the SDK wraps the message into a `ServerError` and returns it to the client. In this case, you can still obtain the original HTTP response from the response. The following code shows how to determine and obtain information in a ServerError and a response: Not ice When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
+`}` ServerError When the server returns an error message, the SDK wraps the message into a `ServerError` and returns it to the client. In this case, you can still obtain the original HTTP response from the response. The following code shows how to determine and obtain information in a ServerError and a response: Not ice When you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
 
 ```java
 package main import (
@@ -957,9 +987,11 @@ response, err := vpcClient.DescribeNatGateways(request) if serverError, ok := er
     response.GetOriginHttpResponse()
 ```
 
+`}`
+
 #### 5.2.5 Use CommonRequest to call API operations
 
-If you want to call the API operations of a cloud service that does not provide SDKs, or you cannot use an SDK to call API operations whose requests and responses meet your business requirements, you can use CommonRequest to call API operations. You can use CommonRequest to call all API operations. Example: Call an RPC API operation The following sample code provides an example on how to call the `DescribeNatGateways` operation of NAT Gateway. The API operations of NAT Gateway use the RPC style. In the following code, replace the parameters with actual values. Delete the angle brackets (<>) before you submit the code. The following section describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <vpc.aliyuncs.com>: Replace the parameter with the endpoint of the service. <yourSecurityToken>: Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourOrganizationID>: Replace the parameter with the organization ID. <yourInstanceID>: Replace the parameter with the instance ID. SDK for Go
+If you want to call the API operations of a cloud service that does not provide SDKs, or you cannot use an SDK to call API operations whose requests and responses meet your business requirements, you can use CommonRequest to call API operations. You can use CommonRequest to call all API operations. Example: Call an RPC API operation The following sample code provides an example on how to call the `DescribeNatGateways` operation of NAT Gateway. The API operations of NAT Gateway use the RPC style. Not e In the following code, replace the parameters with actual values. Delete the angle brackets (<>) before you submit the code. The following section describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <vpc.aliyuncs.com>: Replace the parameter with the endpoint of the service. <yourSecurityToken>: Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourOrganizationID>: Replace the parameter with the organization ID. <yourInstanceID>: Replace the parameter with the instance ID. SDK for Go
 
 ```java
 package main import (
@@ -978,6 +1010,11 @@ func main() {
         "<yourAccessKeySecret>") //Replace the parameter with your AccessKey secret.
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     request := requests.NewCommonRequest()
     request.Method = "POST"
     request.Domain = "<vpc.aliyuncs.com>" // Replace the parameter with the endpoint of the service.
@@ -1011,8 +1048,15 @@ y, delete, or query an instance.
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
+```
+
+`}`
+
+```
     fmt.Print(response.GetHttpContentString())
 ```
+
+`}`
 
 ## 6 API reference
 
@@ -1059,7 +1103,7 @@ where:
 |---|---|---|
 | Not e example.com is a custom domain name. For information about how to obtain a service endpoint, see Obtain the endpoint of ASAPI. |   |   |
 
-Action: the name of the operation that you want to perform. For example, to query NAT gateways, you must set the Action parameter to DescribeNatGateways. Version: the version of the API that you want to call. The current NAT Gateway API version is 2016-04-28. Parameters: the request parameters for the operation. Separate multiple parameters with ampersands (&). Request parameters include both common parameters and operation-specific parameters. Common parameters include the API version and authentication information. For more information about common parameters, see Common parameters. The following example demonstrates how to call the DescribeNatGateways operation to query NAT gateways: The following code is formatted for ease of reading.
+Action: the name of the operation that you want to perform. For example, to query NAT gateways, you must set the Action parameter to DescribeNatGateways. Version: the version of the API that you want to call. The current NAT Gateway API version is 2016-04-28. Parameters: the request parameters for the operation. Separate multiple parameters with ampersands (&). Request parameters include both common parameters and operation-specific parameters. Common parameters include the API version and authentication information. For more information about common parameters, see Common parameters. The following example demonstrates how to call the DescribeNatGateways operation to query NAT gateways: Not e The following code is formatted for ease of reading.
 
 ```
 https://vpc.example.com/?Action=DescribeNatGateways &Format=xml &Version=2016-04-28 &Signature=xxxx%xxxx%3D &SignatureMethod=HMAC-SHA1 &SignatureNonce=15215528852396 &SignatureVersion=1.0 &AccessKeyId=key-test &Timestamp=2012-06-01T12:00:00Z
@@ -1197,6 +1241,8 @@ JSON format `{`
       /*Return Result Data*/
 ```
 
+`}`
+
 ### 6.5 NAT gateways
 
 #### 6.5.1 CreateNatGateway
@@ -1280,7 +1326,7 @@ Sample success responses
     "NatGatewayId": "ngw-wz95lh0c2wj9b6r1z****"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -1355,7 +1401,7 @@ Error codes
 
 #### 6.5.3 ModifyNatGatewaySpec
 
-Resizes a NAT gateway. NAT gateways are available in different sizes. The size of a NAT gateway determines the Source Network Address Translation (SNAT) performance of the gateway, such as the maximum number of connections and the number of new connections per second. However, the data throughput is not affected. The following table describes the correlations between different sizes of NAT gateways and SNAT performance metrics.
+Resizes a NAT gateway. Description NAT gateways are available in different sizes. The size of a NAT gateway determines the Source Network Address Translation (SNAT) performance of the gateway, such as the maximum number of connections and the number of new connections per second. However, the data throughput is not affected. The following table describes the correlations between different sizes of NAT gateways and SNAT performance metrics.
 
 | Size | Maximum connection | Number of new connections per second |
 |---|---|---|
@@ -1409,7 +1455,7 @@ Error codes
 
 #### 6.5.4 DeleteNatGateway
 
-Deletes a specified NAT gateway. Before you delete a NAT gateway, you must disassociate NAT service plans from the NAT gateway. Request parameters
+Deletes a specified NAT gateway. Not e Before you delete a NAT gateway, you must disassociate NAT service plans from the NAT gateway. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1619,7 +1665,7 @@ Sample success responses `XML` format
             "VswitchId": "vsw-bp1s2laxhdf9ayjbo****"
 ```
 
-Error codes
+`}` `}` `}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -1629,7 +1675,7 @@ Error codes
 
 #### 6.6.1 CreateForwardEntry
 
-Adds a DNAT entry to a DNAT table. Each DNAT entry consists of the following parameters: ExternalIp, ExternalPort, Protocol, InternalIp, and InternalPort. After you add a DNAT entry, the NAT gateway forwards packets of the specified protocol from [ExternalIp: ExternalPort] to [InternalIp: InternalPort] and sends responses back over the same route. When you call this operation, take note of the following limits: The combinations of ExternalIp, ExternalPort, and Protocol used in DNAT entries must be unique. Requests cannot be distributed to more than one Elastic Compute Service (ECS) instance if these requests are originated from the same source IP address, received on the same port, and use the same protocol. The combinations of Protocol, InternalIp, and InternalPort used in DNAT entries must be unique. If one or more DNAT entries in the DNAT table are in the Pending or Modifying state, you cannot add DNAT entries to the DNAT table. The public IP address (ExternalIp) in the DNAT entry, which is used to access the Internet, must meet the following requirements: If you have purchased a NAT service plan before November 3, 2017, the ExternalIp must be a public IP address in the NAT service plan. If you have not purchased a NAT service plan before November 3, 2017, the ExternalIp must be an elastic IP address (EIP) associated with the NAT service plan. You cannot specify the same EIP in both a DNAT entry and an SNAT entry. The private IP address (InternalIp) in the DNAT entry must meet the following requirements: The private IP address must belong to the CIDR block of the virtual private cloud (VPC) where the NAT gateway is deployed. The DNAT entry takes effect only when the private IP address is allocated to an ECS instance and the ECS instance is not assigned an EIP. If the private IP address is allocated to a resource other than an ECS instance, such as a high-availability virtual IP addresses (HAVIPs), Server Load Balancer (SLB) instance, or RDS instance, the DNAT entry does not take effect. Consequently, inbound traffic cannot be forwarded to the private IP address. You cannot specify the same EIP in both a DNAT entry and an SNAT entry. You can add up to 100 DNAT entries to a DNAT table. Request parameters
+Adds a DNAT entry to a DNAT table. Description Each DNAT entry consists of the following parameters: ExternalIp, ExternalPort, Protocol, InternalIp, and InternalPort. After you add a DNAT entry, the NAT gateway forwards packets of the specified protocol from [ExternalIp: ExternalPort] to [InternalIp: InternalPort] and sends responses back over the same route. When you call this operation, take note of the following limits: The combinations of ExternalIp, ExternalPort, and Protocol used in DNAT entries must be unique. Requests cannot be distributed to more than one Elastic Compute Service (ECS) instance if these requests are originated from the same source IP address, received on the same port, and use the same protocol. The combinations of Protocol, InternalIp, and InternalPort used in DNAT entries must be unique. If one or more DNAT entries in the DNAT table are in the Pending or Modifying state, you cannot add DNAT entries to the DNAT table. The public IP address (ExternalIp) in the DNAT entry, which is used to access the Internet, must meet the following requirements: If you have purchased a NAT service plan before November 3, 2017, the ExternalIp must be a public IP address in the NAT service plan. If you have not purchased a NAT service plan before November 3, 2017, the ExternalIp must be an elastic IP address (EIP) associated with the NAT service plan. You cannot specify the same EIP in both a DNAT entry and an SNAT entry. The private IP address (InternalIp) in the DNAT entry must meet the following requirements: The private IP address must belong to the CIDR block of the virtual private cloud (VPC) where the NAT gateway is deployed. The DNAT entry takes effect only when the private IP address is allocated to an ECS instance and the ECS instance is not assigned an EIP. If the private IP address is allocated to a resource other than an ECS instance, such as a high-availability virtual IP addresses (HAVIPs), Server Load Balancer (SLB) instance, or RDS instance, the DNAT entry does not take effect. Consequently, inbound traffic cannot be forwarded to the private IP address. You cannot specify the same EIP in both a DNAT entry and an SNAT entry. You can add up to 100 DNAT entries to a DNAT table. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1872,7 +1918,7 @@ Error codes
 
 #### 6.7.1 CreateSnatEntry
 
-Adds an SNAT entry to an SNAT table. When you call this operation, take note of the following limits: The vSwitch and the Elastic Compute Service (ECS) instance specified in the SNAT entry must belong to the virtual private cloud (VPC) where the NAT gateway is deployed. Each vSwitch or ECS instance can be specified in only one SNAT entry. If a high-availability virtual IP address (HAVIP) exists in the vSwitch, you cannot create SNAT entries. You cannot specify the same EIP in both a DNAT entry and an SNAT entry. Request parameters
+Adds an SNAT entry to an SNAT table. Description When you call this operation, take note of the following limits: The vSwitch and the Elastic Compute Service (ECS) instance specified in the SNAT entry must belong to the virtual private cloud (VPC) where the NAT gateway is deployed. Each vSwitch or ECS instance can be specified in only one SNAT entry. If a high-availability virtual IP address (HAVIP) exists in the vSwitch, you cannot create SNAT entries. You cannot specify the same EIP in both a DNAT entry and an SNAT entry. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1933,7 +1979,7 @@ Error codes
 
 #### 6.7.2 DeleteSnatEntry
 
-Deletes a specified SNAT entry. You cannot delete SNAT entries if one or more SNAT entries in the SNAT table are in the Pending or Modif ying state. Request parameters
+Deletes a specified SNAT entry. Not e You cannot delete SNAT entries if one or more SNAT entries in the SNAT table are in the Pending or Modif ying state. Request parameters
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2300,7 +2346,7 @@ Sample success responses
             "IpAddress": "116.52.XX.XX"
 ```
 
-Error codes
+`}` `}` `}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -2430,7 +2476,7 @@ Sample success responses `XML` format
     "RequestId": "7D275A59-1EB0-4775-8A20-2A47055EAC5C"
 ```
 
-Error codes
+`}` Error codes
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -2451,11 +2497,11 @@ You can use the Apsara Stack API (ASAPI) gateway to call API operations of most 
 Before you use ASAPI to call an API operation, you must obtain the ASAPI SDK. For more information, see Obtain the ASAPI SDK.
 2. Obtain the endpoint of ASAPI. For more information, see Obtain the endpoint of ASAPI.
 3. Obtain an AccessKey pair.
-Obtain the AccessKey pair that is required for calling an API operation. We recommend that you use the AccessKey pair of a personal account to call the API operations of the Apsara Uni-manager Management Console and cloud services.
+Obtain the AccessKey pair that is required for calling an API operation. Not e We recommend that you use the AccessKey pair of a personal account to call the API operations of the Apsara Uni-manager Management Console and cloud services.
 4. Obtain the region ID.
 Obtain the region ID that is required for calling an API operation.
 5. Obtain the organization ID and resource set ID.
-You can call the GetOrganizationList operation to obtain the organization ID. For more information, see GetOrganizationList in Apsara Uni-manager Management Co nsole Developer Guide. You can call the ListResourceGroup operation to obtain the resource set ID. For more information, see ListResourceGroup in Apsara Uni-manager Management Cons ole Developer Guide. When you call an API operation, you can specify the organization ID and resource set ID by using the <x-acs-organizationid> and <x-acs-resourcegroupid> parameters. This allows you to query specified resources. If you do not set the <x-acs-organizationid> parameter, the organization to which the current user belongs is used by default. If you do not set the <x-acs-resourcegroupid> parameter, it is empty by default. If you specify a resource set ID, you must also specify an organization ID.
+You can call the GetOrganizationList operation to obtain the organization ID. For more information, see GetOrganizationList in Apsara Uni-manager Management Co nsole Developer Guide. You can call the ListResourceGroup operation to obtain the resource set ID. For more information, see ListResourceGroup in Apsara Uni-manager Management Cons ole Developer Guide. Not e When you call an API operation, you can specify the organization ID and resource set ID by using the <x-acs-organizationid> and <x-acs-resourcegroupid> parameters. This allows you to query specified resources. If you do not set the <x-acs-organizationid> parameter, the organization to which the current user belongs is used by default. If you do not set the <x-acs-resourcegroupid> parameter, it is empty by default. If you specify a resource set ID, you must also specify an organization ID.
 6. Refer to the API reference.
 Obtain the developer guide of the Apsara Stack service that you want to use. You can learn the features of API operations and how to call the API operations. For more information, see Use developer guides.
 7. Use ASAPI SDK to call API operations.
@@ -2493,6 +2539,8 @@ rectory.
     System.out.println(JSONObject.toJSONString(JSONObject.parseObject(result), SerializerFeature.PrettyFormat));
 ```
 
+`}`
+
 ### 7.2 Use the ASAPI gateway to make API calls
 
 #### 7.2.1 Generate an endpoint for ASAPI
@@ -2529,6 +2577,7 @@ Method 3: Concatenate strings to generate an endpoint You can also concatenate s
 https://public.asapi.<region>.<internet-domain>/asapi/v3
 ```
 
+Not e
 1. Replace <region> with the actual region ID.
 2. Replace <internet-domain> with the root domain of your Apsara Stack service. To obtain the root domain, contact Apsara Stack O&M engineers. Take note of
 this point: Use the internet-domain parameter instead of the intranet-domain parameter. If the region value is `cn-****-****-d01` and the int ernet -domain value is `inter.****.****.com` , the following sample endpoint is generated:
@@ -2543,17 +2592,17 @@ Verify an endpoint Enter the following code. If you cannot access the endpoint, 
  curl https://public.asapi.${global:region}.${global:internet-domain}/api/version -k
 ```
 
-${global:region} and ${global:internet-domain} are variables. You must replace them with the actual values that you obtained. Sample available endpoint: Sample unavailable endpoint: Historical endpoint Only the HTTP protocol is supported. The historical endpoint is suffixed with `intranet-domain` and in the following format:
+Not e ${global:region} and ${global:internet-domain} are variables. You must replace them with the actual values that you obtained. Sample available endpoint: Sample unavailable endpoint: Historical endpoint Only the HTTP protocol is supported. The historical endpoint is suffixed with `intranet-domain` and in the following format:
 
 ```
  http://server.asapi.${global:region}.${global:intranet-domain}/asapi/v3
 ```
 
-${global:region} and ${global:intranet-domain} are variables. You must replace them with the actual values that you obtained. Procedure To obtain the actual values of the variables ${global:region}, ${global:internet-domain}, and ${global:intranet-domain}, perform the following steps:
+Not e ${global:region} and ${global:intranet-domain} are variables. You must replace them with the actual values that you obtained. Procedure To obtain the actual values of the variables ${global:region}, ${global:internet-domain}, and ${global:intranet-domain}, perform the following steps:
 1. In the address bar, enter the region-id.aso.intranet-domain-id.com URL and press the Enter key.
-You can select a language from the drop-down list in the upper-right corner of the page.
+Not e You can select a language from the drop-down list in the upper-right corner of the page.
 2. Enter your username and password.
-Obtain the username and password used to log on to the Apsara Uni-manager Operations Console from deployment engineers or an administrator. If you log on to the Apsara Uni-manager Operations Console for the first time, you must change the password of your username. To enhance security, make sure that the password meets the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains special characters such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%). The password is 10 to 20 characters in length.
+Not e Obtain the username and password used to log on to the Apsara Uni-manager Operations Console from deployment engineers or an administrator. If you log on to the Apsara Uni-manager Operations Console for the first time, you must change the password of your username. To enhance security, make sure that the password meets the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains special characters such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%). The password is 10 to 20 characters in length.
 3. Click Log On to log on to the Apsara Uni-manager Operations Console. In the top navigation bar, choose Product s > Plat f orms > Apsara Inf rast ruct ure
 Management Framework.
 4. In the left-side navigation pane, choose Operat ions > Clust er Operat ions.
@@ -2565,7 +2614,7 @@ Management Framework.
 |---|---|---|
 | ${global:intranet-domain} |   |   |
 
-Replace ${global:region} with the obtained region value, ${global:internet-domain} with the obtained internet-domain value, and ${global:intranet-domain} with the obtained intranet-domain value. ${global:} is not included in the endpoint of ASAPI that you can use.
+Replace ${global:region} with the obtained region value, ${global:internet-domain} with the obtained internet-domain value, and ${global:intranet-domain} with the obtained intranet-domain value. Not e ${global:} is not included in the endpoint of ASAPI that you can use.
 
 #### 7.2.2 Obtain the ASAPI SDK
 
@@ -2603,7 +2652,7 @@ ASAPI SDK for Python
 | requests | 2.26.0 |
 | urllib3 | 1.26.6 |
 
-You can use the version for each package listed in the preceding table or a later version.
+Not e You can use the version for each package listed in the preceding table or a later version.
 
 ### 7.3 STS overview
 
@@ -2696,7 +2745,7 @@ package com.aliyuns.test; import com.alibaba.fastjson.JSONObject; import com.ali
             System.out.println(e.getErrMsg());
 ```
 
-Call examples In the following sample code, the `DescribeZones` operation in Elastic Compute Service (ECS) is used.
+`}` `}` `}` Call examples In the following sample code, the `DescribeZones` operation in Elastic Compute Service (ECS) is used.
 
 ```java
 package com.aliyuns.test; import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.FormatType; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.MethodType; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile; public class DescribeZonesDemo {
@@ -2736,7 +2785,7 @@ ding step.
             System.out.println(e.getErrMsg());
 ```
 
-Error codes
+`}` `}` `}` Error codes
 
 | Ht t pCode | Error code | Error message | Descript ion |
 |---|---|---|---|

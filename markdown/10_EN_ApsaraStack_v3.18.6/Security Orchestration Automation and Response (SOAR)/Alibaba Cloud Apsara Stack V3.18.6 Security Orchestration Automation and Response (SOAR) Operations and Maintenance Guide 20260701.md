@@ -5,7 +5,7 @@ doc_version: "20260701"
 pdf_pages: 10
 source_pdf: "8168b14b6eb1b792_Alibaba Cloud Apsara Stack V3.18.6 Security Orchestration Automation and Response (SOAR) Operations "
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E8%87%AA%E5%8A%A8%E7%BC%96%E6%8E%92%E5%93%8D%E5%BA%94/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Security%20Orchestration%20Automation%20and%20Response%20%28SOAR%29%20Operations%20and%20Maintenance%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings+note-quotes+edge-junk)
 ---
 
 # Security Orchestration Automation and Response (SOAR) Operations and Maintenance Guide
@@ -30,6 +30,9 @@ This topic describes how to log in to the Apsara Infrastructure Management conso
 **Prerequisites**
 
 The URL, username, and password that are required to log on to the Apsara Uni-manager Operations Console are obtained from the deployment personnel or administrators. The URL of the Apsara Uni-manager Operations Console is in the format of regionid.ops.console.intranet-domain-id. A browser is available. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
 Press the ENTER key.
@@ -58,6 +61,8 @@ configure related alert notifications. a dashboard
 
 ## 3 View a dashboard
 
+**Procedure**
+
 2. In the top navigation bar of the Apsara Uni-manager Operations Console, choose **Product**
 **Operation > Security O&M > Cloud Shield Operations Center**.
 3. In the left-side navigation pane, choose **Monitoring and Alerting** > **System Monitoring**.
@@ -71,6 +76,8 @@ a dashboard
 numbers of successful and failed executions of the SOAR playbook. an inspection task
 
 ## 4 View an inspection task
+
+**Procedure**
 
 2. In the top navigation bar of the Apsara Uni-manager Operations Console, choose **Product**
 **Operation > Security O&M > Cloud Shield Operations Center**.
