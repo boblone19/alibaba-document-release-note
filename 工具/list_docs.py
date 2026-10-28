@@ -127,6 +127,13 @@ def en_list(version=""):
     return out
 
 
+def zh_paths():
+    """中文树落盘路径的英文构成：域用固定英译表，产品与手册用接口给的 ASCII code。
+    与 工具/rename_cn_dirs.py 同一套映射，别在这儿再造第二套。"""
+    import rename_cn_dirs as RC
+    return RC
+
+
 def zh_list(stacks, cookie):
     out = []
     for spec in stacks:
@@ -144,15 +151,21 @@ def zh_list(stacks, cookie):
                 if not u:
                     continue
                 cid, _ = cache.identity("zh", u)
-                grp = ("02_AIStack_" if stack.startswith("ai_stack") else "01_专有云企业版_") + ver
+                RC = zh_paths()
+                grp = ("02_AIStack_" if stack.startswith("ai_stack") else "01_ApsaraStack-Enterprise_") + ver
+                dom = RC.DOMAIN_EN.get(p.get("category") or "")
+                if not dom:
+                    print(f"  未登记的服务域：{p.get('category')!r}（先加进 rename_cn_dirs.DOMAIN_EN 再抓）",
+                          file=sys.stderr)
+                    dom = "unclassified"
                 out.append({"id": cid, "lang": "zh", "stack": stack, "version": ver,
                             "versionStamp": m.get("docVer") or "", "productCode": p["code"],
                             "product": p.get("name") or p["code"], "category": p.get("category") or "-",
                             "docType": m.get("title") or "", "label": m.get("code") or "",
                             "pages": None, "bytes": None, "prodVer": "",
                             "pdfLocal": False, "pdfCloud": "", "url": u,
-                            "localPath": f"{grp}{p.get('category','')}/{safe(p.get('name') or p['code'])}/"
-                                         f"{m.get('sort', 0):02d}_{safe(m.get('title') or '')}_{safe(m.get('code') or '')}.pdf",
+                            "localPath": f"{grp}{dom}/{safe(p['code'])}/"
+                                         f"{m.get('sort', 0):02d}_{safe(m.get('code') or '')}.pdf",
                             "inScope": True})
     return out
 

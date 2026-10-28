@@ -44,8 +44,10 @@ L += ["", "| 语言 | 服务域/类型 | 产品 | 手册 | 源页数 | 版本戳
 for r in sorted(have, key=lambda x: (x["lang"], str(x["product"]).lower(), str(x.get("docType")))):
     grp = r["category"] if r["lang"] == "zh" else (r.get("docType") or "")
     lab = (r.get("label") or r.get("docType") or "")[:48].replace("|", "\\|")
-    link = r["markdown"]
-    wrap = f"<{link}>" if re.search(r"[()]", link) else link
+    # 这份清单住在 markdown/ 里，链接必须相对它自己；之前直接写 "markdown/x.md"
+    # 会被解析成 markdown/markdown/x.md，整表 1,188 条全是坏链。
+    link = os.path.relpath(r["markdown"], "markdown")
+    wrap = f"<{link}>" if re.search(r"[()\u4e00-\u9fff]", link) else link
     L.append(f"| {ZHL[r['lang']]} | {grp} | {r['product']} | {lab} | {r.get('pages') or ''} | "
              f"{r.get('versionStamp') or ''} | [{os.path.basename(link)[:34]}]({wrap}) |")
 open("markdown/README.md", "w", encoding="utf-8").write("\n".join(L) + "\n")
