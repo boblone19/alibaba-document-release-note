@@ -1,7 +1,7 @@
 # tools链说明 —— 这个仓库是怎么把阿里云文档变成可交付 Markdown 的
 
 面向"接手就要改东西的人"。每节都给**能直接贴跑的命令**。仓库根的路径、册数、包体积以
-`doc_cache_index.json` 与 `分卷清单.json` 为准，别信任何文档里写死的数字（含本文件）。
+`doc_cache_index.json` 与 `ApsaraStack_Markdown_split_manifest.json` 为准，别信任何文档里写死的数字（含本文件）。
 
 ---
 
@@ -163,18 +163,27 @@ docstring 里（example.com 域、Kerberos 主体、`user@IP`、`git@…` 克隆
 ### 2.8 派生人读清单与分卷包
 ```bash
 python3 tools/build_indexes.py       # markdown/README.md + all_docs_overview.html，并修 inScope、报失效链接
-python3 tools/make_split_zip.py --plan
-python3 tools/make_split_zip.py --parts 2 --max-mb 45
-python3 tools/make_split_zip.py --verify
+python3 tools/make_split_zip.py --plan          # 只看分组与装箱预估，不写文件
+python3 tools/make_split_zip.py                 # 生成 3 个包 + 清单，并自动 --verify
+python3 tools/make_split_zip.py --max-mb 40 --parts 3   # 收紧上限/强制卷数
+python3 tools/make_split_zip.py --verify        # 只核验
+python3 tools/ascii_paths.py --apply            # 路径里混进 NBSP/全角括号时折成 ASCII
 ```
-`make_split_zip.py` 的口径：以顶层目录（= 一个 stack 版本线）为**不可拆的最小单位**，
-实测每组压缩后字节，卷数取 `--parts`（默认按上限算最少卷数）后用 LPT 均衡；
-每卷是独立 zip（不是 `.z01` 切片），单独下载就能解压使用；产出 `分卷清单.json`
-（卷名/sha256/字节/条目数/包含哪些目录/合并顺序）。`--verify` 会逐卷核 sha256 + testzip +
-与盘上逐条比对 + 检查"有没有文件漏进卷"，失败退码非 0。
+`make_split_zip.py` 的口径（2026-11-18 定版）：
+1. **中文树单独一个整包**：顶层 `01_…` + `02_…` 合成 `ApsaraStack_Markdown_zh_296books.zip`，
+   不参与装箱；若它本身超 `--max-mb` 直接报错，不偷偷拆卷（这是 Bob 定的规则：中文看一个包就够）。
+2. **其余按版本线分卷**：以顶层目录为**不可拆的最小单位**（下一卷解压就是那一版本完整可读的 Markdown），
+   实测每组压缩后字节，卷数取 `ceil(总量/上限)` 后用 LPT 均衡；每卷是独立 zip（不是 `.z01` 切片），无需拼接。
+3. 产物文件名**必须 ASCII**；旧的 `markdown_全量_*册.zip`、`ApsaraStack_Markdown_1247_*` 等命名会被自动清掉。
+4. 清单 `ApsaraStack_Markdown_split_manifest.json`：卷名/字节/sha256/条目数/册数/包含哪些顶层目录/是中文整包还是分卷/下载顺序。
+5. `--verify` 检查：每卷 sha256 与字节、`testzip`、卷内每条与盘上逐条 md5、**有没有文件没进任何卷**、
+   **中文整包内容与盘上 `01_`/`02_` 是否完全相等**、文件名与卷内路径是否 ASCII、单卷是否超上限；失败退码非 0。
 
-为什么不用单个大 zip：GitHub 单文件软限 50 MB、硬限 100 MB。1,247 册约 63.5 MB，
-用分卷而不是 LFS —— 不改写历史、不要求 git-lfs 环境、clone 即可取。
+顺序必须是 **脱敏 → build_indexes → make_split_zip**：先打包再重建清单，卷里装的就是旧文件
+（`--verify` 抓到过我一次：卷内 `markdown/README.md` 与盘上不一致）。
+
+为什么分卷而不用 LFS：GitHub 单文件软限 50 MB、硬限 100 MB；全量约 63.5 MB 已越线。
+分卷不改写历史、不要 git-lfs 环境、clone 后即可按卷取。
 
 ### 2.9 Release note 那一套
 ```bash
@@ -260,4 +269,4 @@ python3 tools/make_split_zip.py --verify        # 4 验收
 | `fetch_release_corpus.py` | 只为 release note 补抓补转英文册 | `[workers]` |
 
 根目录 `AGENTS.md`（工作区常驻指令）与 `README.md`（交付索引）是另外两份必读；
-本文件只讲"怎么干活"，册数/体积/覆盖情况一律看 `doc_cache_index.json`、`分卷清单.json`。
+本文件只讲"怎么干活"，册数/体积/覆盖情况一律看 `doc_cache_index.json`、`ApsaraStack_Markdown_split_manifest.json`。
