@@ -11,7 +11,7 @@
     check_leaks.py            扫全部已跟踪文件
 
 规则（宁可放过，也不误伤官方文档正文）
-1. 厂商文档树 `markdown/`、`machine_translations/`：2026-10-15 起不再整体豁免。阿里云文档里混入过
+1. 厂商文档树 `markdown/`（`machine_translations/` 已删除）：2026-10-15 起不再整体豁免。阿里云文档里混入过
    真实内部账号（工号/实名邮箱），所以完整邮箱（example.com 族示例域、Kerberos 主体、
    user@IP、证书算法名等形状除外，判定逻辑在 redact_vendor_docs.email_skipped）
    和 AccessKeyId 形状 → BLOCK。入库前先跑 `tools/redact_vendor_docs.py` 脱敏。
@@ -34,7 +34,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from redact_vendor_docs import email_skipped  # noqa: E402
 
-VENDOR_PREFIXES = ("markdown/", "machine_translations/")
+VENDOR_PREFIXES = ("markdown/",)   # machine_translations/ 已于 2026-11-18 删除（见 download_ledger.unofficialTranslation）
 
 # 个人身份：sha256(邮箱小写全文)。新增地址用
 #   python3 -c "import hashlib;print(hashlib.sha256(b'地址').hexdigest())"

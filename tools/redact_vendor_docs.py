@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""厂商文档（markdown/、machine_translations/、根目录 Release Note）脱敏。
+"""厂商文档（markdown/、根目录 Release Note）脱敏。
 
 2026-10-15 起，厂商文档不再是"原文不动的豁免树"：阿里云文档里混入的真实内部账号
 （工号/实名邮箱）、AccessKeyId、AccessKeySecret 实值也要脱敏后才入库。
@@ -23,7 +23,7 @@
 预签名 URL 里的 Signature 运算结果、样例手机号、文档截图（图片无法改写）。
 
 用法
-    redact_vendor_docs.py            # 默认扫 markdown/、machine_translations/、两份 Release Note
+    redact_vendor_docs.py            # 默认扫 markdown/ 与两份 Release Note
     redact_vendor_docs.py 路径...    # 指定文件或目录（目录递归 *.md）
 """
 import re
@@ -111,7 +111,7 @@ def redact(text: str):
 
 def main():
     paths = sys.argv[1:] or [
-        "markdown", "machine_translations",
+        "markdown",
         "ApsaraStack-3.18.6-Release-Note-EN.md",
         "ApsaraStack-V3.18.6_2607-Release-Note-EN.md",
     ]

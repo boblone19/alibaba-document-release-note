@@ -29569,12 +29569,7 @@
   "scope": "SLS / OSS / Quick BI — Product Introduction (产品简介) only",
   "reason": "EN V3.18.6 has no OSS/SLS (dropped) and Quick BI (never published) volumes",
   "status": "unofficial human-reviewed-quality translation by QwenWork; NOT an Alibaba Cloud English publication",
-  "files": [
-   "machine_translations/SLS/01_Product Introduction (EN, unofficial).md",
-   "machine_translations/OSS/01_Product Introduction (EN, unofficial).md",
-   "machine_translations/QuickBI/01_Product Introduction (EN, unofficial).md",
-   "ApsaraStack-3.18.6-ProductIntro-EN-unofficial.zip"
-  ],
+  "files": [],
   "sourceVolume": {
    "pages": 32,
    "cjkChars": 11550
@@ -29590,6 +29585,17 @@
    "sendStatus": "success",
    "receivedDateTime": "2026-09-14T22:41:49Z",
    "attachments": "3 x .md + 1 x zip (attachment list not exposed by the mail API)"
+  },
+  "retiredAt": "2026-11-18",
+  "retiredReason": "OSS/SLS 的英文官方 User Guide 已含 What is OSS/SLS 章节，机翻产品简介重复；Quick BI 官方英文从未发布，此稿为唯一英文内容，按 Bob 决定一并撤下，仅存 git 历史",
+  "retainedInGitHistory": {
+   "commits": "删除前的最后提交见 git log -- machine_translations",
+   "blobs": {
+    "OSS": "048fefdfab40370709ad48c9a2d7401616228ccd",
+    "QuickBI": "530bd98c160d8c3ff7eb60abde6591ac455b5cbb",
+    "SLS": "48672e7e82be22e0bcae069169496d91e5a13e26"
+   },
+   "restore": "git cat-file blob <sha> > \"Quick BI Product Introduction (EN, unofficial).md\""
   }
  },
  "releaseV3186_2607": {
