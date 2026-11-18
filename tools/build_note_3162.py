@@ -1,6 +1,6 @@
 """渲染 V3.16.2 → V3.18.6 的英文 release note（细节级变化说明，2607 版式）。
 
-  python3 工具/build_note_3162.py     # 读 .scratch/rn3162_pairs.json，覆盖交付根目录 ApsaraStack-3.18.6-Release-Note-EN.md
+  python3 tools/build_note_3162.py     # 读 .scratch/rn3162_pairs.json，覆盖交付根目录 ApsaraStack-3.18.6-Release-Note-EN.md
 
 与 build_note_2607.py 同一版式：汇总表 → 最大变化排名与观察 → 官方 release notes 逐字引用 →
 逐册细节（句子级增删/配额/章节增删改名）→ 仅新集合有的册（近似归类）→ 未复刊的基线册 → 方法 → 文件。
@@ -28,7 +28,7 @@ def fdate(v):
 
 def main():
     d = json.load(open(os.path.join(SCRATCH, "rn3162_pairs.json"), encoding="utf-8"))
-    rows = json.load(open(os.path.join(ROOT, "文档缓存索引.json"), encoding="utf-8"))
+    rows = json.load(open(os.path.join(ROOT, "doc_cache_index.json"), encoding="utf-8"))
     pairs, only_new, only_old, st = d["pairs"], d["onlyNew"], d["onlyOld"], d["stats"]
     ST.update(st)
     b18 = [r for r in rows if r["lang"] == "en" and r.get("version") == NEW_VER]
@@ -330,7 +330,7 @@ def _part4(add, L, pairs):
         "summarised as new or unchanged); and limits rows where the two editions do not share the row key.")
     add("6. Full machine-readable evidence (all added/removed sentences per manual, with section attribution): "
         "`.scratch/rn3162_pairs.json` in the session workspace. Regenerate with "
-        "`python3 工具/rn3162_pairs.py && python3 工具/build_note_3162.py`.")
+        "`python3 tools/rn3162_pairs.py && python3 tools/build_note_3162.py`.")
     add("")
     add("## 8. Where the files are")
     add("")
@@ -339,7 +339,7 @@ def _part4(add, L, pairs):
     add(f"| `markdown/10_EN_ApsaraStack_v3.18.6/` | the {ST['newTotal']}-manual English set "
         "this note describes |")
     add(f"| `markdown/10_EN_ApsaraStack_V3.16.2/` | the {ST['oldTotal']}-manual 2024–2025 English baseline |")
-    add("| `文档缓存索引.csv` | 901 rows; `id / versionStamp / pages / markdown / markdownSha256` |")
+    add("| `doc_cache_index.csv` | 901 rows; `id / versionStamp / pages / markdown / markdownSha256` |")
     add("| `markdown_全量_901册.zip` | whole corpus, one zip |")
     add("")
     txt = "\n".join(L) + "\n"

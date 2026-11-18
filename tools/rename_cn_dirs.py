@@ -7,12 +7,12 @@
 素材本来就够，不需要猜：站点接口给的 productCode / 手册 code 都是 ASCII，
 中文只是被抄进了目录名与文件名（序号 sort 保留，防撞名）。
 
-    python3 工具/rename_cn_dirs.py             # 试跑：出迁移表与冲突检查，不动文件
-    python3 工具/rename_cn_dirs.py --apply     # 真搬 + 改索引 + 改全仓引用
+    python3 tools/rename_cn_dirs.py             # 试跑：出迁移表与冲突检查，不动文件
+    python3 tools/rename_cn_dirs.py --apply     # 真搬 + 改索引 + 改全仓引用
 
-云端对象键（下载台账.json 的 mdCloudKey / pdfCloud）不动 —— 那指向 OSS 上已发布的
+云端对象键（download_ledger.json 的 mdCloudKey / pdfCloud）不动 —— 那指向 OSS 上已发布的
 中文路径包，改了就对不上。本地路径与云端路径的这层差异已在台账 localState.dirNaming 写明。
-英文树的上一次同类改造见 工具/rename_en_dirs.py。
+英文树的上一次同类改造见 tools/rename_en_dirs.py。
 """
 import argparse
 import json
@@ -112,8 +112,8 @@ def build_plan():
     return plan, unmapped          # 目录不进气泡：文件按新路径落地后，空目录统一剪掉
 
 
-REF_FILES = ["README.md", "下载台账.json", "下载台账.md", "中英对照手册映射.csv", "文档索引.csv",
-             "文档明细.json", "全量文档清单.html", "钉钉索引_文档包.md", "00_产品清单_全量待选.md",
+REF_FILES = ["README.md", "download_ledger.json", "download_ledger.md", "cn_en_manual_map.csv", "doc_index.csv",
+             "doc_details.json", "all_docs_overview.html", "dingtalk_docpack_index.md", "00_product_catalog_candidates.md",
              "markdown/转换清单.json", "markdown/转换清单.csv", "markdown/中文转换清单.json",
              "markdown/README.md", "markdown/_预览样书/DG-容器服务.html",
              "markdown/_预览样书/PI-WAF简介.html", "markdown/_预览样书/UG-容器镜像.html"]
@@ -133,7 +133,7 @@ def rewrite_refs(plan, apply_it):
             continue
         t = open(p, encoding="utf-8").read()
         orig = t
-        if f == "下载台账.json":
+        if f == "download_ledger.json":
             rows = json.loads(t)
 
             def walk(o):

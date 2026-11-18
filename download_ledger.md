@@ -7,11 +7,11 @@
 | English | **PDF 不保留**（保留 4 类的 219 份纯文本 Markdown，本地已删 899MB PDF + 696MB 包） | 287 | OSS `apsara-docs/zips_en/` 8 包；或按逐条 `url` 匿名下（只下 new/bumped） |
 | 中文 | **本地已删除**（296 本 PDF 与 13 个包均已移除） | 296 | OSS `apsara-docs/zips/` 13 个分服务域包；或按台账逐条 `sourceUrl` 匿名重下 |
 
-本地现状：**不保留任何 PDF**（0 个 .pdf），只有 219 份英文纯文本 Markdown + 索引；PDF 仅在 OSS `apsara-docs/zips_en/`（8 包）与 `apsara-docs/zips/`（13 包）。下次更新按 `文档缓存索引.csv` 的 `id@versionStamp` 判重（583 条），只下新增或版本升级的册子。
+本地现状：**不保留任何 PDF**（0 个 .pdf），只有 219 份英文纯文本 Markdown + 索引；PDF 仅在 OSS `apsara-docs/zips_en/`（8 包）与 `apsara-docs/zips/`（13 包）。下次更新按 `doc_cache_index.csv` 的 `id@versionStamp` 判重（583 条），只下新增或版本升级的册子。
 
 ## 用途
 
-本台账记录每册的**来源地址、字节数、页数、版本戳与云端包归属**；判重主键见同目录 `文档缓存索引.csv`（`id@versionStamp`）。下次先重新列清单做差集，只下新增或版本升级的册子，同一份不再重复下载。
+本台账记录每册的**来源地址、字节数、页数、版本戳与云端包归属**；判重主键见同目录 `doc_cache_index.csv`（`id@versionStamp`）。下次先重新列清单做差集，只下新增或版本升级的册子，同一份不再重复下载。
 
 ## 采集入口（照抄即可复用）
 
@@ -31,7 +31,7 @@
 ## 云端备份
 
 - OSS bucket `temp20260417`（oss-cn-shanghai，private），前缀 `apsara-docs/`，27 个对象 / 2.06 GiB
-- 包结构：`apsara-docs/zips/`（中文 13 包，按服务域） · `apsara-docs/zips_en/`（英文 7 包，按文档类型） · `apsara-docs/10_EN_ApsaraStack_v3.18.6/文档索引_EN.csv` · 根级索引与 `下载链接.md`
+- 包结构：`apsara-docs/zips/`（中文 13 包，按服务域） · `apsara-docs/zips_en/`（英文 7 包，按文档类型） · `apsara-docs/10_EN_ApsaraStack_v3.18.6/文档索引_EN.csv` · 根级索引与 `download_links.md`
 - 复用方法：已存在则跳过：先比对本台账里的 sourceUrl（同一 URL 不重复下），本地文件按 localPath 校验存在与字节数；英文可用 HEAD 源站 Content-Length 快速核对
 
 云端现状：OSS `temp20260417`（cn-shanghai，private）`apsara-docs/` 共 **33 个对象 / 2.11 GiB** = 中文分服务域包 13 + 英文包 8（7 按文档类型 + 1 个 AI 合并包）+ 索引/台账/链接 12。逐对象 `head_object` 字节一致；中文 13 包内条目合计 296 本＝中文台账 296 本；英文 8 包里 7 个按类型包共 287 本＝英文台账 287 本，AI 包是其中 17 本的合并视图（非新增）。
@@ -46,8 +46,8 @@
 | `id` | zh 用 stack:productCode:manualCode；en 用 产品名+文档类型（官方文件名自带 8 位日期即版本戳） |
 | `versionStamp` | en=文件名末 8 位日期(YYYYMMDD)；zh=册内“文档版本”日期或 stack version |
 | 条目数 | 583（zh 296 / en 287）；markdown 已在位 219 份 |
-| 判重动作 | 先读 文档缓存索引.csv（或本台账 cacheIndex.entries_detail）；只列清单不下载：国际站 HTML + 两个 apsara API（中文需权益登录态）；key=id@versionStamp 做差集，只下 new/bumped；同名不同内容再比 bytes/CRC64；转完即删 PDF；更新缓存索引、台账、清单页；markdown 用 sha256 避免重转 |
-| 文件 | `文档缓存索引.csv`（同云端 `apsara-docs/文档缓存索引.csv`，另有本 json 的 `cacheIndex.entries_detail`）|
+| 判重动作 | 先读 doc_cache_index.csv（或本台账 cacheIndex.entries_detail）；只列清单不下载：国际站 HTML + 两个 apsara API（中文需权益登录态）；key=id@versionStamp 做差集，只下 new/bumped；同名不同内容再比 bytes/CRC64；转完即删 PDF；更新缓存索引、台账、清单页；markdown 用 sha256 避免重转 |
+| 文件 | `doc_cache_index.csv`（同云端 `apsara-docs/doc_cache_index.csv`，另有本 json 的 `cacheIndex.entries_detail`）|
 
 ## 明细（按语言 + 服务域/类型 + 产品）
 

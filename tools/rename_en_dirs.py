@@ -6,9 +6,9 @@
 还混着 20230221 / v3.12.0 这类垃圾段。改成统一用 list_docs 从书名解析出的英文 product，
 product 在 951 条清单里零中文。
 
-    python3 工具/rename_en_dirs.py            # 试跑：只报迁移表与冲突，不动文件
-    python3 工具/rename_en_dirs.py --apply     # 真搬 + 改索引 + 改全仓引用
-    python3 工具/rename_en_dirs.py --manifest ../../.scratch/en_all.json --apply
+    python3 tools/rename_en_dirs.py            # 试跑：只报迁移表与冲突，不动文件
+    python3 tools/rename_en_dirs.py --apply     # 真搬 + 改索引 + 改全仓引用
+    python3 tools/rename_en_dirs.py --manifest ../../.scratch/en_all.json --apply
         # 顺手把清单里待下载书的 localPath 也换成英文目录（新一轮下载直接落对路径）
 
 只动 markdown/10_EN_* ；中文树（01_/02_）按既定约定保留中文目录。
@@ -89,11 +89,11 @@ def check_collisions(plan):
     return bad
 
 
-REWRITE = ["README.md", "markdown/README.md", "下载台账.json", "下载台账.md", "下载链接.md",
-           "文档索引.csv", "文档明细.json", "全量文档清单.html", "中英对照手册映射.csv",
+REWRITE = ["README.md", "markdown/README.md", "download_ledger.json", "download_ledger.md", "download_links.md",
+           "doc_index.csv", "doc_details.json", "all_docs_overview.html", "cn_en_manual_map.csv",
            "markdown/转换清单.json", "markdown/转换清单.csv",
            "ApsaraStack-3.18.6-Release-Note-EN.md", "ApsaraStack-V3.18.6_2607-Release-Note-EN.md",
-           "00_产品清单_全量待选.md", "钉钉索引_文档包.md"]
+           "00_product_catalog_candidates.md", "dingtalk_docpack_index.md"]
 
 
 def rewrite_refs(plan, apply_it):

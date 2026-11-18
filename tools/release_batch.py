@@ -1,7 +1,7 @@
 """按发布版本批量接入新文档：下载 → 转 Markdown → 校验 → 写回缓存索引 → 删 PDF。
 
-  python3 工具/release_batch.py --manifest ../../.scratch/en_all.json --version V3.18.6_2607 --limit 3
-  python3 工具/release_batch.py --manifest ../../.scratch/en_all.json --version V3.18.6_2607
+  python3 tools/release_batch.py --manifest ../../.scratch/en_all.json --version V3.18.6_2607 --limit 3
+  python3 tools/release_batch.py --manifest ../../.scratch/en_all.json --version V3.18.6_2607
   加 --no-delete 保留 PDF（默认转完即删，交付树只留 Markdown）。
 
 只做一件事：把 list_docs.py 产出的候选落成交付树里的 Markdown + 缓存索引行。

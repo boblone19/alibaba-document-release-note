@@ -1,11 +1,11 @@
 """Decide and fetch: never re-download a PDF whose Markdown is already in the cache.
 
-  python3 工具/pull_docs.py --plan                     只打印决策
-  python3 工具/pull_docs.py --fetch --limit 5          只下需要的那几本（按 url 直取单本）
-  python3 工具/pull_docs.py --fetch --langs zh         中文侧同理
+  python3 tools/pull_docs.py --plan                     只打印决策
+  python3 tools/pull_docs.py --fetch --limit 5          只下需要的那几本（按 url 直取单本）
+  python3 tools/pull_docs.py --fetch --langs zh         中文侧同理
 
 候选来源：--manifest（list_docs.py 输出）或缓存自身（核对既有登记）。
-标签见 工具/cache.py：SKIP=同 id 同版本戳且已转，直接跳过下载与转换；
+标签见 tools/cache.py：SKIP=同 id 同版本戳且已转，直接跳过下载与转换；
 FETCH=官方发了新版；CONVERT=有 PDF 但缺 Markdown；NEW=没登记过。
 """
 import argparse

@@ -5,7 +5,7 @@ Groups:
   B) V3.16.2 English manuals, re-listed live via list_docs (no cache entries yet) — ~53
 
 Per manual: download PDF → convert to text-only Markdown at markdown/<same tree> → delete the PDF
-→ record id/versionStamp/bytes/pages/markdown/sha256 in 文档缓存索引.json+csv so the next run
+→ record id/versionStamp/bytes/pages/markdown/sha256 in doc_cache_index.json+csv so the next run
 SKIPs it. Cache is flushed every 10 manuals; interrupted runs resume from the cache.
 """
 import json
@@ -96,7 +96,7 @@ def one(job):
 
 def main():
     workers = int(sys.argv[1]) if len(sys.argv) > 1 else 2
-    rows = json.load(open("文档缓存索引.json", encoding="utf-8"))
+    rows = json.load(open("doc_cache_index.json", encoding="utf-8"))
     rows, todo = build(rows)
     print(f"待处理 {len(todo)} 本（A 补类 + B {V162}）｜进程 {workers}", flush=True)
     t0, stat, done = time.time(), {}, 0

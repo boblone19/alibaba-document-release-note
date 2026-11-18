@@ -5,10 +5,10 @@
   * toc+numbered-headings：保留标题编号、补由书签重建的 ## Table of Contents
   * note-quotes：Note/Important/Warning 提示框输出成 Markdown 引用块
 
-  python3 工具/reconvert_en.py --plan                 英文：只统计
-  python3 工具/reconvert_en.py --lang zh --plan       中文：只统计
-  python3 工具/reconvert_en.py --lang zh --limit 5    中文先试 5 本
-  python3 工具/reconvert_en.py                        英文全量（断点续跑：已带最新标记的跳过）
+  python3 tools/reconvert_en.py --plan                 英文：只统计
+  python3 tools/reconvert_en.py --lang zh --plan       中文：只统计
+  python3 tools/reconvert_en.py --lang zh --limit 5    中文先试 5 本
+  python3 tools/reconvert_en.py                        英文全量（断点续跑：已带最新标记的跳过）
 
 流程：取缓存索引该语言、已有 markdown 的行 → 按 source_url/url 重下 PDF
 （暂存 .scratch/pdf_reconvert_<lang>/）→ 原地覆盖同名 md（title/版本号/原始 PDF 文件名

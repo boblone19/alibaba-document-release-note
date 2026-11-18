@@ -66,7 +66,7 @@ def main():
     add("")
     add("| item | count |")
     add("|---|---|")
-    add(f"| V3.18.6 English manuals in the compared corpus | {sum(1 for r in json.load(open('文档缓存索引.json', encoding='utf-8')) if r['lang']=='en' and r['version']=='V3.18.6' and r['markdown'])} |")
+    add(f"| V3.18.6 English manuals in the compared corpus | {sum(1 for r in json.load(open('doc_cache_index.json', encoding='utf-8')) if r['lang']=='en' and r['version']=='V3.18.6' and r['markdown'])} |")
     add(f"| V3.16.2 English manuals available for comparison | {c['v16_total']} |")
     add(f"| Product × manual-type pairs successfully aligned | {c['pairs']} |")
     add(f"| V3.18.6 manuals with **no** V3.16.2 counterpart (delta not computable) | {c['only18']} |")
@@ -158,7 +158,7 @@ def main():
         "V3.16.2 English counterpart (§4). Version numbering in the EN corpus is `V3.16.2` vs "
         "`V3.18.6`; the Chinese corpus names the same line `v3.18.6-SP26xx`, which is a service-pack "
         "granularity this note does not attempt.")
-    add("- Regenerate: `python3 工具/release_note.py` then `python3 工具/build_note.py`.")
+    add("- Regenerate: `python3 tools/release_note.py` then `python3 tools/build_note.py`.")
     add("")
     open(OUT_MD, "w", encoding="utf-8").write("\n".join(L) + "\n")
     print(f"{OUT_MD}: {os.path.getsize(OUT_MD)/1024:.0f} KB | 段落 {len(L)} 行 | "

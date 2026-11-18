@@ -3,18 +3,23 @@
 
 用法
     check_leaks.py --cached   只看本次暂存的新增行（pre-commit 钩子用）
+
+钩子只存在于 .git/ 里，重新 clone 或换沙箱会丢。重装（一行 exec，别用 python 读写钩子文件）：
+    printf '%s\n' '#!/bin/sh' '# PII/凭证自查，见 tools/check_leaks.py' \
+      'exec python3 "$(git rev-parse --show-toplevel)/tools/check_leaks.py" --cached' \
+      > .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
     check_leaks.py            扫全部已跟踪文件
 
 规则（宁可放过，也不误伤官方文档正文）
-1. 厂商文档树 `markdown/`、`英文译文_机翻/`：2026-10-15 起不再整体豁免。阿里云文档里混入过
+1. 厂商文档树 `markdown/`、`machine_translations/`：2026-10-15 起不再整体豁免。阿里云文档里混入过
    真实内部账号（工号/实名邮箱），所以完整邮箱（example.com 族示例域、Kerberos 主体、
    user@IP、证书算法名等形状除外，判定逻辑在 redact_vendor_docs.email_skipped）
-   和 AccessKeyId 形状 → BLOCK。入库前先跑 `工具/redact_vendor_docs.py` 脱敏。
+   和 AccessKeyId 形状 → BLOCK。入库前先跑 `tools/redact_vendor_docs.py` 脱敏。
 2. 已知个人身份：邮箱小写后取 sha256 比对 BLOCKLIST → 命中即 BLOCK（不落明文，本文件可以公开）。
    全树生效，包括厂商文档树——官方文档里不会出现我们的地址，真出现就该拦。
-3. 自研文件（README / 台账 / 索引 / 工具 等）出现任何邮箱形态 → BLOCK，白名单示例域除外。
+3. 自研文件（README / 台账 / 索引 / tools 等）出现任何邮箱形态 → BLOCK，白名单示例域除外。
 4. 任意文件出现 AccessKeyId 形状的串（LTAI + 16 位以上）→ BLOCK；预签名查询参数（三个特征参数名，
-   字面量见下方 PRESIGN 正则，不写进本注释以免自查咬到自己）在自研文件 → BLOCK（下载链接.md 那类是真凭证），
+   字面量见下方 PRESIGN 正则，不写进本注释以免自查咬到自己）在自研文件 → BLOCK（download_links.md 那类是真凭证），
    在厂商文档树只拦 LTAI 形状——示例 URL 里的参数名是 OSS 教学内容，值已打码、Signature 是示例请求的运算结果不可复用。
 
 退出码 0 = 干净，1 = 命中（钩子据此拒绝提交）。
@@ -29,7 +34,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from redact_vendor_docs import email_skipped  # noqa: E402
 
-VENDOR_PREFIXES = ("markdown/", "英文译文_机翻/")
+VENDOR_PREFIXES = ("markdown/", "machine_translations/")
 
 # 个人身份：sha256(邮箱小写全文)。新增地址用
 #   python3 -c "import hashlib;print(hashlib.sha256(b'地址').hexdigest())"
@@ -98,7 +103,7 @@ def scan(rows):
             elif vendor and email_skipped(e):
                 continue
             elif vendor:
-                hits.append(f"BLOCK {rel} 厂商文档里的完整邮箱（先跑 工具/redact_vendor_docs.py） {shown}")
+                hits.append(f"BLOCK {rel} 厂商文档里的完整邮箱（先跑 tools/redact_vendor_docs.py） {shown}")
             elif e.rsplit("@", 1)[-1].lower() not in SAFE_DOMAINS:
                 hits.append(f"BLOCK {rel} 自研文件里的邮箱 {shown}")
         if AK_ID.search(text) or (not vendor and PRESIGN.search(text)):
@@ -112,7 +117,7 @@ def main():
     for h in hits:
         print(h, file=sys.stderr)
     if hits:
-        print("→ 处理：个人身份改成 REDACTED:<sha8>（见 下载台账.json 写法）；确属误报再临时绕过并在提交说明里写清。",
+        print("→ 处理：个人身份改成 REDACTED:<sha8>（见 download_ledger.json 写法）；确属误报再临时绕过并在提交说明里写清。",
               file=sys.stderr)
         return 1
     print(f"clean（自研内容约 {authored//1000}k 词已扫，厂商文档树查完整邮箱/LTAI，个人身份全树比对）")

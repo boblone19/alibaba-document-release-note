@@ -152,22 +152,22 @@
    "etag": ""
   },
   {
-   "key": "apsara-docs/中英对照手册映射.csv",
+   "key": "apsara-docs/cn_en_manual_map.csv",
    "bytes": 36759,
    "etag": ""
   },
   {
-   "key": "apsara-docs/全量文档清单.html",
+   "key": "apsara-docs/all_docs_overview.html",
    "bytes": 354396,
    "etag": ""
   },
   {
-   "key": "apsara-docs/文档明细.json",
+   "key": "apsara-docs/doc_details.json",
    "bytes": 315850,
    "etag": ""
   },
   {
-   "key": "apsara-docs/文档索引.csv",
+   "key": "apsara-docs/doc_index.csv",
    "bytes": 156731,
    "etag": ""
   }
@@ -15407,7 +15407,7 @@
     "ENv3.18.6_UserGuide_79本_673MB.zip"
    ],
    "markdownAndIndex": [
-    "00_产品清单_全量待选.md",
+    "00_product_catalog_candidates.md",
     "10_EN_ApsaraStack_v3.18.6/README_EN.md",
     "10_EN_ApsaraStack_v3.18.6/文档索引_EN.csv",
     "README.md",
@@ -15418,13 +15418,13 @@
     "markdown/预览_PI-WAF简介.html",
     "markdown/预览_UG-容器镜像.html",
     "markdown_en_v3.18.6_219册.zip",
-    "下载台账.json",
-    "下载台账.md",
-    "中英对照手册映射.csv",
-    "全量文档清单.html",
-    "文档明细.json",
-    "文档索引.csv",
-    "钉钉索引_文档包.md"
+    "download_ledger.json",
+    "download_ledger.md",
+    "cn_en_manual_map.csv",
+    "all_docs_overview.html",
+    "doc_details.json",
+    "doc_index.csv",
+    "dingtalk_docpack_index.md"
    ]
   }
  },
@@ -15458,9 +15458,9 @@
   "versionStampRule": "en=文件名末 8 位日期(YYYYMMDD)；zh=册内“文档版本”日期或 stack version",
   "howToRefresh": [
    "1) 只列清单不下载：python3 list_docs.py --en / --zh（或 curl 国际站 download 页 + 两个 apsara API），耗时秒级",
-   "2) 用 id 与 本文档缓存索引.csv 比对：无此 id → 新产品；id 相同但 versionStamp 更新 → 版本升级；两者相同 → 跳过",
+   "2) 用 id 与 本doc_cache_index.csv 比对：无此 id → 新产品；id 相同但 versionStamp 更新 → 版本升级；两者相同 → 跳过",
    "3) 只下载 new+bumped 的 PDF：旧版本内容已在云端 zips_en/zips 包内，也可按 url 直取；无需重新下全量",
-   "4) 下载后仅转 markdown（本地不保留 PDF），并更新 文档缓存索引.csv 与 下载台账.json",
+   "4) 下载后仅转 markdown（本地不保留 PDF），并更新 doc_cache_index.csv 与 download_ledger.json",
    "5) 校验只对新取的文件做（%PDF 头 + 字节数；可选 OSS CRC64），已存在 markdown 用 sha256 比对避免重转"
   ],
   "scope": {
@@ -29492,13 +29492,13 @@
  },
  "dedupeMechanism": {
   "masterFiles": [
-   "文档缓存索引.json",
-   "文档缓存索引.csv"
+   "doc_cache_index.json",
+   "doc_cache_index.csv"
   ],
   "tools": [
-   "工具/cache.py:decide()",
-   "工具/pull_docs.py",
-   "工具/list_docs.py"
+   "tools/cache.py:decide()",
+   "tools/pull_docs.py",
+   "tools/list_docs.py"
   ],
   "labels": [
    "SKIP",
@@ -29544,7 +29544,7 @@
   "file": "ApsaraStack-3.18.6-Release-Note-EN.md",
   "sizeKB": 63,
   "builtAt": "2026-09-14T08:12:35+08:00",
-  "basis": "英文手册 V3.18.6 vs V3.16.2（工具/release_note.py + build_note.py）",
+  "basis": "英文手册 V3.18.6 vs V3.16.2（tools/release_note.py + build_note.py）",
   "pairs": 33,
   "alignedProducts": 33,
   "notComparableManuals": 254,
@@ -29570,9 +29570,9 @@
   "reason": "EN V3.18.6 has no OSS/SLS (dropped) and Quick BI (never published) volumes",
   "status": "unofficial human-reviewed-quality translation by QwenWork; NOT an Alibaba Cloud English publication",
   "files": [
-   "英文译文_机翻/SLS/01_Product Introduction (EN, unofficial).md",
-   "英文译文_机翻/OSS/01_Product Introduction (EN, unofficial).md",
-   "英文译文_机翻/QuickBI/01_Product Introduction (EN, unofficial).md",
+   "machine_translations/SLS/01_Product Introduction (EN, unofficial).md",
+   "machine_translations/OSS/01_Product Introduction (EN, unofficial).md",
+   "machine_translations/QuickBI/01_Product Introduction (EN, unofficial).md",
    "ApsaraStack-3.18.6-ProductIntro-EN-unofficial.zip"
   ],
   "sourceVolume": {
@@ -29652,7 +29652,7 @@
    "ACK User Guide carries its own Kubernetes 1.32/1.34 release notes (kube-proxy default IPVS from 1.32; no kube-proxy container under Terway DataPath V2 in 1.34)",
    "ECS User Guide lost 247 section titles while gaining 6 pages => restructure, not content removal"
   ],
-  "pipeline": "工具/rn2607_pairs.py (证据提取) → 工具/build_note_2607.py (渲染)；证据 JSON 在 work/.scratch/rn2607_pairs.json",
+  "pipeline": "tools/rn2607_pairs.py (证据提取) → tools/build_note_2607.py (渲染)；证据 JSON 在 work/.scratch/rn2607_pairs.json",
   "previousNote": "ApsaraStack-3.18.6-Release-Note-EN.md 保留（那是 V3.16.2 → V3.18.6 的口径，不同基线）",
   "notSent": "未发邮件；等用户确认口径后再投",
   "updatedAt": "2026-10-14T09:47:32Z"

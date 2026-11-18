@@ -1,5 +1,5 @@
 {
- "policy": "中文树（01_/02_ 顶层目录）单独一个整包；其余（英文各 stack 版本线、markdown/ 根级清单与 _preview-samples）按 --max-mb 装箱分卷。版本线绝不跨卷；每卷独立 zip，无需拼接；所有产物文件名一律英文 ASCII。构建顺序必须是 脱敏 → build_indexes → 本工具",
+ "policy": "中文树（01_/02_ 顶层目录）单独一个整包；其余（英文各 stack 版本线、markdown/ 根级清单与 _preview-samples）按 --max-mb 装箱分卷。版本线绝不跨卷；每卷独立 zip，无需拼接；所有产物文件名一律英文 ASCII。构建顺序必须是 脱敏 → build_indexes → 本tools",
  "maxFileMB": 45.0,
  "source": "markdown/",
  "removedOld": 4,
@@ -30,7 +30,7 @@
    "MB": 24.1,
    "entries": 455,
    "books": 448,
-   "sha256": "5fcea41c9fb78d42ead11b41ee1ed365a99ac0c4986604e0c4edc73ca0d221d6",
+   "sha256": "0a9c6f8a65b81f5c5d9fe1a41eec3c8a635b69a12c660b51dbc272ec17f394c0",
    "contains": [
     "(根文件)",
     "10_EN_ApsaraStack_V3.14.0",
@@ -64,5 +64,5 @@
   "ApsaraStack_Markdown_part1of2.zip",
   "ApsaraStack_Markdown_part2of2.zip"
  ],
- "verify": "python3 工具/make_split_zip.py --verify"
+ "verify": "python3 tools/make_split_zip.py --verify"
 }

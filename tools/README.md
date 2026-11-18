@@ -1,7 +1,7 @@
-# 工具链说明 —— 这个仓库是怎么把阿里云文档变成可交付 Markdown 的
+# tools链说明 —— 这个仓库是怎么把阿里云文档变成可交付 Markdown 的
 
 面向"接手就要改东西的人"。每节都给**能直接贴跑的命令**。仓库根的路径、册数、包体积以
-`文档缓存索引.json` 与 `分卷清单.json` 为准，别信任何文档里写死的数字（含本文件）。
+`doc_cache_index.json` 与 `分卷清单.json` 为准，别信任何文档里写死的数字（含本文件）。
 
 ---
 
@@ -23,7 +23,7 @@
 
 三条不可破坏的约定：
 
-1. **`文档缓存索引.json` / `.csv` 是唯一真源**（"已下载 + 已转换 + 该放哪"）。人读清单、
+1. **`doc_cache_index.json` / `.csv` 是唯一真源**（"已下载 + 已转换 + 该放哪"）。人读清单、
    分卷、release note 全部从它派生；它坏了等于交付坏了。
 2. **本地只留 Markdown，不留 PDF**。PDF 是过路料，每本转成功即删（`--no-delete` 才保留）。
    云端 PDF 位置记在 `pdfCloud` / `mdCloudKey` 两列。
@@ -34,7 +34,7 @@
 
 ## 1. 数据契约（先读这个再动代码）
 
-`工具/cache.py` 定义字段与判重逻辑：
+`tools/cache.py` 定义字段与判重逻辑：
 
 | 字段 | 含义 | 谁在用 |
 |---|---|---|
@@ -70,8 +70,8 @@ JSON 里另有 `md5pdf` / `mdChars` / `key` 等历史列（`md5pdf` 存 584 行�
 ### 2.1 取站点清单（不下载 PDF）
 ```bash
 export APSARA_COOKIE='…'                      # 只有中文需要；英文站免登录
-python3 工具/list_docs.py --langs en    --out ../../.scratch/en_all.json
-python3 工具/list_docs.py --langs zh,en --version V3.18.6 --out ../../.scratch/all.json
+python3 tools/list_docs.py --langs en    --out ../../.scratch/en_all.json
+python3 tools/list_docs.py --langs zh,en --version V3.18.6 --out ../../.scratch/all.json
 ```
 - 英文：抓下载页里内嵌的 `"cardItems":[…]` JSON，按 `Version` 归版本，书名里解析出**英文产品名**。
 - 中文：走 `help.aliyun.com/apsara/api`；cookie 失效会返回空清单并在 stderr 明说（**不静默降级**）。
@@ -84,15 +84,15 @@ python3 工具/list_docs.py --langs zh,en --version V3.18.6 --out ../../.scratch
 
 ### 2.2 判重要下哪些 / 少量增补
 ```bash
-python3 工具/pull_docs.py                                   # 只出决策表
-python3 工具/pull_docs.py --langs en --fetch --into-tree    # 只补 NEED，并按登记路径写回
+python3 tools/pull_docs.py                                   # 只出决策表
+python3 tools/pull_docs.py --langs en --fetch --into-tree    # 只补 NEED，并按登记路径写回
 ```
 
 ### 2.3 新版本线整批接入（下载→转换→校验→登记→删 PDF）
 ```bash
-python3 工具/release_batch.py --manifest ../../.scratch/en_all.json --version V3.18.3 \
+python3 tools/release_batch.py --manifest ../../.scratch/en_all.json --version V3.18.3 \
         --dl-workers 6 --cv-workers 3 --dry-run     # 先探体积，0 流量
-python3 工具/release_batch.py --manifest ../../.scratch/en_all.json --version V3.18.3 \
+python3 tools/release_batch.py --manifest ../../.scratch/en_all.json --version V3.18.3 \
         --dl-workers 6 --cv-workers 3
 ```
 - 自动跳过索引已登记且有 md 的书（幂等，中断后重跑接着来）。
@@ -103,7 +103,7 @@ python3 工具/release_batch.py --manifest ../../.scratch/en_all.json --version 
 ### 2.4 转换内核 `pdf2md.py`（唯一该改"转换质量"的地方）
 单独跑一本：
 ```bash
-python3 工具/pdf2md.py --pdf x.pdf --out y.md --url <原链> --title "<书名>" \
+python3 tools/pdf2md.py --pdf x.pdf --out y.md --url <原链> --title "<书名>" \
         --prodver V3.18.6 --docver 20260924
 ```
 内部机制（改动前务必看懂，这些位置都是踩过坑修出来的）：
@@ -128,20 +128,20 @@ front matter 里的 `converter:` 标记就是转换器的版本号。当前链�
 
 ### 2.5 整批重转（提升存量质量）
 ```bash
-python3 工具/reconvert_en.py --plan                      # 只统计待重转
-python3 工具/reconvert_en.py --lang zh --limit 5         # 先试点
-python3 工具/reconvert_en.py --lang zh --workers 3       # 中文全量
-python3 工具/reconvert_en.py --lang en --workers 3       # 英文全量
-python3 工具/reconvert_en.py --only ../../.scratch/redo.json --force   # 指定清单
+python3 tools/reconvert_en.py --plan                      # 只统计待重转
+python3 tools/reconvert_en.py --lang zh --limit 5         # 先试点
+python3 tools/reconvert_en.py --lang zh --workers 3       # 中文全量
+python3 tools/reconvert_en.py --lang en --workers 3       # 英文全量
+python3 tools/reconvert_en.py --only ../../.scratch/redo.json --force   # 指定清单
 ```
 每本从 front matter 的 `source_url` 重下 PDF（按 URL 派生临时名，可复用）、原地覆盖同名 md、
 更新索引 sha/KB/字符数、删 PDF。**跑之前一定先预检 PyMuPDF**（见 §4 坑 1）。
 
 ### 2.6 交付树改名
 ```bash
-python3 工具/rename_en_dirs.py            # 试跑：出迁移表 + 冲突检查
-python3 工具/rename_en_dirs.py --apply [--manifest ../../.scratch/en_all.json]
-python3 工具/rename_cn_dirs.py --apply
+python3 tools/rename_en_dirs.py            # 试跑：出迁移表 + 冲突检查
+python3 tools/rename_en_dirs.py --apply [--manifest ../../.scratch/en_all.json]
+python3 tools/rename_cn_dirs.py --apply
 ```
 默认只报不动；先做**撞名检查**（新路径重名就直接拒绝执行），搬完顺带剪空目录、改 `markdown`/
 `localPath`、重写全仓引用（跳过云端键）。两张映射表是命名口径的唯一来源：
@@ -149,8 +149,8 @@ python3 工具/rename_cn_dirs.py --apply
 
 ### 2.7 脱敏（提交前后各一次，重转之后必跑）
 ```bash
-python3 工具/redact_vendor_docs.py [markdown …]   # 可重复执行
-python3 工具/check_leaks.py                        # 规则自查（不比对个人邮箱明文）
+python3 tools/redact_vendor_docs.py [markdown …]   # 可重复执行
+python3 tools/check_leaks.py                        # 规则自查（不比对个人邮箱明文）
 ```
 厂商 PDF 正文里混着真实内部邮箱、`LTAI…` AccessKeyId、AccessKeySecret 实值。规则、豁免形状都在脚本
 docstring 里（example.com 域、Kerberos 主体、`user@IP`、`git@…` 克隆地址、`rm-*/pc-*/gp-*` 实例地址等不算 PII）。
@@ -162,10 +162,10 @@ docstring 里（example.com 域、Kerberos 主体、`user@IP`、`git@…` 克隆
 
 ### 2.8 派生人读清单与分卷包
 ```bash
-python3 工具/build_indexes.py       # markdown/README.md + 全量文档清单.html，并修 inScope、报失效链接
-python3 工具/make_split_zip.py --plan
-python3 工具/make_split_zip.py --parts 2 --max-mb 45
-python3 工具/make_split_zip.py --verify
+python3 tools/build_indexes.py       # markdown/README.md + all_docs_overview.html，并修 inScope、报失效链接
+python3 tools/make_split_zip.py --plan
+python3 tools/make_split_zip.py --parts 2 --max-mb 45
+python3 tools/make_split_zip.py --verify
 ```
 `make_split_zip.py` 的口径：以顶层目录（= 一个 stack 版本线）为**不可拆的最小单位**，
 实测每组压缩后字节，卷数取 `--parts`（默认按上限算最少卷数）后用 LPT 均衡；
@@ -178,11 +178,11 @@ python3 工具/make_split_zip.py --verify
 
 ### 2.9 Release note 那一套
 ```bash
-python3 工具/rn2607_pairs.py            # 证据层：V3.18.6 → V3.18.6_2607 逐册配对差异
-python3 工具/build_note_2607.py         # 渲染 ApsaraStack-V3.18.6_2607-Release-Note-EN.md
-python3 工具/rn3162_pairs.py            # 证据层：V3.16.2 → V3.18.6
-python3 工具/build_note_3162.py         # 渲染旧口径 release note（历史保留）
-python3 工具/fetch_release_corpus.py    # 只为 release note 补抓/补转的额外英文册
+python3 tools/rn2607_pairs.py            # 证据层：V3.18.6 → V3.18.6_2607 逐册配对差异
+python3 tools/build_note_2607.py         # 渲染 ApsaraStack-V3.18.6_2607-Release-Note-EN.md
+python3 tools/rn3162_pairs.py            # 证据层：V3.16.2 → V3.18.6
+python3 tools/build_note_3162.py         # 渲染旧口径 release note（历史保留）
+python3 tools/fetch_release_corpus.py    # 只为 release note 补抓/补转的额外英文册
 ```
 渲染脚本读的证据 JSON 与写出的 md 名字都写在脚本里；release note 里引用的册数/页数一律从索引取。
 
@@ -193,21 +193,21 @@ python3 工具/fetch_release_corpus.py    # 只为 release note 补抓/补转的
 **A. 官方发了新版本线（例：又出 2608）**
 ```bash
 export APSARA_COOKIE='…'
-python3 工具/list_docs.py --langs en --out ../../.scratch/en_new.json
-python3 工具/release_batch.py --manifest ../../.scratch/en_new.json --version V3.18.6_2608 --dry-run
-python3 工具/release_batch.py --manifest ../../.scratch/en_new.json --version V3.18.6_2608
-python3 工具/redact_vendor_docs.py markdown
-python3 工具/build_indexes.py && python3 工具/make_split_zip.py
+python3 tools/list_docs.py --langs en --out ../../.scratch/en_new.json
+python3 tools/release_batch.py --manifest ../../.scratch/en_new.json --version V3.18.6_2608 --dry-run
+python3 tools/release_batch.py --manifest ../../.scratch/en_new.json --version V3.18.6_2608
+python3 tools/redact_vendor_docs.py markdown
+python3 tools/build_indexes.py && python3 tools/make_split_zip.py
 git add -A && git commit && git push
 ```
 **B. 改了 `pdf2md` 的转换规则**：升 `converter` 标记与 `NEW_TAG` → 抽 3~5 本试点（`--limit`）→
 逐本核对结构指标 → `--lang zh` / `--lang en` 全量 → 脱敏 → 刷索引 → 重打包 → 提交。
 **C. 交付前的固定顺序**（踩过：打包完又重建清单 → 卷里装的是旧文件）
 ```bash
-python3 工具/redact_vendor_docs.py markdown    # 1 脱敏
-python3 工具/build_indexes.py                  # 2 人读清单（读索引）
-python3 工具/make_split_zip.py --parts 2       # 3 最后才打包
-python3 工具/make_split_zip.py --verify        # 4 验收
+python3 tools/redact_vendor_docs.py markdown    # 1 脱敏
+python3 tools/build_indexes.py                  # 2 人读清单（读索引）
+python3 tools/make_split_zip.py --parts 2       # 3 最后才打包
+python3 tools/make_split_zip.py --verify        # 4 验收
 ```
 脱敏会改字节，所以索引里的 `markdownSha256` / `markdownKB` 必须在脱敏**之后**重算，
 否则指纹记的是转换瞬间、不是交付内容。`--verify` 不是走过场：本次就是它抓到
@@ -260,4 +260,4 @@ python3 工具/make_split_zip.py --verify        # 4 验收
 | `fetch_release_corpus.py` | 只为 release note 补抓补转英文册 | `[workers]` |
 
 根目录 `AGENTS.md`（工作区常驻指令）与 `README.md`（交付索引）是另外两份必读；
-本文件只讲"怎么干活"，册数/体积/覆盖情况一律看 `文档缓存索引.json`、`分卷清单.json`。
+本文件只讲"怎么干活"，册数/体积/覆盖情况一律看 `doc_cache_index.json`、`分卷清单.json`。

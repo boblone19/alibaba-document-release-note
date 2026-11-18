@@ -1,6 +1,6 @@
 """渲染 V3.18.6 → V3.18.6_2607 的英文 release note（细节级变化说明）。
 
-  python3 工具/build_note_2607.py     # 读 .scratch/rn2607_pairs.json，写交付根目录 ApsaraStack-V3.18.6_2607-Release-Note-EN.md
+  python3 tools/build_note_2607.py     # 读 .scratch/rn2607_pairs.json，写交付根目录 ApsaraStack-V3.18.6_2607-Release-Note-EN.md
 
 每一句都可回溯到：产品 / 手册文件 / 小节标题。没有证据的地方直接写"无对比对象"，
 不写"未变化"。
@@ -32,7 +32,7 @@ def quote(body, n=460):
 
 def main():
     d = json.load(open(os.path.join(SCRATCH, "rn2607_pairs.json"), encoding="utf-8"))
-    rows = json.load(open(os.path.join(ROOT, "文档缓存索引.json"), encoding="utf-8"))
+    rows = json.load(open(os.path.join(ROOT, "doc_cache_index.json"), encoding="utf-8"))
     pairs, only_new, only_old = d["pairs"], d["onlyNew"], d["onlyOld"]
     b26 = [r for r in rows if r.get("version") == "V3.18.6_2607"]
     L = []
@@ -307,7 +307,7 @@ def _part4(add, L, pairs):
     add("|---|---|")
     add("| `markdown/10_EN_ApsaraStack_V3.18.6_2607/` | the 265 manuals behind this note |")
     add("| `markdown/10_EN_ApsaraStack_v3.18.6/` | the older 287-manual English set used as baseline |")
-    add("| `文档缓存索引.csv` | 901 rows; `id / versionStamp / pages / markdown / markdownSha256` |")
+    add("| `doc_cache_index.csv` | 901 rows; `id / versionStamp / pages / markdown / markdownSha256` |")
     add("| `markdown_全量_901册.zip` | whole corpus, one zip |")
     add("")
     txt = "\n".join(L) + "\n"

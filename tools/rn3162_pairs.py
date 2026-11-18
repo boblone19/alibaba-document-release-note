@@ -1,6 +1,6 @@
 """V3.16.2 → V3.18.6 配对差异提取（release note 的证据层）。
 
-  python3 工具/rn3162_pairs.py            # 产出 .scratch/rn3162_pairs.json 并打印统计
+  python3 tools/rn3162_pairs.py            # 产出 .scratch/rn3162_pairs.json 并打印统计
 
 与 rn2607_pairs.py 是同一条证据管线（句子级增删、大纲增减/改名、配额表逐行差异、
 官方 release notes 段），只换配对两侧：old=V3.16.2（53 册英文基线），new=V3.18.6（287 册）。
@@ -22,7 +22,7 @@ sys.path.insert(0, HERE)
 import release_note as RN  # noqa: E402
 import rn2607_pairs as P   # noqa: E402  （句子管线/配对键/大纲差分在此复用）
 
-IDX = os.path.join(ROOT, "文档缓存索引.json")
+IDX = os.path.join(ROOT, "doc_cache_index.json")
 OUT = os.path.join(ROOT, os.pardir, os.pardir, ".scratch", "rn3162_pairs.json")
 OLD_VER, NEW_VER = "V3.16.2", "V3.18.6"
 DEP = re.compile(r"(?i)\bdeprecated\b|\breplaced by\b|\bno longer supported\b|"

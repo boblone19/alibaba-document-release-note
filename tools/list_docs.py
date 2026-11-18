@@ -1,12 +1,12 @@
 """Re-list the official catalogues into cache-shaped candidates (no PDF traffic).
 
-  python3 工具/list_docs.py --langs en                 # 无需登录：抽国际站下载页的 .pdf 链接
-  APSARA_COOKIE='…' python3 工具/list_docs.py --langs zh --stacks enterprise@v_3_18_6_20260730
-  python3 工具/list_docs.py --langs en --out 云端清单.json   # 给 pull_docs.py 当 --manifest
+  python3 tools/list_docs.py --langs en                 # 无需登录：抽国际站下载页的 .pdf 链接
+  APSARA_COOKIE='…' python3 tools/list_docs.py --langs zh --stacks enterprise@v_3_18_6_20260730
+  python3 tools/list_docs.py --langs en --out 云端清单.json   # 给 pull_docs.py 当 --manifest
 
 英文页是服务端全量渲染，抓 HTML 里的 .pdf 即可（不登录、不翻页）；中文清单接口需要
 "有专有云权益的登录态"（cookie 只从环境读，绝不写盘、绝不打印）。
-输出字段与 文档缓存索引.json 对齐，因此 decide() 能直接判 SKIP/FETCH/NEW。
+输出字段与 doc_cache_index.json 对齐，因此 decide() 能直接判 SKIP/FETCH/NEW。
 """
 import argparse
 import json
@@ -130,7 +130,7 @@ def en_list(version=""):
 
 def zh_paths():
     """中文树落盘路径的英文构成：域用固定英译表，产品与手册用接口给的 ASCII code。
-    与 工具/rename_cn_dirs.py 同一套映射，别在这儿再造第二套。"""
+    与 tools/rename_cn_dirs.py 同一套映射，别在这儿再造第二套。"""
     import rename_cn_dirs as RC
     return RC
 

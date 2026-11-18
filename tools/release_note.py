@@ -129,11 +129,11 @@ def domain_lookup():
     """英文产品名 → 服务域：经中英对照表拿中文 code，再用中文缓存的 category。"""
     code_of, cat_of = {}, {}
     try:
-        for r in csv.DictReader(open("中英对照手册映射.csv", encoding="utf-8-sig")):
+        for r in csv.DictReader(open("cn_en_manual_map.csv", encoding="utf-8-sig")):
             code_of[norm(r.get("英文产品名(国际版)") or "")] = (r.get("产品code") or "").strip()
     except Exception:
         pass
-    rows = json.load(open("文档缓存索引.json", encoding="utf-8"))
+    rows = json.load(open("doc_cache_index.json", encoding="utf-8"))
     for r in rows:
         if r["lang"] == "zh":
             cat_of[(r.get("productCode") or "").lower()] = r.get("category") or "-"
@@ -144,7 +144,7 @@ def domain_lookup():
 
 
 def main():
-    rows = json.load(open("文档缓存索引.json", encoding="utf-8"))
+    rows = json.load(open("doc_cache_index.json", encoding="utf-8"))
     dom = domain_lookup()
     md = [r for r in rows if r.get("markdown") and os.path.exists(r["markdown"])]
     byver = defaultdict(dict)

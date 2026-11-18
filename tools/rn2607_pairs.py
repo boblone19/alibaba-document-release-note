@@ -1,6 +1,6 @@
 """V3.18.6 → V3.18.6_2607 配对差异提取（release note 的证据层）。
 
-  python3 工具/rn2607_pairs.py            # 产出 .scratch/rn2607_pairs.json 并打印统计
+  python3 tools/rn2607_pairs.py            # 产出 .scratch/rn2607_pairs.json 并打印统计
 
 只提取**可核对的事实**，不做任何推断：
   * 页量/字符量、文档版本、标题大纲的增减与改名（difflib 相似度 ≥0.8 视为改名）
@@ -25,7 +25,7 @@ ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
 import release_note as RN  # noqa: E402
 
-IDX = os.path.join(ROOT, "文档缓存索引.json")
+IDX = os.path.join(ROOT, "doc_cache_index.json")
 OUT = os.path.join(ROOT, os.pardir, os.pardir, ".scratch", "rn2607_pairs.json")
 PRE = re.compile(r"(?i)^\s*Alibaba Cloud Apsara Stack( Enterprise)?( Apsara Stack)?\s*v?[\d.]+(?:[ _-]\d{3,6})?\s*")
 CODE = re.compile(r"^\s{0,3}(#{1,6}\s|\||```|!\[|<)")

@@ -1,6 +1,6 @@
-"""Rebuild the human-facing indexes from 文档缓存索引.json (single source of truth).
+"""Rebuild the human-facing indexes from doc_cache_index.json (single source of truth).
 
-Outputs refreshed counts for: markdown/README.md (per-manual link list), 全量文档清单.html
+Outputs refreshed counts for: markdown/README.md (per-manual link list), all_docs_overview.html
 (filterable overview), and keeps inScope truthful (a manual that now has Markdown is in scope).
 Run after any fetch/convert batch.
 """
@@ -19,7 +19,7 @@ ROOT = os.path.dirname(HERE)
 os.chdir(ROOT)
 ZHL = {"zh": "中文", "en": "English"}
 
-rows = json.load(open("文档缓存索引.json", encoding="utf-8"))
+rows = json.load(open("doc_cache_index.json", encoding="utf-8"))
 fixed = 0
 for r in rows:
     if r.get("markdown") and not r.get("inScope"):
@@ -87,14 +87,14 @@ footer{{color:#66707a;font-size:12px;margin-top:14px;line-height:1.8}}</style></
 <span id=cnt></span></div>
 <div class=card><table><thead><tr><th>语言</th><th>产品</th><th>服务域/类型</th><th>手册</th><th class=n>源页数</th>
 <th>版本戳</th><th>PDF</th><th>Markdown</th></tr></thead><tbody id=tb>{''.join(tr)}</tbody></table></div>
-<footer>判重：读 <code>文档缓存索引.csv</code> 的 <code>id@versionStamp</code> + <code>markdownSha256</code>，已转 Markdown 的册子不再下载。
-Release note：<code>ApsaraStack-3.18.6-Release-Note-EN.md</code>（工具 <code>工具/release_note.py</code> → <code>工具/build_note.py</code>）。</footer></div>
+<footer>判重：读 <code>doc_cache_index.csv</code> 的 <code>id@versionStamp</code> + <code>markdownSha256</code>，已转 Markdown 的册子不再下载。
+Release note：<code>ApsaraStack-3.18.6-Release-Note-EN.md</code>（tools <code>tools/release_note.py</code> → <code>tools/build_note.py</code>）。</footer></div>
 <script>const q=document.getElementById('q'),fl=document.getElementById('fl'),cnt=document.getElementById('cnt'),
 rs=[...document.querySelectorAll('#tb tr')];
 function f(){{const s=q.value.trim().toLowerCase(),a=fl.value;let k=0;
 rs.forEach(r=>{{const ok=(!s||r.dataset.q.includes(s))&&(!a||r.dataset.l===a);r.hidden=!ok;k+=ok?1:0}});
 cnt.textContent=k+' / '+rs.length;}} q.oninput=f;fl.onchange=f;f();</script></body></html>"""
-open("全量文档清单.html", "w", encoding="utf-8").write(page)
+open("all_docs_overview.html", "w", encoding="utf-8").write(page)
 bad_link = [l for l in re.findall(r'<a href="([^"]+\.md)"', page) if not os.path.exists(H.unescape(l))]
 print(f"inScope 修正 {fixed} 条 | 索引 {len(have)} 份（缺失登记 {len(missing)}）| {mb:.0f} MB")
 print("各语言/版本:", byver)

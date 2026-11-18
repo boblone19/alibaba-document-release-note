@@ -1136,7 +1136,7 @@ The corpus was also rebranded between the two sets: the string **“Apsara Stack
 3c. Quoted lines are verbatim extracts from the converted Markdown. The PDF extraction occasionally duplicates a short token or reorders a cell; those are extraction artifacts of our converter, not typographical errors in the manual, and they do not affect the substance of the quoted sentence.
 4. Section counting normalises numbered headings (`2.1.1.2.3. Limits_1578278510` → `limits`), so a re-number is not counted as add + drop. Renames are reported when the normalised titles are ≥ 0.85 similar.
 5. What this cannot show: why a change was made; whether removed text reflects a dropped feature or an editorial decision; anything about the manuals with no baseline (§5 — listed with closest names, never summarised as new or unchanged); and limits rows where the two editions do not share the row key.
-6. Full machine-readable evidence (all added/removed sentences per manual, with section attribution): `.scratch/rn3162_pairs.json` in the session workspace. Regenerate with `python3 工具/rn3162_pairs.py && python3 工具/build_note_3162.py`.
+6. Full machine-readable evidence (all added/removed sentences per manual, with section attribution): `.scratch/rn3162_pairs.json` in the session workspace. Regenerate with `python3 tools/rn3162_pairs.py && python3 tools/build_note_3162.py`.
 
 ## 8. Where the files are
 
@@ -1144,6 +1144,6 @@ The corpus was also rebranded between the two sets: the string **“Apsara Stack
 |---|---|
 | `markdown/10_EN_ApsaraStack_v3.18.6/` | the 287-manual English set this note describes |
 | `markdown/10_EN_ApsaraStack_V3.16.2/` | the 53-manual 2024–2025 English baseline |
-| `文档缓存索引.csv` | 901 rows; `id / versionStamp / pages / markdown / markdownSha256` |
+| `doc_cache_index.csv` | 901 rows; `id / versionStamp / pages / markdown / markdownSha256` |
 | `markdown_全量_901册.zip` | whole corpus, one zip |
 

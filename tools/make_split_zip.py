@@ -13,10 +13,10 @@
   5. 必须排在 redact_vendor_docs.py 与 build_indexes.py 之后跑 —— 先打包再重建清单，
      卷里就是旧文件（--verify 正是用来抓这种漂移的）。
 
-    python3 工具/make_split_zip.py --plan           # 只看分组与装箱预估，不写文件
-    python3 工具/make_split_zip.py                  # 生成 + 自动核验
-    python3 工具/make_split_zip.py --max-mb 40      # 上限降到 40 MB（卷数自动增加）
-    python3 工具/make_split_zip.py --verify         # 只核验已有产物
+    python3 tools/make_split_zip.py --plan           # 只看分组与装箱预估，不写文件
+    python3 tools/make_split_zip.py                  # 生成 + 自动核验
+    python3 tools/make_split_zip.py --max-mb 40      # 上限降到 40 MB（卷数自动增加）
+    python3 tools/make_split_zip.py --verify         # 只核验已有产物
 """
 import argparse
 import hashlib
@@ -144,7 +144,7 @@ def build(prefix, max_mb, parts, plan_only):
         write_zip(f"{prefix}_part{i}of{n}.zip", tops, rest, limit, rec, "other_volume")
     m = {"policy": "中文树（01_/02_ 顶层目录）单独一个整包；其余（英文各 stack 版本线、markdown/ 根级"
                    "清单与 _preview-samples）按 --max-mb 装箱分卷。版本线绝不跨卷；每卷独立 zip，"
-                   "无需拼接；所有产物文件名一律英文 ASCII。构建顺序必须是 脱敏 → build_indexes → 本工具",
+                   "无需拼接；所有产物文件名一律英文 ASCII。构建顺序必须是 脱敏 → build_indexes → 本tools",
          "maxFileMB": max_mb, "source": "markdown/", "removedOld": rm,
          "chinesePackage": next(r["file"] for r in rec if r["kind"] == "chinese_single"),
          "chineseBooks": zbooks,
@@ -153,7 +153,7 @@ def build(prefix, max_mb, parts, plan_only):
          "entries": sum(r["entries"] for r in rec),
          "books": sum(r["books"] for r in rec),
          "downloadOrder": [r["file"] for r in rec],
-         "verify": "python3 工具/make_split_zip.py --verify"}
+         "verify": "python3 tools/make_split_zip.py --verify"}
     json.dump(m, open(os.path.join(ROOT, MANIFEST), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print(f"   清单：{MANIFEST}（共 {m['totalMB']} MB / {m['books']} 册）")
     return 0

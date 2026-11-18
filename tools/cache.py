@@ -34,8 +34,8 @@ def fold_ascii(s):
 FIELDS = ["id", "lang", "stack", "version", "versionStamp", "productCode", "product", "category",
           "docType", "label", "pages", "bytes", "prodVer", "pdfLocal", "pdfCloud", "markdown",
           "markdownKB", "markdownSha256", "url", "localPath", "mdCloudKey", "inScope"]
-JSON_NAME = "文档缓存索引.json"
-CSV_NAME = "文档缓存索引.csv"
+JSON_NAME = "doc_cache_index.json"
+CSV_NAME = "doc_cache_index.csv"
 
 
 def _date_in(name):

@@ -1530,6 +1530,6 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 |---|---|
 | `markdown/10_EN_ApsaraStack_V3.18.6_2607/` | the 265 manuals behind this note |
 | `markdown/10_EN_ApsaraStack_v3.18.6/` | the older 287-manual English set used as baseline |
-| `文档缓存索引.csv` | 901 rows; `id / versionStamp / pages / markdown / markdownSha256` |
+| `doc_cache_index.csv` | 901 rows; `id / versionStamp / pages / markdown / markdownSha256` |
 | `markdown_全量_901册.zip` | whole corpus, one zip |
 

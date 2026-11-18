@@ -5,11 +5,11 @@
 是同形异码的排版字符：肉眼看着正常、按 ASCII 校验就失败，路径拼接与 URL 引用也容易出错。
 所以：无损折叠（不改词义、不改词），改完刷索引、改全仓引用、再让人读清单重生成。
 
-    python3 工具/ascii_paths.py            # 试跑：打印将改名的条目与冲突检查
-    python3 工具/ascii_paths.py --apply    # 真改 + 刷索引 + 改引用
+    python3 tools/ascii_paths.py            # 试跑：打印将改名的条目与冲突检查
+    python3 tools/ascii_paths.py --apply    # 真改 + 刷索引 + 改引用
 
 只碰 markdown/ 下的**路径**，不动正文（正文里的 NBSP/全角括号是厂商原文，另有
-redact/normalize 规则管着）。汉字路径不在本工具范围，那是 rename_en_dirs.py /
+redact/normalize 规则管着）。汉字路径不在本tools范围，那是 rename_en_dirs.py /
 rename_cn_dirs.py 的活。
 """
 import argparse
@@ -28,7 +28,7 @@ MD = os.path.join(ROOT, "markdown")
 
 
 def fold(s):
-    """段级折叠：先折叠排版字符，再压掉多余空格；汉字原样留给 rename_* 工具。"""
+    """段级折叠：先折叠排版字符，再压掉多余空格；汉字原样留给 rename_* tools。"""
     out = cache.fold_ascii(s)
     out = re.sub(r" {2,}", " ", out.replace("\t", " ")).strip()
     return out or s
