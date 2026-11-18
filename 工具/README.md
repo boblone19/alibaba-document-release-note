@@ -202,7 +202,18 @@ git add -A && git commit && git push
 ```
 **B. 改了 `pdf2md` 的转换规则**：升 `converter` 标记与 `NEW_TAG` → 抽 3~5 本试点（`--limit`）→
 逐本核对结构指标 → `--lang zh` / `--lang en` 全量 → 脱敏 → 刷索引 → 重打包 → 提交。
-**C. 只想核对"有没有缺书"**：见 §2.1 的 cardItems 差集法，别看页面显示的行数。
+**C. 交付前的固定顺序**（踩过：打包完又重建清单 → 卷里装的是旧文件）
+```bash
+python3 工具/redact_vendor_docs.py markdown    # 1 脱敏
+python3 工具/build_indexes.py                  # 2 人读清单（读索引）
+python3 工具/make_split_zip.py --parts 2       # 3 最后才打包
+python3 工具/make_split_zip.py --verify        # 4 验收
+```
+脱敏会改字节，所以索引里的 `markdownSha256` / `markdownKB` 必须在脱敏**之后**重算，
+否则指纹记的是转换瞬间、不是交付内容。`--verify` 不是走过场：本次就是它抓到
+"卷内 `markdown/README.md` 与盘上不一致"，因为我把打包排在了重建清单前面。
+
+**D. 只想核对"有没有缺书"**：见 §2.1 的 cardItems 差集法，别看页面显示的行数。
 
 ---
 

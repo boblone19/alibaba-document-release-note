@@ -1,5 +1,5 @@
 {
- "policy": "按顶层目录（=stack 版本线）整块装箱，版本线与根级清单文件都不跨卷；每卷是独立 zip，可单独下载解压，不需要按顺序拼接",
+ "policy": "按顶层目录（= stack 版本线）整块装箱，版本线与根级清单文件都不跨卷；每卷是独立 zip，可单独下载解压，不需要按顺序拼接",
  "maxFileMB": 45.0,
  "source": "markdown/",
  "parts": [
@@ -22,7 +22,7 @@
    "bytes": 32683159,
    "MB": 31.17,
    "entries": 665,
-   "sha256": "8d7ce236bfbab2bf9567b5df4c264f88fe53761b7159b930c176de37534fef0f",
+   "sha256": "1c0b87dbfb3954f91cfd79b82746a24f274e04a2a882f1196ff6a57fc3f9be1a",
    "contains": [
     "(根文件)",
     "02_AIStack_v2.17.0_20260828_OpenTrek",
@@ -40,6 +40,6 @@
   "ApsaraStack_Markdown_1247_Part1Of2.zip",
   "ApsaraStack_Markdown_1247_Part2Of2.zip"
  ],
- "verify": "python3 工具/make_split_zip.py --verify",
- "integrity": "逐卷 sha256 见 parts[].sha256；卷内每条与盘上 markdown/ 逐条 md5 比对由 --verify 执行"
+ "order": "先 redact_vendor_docs.py → build_indexes.py，最后才跑本工具",
+ "verify": "python3 工具/make_split_zip.py --verify"
 }
