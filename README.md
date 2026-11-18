@@ -11,7 +11,10 @@
 >   —— 云端不动：`文档缓存索引` 的 `mdCloudKey` / `pdfCloud` 是 OSS 上已发布包里的**中文对象键**（如 `apsara-docs/markdown_中英双语_515册.zip#markdown/01_专有云企业版…/计算服务/acr 容器镜像服务/05_用户指南_enterprise-user-guide.md`），跟着本地改名就会指错，所以刻意保持原样；这条本地/云端命名差异记在台账 `localState.dirNaming`
 >   —— 生成端同步改：`list_docs.py` 的 `zh_list()` 以后写的 `localPath` 也是英文路径，不会再退回中文
 >   —— 顺带修好 `build_indexes.py` 一个老 bug：`markdown/README.md` 里的链接写成 `markdown/x.md` 而该文件本身就在 `markdown/` 下，被解析成 `markdown/markdown/x.md` —— 1,188 条全坏链；同时把 README 手册表里 296 条指向不存在 PDF 的链接改成指向库内真实 md，现在 README/清单/HTML **失效链接 0**
-> - **英文树的目录名已统一为英文**：`markdown/10_EN_ApsaraStack_<版本>/<英文产品名>/<官方书名>.md`。原先中间层直接抄 OSS 对象路径，阿里云自己中英混排（v3.18.6 是英文、V3.18.6_2607 与老版本是中文，还夹着 `20230221`、`v3.12.0` 这类版本/日期垃圾段）。现在改用从官方英文书名解析出的产品名（`文档缓存索引.json` 的 `product` 字段，951 行零中文）。工具：`工具/rename_en_dirs.py`（默认试跑，`--apply` 才动；只碰 `10_EN_*`，中文树按约定保留中文目录）；生成端 `list_docs.py` 的 `localPath` 同步改，新版本不会再落中文目录。本轮搬 261 本 → 82 个英文产品目录，0 文件名冲突，全树复查 0 处中文残留
+> - **英文树的目录名已统一为英文**：`markdown/10_EN_ApsaraStack_<版本>/<英文产品名>/<官方书名>.md`。原先中间层直接抄 OSS 对象路径，阿里云自己中英混排（v3.18.6 是英文、V3.18.6_2607 与老版本是中文，还夹着 `20230221`、`v3.12.0` 这类版本/日期垃圾段）。现在改用从官方英文书名解析出的产品名（`文档缓存索引.json` 的 `product` 字段，951 行零中文）。工具：`工具/rename_en_dirs.py`（默认试跑，`--apply` 才动；只碰 `10_EN_*`）；生成端 `list_docs.py` 的 `localPath` 同步改，新版本不会再落中文目录。本轮搬 261 本 → 82 个英文产品目录，0 文件名冲突，全树复查 0 处中文残留
+
+> - **打包已改为分卷，单卷不再超过 GitHub 的 50 MB**：`ApsaraStack_Markdown_1247_Part1Of2.zip`（32.37 MB / 589 条目）+ `ApsaraStack_Markdown_1247_Part2Of2.zip`（31.17 MB / 665 条目），合计 63.54 MB；原来 63.5 MB 的单包已删除（它只是越过了 GitHub 的软提示线，不是内容问题）。装箱以顶层目录（= 一个 stack 版本线）为最小单位，**版本线绝不跨卷** —— 单独下一卷解压就是那一版本完整可读的 Markdown；每卷都是独立 zip（不是 `.z01` 切片），不需要按顺序拼接。`分卷清单.json` 记录每卷 sha256/字节数/条目数/包含哪些目录与下载顺序；核验：`python3 工具/make_split_zip.py --verify`（当前 2 卷全部通过，1,254 条目全覆盖，与 `markdown/` 逐条 md5 一致）
+> - **工具链怎么跑：见 `工具/README.md`** —— 数据契约（`文档缓存索引.json` 22 列；判重五态 SKIP/CONVERT/SCOPE/FETCH/NEW）、每个阶段调用哪个脚本与具体命令、`pdf2md.py` 每条判据的来由（含本轮发现的 `junk()` 只看跨页重复导致误删正文套话）、改名/脱敏/分卷/release note 的完整跑法与踩过的坑清单
 
 > 英文 PDF ↔ Markdown 的对应关系统一以 `文档缓存索引.csv` 为准（`pdfCloud` = PDF 所在云端包，`localPath` = 登记路径，`markdown` = 已转出的 md）。
 
