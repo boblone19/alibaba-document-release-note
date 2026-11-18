@@ -1,0 +1,68 @@
+{
+ "policy": "中文树（01_/02_ 顶层目录）单独一个整包；其余（英文各 stack 版本线、markdown/ 根级清单与 _preview-samples）按 --max-mb 装箱分卷。版本线绝不跨卷；每卷独立 zip，无需拼接；所有产物文件名一律英文 ASCII。构建顺序必须是 脱敏 → build_indexes → 本工具",
+ "maxFileMB": 45.0,
+ "source": "markdown/",
+ "removedOld": 4,
+ "chinesePackage": "ApsaraStack_Markdown_zh_296books.zip",
+ "chineseBooks": 296,
+ "volumes": [
+  "ApsaraStack_Markdown_part1of2.zip",
+  "ApsaraStack_Markdown_part2of2.zip"
+ ],
+ "parts": [
+  {
+   "file": "ApsaraStack_Markdown_zh_296books.zip",
+   "kind": "chinese_single",
+   "bytes": 15394662,
+   "MB": 14.68,
+   "entries": 296,
+   "books": 296,
+   "sha256": "c26c3534f6206360cbb8af37bd20ed16b39eae366b7f3279c9d7ee1b41dce55c",
+   "contains": [
+    "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+    "02_AIStack_v2.17.0_20260828_OpenTrek"
+   ]
+  },
+  {
+   "file": "ApsaraStack_Markdown_part1of2.zip",
+   "kind": "other_volume",
+   "bytes": 25271054,
+   "MB": 24.1,
+   "entries": 455,
+   "books": 448,
+   "sha256": "5fcea41c9fb78d42ead11b41ee1ed365a99ac0c4986604e0c4edc73ca0d221d6",
+   "contains": [
+    "(根文件)",
+    "10_EN_ApsaraStack_V3.14.0",
+    "10_EN_ApsaraStack_V3.16.2",
+    "10_EN_ApsaraStack_V3.18.1",
+    "10_EN_ApsaraStack_v3.18.6",
+    "_preview-samples"
+   ]
+  },
+  {
+   "file": "ApsaraStack_Markdown_part2of2.zip",
+   "kind": "other_volume",
+   "bytes": 25957267,
+   "MB": 24.75,
+   "entries": 503,
+   "books": 503,
+   "sha256": "f0bab87479cffda3b6ee4d0e0de88dfa93e7e498d3e512622b9ba12c75de1f90",
+   "contains": [
+    "10_EN_ApsaraStack_V3.12.0",
+    "10_EN_ApsaraStack_V3.18.2",
+    "10_EN_ApsaraStack_V3.18.3",
+    "10_EN_ApsaraStack_V3.18.6_2607"
+   ]
+  }
+ ],
+ "totalMB": 63.54,
+ "entries": 1254,
+ "books": 1247,
+ "downloadOrder": [
+  "ApsaraStack_Markdown_zh_296books.zip",
+  "ApsaraStack_Markdown_part1of2.zip",
+  "ApsaraStack_Markdown_part2of2.zip"
+ ],
+ "verify": "python3 工具/make_split_zip.py --verify"
+}

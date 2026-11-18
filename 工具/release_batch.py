@@ -71,6 +71,7 @@ def download(row, pdf_dir=None):
 
 
 def safe(name, limit=120):
+    name = cache.fold_ascii(name)
     return re.sub(r'[\\/:*?"<>|\x00-\x1f]+', "_", name).strip(" ._")[:limit]
 
 

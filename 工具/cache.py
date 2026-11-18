@@ -19,6 +19,18 @@ import os
 import re
 import urllib.parse
 
+# 交付路径只允许 ASCII：阿里云官方书名里混着 NBSP 与全角括号（踩过：10 处 NBSP、5 对全角括号），
+# 这些是无损折叠，不改词义。任何写路径的地方都先过 fold_ascii()。
+_FOLD = {0x00A0: " ", 0x2007: " ", 0x202F: " ", 0x3000: " ", 0xFF08: "(", 0xFF09: ")",
+         0xFF3B: ";", 0xFF1A: ":", 0x2011: "-", 0x2013: "-", 0x2014: "-", 0x2010: "-",
+         0x2018: "'", 0x2019: "'", 0x201C: '"', 0x201D: '"'}
+
+
+def fold_ascii(s):
+    """无损把书名里的排版字符折成 ASCII；汉字不折（那是另一回事，得走 rename_* 的映射）。"""
+    return str(s or "").translate(_FOLD)
+
+
 FIELDS = ["id", "lang", "stack", "version", "versionStamp", "productCode", "product", "category",
           "docType", "label", "pages", "bytes", "prodVer", "pdfLocal", "pdfCloud", "markdown",
           "markdownKB", "markdownSha256", "url", "localPath", "mdCloudKey", "inScope"]

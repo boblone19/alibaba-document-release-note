@@ -233,7 +233,8 @@ python3 工具/make_split_zip.py --verify        # 4 验收
    工作提交掉，别反复空试。
 9. **不要往 `permissions.additionalDirectories` 写路径**（Bob 2026-10-21 明确禁止并手工清理过）；
    换目录用 Bash 的 `workdir` 参数或绝对路径。
-10. **交付目录里不写个人邮箱/凭证明文**；文档里的数字必须能在索引/清单里复现，改完自查一遍。
+10. **路径命名只能 ASCII**：官方英文书名里混了 NBSP 与全角括号，肉眼看不出；`cache.fold_ascii()` 在写路径处统一折叠，`ascii_paths.py` 收拾存量，`make_split_zip.py --verify` 兜底把关。
+11. **交付目录里不写个人邮箱/凭证明文**；文档里的数字必须能在索引/清单里复现，改完自查一遍。
 
 ---
 
@@ -252,7 +253,8 @@ python3 工具/make_split_zip.py --verify        # 4 验收
 | `rename_en_dirs.py` | 英文树目录改英文产品名 | `--apply [--manifest]` |
 | `rename_cn_dirs.py` | 中文树目录/文件名改 ASCII | `--apply` |
 | `build_indexes.py` | 从索引重生成人读清单与总览 HTML | — |
-| `make_split_zip.py` | 打成 ≤上限的多卷 zip + 核验 | `--plan --parts --max-mb --verify` |
+| `make_split_zip.py` | 中文单包 + 其余分卷，ASCII 命名，产清单与核验 | `--plan --parts --max-mb --prefix --verify` |
+| `ascii_paths.py` | 把路径里的 NBSP/全角括号无损折成 ASCII（不碰汉字） | `--apply` |
 | `rn2607_pairs.py` / `rn3162_pairs.py` | release note 的证据层（逐册配对差异） | — |
 | `build_note_2607.py` / `build_note_3162.py` / `build_note.py` / `release_note.py` | 渲染 release note | — |
 | `fetch_release_corpus.py` | 只为 release note 补抓补转英文册 | `[workers]` |

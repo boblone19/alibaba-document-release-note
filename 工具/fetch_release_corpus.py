@@ -30,6 +30,7 @@ os.chdir(ROOT)
 
 
 def safe(s, limit=120):
+    s = cache.fold_ascii(s)                     # NBSP / 全角括号等先折成 ASCII
     s = re.sub(r"\s+", " ", str(s or "").strip())
     s = "".join("_" if c in '\\/:*?"<>|' else c for c in s)
     return re.sub(r"_+", "_", s).strip(" ._")[:limit]

@@ -31,6 +31,7 @@ MD_ROOT = os.path.join(ROOT, "markdown")
 
 
 def safe(s, limit=120):
+    s = cache.fold_ascii(s)                      # NBSP / 全角括号先折 ASCII，再判语言
     s = re.sub(r"\s+", " ", str(s or "").strip())
     s = "".join("_" if c in '\\/:*?"<>|' else c for c in s)
     return re.sub(r"_+", "_", s).strip(" ._")[:limit]
