@@ -153,7 +153,8 @@ def zh_list(stacks, cookie):
                     continue
                 cid, _ = cache.identity("zh", u)
                 RC = zh_paths()
-                grp = ("02_AIStack_" if stack.startswith("ai_stack") else "01_ApsaraStack-Enterprise_") + ver
+                # 树名与英文树同一口径：<NN>_<LANG>_<Suite>_<Version>；md 路径由 rename_zh_tree.py 生成
+                grp = ("02_ZH_AIStack_" if stack.startswith("ai_stack") else "01_ZH_ApsaraStack_") + ver
                 dom = RC.DOMAIN_EN.get(p.get("category") or "")
                 if not dom:
                     print(f"  未登记的服务域：{p.get('category')!r}（先加进 rename_cn_dirs.DOMAIN_EN 再抓）",
