@@ -1,6 +1,6 @@
 __pycache__/
 *.pyc
 .DS_Store
-
+/pdfs/*
 # 预签名链接与 AccessKeyId，只留本地，不入库
 download_links.md
