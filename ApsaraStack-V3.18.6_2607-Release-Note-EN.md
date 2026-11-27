@@ -106,7 +106,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### Alibaba Cloud Message Queue — Product Introduction
 
-`27 pages / 20260629` → `27 pages / 20260828` (+0 pages, 9 → 9 sections, 37,823 → 37,454 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue Product Introduction 20260828.md`
+`27 pages / 20260629` → `27 pages / 20260828` (+0 pages, 9 → 9 sections, 37,823 → 37,454 characters). Evidence file: `Alibaba Cloud Message Queue Product Introduction 20260828.md`
 
 **Limits and quotas that changed**
 - new · *limits* · The length of a topic name | 64 characters | The topic name cannot exceed this length limit. Otherwise, you will be unable to send or subscribe.
@@ -116,7 +116,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### API Gateway — Developer Guide
 
-`613 pages / 20260629` → `367 pages / 20260828` (-246 pages, 315 → 160 sections, 699,736 → 451,282 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 API Gateway Developer Guide 20260828.md`
+`613 pages / 20260629` → `367 pages / 20260828` (-246 pages, 315 → 160 sections, 699,736 → 451,282 characters). Evidence file: `API Gateway Developer Guide 20260828.md`
 
 **Text new in this edition** (first lines by section)
 - `API call - Service management` — You must also specify Modify service nodes API description Modify the node configuration of a service individually.
@@ -131,7 +131,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### API Gateway — User Guide
 
-`196 pages / 20260629` → `196 pages / 20260828` (+0 pages, 82 → 82 sections, 304,331 → 305,106 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 API Gateway User Guide 20260828.md`
+`196 pages / 20260629` → `196 pages / 20260828` (+0 pages, 82 → 82 sections, 304,331 → 305,106 characters). Evidence file: `API Gateway User Guide 20260828.md`
 
 **Text new in this edition** (first lines by section)
 - `Route groups` — In the Associate Domain Name section, you can click Add to associate a domain name with the route group.
@@ -145,7 +145,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### Application Real-time Monitoring Service — Product Introduction
 
-`14 pages / 20260629` → `14 pages / 20260828` (+0 pages, 8 → 8 sections, 10,396 → 10,486 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 Application Real-time Monitoring Service Product Introduction 20260828.md`
+`14 pages / 20260629` → `14 pages / 20260828` (+0 pages, 8 → 8 sections, 10,396 → 10,486 characters). Evidence file: `Application Real-time Monitoring Service Product Introduction 20260828.md`
 
 **Limits and quotas that changed**
 - new · *limits* · Maximum nodes per application (by default, TLog outputs data from three physical machines) | 500
@@ -157,7 +157,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### Application Real-time Monitoring Service — User Guide
 
-`153 pages / 20260629` → `153 pages / 20260828` (+0 pages, 99 → 96 sections, 258,466 → 260,898 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 Application Real-time Monitoring Service User Guide 20260828.md`
+`153 pages / 20260629` → `153 pages / 20260828` (+0 pages, 99 → 96 sections, 258,466 → 260,898 characters). Evidence file: `Application Real-time Monitoring Service User Guide 20260828.md`
 
 **Text new in this edition** (first lines by section)
 - `FAQ about application` — By default, all agents that are downloaded after August 20, 2019 support the feature.
@@ -176,7 +176,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### Apsara Stack DNS Apsara Stack DNS (Within Cloud) — User Guide
 
-`66 pages / 20260310` → `68 pages / 20260828` (+2 pages, 55 → 55 sections, 95,280 → 102,921 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack DNS Apsara Stack DNS (Within Cloud) User Guide 20260828.md`
+`66 pages / 20260310` → `68 pages / 20260828` (+2 pages, 55 → 55 sections, 95,280 → 102,921 characters). Evidence file: `Apsara Stack DNS Apsara Stack DNS (Within Cloud) User Guide 20260828.md`
 
 **Text new in this edition** (first lines by section)
 - `Add and manage DNS records` — In the Add DNS Record dialog box that appears, configure the parameters described in the following table and then click OK.
@@ -197,7 +197,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### Apsara Stack Resilience ASR for Geo-disaster — Developer Guide
 
-`360 pages / 20260701` → `199 pages / 20260902` (-161 pages, 47 → 72 sections, 444,603 → 244,251 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 apsara stack resilience ASR for Geo-disaster Developer Guide 20260902.md`
+`360 pages / 20260701` → `199 pages / 20260902` (-161 pages, 47 → 72 sections, 444,603 → 244,251 characters). Evidence file: `apsara stack resilience ASR for Geo-disaster Developer Guide 20260902.md`
 
 **Text new in this edition** (first lines by section)
 - `Obtain AccessKey pair` — Otherwise, the API operation call may fail. Obtain a personal AccessKey pair** 1.
@@ -212,7 +212,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### Apsara Stack Resilience ASR for Geo-disaster — Operations and Maintenance Guide
 
-`96 pages / 20260701` → `113 pages / 20260828` (+17 pages, 73 → 113 sections, 126,799 → 142,092 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 apsara stack resilience ASR for Geo-disaster Operations and Maintenance Guide 20260828.md`
+`96 pages / 20260701` → `113 pages / 20260828` (+17 pages, 73 → 113 sections, 126,799 → 142,092 characters). Evidence file: `apsara stack resilience ASR for Geo-disaster Operations and Maintenance Guide 20260828.md`
 
 **Text new in this edition** (first lines by section)
 - `How do I add databases and tables to` — To filter out the database in the ASR-DR console whose version is earlier than V3.15.0, perform the following steps:
@@ -234,7 +234,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### Apsara Stack Resilience ASR for Geo-disaster — User Guide
 
-`204 pages / 20260701` → `218 pages / 20260901` (+14 pages, 123 → 128 sections, 316,296 → 333,933 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 apsara stack resilience ASR for Geo-disaster User Guide 20260901.md`
+`204 pages / 20260701` → `218 pages / 20260901` (+14 pages, 123 → 128 sections, 316,296 → 333,933 characters). Evidence file: `apsara stack resilience ASR for Geo-disaster User Guide 20260901.md`
 
 **Text new in this edition** (first lines by section)
 - `View a protection entity` — You can view the RPO of only the protection groups whose instance type is OSS or CDS-OSS.
@@ -253,7 +253,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### Apsara Stack Resilience ASR for Zone-disaster Recovery — User Guide
 
-`122 pages / 20260701` → `126 pages / 20260901` (+4 pages, 96 → 100 sections, 152,246 → 159,032 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 apsara stack resilience ASR for Zone-disaster Recovery User Guide 20260901.md`
+`122 pages / 20260701` → `126 pages / 20260901` (+4 pages, 96 → 100 sections, 152,246 → 159,032 characters). Evidence file: `apsara stack resilience ASR for Zone-disaster Recovery User Guide 20260901.md`
 
 **Text new in this edition** (first lines by section)
 - `Arbitration configuration` — For example, tenant Domain Name System (DNS) in the 3AZ scenario does not support arbitration.
@@ -274,7 +274,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### Apsara Uni-manager — User Guide
 
-`1380 pages / 20260701` → `1398 pages / 20260902` (+18 pages, 755 → 770 sections, 1,676,146 → 1,692,486 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager User Guide 20260902.md`
+`1380 pages / 20260701` → `1398 pages / 20260902` (+18 pages, 755 → 770 sections, 1,676,146 → 1,692,486 characters). Evidence file: `Apsara Uni-manager User Guide 20260902.md`
 
 **Text new in this edition** (first lines by section)
 - `Preset roles and their permissions` — The permission list describes the permissions of the roles to perform management operations in the Apsara Uni-manager Management Console and the permissions to call API operations.
@@ -298,7 +298,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### ApsaraDB for MongoDB — Operations and Maintenance Guide
 
-`90 pages / 20260629` → `315 pages / 20260828` (+225 pages, 81 → 133 sections, 164,765 → 563,047 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for MongoDB Operations and Maintenance Guide 20260828.md`
+`90 pages / 20260629` → `315 pages / 20260828` (+225 pages, 81 → 133 sections, 164,765 → 563,047 characters). Evidence file: `ApsaraDB for MongoDB Operations and Maintenance Guide 20260828.md`
 
 **Release notes written in the manual itself**
 - *Console release notes* — This topic outlines the new features and key updates for Dukang Intelligent Edition, a unified operations platform for cloud databases. **v3.18.6sp-2607**
@@ -317,7 +317,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### ApsaraDB for POLARDB PolarDB for MySQL (Primary_Secondary Edition) — Operations and Maintenance Guide
 
-`192 pages / 20260630` → `329 pages / 20260828` (+137 pages, 132 → 146 sections, 362,040 → 586,281 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for POLARDB PolarDB for MySQL (Primary_Secondary Edition) Operations and Maintenance Guide 20260828.md`
+`192 pages / 20260630` → `329 pages / 20260828` (+137 pages, 132 → 146 sections, 362,040 → 586,281 characters). Evidence file: `ApsaraDB for POLARDB PolarDB for MySQL (Primary_Secondary Edition) Operations and Maintenance Guide 20260828.md`
 
 **Release notes written in the manual itself**
 - *Console release notes* — This topic outlines the new features and key updates for Dukang Intelligent Edition, a unified operations platform for cloud databases. **v3.18.6sp-2607**
@@ -341,7 +341,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary_Secondary Edition) — Operations and Maintenance Guide
 
-`117 pages / 20260630` → `341 pages / 20260831` (+224 pages, 110 → 210 sections, 211,032 → 609,127 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary_Secondary Edition) Operations and Maintenance Guide 20260831.md`
+`117 pages / 20260630` → `341 pages / 20260831` (+224 pages, 110 → 210 sections, 211,032 → 609,127 characters). Evidence file: `ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary_Secondary Edition) Operations and Maintenance Guide 20260831.md`
 
 **Release notes written in the manual itself**
 - *Console release notes* — This topic outlines the new features and key updates for Dukang Intelligent Edition, a unified operations platform for cloud databases. **v3.18.6sp-2607**
@@ -360,7 +360,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary_Secondary Edition) — User Guide
 
-`371 pages / 20260630` → `373 pages / 20260831` (+2 pages, 126 → 127 sections, 751,576 → 754,203 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary_Secondary Edition) User Guide 20260831.md`
+`371 pages / 20260630` → `373 pages / 20260831` (+2 pages, 126 → 127 sections, 751,576 → 754,203 characters). Evidence file: `ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary_Secondary Edition) User Guide 20260831.md`
 
 **Text new in this edition** (first lines by section)
 - `hypopg (hypothetical` — The result shows that version 1.3.1 of the hypopg extension is installed.
@@ -381,7 +381,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### ApsaraDB for POLARDB PolarDB-X 2.0 — Operations and Maintenance Guide
 
-`87 pages / 20260629` → `312 pages / 20260828` (+225 pages, 71 → 123 sections, 160,163 → 558,588 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for POLARDB PolarDB-X 2.0 Operations and Maintenance Guide 20260828.md`
+`87 pages / 20260629` → `312 pages / 20260828` (+225 pages, 71 → 123 sections, 160,163 → 558,588 characters). Evidence file: `ApsaraDB for POLARDB PolarDB-X 2.0 Operations and Maintenance Guide 20260828.md`
 
 **Release notes written in the manual itself**
 - *Console release notes* — This topic outlines the new features and key updates for Dukang Intelligent Edition, a unified operations platform for cloud databases. **v3.18.6sp-2607**
@@ -400,7 +400,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### ApsaraDB for POLARDB PolarDB-X 2.0 — User Guide
 
-`198 pages / 20260629` → `201 pages / 20260828` (+3 pages, 83 → 87 sections, 313,289 → 315,788 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for POLARDB PolarDB-X 2.0 User Guide 20260828.md`
+`198 pages / 20260629` → `201 pages / 20260828` (+3 pages, 83 → 87 sections, 313,289 → 315,788 characters). Evidence file: `ApsaraDB for POLARDB PolarDB-X 2.0 User Guide 20260828.md`
 
 **Release notes written in the manual itself**
 - *Kernel release notes* — This topic describes the kernel release notes for PolarDB HTAP. For a detailed list of updates, see the **cloud-native distributed database PolarDB-X** **2.0** section in the **Hotfix release notes**. **Release date: 2026-07-30** v3.18.6r-paas-drds-hotfeature-SP007 provides a kernel upgrade for PolarDB-X 2.0 Enterprise Edition (Distributed): v3.18.6r-paas-drds-hotfeature-SP007 provides a kernel upgrade for PolarDB-X 2.0 Standard Edition (Centralized):
@@ -425,7 +425,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### ApsaraDB for RDS — Operations and Maintenance Guide
 
-`196 pages / 20260629` → `332 pages / 20260831` (+136 pages, 126 → 188 sections, 363,307 → 587,135 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for RDS Operations and Maintenance Guide 20260831.md`
+`196 pages / 20260629` → `332 pages / 20260831` (+136 pages, 126 → 188 sections, 363,307 → 587,135 characters). Evidence file: `ApsaraDB for RDS Operations and Maintenance Guide 20260831.md`
 
 **Release notes written in the manual itself**
 - *Console release notes* — This topic outlines the new features and key updates for Dukang Intelligent Edition, a unified operations platform for cloud databases. **v3.18.6sp-2607**
@@ -450,7 +450,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### ApsaraDB for RDS ApsaraDB RDS for MySQL — User Guide
 
-`181 pages / 20260629` → `168 pages / 20260831` (-13 pages, 89 → 90 sections, 301,736 → 291,103 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for RDS ApsaraDB RDS for MySQL User Guide 20260831.md`
+`181 pages / 20260629` → `168 pages / 20260831` (-13 pages, 89 → 90 sections, 301,736 → 291,103 characters). Evidence file: `ApsaraDB for RDS ApsaraDB RDS for MySQL User Guide 20260831.md`
 
 **Deprecations / removals stated in the text**
 - (Create a read-only instance) Account creation, deletion, authorization, and password changes are not supported.
@@ -478,7 +478,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### ApsaraDB for RDS ApsaraDB RDS for PolarDB — User Guide
 
-`159 pages / 20260629` → `164 pages / 20260827` (+5 pages, 67 → 71 sections, 251,381 → 259,324 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for RDS ApsaraDB RDS for PolarDB User Guide 20260827.md`
+`159 pages / 20260629` → `164 pages / 20260827` (+5 pages, 67 → 71 sections, 251,381 → 259,324 characters). Evidence file: `ApsaraDB for RDS ApsaraDB RDS for PolarDB User Guide 20260827.md`
 
 **Release notes written in the manual itself**
 - *Console release notes* — This topic describes the new features and important updates for RDS PolarDB. **v3.18.6sp-2607** eSQL (Compatible with Oracle)?
@@ -498,7 +498,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### ApsaraDB for RDS ApsaraDB RDS for PostgreSQL — User Guide
 
-`159 pages / 20260629` → `164 pages / 20260831` (+5 pages, 75 → 76 sections, 251,944 → 260,394 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for RDS ApsaraDB RDS for PostgreSQL User Guide 20260831.md`
+`159 pages / 20260629` → `164 pages / 20260831` (+5 pages, 75 → 76 sections, 251,944 → 260,394 characters). Evidence file: `ApsaraDB for RDS ApsaraDB RDS for PostgreSQL User Guide 20260831.md`
 
 **Release notes written in the manual itself**
 - *Console release notes* — This topic describes new features and important updates for the RDS PostgreSQL console. **v3.18.6sp-2607**
@@ -526,7 +526,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### Auto Scaling — User Guide
 
-`74 pages / 20260312` → `75 pages / 20260828` (+1 pages, 74 → 74 sections, 129,343 → 132,037 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 Auto Scaling User Guide 20260828.md`
+`74 pages / 20260312` → `75 pages / 20260828` (+1 pages, 74 → 74 sections, 129,343 → 132,037 characters). Evidence file: `Auto Scaling User Guide 20260828.md`
 
 **Text new in this edition** (first lines by section)
 - `Rollback of failed instances in` — In this case, you can use other methods to add ECS instances and ensure that the scaling group meets your business requirements.
@@ -546,7 +546,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### Cloud Defined Storage — Operations and Maintenance Guide
 
-`327 pages / 20260630` → `390 pages / 20260901` (+63 pages, 253 → 293 sections, 648,185 → 767,385 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Operations and Maintenance Guide 20260901.md`
+`327 pages / 20260630` → `390 pages / 20260901` (+63 pages, 253 → 293 sections, 648,185 → 767,385 characters). Evidence file: `Cloud Defined Storage Operations and Maintenance Guide 20260901.md`
 
 **Text new in this edition** (first lines by section)
 - `Proactive disk replacement` — This feature is not supported for Table Store clusters, EBS1.0 clusters, or OSS1.0 clusters.
@@ -568,7 +568,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### Cloud Defined Storage — User Guide
 
-`963 pages / 20260629` → `1032 pages / 20260908` (+69 pages, 165 → 51 sections, 3,145,729 → 3,451,015 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage User Guide 20260908.md`
+`963 pages / 20260629` → `1032 pages / 20260908` (+69 pages, 165 → 51 sections, 3,145,729 → 3,451,015 characters). Evidence file: `Cloud Defined Storage User Guide 20260908.md`
 
 **Deprecations / removals stated in the text**
 - (Buckets) Delete a bucket** In the Object Storage Service (OSS) console, you can delete buckets that you no longer need.
@@ -604,7 +604,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### CloudMonitor — Developer Guide
 
-`552 pages / 20260629` → `616 pages / 20260902` (+64 pages, 197 → 123 sections, 678,646 → 746,968 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 CloudMonitor Developer Guide 20260902.md`
+`552 pages / 20260629` → `616 pages / 20260902` (+64 pages, 197 → 123 sections, 678,646 → 746,968 characters). Evidence file: `CloudMonitor Developer Guide 20260902.md`
 
 **Text new in this edition** (first lines by section)
 - `CreateDashboardFolder` — The default API rate limit is 10,000 requests per second, and the default user rate limit is 50 requests per second.
@@ -623,7 +623,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### CloudMonitor — User Guide
 
-`405 pages / 20260629` → `435 pages / 20260901` (+30 pages, 138 → 149 sections, 558,330 → 608,008 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 CloudMonitor User Guide 20260901.md`
+`405 pages / 20260629` → `435 pages / 20260901` (+30 pages, 138 → 149 sections, 558,330 → 608,008 characters). Evidence file: `CloudMonitor User Guide 20260901.md`
 
 **Text new in this edition** (first lines by section)
 - `Kubernetes container` — Support Prometheus Monitoring 2.0, offering detailed monitoring for core components, nodes, applications, networks, GPUs, and Big Data/AI.
@@ -645,7 +645,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### Container Registry — User Guide
 
-`110 pages / 20260629` → `118 pages / 20260902` (+8 pages, 82 → 85 sections, 208,728 → 236,245 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 Container Registry User Guide 20260902.md`
+`110 pages / 20260629` → `118 pages / 20260902` (+8 pages, 82 → 85 sections, 208,728 → 236,245 characters). Evidence file: `Container Registry User Guide 20260902.md`
 
 **Text new in this edition** (first lines by section)
 - `Configure quotas` — After you select a zone on the Resource Pool Configuration page, the Synchronously Modify Quotas in Other Zones option appears in the Configure Quota dialog box.
@@ -666,7 +666,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### Container Service for Kubernetes — Product Introduction
 
-`23 pages / 20251202` → `24 pages / 20260828` (+1 pages, 9 → 9 sections, 30,535 → 30,004 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 Container Service for Kubernetes Product Introduction 20260828.md`
+`23 pages / 20251202` → `24 pages / 20260828` (+1 pages, 9 → 9 sections, 30,535 → 30,004 characters). Evidence file: `Container Service for Kubernetes Product Introduction 20260828.md`
 
 **Limits and quotas that changed**
 - new · *limits* · Cluster | By default, you can create a maximum of 50 clusters across all regions. Each cluster can contain a maximum of 100 nodes. To increase these quotas, submit a tick …
@@ -679,7 +679,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### Container Service for Kubernetes — User Guide
 
-`734 pages / 20260629` → `779 pages / 20260902` (+45 pages, 234 → 252 sections, 1,570,883 → 1,663,279 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 Container Service for Kubernetes User Guide 20260902.md`
+`734 pages / 20260629` → `779 pages / 20260902` (+45 pages, 234 → 252 sections, 1,570,883 → 1,663,279 characters). Evidence file: `Container Service for Kubernetes User Guide 20260902.md`
 
 **Release notes written in the manual itself**
 - *Release notes for Kubernetes 1.34* — Container Service for Kubernetes (ACK) strictly complies with the Certified Kubernetes Conformance Program. This topic describes the updates in Kubernetes 1.34, including update notes, major changes, and feature updates. **Component versions** The following table describes the core component versions that are supported by ACK clusters that run Kubernetes 1.34.
@@ -717,7 +717,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### Data Management — Developer Guide
 
-`443 pages / 20260313` → `447 pages / 20260831` (+4 pages, 204 → 204 sections, 536,201 → 540,308 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 Data Management Developer Guide 20260831.md`
+`443 pages / 20260313` → `447 pages / 20260831` (+4 pages, 204 → 204 sections, 536,201 → 540,308 characters). Evidence file: `Data Management Developer Guide 20260831.md`
 
 **Text new in this edition** (first lines by section)
 - `GetOpLog` — Users with the administrator or security administrator role can call this API.
@@ -735,7 +735,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### Data Management — User Guide
 
-`239 pages / 20260629` → `242 pages / 20260831` (+3 pages, 133 → 134 sections, 478,325 → 474,226 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 Data Management User Guide 20260831.md`
+`239 pages / 20260629` → `242 pages / 20260831` (+3 pages, 133 → 134 sections, 478,325 → 474,226 characters). Evidence file: `Data Management User Guide 20260831.md`
 
 **Release notes written in the manual itself**
 - *Console release notes* — This topic describes the new features and important updates for Data Management (DMS). **v3.18.6sp-2607** **v3.18.6sp-2605**
@@ -758,7 +758,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### Data Transmission Service — Developer Guide
 
-`480 pages / 20260313` → `572 pages / 20260901` (+92 pages, 161 → 160 sections, 661,207 → 762,050 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 Data Transmission Service Developer Guide 20260901.md`
+`480 pages / 20260313` → `572 pages / 20260901` (+92 pages, 161 → 160 sections, 661,207 → 762,050 characters). Evidence file: `Data Transmission Service Developer Guide 20260901.md`
 
 **Text new in this edition** (first lines by section)
 - `Configure HTTPS requests` — Python Set a global default protocol The following sample code shows how to specify a global default protocol:
@@ -774,7 +774,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### Data Transmission Service — Operations and Maintenance Guide
 
-`32 pages / 20260629` → `33 pages / 20260826` (+1 pages, 27 → 27 sections, 40,902 → 41,711 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 Data Transmission Service Operations and Maintenance Guide 20260826.md`
+`32 pages / 20260629` → `33 pages / 20260826` (+1 pages, 27 → 27 sections, 40,902 → 41,711 characters). Evidence file: `Data Transmission Service Operations and Maintenance Guide 20260826.md`
 
 **Release notes written in the manual itself**
 - *Console release notes* — This topic describes the new features and important updates for the DTS console. **v3.18.6sp-2607**
@@ -787,7 +787,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### Data Transmission Service — User Guide
 
-`680 pages / 20260629` → `695 pages / 20260831` (+15 pages, 161 → 160 sections, 1,319,083 → 1,328,708 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 Data Transmission Service User Guide 20260831.md`
+`680 pages / 20260629` → `695 pages / 20260831` (+15 pages, 161 → 160 sections, 1,319,083 → 1,328,708 characters). Evidence file: `Data Transmission Service User Guide 20260831.md`
 
 **Release notes written in the manual itself**
 - *Release notes* — This topic describes the new features and important updates of Data Transmission Service (DTS). **v3.18.6sp-2607** **v3.18.6sp-2605** nsole
@@ -812,7 +812,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### Database Backup — Developer Guide
 
-`12 pages / 20250529` → `114 pages / 20260828` (+102 pages, 23 → 43 sections, 10,378 → 130,099 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 Database Backup Developer Guide 20260828.md`
+`12 pages / 20250529` → `114 pages / 20260828` (+102 pages, 23 → 43 sections, 10,378 → 130,099 characters). Evidence file: `Database Backup Developer Guide 20260828.md`
 
 **Text no longer present**
 - `Configure the objects to` — The database instance that you want to restore has the existing object DB1.table1 and a new object DB1xxx.table1xxx.
@@ -822,7 +822,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### DataHub — User Guide
 
-`167 pages / 20260629` → `167 pages / 20260825` (+0 pages, 68 → 55 sections, 236,245 → 239,490 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 DataHub User Guide 20260825.md`
+`167 pages / 20260629` → `167 pages / 20260825` (+0 pages, 68 → 55 sections, 236,245 → 239,490 characters). Evidence file: `DataHub User Guide 20260825.md`
 
 **Limits and quotas that changed**
 - new · *limits* · Active shards | (0,256] | Each topic can contain up to 256 active shards.
@@ -844,7 +844,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### DataWorks — User Guide
 
-`1590 pages / 20260629` → `1600 pages / 20260831` (+10 pages, 662 → 654 sections, 2,738,354 → 2,804,701 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 DataWorks User Guide 20260831.md`
+`1590 pages / 20260629` → `1600 pages / 20260831` (+10 pages, 662 → 654 sections, 2,738,354 → 2,804,701 characters). Evidence file: `DataWorks User Guide 20260831.md`
 
 **Deprecations / removals stated in the text**
 - (Configure HybridDB for MySQL Reader) Data types that are not listed in the preceding table are not supported.
@@ -873,7 +873,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### Elastic Compute Service — Developer Guide
 
-`836 pages / 20260312` → `465 pages / 20260902` (-371 pages, 221 → 189 sections, 1,420,314 → 1,326,306 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 Elastic Compute Service Developer Guide 20260902.md`
+`836 pages / 20260312` → `465 pages / 20260902` (-371 pages, 221 → 189 sections, 1,420,314 → 1,326,306 characters). Evidence file: `Elastic Compute Service Developer Guide 20260902.md`
 
 **Text new in this edition** (first lines by section)
 - `ModifyPrefixList` — For example, if you add an entry with the CIDR block 10.0.0.0/8, you cannot also delete an entry with the CIDR block 10.0.0.0/8.
@@ -894,7 +894,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### Elastic Compute Service — User Guide
 
-`511 pages / 20260629` → `517 pages / 20260828` (+6 pages, 321 → 124 sections, 909,074 → 914,264 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 Elastic Compute Service User Guide 20260828.md`
+`511 pages / 20260629` → `517 pages / 20260828` (+6 pages, 321 → 124 sections, 909,074 → 914,264 characters). Evidence file: `Elastic Compute Service User Guide 20260828.md`
 
 **Deprecations / removals stated in the text**
 - (Connect to a Windows instance from a) Elastic Compute Service If an error message is returned indicating that an authentication error occurs and the function requested is not supported, install CredSSP updates and try again.
@@ -922,7 +922,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### Elasticsearch — Operations and Maintenance Guide
 
-`127 pages / 20260629` → `126 pages / 20260828` (-1 pages, 57 → 57 sections, 213,903 → 211,401 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 Elasticsearch Operations and Maintenance Guide 20260828.md`
+`127 pages / 20260629` → `126 pages / 20260828` (-1 pages, 57 → 57 sections, 213,903 → 211,401 characters). Evidence file: `Elasticsearch Operations and Maintenance Guide 20260828.md`
 
 **Text new in this edition** (first lines by section)
 - `Log in to the Elasticsearch` — Do not use the default elasticsearch-cluster instance, which is created in the elasticsearch namespace during deployment, for production workloads.
@@ -943,7 +943,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### IDaaS — Developer Guide
 
-`555 pages / 20260629` → `555 pages / 20260831` (+0 pages, 236 → 235 sections, 806,746 → 827,442 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 IDaaS Developer Guide 20260831.md`
+`555 pages / 20260629` → `555 pages / 20260831` (+0 pages, 236 → 235 sections, 806,746 → 827,442 characters). Evidence file: `IDaaS Developer Guide 20260831.md`
 
 **Release notes written in the manual itself**
 - *Release notes* — **Update date: October 23, 2025** Release description: The first time Identity as a Service (IDaaS) released on Apsara Stack. All API operations of IDaaS are available. 1. List of operations by function **1.1. Instances** **1.2. Applications** **1.3. Accounts** **1.4. Organizations** **1.5. Account groups** **1.6 Identity providers (IdPs)** **1.7. Password policies** **1.8. Synchronization** **1.9.
@@ -952,7 +952,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### MaxCompute — Developer Guide
 
-`316 pages / 20260629` → `552 pages / 20260826` (+236 pages, 191 → 528 sections, 702,816 → 816,976 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 MaxCompute Developer Guide 20260826.md`
+`316 pages / 20260629` → `552 pages / 20260826` (+236 pages, 191 → 528 sections, 702,816 → 816,976 characters). Evidence file: `MaxCompute Developer Guide 20260826.md`
 
 **Deprecations / removals stated in the text**
 - (Usage limits) Language features from Java versions later than Java 8 are not supported.
@@ -989,7 +989,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### MaxCompute — Operations and Maintenance Guide
 
-`174 pages / 20251205` → `160 pages / 20260827` (-14 pages, 104 → 108 sections, 271,494 → 272,499 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 MaxCompute Operations and Maintenance Guide 20260827.md`
+`174 pages / 20251205` → `160 pages / 20260827` (-14 pages, 104 → 108 sections, 271,494 → 272,499 characters). Evidence file: `MaxCompute Operations and Maintenance Guide 20260827.md`
 
 **Text new in this edition** (first lines by section)
 - `Query and allocate resources` — For example, MinCPU=500 indicates that the quota group can allocate at least 5 (500/100) cores.
@@ -1013,7 +1013,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### MaxCompute — User Guide
 
-`633 pages / 20260629` → `631 pages / 20260825` (-2 pages, 342 → 339 sections, 982,785 → 1,018,963 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 MaxCompute User Guide 20260825.md`
+`633 pages / 20260629` → `631 pages / 20260825` (-2 pages, 342 → 339 sections, 982,785 → 1,018,963 characters). Evidence file: `MaxCompute User Guide 20260825.md`
 
 **Text new in this edition** (first lines by section)
 - `Terms` — Basic data types ommon commands ommon commands If you want to use new data types introduced in the MaxCompute V2.0 data type edition, you must add one of the following configurations to enab …
@@ -1034,7 +1034,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### Message Queue for Apache Kafka — Product Introduction
 
-`17 pages / 20260629` → `17 pages / 20260828` (+0 pages, 9 → 9 sections, 26,410 → 26,143 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 Message Queue for Apache Kafka Product Introduction 20260828.md`
+`17 pages / 20260629` → `17 pages / 20260828` (+0 pages, 9 → 9 sections, 26,410 → 26,143 characters). Evidence file: `Message Queue for Apache Kafka Product Introduction 20260828.md`
 
 **Limits and quotas that changed**
 - new · *limitations* · Maximum message size | 10 MB
@@ -1042,7 +1042,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### Message Queue for Apache Kafka — User Guide
 
-`160 pages / 20260629` → `241 pages / 20260828` (+81 pages, 115 → 151 sections, 235,079 → 342,332 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 Message Queue for Apache Kafka User Guide 20260828.md`
+`160 pages / 20260629` → `241 pages / 20260828` (+81 pages, 115 → 151 sections, 235,079 → 342,332 characters). Evidence file: `Message Queue for Apache Kafka User Guide 20260828.md`
 
 **Text new in this edition** (first lines by section)
 - `http-sink-connector` — Click Add Endpoint Configuration to configure multiple endpoints.
@@ -1054,7 +1054,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### OpenTrek AgentRuntime — Product Introduction
 
-`16 pages / 20260629` → `16 pages / 20260828` (+0 pages, 8 → 8 sections, 23,736 → 23,360 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek AgentRuntime Product Introduction 20260828.md`
+`16 pages / 20260629` → `16 pages / 20260828` (+0 pages, 8 → 8 sections, 23,736 → 23,360 characters). Evidence file: `OpenTrek AgentRuntime Product Introduction 20260828.md`
 
 **Limits and quotas that changed**
 - new · *limits* · Cluster | Deploy the management cluster and workload clusters separately (at least two Kubernetes clusters). Each cluster requires a minimum configuration of 16 cores and …
@@ -1065,7 +1065,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### OpenTrek AI Gateway — Product Introduction
 
-`23 pages / 20260629` → `23 pages / 20260828` (+0 pages, 8 → 8 sections, 34,738 → 35,118 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek AI Gateway Product Introduction 20260828.md`
+`23 pages / 20260629` → `23 pages / 20260828` (+0 pages, 8 → 8 sections, 34,738 → 35,118 characters). Evidence file: `OpenTrek AI Gateway Product Introduction 20260828.md`
 
 **Limits and quotas that changed**
 - new · *usage limits* · Number of routes/services | 5,000 | Exceeding this limit increases the latency of configuration updates from the control plane (xDS pushes). To prevent this, segment your …
@@ -1076,7 +1076,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### OpenTrek AI Gateway — User Guide
 
-`358 pages / 20260629` → `370 pages / 20260828` (+12 pages, 110 → 112 sections, 484,304 → 510,958 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek AI Gateway User Guide 20260828.md`
+`358 pages / 20260629` → `370 pages / 20260828` (+12 pages, 110 → 112 sections, 484,304 → 510,958 characters). Evidence file: `OpenTrek AI Gateway User Guide 20260828.md`
 
 **Text new in this edition** (first lines by section)
 - `Manage quota rules` — The system automatically resets the quota at the start of the corresponding cycle (00:00) based on the selected time zone.
@@ -1097,7 +1097,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### Operation Orchestration Service — Product Introduction
 
-`9 pages / 20250728` → `8 pages / 20260828` (-1 pages, 5 → 5 sections, 7,919 → 6,971 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 Operation Orchestration Service Product Introduction 20260828.md`
+`9 pages / 20250728` → `8 pages / 20260828` (-1 pages, 5 → 5 sections, 7,919 → 6,971 characters). Evidence file: `Operation Orchestration Service Product Introduction 20260828.md`
 
 **Text new in this edition** (first lines by section)
 - `Product details` — Templates support both YAML and JSON formats and come in two types:
@@ -1114,7 +1114,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### Server Load Balancer — User Guide
 
-`126 pages / 20260629` → `130 pages / 20260828` (+4 pages, 67 → 67 sections, 234,245 → 237,714 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 Server Load Balancer User Guide 20260828.md`
+`126 pages / 20260629` → `130 pages / 20260828` (+4 pages, 67 → 67 sections, 234,245 → 237,714 characters). Evidence file: `Server Load Balancer User Guide 20260828.md`
 
 **Text new in this edition** (first lines by section)
 - `Add backend servers and their` — You can add the primary and secondary ENIs of ECS instances only for highperformance SLB instances.
@@ -1134,7 +1134,7 @@ The download page exposes **V3.18.6** and **V3.18.6 2607** (value `V3.18.6_2607`
 
 ### Virtual Private Cloud — User Guide
 
-`163 pages / 20260629` → `161 pages / 20260828` (-2 pages, 80 → 80 sections, 298,760 → 298,328 characters). Evidence file: `Alibaba Cloud Apsara Stack v3.18.6-2607 Virtual Private Cloud User Guide 20260828.md`
+`163 pages / 20260629` → `161 pages / 20260828` (-2 pages, 80 → 80 sections, 298,760 → 298,328 characters). Evidence file: `Virtual Private Cloud User Guide 20260828.md`
 
 **Text new in this edition** (first lines by section)
 - `Overview` — If you create a custom route table and associate the custom route table with a vSwitch for which IPv6 CIDR block is enabled, you must add a custom route whose destination CIDR block is ::/0 …

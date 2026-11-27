@@ -142,6 +142,7 @@ python3 tools/reconvert_en.py --only ../../.scratch/redo.json --force   # 指定
 python3 tools/rename_en_dirs.py            # 试跑：出迁移表 + 冲突检查
 python3 tools/rename_en_dirs.py --apply [--manifest ../../.scratch/en_all.json]
 python3 tools/rename_cn_dirs.py --apply
+python3 tools/rename_en_files.py --apply   # 英文文件名去版本/套件前缀
 ```
 默认只报不动；先做**撞名检查**（新路径重名就直接拒绝执行），搬完顺带剪空目录、改 `markdown`/
 `localPath`、重写全仓引用（跳过云端键）。两张映射表是命名口径的唯一来源：
@@ -260,6 +261,7 @@ python3 tools/make_split_zip.py --verify        # 4 验收
 | `redact_vendor_docs.py` | 厂商文档 PII/凭证脱敏（可重复跑） | 路径列表，默认三棵树 |
 | `check_leaks.py` | 提交前自查（pre-commit 钩子调它） | `--cached` |
 | `rename_en_dirs.py` | 英文树目录改英文产品名 | `--apply [--manifest]` |
+| `rename_en_files.py` | 英文树文件名去版本/套件前缀（`<产品名> <类型> <日期>.md`） | `--apply [--limit]` |
 | `rename_cn_dirs.py` | 中文树目录/文件名改 ASCII | `--apply` |
 | `build_indexes.py` | 从索引重生成人读清单与总览 HTML | — |
 | `make_split_zip.py` | 中文单包 + 其余分卷，ASCII 命名，产清单与核验 | `--plan --parts --max-mb --prefix --verify` |

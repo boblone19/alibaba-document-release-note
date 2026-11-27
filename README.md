@@ -14,6 +14,7 @@
 >   —— 生成端同步改：`list_docs.py` 的 `zh_list()` 以后写的 `localPath` 也是英文路径，不会再退回中文
 >   —— 顺带修好 `build_indexes.py` 一个老 bug：`markdown/README.md` 里的链接写成 `markdown/x.md` 而该文件本身就在 `markdown/` 下，被解析成 `markdown/markdown/x.md` —— 1,188 条全坏链；同时把 README 手册表里 296 条指向不存在 PDF 的链接改成指向库内真实 md，现在 README/清单/HTML **失效链接 0**
 > - **英文树的目录名已统一为英文**：`markdown/10_EN_ApsaraStack_<版本>/<英文产品名>/<官方书名>.md`。原先中间层直接抄 OSS 对象路径，阿里云自己中英混排（v3.18.6 是英文、V3.18.6_2607 与老版本是中文，还夹着 `20230221`、`v3.12.0` 这类版本/日期垃圾段）。现在改用从官方英文书名解析出的产品名（`doc_cache_index.json` 的 `product` 字段，951 行零中文）。tools：`tools/rename_en_dirs.py`（默认试跑，`--apply` 才动；只碰 `10_EN_*`）；生成端 `list_docs.py` 的 `localPath` 同步改，新版本不会再落中文目录。本轮搬 261 本 → 82 个英文产品目录，0 文件名冲突，全树复查 0 处中文残留
+> - **英文树的文件名也去掉了版本/套件前缀（2026-11-27）**：`markdown/10_EN_ApsaraStack_<版本>/<英文产品名>/<产品名> <手册类型> <日期>.md`，例如 `…/API Gateway/API Gateway User Guide 20260828.md`。官方书名前缀 `Alibaba Cloud Apsara Stack [Enterprise] V3.18.6` 里的版本父目录已经有了，产品路径又和产品目录名重复一遍，白占 30~45 字符。改后现存 614 本的文件名平均 99 → 61 字符、完整路径平均 169 → 130、超 260 字符的路径 26 → 1。tools：`tools/rename_en_files.py`（默认试跑，`--apply` 才动；只碰 `10_EN_*` 的文件名，目录/正文/云端键不动）；`doc_cache_index`、`conversion_manifest`、各 README/HTML 的引用由脚本一并重写，现存目录内失效引用 0
 
 > - **打包规则（2026-11-18 定版）：中文单独一个整包，其余分卷，所有包名与卷内路径一律 ASCII**
 >   - 中文树（`01_ApsaraStack-Enterprise_…` + `02_AIStack_…`）→ 单个 `ApsaraStack_Markdown_zh_296books.zip`（14.68 MB / 296 条目），不参与装箱；超过上限直接报错而不是偷偷拆卷

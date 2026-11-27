@@ -84,7 +84,7 @@ The corpus was also rebranded between the two sets: the string **“Apsara Stack
 
 ### Alibaba Cloud Message Queue — Developer Guide
 
-`113 pages / 20220815` → `386 pages / 20260108` (+273 pages, 196 → 320 sections, 143,271 → 409,295 characters). Evidence file: `Alibaba Cloud Apsara Stack V3.18.6 Alibaba Cloud Message Queue Developer Guide 20260108.md`
+`113 pages / 20220815` → `386 pages / 20260108` (+273 pages, 196 → 320 sections, 143,271 → 409,295 characters). Evidence file: `Alibaba Cloud Message Queue Developer Guide 20260108.md`
 
 **Text new in this edition** (first lines by section)
 - `SDK for Java` — Click the button, choose Middleware > Message Queue (MQ), and set Version to 2018-02-05.
@@ -106,7 +106,7 @@ The corpus was also rebranded between the two sets: the string **“Apsara Stack
 
 ### Alibaba Cloud Message Queue — User Guide
 
-`330 pages / 20250725` → `373 pages / 20260629` (+43 pages, 166 → 184 sections, 690,225 → 750,166 characters). Evidence file: `Alibaba Cloud Apsara Stack V3.18.6 Alibaba Cloud Message Queue User Guide 20260629.md`
+`330 pages / 20250725` → `373 pages / 20260629` (+43 pages, 166 → 184 sections, 690,225 → 750,166 characters). Evidence file: `Alibaba Cloud Message Queue User Guide 20260629.md`
 
 **Text new in this edition** (first lines by section)
 - `Configure logging` — ApsaraMQ for RocketMQ SDK for Java versions earlier than 1.7.8.Final ApsaraMQ for RocketMQ SDK for Java versions earlier than 1.7.8.Final support only Log4j and Logback.
@@ -128,7 +128,7 @@ The corpus was also rebranded between the two sets: the string **“Apsara Stack
 
 ### AnalyticDB for PostgreSQL — User Guide
 
-`85 pages / 20220915` → `258 pages / 20260630` (+173 pages, 47 → 94 sections, 140,102 → 414,717 characters). Evidence file: `Alibaba Cloud Apsara Stack V3.18.6 AnalyticDB for PostgreSQL User Guide 20260630.md`
+`85 pages / 20220915` → `258 pages / 20260630` (+173 pages, 47 → 94 sections, 140,102 → 414,717 characters). Evidence file: `AnalyticDB for PostgreSQL User Guide 20260630.md`
 
 **Text new in this edition** (first lines by section)
 - `Create a vector index` — AnalyticDB for PostgreSQL User G Supported vector operators AnalyticDB for PostgreSQL User G Important Only AnalyticDB for PostgreSQL instances of V6.6.1.0 or later support the following vec …
@@ -150,7 +150,7 @@ The corpus was also rebranded between the two sets: the string **“Apsara Stack
 
 ### API Gateway — Developer Guide
 
-`196 pages / 20220915` → `613 pages / 20260629` (+417 pages, 116 → 315 sections, 288,524 → 699,736 characters). Evidence file: `Alibaba Cloud Apsara Stack V3.18.6 API Gateway Developer Guide 20260629.md`
+`196 pages / 20220915` → `613 pages / 20260629` (+417 pages, 116 → 315 sections, 288,524 → 699,736 characters). Evidence file: `API Gateway Developer Guide 20260629.md`
 
 **Text new in this edition** (first lines by section)
 - `Get common header` — Click the button, choose Cloud Platform > Unified Cloud Management Platform, and set Version to 2019-05-10.
@@ -173,7 +173,7 @@ The corpus was also rebranded between the two sets: the string **“Apsara Stack
 
 ### API Gateway — User Guide
 
-`120 pages / 20220727` → `196 pages / 20260629` (+76 pages, 71 → 82 sections, 170,230 → 304,331 characters). Evidence file: `Alibaba Cloud Apsara Stack V3.18.6 API Gateway User Guide 20260629.md`
+`120 pages / 20220727` → `196 pages / 20260629` (+76 pages, 71 → 82 sections, 170,230 → 304,331 characters). Evidence file: `API Gateway User Guide 20260629.md`
 
 **Text new in this edition** (first lines by section)
 - `Import management` — API Gateway supports smooth migration of API definitions, group configurations, and authorization rules from the original API Gateway 1.0 to shared API Gateway instances.
@@ -197,7 +197,7 @@ The corpus was also rebranded between the two sets: the string **“Apsara Stack
 
 ### Apsara Uni-manager Operations Console — Developer Guide
 
-`65 pages / 20251106` → `580 pages / 20260703` (+515 pages, 38 → 157 sections, 80,492 → 697,180 characters). Evidence file: `Alibaba Cloud Apsara Stack V3.18.6 Apsara Uni-manager Operations Console Developer Guide 20260703.md`
+`65 pages / 20251106` → `580 pages / 20260703` (+515 pages, 38 → 157 sections, 80,492 → 697,180 characters). Evidence file: `Apsara Uni-manager Operations Console Developer Guide 20260703.md`
 
 **Release notes written in the manual itself**
 - *Release notes for Apsara* — **Uni-manager Operations** **Console SDK** This topic describes the release notes for the Apsara Uni-manager Operations Console SDK of Apsara Stack V3.18.6, including API releases, modifications, and known issues.
@@ -222,7 +222,7 @@ The corpus was also rebranded between the two sets: the string **“Apsara Stack
 
 ### Apsara Uni-manager Operations Console — User Guide
 
-`419 pages / 20251106` → `710 pages / 20260703` (+291 pages, 531 → 346 sections, 725,280 → 979,934 characters). Evidence file: `Alibaba Cloud Apsara Stack V3.18.6 Apsara Uni-manager Operations Console User Guide 20260703.md`
+`419 pages / 20251106` → `710 pages / 20260703` (+291 pages, 531 → 346 sections, 725,280 → 979,934 characters). Evidence file: `Apsara Uni-manager Operations Console User Guide 20260703.md`
 
 **Release notes written in the manual itself**
 - *Version change management* — This page displays all version change tasks that you can view. You can view the details and phases of a specific change task and perform operations on it. **Prerequisites** This page is hidden by default. If needed, you can edit it for display under **Menu** **Management**. **Procedure** 1. Log in to the Apsara Uni-manager Operations Console. 2. In the top navigation bar, choose **Platform Operation** > **O&M Change** > **Version** **Management**. 3.
@@ -255,7 +255,7 @@ The corpus was also rebranded between the two sets: the string **“Apsara Stack
 
 ### ApsaraDB for MongoDB — Developer Guide
 
-`221 pages / 20220913` → `223 pages / 20260629` (+2 pages, 121 → 121 sections, 281,634 → 298,408 characters). Evidence file: `Alibaba Cloud Apsara Stack V3.18.6 ApsaraDB for MongoDB Developer Guide 20260629.md`
+`221 pages / 20220913` → `223 pages / 20260629` (+2 pages, 121 → 121 sections, 281,634 → 298,408 characters). Evidence file: `ApsaraDB for MongoDB Developer Guide 20260629.md`
 
 **Text new in this edition** (first lines by section)
 - `Procedure for API calls` — By default, Apsara Stack Enterprise Edition V3.16.0 and later versions use the point of presence (POP) gateway to deliver the same user experience as in the Alibaba Cloud public cloud.
@@ -278,7 +278,7 @@ The corpus was also rebranded between the two sets: the string **“Apsara Stack
 
 ### ApsaraDB for MongoDB — User Guide
 
-`89 pages / 20220727` → `163 pages / 20260630` (+74 pages, 65 → 102 sections, 122,052 → 240,624 characters). Evidence file: `Alibaba Cloud Apsara Stack V3.18.6 ApsaraDB for MongoDB User Guide 20260630.md`
+`89 pages / 20220727` → `163 pages / 20260630` (+74 pages, 65 → 102 sections, 122,052 → 240,624 characters). Evidence file: `ApsaraDB for MongoDB User Guide 20260630.md`
 
 **Text new in this edition** (first lines by section)
 - `View performance metrics` — PolarDB for MySQL V2.0 provides rich performance metrics and second-level monitoring frequency, which allow you to easily track the status of clusters and address operational challenges.
@@ -300,7 +300,7 @@ The corpus was also rebranded between the two sets: the string **“Apsara Stack
 
 ### Auto Scaling — Developer Guide
 
-`249 pages / 20220916` → `420 pages / 20250619` (+171 pages, 89 → 137 sections, 366,677 → 645,543 characters). Evidence file: `Alibaba Cloud Apsara Stack V3.18.6 Auto Scaling Developer Guide 20250619.md`
+`249 pages / 20220916` → `420 pages / 20250619` (+171 pages, 89 → 137 sections, 366,677 → 645,543 characters). Evidence file: `Auto Scaling Developer Guide 20250619.md`
 
 **Text new in this edition** (first lines by section)
 - `Process of API calls` — To ensure that Apsara Stack provides the same experience as Alibaba Cloud Public Cloud, API operations in Apsara Stack Enterprise V3.16.0 and later are called by using the POP gateway by def …
@@ -322,7 +322,7 @@ The corpus was also rebranded between the two sets: the string **“Apsara Stack
 
 ### Auto Scaling — User Guide
 
-`57 pages / 20220727` → `74 pages / 20260312` (+17 pages, 62 → 74 sections, 92,764 → 129,343 characters). Evidence file: `Alibaba Cloud Apsara Stack V3.18.6 Auto Scaling User Guide 20260312.md`
+`57 pages / 20220727` → `74 pages / 20260312` (+17 pages, 62 → 74 sections, 92,764 → 129,343 characters). Evidence file: `Auto Scaling User Guide 20260312.md`
 
 **Text new in this edition** (first lines by section)
 - `Expected number of instances` — If you do not enable the Expected Number of Instances feature for a scaling group, Auto Scaling rejects new scaling requests when the scaling group has an ongoing scaling activity.
@@ -343,7 +343,7 @@ The corpus was also rebranded between the two sets: the string **“Apsara Stack
 
 ### Cloud Defined Storage — Developer Guide
 
-`783 pages / 20241114` → `2021 pages / 20260629` (+1238 pages, 30 → 896 sections, 2,333,816 → 3,058,424 characters). Evidence file: `Alibaba Cloud Apsara Stack V3.18.6 Cloud Defined Storage Developer Guide 20260629.md`
+`783 pages / 20241114` → `2021 pages / 20260629` (+1238 pages, 30 → 896 sections, 2,333,816 → 3,058,424 characters). Evidence file: `Cloud Defined Storage Developer Guide 20260629.md`
 
 **Deprecations / removals stated in the text**
 - (Error responses) Error codes Cloud Defined Storage Cloud Defined Storage Cloud Defined Storage Operations not supported by OSS If an operation not supported by OSS is performed to access a resource, OSS retu …
@@ -369,7 +369,7 @@ The corpus was also rebranded between the two sets: the string **“Apsara Stack
 
 ### Cloud Defined Storage — User Guide
 
-`691 pages / 20240703` → `963 pages / 20260629` (+272 pages, 196 → 165 sections, 1,669,115 → 3,145,729 characters). Evidence file: `Alibaba Cloud Apsara Stack V3.18.6 Cloud Defined Storage User Guide 20260629.md`
+`691 pages / 20240703` → `963 pages / 20260629` (+272 pages, 196 → 165 sections, 1,669,115 → 3,145,729 characters). Evidence file: `Cloud Defined Storage User Guide 20260629.md`
 
 **Deprecations / removals stated in the text**
 - (2.1.1.1.2. ACL) You can also delete exported historical inventory lists that you no longer need.
@@ -406,7 +406,7 @@ The corpus was also rebranded between the two sets: the string **“Apsara Stack
 
 ### CloudMonitor — Developer Guide
 
-`174 pages / 20250312` → `552 pages / 20260629` (+378 pages, 20 → 197 sections, 248,133 → 678,646 characters). Evidence file: `Alibaba Cloud Apsara Stack V3.18.6 CloudMonitor Developer Guide 20260629.md`
+`174 pages / 20250312` → `552 pages / 20260629` (+378 pages, 20 → 197 sections, 248,133 → 678,646 characters). Evidence file: `CloudMonitor Developer Guide 20260629.md`
 
 **Limits and quotas that changed**
 - new · *maxcompute quota groups* · (ECS) system load Load1 | Count/s | SystemLoad1 | userId and instanceId | The system load in the last minute.
@@ -424,7 +424,7 @@ The corpus was also rebranded between the two sets: the string **“Apsara Stack
 
 ### CloudMonitor — User Guide
 
-`205 pages / 20250421` → `405 pages / 20260629` (+200 pages, 48 → 138 sections, 305,046 → 558,330 characters). Evidence file: `Alibaba Cloud Apsara Stack V3.18.6 CloudMonitor User Guide 20260629.md`
+`205 pages / 20250421` → `405 pages / 20260629` (+200 pages, 48 → 138 sections, 305,046 → 558,330 characters). Evidence file: `CloudMonitor User Guide 20260629.md`
 
 **Deprecations / removals stated in the text**
 - (Custom dashboards) After you specify a dashboard as the default dashboard, the previous default dashboard is no longer the default, and the details page of the default dashboard is automatically displayed when …
@@ -449,7 +449,7 @@ The corpus was also rebranded between the two sets: the string **“Apsara Stack
 
 ### Container Service for Kubernetes — Developer Guide
 
-`98 pages / 20220915` → `186 pages / 20251202` (+88 pages, 17 → 90 sections, 230,762 → 271,003 characters). Evidence file: `Alibaba Cloud Apsara Stack V3.18.6 Container Service for Kubernetes Developer Guide 20251202.md`
+`98 pages / 20220915` → `186 pages / 20251202` (+88 pages, 17 → 90 sections, 230,762 → 271,003 characters). Evidence file: `Container Service for Kubernetes Developer Guide 20251202.md`
 
 **Text new in this edition** (first lines by section)
 - `Use CommonRequest` — The following sample RPC call contains the service (ACK), API operation (CreateCluster), and version (2015-12-15) information.
@@ -470,7 +470,7 @@ The corpus was also rebranded between the two sets: the string **“Apsara Stack
 
 ### Container Service for Kubernetes — User Guide
 
-`320 pages / 20220916` → `734 pages / 20260629` (+414 pages, 137 → 234 sections, 519,091 → 1,570,883 characters). Evidence file: `Alibaba Cloud Apsara Stack V3.18.6 Container Service for Kubernetes User Guide 20260629.md`
+`320 pages / 20220916` → `734 pages / 20260629` (+414 pages, 137 → 234 sections, 519,091 → 1,570,883 characters). Evidence file: `Container Service for Kubernetes User Guide 20260629.md`
 
 **Release notes written in the manual itself**
 - *Release notes for Kubernetes 1.34* — Container Service for Kubernetes (ACK) strictly complies with the Certified Kubernetes Conformance Program. This topic describes the updates in Kubernetes 1.34, including update notes, major changes, and feature updates. **Component versions** The following table describes the core component versions that are supported by ACK clusters that run Kubernetes 1.34.
@@ -504,7 +504,7 @@ The corpus was also rebranded between the two sets: the string **“Apsara Stack
 
 ### Data Management — User Guide
 
-`226 pages / 20220916` → `239 pages / 20260629` (+13 pages, 125 → 133 sections, 413,754 → 478,325 characters). Evidence file: `Alibaba Cloud Apsara Stack V3.18.6 Data Management User Guide 20260629.md`
+`226 pages / 20220916` → `239 pages / 20260629` (+13 pages, 125 → 133 sections, 413,754 → 478,325 characters). Evidence file: `Data Management User Guide 20260629.md`
 
 **Text new in this edition** (first lines by section)
 - `Control modes` — Data Management Note The instances that are managed in Stable Change mode consume the billing quota of the instances that are managed in Security Collaboration mode.
@@ -526,7 +526,7 @@ The corpus was also rebranded between the two sets: the string **“Apsara Stack
 
 ### Data Transmission Service — Developer Guide
 
-`223 pages / 20220913` → `480 pages / 20260313` (+257 pages, 11 → 161 sections, 533,800 → 661,207 characters). Evidence file: `Alibaba Cloud Apsara Stack V3.18.6 Data Transmission Service Developer Guide 20260313.md`
+`223 pages / 20220913` → `480 pages / 20260313` (+257 pages, 11 → 161 sections, 533,800 → 661,207 characters). Evidence file: `Data Transmission Service Developer Guide 20260313.md`
 
 **Text new in this edition** (first lines by section)
 - `Quick start` — We recommend that you use SDK core library version 4.5.17 or later and SDK version 5.1.25.
@@ -547,7 +547,7 @@ The corpus was also rebranded between the two sets: the string **“Apsara Stack
 
 ### DataWorks — User Guide
 
-`995 pages / 20220916` → `1590 pages / 20260629` (+595 pages, 481 → 662 sections, 1,706,114 → 2,738,354 characters). Evidence file: `Alibaba Cloud Apsara Stack V3.18.6 DataWorks User Guide 20260629.md`
+`995 pages / 20220916` → `1590 pages / 20260629` (+595 pages, 481 → 662 sections, 1,706,114 → 2,738,354 characters). Evidence file: `DataWorks User Guide 20260629.md`
 
 **Deprecations / removals stated in the text**
 - (Add an SAP HANA data source) Other SAP HANA versions have not been tested and are not supported by default.
@@ -576,7 +576,7 @@ The corpus was also rebranded between the two sets: the string **“Apsara Stack
 
 ### Elastic Compute Service — Developer Guide
 
-`855 pages / 20220916` → `836 pages / 20260312` (-19 pages, 220 → 221 sections, 1,332,550 → 1,420,314 characters). Evidence file: `Alibaba Cloud Apsara Stack V3.18.6 Elastic Compute Service Developer Guide 20260312.md`
+`855 pages / 20220916` → `836 pages / 20260312` (-19 pages, 220 → 221 sections, 1,332,550 → 1,420,314 characters). Evidence file: `Elastic Compute Service Developer Guide 20260312.md`
 
 **Text new in this edition** (first lines by section)
 - `Obtain API information` — To call API operations by using an SDK, you must obtain information that includes the service name, API operation name, and API version.
@@ -599,7 +599,7 @@ The corpus was also rebranded between the two sets: the string **“Apsara Stack
 
 ### MaxCompute — Developer Guide
 
-`34 pages / 20220726` → `316 pages / 20260629` (+282 pages, 32 → 191 sections, 43,124 → 702,816 characters). Evidence file: `Alibaba Cloud Apsara Stack V3.18.6 MaxCompute Developer Guide 20260629.md`
+`34 pages / 20220726` → `316 pages / 20260629` (+282 pages, 32 → 191 sections, 43,124 → 702,816 characters). Evidence file: `MaxCompute Developer Guide 20260629.md`
 
 **Limits and quotas that changed**
 - new · *limits of maxcompute sql statements* · Partitions that can be queried | 10,000 | Quantity | | A maximum of 10,000 partitions can be queried. |
@@ -627,7 +627,7 @@ The corpus was also rebranded between the two sets: the string **“Apsara Stack
 
 ### MaxCompute — User Guide
 
-`781 pages / 20220830` → `633 pages / 20260629` (-148 pages, 908 → 342 sections, 1,478,863 → 982,785 characters). Evidence file: `Alibaba Cloud Apsara Stack V3.18.6 MaxCompute User Guide 20260629.md`
+`781 pages / 20220830` → `633 pages / 20260629` (-148 pages, 908 → 342 sections, 1,478,863 → 982,785 characters). Evidence file: `MaxCompute User Guide 20260629.md`
 
 **Text new in this edition** (first lines by section)
 - `Instance operations` — For example, you can configure show p -all -limit 100 to enable the system to return information about 100 instances executed in the current project.
@@ -651,7 +651,7 @@ The corpus was also rebranded between the two sets: the string **“Apsara Stack
 
 ### Resource Orchestration Service — Developer Guide
 
-`189 pages / 20220915` → `172 pages / 20260312` (-17 pages, 77 → 76 sections, 289,601 → 276,827 characters). Evidence file: `Alibaba Cloud Apsara Stack V3.18.6 Resource Orchestration Service Developer Guide 20260312.md`
+`189 pages / 20220915` → `172 pages / 20260312` (-17 pages, 77 → 76 sections, 289,601 → 276,827 characters). Evidence file: `Resource Orchestration Service Developer Guide 20260312.md`
 
 **Text new in this edition** (first lines by section)
 - `SDK for Java` — In this example, the Resource Orchestration Service (ROS) service, the ListStacks operation, and the 2019-09-10 version are used.
@@ -673,7 +673,7 @@ The corpus was also rebranded between the two sets: the string **“Apsara Stack
 
 ### Resource Orchestration Service — User Guide
 
-`545 pages / 20220713` → `476 pages / 20260312` (-69 pages, 103 → 110 sections, 734,932 → 702,556 characters). Evidence file: `Alibaba Cloud Apsara Stack V3.18.6 Resource Orchestration Service User Guide 20260312.md`
+`545 pages / 20220713` → `476 pages / 20260312` (-69 pages, 103 → 110 sections, 734,932 → 702,556 characters). Evidence file: `Resource Orchestration Service User Guide 20260312.md`
 
 **Text no longer present**
 - `Update a stack` — In the Conf irm step, confirm the template and stack configurations, and click Updat e St ack.
@@ -684,7 +684,7 @@ The corpus was also rebranded between the two sets: the string **“Apsara Stack
 
 ### Server Load Balancer — Developer Guide
 
-`283 pages / 20220915` → `326 pages / 20251028` (+43 pages, 123 → 135 sections, 449,892 → 517,971 characters). Evidence file: `Alibaba Cloud Apsara Stack V3.18.6 Server Load Balancer Developer Guide 20251028.md`
+`283 pages / 20220915` → `326 pages / 20251028` (+43 pages, 123 → 135 sections, 449,892 → 517,971 characters). Evidence file: `Server Load Balancer Developer Guide 20251028.md`
 
 **Text new in this edition** (first lines by section)
 - `Procedure for API calls` — To ensure that Apsara Stack provides the same experience as Alibaba Cloud public cloud, API operations in Apsara Stack Enterprise V3.16.0 and later are called through the POP gateway by defa …
@@ -706,7 +706,7 @@ The corpus was also rebranded between the two sets: the string **“Apsara Stack
 
 ### Server Load Balancer — User Guide
 
-`64 pages / 20220913` → `126 pages / 20260629` (+62 pages, 51 → 67 sections, 111,459 → 234,245 characters). Evidence file: `Alibaba Cloud Apsara Stack V3.18.6 Server Load Balancer User Guide 20260629.md`
+`64 pages / 20220913` → `126 pages / 20260629` (+62 pages, 51 → 67 sections, 111,459 → 234,245 characters). Evidence file: `Server Load Balancer User Guide 20260629.md`
 
 **Deprecations / removals stated in the text**
 - (Release an SLB instance) You can release SLB instances that are no longer needed to reduce costs.
@@ -734,7 +734,7 @@ The corpus was also rebranded between the two sets: the string **“Apsara Stack
 
 ### Virtual Private Cloud — Developer Guide
 
-`498 pages / 20220916` → `517 pages / 20260629` (+19 pages, 235 → 211 sections, 853,576 → 749,386 characters). Evidence file: `Alibaba Cloud Apsara Stack V3.18.6 Virtual Private Cloud Developer Guide 20260629.md`
+`498 pages / 20220916` → `517 pages / 20260629` (+19 pages, 235 → 211 sections, 853,576 → 749,386 characters). Evidence file: `Virtual Private Cloud Developer Guide 20260629.md`
 
 **Text new in this edition** (first lines by section)
 - `Obtain VPC SDK` — For example, to use VPC SDK for Java, you must download aliyun-java-sdk-vpc and VPC SDK encapsulates the API released on April 28, 2016.
@@ -756,7 +756,7 @@ The corpus was also rebranded between the two sets: the string **“Apsara Stack
 
 ### Virtual Private Cloud — User Guide
 
-`69 pages / 20220719` → `163 pages / 20260629` (+94 pages, 51 → 80 sections, 109,973 → 298,760 characters). Evidence file: `Alibaba Cloud Apsara Stack V3.18.6 Virtual Private Cloud User Guide 20260629.md`
+`69 pages / 20220719` → `163 pages / 20260629` (+94 pages, 51 → 80 sections, 109,973 → 298,760 characters). Evidence file: `Virtual Private Cloud User Guide 20260629.md`
 
 **Deprecations / removals stated in the text**
 - (Create a VPC with an IPv6) Configure security group rules** Communication between services that are assigned IPv4 addresses and services that are assigned IPv6 addresses is not supported.
@@ -786,7 +786,7 @@ The corpus was also rebranded between the two sets: the string **“Apsara Stack
 
 ### VPN Gateway — Developer Guide
 
-`103 pages / 20220913` → `173 pages / 20250619` (+70 pages, 33 → 91 sections, 257,486 → 255,980 characters). Evidence file: `Alibaba Cloud Apsara Stack V3.18.6 VPN Gateway Developer Guide 20250619.md`
+`103 pages / 20220913` → `173 pages / 20250619` (+70 pages, 33 → 91 sections, 257,486 → 255,980 characters). Evidence file: `VPN Gateway Developer Guide 20250619.md`
 
 **Text new in this edition** (first lines by section)
 - `Call an API operation` — To ensure that Apsara Stack provides the same experience as Alibaba Cloud Public Cloud, API operations in Apsara Stack Enterprise V3.16.0 and later are called by using the POP gateway by def …
@@ -807,7 +807,7 @@ The corpus was also rebranded between the two sets: the string **“Apsara Stack
 
 ### VPN Gateway — User Guide
 
-`39 pages / 20220913` → `56 pages / 20260629` (+17 pages, 39 → 28 sections, 57,695 → 84,155 characters). Evidence file: `Alibaba Cloud Apsara Stack V3.18.6 VPN Gateway User Guide 20260629.md`
+`39 pages / 20220913` → `56 pages / 20260629` (+17 pages, 39 → 28 sections, 57,695 → 84,155 characters). Evidence file: `VPN Gateway User Guide 20260629.md`
 
 **Text new in this edition** (first lines by section)
 - `Overview of IPsec-VPN connections` — All gateway devices that support the two protocols can connect to VPN gateways on Apsara Stack.
