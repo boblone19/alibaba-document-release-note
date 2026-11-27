@@ -15334,32 +15334,35 @@
   }
  ],
  "localState": {
-  "asOf": "2026-10-21",
+  "asOf": "2026-11-27",
   "pdfsKeptLocally": false,
   "localContent": "仅 Markdown：515 册（中文 296 + 英文 219）+ 索引/缓存 + 英文 zip",
   "pdfCopies": "仅 OSS：apsara-docs/zips_en/（英文 8 包=287 本全量）、apsara-docs/zips/（中文 13 包=296 本）",
   "englishScope": "英文已扩到站点全量：8 个版本线共 952 个唯一 PDF（951 个文件，V3.14.0 的 MongoDB 用户指南同内容双路径发布）；站点另有 2 条目录行无 PDF（AnalyticDB 产品简介、PolarDB 用户指南）无法下载",
   "dedupe": "以 cacheIndex 的 id+versionStamp 判重：相同即跳过，只下新增/版本升级的册子",
   "markdown": {
-   "total": 1248,
+   "total": 911,
    "zh": 296,
-   "en": 951,
+   "en": 614,
    "enByVersion": {
+    "v3.18.6": 288,
+    "V3.18.6_2607": 265,
+    "V3.16.2": 61
+   },
+   "mdFiles": 911,
+   "dirMB": 220.3,
+   "converter": "pdf2md (toc+numbered-headings+note-quotes+edge-junk)",
+   "packageZip": "本地无整包（旧的 markdown_全量_1247册.zip 已删）；需要时用 tools/make_split_zip.py 按当前 910 册现打",
+   "books": 910,
+   "enRowsInIndex": 614,
+   "droppedVersionLines": {
     "V3.12.0": 57,
-    "V3.14.0": 50,
-    "V3.16.2": 61,
+    "V3.14.0": 51,
     "V3.18.1": 49,
     "V3.18.2": 57,
-    "V3.18.3": 124,
-    "V3.18.6_2607": 265,
-    "v3.18.6": 288
+    "V3.18.3": 124
    },
-   "mdFiles": 1248,
-   "dirMB": 335.7,
-   "converter": "pdf2md (toc+numbered-headings+note-quotes+edge-junk)",
-   "packageZip": "markdown_全量_1247册.zip（63.56 MB / 1,254 条目，与 markdown/ 逐条 md5 一致）",
-   "books": 1247,
-   "enRowsInIndex": 952
+   "droppedNote": "2026-11-27：上列 5 条老版本线（338 条登记 / 337 本）已从交付树与 doc_cache_index 清出，留档在 doc_cache_index_removed.json。原登记里的 markdown/localPath 指向已删文件，会让 cache.decide() 误判 SKIP（既不下也不转），所以必须清掉才能如实反映现状。"
   },
   "pdfLocal": {
    "zh": 0,

@@ -1,10 +1,10 @@
 # 阿里专有云（Apsara Stack）产品文档包 —— 索引清单
 
-> **当前状态（2026-10-21：英文补齐到站点全量 952 个链接 + 中文 296 册整批重转，整包 `markdown_全量_1247册.zip`）**
-> - Markdown 共 **1,247 册 / 1,248 个 .md（含 markdown/README.md）/ 339 MB**，本地**不含任何 PDF**：
+> **当前状态（2026-11-27：只保留 3 条在用版本线，5 条老版本线已移除）**
+> - Markdown 共 **910 册 / 911 个 .md（含 markdown/README.md）/ 220 MB**，本地**不含任何 PDF**：
 >   中文 296 册（42,368 页）·
->   英文 **951 册**，覆盖站点全部 8 个版本线：V3.18.6 288（含 1 本无版本标签的第三方 Red Hat OpenShift 手册）· V3.18.6_2607 265 · V3.18.3 124 · V3.16.2 61 · V3.12.0 57 · V3.18.2 57 · V3.14.0 51 · V3.18.1 49
->   —— 站点英文唯一 PDF 链接 **952** 个，本库 952 个链接全部落地，只对应 951 个文件：V3.14.0 的 ApsaraDB for MongoDB 用户指南被阿里云同内容发布在 `/V3.12/` 与 `/v3.14.0/` 两条路径下（索引里 2 行、树里 1 本）
+>   英文 **614 册**，覆盖 3 个版本线：V3.18.6 288（含 1 本无版本标签的第三方 Red Hat OpenShift 手册）· V3.18.6_2607 265 · V3.16.2 61
+>   —— 老的 V3.12.0 / V3.14.0 / V3.18.1 / V3.18.2 / V3.18.3 已从交付树与索引清出（338 条登记 / 337 本），旧行留档 `doc_cache_index_removed.json`，恢复办法写在该文件的 `reason` 里
 > - **2026-10-21 中文 296 册整批重转**（与英文同一转换器，1,247 本全量 0 失败）：中文册原先也是旧 `line-classifier` 产的，**有目录的 0 本**、带编号标题只有 4,724 个；现在 **296/296 有 `## 目录`**、带编号标题 **24,427**、提示框引用块 **17,730 行**（旧版仅 177 行）。中文册的标签按中文标点输出（`> **说明：**` 修正 10,757 处），目录标题行用 `## 目录` 而非英文标题；中文树目录仍按既定约定保留中文命名，只有英文树换成英文产品名
 > - **修掉一个从首次转换就存在的静默丢正文 bug**：`junk()` 判页眉只看"跨页重复次数"，于是把正文里的重复语句一起删了 —— DNS 开发指南每接口必现的"该接口使用公共请求头…"被删 101 处、Agent Dev 开发指南的每页水印页眉「智能体工厂 OpenTrek 发指南」旧版反而漏进正文 445 次。现在页眉判据 = 跨页重复 **且** 落在页眉/页脚带（顶 14% / 底 14%），正文套话保住、水印清掉；英文 951 本 + 中文 296 本据此整体重转，逐本比对 1,247 册中变大 1,229 / 变小 18，18 本逐行核查丢失内容为 0（消失的全是每页重复页眉，页数对不上那 1 本是阿里云自己换了源文件 12→13 页）
 > - **仓库级文件/目录也已全英文命名（2026-11-18，Bob 新增规则：文件夹与文件名一律英文）**：`工具/` → **`tools/`**；`文档缓存索引.{json,csv}` → **`doc_cache_index.{json,csv}`**；`下载台账.{json,md}` → **`download_ledger.{json,md}`**；`全量文档清单.html` → **`all_docs_overview.html`**；`中英对照手册映射.csv` → **`cn_en_manual_map.csv`**；`文档索引.csv` → **`doc_index.csv`**；`文档明细.json` → **`doc_details.json`**；`钉钉索引_文档包.md` → **`dingtalk_docpack_index.md`**；`00_产品清单_全量待选.md` → **`00_product_catalog_candidates.md`**；`英文译文_机翻/` → `machine_translations/`（该目录与其打包 zip 已于 2026-11-18 连同引用一并删除，见 `download_ledger.json` 的 `unofficialTranslation`）；本地未入库的预签名清单 → **`download_links.md`**（`.gitignore` 同步改）
@@ -16,6 +16,7 @@
 > - **英文树的目录名已统一为英文**：`markdown/10_EN_ApsaraStack_<版本>/<英文产品名>/<官方书名>.md`。原先中间层直接抄 OSS 对象路径，阿里云自己中英混排（v3.18.6 是英文、V3.18.6_2607 与老版本是中文，还夹着 `20230221`、`v3.12.0` 这类版本/日期垃圾段）。现在改用从官方英文书名解析出的产品名（`doc_cache_index.json` 的 `product` 字段，951 行零中文）。tools：`tools/rename_en_dirs.py`（默认试跑，`--apply` 才动；只碰 `10_EN_*`）；生成端 `list_docs.py` 的 `localPath` 同步改，新版本不会再落中文目录。本轮搬 261 本 → 82 个英文产品目录，0 文件名冲突，全树复查 0 处中文残留
 > - **英文树的文件名也去掉了版本/套件前缀（2026-11-27）**：`markdown/10_EN_ApsaraStack_<版本>/<英文产品名>/<产品名> <手册类型> <日期>.md`，例如 `…/API Gateway/API Gateway User Guide 20260828.md`。官方书名前缀 `Alibaba Cloud Apsara Stack [Enterprise] V3.18.6` 里的版本父目录已经有了，产品路径又和产品目录名重复一遍，白占 30~45 字符。改后现存 614 本的文件名平均 99 → 61 字符、完整路径平均 169 → 130、超 260 字符的路径 26 → 1。tools：`tools/rename_en_files.py`（默认试跑，`--apply` 才动；只碰 `10_EN_*` 的文件名，目录/正文/云端键不动）；`doc_cache_index`、`conversion_manifest`、各 README/HTML 的引用由脚本一并重写，现存目录内失效引用 0
 > - **另两条版本线按 v3.18.6 的产品目录口径归并（2026-11-27）**：`V3.18.6_2607` 从按"产品线+子产品"逐级拆分的目录改成与 v3.18.6 一致的单层产品目录（83 个，如 `Bastionhost Bastionhost` → `Bastionhost`、`OpenTrek OpenTrek Dev` → `OpenTrek Dev`、`AnalyticDB for MySQL AnalyticDB for PostgreSQL` → `AnalyticDB for PostgreSQL`）；`V3.16.2` 把 `Developer Guide/`、`User Guide/`、`Introduction…/` 容器层收平（33 个产品目录）。搬 147 本、0 撞名，剪掉搬迁后留下的 31 个空目录（2607 的 28 个旧命名目录 + V3.16.2 的 3 个类型容器）。之后又跑了一次 `rename_en_files.py --apply` 补齐文件名（目录名变了、文件名里还是旧目录名），并把 `Cloud gateway`、`Apsara Stack Resilience` 等仅大小写不同的目录/文件名统一成 v3.18.6 的写法。现状：三棵树 206 个产品目录、614 本，文件名 100% 以所属目录名开头，无空目录，最长全路径 228 字符（0 本超 260）
+> - **索引里清掉 5 条已删版本线的 338 条脏登记（2026-11-27）**：`doc_cache_index` 里 V3.12.0 / V3.14.0 / V3.18.1 / V3.18.2 / V3.18.3 共 338 条登记仍写着已删除的 `markdown` / `localPath`，而 `tools/cache.py` 的 `decide()` 只要 `markdown` 非空就判 **SKIP**（既不重新下载也不重转），这几条线因此成了"永远跳过"的死记录。现在把 338 条整体移出主索引（1,248 → 910 行）、原样留档到 `doc_cache_index_removed.json`（含 `reason` 与恢复方法），`download_ledger.json` 的 `localState.markdown` 同步改为 910 册 / 614 英文 / 220.3 MB，并新增 `droppedVersionLines` 记录这次的移除。索引现有 910 行**全部指向真实文件**（缺失 0），`all_docs_overview.html` 910 条、`markdown/README.md` 863 条、根 `README.md` 296 条链接失效 0
 
 > - **打包规则（2026-11-18 定版）：中文单独一个整包，其余分卷，所有包名与卷内路径一律 ASCII**
 >   - 中文树（`01_ApsaraStack-Enterprise_…` + `02_AIStack_…`）→ 单个 `ApsaraStack_Markdown_zh_296books.zip`（14.68 MB / 296 条目），不参与装箱；超过上限直接报错而不是偷偷拆卷
@@ -27,7 +28,7 @@
 
 > 英文 PDF ↔ Markdown 的对应关系统一以 `doc_cache_index.csv` 为准（`pdfCloud` = PDF 所在云端包，`localPath` = 登记路径，`markdown` = 已转出的 md）。
 
-两套内容分开看：**中文 296 册 / 英文 951 册 Markdown**。PDF 不在本地保留：中文原件在云端 `apsara-docs/zips/`（13 包），英文在 `apsara-docs/zips_en/`（8 包，本地 markdown 对应的只是其中 4 包范围）。
+两套内容分开看：**中文 296 册 / 英文 614 册 Markdown**。PDF 不在本地保留：中文原件在云端 `apsara-docs/zips/`（13 包），英文在 `apsara-docs/zips_en/`（8 包，本地 markdown 对应的只是其中 4 包范围）。
 
 - 企业版：stack 版本 **v3.18.6（20260730）**，册内实际标注 `产品版本 v3.18.6-SP2607`，`文档版本 202607xx–202608xx`（各册独立更新）
 - AI Stack：stack 版本 **v2.17.0（20260828）**，册内标注 `V2.17.0`，OpenTrek 的 Agent Dev 与 AI Studio 标准版
