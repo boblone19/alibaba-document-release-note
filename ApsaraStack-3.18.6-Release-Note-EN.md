@@ -84,7 +84,7 @@ The corpus was also rebranded between the two sets: the string **“Apsara Stack
 
 ### Alibaba Cloud Message Queue — Developer Guide
 
-`113 pages / 20220815` → `386 pages / 20260108` (+273 pages, 196 → 320 sections, 143,271 → 409,295 characters). Evidence file: `Alibaba Cloud Message Queue Developer Guide 20260108.md`
+`113 pages / 20220815` → `386 pages / 20260108` (+273 pages, 196 → 320 sections, 143,271 → 409,295 characters). Evidence file: `Message Queue Developer Guide 20260108.md`
 
 **Text new in this edition** (first lines by section)
 - `SDK for Java` — Click the button, choose Middleware > Message Queue (MQ), and set Version to 2018-02-05.
@@ -106,7 +106,7 @@ The corpus was also rebranded between the two sets: the string **“Apsara Stack
 
 ### Alibaba Cloud Message Queue — User Guide
 
-`330 pages / 20250725` → `373 pages / 20260629` (+43 pages, 166 → 184 sections, 690,225 → 750,166 characters). Evidence file: `Alibaba Cloud Message Queue User Guide 20260629.md`
+`330 pages / 20250725` → `373 pages / 20260629` (+43 pages, 166 → 184 sections, 690,225 → 750,166 characters). Evidence file: `Message Queue User Guide 20260629.md`
 
 **Text new in this edition** (first lines by section)
 - `Configure logging` — ApsaraMQ for RocketMQ SDK for Java versions earlier than 1.7.8.Final ApsaraMQ for RocketMQ SDK for Java versions earlier than 1.7.8.Final support only Log4j and Logback.

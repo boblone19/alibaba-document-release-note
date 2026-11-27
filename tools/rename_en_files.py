@@ -87,7 +87,9 @@ def new_name(stem, parent):
     if not parts:
         return None
     prod, dt, date, dup = parts
-    if parent and prod.endswith(parent):
+    if parent and dt and parent.lower().endswith(" " + dt.lower()):
+        product, dt = parent, ""               # 目录名自带手册类型（如 Apsara Stack Security
+    elif parent and prod.endswith(parent):     # Security Administrator Guide），不再重复一遍
         product = parent                      # 产品路径就是父目录名 → 只砍掉前面的版本前缀
     else:
         m = STACK_PREFIX.match(prod)

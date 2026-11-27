@@ -143,10 +143,16 @@ python3 tools/rename_en_dirs.py            # 试跑：出迁移表 + 冲突检�
 python3 tools/rename_en_dirs.py --apply [--manifest ../../.scratch/en_all.json]
 python3 tools/rename_cn_dirs.py --apply
 python3 tools/rename_en_files.py --apply   # 英文文件名去版本/套件前缀
+python3 tools/rename_en_dirs_by_ref.py --apply  # 其他版本线按 v3.18.6 的产品目录口径归并
 ```
 默认只报不动；先做**撞名检查**（新路径重名就直接拒绝执行），搬完顺带剪空目录、改 `markdown`/
 `localPath`、重写全仓引用（跳过云端键）。两张映射表是命名口径的唯一来源：
 英文取 `list_docs` 的 `product`（书名里解析），中文取 `DOMAIN_EN` + 接口给的 `productCode` / 手册 `code`。
+
+**顺序要紧**：改动目录名之后必须再跑一次 `rename_en_files.py --apply`，否则文件名里还留着旧目录名
+（本轮 `Message Queue`、`Security-Web Application Firewall (WAF)`、`Distributed Cloud Container Platform
+ACK One`、`Web Application Firewall (WAF) -Instance`、`Cloud gateway` 都是这么补齐的）。Windows 大小写
+不敏感，`os.path.exists` 对仅大小写不同的旧名会返回 True，所以搬目录要"先改成临时名、再改成目标名"两步。
 
 ### 2.7 脱敏（提交前后各一次，重转之后必跑）
 ```bash
@@ -261,7 +267,8 @@ python3 tools/make_split_zip.py --verify        # 4 验收
 | `redact_vendor_docs.py` | 厂商文档 PII/凭证脱敏（可重复跑） | 路径列表，默认三棵树 |
 | `check_leaks.py` | 提交前自查（pre-commit 钩子调它） | `--cached` |
 | `rename_en_dirs.py` | 英文树目录改英文产品名 | `--apply [--manifest]` |
-| `rename_en_files.py` | 英文树文件名去版本/套件前缀（`<产品名> <类型> <日期>.md`） | `--apply [--limit]` |
+| `rename_en_dirs_by_ref.py` | 其他版本线按 v3.18.6 的产品目录口径归并（含空目录清理） | `--apply` |
+| `rename_en_files.py` | 英文树文件名去版本/套件前缀（`<产品名> <类型> <日期>.md`）；目录改名后须再跑一次 | `--apply [--limit]` |
 | `rename_cn_dirs.py` | 中文树目录/文件名改 ASCII | `--apply` |
 | `build_indexes.py` | 从索引重生成人读清单与总览 HTML | — |
 | `make_split_zip.py` | 中文单包 + 其余分卷，ASCII 命名，产清单与核验 | `--plan --parts --max-mb --prefix --verify` |
