@@ -1,6 +1,6 @@
 [
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "专有云云平台",
@@ -21,7 +21,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "专有云云平台",
@@ -42,7 +42,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "专有云云平台",
@@ -63,7 +63,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "专有云云平台",
@@ -84,7 +84,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "专有云云平台",
@@ -105,7 +105,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "专有云云平台",
@@ -126,7 +126,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "云原生服务",
@@ -147,7 +147,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "云原生服务",
@@ -168,7 +168,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "云原生服务",
@@ -189,7 +189,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "云原生服务",
@@ -210,7 +210,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "云原生服务",
@@ -231,7 +231,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "云原生服务",
@@ -252,7 +252,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "云原生服务",
@@ -273,7 +273,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "云原生服务",
@@ -294,7 +294,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "云原生服务",
@@ -315,7 +315,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "云原生服务",
@@ -336,7 +336,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "云原生服务",
@@ -357,7 +357,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "云原生服务",
@@ -378,7 +378,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "云原生服务",
@@ -399,7 +399,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "云原生服务",
@@ -420,7 +420,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "云原生服务",
@@ -441,7 +441,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "云原生服务",
@@ -462,7 +462,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "云原生服务",
@@ -483,7 +483,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "云原生服务",
@@ -504,7 +504,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "云原生服务",
@@ -525,7 +525,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "云原生服务",
@@ -546,7 +546,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "云原生服务",
@@ -567,7 +567,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "云原生服务",
@@ -588,7 +588,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "云原生服务",
@@ -609,7 +609,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "交付服务",
@@ -630,7 +630,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "交付服务",
@@ -651,7 +651,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "交付服务",
@@ -672,7 +672,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "交付服务",
@@ -693,7 +693,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "交付服务",
@@ -714,7 +714,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "交付服务",
@@ -735,7 +735,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "交付服务",
@@ -756,7 +756,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "交付服务",
@@ -777,7 +777,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "人工智能",
@@ -798,7 +798,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "人工智能",
@@ -819,7 +819,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "人工智能",
@@ -840,7 +840,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "人工智能",
@@ -861,7 +861,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "人工智能",
@@ -882,7 +882,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "人工智能",
@@ -903,7 +903,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "人工智能",
@@ -924,7 +924,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "人工智能",
@@ -945,7 +945,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "人工智能",
@@ -966,7 +966,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "人工智能",
@@ -987,7 +987,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "人工智能",
@@ -1008,7 +1008,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "人工智能",
@@ -1029,7 +1029,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "人工智能",
@@ -1050,7 +1050,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "人工智能",
@@ -1071,7 +1071,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "人工智能",
@@ -1092,7 +1092,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "人工智能",
@@ -1113,7 +1113,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "人工智能",
@@ -1134,7 +1134,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "人工智能",
@@ -1155,7 +1155,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "人工智能",
@@ -1176,7 +1176,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "人工智能",
@@ -1197,7 +1197,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "大数据服务",
@@ -1218,7 +1218,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "大数据服务",
@@ -1239,7 +1239,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "大数据服务",
@@ -1260,7 +1260,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "大数据服务",
@@ -1281,7 +1281,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "大数据服务",
@@ -1302,7 +1302,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "大数据服务",
@@ -1323,7 +1323,7 @@
   "docVer": "20260831"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "大数据服务",
@@ -1344,7 +1344,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "大数据服务",
@@ -1365,7 +1365,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "大数据服务",
@@ -1386,7 +1386,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "大数据服务",
@@ -1407,7 +1407,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "大数据服务",
@@ -1428,7 +1428,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "大数据服务",
@@ -1449,7 +1449,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "大数据服务",
@@ -1470,7 +1470,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "大数据服务",
@@ -1491,7 +1491,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "大数据服务",
@@ -1512,7 +1512,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "大数据服务",
@@ -1533,7 +1533,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "大数据服务",
@@ -1554,7 +1554,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "大数据服务",
@@ -1575,7 +1575,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "大数据服务",
@@ -1596,7 +1596,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "大数据服务",
@@ -1617,7 +1617,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "大数据服务",
@@ -1638,7 +1638,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "大数据服务",
@@ -1659,7 +1659,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "大数据服务",
@@ -1680,7 +1680,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "大数据服务",
@@ -1701,7 +1701,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "大数据服务",
@@ -1722,7 +1722,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "大数据服务",
@@ -1743,7 +1743,7 @@
   "docVer": "20260730"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "大数据服务",
@@ -1764,7 +1764,7 @@
   "docVer": "20260730"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "大数据服务",
@@ -1785,7 +1785,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "存储服务",
@@ -1806,7 +1806,7 @@
   "docVer": "20260730"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "存储服务",
@@ -1827,7 +1827,7 @@
   "docVer": "20260813"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "存储服务",
@@ -1848,7 +1848,7 @@
   "docVer": "20260813"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "存储服务",
@@ -1869,7 +1869,7 @@
   "docVer": "20260730"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "存储服务",
@@ -1890,7 +1890,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "存储服务",
@@ -1911,7 +1911,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "存储服务",
@@ -1932,7 +1932,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "存储服务",
@@ -1953,7 +1953,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "存储服务",
@@ -1974,7 +1974,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "存储服务",
@@ -1995,7 +1995,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "存储服务",
@@ -2016,7 +2016,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "存储服务",
@@ -2037,7 +2037,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "存储服务",
@@ -2058,7 +2058,7 @@
   "docVer": "20260730"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "存储服务",
@@ -2079,7 +2079,7 @@
   "docVer": "20260730"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "存储服务",
@@ -2100,7 +2100,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "存储服务",
@@ -2121,7 +2121,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "存储服务",
@@ -2142,7 +2142,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "存储服务",
@@ -2163,7 +2163,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "存储服务",
@@ -2184,7 +2184,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "存储服务",
@@ -2205,7 +2205,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "存储服务",
@@ -2226,7 +2226,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "存储服务",
@@ -2247,7 +2247,7 @@
   "docVer": "20260813"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "存储服务",
@@ -2268,7 +2268,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -2289,7 +2289,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -2310,7 +2310,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -2331,7 +2331,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -2352,7 +2352,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -2373,7 +2373,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -2394,7 +2394,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -2415,7 +2415,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -2436,7 +2436,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -2457,7 +2457,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -2478,7 +2478,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -2499,7 +2499,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -2520,7 +2520,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -2541,7 +2541,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -2562,7 +2562,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -2583,7 +2583,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -2604,7 +2604,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -2625,7 +2625,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -2646,7 +2646,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -2667,7 +2667,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -2688,7 +2688,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -2709,7 +2709,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -2730,7 +2730,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -2751,7 +2751,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -2772,7 +2772,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -2793,7 +2793,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -2814,7 +2814,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -2835,7 +2835,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -2856,7 +2856,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -2877,7 +2877,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -2898,7 +2898,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -2919,7 +2919,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -2940,7 +2940,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -2961,7 +2961,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -2982,7 +2982,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -3003,7 +3003,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -3024,7 +3024,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -3045,7 +3045,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -3066,7 +3066,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -3087,7 +3087,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -3108,7 +3108,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -3129,7 +3129,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -3150,7 +3150,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -3171,7 +3171,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -3192,7 +3192,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -3213,7 +3213,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -3234,7 +3234,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "安全服务",
@@ -3255,7 +3255,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "应用服务",
@@ -3276,7 +3276,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "应用服务",
@@ -3297,7 +3297,7 @@
   "docVer": "20260813"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "应用服务",
@@ -3318,7 +3318,7 @@
   "docVer": "20260813"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "应用服务",
@@ -3339,7 +3339,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -3360,7 +3360,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -3381,7 +3381,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -3402,7 +3402,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -3423,7 +3423,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -3444,7 +3444,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -3465,7 +3465,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -3486,7 +3486,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -3507,7 +3507,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -3528,7 +3528,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -3549,7 +3549,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -3570,7 +3570,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -3591,7 +3591,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -3612,7 +3612,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -3633,7 +3633,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -3654,7 +3654,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -3675,7 +3675,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -3696,7 +3696,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -3717,7 +3717,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -3738,7 +3738,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -3759,7 +3759,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -3780,7 +3780,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -3801,7 +3801,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -3822,7 +3822,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -3843,7 +3843,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -3864,7 +3864,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -3885,7 +3885,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -3906,7 +3906,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -3927,7 +3927,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -3948,7 +3948,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -3969,7 +3969,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -3990,7 +3990,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -4011,7 +4011,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -4032,7 +4032,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -4053,7 +4053,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -4074,7 +4074,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -4095,7 +4095,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -4116,7 +4116,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -4137,7 +4137,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -4158,7 +4158,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -4179,7 +4179,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -4200,7 +4200,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -4221,7 +4221,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -4242,7 +4242,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -4263,7 +4263,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "数据库服务",
@@ -4284,7 +4284,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "统一运营平台",
@@ -4305,7 +4305,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "统一运营平台",
@@ -4326,7 +4326,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "统一运营平台",
@@ -4347,7 +4347,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "统一运营平台",
@@ -4368,7 +4368,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "统一运营平台",
@@ -4389,7 +4389,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "统一运营平台",
@@ -4410,7 +4410,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "统一运营平台",
@@ -4431,7 +4431,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "统一运营平台",
@@ -4452,7 +4452,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "统一运营平台",
@@ -4473,7 +4473,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "统一运营平台",
@@ -4494,7 +4494,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "统一运营平台",
@@ -4515,7 +4515,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "统一运营平台",
@@ -4536,7 +4536,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "统一运营平台",
@@ -4557,7 +4557,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "统一运营平台",
@@ -4578,7 +4578,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "统一运营平台",
@@ -4599,7 +4599,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "统一运营平台",
@@ -4620,7 +4620,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "统一运营平台",
@@ -4641,7 +4641,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "统一运营平台",
@@ -4662,7 +4662,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "统一运营平台",
@@ -4683,7 +4683,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "统一运营平台",
@@ -4704,7 +4704,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "统一运营平台",
@@ -4725,7 +4725,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "统一运营平台",
@@ -4746,7 +4746,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "网络服务",
@@ -4767,7 +4767,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "网络服务",
@@ -4788,7 +4788,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "网络服务",
@@ -4809,7 +4809,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "网络服务",
@@ -4830,7 +4830,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "网络服务",
@@ -4851,7 +4851,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "网络服务",
@@ -4872,7 +4872,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "网络服务",
@@ -4893,7 +4893,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "网络服务",
@@ -4914,7 +4914,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "网络服务",
@@ -4935,7 +4935,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "网络服务",
@@ -4956,7 +4956,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "网络服务",
@@ -4977,7 +4977,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "网络服务",
@@ -4998,7 +4998,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "网络服务",
@@ -5019,7 +5019,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "网络服务",
@@ -5040,7 +5040,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "网络服务",
@@ -5061,7 +5061,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "网络服务",
@@ -5082,7 +5082,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "网络服务",
@@ -5103,7 +5103,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "网络服务",
@@ -5124,7 +5124,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "网络服务",
@@ -5145,7 +5145,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "网络服务",
@@ -5166,7 +5166,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "网络服务",
@@ -5187,7 +5187,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "网络服务",
@@ -5208,7 +5208,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "网络服务",
@@ -5229,7 +5229,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "网络服务",
@@ -5250,7 +5250,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "网络服务",
@@ -5271,7 +5271,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "网络服务",
@@ -5292,7 +5292,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "网络服务",
@@ -5313,7 +5313,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "网络服务",
@@ -5334,7 +5334,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "网络服务",
@@ -5355,7 +5355,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "网络服务",
@@ -5376,7 +5376,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "网络服务",
@@ -5397,7 +5397,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "计算服务",
@@ -5418,7 +5418,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "计算服务",
@@ -5439,7 +5439,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "计算服务",
@@ -5460,7 +5460,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "计算服务",
@@ -5481,7 +5481,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "计算服务",
@@ -5502,7 +5502,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "计算服务",
@@ -5523,7 +5523,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "计算服务",
@@ -5544,7 +5544,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "计算服务",
@@ -5565,7 +5565,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "计算服务",
@@ -5586,7 +5586,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "计算服务",
@@ -5607,7 +5607,7 @@
   "docVer": "20260831"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "计算服务",
@@ -5628,7 +5628,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "计算服务",
@@ -5649,7 +5649,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "计算服务",
@@ -5670,7 +5670,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "计算服务",
@@ -5691,7 +5691,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "计算服务",
@@ -5712,7 +5712,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "计算服务",
@@ -5733,7 +5733,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "计算服务",
@@ -5754,7 +5754,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "计算服务",
@@ -5775,7 +5775,7 @@
   "docVer": "20260818"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "计算服务",
@@ -5796,7 +5796,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "计算服务",
@@ -5817,7 +5817,7 @@
   "docVer": "20260803"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "计算服务",
@@ -5838,7 +5838,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "计算服务",
@@ -5859,7 +5859,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "计算服务",
@@ -5880,7 +5880,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "计算服务",
@@ -5901,7 +5901,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "计算服务",
@@ -5922,7 +5922,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "计算服务",
@@ -5943,7 +5943,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "计算服务",
@@ -5964,7 +5964,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "计算服务",
@@ -5985,7 +5985,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "计算服务",
@@ -6006,7 +6006,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "计算服务",
@@ -6027,7 +6027,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "计算服务",
@@ -6048,7 +6048,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "计算服务",
@@ -6069,7 +6069,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "01_ApsaraStack-Enterprise_v3.18.6_20260730",
+  "group": "01_ZH_ApsaraStack_v3.18.6",
   "stack": "enterprise",
   "version": "v_3_18_6_20260730",
   "category": "计算服务",
@@ -6090,7 +6090,7 @@
   "docVer": "20260729"
  },
  {
-  "group": "02_AIStack_v2.17.0_20260828_OpenTrek",
+  "group": "02_ZH_AIStack_v2.17.0",
   "stack": "ai_stack",
   "version": "v_2_17_0_20260828",
   "category": "人工智能",
@@ -6111,7 +6111,7 @@
   "docVer": "20260902"
  },
  {
-  "group": "02_AIStack_v2.17.0_20260828_OpenTrek",
+  "group": "02_ZH_AIStack_v2.17.0",
   "stack": "ai_stack",
   "version": "v_2_17_0_20260828",
   "category": "人工智能",
@@ -6132,7 +6132,7 @@
   "docVer": "20260902"
  },
  {
-  "group": "02_AIStack_v2.17.0_20260828_OpenTrek",
+  "group": "02_ZH_AIStack_v2.17.0",
   "stack": "ai_stack",
   "version": "v_2_17_0_20260828",
   "category": "人工智能",
@@ -6153,7 +6153,7 @@
   "docVer": "20260902"
  },
  {
-  "group": "02_AIStack_v2.17.0_20260828_OpenTrek",
+  "group": "02_ZH_AIStack_v2.17.0",
   "stack": "ai_stack",
   "version": "v_2_17_0_20260828",
   "category": "人工智能",
@@ -6174,7 +6174,7 @@
   "docVer": "20260902"
  },
  {
-  "group": "02_AIStack_v2.17.0_20260828_OpenTrek",
+  "group": "02_ZH_AIStack_v2.17.0",
   "stack": "ai_stack",
   "version": "v_2_17_0_20260828",
   "category": "人工智能",
@@ -6195,7 +6195,7 @@
   "docVer": "20260902"
  },
  {
-  "group": "02_AIStack_v2.17.0_20260828_OpenTrek",
+  "group": "02_ZH_AIStack_v2.17.0",
   "stack": "ai_stack",
   "version": "v_2_17_0_20260828",
   "category": "人工智能",
